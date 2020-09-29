@@ -1,0 +1,34 @@
+{
+  "name": "ePI-workspace",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "postinstall": "node ./node_modules/octopus/scripts/run",
+    "add": "node ./node_modules/octopus/scripts/add",
+    "remove": "node ./node_modules/octopus/scripts/remove",
+    "add-loader": "node ./node_modules/octopus/scripts/add",
+    "build": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/build\"",
+    "build-all": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run build\"",
+    "update": "node ./node_modules/octopus/scripts/update",
+    "bind-app": "node ./node_modules/octopus/scripts/bind --type=app",
+    "bind-wallet": "node ./node_modules/octopus/scripts/bind --type=wallet",
+    "server": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd privatesky && npm run start\"",
+    "switch-to-release": "npm run remove privatesky && npm run add privatesky http://github.com/privatesky/psk-release.git 0",
+    "switch-to-dev": "npm run remove privatesky && npm run add privatesky http://github.com/privatesky/privatesky.git 0",
+    "watch": "node ./bin/watcher/watcher.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PharmaLedger-IMI/epi-workspace.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PharmaLedger-IMI/epi-workspace/issues"
+  },
+  "homepage": "https://github.com/PharmaLedger-IMI/epi-workspace#readme",
+  "dependencies": {
+    "octopus": "git+http://github.com/privatesky/octopus.git#1.0.4"
+  }
+}

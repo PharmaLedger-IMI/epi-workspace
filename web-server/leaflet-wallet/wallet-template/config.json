@@ -1,0 +1,10 @@
+{
+  "theme":"clear-sky-theme",
+  "appVersion":"1.0.1",
+  "basePagesUrl": "/pages/",
+  "profile": {
+    "username": "Secure Channels",
+    "email": "sinica@axiologic.net",
+    "avatar": "/resources/images/cardinal.png"
+  }
+}
