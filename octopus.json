@@ -86,6 +86,14 @@
                 {
                     "type": "execute",
                     "cmd": "cd web-server/leaflet-wallet/loader && npm install"
+                },
+                {
+                    "type": "move",
+                    "src": "web-server/leaflet-wallet/loader/loader-config.local.json-template",
+                    "target": "web-server/leaflet-wallet/loader/loader-config.local.json",
+                    "options":{
+                        "overwrite": true
+                    }
                 }
             ]
         },
