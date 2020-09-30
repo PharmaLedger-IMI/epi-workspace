@@ -11,12 +11,12 @@
     "bricks",
     "anchoring",
     "dsu-wizard",
-    "gtin-wizard",
+    "gtin-dsu-wizard",
     "staticServer"
   ],
   "endpointsConfig": {
-    "gtin-wizard": {
-      "module": "./../../gtin-wizard"
+    "gtin-dsu-wizard": {
+      "module": "./../../gtin-dsu-wizard"
     }
   }
 }
