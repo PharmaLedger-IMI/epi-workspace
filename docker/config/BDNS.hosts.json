@@ -1,0 +1,11 @@
+{
+  "default": {
+    "replicas": [],
+    "brickStorages": [
+      "http://localhost:8080"
+    ],
+    "anchoringServices": [
+      "http://localhost:8080"
+    ]
+  }
+}

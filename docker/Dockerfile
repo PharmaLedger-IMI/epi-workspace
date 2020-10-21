@@ -10,6 +10,7 @@ RUN cd $TARGET_FOLDER_NAME && \
 
 ADD config/env.json /$TARGET_FOLDER_NAME/env.json
 ADD config/web-server /$TARGET_FOLDER_NAME/web-server
+ADD config/BDNS.hosts.json /$TARGET_FOLDER_NAME/web-server/conf/BDNS.hosts.json
 
 RUN cd $TARGET_FOLDER_NAME && \
     echo 'npm run server & \n sleep 3m \n npm run build-all \n tail -f /dev/null' >> startup-script.sh
