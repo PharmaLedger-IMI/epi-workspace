@@ -8,6 +8,7 @@
     "notifications",
     "filesManager",
     "bricksLedger",
+    "bricksFabric",
     "bricks",
     "anchoring",
     "dsu-wizard",
