@@ -91,7 +91,7 @@
                     "type": "copy",
                     "src": "web-server/leaflet-wallet/loader/loader-config.local.json-template",
                     "target": "web-server/leaflet-wallet/loader/loader-config.local.json",
-                    "options":{
+                    "options": {
                         "overwrite": true
                     }
                 }
@@ -257,6 +257,21 @@
                     "cmd": "cd dossier-explorer-ssapp && npm install"
                 }
             ]
+        },
+        {
+            "name": "express-demo",
+            "src": "https://github.com/PharmaLedger-IMI/express-demo",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd express-demo && npm install"
+                }
+            ]
         }
     ],
     "build": [
@@ -309,8 +324,8 @@
                     "cmd": "cd themes/clear-sky-theme && npm run build-dossier"
                 }
             ]
-        }
-    ,{
+        },
+        {
             "name": "epi-theme-wallet-build",
             "src": "",
             "actions": [
