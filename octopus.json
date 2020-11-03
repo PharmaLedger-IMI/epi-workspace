@@ -13,10 +13,6 @@
                 {
                     "type": "execute",
                     "cmd": "cd cardinal && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd cardinal && npm run build"
                 }
             ]
         },
@@ -91,6 +87,14 @@
                     "type": "copy",
                     "src": "web-server/leaflet-wallet/loader/loader-config.local.json-template",
                     "target": "web-server/leaflet-wallet/loader/loader-config.local.json",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./trust-loader-config",
+                    "target": "./web-server/leaflet-wallet/loader",
                     "options": {
                         "overwrite": true
                     }
