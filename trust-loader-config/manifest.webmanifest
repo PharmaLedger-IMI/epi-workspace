@@ -1,6 +1,6 @@
 {
-  "short_name": "EPI Workspace",
-  "name": "EPI Workspace",
+  "short_name": "EPI",
+  "name": "EPI",
   "description": "Dossiers' User Interface",
   "icons": [
     {
@@ -20,9 +20,9 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "/",
+  "start_url": "/leaflet-wallet/loader",
   "background_color": "#16767c",
   "display": "standalone",
-  "scope": "/",
+  "scope": "/leaflet-wallet/loader",
   "theme_color": "#16767c"
 }
