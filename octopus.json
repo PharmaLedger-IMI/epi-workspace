@@ -98,6 +98,10 @@
                     "options": {
                         "overwrite": true
                     }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/leaflet-wallet/loader && npm run build"
                 }
             ]
         },
