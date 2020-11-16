@@ -280,6 +280,21 @@
                     "cmd": "cd express-demo && npm install"
                 }
             ]
+        },
+        {
+            "name": "ethereum-anchoring",
+            "src": "https://github.com/PharmaLedger-IMI/ethereum-anchoring",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd ethereum-anchoring && npm install"
+                }
+            ]
         }
     ],
     "build": [
