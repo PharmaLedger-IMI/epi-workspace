@@ -94,7 +94,7 @@
                 {
                     "type": "copy",
                     "src": "./trust-loader-config",
-                    "target": "./web-server/leaflet-wallet/loader",
+                    "target": "./web-server",
                     "options": {
                         "overwrite": true
                     }
