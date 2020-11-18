@@ -92,14 +92,6 @@
                     }
                 },
                 {
-                    "type": "copy",
-                    "src": "./trust-loader-config",
-                    "target": "./web-server",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
                     "type": "execute",
                     "cmd": "cd web-server/leaflet-wallet/loader && npm run build"
                 }
@@ -278,6 +270,19 @@
                 {
                     "type": "execute",
                     "cmd": "cd express-demo && npm install"
+                }
+            ]
+        },
+        {
+            "name": "trust-loader-config",
+            "actions": [
+                {
+                    "type": "copy",
+                    "src": "./trust-loader-config",
+                    "target": "./web-server",
+                    "options": {
+                        "overwrite": true
+                    }
                 }
             ]
         },
