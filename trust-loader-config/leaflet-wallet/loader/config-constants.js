@@ -4,7 +4,7 @@ let APP_CONFIG = {
 		APP_NAME: "Leaflet wallet",
 		APP_DESCRIPTION: "Prepare to access e-leaflets world",
 		NEW_WALLET: "New Wallet",
-		RESTORE_WALLET: "Restore Wallet",
+		ACCESS_WALLET: "Access Wallet",
 		WALLET_AUTHORIZATION: "Wallet Authorization",
 		REGISTER_DETAILS: "Register details",
 		COMPLETE: "Complete",

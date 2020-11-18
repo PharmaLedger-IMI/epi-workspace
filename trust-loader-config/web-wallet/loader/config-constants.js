@@ -4,7 +4,7 @@ let APP_CONFIG = {
 		APP_NAME: "Web wallet",
 		APP_DESCRIPTION: "A smart application to keep your secrets",
 		NEW_WALLET: "New Wallet",
-		RESTORE_WALLET: "Restore Wallet",
+		ACCESS_WALLET: "Access Wallet",
 		WALLET_AUTHORIZATION: "Wallet Authorization",
 		REGISTER_DETAILS: "Register details",
 		COMPLETE: "Complete",
