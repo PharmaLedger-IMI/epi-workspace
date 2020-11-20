@@ -335,6 +335,21 @@
                     "cmd": "cd ethereum-anchoring && npm install"
                 }
             ]
+        },
+        {
+            "name": "dsu-fabric-ssapp",
+            "src": "https://github.com/PharmaLedger-IMI/dsu-fabric-ssapp.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd dsu-fabric-ssapp && npm install"
+                }
+            ]
         }
     ],
     "build": [
@@ -485,6 +500,46 @@
                 {
                     "type": "execute",
                     "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/leaflet-wallet/apps/leaflet-ssapp/readme"
+                }
+            ]
+        },
+        {
+            "name": "dsu-fabric-wallet_bind_to_menu-wallet-prototype",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd menu-wallet-prototype && npm run build"
+                },
+                {
+                    "type": "copy",
+                    "src": "./menu-wallet-prototype/seed",
+                    "target": "./web-server/dsu-fabric-wallet/wallet-template/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "dsu-fabric-wallet_bind_to_dsu-fabric-ssapp",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd dsu-fabric-ssapp && npm run build"
+                },
+                {
+                    "type": "copy",
+                    "src": "./dsu-fabric-ssapp/seed",
+                    "target": "./web-server/dsu-fabric-wallet/apps/dsu-fabric-ssapp/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-fabric-wallet/apps/dsu-fabric-ssapp/readme"
                 }
             ]
         }
