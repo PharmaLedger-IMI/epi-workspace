@@ -90,10 +90,6 @@
                     "options": {
                         "overwrite": true
                     }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd web-server/leaflet-wallet/loader && npm run build"
                 }
             ]
         },
@@ -540,6 +536,15 @@
                 {
                     "type": "execute",
                     "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-fabric-wallet/apps/dsu-fabric-ssapp/readme"
+                }
+            ]
+        },
+        {
+            "name": "leaflet-wallet-loader-build",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/leaflet-wallet/loader && npm run build"
                 }
             ]
         }
