@@ -41,7 +41,7 @@ function  walk(dir, filterFiles, filterFolders, done) {
 
 function filterFiles(name){
 
-    if(name.endsWith("/seed") ){
+    if(name.endsWith("\\seed") || name.endsWith("/seed")){
             console.log("Deleting seed file:", name);
             fs.unlinkSync(name);
         }
@@ -63,11 +63,11 @@ function deleteFolderContent(name, text){
 
 function filterFolders(name){
     if(name){
-        if(name.endsWith("/anchors") >0 ){
+        if(name.endsWith("/anchors") || name.endsWith("\\anchors")){
             deleteFolderContent(name, "Deleting anchors:")
 
         }
-        if(name.indexOf("/brick-storage/") >0){
+        if(name.indexOf("/brick-storage/") >0 || name.indexOf("\\brick-storage\\") >0 ){
             deleteFolderContent(name, "Deleting bricks:")
         }
     }
