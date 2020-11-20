@@ -98,6 +98,33 @@
             ]
         },
         {
+            "name": "web-server/dsu-fabric-wallet/loader",
+            "src": "http://github.com/privatesky/web-dossier-loader.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/dsu-fabric-wallet/loader && npm install"
+                },
+                {
+                    "type": "copy",
+                    "src": "web-server/dsu-fabric-wallet/loader/loader-config.local.json-template",
+                    "target": "web-server/dsu-fabric-wallet/loader/loader-config.local.json",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/dsu-fabric-wallet/loader && npm run build"
+                }
+            ]
+        },
+        {
             "name": "themes/citrus-theme",
             "src": "http://github.com/privatesky/citrus-theme.git",
             "actions": [
@@ -165,21 +192,6 @@
                 {
                     "type": "execute",
                     "cmd": "cd dossier-explorer-wallet-prototype && npm install"
-                }
-            ]
-        },
-        {
-            "name": "dsu-fabric-ssapp",
-            "src": "https://github.com/PharmaLedger-IMI/dsu-fabric-ssapp.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd dsu-fabric-ssapp && npm install"
                 }
             ]
         },
