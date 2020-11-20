@@ -1,0 +1,33 @@
+{
+  "port": 8080,
+  "storage": "../web-server",
+  "preventRateLimit": true,
+  "activeEndpoints": [
+    "virtualMQ",
+    "messaging",
+    "notifications",
+    "filesManager",
+    "bricksLedger",
+    "bricksFabric",
+    "bricks",
+    "anchoring",
+    "dsu-wizard",
+    "gtin-dsu-wizard",
+    "staticServer"
+  ],
+  "endpointsConfig": {
+    "gtin-dsu-wizard": {
+      "module": "./../../gtin-dsu-wizard"
+    },
+    "anchoring": {
+      "domainStrategies": {
+        "default": {
+          "type": "ETH",
+          "option": {
+            "endpoint": "insert_here_the_ClusterIP_of_APIAdapter"
+          }
+        }
+      }
+    }
+  }
+}

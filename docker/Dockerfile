@@ -9,7 +9,8 @@ RUN cd $TARGET_FOLDER_NAME && \
     npm install --unsafe-perm
 
 ADD config/env.json /$TARGET_FOLDER_NAME/env.json
-ADD config/web-server /$TARGET_FOLDER_NAME/web-server
+#After the custimization of config/server.json file uncomment the next line
+#ADD config/server.json /$TARGET_FOLDER_NAME/web-server/external-volume/config/server.json
 ADD config/BDNS.hosts.json /$TARGET_FOLDER_NAME/web-server/conf/BDNS.hosts.json
 #ADD config/ssl_certs /$TARGET_FOLDER_NAME/web-server/config/ssl/server.crt
 #ADD config/ssl_certs /$TARGET_FOLDER_NAME/web-server/config/ssl/server.key
