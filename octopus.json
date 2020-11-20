@@ -169,6 +169,21 @@
             ]
         },
         {
+            "name": "dsu-fabric-ssapp",
+            "src": "https://github.com/PharmaLedger-IMI/dsu-fabric-ssapp.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd dsu-fabric-ssapp && npm install"
+                }
+            ]
+        },
+        {
             "name": "web-server/dsu-fabric",
             "src": "http://github.com/PharmaLedger-IMI/dsu-fabric.git",
             "actions": [
