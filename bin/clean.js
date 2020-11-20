@@ -50,9 +50,9 @@ function filterFiles(name){
 
 
 function deleteFolderContent(name, text){
+    console.log(text, name);
     walk(name,
         function(name){
-            console.log(text, name);
             fs.unlinkSync(name);
         },
         function(name){
