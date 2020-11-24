@@ -2,11 +2,13 @@
   "port": 8080,
   "storage": "../web-server",
   "preventRateLimit": true,
+  "enableRequestLogger": true,
   "activeEndpoints": [
     "virtualMQ",
     "messaging",
     "notifications",
     "filesManager",
+    "bdns",
     "bricksLedger",
     "bricksFabric",
     "bricks",
@@ -18,6 +20,60 @@
   "endpointsConfig": {
     "gtin-dsu-wizard": {
       "module": "./../../gtin-dsu-wizard"
+    },
+    "bricks": {
+      "domains": {
+        "epi": {
+          "path": "/external-volume/domains/epi/brick-storage"
+        },
+        "default": {
+          "path": "/internal-volume/domains/default/brick-storage"
+        },
+        "predefined": {
+          "path": "/internal-volume/domains/predefined/brick-storage"
+        },
+        "vault": {
+          "path": "/internal-volume/domains/vault/brick-storage"
+        }
+      }
+    },
+    "anchoring": {
+      "domainStrategies": {
+        "epi": {
+          "type": "FS",
+          "option": {
+            "path": "/external-volume/domains/epi/anchors",
+            "enableBricksLedger": false
+          },
+          "commands": {
+            "addAnchor": "anchor"
+          }
+
+        },
+        "default": {
+          "type": "FS",
+          "option": {
+            "path": "/internal-volume/domains/default/anchors",
+            "enableBricksLedger": false
+          },
+          "commands": {
+            "addAnchor": "anchor"
+          }
+
+        },
+        "predefined": {
+          "type": "FS",
+          "option": {
+            "path": "/internal-volume/domains/predefined/anchors"
+          }
+        },
+        "vault": {
+          "type": "FS",
+          "option": {
+            "path": "/internal-volume/domains/vault/anchors"
+          }
+        }
+      }
     }
   }
 }
