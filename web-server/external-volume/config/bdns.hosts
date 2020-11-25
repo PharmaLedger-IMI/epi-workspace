@@ -2,28 +2,28 @@
   "default": {
     "replicas": [],
     "brickStorages": [
-      "http://localhost:8080"
+      "$ORIGIN"
     ],
     "anchoringServices": [
-      "http://localhost:8080"
+      "$ORIGIN"
     ]
   },
   "epi": {
     "replicas": [],
     "brickStorages": [
-      "http://localhost:8080"
+      "$ORIGIN"
     ],
     "anchoringServices": [
-      "http://localhost:8080"
+      "$ORIGIN"
     ]
   },
   "vault": {
     "replicas": [],
     "brickStorages": [
-      "http://localhost:8080"
+      "$ORIGIN"
     ],
     "anchoringServices": [
-      "http://localhost:8080"
+      "$ORIGIN"
     ]
   }
 }
