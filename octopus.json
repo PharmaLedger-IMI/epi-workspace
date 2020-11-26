@@ -305,19 +305,6 @@
             ]
         },
         {
-            "name": "trust-loader-config",
-            "actions": [
-                {
-                    "type": "copy",
-                    "src": "./trust-loader-config",
-                    "target": "./web-server",
-                    "options": {
-                        "overwrite": true
-                    }
-                }
-            ]
-        },
-        {
             "name": "ethereum-anchoring",
             "src": "https://github.com/PharmaLedger-IMI/ethereum-anchoring",
             "actions": [
@@ -536,6 +523,19 @@
                 {
                     "type": "execute",
                     "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-fabric-wallet/apps/dsu-fabric-ssapp/readme"
+                }
+            ]
+        },
+        {
+            "name": "trust-loader-config",
+            "actions": [
+                {
+                    "type": "copy",
+                    "src": "./trust-loader-config",
+                    "target": "./web-server",
+                    "options": {
+                        "overwrite": true
+                    }
                 }
             ]
         },
