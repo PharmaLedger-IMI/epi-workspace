@@ -67,9 +67,9 @@ function filterFolders(name){
             deleteFolderContent(name, "Deleting anchors:")
         }
 
-        if(name.endsWith("/bundles") || name.endsWith("\\bundles")){
-            deleteFolderContent(name, "Deleting bundles:")
-        }
+        // if(name.endsWith("/bundles") || name.endsWith("\\bundles")){
+        //     deleteFolderContent(name, "Deleting bundles:")
+        // }
 
         if(name.indexOf("/brick-storage/") > 0 || name.indexOf("\\brick-storage\\") > 0 ){
             deleteFolderContent(name, "Deleting bricks:")
