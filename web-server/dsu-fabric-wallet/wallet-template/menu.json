@@ -9,7 +9,13 @@
   },
   "pages": [
     {
-      "name": "Register"
+      "name": "Home"
+    },
+    {
+      "name": "Issuer"
+    },
+    {
+      "name": "Holder"
     },
     {
       "name": "Products"
