@@ -9,13 +9,16 @@
   },
   "pages": [
     {
-      "name": "Register"
-    },
-    {
       "name": "Products"
     },
     {
+      "name": "Register"
+    },
+    {
       "name": "Batches"
+    },
+    {
+      "name": "Audit"
     }
   ]
 }
