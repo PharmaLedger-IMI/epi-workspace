@@ -547,6 +547,23 @@
                     "cmd": "cd web-server/leaflet-wallet/loader && npm run build"
                 }
             ]
+        },
+        {
+            "name": "copy-bundles",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/leaflet-wallet/loader && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/dsu-fabric-wallet/loader && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/web-wallet/loader && npm install"
+                }
+            ]
         }
     ]
 }
