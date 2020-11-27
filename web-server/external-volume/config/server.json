@@ -11,7 +11,7 @@
     "bdns",
     "bricksLedger",
     "bricksFabric",
-    "bricks",
+    "bricking",
     "anchoring",
     "dsu-wizard",
     "gtin-dsu-wizard",
@@ -21,7 +21,7 @@
     "gtin-dsu-wizard": {
       "module": "./../../gtin-dsu-wizard"
     },
-    "bricks": {
+    "bricking": {
       "domains": {
         "epi": {
           "path": "/external-volume/domains/epi/brick-storage"
@@ -75,5 +75,21 @@
         }
       }
     }
-  }
+  },
+  "enableAuthorisation": false,
+  "enableLocalhostAuthorization": false,
+  "skipAuthorisation": [
+    "/leaflet-wallet",
+    "/anchor",
+    "/bricking",
+    "/bricksFabric",
+    "/bricksledger",
+    "/create-channel",
+    "/forward-zeromq",
+    "/send-message",
+    "/receive-message",
+    "/files",
+    "/notifications",
+    "/mq"
+  ]
 }
