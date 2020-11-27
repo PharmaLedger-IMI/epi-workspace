@@ -9,6 +9,15 @@
   },
   "pages": [
     {
+      "name": "Home"
+    },
+    {
+      "name": "Issuer"
+    },
+    {
+      "name": "Holder"
+    },
+    {
       "name": "Products"
     },
     {

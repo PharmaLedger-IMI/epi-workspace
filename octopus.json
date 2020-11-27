@@ -305,19 +305,6 @@
             ]
         },
         {
-            "name": "trust-loader-config",
-            "actions": [
-                {
-                    "type": "copy",
-                    "src": "./trust-loader-config",
-                    "target": "./web-server",
-                    "options": {
-                        "overwrite": true
-                    }
-                }
-            ]
-        },
-        {
             "name": "ethereum-anchoring",
             "src": "https://github.com/PharmaLedger-IMI/ethereum-anchoring",
             "actions": [
@@ -540,11 +527,41 @@
             ]
         },
         {
+            "name": "trust-loader-config",
+            "actions": [
+                {
+                    "type": "copy",
+                    "src": "./trust-loader-config",
+                    "target": "./web-server",
+                    "options": {
+                        "overwrite": true
+                    }
+                }
+            ]
+        },
+        {
             "name": "leaflet-wallet-loader-build",
             "actions": [
                 {
                     "type": "execute",
                     "cmd": "cd web-server/leaflet-wallet/loader && npm run build"
+                }
+            ]
+        },
+        {
+            "name": "copy-bundles",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/leaflet-wallet/loader && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/dsu-fabric-wallet/loader && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/web-wallet/loader && npm install"
                 }
             ]
         }

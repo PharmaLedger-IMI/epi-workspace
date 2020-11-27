@@ -1,0 +1,18 @@
+<psk-container>
+    <script>
+        // Send the finished loading event to Loader
+        let currentWindow = window;
+        let parentWindow = currentWindow.parent;
+
+        while (currentWindow !== parentWindow) {
+            currentWindow = parentWindow;
+            parentWindow = currentWindow.parent;
+        }
+
+        parentWindow.document.dispatchEvent(new CustomEvent('ssapp:loading:progress', {
+            detail: {
+                progress: 100
+            }
+        }));
+    </script>
+</psk-container>
