@@ -1,4 +1,5 @@
-<psk-container>
+<psk-container >
+    <link rel="stylesheet" href="/assets/css/homePage.css">
     <script>
         // Send the finished loading event to Loader
         let currentWindow = window;
@@ -15,4 +16,56 @@
             }
         }));
     </script>
+
+
+    <div class="center-aligned-controls vertical-align" style="position:relative">
+
+
+        <psk-link page="Batches">
+
+            <a class="dsu-fabric_button scale-up"  style="min-width: 170px" />
+                <div class="left-side">
+                    <img src="assets/images/cube.png" alt="Batches">
+                </div>
+                <div class="right-side">
+                    <p>Manage Batches</p>
+                </div>
+            </a>
+        </psk-link>
+
+
+        <psk-link page="Products">
+            <a class="dsu-fabric_button scale-up"  style="min-width: 170px" />
+            <div class="left-side">
+                <img src="assets/images/factory.png" alt="Products">
+            </div>
+            <div class="right-side">
+                <p>Manage Products</p>
+            </div>
+            </a>
+        </psk-link>
+
+        <psk-link page="Holder">
+            <a class="dsu-fabric_button scale-up"  style="min-width: 170px" />
+            <div class="left-side">
+                <img src="assets/images/patient.png" alt="My Account">
+            </div>
+            <div class="right-side">
+                <p>My Account</p>
+            </div>
+            </a>
+        </psk-link>
+
+        <psk-link page="Issuer">
+            <a class="dsu-fabric_button scale-up"  style="min-width: 170px" />
+            <div class="left-side">
+                <img src="assets/images/factory.png" alt="My Company">
+            </div>
+            <div class="right-side">
+                <p>My Company</p>
+            </div>
+            </a>
+        </psk-link>
+
+    </div>
 </psk-container>
