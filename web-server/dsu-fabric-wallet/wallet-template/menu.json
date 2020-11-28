@@ -15,7 +15,16 @@
       "name": "Issuer"
     },
     {
+      "name": "Issuer Enter Domain",
+      "tags": "issuer-enter-domain",
+      "indexed": false
+    },
+    {
       "name": "Holder"
+    },
+    {
+      "name": "Holder Register",
+      "indexed": false
     },
     {
       "name": "Products"

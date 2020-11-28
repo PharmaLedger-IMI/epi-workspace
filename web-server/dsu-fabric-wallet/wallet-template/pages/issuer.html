@@ -1,5 +1,19 @@
-<psk-container controller-name="IssuerController">
-    <psk-input label="Enter the application domain" value="@domain"></psk-input>
-    <psk-button label="Generate Identity" event-name="generate-identity"></psk-button>
-    <psk-label label="@seedSSI"></psk-label>
-</psk-container>
+<psk-page title="Create Credentials">
+    <psk-form controller-name="IssuerController">
+        <psk-form-row>
+            <psk-input value="@userIdentity" label="@title"></psk-input>
+        </psk-form-row>
+        <psk-condition condition="@displayCredential">
+            <psk-form-row slot="condition-true">
+                <psk-textarea value="@credential" label="Copy/paste in holder page of the user." disabled="disabled"></psk-textarea>
+            </psk-form-row>
+            <div slot="condition-false">
+                <p>Go in the holder page of the user and generate an identity.</p>
+            </div>
+        </psk-condition>
+        <psk-form-row>
+            <psk-button label="Generate Credential" event-name="generate-credential"></psk-button>
+        </psk-form-row>
+        <psk-list-feedbacks></psk-list-feedbacks>
+    </psk-form>
+</psk-page>
