@@ -540,15 +540,6 @@
             ]
         },
         {
-            "name": "leaflet-wallet-loader-build",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd web-server/leaflet-wallet/loader && npm run build"
-                }
-            ]
-        },
-        {
             "name": "copy-bundles",
             "actions": [
                 {
@@ -562,6 +553,15 @@
                 {
                     "type": "execute",
                     "cmd": "cd web-server/web-wallet/loader && npm install"
+                }
+            ]
+        },
+        {
+            "name": "leaflet-wallet-loader-build",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/leaflet-wallet/loader && npm run build"
                 }
             ]
         }
