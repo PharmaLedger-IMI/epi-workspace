@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<psk-page title="My Credentials">
+    <psk-form controller-name="HolderController">
+        <psk-form-row>
+            <psk-input value="@holderSSI" label="User Identity" disabled></psk-input>
+        </psk-form-row>
+        <psk-condition condition="@displayCredentialArea">
+            <div slot="condition-true">
+                <psk-form-row>
+                    <psk-input value="@domain" label="Domain" disabled></psk-input>
+                </psk-form-row>
 
-</body>
-</html>
+                <psk-form-row>
+                    <psk-textarea value="@credential" label="Copy/paste your credential here." ></psk-textarea>
+                </psk-form-row>
+                <psk-form-row>
+                    <psk-button label="Save Credential" event-name="save-credential"></psk-button>
+                </psk-form-row>
+            </div>
+
+            <div slot="condition-false">
+                <p>Everything is fine. Start creating products and batches</p>
+            </div>
+        </psk-condition>
+
+        <psk-list-feedbacks></psk-list-feedbacks>
+    </psk-form>
+</psk-page>

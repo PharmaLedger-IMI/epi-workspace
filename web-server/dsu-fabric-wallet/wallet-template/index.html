@@ -16,8 +16,8 @@
     <div class="global_container">
         <aside>
             <psk-app-menu item-renderer="sidebar-renderer">
-                <psk-container controller-name="WalletSsappLauncher" slot="before">
-                    <psk-user-profile user-info="@userProfile"></psk-user-profile>
+                <psk-container controller-name="UserProfileController" slot="before">
+                    <psk-user-profile user-info="@userDetails" profile-renderer="@renderer"></psk-user-profile>
                 </psk-container>
             </psk-app-menu>
         </aside>
