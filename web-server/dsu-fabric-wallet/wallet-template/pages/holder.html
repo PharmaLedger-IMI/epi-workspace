@@ -1,26 +1,26 @@
 <psk-page title="My Credentials">
     <psk-form controller-name="HolderController">
-        <psk-form-row>
-            <psk-input value="@holderSSI" label="User Identity" read-only="true"></psk-input>
-        </psk-form-row>
-        <psk-condition condition="@displayCredentialArea">
-            <div slot="condition-true">
-                <psk-form-row>
-                    <psk-input value="@domain" label="Domain" disabled></psk-input>
-                </psk-form-row>
+        <psk-layout row-gap="1em">
+            <psk-input value="@holderSSI" label="User Identity" disabled></psk-input>
 
-                <psk-form-row>
-                    <psk-textarea value="@credential" label="Copy/paste your credential here." ></psk-textarea>
-                </psk-form-row>
-                <psk-form-row>
-                    <psk-button label="Save Credential" event-name="save-credential"></psk-button>
-                </psk-form-row>
-            </div>
+            <psk-condition condition="@displayCredentialArea">
+                <psk-layout slot="condition-true" row-gap="1em">
+                    <psk-form-row>
+                        <psk-input value="@domain" label="Domain" disabled></psk-input>
+                    </psk-form-row>
+                    <psk-form-row>
+                        <psk-textarea value="@credential" label="Copy/paste your credential here." ></psk-textarea>
+                    </psk-form-row>
+                    <psk-form-row>
+                        <psk-button label="Save Credential" event-name="save-credential"></psk-button>
+                    </psk-form-row>
+                </psk-layout>
 
-            <div slot="condition-false">
-                <p>Everything is fine. Start creating products and batches</p>
-            </div>
-        </psk-condition>
+                <div slot="condition-false">
+                    <p>Everything is fine. Start creating products and batches</p>
+                </div>
+            </psk-condition>
+        </psk-layout>
 
         <psk-list-feedbacks></psk-list-feedbacks>
     </psk-form>

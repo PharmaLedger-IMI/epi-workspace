@@ -1,19 +1,24 @@
 <psk-page title="Create Credentials for new users">
+
     <psk-form controller-name="IssuerController">
-        <psk-form-row>
+        <psk-layout row-gap="1em">
             <psk-input value="@userIdentity" label="@title"></psk-input>
-        </psk-form-row>
-        <psk-condition condition="@displayCredential">
-            <psk-form-row slot="condition-true">
-                <psk-textarea value="@credential" label="Copy/paste in holder page of the user." disabled="disabled"></psk-textarea>
+
+            <psk-condition condition="@displayCredential">
+                <psk-form-row slot="condition-true">
+                    <psk-textarea value="@credential" label="Copy/paste in holder page of the user." disabled="disabled"></psk-textarea>
+                </psk-form-row>
+                <div slot="condition-false">
+                    <p>Go in the holder page of the user and generate an identity.</p>
+                </div>
+            </psk-condition>
+
+            <psk-form-row>
+                <psk-button label="Generate Credential" event-name="generate-credential"></psk-button>
             </psk-form-row>
-            <div slot="condition-false">
-                <p>Go in the holder page of the user and generate an identity.</p>
-            </div>
-        </psk-condition>
-        <psk-form-row>
-            <psk-button label="Generate Credential" event-name="generate-credential"></psk-button>
-        </psk-form-row>
+        </psk-layout>
+
         <psk-list-feedbacks></psk-list-feedbacks>
     </psk-form>
+
 </psk-page>
