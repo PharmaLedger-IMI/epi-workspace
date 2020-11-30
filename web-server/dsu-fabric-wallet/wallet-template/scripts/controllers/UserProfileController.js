@@ -17,13 +17,20 @@ export default class UserProfileController extends ContainerController {
             this.model.setChainValue("userDetails", userDetails);
         });
 
-        setInterval(()=>{
-            let elements = document.getElementsByClassName("is-mobile");
-            if(elements.length > 0){
-                this.model.renderer = "mobile-profile-renderer";
-            }else{
-                this.model.renderer = "psk-user-profile-renderer";
+        let globalContainer = element.parentElement.parentElement;
+        let appRoot = globalContainer.parentElement;
+
+        const mobileCallback = () => {
+            if (appRoot.classList.contains('is-mobile')) {
+                this.model.renderer = 'mobile-profile-renderer';
+                globalContainer.classList.add('is-mobile');
+            } else {
+                this.model.renderer = 'psk-user-profile-renderer';
+                globalContainer.classList.remove('is-mobile');
             }
-        }, 500)
+        }
+
+        mobileCallback();
+        window.addEventListener('resize', mobileCallback);
     }
 }
