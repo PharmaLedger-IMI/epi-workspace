@@ -16,5 +16,14 @@ export default class UserProfileController extends ContainerController {
             userDetails.avatar = "assets/images/user.png";
             this.model.setChainValue("userDetails", userDetails);
         });
+
+        setInterval(()=>{
+            let elements = document.getElementsByClassName("is-mobile");
+            if(elements.length > 0){
+                this.model.renderer = "mobile-profile-renderer";
+            }else{
+                this.model.renderer = "psk-user-profile-renderer";
+            }
+        }, 500)
     }
 }
