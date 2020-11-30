@@ -23,14 +23,12 @@
       "name": "Holder"
     },
     {
-      "name": "Holder Register",
+      "name": "Holder Enter Domain",
+      "tags": "holder-enter-domain",
       "indexed": false
     },
     {
       "name": "Products"
-    },
-    {
-      "name": "Register"
     },
     {
       "name": "Batches"
