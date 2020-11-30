@@ -15,23 +15,27 @@ export default class HolderDomainController extends ContainerController {
             const opendsu = require("opendsu");
             const keyssiSpace = opendsu.loadApi("keyssi");
             const seedSSI = keyssiSpace.buildSeedSSI(this.model.domain);
-            this.DSUStorage.getObject(constants.HOLDER_FILE_PATH, (err, holder)=>{
+            seedSSI.initialize(this.model.domain, (err)=>{
                 if(err){
-                    holder = {};
+                    return this.showError(err, "Could not initialize the holder SSI");
                 }
-
-                holder.domain = this.model.domain;
-                holder.ssi = seedSSI.getIdentifier();
-                this.DSUStorage.setObject(constants.HOLDER_FILE_PATH, holder, (err)=>{
+                this.DSUStorage.getObject(constants.HOLDER_FILE_PATH, (err, holder)=>{
                     if(err){
-                        return this.showError(err);
+                        holder = {};
                     }
-                    history.push({
-                        pathname: '/holder'
+
+                    holder.domain = this.model.domain;
+                    holder.ssi = seedSSI.getIdentifier();
+                    this.DSUStorage.setObject(constants.HOLDER_FILE_PATH, holder, (err)=>{
+                        if(err){
+                            return this.showError(err);
+                        }
+                        history.push({
+                            pathname: '/holder'
+                        });
                     });
                 });
             });
-
         });
     }
 

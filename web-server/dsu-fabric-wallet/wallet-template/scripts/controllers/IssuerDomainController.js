@@ -15,23 +15,27 @@ export default class IssuerDomainController extends ContainerController {
             const opendsu = require("opendsu");
             const keyssiSpace = opendsu.loadApi("keyssi");
             const seedSSI = keyssiSpace.buildSeedSSI(this.model.domain);
-            this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer)=>{
+            seedSSI.initialize(this.model.domain, (err)=>{
                 if(err){
-                    issuer = {};
+                    return this.showError(err, "Could not initialize the issuer SSI");
                 }
-
-                issuer.domain = this.model.domain;
-                issuer.ssi = seedSSI.getIdentifier();
-                this.DSUStorage.setObject(constants.ISSUER_FILE_PATH, issuer, (err)=>{
+                this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer)=>{
                     if(err){
-                        return this.showError(err);
+                        issuer = {};
                     }
-                    history.push({
-                        pathname: '/issuer'
+
+                    issuer.domain = this.model.domain;
+                    issuer.ssi = seedSSI.getIdentifier();
+                    this.DSUStorage.setObject(constants.ISSUER_FILE_PATH, issuer, (err)=>{
+                        if(err){
+                            return this.showError(err);
+                        }
+                        history.push({
+                            pathname: '/issuer'
+                        });
                     });
                 });
             });
-
         });
     }
 

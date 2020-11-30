@@ -16,9 +16,17 @@
             <psk-form-row>
                 <psk-button label="Generate Credential" event-name="generate-credential"></psk-button>
             </psk-form-row>
-        </psk-layout>
 
+            <psk-form-row>
+                <p>
+                    Before you try to issue a credential please ensure that you added issuer identity to the server.<br>
+                    Typically the path to the issuers file should be: "external-volume/config/issuers-public-identities"
+                </p>
+                <psk-input value="@issuerPublicIdentity" read-only="true"></psk-input>
+            </psk-form-row>
+        </psk-layout>
         <psk-list-feedbacks></psk-list-feedbacks>
+
     </psk-form>
 
 </psk-page>

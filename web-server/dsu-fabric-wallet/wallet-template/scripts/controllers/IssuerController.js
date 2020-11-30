@@ -11,7 +11,11 @@ export default class IssuerController extends ContainerController {
             if(err){
                 return this.History.navigateToPageByTag("issuer-enter-domain");
             }
+
             this.model.issuer = issuer;
+            const keyssi = require("opendsu").loadApi("keyssi");
+            let seedSSI = keyssi.parse(issuer.ssi);
+            this.model.issuerPublicIdentity = seedSSI.derive().getIdentifier();
             this.model.title = `Identity of a new user in domain [${issuer.domain}]`;
         });
 
