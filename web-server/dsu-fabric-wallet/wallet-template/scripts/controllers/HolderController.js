@@ -32,7 +32,7 @@ export default class HolderController extends ContainerController {
 
         this.on("save-credential", (event)=>{
             if(this.model.credential){
-                this.DSUStorage.setObject(constants.CREDENTIAL_FILE_PATH, this.model.credential, (err, credential)=>{
+                this.DSUStorage.setObject(constants.CREDENTIAL_FILE_PATH, {credential: this.model.credential}, (err, credential)=>{
                     if(err){
                         showError(err);
                     }

@@ -9,7 +9,7 @@ export default class IssuerController extends ContainerController {
 
         this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer)=>{
             if(err){
-                this.History.navigateToPageByTag("issuer-enter-domain");
+                return this.History.navigateToPageByTag("issuer-enter-domain");
             }
             this.model.issuer = issuer;
             this.model.title = `Identity of a new user in domain [${issuer.domain}]`;
