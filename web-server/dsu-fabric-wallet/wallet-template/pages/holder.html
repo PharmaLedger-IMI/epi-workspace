@@ -1,7 +1,7 @@
 <psk-page title="My Credentials">
     <psk-form controller-name="HolderController">
         <psk-form-row>
-            <psk-input value="@holderSSI" label="User Identity" disabled></psk-input>
+            <psk-input value="@holderSSI" label="User Identity" read-only="true"></psk-input>
         </psk-form-row>
         <psk-condition condition="@displayCredentialArea">
             <div slot="condition-true">
