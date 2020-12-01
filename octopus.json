@@ -107,14 +107,6 @@
                     "cmd": "cd web-server/dsu-fabric-wallet/loader && npm install"
                 },
                 {
-                    "type": "copy",
-                    "src": "web-server/dsu-fabric-wallet/loader/loader-config.local.json-template",
-                    "target": "web-server/dsu-fabric-wallet/loader/loader-config.local.json",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
                     "type": "execute",
                     "cmd": "cd web-server/dsu-fabric-wallet/loader && npm run build"
                 }
