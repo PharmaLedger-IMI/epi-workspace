@@ -199,7 +199,7 @@
             ]
         },
         {
-            "name": "web-server/web-wallet/loader",
+            "name": "web-server/dsu-explorer/loader",
             "src": "https://github.com/PrivateSky/web-dossier-loader.git",
             "actions": [
                 {
@@ -209,12 +209,12 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd web-server/web-wallet/loader && npm install"
+                    "cmd": "cd web-server/dsu-explorer/loader && npm install"
                 },
                 {
                     "type": "copy",
-                    "src": "web-server/web-wallet/loader/loader-config.local.json-template",
-                    "target": "web-server/web-wallet/loader/loader-config.local.json",
+                    "src": "web-server/dsu-explorer/loader/loader-config.local.json-template",
+                    "target": "web-server/dsu-explorer/loader/loader-config.local.json",
                     "options": {
                         "overwrite": true
                     }
@@ -399,7 +399,7 @@
                 {
                     "type": "copy",
                     "src": "./dossier-explorer-wallet-prototype/seed",
-                    "target": "./web-server/web-wallet/wallet-template/seed",
+                    "target": "./web-server/dsu-explorer/wallet-template/seed",
                     "options": {
                         "overwrite": true
                     }
@@ -435,7 +435,7 @@
             ]
         },
         {
-            "name": "web-wallet_bind_to_dossier-explorer-ssapp",
+            "name": "dsu-explorer_bind_to_dossier-explorer-ssapp",
             "src": "",
             "actions": [
                 {
@@ -445,14 +445,14 @@
                 {
                     "type": "copy",
                     "src": "./dossier-explorer-ssapp/seed",
-                    "target": "./web-server/web-wallet/apps/dossier-explorer-ssapp/seed",
+                    "target": "./web-server/dsu-explorer/apps/dossier-explorer-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/web-wallet/apps/dossier-explorer-ssapp/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps/dossier-explorer-ssapp/readme"
                 }
             ]
         },
@@ -544,7 +544,7 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd web-server/web-wallet/loader && npm install"
+                    "cmd": "cd web-server/dsu-explorer/loader && npm install"
                 }
             ]
         },
