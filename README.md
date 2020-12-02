@@ -1,12 +1,16 @@
 # epi-workspace
 
-*epi-workspace*  bundles all the necessary dependencies for building and running SSApps in a single package.
+*epi-workspace*  bundles all the necessary dependencies for building and running EPI SSApps in a single package.
 
-### Installation
+For more details about what a *workspace* is check out the [template-workspace](https://github.com/PrivateSky/template-workspace).
+
+## Installation
 
 In order to use the workspace, we need to follow a list of steps presented below. 
 
-First, let's clone the workspace
+If you have trouble installing the *epi-workspace*, please try to follow the guide provided on [PrivateSky.xyz](https://privatesky.xyz/?Start/installation)
+
+### Step 1: Clone the workspace
 
 ```sh
 $ git clone https://github.com/PharmaLedger-IMI/epi-workspace.git
@@ -18,13 +22,71 @@ After the repository was cloned, you must install all the dependencies.
 $ cd epi-workspace
 $ npm install
 ```
+Note: this command might take quite some time depending on your internet connection and you machine processing power.
 
-If you have trouble installing the *epi-workspace*, please try to follow the guide provided on [PrivateSky.xyz](https://privatesky.xyz/?Start/installation)
 
-The last two commands you need to run in the *epi-workspace* 
+### Step 2: Launch the "server"
+
+While in the *epi-workspace* folder run:
+
 ```sh
 $ npm run server
+```
+
+At the end of this command you get something similar to:
+
+![alt text](scr-npm-run-server.png)
+
+
+### Step 3: Build all things needed for the application to run.
+
+Open a new console inside *epi-workspace* folder and run:
+
+```sh
+# Note: Run this in a new console inside "epi-workspace" folder
 $ npm run build-all
 ```
 
-For more details about a *workspace* check out the [template-workspace](https://github.com/PrivateSky/template-workspace).
+
+
+## Running 
+To run the application launch your browser (preferably Chrome) in Incognito mode and access the http://localhost:8080 link.
+
+### Enterprise wallet
+
+Enterprise wallet allows creation of Products and Batches.
+
+#### Step 1: Register details
+
+```
+Username: test1234
+
+Email: test@test.test
+
+Password: test1234567890
+```
+
+#### Step 2: Setup credential for Issuer
+    1. Go to Issuer page
+    2. Put "epi" in application domain field and press "Generate Identity"
+    3. Copy the the generated issuer identity
+    4. Paste and save it into /web-server/external-volume/issuers-public-identities file. The entry should be on a single line.
+
+#### Step 3: Setup credentials for Holder
+    1. Go to Holder
+    2. Put "epi" in application domain field and press "Generate Identity"
+    3. Copy the generated User Identity 
+    4. Paste it into Issuer's field named "Identity of a new user in domain [epi]" and press "Generate Credentials"
+    5. Copy the generated credentials (from Issuer's page) and paste it into credential field inside the Holder page and press "Save Credentials"
+
+Now you will act as a Holder thus will be able to add Products (and leaflets for it) and create Batches of products.
+
+
+
+### EPI Client
+This is the part a normal user will see. The part that will
+be used to scan barcodes on drug's packages.
+
+ 
+
+
