@@ -1,4 +1,4 @@
-{
+export default  {
   "appName": "eLeaflet",
   "vault": "browser",
   "agent": "browser",

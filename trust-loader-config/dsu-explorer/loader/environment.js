@@ -1,4 +1,4 @@
-{
+export default {
   "appName": "DSU Explorer",
   "vault": "server",
   "agent": "browser",

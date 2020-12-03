@@ -1,4 +1,4 @@
-let APP_CONFIG = {
+let LOADER_GLOBALS = {
 	THEME: "app",
 	LABELS_DICTIONARY: {
 		APP_NAME: "DSU Fabric",
@@ -59,4 +59,4 @@ let APP_CONFIG = {
 </div>`
 };
 
-export default APP_CONFIG;
+export default LOADER_GLOBALS;

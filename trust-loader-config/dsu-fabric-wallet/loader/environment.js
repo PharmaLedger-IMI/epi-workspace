@@ -1,4 +1,4 @@
-{
+export default {
   "appName": "DSU_Fabric",
   "vault": "server",
   "agent": "browser",
