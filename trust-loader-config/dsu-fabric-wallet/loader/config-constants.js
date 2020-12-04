@@ -44,7 +44,7 @@ let LOADER_GLOBALS = {
 	},
 	APP_PATHS: {
 		LANDING_PAGE: "/",
-		NEW_WALLET: "/new",
+		NEW_WALLET: "/newWallet.html",
 		RESTORE_WALLET: "/restore"
 	},
 	NEW_OR_RESTORE_CONTAINER_ID: "restore-new-container",
