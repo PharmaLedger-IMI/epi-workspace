@@ -10,16 +10,7 @@
 </head>
 
 <body>
-    <psk-app-root>
-        <div class="global_container">
-            <section>
-                <psk-container controller-name="WalletSsappLauncher" data-app-name="leaflet-ssapp">
-                    <psk-ssapp key-ssi="@keySSI" landing-path="/home">
-                    </psk-ssapp>
-                </psk-container>
-            </section>
-        </div>
-    </psk-app-root>
+
 
 <script src="/scripts/bundles/iframeBoot.js"></script>
 <script src="/scripts/bundles/webshims.js"></script>
@@ -41,6 +32,19 @@
         }
     }
 </script>
+
+
+<psk-app-root>
+    <div class="global_container">
+        <section>
+            <psk-container controller-name="WalletSsappLauncher" data-app-name="leaflet-ssapp">
+                <psk-ssapp key-ssi="@keySSI" landing-path="/home">
+                </psk-ssapp>
+            </psk-container>
+        </section>
+    </div>
+</psk-app-root>
+
 </body>
 
 </html>
