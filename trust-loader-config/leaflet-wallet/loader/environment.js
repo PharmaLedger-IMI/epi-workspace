@@ -6,5 +6,6 @@ export default  {
   "browser":  "any",
   "mode":  "autologin",
   "domain":  "vault",
-  "legenda for properties": " vault:(server, browser) agent:(mobile,  browser)  system:(iOS, Android, any) browser:(Chrome, Firefox, any) mode:(development, release)"
+  "sw": true,
+  "legenda for properties": " vault:(server, browser) agent:(mobile,  browser)  system:(iOS, Android, any) browser:(Chrome, Firefox, any) mode:(development, release) sw:(true, false)"
 }
