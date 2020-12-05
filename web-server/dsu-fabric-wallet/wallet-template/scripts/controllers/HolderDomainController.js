@@ -11,6 +11,12 @@ export default class HolderDomainController extends ContainerController {
             this.feedbackEmitter = e.detail;
         });
 
+        let userDetails;
+        this.DSUStorage.getObject("/user-details.json", (err, _userDetails) =>{
+            userDetails = _userDetails;
+            console.log("userDetails:", userDetails);
+        });
+
         this.on("generate-identity", (event) => {
             const opendsu = require("opendsu");
             const keyssiSpace = opendsu.loadApi("keyssi");
@@ -26,6 +32,7 @@ export default class HolderDomainController extends ContainerController {
 
                     holder.domain = this.model.domain;
                     holder.ssi = seedSSI.getIdentifier();
+                    holder.userDetails = userDetails;
                     this.DSUStorage.setObject(constants.HOLDER_FILE_PATH, holder, (err)=>{
                         if(err){
                             return this.showError(err);

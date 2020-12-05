@@ -7,6 +7,7 @@ export default class HolderController extends ContainerController {
 
         this.setModel({displayCredentialArea: true});
 
+
         this.DSUStorage.getObject(constants.HOLDER_FILE_PATH, (err, holder)=>{
 
             if(err || !holder || !holder.domain || !holder.ssi ){

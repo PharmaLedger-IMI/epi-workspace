@@ -1,6 +1,6 @@
 export default {
   "appName": "DSU Explorer",
-  "vault": "browser",
+  "vault": "server",
   "agent": "browser",
   "system":   "any",
   "browser":  "any",
