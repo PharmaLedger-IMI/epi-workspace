@@ -33,7 +33,7 @@
           "path": "/internal-volume/domains/predefined/brick-storage"
         },
         "vault": {
-          "path": "/internal-volume/domains/vault/brick-storage"
+          "path": "/external-volume/domains/vault/brick-storage"
         }
       }
     },
@@ -48,7 +48,6 @@
           "commands": {
             "addAnchor": "anchor"
           }
-
         },
         "default": {
           "type": "FS",
@@ -70,7 +69,7 @@
         "vault": {
           "type": "FS",
           "option": {
-            "path": "/internal-volume/domains/vault/anchors"
+            "path": "/external-volume/domains/vault/anchors"
           }
         }
       }
