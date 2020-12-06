@@ -54,7 +54,7 @@ let LOADER_GLOBALS = {
 	USERNAME_MIN_LENGTH: 6,
 	USERNAME_REGEX: /^[a-zA-Z]([A-Za-z0-9]+[\\._]{0,1}[A-Za-z0-9]+){2,10}$/,
 	EMAIL_REGEX: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-	PASSWORD_REGEX: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).*$/,
+	PASSWORD_REGEX: /^(?=.*[A-Z])(?=.*[`~:;\'\"\.,<>/\?\!@#$%\^&\*\(\)\[\]\{\}|\\\-_\=\+])(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).*$/,
 	NEW_WALLET_MORE_INFORMATION: `<div class="jumbotron p-0 m-0" align="center">
   <h1 class="display-6">Welcome to EPI backend app!</h1>
   <p class="lead">After completing the following wizard you will gain access to EPI backend app.</p>
