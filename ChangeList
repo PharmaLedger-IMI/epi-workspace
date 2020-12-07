@@ -19,6 +19,11 @@
      - some anticounterfeit checks in place but full implementation in the next interation
  Known issues:
      -  sharing of the wallets between users happens only by sharing the login credentials. Sharing only of the data is planed for the next iteration
+     
+ Instalation observations:
+   epi domain should be configured in server and connected with the blockchain adapter
+   the vault and the default domains should remain as FS
+   
  
  
 11 December 2020
