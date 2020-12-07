@@ -11,7 +11,7 @@
      19	Scanning should display information from the 2dMatrix
 
  New features:
-      3	Persistent Vault (same as bug in 12,5)
+      3	Persistent Vault (same as bugs 5,12)
       6	Enable smart contract checks
       7	Adding MAH input in the login 
  Observations
