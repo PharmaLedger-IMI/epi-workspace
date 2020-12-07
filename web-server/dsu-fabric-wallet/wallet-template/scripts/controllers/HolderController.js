@@ -5,8 +5,9 @@ export default class HolderController extends ContainerController {
     constructor(element, history) {
         super(element, history);
 
-        this.setModel({displayCredentialArea: true});
 
+        this.setModel({displayCredentialArea: true});
+        this.model.domain = "epi";
 
         this.DSUStorage.getObject(constants.HOLDER_FILE_PATH, (err, holder)=>{
 

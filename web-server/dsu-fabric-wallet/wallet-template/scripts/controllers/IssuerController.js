@@ -6,6 +6,7 @@ export default class IssuerController extends ContainerController {
         super(element, history);
 
         this.setModel({displayCredential: false});
+        this.model.domain = "epi";
 
         this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer)=>{
             if(err){
