@@ -33,17 +33,16 @@
           "path": "/internal-volume/domains/predefined/brick-storage"
         },
         "vault": {
-          "path": "/internal-volume/domains/vault/brick-storage"
+          "path": "/external-volume/domains/vault/brick-storage"
         }
       }
     },
     "anchoring": {
       "domainStrategies": {
         "epi": {
-          "type": "FS",
+          "type": "ETH",
           "option": {
-            "path": "/external-volume/domains/epi/anchors",
-            "enableBricksLedger": false
+            "endpoint" : "http://nvsquorum.westeurope.cloudapp.azure.com:3000"
           },
           "commands": {
             "addAnchor": "anchor"
@@ -51,9 +50,10 @@
 
         },
         "default": {
-          "type": "ETH",
+          "type": "FS",
           "option": {
-            "endpoint" : "http://nvsquorum.westeurope.cloudapp.azure.com:3000"
+            "path": "/external-volume/domains/default/anchors",
+            "enableBricksLedger": false
           },
           "commands": {
             "addAnchor": "anchor"
@@ -69,7 +69,7 @@
         "vault": {
           "type": "FS",
           "option": {
-            "path": "/internal-volume/domains/vault/anchors"
+            "path": "/external-volume/domains/vault/anchors"
           }
         }
       }
