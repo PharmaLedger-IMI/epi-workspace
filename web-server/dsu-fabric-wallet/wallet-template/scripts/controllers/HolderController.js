@@ -36,29 +36,13 @@ export default class HolderController extends ContainerController {
             if(this.model.credential){
                 this.DSUStorage.setObject(constants.CREDENTIAL_FILE_PATH, {credential: this.model.credential}, (err, credential)=>{
                     if(err){
-                        showError(err);
+                        this.showError(err);
                     }
                     this.model.displayCredentialArea = false;
                 });
             } else {
-                showError("Invalid credential");
+                this.showError("Invalid credential");
             }
         }, {capture: true});
-    }
-
-
-    showError(err, title, type) {
-        let errMessage;
-        title = title ? title : 'Validation Error';
-        type = type ? type : 'alert-danger';
-
-        if (err instanceof Error) {
-            errMessage = err.message;
-        } else if (typeof err === 'object') {
-            errMessage = err.toString();
-        } else {
-            errMessage = err;
-        }
-        this.feedbackEmitter(errMessage, title, type);
     }
 }
