@@ -2,7 +2,7 @@ require("../privatesky/psknode/bundles/pskWebServer");
 
 const TAG = "MOBILE-API-HUB";
 const path = require("swarmutils").path;
-const API_HUB = require('psk-apihub');
+const API_HUB = require('apihub');
 
 //set the path to a folder that contains a "server.json" in order to customize the configuration
 //process.env.PSK_CONFIG_LOCATION = "../web-server/external-volume/config";
