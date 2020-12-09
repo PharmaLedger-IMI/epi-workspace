@@ -6,7 +6,7 @@ export default class IssuerDomainController extends ContainerController {
         super(element, history);
 
         this.setModel({});
-
+        this.model.domain = "epi";
         this.on('openFeedback', (e) => {
             this.feedbackEmitter = e.detail;
         });
@@ -30,9 +30,7 @@ export default class IssuerDomainController extends ContainerController {
                         if(err){
                             return this.showError(err);
                         }
-                        history.push({
-                            pathname: '/issuer'
-                        });
+                        this.History.navigateToPageByTag("issuer");
                     });
                 });
             });

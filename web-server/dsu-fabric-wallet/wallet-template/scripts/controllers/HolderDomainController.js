@@ -6,7 +6,7 @@ export default class HolderDomainController extends ContainerController {
         super(element, history);
 
         this.setModel({});
-
+        this.model.domain = "epi";
         this.on('openFeedback', (e) => {
             this.feedbackEmitter = e.detail;
         });
@@ -37,9 +37,7 @@ export default class HolderDomainController extends ContainerController {
                         if(err){
                             return this.showError(err);
                         }
-                        history.push({
-                            pathname: '/holder'
-                        });
+                        this.History.navigateToPageByTag("holder");
                     });
                 });
             });

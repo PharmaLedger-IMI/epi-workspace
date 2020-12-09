@@ -12,19 +12,21 @@
       "name": "Home"
     },
     {
-      "name": "Issuer"
+      "name": "MAH as Issuer",
+      "tags": "issuer"
     },
     {
-      "name": "Issuer Enter Domain",
-      "tags": "issuer-enter-domain",
-      "indexed": false
-    },
-    {
-      "name": "Holder"
+      "name": "User as Holder",
+      "tags": "holder"
     },
     {
       "name": "Holder Enter Domain",
       "tags": "holder-enter-domain",
+      "indexed": false
+    },
+    {
+      "name": "Issuer Enter Domain",
+      "tags": "issuer-enter-domain",
       "indexed": false
     },
     {
