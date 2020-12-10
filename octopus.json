@@ -453,14 +453,14 @@
                 {
                     "type": "copy",
                     "src": "./dossier-explorer-ssapp/seed",
-                    "target": "./web-server/dsu-explorer/apps/dossier-explorer-ssapp/seed",
+                    "target": "./web-server/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps/dossier-explorer-ssapp/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps-patch/dossier-explorer-ssapp/readme"
                 }
             ]
         },
@@ -475,14 +475,14 @@
                 {
                     "type": "copy",
                     "src": "./leaflet-ssapp/seed",
-                    "target": "./web-server/leaflet-wallet/apps/leaflet-ssapp/seed",
+                    "target": "./web-server/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/leaflet-wallet/apps/leaflet-ssapp/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/leaflet-wallet/apps-patch/leaflet-ssapp/readme"
                 }
             ]
         },
@@ -515,14 +515,14 @@
                 {
                     "type": "copy",
                     "src": "./dsu-fabric-ssapp/seed",
-                    "target": "./web-server/dsu-fabric-wallet/apps/dsu-fabric-ssapp/seed",
+                    "target": "./web-server/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-fabric-wallet/apps/dsu-fabric-ssapp/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/readme"
                 }
             ]
         },
