@@ -9,7 +9,7 @@
                     <psk-textarea value="@credential" label="Copy/paste in holder page of the user." disabled="disabled"></psk-textarea>
                 </psk-form-row>
                 <div slot="condition-false">
-                    <p>Go in the holder page of the user and generate an identity.</p>
+                    <p>Go in the holder page of the user and generate an identifier for you as user.</p>
                 </div>
             </psk-condition>
 
@@ -18,9 +18,25 @@
             </psk-form-row>
 
             <psk-form-row>
+
+            </psk-form-row>
+
+            <psk-form-row>
+
+            </psk-form-row>
+
+            <psk-form-row>
+
+            </psk-form-row>
+
+            <psk-form-row>
+
+            </psk-form-row>
+
+            <psk-form-row>
                 <p>
-                    Before you try to issue a credential please ensure that you added issuer identity to the server.<br>
-                    Typically the path to the issuers file should be: "external-volume/config/issuers-public-identities"
+                    Before you try to issue a credential please ensure that you added the issuer identifier (public key) to the server.<br>
+                    Typically the path to the file keeping the private keys of all valid issuers is located here: "external-volume/config/issuers-public-identities"
                 </p>
                 <psk-input value="@issuerPublicIdentity" read-only="true"></psk-input>
             </psk-form-row>

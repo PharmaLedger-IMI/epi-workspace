@@ -1,6 +1,6 @@
 export default  {
   "appName": "eLeaflet",
-  "vault": "browser",
+  "vault": "server",
   "agent": "browser",
   "system":   "any",
   "browser":  "any",
