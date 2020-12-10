@@ -407,7 +407,7 @@
                 {
                     "type": "copy",
                     "src": "./dossier-explorer-wallet-prototype/seed",
-                    "target": "./web-server/dsu-explorer/wallet-template/seed",
+                    "target": "./web-server/dsu-explorer/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }
@@ -435,7 +435,7 @@
                 {
                     "type": "copy",
                     "src": "./menu-wallet-prototype/seed",
-                    "target": "./web-server/leaflet-wallet/wallet-template/seed",
+                    "target": "./web-server/leaflet-wallet/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }
@@ -497,7 +497,7 @@
                 {
                     "type": "copy",
                     "src": "./menu-wallet-prototype/seed",
-                    "target": "./web-server/dsu-fabric-wallet/wallet-template/seed",
+                    "target": "./web-server/dsu-fabric-wallet/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }
