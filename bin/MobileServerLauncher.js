@@ -1,10 +1,3 @@
-require("../privatesky/psknode/bundles/pskWebServer");
-
-const TAG = "MOBILE-API-HUB";
-const path = require("swarmutils").path;
-const API_HUB = require('apihub');
-
-
 let arguments = {};
 
 //set the path to a folder that contains a "server.json" in order to customize the configuration
@@ -20,6 +13,16 @@ if (process.argv.length > 2) {
 }
 
 console.log("Arguments =  " + arguments);
+
+
+const pskBundle = arguments.bundle || "../privatesky/psknode/bundles/pskWebServer";
+require(pskBundle);
+
+const TAG = "MOBILE-API-HUB";
+const path = require("swarmutils").path;
+const API_HUB = require('apihub');
+
+
 
 let config = API_HUB.getServerConfig();
 
