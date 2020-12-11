@@ -333,7 +333,7 @@
                     "cmd": "cd dsu-fabric-ssapp && npm install"
                 }
             ]
-        }
+        }        
     ],
     "build": [
         {
@@ -563,6 +563,67 @@
                     "type": "execute",
                     "cmd": "cd web-server/leaflet-wallet/loader && npm run build"
                 }
+            ]
+        }
+    ],
+
+    "install-mobile" : [
+        {
+            "name": "mobile/scan-app/android",
+            "src": "https://github.com/PrivateSky/android-edge-agent",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && npm install"
+                }
+            ]
+        }
+    ],
+
+    "build-mobile" : [
+        {
+            "name": "build-android-app",            
+            "actions": [                
+                {
+                    "type": "execute",
+                    "cmd": "npm run clean && npm run build-all"
+                },                
+                {
+                    "type": "copy",
+                    "src": "bin/MobileServerLauncher.js",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/MobileServerLauncher.js"
+                },                                
+                {
+                    "type": "copy",
+                    "src": "privatesky/psknode/bundles/pskWebServer.js",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/pskWebServer.js"
+                },
+                {
+                    "type": "copy",
+                    "src": "web-server/internal-volume",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/internal-volume"
+                },
+                {
+                    "type": "copy",
+                    "src": "web-server/external-volume",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/external-volume"
+                },
+                {
+                    "type": "copy",
+                    "src": "web-server/leaflet-wallet",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app"
+                }
+                ,
+                {
+                    "type": "copy",
+                    "src": "mobile/config/scan-app/environment.js",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app/loader/environment.js"
+                }                
             ]
         }
     ]
