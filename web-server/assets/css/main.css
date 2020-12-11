@@ -65,29 +65,29 @@ html {
 
 .dsu-fabric_button {
     background-color: #FEE140;
-    background-image: linear-gradient(150deg, #FEE140 0%, #fa9570 100%);
+    background-image: linear-gradient(125deg, #FEE140 , #fa9570 );
 }
 
 .dsu-fabric_button:hover {
-    background-image: linear-gradient(225deg, #FEE140 0%, #fa9570 100%);
+    background-image: linear-gradient(150deg, #FEE140 , #fa9570 );
 }
 
 .leaflet-wallet_button {
     background-color: #976ff9;
-    background-image: linear-gradient(125deg, #976ff9 0%, #784BA0 1%, #2B86C5 99%);
+    background-image: linear-gradient(125deg, #976ff9 , #784BA0 );
 }
 
 .leaflet-wallet_button:hover {
-    background-image: linear-gradient(175deg, #976ff9 0%, #784BA0 1%, #2B86C5 99%);
+    background-image: linear-gradient(150deg, #976ff9 , #784BA0 );
 }
 
 .web-wallet_button {
     background: #74ebd5;
-    background: linear-gradient(125deg, #ACB6E5, #74ebd5);
+    background-image: linear-gradient(125deg, #ACB6E5, #74ebd5);
 }
 
 .web-wallet_button:hover {
-    background: linear-gradient(225deg, #ACB6E5, #74ebd5);
+    background-image: linear-gradient(150deg, #ACB6E5, #74ebd5);
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -121,9 +121,9 @@ html {
     }
 }
 
-@media (min-width: 992px) and (max-width: 1322px) {
+@media (min-width: 992px) and (max-width: 1522px) {
     .right-side {
-        margin-left: 20%;
+        margin-left: 10%;
     }
 }
 
