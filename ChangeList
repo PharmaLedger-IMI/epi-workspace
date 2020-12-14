@@ -26,10 +26,15 @@
    
  
  
-11 December 2020
- Bug fixes:
- New features:
- Observations
+14 December 2020
+ Bug fixes: 
+    - bug fixes in the audit log time
+ New features: 
+  - anticounterfeiting check (SN Check)
+  - expiry time checks (product status)
+  - language selection (some visual issues will be imporved next)
+  
+ Observations: better clean old data
  
 18 December 2020
  Bug fixes:
