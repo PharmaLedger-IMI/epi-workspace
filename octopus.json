@@ -605,6 +605,11 @@
                 },
                 {
                     "type": "copy",
+                    "src": "privatesky/psknode/bundles/nodeBoot.js",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/nodeBoot.js"
+                },
+                {
+                    "type": "copy",
                     "src": "web-server/internal-volume",
                     "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/internal-volume"
                 },
@@ -615,14 +620,18 @@
                 },
                 {
                     "type": "copy",
-                    "src": "web-server/leaflet-wallet",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app"
-                }
-                ,
+                    "src": "mobile/config/scan-app/server", 
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/external-volume/config"
+                },
                 {
                     "type": "copy",
-                    "src": "mobile/config/scan-app/environment.js",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app/loader/environment.js"
+                    "src": "web-server/leaflet-wallet",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app"
+                },
+                {
+                    "type": "copy",
+                    "src": "mobile/config/scan-app/loader",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app/loader"
                 }                
             ]
         }

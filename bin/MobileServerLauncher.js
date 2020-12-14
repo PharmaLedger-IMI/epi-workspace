@@ -12,11 +12,22 @@ if (process.argv.length > 2) {
     }
 }
 
-console.log("Arguments =  " + arguments);
+console.log("Received arguments =  " + arguments);
 
 
 const pskBundle = arguments.bundle || "../privatesky/psknode/bundles/pskWebServer";
 require(pskBundle);
+
+if(typeof arguments.env !== 'undefined'){
+    try{
+        let env = JSON.parse(arguments.env);
+        for (let prop in env){
+            process.env[prop] = env[prop];
+        }
+    } catch(e){
+        console.log("Failed to parse env argument ", e);
+    }
+}
 
 const TAG = "MOBILE-API-HUB";
 const path = require("swarmutils").path;
@@ -28,6 +39,8 @@ let config = API_HUB.getServerConfig();
 
 const listeningPort = arguments.port || Number.parseInt(config.port);
 const rootFolder = arguments.rootFolder || path.resolve(config.storage);
+
+config.storage = rootFolder;
 
 console.log("Listening port: " + listeningPort);
 console.log("Root folder: " + rootFolder);
