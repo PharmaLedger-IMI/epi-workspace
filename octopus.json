@@ -566,7 +566,6 @@
             ]
         }
     ],
-
     "install-mobile" : [
         {
             "name": "mobile/scan-app/android",
@@ -592,7 +591,11 @@
                 {
                     "type": "execute",
                     "cmd": "npm run clean && npm run build-all"
-                },                
+                },
+                {
+                    "type": "remove",
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project"
+                },
                 {
                     "type": "copy",
                     "src": "bin/MobileServerLauncher.js",
@@ -620,8 +623,11 @@
                 },
                 {
                     "type": "copy",
-                    "src": "mobile/config/scan-app/server", 
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/external-volume/config"
+                    "src": "mobile/config/scan-app/server",
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/external-volume/config",
+                    "options": {
+                        "overwrite": true
+                    }
                 },
                 {
                     "type": "copy",
@@ -631,7 +637,10 @@
                 {
                     "type": "copy",
                     "src": "mobile/config/scan-app/loader",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app/loader"
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app/loader",
+                    "options": {
+                        "overwrite": true
+                    }
                 }                
             ]
         }
