@@ -50,4 +50,15 @@ API_HUB.createInstance(listeningPort, rootFolder, (err) => {
         console.error(err);
     }
     console.log(`\n[${TAG}] listening on port :${listeningPort} and ready to receive requests.\n`);
+
+    //Write Android PID to a file
+    fs = require('fs');
+    let apicFilePath = rootFolder + '/pid';
+    console.log(`\n[${TAG}] APIC file :${apicFilePath} .\n`);
+    console.log(`\n[${TAG}] APIC arguments: `,  arguments.apic);
+    fs.writeFile(apicFilePath, arguments.apic , function (err) {
+        if (err) {
+            return console.log(err);
+        }
+    });
 });
