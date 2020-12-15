@@ -631,6 +631,14 @@
                 },
                 {
                     "type": "copy",
+                    "src": "mobile/config/scan-app/android",
+                    "target": "mobile/scan-app/android",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
                     "src": "web-server/leaflet-wallet",
                     "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app"
                 },
