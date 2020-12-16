@@ -643,6 +643,14 @@
                     "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app"
                 },
                 {
+                    "type": "remove",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app/loader/node_modules"
+                },
+                {
+                    "type": "remove",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app/loader/.git"
+                },
+                {
                     "type": "copy",
                     "src": "mobile/config/scan-app/loader",
                     "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app/loader",
