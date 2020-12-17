@@ -88,7 +88,7 @@ Now you will act as a Holder thus will be able to add Products (and leaflets for
 This is the part a normal user will see. The part that will
 be used to scan barcodes on drug's packages.
 
-### Prepare & release a new stable version of the workspace
+## Prepare & release a new stable version of the workspace
 Steps:
 1. start from a fresh install of the workspace.
 ```
