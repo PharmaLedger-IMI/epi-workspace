@@ -20,10 +20,11 @@ After the repository was cloned, you must install all the dependencies.
 
 ```sh
 $ cd epi-workspace
+#Important: If you plan to contribute to the project and/or dependecies please set DEV:true
+#in the file env.json before you run the installation!
 $ npm install
 ```
-Note: this command might take quite some time depending on your internet connection and you machine processing power.
-
+**Note:** this command might take quite some time depending on your internet connection and you machine processing power.
 
 ### Step 2: Launch the "server"
 
@@ -87,6 +88,32 @@ Now you will act as a Holder thus will be able to add Products (and leaflets for
 This is the part a normal user will see. The part that will
 be used to scan barcodes on drug's packages.
 
- 
-
-
+### Prepare & release a new stable version of the workspace
+Steps:
+1. start from a fresh install of the workspace.
+```
+git clone https://github.com/PharmaLedger-IMI/epi-workspace
+cd epi-workspace
+```
+2. ensure that env variable called DEV is set to true in env.json file
+>{
+>  "PSK_TMP_WORKING_DIR": "tmp",
+>  "PSK_CONFIG_LOCATION": "../web-server/external-volume/config",
+>  **"DEV": true**
+>}
+3. run the installation process of the workspace
+```
+npm install
+```
+4. run the server and build the ssapps and wallets
+```
+npm run server
+npm run build-all
+```
+4. verify that the builds are successfully and the ssapps are functioning properly
+5. execute the freeze command
+```
+npm run freeze
+```
+6. verify the output of freeze command and check for errors. If any, correct them and run again the freeze command.
+7. commit the new version of the octopus.json file obtained with the freeze command.
