@@ -11,10 +11,10 @@
   "epi": {
     "replicas": [],
     "brickStorages": [
-      "$ORIGIN"
+      "https://epi.pharmaledger.dev"
     ],
     "anchoringServices": [
-      "$ORIGIN"
+      "https://epi.pharmaledger.dev"
     ]
   },
   "vault": {
