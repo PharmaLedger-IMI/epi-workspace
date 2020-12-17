@@ -19,7 +19,8 @@
     "switch-to-dev": "npm run remove privatesky && npm run add privatesky http://github.com/privatesky/privatesky.git 0",
     "watch": "node ./bin/watcher/watcher.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "node ./bin/clean.js ./"
+    "clean": "node ./bin/clean.js ./",
+    "freeze": "node ./node_modules/octopus/scripts/freeze dependencies install-mobile"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,6 @@
   },
   "homepage": "https://github.com/PharmaLedger-IMI/epi-workspace#readme",
   "dependencies": {
-    "octopus": "git+http://github.com/privatesky/octopus.git#1.0.7"
+    "octopus": "git+http://github.com/privatesky/octopus.git#1.0.8"
   }
 }
