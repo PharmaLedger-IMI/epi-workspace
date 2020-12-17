@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "postinstall": "node ./node_modules/octopus/scripts/run",
+    "postinstall": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run\"",
     "install-mobile": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run install-mobile\"",
     "add": "node ./node_modules/octopus/scripts/add",
     "remove": "node ./node_modules/octopus/scripts/remove",
