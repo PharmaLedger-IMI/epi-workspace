@@ -36,9 +36,14 @@
   
  Observations: better clean old data
  
-18 December 2020
+21 December 2020
  Bug fixes:
+   - bug fixes in language selection, settings, etc
  New features:
- Observations
+    - Blockchain Explorer
+    - GTIN only feature
+ Observations (not impacting directly existing features)
+    - new freeze feature to stable releases
+    - APK building for Android mobile
  
 
