@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "",
   "scripts": {
+    "dev-install": "node ./bin/mkDevEnv.js && npm install",
     "postinstall": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run\"",
     "install-mobile": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run install-mobile\"",
     "add": "node ./node_modules/octopus/scripts/add",
@@ -10,7 +11,6 @@
     "add-loader": "node ./node_modules/octopus/scripts/add",
     "build": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/build\"",
     "build-all": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run build\"",
-    "dev-install": "node ./bin/mkDevelEnv && npm install",
     "build-mobile": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run build-mobile\"",
     "update": "node ./node_modules/octopus/scripts/update",
     "bind-app": "node ./node_modules/octopus/scripts/bind --type=app",
