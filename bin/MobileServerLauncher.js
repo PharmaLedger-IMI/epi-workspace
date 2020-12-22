@@ -1,7 +1,7 @@
 let arguments = {};
 
 //set the path to a folder that contains a "server.json" in order to customize the configuration
-//process.env.PSK_CONFIG_LOCATION = "../web-server/external-volume/config";
+//process.env.PSK_CONFIG_LOCATION = "../apihub-root/external-volume/config";
 
 if (process.argv.length > 2) {
     for(let idx in process.argv){

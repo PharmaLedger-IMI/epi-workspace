@@ -10,10 +10,10 @@ RUN cd $TARGET_FOLDER_NAME && \
 
 ADD config/env.json /$TARGET_FOLDER_NAME/env.json
 #After the custimization of config/server.json file uncomment the next line
-#ADD config/server.json /$TARGET_FOLDER_NAME/web-server/external-volume/config/server.json
-ADD config/BDNS.hosts.json /$TARGET_FOLDER_NAME/web-server/conf/BDNS.hosts.json
-#ADD config/ssl_certs /$TARGET_FOLDER_NAME/web-server/config/ssl/server.crt
-#ADD config/ssl_certs /$TARGET_FOLDER_NAME/web-server/config/ssl/server.key
+#ADD config/server.json /$TARGET_FOLDER_NAME/apihub-root/external-volume/config/server.json
+ADD config/BDNS.hosts.json /$TARGET_FOLDER_NAME/apihub-root/conf/BDNS.hosts.json
+#ADD config/ssl_certs /$TARGET_FOLDER_NAME/apihub-root/config/ssl/server.crt
+#ADD config/ssl_certs /$TARGET_FOLDER_NAME/apihub-root/config/ssl/server.key
 
 RUN cd $TARGET_FOLDER_NAME && \
     echo 'npm run server & \n sleep 3m \n npm run build-all \n tail -f /dev/null' >> startup-script.sh

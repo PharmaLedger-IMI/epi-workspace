@@ -3,12 +3,12 @@ mobile/scan-app
 privatesky
 menu-wallet-prototype
 leaflet-ssapp
-web-server/leaflet-wallet/loader
-web-server/dsu-fabric-wallet/loader
+apihub-root/leaflet-wallet/loader
+apihub-root/dsu-fabric-wallet/loader
 themes
 dossier-explorer-wallet-prototype
-web-server/dsu-fabric
-web-server/dsu-explorer/loader
+apihub-root/dsu-fabric
+apihub-root/dsu-explorer/loader
 gtin-resolver
 gtin-dsu-wizard
 dossier-explorer-ssapp
@@ -17,6 +17,8 @@ ethereum-anchoring
 dsu-fabric-ssapp
 node_modules
 package-lock.json
+env.json.devel
+
 
 
 

@@ -1,6 +1,6 @@
 {
   "name": "ePI-workspace",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "scripts": {
     "postinstall": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run\"",
@@ -10,11 +10,13 @@
     "add-loader": "node ./node_modules/octopus/scripts/add",
     "build": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/build\"",
     "build-all": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run build\"",
+    "build-dev": "node ./node_modules/octopus/scripts/mkDevelEnv --file=../../../env.json && npm run build-all",
     "build-mobile": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run build-mobile\"",
     "update": "node ./node_modules/octopus/scripts/update",
     "bind-app": "node ./node_modules/octopus/scripts/bind --type=app",
     "bind-wallet": "node ./node_modules/octopus/scripts/bind --type=wallet",
     "server": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd privatesky && npm run start\"",
+    "apihub": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd privatesky && npm run start\"",
     "switch-to-release": "npm run remove privatesky && npm run add privatesky http://github.com/privatesky/psk-release.git 0",
     "switch-to-dev": "npm run remove privatesky && npm run add privatesky http://github.com/privatesky/privatesky.git 0",
     "watch": "node ./bin/watcher/watcher.js",
@@ -33,6 +35,6 @@
   },
   "homepage": "https://github.com/PharmaLedger-IMI/epi-workspace#readme",
   "dependencies": {
-    "octopus": "git+http://github.com/privatesky/octopus.git#1.0.8"
+    "octopus": "git+http://github.com/privatesky/octopus.git"
   }
 }

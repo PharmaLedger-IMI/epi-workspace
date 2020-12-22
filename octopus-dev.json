@@ -71,7 +71,7 @@
             ]
         },
         {
-            "name": "web-server/leaflet-wallet/loader",
+            "name": "apihub-root/leaflet-wallet/loader",
             "src": "http://github.com/privatesky/web-dossier-loader.git",
             "actions": [
                 {
@@ -81,12 +81,12 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd web-server/leaflet-wallet/loader && npm install"
+                    "cmd": "cd apihub-root/leaflet-wallet/loader && npm install"
                 },
                 {
                     "type": "copy",
-                    "src": "web-server/leaflet-wallet/loader/loader-config.local.json-template",
-                    "target": "web-server/leaflet-wallet/loader/loader-config.local.json",
+                    "src": "apihub-root/leaflet-wallet/loader/loader-config.local.json-template",
+                    "target": "apihub-root/leaflet-wallet/loader/loader-config.local.json",
                     "options": {
                         "overwrite": true
                     }
@@ -94,7 +94,7 @@
             ]
         },
         {
-            "name": "web-server/dsu-fabric-wallet/loader",
+            "name": "apihub-root/dsu-fabric-wallet/loader",
             "src": "http://github.com/privatesky/web-dossier-loader.git",
             "actions": [
                 {
@@ -104,11 +104,11 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd web-server/dsu-fabric-wallet/loader && npm install"
+                    "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm install"
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd web-server/dsu-fabric-wallet/loader && npm run build"
+                    "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm run build"
                 }
             ]
         },
@@ -184,7 +184,7 @@
             ]
         },
         {
-            "name": "web-server/dsu-explorer/loader",
+            "name": "apihub-root/dsu-explorer/loader",
             "src": "https://github.com/PrivateSky/web-dossier-loader.git",
             "actions": [
                 {
@@ -194,12 +194,12 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd web-server/dsu-explorer/loader && npm install"
+                    "cmd": "cd apihub-root/dsu-explorer/loader && npm install"
                 },
                 {
                     "type": "copy",
-                    "src": "web-server/dsu-explorer/loader/loader-config.local.json-template",
-                    "target": "web-server/dsu-explorer/loader/loader-config.local.json",
+                    "src": "apihub-root/dsu-explorer/loader/loader-config.local.json-template",
+                    "target": "apihub-root/dsu-explorer/loader/loader-config.local.json",
                     "options": {
                         "overwrite": true
                     }
@@ -392,7 +392,7 @@
                 {
                     "type": "copy",
                     "src": "./dossier-explorer-wallet-prototype/seed",
-                    "target": "./web-server/dsu-explorer/wallet-patch/seed",
+                    "target": "./apihub-root/dsu-explorer/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }
@@ -420,7 +420,7 @@
                 {
                     "type": "copy",
                     "src": "./menu-wallet-prototype/seed",
-                    "target": "./web-server/leaflet-wallet/wallet-patch/seed",
+                    "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }
@@ -438,14 +438,14 @@
                 {
                     "type": "copy",
                     "src": "./dossier-explorer-ssapp/seed",
-                    "target": "./web-server/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
+                    "target": "./apihub-root/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps-patch/dossier-explorer-ssapp/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/dsu-explorer/apps-patch/dossier-explorer-ssapp/readme"
                 }
             ]
         },
@@ -460,14 +460,14 @@
                 {
                     "type": "copy",
                     "src": "./leaflet-ssapp/seed",
-                    "target": "./web-server/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
+                    "target": "./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/leaflet-wallet/apps-patch/leaflet-ssapp/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/readme"
                 }
             ]
         },
@@ -482,7 +482,7 @@
                 {
                     "type": "copy",
                     "src": "./menu-wallet-prototype/seed",
-                    "target": "./web-server/dsu-fabric-wallet/wallet-patch/seed",
+                    "target": "./apihub-root/dsu-fabric-wallet/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }
@@ -500,14 +500,14 @@
                 {
                     "type": "copy",
                     "src": "./dsu-fabric-ssapp/seed",
-                    "target": "./web-server/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed",
+                    "target": "./apihub-root/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/readme"
                 }
             ]
         },
@@ -517,7 +517,7 @@
                 {
                     "type": "copy",
                     "src": "./trust-loader-config",
-                    "target": "./web-server",
+                    "target": "./apihub-root",
                     "options": {
                         "overwrite": true
                     }
@@ -529,15 +529,15 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd web-server/leaflet-wallet/loader && npm install"
+                    "cmd": "cd apihub-root/leaflet-wallet/loader && npm install"
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd web-server/dsu-fabric-wallet/loader && npm install"
+                    "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm install"
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd web-server/dsu-explorer/loader && npm install"
+                    "cmd": "cd apihub-root/dsu-explorer/loader && npm install"
                 }
             ]
         },
@@ -546,7 +546,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd web-server/leaflet-wallet/loader && npm run build"
+                    "cmd": "cd apihub-root/leaflet-wallet/loader && npm run build"
                 }
             ]
         }
@@ -598,18 +598,18 @@
                 },
                 {
                     "type": "copy",
-                    "src": "web-server/internal-volume",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/internal-volume"
+                    "src": "apihub-root/internal-volume",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/internal-volume"
                 },
                 {
                     "type": "copy",
-                    "src": "web-server/external-volume",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/external-volume"
+                    "src": "apihub-root/external-volume",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/external-volume"
                 },
                 {
                     "type": "copy",
                     "src": "mobile/config/scan-app/server",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/external-volume/config",
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/external-volume/config",
                     "options": {
                         "overwrite": true
                     }
@@ -624,21 +624,21 @@
                 },
                 {
                     "type": "copy",
-                    "src": "web-server/leaflet-wallet",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app"
+                    "src": "apihub-root/leaflet-wallet",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app"
                 },
                 {
                     "type": "remove",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app/loader/node_modules"
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader/node_modules"
                 },
                 {
                     "type": "remove",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app/loader/.git"
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader/.git"
                 },
                 {
                     "type": "copy",
                     "src": "mobile/config/scan-app/loader",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/web-server/app/loader",
+                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader",
                     "options": {
                         "overwrite": true
                     }

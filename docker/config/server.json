@@ -1,6 +1,6 @@
 {
   "port": 8080,
-  "storage": "../web-server",
+  "storage": "../apihub-root",
   "preventRateLimit": true,
   "enableRequestLogger": true,
   "activeEndpoints": [

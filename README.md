@@ -71,7 +71,7 @@ Password: test1234567890
     1. Go to Issuer page
     2. Put "epi" in application domain field and press "Generate Identity"
     3. Copy the the generated issuer identity
-    4. Paste and save it into /web-server/external-volume/issuers-public-identities file. The entry should be on a single line.
+    4. Paste and save it into /apihub-root/external-volume/issuers-public-identities file. The entry should be on a single line.
 
 #### Step 3: Setup credentials for Holder
     1. Go to Holder
@@ -98,7 +98,7 @@ cd epi-workspace
 2. ensure that env variable called DEV is set to true in env.json file
 >{
 >  "PSK_TMP_WORKING_DIR": "tmp",
->  "PSK_CONFIG_LOCATION": "../web-server/external-volume/config",
+>  "PSK_CONFIG_LOCATION": "../apihub-root/external-volume/config",
 >  **"DEV": true**
 >}
 3. run the installation process of the workspace

@@ -29,10 +29,10 @@ for (let i = 0; i < argv.length; i++) {
 }
 
 if (!baseDir) {
-    console.log('Usage: write-timestamp.js --dir=directory,relative,to,web-server');
+    console.log('Usage: write-timestamp.js --dir=directory,relative,to,apihub-root');
     process.exit(1);
 }
 
-const lastUpdateFile = [rootDir, 'web-server', baseDir, 'last-update.txt'].join(path.sep);
+const lastUpdateFile = [rootDir, 'apihub-root', baseDir, 'last-update.txt'].join(path.sep);
 
 fs.writeFileSync(lastUpdateFile, Date.now().toString());
