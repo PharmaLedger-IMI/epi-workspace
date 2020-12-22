@@ -10,7 +10,7 @@
     "add-loader": "node ./node_modules/octopus/scripts/add",
     "build": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/build\"",
     "build-all": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run build\"",
-    "build-dev": "node ./node_modules/octopus/scripts/mkDevelEnv --file=../../../env.json && npm run build-all",
+    "dev-install": "node ./bin/mkDevelEnv && npm install",
     "build-mobile": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run build-mobile\"",
     "update": "node ./node_modules/octopus/scripts/update",
     "bind-app": "node ./node_modules/octopus/scripts/bind --type=app",
