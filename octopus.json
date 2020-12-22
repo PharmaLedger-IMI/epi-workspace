@@ -195,6 +195,22 @@
             ]
         },
         {
+            "name": "web-server/dsu-fabric",
+            "src": "http://github.com/PharmaLedger-IMI/dsu-fabric.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false,
+                    "commit": "656bc1fe14dd7ebe2bf2bddce8d120e89ee7aa09"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/dsu-fabric && npm install"
+                }
+            ]
+        },
+        {
             "name": "web-server/dsu-explorer/loader",
             "src": "https://github.com/PrivateSky/web-dossier-loader.git",
             "actions": [
