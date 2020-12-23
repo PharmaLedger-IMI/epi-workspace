@@ -16,7 +16,7 @@ export default class IssuerController extends ContainerController {
             this.model.issuer = issuer;
             const keyssi = require("opendsu").loadApi("keyssi");
             let seedSSI = keyssi.parse(issuer.ssi);
-            this.model.issuerPublicIdentity = seedSSI.derive().getIdentifier();
+            this.model.issuerPublicIdentity = seedSSI.derive().getIdentifier(true);
             this.model.title = `Copy/paste the identifier of a new user in domain [${issuer.domain}]`;
         });
 
@@ -25,9 +25,13 @@ export default class IssuerController extends ContainerController {
         });
 
         this.on("generate-credential", (event)=>{
+            const opendsu = require("opendsu");
+            const crypto = opendsu.loadApi("crypto");
+            const keyssi = opendsu.loadApi("keyssi");
+
             let userIdentity = this.model.userIdentity;
-            let opendsu = require("opendsu");
-            let crypto = opendsu.loadApi("crypto");
+            let userSSI = keyssi.parse(userIdentity);
+            userIdentity = userSSI.derive ? userSSI.derive().getIdentifier() : userSSI.getIdentifier();
 
             crypto.createCredential(this.model.issuer.ssi, userIdentity, (err, credential)=>{
                 if(err){
