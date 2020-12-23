@@ -410,24 +410,6 @@
             ]
         },
         {
-            "name": "leaflet-wallet_bind_to_menu-wallet",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd menu-wallet-prototype && npm run build"
-                },
-                {
-                    "type": "copy",
-                    "src": "./menu-wallet-prototype/seed",
-                    "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                }
-            ]
-        },
-        {
             "name": "dsu-explorer_bind_to_dossier-explorer-ssapp",
             "src": "",
             "actions": [
@@ -461,6 +443,14 @@
                     "type": "copy",
                     "src": "./leaflet-ssapp/seed",
                     "target": "./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./leaflet-ssapp/seed",
+                    "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }
