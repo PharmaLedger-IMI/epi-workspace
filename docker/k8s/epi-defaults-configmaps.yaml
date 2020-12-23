@@ -1,0 +1,165 @@
+apiVersion: v1
+data:
+  BDNS.hosts: |-
+    {
+      "default": {
+        "replicas": [],
+        "brickStorages": [
+          "$ORIGIN"
+        ],
+        "anchoringServices": [
+          "$ORIGIN"
+        ]
+      },
+      "epi": {
+        "replicas": [],
+        "brickStorages": [
+          "$ORIGIN"
+        ],
+        "anchoringServices": [
+          "$ORIGIN"
+        ]
+      },
+      "vault": {
+        "replicas": [],
+        "brickStorages": [
+          "$ORIGIN"
+        ],
+        "anchoringServices": [
+          "$ORIGIN"
+        ]
+      }
+    }
+  env.json: |
+    {
+      "PSK_TMP_WORKING_DIR": "tmp",
+      "PSK_CONFIG_LOCATION": "../apihub-root/external-volume/config",
+      "SSAPPS_FAVORITE_EDFS_ENDPOINT": "http://localhost:8080",
+      "IS_PRODUCTION_BUILD": true
+    }
+  nginx.conf: "user nginx;\nworker_processes auto;\nerror_log /var/log/nginx/error.log;\npid
+    /run/nginx.pid;\n\n# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.\ninclude
+    /usr/share/nginx/modules/*.conf;\n\nevents {\n    worker_connections 1024;\n}\n\nhttp
+    {\n    log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\"
+    '\n                      '$status $body_bytes_sent \"$http_referer\" '\n                      '\"$http_user_agent\"
+    \"$http_x_forwarded_for\"';\n\n    access_log  /var/log/nginx/access.log  main;\n\n
+    \   sendfile            on;\n    tcp_nopush          on;\n    tcp_nodelay         on;\n
+    \   keepalive_timeout   65;\n    types_hash_max_size 2048;\n\n    include             /etc/nginx/mime.types;\n
+    \   default_type        application/octet-stream;\n\n    # Load modular configuration
+    files from the /etc/nginx/conf.d directory.\n    # See http://nginx.org/en/docs/ngx_core_module.html#include\n
+    \   # for more information.\n    include /etc/nginx/conf.d/*.conf;\n\n\n    server
+    {\n         listen       443 ssl http2 default_server;\n         server_name  wg-development.club;\n\n
+    \       ssl_certificate \"/ePI-workspace/apihub-root/config/ssl/server.crt\";\n
+    \       ssl_certificate_key \"/ePI-workspace/apihub-root/config/ssl/server.key\";\n
+    \       ssl_session_cache shared:SSL:1m;\n        ssl_session_timeout  10m;\n
+    \       ssl_ciphers HIGH:!aNULL:!MD5;\n        ssl_prefer_server_ciphers on;\n\n
+    \       # Load configuration files for the default server block.\n        include
+    /etc/nginx/default.d/*.conf;\n\n        location / {\n\t\t\tproxy_pass http://127.0.0.1:8080/;\n
+    \       }\n\n    }\n\n}\n\n"
+  server.json: |-
+    {
+      "port": 8080,
+      "storage": "../apihub-root",
+      "preventRateLimit": true,
+      "enableRequestLogger": true,
+      "activeEndpoints": [
+        "virtualMQ",
+        "messaging",
+        "notifications",
+        "filesManager",
+        "bdns",
+        "bricksLedger",
+        "bricksFabric",
+        "bricking",
+        "anchoring",
+        "dsu-wizard",
+        "gtin-dsu-wizard",
+        "staticServer"
+      ],
+      "endpointsConfig": {
+        "gtin-dsu-wizard": {
+          "module": "./../../gtin-dsu-wizard"
+        },
+        "bricking": {
+          "domains": {
+            "epi": {
+              "path": "/external-volume/domains/epi/brick-storage"
+            },
+            "default": {
+              "path": "/internal-volume/domains/default/brick-storage"
+            },
+            "predefined": {
+              "path": "/internal-volume/domains/predefined/brick-storage"
+            },
+            "vault": {
+              "path": "/external-volume/domains/vault/brick-storage"
+            }
+          }
+        },
+        "anchoring": {
+          "domainStrategies": {
+            "epi": {
+              "type": "ETH",
+              "option": {
+                "endpoint" : "http://nvsquorum.westeurope.cloudapp.azure.com:3000"
+              },
+              "commands": {
+                "addAnchor": "anchor"
+              }
+
+            },
+            "default": {
+              "type": "FS",
+              "option": {
+                "path": "/external-volume/domains/default/anchors",
+                "enableBricksLedger": false
+              },
+              "commands": {
+                "addAnchor": "anchor"
+              }
+
+            },
+            "predefined": {
+              "type": "FS",
+              "option": {
+                "path": "/internal-volume/domains/predefined/anchors"
+              }
+            },
+            "vault": {
+              "type": "FS",
+              "option": {
+                "path": "/external-volume/domains/vault/anchors"
+              }
+            }
+          }
+        }
+      },
+      "enableAuthorisation": false,
+      "enableLocalhostAuthorization": false,
+      "skipAuthorisation": [
+        "/leaflet-wallet",
+        "/dsu-fabric-wallet",
+        "/directory-summary",
+        "/resources",
+        "/bdns",
+        "/anchor/epi/versions",
+        "/anchor/default",
+        "/bricking/default",
+        "/bricksFabric",
+        "/bricksledger",
+        "/create-channel",
+        "/forward-zeromq",
+        "/send-message",
+        "/receive-message",
+        "/files",
+        "/notifications",
+        "/mq"
+      ]
+    }
+kind: ConfigMap
+metadata:
+  name: epi-defaults
+  namespace: default
+  resourceVersion: "18599"
+  selfLink: /api/v1/namespaces/default/configmaps/epi-defaults
+  uid: ebd84a7c-ef59-46b0-bb6f-a542d42d6195
