@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: epi
+  name: epi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: epi
+  strategy: {}
+  template:
+    labels:
+      io.kompose.service: epi
+    spec:
+      containers:
+        - image: pharmaledger/epi:latest
+          imagePullPolicy: ""
+          name: epi
+          ports:
+            - containerPort: 8080
+          resources: {}
+          volumeMounts:
+            - name: epi-defaults-volume
+              mountPath: /ePi-workspace/apihub-root/external-config/server.json
+              subPath: server.json
+            - name: epi-defaults-volume
+              mountPath: /ePi-workspace/apihub-root/external-config/BDNS.hosts
+              subPath: BDNS.hosts
+            - name: epi-defaults-volume
+              mountPath: /ePi-workspace/env.json
+              subPath: env.json
+        ports:
+          - containerPort: 8080
+    restartPolicy: Always
+    serviceAccountName: ""
+    volumes:
+      - name: epi-defaults-volume
+        configMap:
+          name: epi-defaults
+status: {}
