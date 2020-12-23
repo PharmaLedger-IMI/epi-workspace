@@ -14,6 +14,10 @@
                 {
                     "type": "execute",
                     "cmd": "cd cardinal && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd cardinal && npm run build"
                 }
             ]
         },
@@ -25,7 +29,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "515c5abbfe3ce7c7315f951f8296caefb259c84b"
+                    "commit": "8429669b83181a290b718594ac4623bd25dcd3a0"
                 },
                 {
                     "type": "execute",
@@ -195,22 +199,6 @@
             ]
         },
         {
-            "name": "apihub-root/dsu-fabric",
-            "src": "http://github.com/PharmaLedger-IMI/dsu-fabric.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "656bc1fe14dd7ebe2bf2bddce8d120e89ee7aa09"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd apihub-root/dsu-fabric && npm install"
-                }
-            ]
-        },
-        {
             "name": "apihub-root/dsu-explorer/loader",
             "src": "https://github.com/PrivateSky/web-dossier-loader.git",
             "actions": [
@@ -346,7 +334,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7d591b598b2668b62fd1da26e88ef33f55dd4bb9"
+                    "commit": "2c5ce18a8086b8537c204421f9b08d224a470d3b"
                 },
                 {
                     "type": "execute",
@@ -595,7 +583,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "ecc9e8569beda33edb8f17a81e38de7a575900e4"
+                    "commit": "27d97207acaedc104b48d2c4cbf2151f6b255609"
                 },
                 {
                     "type": "execute",

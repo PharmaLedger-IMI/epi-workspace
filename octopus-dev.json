@@ -13,6 +13,10 @@
                 {
                     "type": "execute",
                     "cmd": "cd cardinal && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd cardinal && npm run build"
                 }
             ]
         },
