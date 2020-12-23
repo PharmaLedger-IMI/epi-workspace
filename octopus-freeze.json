@@ -8,7 +8,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "24a8ed2278e44ba0df115bb29a64236c1589ed38"
                 },
                 {
                     "type": "execute",
@@ -27,7 +28,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "5bf50ed17165d473e0f98a45be48d2952926a2e7"
                 },
                 {
                     "type": "execute",
@@ -51,7 +53,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "0ee12f48fadd7d622fcaf5b635017cc237542aff"
                 },
                 {
                     "type": "execute",
@@ -66,7 +69,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "abd556eafbd277f8881cd3bc810bfcf7a69ed59f"
                 },
                 {
                     "type": "execute",
@@ -81,7 +85,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "97600f22ffce3fb8cf16b8c8660a9bde5949cffb"
                 },
                 {
                     "type": "execute",
@@ -104,7 +109,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "97600f22ffce3fb8cf16b8c8660a9bde5949cffb"
                 },
                 {
                     "type": "execute",
@@ -123,7 +129,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "e260bbbc720b1eaa686febf1ea0803746aaabf01"
                 },
                 {
                     "type": "execute",
@@ -138,7 +145,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "adf9c83a24bb4c3d175d70233c0e0926bb03eda0"
                 },
                 {
                     "type": "execute",
@@ -153,7 +161,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "809af41dfcd665e54bf503ad8c5af0eabf9a32c4"
                 },
                 {
                     "type": "execute",
@@ -168,7 +177,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "7a928d65256ea27ad17a1913a6a9c9558a886082"
                 }
             ]
         },
@@ -179,7 +189,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "7ece270b53ab11133b1c59aeac0bd2ddba7ef4d9"
                 },
                 {
                     "type": "execute",
@@ -194,7 +205,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "97600f22ffce3fb8cf16b8c8660a9bde5949cffb"
                 },
                 {
                     "type": "execute",
@@ -217,7 +229,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "7b02f4537a2d5075cf0942f9538e621d3f0982fa"
                 },
                 {
                     "type": "execute",
@@ -232,7 +245,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "8eb3029e1bc0326daf146958bdb7a090da6ee940"
                 },
                 {
                     "type": "execute",
@@ -247,7 +261,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "51d39b9d23ee0cedab256580b03e2d5bcb4450fe"
                 },
                 {
                     "type": "execute",
@@ -262,7 +277,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "fe1b13ff3ff9257c9ee3d6e8c7210d800f25d5aa"
                 },
                 {
                     "type": "execute",
@@ -277,7 +293,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "b28cc29a2017227841017a1006d2942a962bdc24"
                 },
                 {
                     "type": "execute",
@@ -292,7 +309,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "8a1b4bd8922a0223b5bf27a03b634031d2de65d2"
                 },
                 {
                     "type": "execute",
@@ -315,14 +333,15 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "2c5ce18a8086b8537c204421f9b08d224a470d3b"
                 },
                 {
                     "type": "execute",
                     "cmd": "cd dsu-fabric-ssapp && npm install"
                 }
             ]
-        }        
+        }
     ],
     "build": [
         {
@@ -545,7 +564,7 @@
             ]
         }
     ],
-    "install-mobile" : [
+    "install-mobile": [
         {
             "name": "mobile/scan-app/android",
             "src": "https://github.com/PrivateSky/android-edge-agent",
@@ -553,7 +572,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "09a6c39eb79a40e7eac3dc294db72ff42ff11d4e"
                 },
                 {
                     "type": "execute",
@@ -562,11 +582,10 @@
             ]
         }
     ],
-
-    "build-mobile" : [
+    "build-mobile": [
         {
-            "name": "build-android-app",            
-            "actions": [                
+            "name": "build-android-app",
+            "actions": [
                 {
                     "type": "execute",
                     "cmd": "npm run clean && npm run build-all"
@@ -578,27 +597,27 @@
                 {
                     "type": "copy",
                     "src": "bin/MobileServerLauncher.js",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/MobileServerLauncher.js"
-                },                                
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/MobileServerLauncher.js"
+                },
                 {
                     "type": "copy",
                     "src": "privatesky/psknode/bundles/pskWebServer.js",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/pskWebServer.js"
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/pskWebServer.js"
                 },
                 {
                     "type": "copy",
                     "src": "privatesky/psknode/bundles/nodeBoot.js",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/nodeBoot.js"
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/nodeBoot.js"
                 },
                 {
                     "type": "copy",
                     "src": "apihub-root/internal-volume",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/internal-volume"
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/internal-volume"
                 },
                 {
                     "type": "copy",
                     "src": "apihub-root/external-volume",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/external-volume"
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/external-volume"
                 },
                 {
                     "type": "copy",
@@ -619,24 +638,24 @@
                 {
                     "type": "copy",
                     "src": "apihub-root/leaflet-wallet",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app"
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app"
                 },
                 {
                     "type": "remove",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader/node_modules"
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader/node_modules"
                 },
                 {
                     "type": "remove",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader/.git"
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader/.git"
                 },
                 {
                     "type": "copy",
                     "src": "mobile/config/scan-app/loader",
-                    "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader",
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader",
                     "options": {
                         "overwrite": true
                     }
-                }                
+                }
             ]
         }
     ]
