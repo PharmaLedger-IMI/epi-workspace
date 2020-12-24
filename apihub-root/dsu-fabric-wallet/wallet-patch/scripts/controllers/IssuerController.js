@@ -1,5 +1,6 @@
 import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 import constants from "./constants.js";
+import { copyToClipboard } from "../helpers/document-utils.js";
 
 export default class IssuerController extends ContainerController {
     constructor(element, history) {
@@ -42,5 +43,9 @@ export default class IssuerController extends ContainerController {
             });
 
         }, {capture: true});
+
+        this.on('copy-text', (e) => {
+            copyToClipboard(e.data);
+        });
     }
 }

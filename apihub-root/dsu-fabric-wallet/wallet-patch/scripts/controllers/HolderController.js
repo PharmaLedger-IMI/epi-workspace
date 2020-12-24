@@ -1,5 +1,6 @@
 import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 import constants from "./constants.js";
+import { copyToClipboard } from "../helpers/document-utils.js";
 
 let crypto = require("opendsu").loadApi("crypto");
 
@@ -82,5 +83,9 @@ export default class HolderController extends ContainerController {
                 this.showError("Invalid credential");
             }
         }, { capture: true });
+
+        this.on('copy-text', (e) => {
+            copyToClipboard(e.data);
+        });
     }
 }

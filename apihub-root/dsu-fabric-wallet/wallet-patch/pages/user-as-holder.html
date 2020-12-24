@@ -2,7 +2,13 @@
     <psk-form controller-name="HolderController">
         <psk-layout row-gap="1em">
             <psk-label label="User Identity"></psk-label>
-            <psk-label label="@holderSSI"></psk-label>
+
+            <psk-layout template-columns="auto auto" align-items="flex-start">
+                <psk-label label="@holderSSI"></psk-label>
+                <psk-button button-class="btn btn-success" event-name="copy-text" event-data="@holderSSI">
+                    <psk-icon icon="copy" color="rgb(255, 255, 255)"></psk-icon>
+                </psk-button>
+            </psk-layout>
 
             <div id="readableContainer">
                 <psk-card title="Human readable User Identity">
