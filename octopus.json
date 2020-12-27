@@ -562,7 +562,7 @@
             ]
         },
         {
-            {
+            
                 "name": "mobile/scan-app/ios",
                 "src": "https://github.com/PrivateSky/ios-edge-agent",
                 "actions": [
@@ -576,7 +576,6 @@
                         "cmd": "cd mobile/scan-app/android && npm install"
                     }
                 ]
-            }
         }
     ],
 

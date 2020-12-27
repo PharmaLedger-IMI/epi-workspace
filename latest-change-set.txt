@@ -1,0 +1,9 @@
+    Test for missing local.properties file
+    Push required arguments + switch to using SFSafariViewController
+    
+    Passing the same type of command line arguments to the node thread that the android edge client is using.
+    Switched to using SFSafariViewController instead of wkwebview as it seems to react better.
+    
+    Still some issues occur and must be adressed on the main epi-workspace(? maybe):
+     - in app/loader there must be a config-constants.json, that is probably created from the config-constants.json.template file in that same folder;
+    - there seems to be an issue with related to dsu-seed, which the prevents the web app from loading both from desktop and native client
