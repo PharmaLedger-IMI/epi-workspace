@@ -1,0 +1,29 @@
+{
+  "default": {
+    "replicas": [],
+    "brickStorages": [
+      "$ORIGIN"
+    ],
+    "anchoringServices": [
+      "$ORIGIN"
+    ]
+  },
+  "epi": {
+    "replicas": [],
+    "brickStorages": [
+      "https://epi.pharmaledger.dev"
+    ],
+    "anchoringServices": [
+      "https://epi.pharmaledger.dev"
+    ]
+  },
+  "vault": {
+    "replicas": [],
+    "brickStorages": [
+      "$ORIGIN"
+    ],
+    "anchoringServices": [
+      "$ORIGIN"
+    ]
+  }
+}
