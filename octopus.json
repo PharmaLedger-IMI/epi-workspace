@@ -617,14 +617,6 @@
                 },
                 {
                     "type": "copy",
-                    "src": "mobile/config/scan-app/android",
-                    "target": "mobile/scan-app/android",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copy",
                     "src": "apihub-root/leaflet-wallet",
                     "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app"
                 },
@@ -635,6 +627,14 @@
                 {
                     "type": "remove",
                     "target" : "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader/.git"
+                },
+                {
+                    "type": "copy",
+                    "src": "mobile/config/scan-app/android",
+                    "target": "mobile/scan-app/android",
+                    "options": {
+                        "overwrite": true
+                    }
                 }
             ]
         },
@@ -676,15 +676,6 @@
                 },
                 {
                     "type": "copy",
-                    "src": "mobile/config/scan-app/ios",
-                    "target": "mobile/scan-app/ios",
-                    "options":
-                    {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copy",
                     "src": "apihub-root/leaflet-wallet",
                     "target": "mobile/scan-app/ios/PSSmartWalletNativeLayerHost/PSSmartWalletNativeLayerHost/nodejsProject/apihub-root/app"
                 },
@@ -695,6 +686,15 @@
                 {
                     "type": "remove",
                     "target": "mobile/scan-app/ios/PSSmartWalletNativeLayerHost/PSSmartWalletNativeLayerHost/nodejsProject/apihub-root/app/loader/.git"
+                },
+                {
+                    "type": "copy",
+                    "src": "mobile/config/scan-app/ios",
+                    "target": "mobile/scan-app/ios",
+                    "options":
+                    {
+                        "overwrite": true
+                    }
                 }
             ]
         }
