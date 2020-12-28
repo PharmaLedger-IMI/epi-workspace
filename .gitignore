@@ -9,6 +9,8 @@ themes
 dossier-explorer-wallet-prototype
 apihub-root/dsu-fabric
 apihub-root/dsu-explorer/loader
+apihub-root/internal-volume/domains
+apihub-root/external-volume/domains
 gtin-resolver
 gtin-dsu-wizard
 dossier-explorer-ssapp
@@ -18,8 +20,3 @@ dsu-fabric-ssapp
 node_modules
 package-lock.json
 env.json.devel
-
-
-
-
-
