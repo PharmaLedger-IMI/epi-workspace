@@ -578,6 +578,32 @@
         }
     ],
 
+    "build-android-apk" : [
+        {
+            "name": "install NDK",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK"
+                }
+            ]
+        },
+        {
+            "name": "build APK",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo \"APK should be in mobile/scan-app/android/app/build/outputs/apk/release\" "
+                }
+            ]
+        }
+    ],
+
+
     "build-mobile" : [
         {
             "name": "prebuild",
