@@ -591,6 +591,11 @@
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
 					"os": "linux"
+                },
+				{
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
+					"os": "darwin"
                 }
             ]
         },
@@ -606,6 +611,11 @@
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
 					"os": "linux"
+                },
+				{
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
+					"os": "darwin"
                 },
                 {
                     "type": "execute",
