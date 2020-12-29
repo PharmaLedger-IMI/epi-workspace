@@ -743,6 +743,15 @@
                     {
                         "overwrite": true
                     }
+                },
+                {
+                    "type": "copy",
+                    "src": "mobile/scan-app/ios/nativeBridge.js",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/nativeBridge.js",
+                    "options":
+                    {
+                        "overwrite": true
+                    }
                 }
             ]
         }
