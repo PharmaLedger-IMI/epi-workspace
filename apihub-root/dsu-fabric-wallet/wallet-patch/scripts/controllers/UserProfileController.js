@@ -14,6 +14,7 @@ export default class UserProfileController extends ContainerController {
                 return console.error(err);
             }
             userDetails.avatar = "assets/images/user.png";
+            userDetails.email = userDetails.company;
             this.model.setChainValue("userDetails", userDetails);
         });
 
