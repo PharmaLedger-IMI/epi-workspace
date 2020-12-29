@@ -584,7 +584,13 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK"
+                    "cmd": "cd mobile/scan-app/android && gradlew.bat -b ndk.gradle installNDK",
+					"os": "win32"
+                },
+				{
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
+					"os": "linux"
                 }
             ]
         },
@@ -593,7 +599,13 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease"
+                    "cmd": "cd mobile/scan-app/android && gradlew.bat assembleRelease",
+					"os": "win32"
+                },
+				{
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
+					"os": "linux"
                 },
                 {
                     "type": "execute",
