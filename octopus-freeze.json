@@ -9,7 +9,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "24a8ed2278e44ba0df115bb29a64236c1589ed38"
+                    "commit": "f341e7f61e1a732c538fa53c73cfb10a15ef6e7f"
                 },
                 {
                     "type": "execute",
@@ -29,7 +29,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "5bf50ed17165d473e0f98a45be48d2952926a2e7"
+                    "commit": "d2ac25085de515a41d546ffb71e713eb08097cb7"
                 },
                 {
                     "type": "execute",
@@ -70,7 +70,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "abd556eafbd277f8881cd3bc810bfcf7a69ed59f"
+                    "commit": "1ac4906fe8cb5ad541397cadb45c875aeec03671"
                 },
                 {
                     "type": "execute",
@@ -86,7 +86,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "97600f22ffce3fb8cf16b8c8660a9bde5949cffb"
+                    "commit": "6d689a072b8793d6cf5e705951079a81e2b8b665"
                 },
                 {
                     "type": "execute",
@@ -110,7 +110,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "97600f22ffce3fb8cf16b8c8660a9bde5949cffb"
+                    "commit": "6d689a072b8793d6cf5e705951079a81e2b8b665"
                 },
                 {
                     "type": "execute",
@@ -206,7 +206,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "97600f22ffce3fb8cf16b8c8660a9bde5949cffb"
+                    "commit": "6d689a072b8793d6cf5e705951079a81e2b8b665"
                 },
                 {
                     "type": "execute",
@@ -246,7 +246,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "8eb3029e1bc0326daf146958bdb7a090da6ee940"
+                    "commit": "2580f69b650c48abf25e20f723667f55cc70d1f1"
                 },
                 {
                     "type": "execute",
@@ -262,7 +262,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "51d39b9d23ee0cedab256580b03e2d5bcb4450fe"
+                    "commit": "73caaaea2aa29379dd14f5c8de740b6c5f4e7cec"
                 },
                 {
                     "type": "execute",
@@ -334,7 +334,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "2c5ce18a8086b8537c204421f9b08d224a470d3b"
+                    "commit": "30129d4e055ae0e67ce9de828bdb204a48cdfb27"
                 },
                 {
                     "type": "execute",
@@ -573,23 +573,90 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "09a6c39eb79a40e7eac3dc294db72ff42ff11d4e"
+                    "commit": "276c98b3987c6267523e379beb3f55fd40b5cc66"
                 },
                 {
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && npm install"
                 }
             ]
+        },
+        {
+            "name": "mobile/scan-app/ios",
+            "src": "https://github.com/PrivateSky/ios-edge-agent",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false,
+                    "commit": "eb3e252891b4457890e073d2336d6154d959df7e"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo \"Continue with ipa builds\""
+                }
+            ]
+        }
+    ],
+    "build-android-apk": [
+        {
+            "name": "install NDK",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && gradlew.bat -b ndk.gradle installNDK",
+                    "os": "win32"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
+                    "os": "linux"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
+                    "os": "darwin"
+                }
+            ]
+        },
+        {
+            "name": "build APK",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && gradlew.bat assembleRelease",
+                    "os": "win32"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
+                    "os": "linux"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
+                    "os": "darwin"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo \"APK should be in mobile/scan-app/android/app/build/outputs/apk/release\" "
+                }
+            ]
         }
     ],
     "build-mobile": [
         {
-            "name": "build-android-app",
+            "name": "prebuild",
             "actions": [
                 {
                     "type": "execute",
                     "cmd": "npm run clean && npm run build-all"
-                },
+                }
+            ]
+        },
+        {
+            "name": "build-android-app",
+            "actions": [
                 {
                     "type": "remove",
                     "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project"
@@ -621,22 +688,6 @@
                 },
                 {
                     "type": "copy",
-                    "src": "mobile/config/scan-app/server",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/external-volume/config",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "mobile/config/scan-app/android",
-                    "target": "mobile/scan-app/android",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copy",
                     "src": "apihub-root/leaflet-wallet",
                     "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app"
                 },
@@ -650,8 +701,71 @@
                 },
                 {
                     "type": "copy",
-                    "src": "mobile/config/scan-app/loader",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader",
+                    "src": "mobile/config/scan-app/android",
+                    "target": "mobile/scan-app/android",
+                    "options": {
+                        "overwrite": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "build-ios-app",
+            "actions": [
+                {
+                    "type": "remove",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject"
+                },
+                {
+                    "type": "copy",
+                    "src": "bin/MobileServerLauncher.js",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/MobileServerLauncher.js"
+                },
+                {
+                    "type": "copy",
+                    "src": "privatesky/psknode/bundles/pskWebServer.js",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/pskWebServer.js"
+                },
+                {
+                    "type": "copy",
+                    "src": "privatesky/psknode/bundles/nodeBoot.js",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/nodeBoot.js"
+                },
+                {
+                    "type": "copy",
+                    "src": "apihub-root/internal-volume",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/internal-volume"
+                },
+                {
+                    "type": "copy",
+                    "src": "apihub-root/external-volume",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/external-volume"
+                },
+                {
+                    "type": "copy",
+                    "src": "apihub-root/leaflet-wallet",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app"
+                },
+                {
+                    "type": "remove",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app/loader/node_modules"
+                },
+                {
+                    "type": "remove",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app/loader/.git"
+                },
+                {
+                    "type": "copy",
+                    "src": "mobile/config/scan-app/ios",
+                    "target": "mobile/scan-app/ios",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "mobile/scan-app/ios/nativeBridge.js",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/nativeBridge.js",
                     "options": {
                         "overwrite": true
                     }
