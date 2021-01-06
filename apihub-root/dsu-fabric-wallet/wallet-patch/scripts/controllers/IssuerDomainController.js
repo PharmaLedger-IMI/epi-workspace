@@ -19,6 +19,13 @@ export default class IssuerDomainController extends ContainerController {
                 if(err){
                     return this.showError(err, "Could not initialize the issuer SSI");
                 }
+                const SHARED_DB = "sharedDB"; //reused in DSU-FABRIC
+                let opendsu = require("opendsu");
+                let db = opendsu.loadAPI("db");
+                this.mydb = db.getSharedDB(seedSSI, SHARED_DB);
+                this.mydb.insertRecord("system", "created", {created:"true"});
+                console.log("Shared DB got created:", seedSSI.getIdentifier(true));
+
                 this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer)=>{
                     if(err){
                         issuer = {};
