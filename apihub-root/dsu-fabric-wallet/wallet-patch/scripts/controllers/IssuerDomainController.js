@@ -24,7 +24,10 @@ export default class IssuerDomainController extends ContainerController {
                 let db = opendsu.loadAPI("db");
                 this.mydb = db.getSharedDB(seedSSI, SHARED_DB);
                 this.mydb.insertRecord("system", "created", {created:"true"});
-                console.log("Shared DB got created:", seedSSI.getIdentifier(true));
+                this.mydb.on("initialised", function(dsu){
+                    console.log("Shared DB got created:", seedSSI.getIdentifier(true), dsu);
+                })
+
 
                 this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer)=>{
                     if(err){
