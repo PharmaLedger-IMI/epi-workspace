@@ -4,9 +4,7 @@ import { copyToClipboard } from "../helpers/document-utils.js";
 
 let crypto = require("opendsu").loadApi("crypto");
 
-function getReadableSSI(ssi) {
-    return crypto.getReadableSSI(ssi) || ssi;
-}
+
 
 export default class HolderController extends ContainerController {
     constructor(element, history) {
@@ -45,6 +43,10 @@ export default class HolderController extends ContainerController {
         }
 
         this.DSUStorage.getObject(constants.HOLDER_FILE_PATH, (err, holder) => {
+
+            function getReadableSSI(ssi) {
+                return crypto.getReadableSSI(ssi) || ssi;
+            }
 
             if (err || !holder || !holder.domain || !holder.ssi) {
                 return this.History.navigateToPageByTag("holder-enter-domain");
