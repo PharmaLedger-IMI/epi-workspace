@@ -74,12 +74,22 @@ export default class HolderController extends ContainerController {
 
         this.on("save-credential", (event) => {
             if (this.model.credential) {
-                this.DSUStorage.setObject(constants.CREDENTIAL_FILE_PATH, { credential: this.model.credential }, (err, credential) => {
+                this.DSUStorage.setObject(constants.CREDENTIAL_FILE_PATH, { credential: this.model.credential }, (err) => {
                     if (err) {
                         this.showError(err);
                     }
                     this.model.displayCredentialArea = false;
                     setCredential(this.model.credential);
+                    const crypto = require("opendsu").loadApi("crypto");
+                    const keyssi = require("opendsu").loadApi("keyssi");
+                    crypto.parseJWTSegments(this.model.credential, (parseError, jwtContent) => {
+                        if (parseError) {
+                            return reportUserRelevantError('Error parsing user credential:',parseError);
+                        }
+                        this.DSUStorage.call("mountDSU","/apps/dsu-fabric-ssapp/sharedDB",jwtContent.body.iss, function(err,res){
+                            if(err) reportUserRelevantError('Error mounting sharedDb:',err);
+                        })
+                    });
                 });
             } else {
                 this.showError("Invalid credential");
