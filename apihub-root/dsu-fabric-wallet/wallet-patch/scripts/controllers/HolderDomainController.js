@@ -26,7 +26,7 @@ export default class HolderDomainController extends ContainerController {
                     return this.showError(err, "Could not initialize the holder SSI");
                 }
                 this.DSUStorage.getObject(constants.HOLDER_FILE_PATH, (err, holder)=>{
-                    if(err){
+                    if(err || typeof holder === "undefined"){
                         holder = {};
                     }
 

@@ -15,29 +15,29 @@ export default class IssuerDomainController extends ContainerController {
             const opendsu = require("opendsu");
             const keyssiSpace = opendsu.loadApi("keyssi");
             const seedSSI = keyssiSpace.buildSeedSSI(this.model.domain);
-            seedSSI.initialize(this.model.domain, (err)=>{
-                if(err){
+            seedSSI.initialize(this.model.domain, (err) => {
+                if (err) {
                     return this.showError(err, "Could not initialize the issuer SSI");
                 }
                 const SHARED_DB = "sharedDB"; //reused in DSU-FABRIC
                 let opendsu = require("opendsu");
                 let db = opendsu.loadAPI("db");
                 this.mydb = db.getSharedDB(seedSSI, SHARED_DB);
-                this.mydb.insertRecord("system", "created", {created:"true"});
-                this.mydb.on("initialised", function(dsu){
+                this.mydb.insertRecord("system", "created", {created: "true"});
+                this.mydb.on("initialised", function (dsu) {
                     console.log("Shared DB got created:", seedSSI.getIdentifier(true), dsu);
                 })
 
 
-                this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer)=>{
-                    if(err){
+                this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer) => {
+                    if (err || typeof issuer === "undefined") {
                         issuer = {};
                     }
 
                     issuer.domain = this.model.domain;
                     issuer.ssi = seedSSI.getIdentifier();
-                    this.DSUStorage.setObject(constants.ISSUER_FILE_PATH, issuer, (err)=>{
-                        if(err){
+                    this.DSUStorage.setObject(constants.ISSUER_FILE_PATH, issuer, (err) => {
+                        if (err) {
                             return this.showError(err);
                         }
                         this.History.navigateToPageByTag("issuer");

@@ -1,6 +1,6 @@
 import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 import constants from "./constants.js";
-import { copyToClipboard } from "../helpers/document-utils.js";
+import {copyToClipboard} from "../helpers/document-utils.js";
 
 export default class IssuerController extends ContainerController {
     constructor(element, history) {
@@ -9,8 +9,8 @@ export default class IssuerController extends ContainerController {
         this.setModel({displayCredential: false});
         this.model.domain = "epi";
 
-        this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer)=>{
-            if(err){
+        this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer) => {
+            if (err || typeof issuer === "undefined") {
                 return this.History.navigateToPageByTag("issuer-enter-domain");
             }
 
@@ -25,7 +25,7 @@ export default class IssuerController extends ContainerController {
             this.feedbackEmitter = e.detail;
         });
 
-        this.on("generate-credential", (event)=>{
+        this.on("generate-credential", (event) => {
             const opendsu = require("opendsu");
             const crypto = opendsu.loadApi("crypto");
             const keyssi = opendsu.loadApi("keyssi");
@@ -34,8 +34,8 @@ export default class IssuerController extends ContainerController {
             let userSSI = keyssi.parse(userIdentity);
             userIdentity = userSSI.derive ? userSSI.derive().getIdentifier() : userSSI.getIdentifier();
 
-            crypto.createCredential(this.model.issuer.ssi, userIdentity, (err, credential)=>{
-                if(err){
+            crypto.createCredential(this.model.issuer.ssi, userIdentity, (err, credential) => {
+                if (err) {
                     return this.showError(err, "Failed to create credential.");
                 }
                 this.model.credential = credential;
