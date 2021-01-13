@@ -11,12 +11,30 @@
   "epi": {
     "replicas": [],
     "brickStorages": [
-      "https://epi.pharmaledger.dev"
+      "https://epi.westeurope.cloudapp.azure.com"
     ],
     "anchoringServices": [
-      "https://epi.pharmaledger.dev"
+      "https://epi.westeurope.cloudapp.azure.com"
     ]
   },
+  "epiqa": {
+	"replicas": [],
+	"brickStorages": [
+	  "https://epiqa.westeurope.cloudapp.azure.com"
+	],
+	"anchoringServices": [
+	  "https://epiqa.westeurope.cloudapp.azure.com"
+	]
+  },
+  "epidev": {
+	  "replicas": [],
+	  "brickStorages": [
+		"https://epi.pharmaledger.dev"
+	  ],
+	  "anchoringServices": [
+		"https://epi.pharmaledger.dev"
+	  ]
+	},
   "vault": {
     "replicas": [],
     "brickStorages": [
