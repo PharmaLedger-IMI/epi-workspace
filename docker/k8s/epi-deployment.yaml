@@ -26,8 +26,8 @@ spec:
               mountPath: /ePi-workspace/apihub-root/external-config/server.json
               subPath: server.json
             - name: epi-defaults-volume
-              mountPath: /ePi-workspace/apihub-root/external-config/BDNS.hosts
-              subPath: BDNS.hosts
+              mountPath: /ePi-workspace/apihub-root/external-config/bdns.hosts
+              subPath: bdns.hosts
             - name: epi-defaults-volume
               mountPath: /ePi-workspace/env.json
               subPath: env.json
