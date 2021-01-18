@@ -17,7 +17,16 @@
       "$ORIGIN"
     ]
   },
-    "epi2": {
+    "epidev": {
+      "replicas": [],
+      "brickStorages": [
+        "$ORIGIN"
+      ],
+      "anchoringServices": [
+        "$ORIGIN"
+      ]
+    },
+    "epiqa": {
       "replicas": [],
       "brickStorages": [
         "$ORIGIN"
