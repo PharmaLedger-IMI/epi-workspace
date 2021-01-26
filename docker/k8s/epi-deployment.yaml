@@ -11,32 +11,31 @@ spec:
       io.kompose.service: epi
   strategy: {}
   template:
-    labels:
-      io.kompose.service: epi
+    metadata:
+      labels:
+        io.kompose.service: epi
     spec:
       containers:
-        - image: pharmaledger/epi:latest
-          imagePullPolicy: ""
-          name: epi
-          ports:
-            - containerPort: 8080
-          resources: {}
-          volumeMounts:
-            - name: epi-defaults-volume
-              mountPath: /ePi-workspace/apihub-root/external-config/server.json
-              subPath: server.json
-            - name: epi-defaults-volume
-              mountPath: /ePi-workspace/apihub-root/external-config/bdns.hosts
-              subPath: bdns.hosts
-            - name: epi-defaults-volume
-              mountPath: /ePi-workspace/env.json
-              subPath: env.json
+      - image: pharmaledger/epi:latest
+        imagePullPolicy: ""
+        name: epi
         ports:
           - containerPort: 8080
-    restartPolicy: Always
-    serviceAccountName: ""
-    volumes:
-      - name: epi-defaults-volume
-        configMap:
-          name: epi-defaults
+        resources: {}
+        volumeMounts:
+          - name: epi-defaults-volume
+            mountPath: /ePi-workspace/apihub-root/external-config/server.json
+            subPath: server.json
+          - name: epi-defaults-volume
+            mountPath: /ePi-workspace/apihub-root/external-config/bdns.hosts
+            subPath: bdns.hosts
+          - name: epi-defaults-volume
+            mountPath: /ePi-workspace/env.json
+            subPath: env.json
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+        - name: epi-defaults-volume
+          configMap:
+            name: epi-defaults
 status: {}
