@@ -20,7 +20,7 @@ export default class HolderDomainController extends ContainerController {
         this.on("generate-identity", (event) => {
             const opendsu = require("opendsu");
             const keyssiSpace = opendsu.loadApi("keyssi");
-            const seedSSI = keyssiSpace.buildSeedSSI(this.model.domain);
+            const seedSSI = keyssiSpace.buildTemplateSeedSSI(this.model.domain);
             seedSSI.initialize(this.model.domain, (err)=>{
                 if(err){
                     return this.showError(err, "Could not initialize the holder SSI");
