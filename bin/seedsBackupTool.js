@@ -5,7 +5,7 @@ if(op  == undefined){
 
 let os = require("os");
 let slash = "/";
-console.log(os.platform())
+
 if(os.platform() == "win32"){
     slash = "\\";
 }
@@ -95,10 +95,6 @@ if(op == "backup"){
             }
         }
     } catch(err){
-        console.log(err);
         console.log("File ./apihub-root/seedsBackup does not exist, hopefuly you are doing an initial build by generating fresh seeds");
     }
-
 }
-
-
