@@ -3,7 +3,14 @@ if(op  == undefined){
     op = "backup";
 }
 
-myPath = process.cwd()+"/";
+let os = require("os");
+let slash = "/";
+console.log(os.platform())
+if(os.platform() == "win32"){
+    slash = "\\";
+}
+
+myPath = process.cwd() + slash;
 
 console.log("Doing...", op, myPath);
 
@@ -53,6 +60,7 @@ let seedList = {
 function filterFiles(name){
     if(name.endsWith("\\seed") || name.endsWith("/seed")){
         let relPath = name.replace(myPath,"");
+        console.log(name, myPath);
         seedList[relPath] = fs.readFileSync(name).toString();
         }
     return undefined;
