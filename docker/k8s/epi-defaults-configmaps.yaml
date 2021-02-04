@@ -55,6 +55,26 @@ data:
       "SSAPPS_FAVORITE_EDFS_ENDPOINT": "http://localhost:8080",
       "IS_PRODUCTION_BUILD": true
     }
+  seedsBackup: |
+    {
+      "apihub-root/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed":"BBudGH6ySHG6GUHN8ogNrTWbSh5w1cRuxMBSayyLW5Cgy8fDmvRFecVCnx4nsyjwMrfktX2PPrDECTvartohtJmUB",
+      "apihub-root/dsu-explorer/wallet-patch/seed":"BBudGH6ySHG6GUHN8ogNrTWc9NfiW1uDdk6PR7SsiHppqRVoyxEFc9wCCncRR55VwH5KiCmyxYnaqc2fVKH2PHj8s",
+      "apihub-root/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed":"BBudGH6ySHG6GUHN8ogNrTWbxX8W42XDZRFa21r1yqqqN5JSdVzw5zXY19v3xMvnyUd2W82WhSNmY9VPKeZLQf4qd",
+      "apihub-root/dsu-fabric-wallet/wallet-patch/seed":"BBudGH6ySHG6GUHN8ogNrTWbWnhc1dZo3j7yoYR4eUMbhcP1Ju1A2wKH8cZdxj5fy7aYRsDjuy7sGsgKkn9fuVEx7",
+      "apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed":"BBudGH6ySHG6GUHN8ogNrTWbX5aENzfM2efjfAaScwkEk7EKZMDUFcKopDqxmjJaqwTkp8CqeXoV5NbD1t9Azy3VZ",
+      "apihub-root/leaflet-wallet/wallet-patch/seed":"BBudGH6ySHG6GUHN8ogNrTWbX5aENzfM2efjfAaScwkEk7EKZMDUFcKopDqxmjJaqwTkp8CqeXoV5NbD1t9Azy3VZ",
+      "cardinal/seed":"BBudGH6ySHG6GUHN8ogNrTWbQiKuMsP9B3171DVeWWF7tgAFk58UxrUPkLKBreM9WUJEbxhpf9M2qjtvKhN4Fu7dH",
+      "dossier-explorer-ssapp/seed":"BBudGH6ySHG6GUHN8ogNrTWbSh5w1cRuxMBSayyLW5Cgy8fDmvRFecVCnx4nsyjwMrfktX2PPrDECTvartohtJmUB",
+      "dossier-explorer-wallet-prototype/seed":"BBudGH6ySHG6GUHN8ogNrTWc9NfiW1uDdk6PR7SsiHppqRVoyxEFc9wCCncRR55VwH5KiCmyxYnaqc2fVKH2PHj8s",
+      "dsu-fabric-ssapp/seed":"BBudGH6ySHG6GUHN8ogNrTWbxX8W42XDZRFa21r1yqqqN5JSdVzw5zXY19v3xMvnyUd2W82WhSNmY9VPKeZLQf4qd",
+      "leaflet-ssapp/seed":"BBudGH6ySHG6GUHN8ogNrTWbX5aENzfM2efjfAaScwkEk7EKZMDUFcKopDqxmjJaqwTkp8CqeXoV5NbD1t9Azy3VZ",
+      "menu-wallet-prototype/seed":"BBudGH6ySHG6GUHN8ogNrTWbWnhc1dZo3j7yoYR4eUMbhcP1Ju1A2wKH8cZdxj5fy7aYRsDjuy7sGsgKkn9fuVEx7",
+      "themes/blue-fluorite-theme/seed":"BBudGH6ySHG6GUHN8ogNrTWbxkAnrwPUSghb8FGaDa2ucDyivqzNudQRWFHPHrQ54RRq9SVve1HBtJ4ek7KD4kBDh",
+      "themes/citrus-theme/seed":"BBudGH6ySHG6GUHN8ogNrTWc6hV2mTyW6eN7oWew3Q2eZTiJUdkietkcps58hzhZUW17ujtSHqotDHYByvgjUCMoD",
+      "themes/clear-sky-theme/seed":"BBudGH6ySHG6GUHN8ogNrTWbUkhGnbu9B5kdyHPJjACivva26FSrZSJ2TFikm9eayGDxeB9eXrvUiD71mVJ8WjXqR",
+      "themes/epi-theme/seed":"BBudGH6ySHG6GUHN8ogNrTWbt94mkUE5uEQiGLo8QZQxgRYLEg1AkzmpZ7NFynT7Kiv4X3dxJYZBmqghivXk3qCPh",
+      "themes/savana-theme/seed":"BBudGH6ySHG6GUHN8ogNrTWbQZj8m5wG3BiWXF4oGKeXShu61XEnmwMCPidSQFXUi7rLQbcAXLgEzx2G68icwhS2s"
+    }
   nginx.conf: "user nginx;\nworker_processes auto;\nerror_log /var/log/nginx/error.log;\npid
     /run/nginx.pid;\n\n# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.\ninclude
     /usr/share/nginx/modules/*.conf;\n\nevents {\n    worker_connections 1024;\n}\n\nhttp

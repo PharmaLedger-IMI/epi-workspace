@@ -32,6 +32,9 @@ spec:
           - name: epi-defaults-volume
             mountPath: /ePi-workspace/env.json
             subPath: env.json
+          - name: epi-defaults-volume
+            mountPath: /ePi-workspace/apihub-root/seedsBackup
+            subPath: seedsBackup
       restartPolicy: Always
       serviceAccountName: ""
       volumes:
