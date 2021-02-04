@@ -84,11 +84,16 @@ if(op == "backup"){
         fs.writeFileSync("./apihub-root/seedsBackup", JSON.stringify(seedList));
     });
 } else {
-    let seedList = fs.readFileSync("./apihub-root/seedsBackup");
-    let list = JSON.parse(seedList);
-    for(let f in list){
-        fs.writeFileSync(f, list[f]);
+    try{
+        let seedList = fs.readFileSync("./apihub-root/seedsBackup");
+        let list = JSON.parse(seedList);
+        for(let f in list){
+            fs.writeFileSync(f, list[f]);
+        }
+    } catch(err){
+        console.log("File ./apihub-root/seedsBackup does not exist, hopefuly you are doing an initial build by generating fresh seeds");
     }
+
 }
 
 
