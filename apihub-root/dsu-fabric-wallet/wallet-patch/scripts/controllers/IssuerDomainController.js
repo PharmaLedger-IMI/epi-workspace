@@ -5,9 +5,12 @@ export default class IssuerDomainController extends ContainerController {
     constructor(element, history) {
         super(element, history);
 
-        this.setModel({});
-        this.model.domain = "epi";
-        this.on('openFeedback', (e) => {
+        this.setModel({
+            domain: "epi",
+            subdomain: ""
+        });
+
+        this.on("openFeedback", (e) => {
             this.feedbackEmitter = e.detail;
         });
 
@@ -28,14 +31,15 @@ export default class IssuerDomainController extends ContainerController {
                     console.log("Shared DB got created:", seedSSI.getIdentifier(true), dsu);
                 })
 
-
                 this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer) => {
                     if (err || typeof issuer === "undefined") {
                         issuer = {};
                     }
 
                     issuer.domain = this.model.domain;
+                    issuer.subdomain = this.model.subdomain;
                     issuer.ssi = seedSSI.getIdentifier();
+
                     this.DSUStorage.setObject(constants.ISSUER_FILE_PATH, issuer, (err) => {
                         if (err) {
                             return this.showError(err);
