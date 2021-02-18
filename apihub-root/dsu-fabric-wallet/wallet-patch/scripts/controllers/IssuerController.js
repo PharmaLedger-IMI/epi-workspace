@@ -18,7 +18,7 @@ export default class IssuerController extends ContainerController {
             const keyssi = require("opendsu").loadApi("keyssi");
             let seedSSI = keyssi.parse(issuer.ssi);
             this.model.issuerPublicIdentity = seedSSI.derive().getIdentifier(true);
-            this.model.title = `Copy/paste the identifier of a new user in domain [${issuer.domain}]`;
+            this.model.title = `Copy/paste the identifier of a new user in domain: [${issuer.domain}], subdomain: [${issuer.subdomain}]`;
         });
 
         this.on('openFeedback', (e) => {
