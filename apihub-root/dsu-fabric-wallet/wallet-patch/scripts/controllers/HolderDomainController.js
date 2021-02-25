@@ -25,20 +25,23 @@ export default class HolderDomainController extends ContainerController {
                 if(err){
                     return this.showError(err, "Could not initialize the holder SSI");
                 }
-                this.DSUStorage.getObject(constants.HOLDER_FILE_PATH, (err, holder)=>{
-                    if(err || typeof holder === "undefined"){
-                        holder = {};
-                    }
-
-                    holder.domain = this.model.domain;
-                    holder.ssi = seedSSI.getIdentifier();
-                    holder.userDetails = userDetails;
-                    this.DSUStorage.setObject(constants.HOLDER_FILE_PATH, holder, (err)=>{
-                        if(err){
-                            return this.showError(err);
+                this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer) => {
+                    this.DSUStorage.getObject(constants.HOLDER_FILE_PATH, (err, holder)=>{
+                        if(err || typeof holder === "undefined"){
+                            holder = {};
                         }
-                        this.History.navigateToPageByTag("holder");
-                    });
+                        holder.domain = this.model.domain;
+                        holder.subdomain = issuer.subdomain;
+                        holder.ssi = seedSSI.getIdentifier();
+                        holder.userDetails = userDetails;
+
+                        this.DSUStorage.setObject(constants.HOLDER_FILE_PATH, holder, (err)=>{
+                            if(err){
+                                return this.showError(err);
+                            }
+                            this.History.navigateToPageByTag("holder");
+                        });
+                    })
                 });
             });
         });
