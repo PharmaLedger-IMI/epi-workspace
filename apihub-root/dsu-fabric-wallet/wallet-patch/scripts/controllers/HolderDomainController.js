@@ -31,7 +31,7 @@ export default class HolderDomainController extends ContainerController {
                             holder = {};
                         }
                         holder.domain = this.model.domain;
-                        holder.subdomain = issuer.subdomain;
+                        holder.subdomain = typeof issuer === "undefined" ? undefined: issuer.subdomain;
                         holder.ssi = seedSSI.getIdentifier();
                         holder.userDetails = userDetails;
 
