@@ -17,7 +17,7 @@ export default class IssuerDomainController extends ContainerController {
         this.on("generate-identity", (event) => {
             const opendsu = require("opendsu");
             const keyssiSpace = opendsu.loadApi("keyssi");
-            const seedSSI = keyssiSpace.buildTemplateSeedSSI(this.model.domain);
+            const seedSSI = keyssiSpace.createTemplateSeedSSI(this.model.domain);
             seedSSI.initialize(this.model.domain, (err) => {
                 if (err) {
                     return this.showError(err, "Could not initialize the issuer SSI");
