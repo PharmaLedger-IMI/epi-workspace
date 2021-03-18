@@ -25,7 +25,7 @@ export default class IssuerDomainController extends ContainerController {
                 const SHARED_DB = "sharedDB"; //reused in DSU-FABRIC
                 let opendsu = require("opendsu");
                 let db = opendsu.loadAPI("db");
-                this.mydb = db.getSharedDB(seedSSI, SHARED_DB);
+                this.mydb = db.getWalletDB(seedSSI, SHARED_DB);
                 this.mydb.insertRecord("system", "created", {created: "true"});
                 this.mydb.on("initialised", function (dsu) {
                     console.log("Shared DB got created:", seedSSI.getIdentifier(true), dsu);
