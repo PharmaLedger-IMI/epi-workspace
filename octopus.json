@@ -31,11 +31,7 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd webcardinal && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd webcardinal && npm run bundle-all"
+                    "cmd": "cd webcardinal && npm install && npm run bundle-all && npm run build"
                 }
             ]
         },
