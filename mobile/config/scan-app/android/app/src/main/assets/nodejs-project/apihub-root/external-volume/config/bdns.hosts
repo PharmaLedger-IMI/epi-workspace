@@ -29,12 +29,30 @@
   "epidev": {
 	  "replicas": [],
 	  "brickStorages": [
-		"https://epi.pharmaledger.dev"
+		"https://gov-dev.pharmaledger.dev"
 	  ],
 	  "anchoringServices": [
-		"https://epi.pharmaledger.dev"
+		"https://gov-dev.pharmaledger.dev"
 	  ]
 	},
+	"mah1.epidev": {
+      "replicas": [],
+      "brickStorages": [
+        "https://gov-dev.pharmaledger.dev"
+      ],
+      "anchoringServices": [
+        "https://gov-dev.pharmaledger.dev"
+      ]
+    },
+    "mah2.epidev": {
+      "replicas": [],
+      "brickStorages": [
+        "https://gov-dev.pharmaledger.dev"
+      ],
+      "anchoringServices": [
+        "https://gov-dev.pharmaledger.dev"
+      ]
+    },
   "vault": {
     "replicas": [],
     "brickStorages": [

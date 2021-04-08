@@ -17,6 +17,33 @@
       "https://epi.westeurope.cloudapp.azure.com"
     ]
   },
+   "epidev": {
+     "replicas": [],
+     "brickStorages": [
+       "https://gov-dev.pharmaledger.dev"
+     ],
+     "anchoringServices": [
+       "https://gov-dev.pharmaledger.dev"
+     ]
+   },
+   "mah1.epidev": {
+       "replicas": [],
+       "brickStorages": [
+         "https://gov-dev.pharmaledger.dev"
+       ],
+       "anchoringServices": [
+         "https://gov-dev.pharmaledger.dev"
+       ]
+   },
+   "mah2.epidev": {
+     "replicas": [],
+     "brickStorages": [
+       "https://gov-dev.pharmaledger.dev"
+     ],
+     "anchoringServices": [
+       "https://gov-dev.pharmaledger.dev"
+     ]
+   },
   "epiqa": {
 	"replicas": [],
 	"brickStorages": [
@@ -26,15 +53,6 @@
 	  "https://epiqa.westeurope.cloudapp.azure.com"
 	]
   },
-  "epidev": {
-	  "replicas": [],
-	  "brickStorages": [
-		"https://epi.pharmaledger.dev"
-	  ],
-	  "anchoringServices": [
-		"https://epi.pharmaledger.dev"
-	  ]
-	},
   "vault": {
     "replicas": [],
     "brickStorages": [
