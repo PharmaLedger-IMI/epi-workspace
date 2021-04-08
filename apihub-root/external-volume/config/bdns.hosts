@@ -35,6 +35,24 @@
       "$ORIGIN"
     ]
   },
+  "mah1.epidev": {
+    "replicas": [],
+    "brickStorages": [
+      "$ORIGIN"
+    ],
+    "anchoringServices": [
+      "$ORIGIN"
+    ]
+  },
+  "mah2.epidev": {
+    "replicas": [],
+    "brickStorages": [
+      "$ORIGIN"
+    ],
+    "anchoringServices": [
+      "$ORIGIN"
+    ]
+  },
   "epiqa": {
     "replicas": [],
     "brickStorages": [
