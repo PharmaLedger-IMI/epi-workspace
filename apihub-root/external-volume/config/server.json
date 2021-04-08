@@ -27,6 +27,15 @@
         "epi": {
           "path": "/external-volume/domains/epi/brick-storage"
         },
+        "epidev": {
+          "path": "/external-volume/domains/epidev/brick-storage"
+        },
+        "mah1.epidev": {
+          "path": "/external-volume/domains/mah1.epidev/brick-storage"
+        },
+        "mah2.epidev": {
+          "path": "/external-volume/domains/mah2.epidev/brick-storage"
+        },
         "default": {
           "path": "/internal-volume/domains/default/brick-storage"
         },
@@ -44,6 +53,36 @@
           "type": "FS",
           "option": {
             "path": "/external-volume/domains/epi/anchors",
+            "enableBricksLedger": false
+          },
+          "commands": {
+            "addAnchor": "anchor"
+          }
+        },
+        "epidev": {
+          "type": "FS",
+          "option": {
+            "path": "/external-volume/domains/epidev/anchors",
+            "enableBricksLedger": false
+          },
+          "commands": {
+            "addAnchor": "anchor"
+          }
+        },
+        "mah1.epidev": {
+          "type": "FS",
+          "option": {
+            "path": "/external-volume/domains/mah1.epidev/anchors",
+            "enableBricksLedger": false
+          },
+          "commands": {
+            "addAnchor": "anchor"
+          }
+        },
+        "mah2.epidev": {
+          "type": "FS",
+          "option": {
+            "path": "/external-volume/domains/mah2.epidev/anchors",
             "enableBricksLedger": false
           },
           "commands": {
