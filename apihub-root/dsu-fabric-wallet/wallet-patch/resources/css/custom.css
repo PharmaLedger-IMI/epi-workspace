@@ -15,15 +15,14 @@ div.global_container.is-mobile {
 }
 
 .is-mobile aside {
-    width: 100%;
+    min-width: fit-content;
     height: auto;
     display: block;
     overflow: inherit;
-    padding-top: 5px;
-}
-
-.is-mobile aside psk-user-profile {
     position: absolute;
+    z-index: 10;
+    right: 10px;
+    top: 5px;
 }
 
 aside {
@@ -35,6 +34,7 @@ aside {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     order: 1;
     flex: 1;
+    max-width: fit-content;
     min-width: 320px;
     display: flex;
     flex-direction: column;
