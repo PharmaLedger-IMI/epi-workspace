@@ -7,7 +7,8 @@ export default class IssuerDomainController extends ContainerController {
 
         this.setModel({
             domain: "epi",
-            subdomain: ""
+            subdomain: "",
+            wip: false
         });
 
         this.on("openFeedback", (e) => {
@@ -15,6 +16,7 @@ export default class IssuerDomainController extends ContainerController {
         });
 
         this.on("generate-identity", (event) => {
+            this.model.wip = true;
             const opendsu = require("opendsu");
             const keyssiSpace = opendsu.loadApi("keyssi");
             const seedSSI = keyssiSpace.createTemplateSeedSSI(this.model.domain);
@@ -27,26 +29,26 @@ export default class IssuerDomainController extends ContainerController {
                 let db = opendsu.loadAPI("db");
                 this.mydb = db.getWalletDB(seedSSI, SHARED_DB);
                 this.mydb.insertRecord("system", "created", {created: "true"});
-                this.mydb.on("initialised", function (dsu) {
+                this.mydb.on("initialised",  (dsu) => {
                     console.log("Shared DB got created:", seedSSI.getIdentifier(true), dsu);
-                })
-
-                this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer) => {
-                    if (err || typeof issuer === "undefined") {
-                        issuer = {};
-                    }
-
-                    issuer.domain = this.model.domain;
-                    issuer.subdomain = this.model.subdomain;
-                    issuer.ssi = seedSSI.getIdentifier();
-
-                    this.DSUStorage.setObject(constants.ISSUER_FILE_PATH, issuer, (err) => {
-                        if (err) {
-                            return this.showError(err);
+                    this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer) => {
+                        if (err || typeof issuer === "undefined") {
+                            issuer = {};
                         }
-                        this.History.navigateToPageByTag("issuer");
+
+                        issuer.domain = this.model.domain;
+                        issuer.subdomain = this.model.subdomain;
+                        issuer.ssi = seedSSI.getIdentifier();
+
+                        this.DSUStorage.setObject(constants.ISSUER_FILE_PATH, issuer, (err) => {
+                            if (err) {
+                                return this.showError(err);
+                            }
+                            this.model.wip = false;
+                            this.History.navigateToPageByTag("issuer");
+                        });
                     });
-                });
+                })
             });
         });
     }
