@@ -70,5 +70,14 @@
     "anchoringServices": [
       "$ORIGIN"
     ]
-  }
+  },
+    "vault.nvs": {
+      "replicas": [],
+      "brickStorages": [
+        "$ORIGIN"
+      ],
+      "anchoringServices": [
+        "$ORIGIN"
+      ]
+    }
 }

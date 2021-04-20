@@ -44,6 +44,9 @@
         },
         "vault": {
           "path": "/external-volume/domains/vault/brick-storage"
+        },
+        "vault.nvs": {
+          "path": "/external-volume/domains/vault.nvs/brick-storage"
         }
       }
     },
@@ -119,6 +122,12 @@
           "type": "FS",
           "option": {
             "path": "/external-volume/domains/vault/anchors"
+          }
+        },
+        "vault.nvs": {
+          "type": "FS",
+          "option": {
+            "path": "/external-volume/domains/vault.nvs/anchors"
           }
         }
       }

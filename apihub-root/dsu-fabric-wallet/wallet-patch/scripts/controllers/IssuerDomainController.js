@@ -19,8 +19,10 @@ export default class IssuerDomainController extends ContainerController {
             this.model.wip = true;
             const opendsu = require("opendsu");
             const keyssiSpace = opendsu.loadApi("keyssi");
-            const seedSSI = keyssiSpace.createTemplateSeedSSI(this.model.domain);
-            seedSSI.initialize(this.model.domain, (err) => {
+            //TODO: temporary fix to prevent cache mechanism intercepting vault domain anchoring processes
+            const vault_domain_name = "vault.nvs";
+            const seedSSI = keyssiSpace.createTemplateSeedSSI(vault_domain_name);
+            seedSSI.initialize(vault_domain_name, (err) => {
                 if (err) {
                     return this.showError(err, "Could not initialize the issuer SSI");
                 }
