@@ -45,7 +45,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "4cab7e1c0b1620bf2c32a0abf5b00a31ea6b26e5"
+                    "branch": "release_important_fix",
+                    "commit": "812c6d51f699961f3e2cd48ea4c26cad1264d70c"
                 },
                 {
                     "type": "execute",
