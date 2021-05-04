@@ -46,7 +46,7 @@
                     "target": ".",
                     "collectLog": false,
                     "branch": "release_important_fix",
-                    "commit": "b0e7ae901254561fe6bb6b8c3796cbdd6d13949d"
+                    "commit": "4589973a5a427b172f03675a1b944ba95386ea48"
                 },
                 {
                     "type": "execute",
