@@ -2,6 +2,22 @@
     "workDir": ".",
     "dependencies": [
         {
+            "name": "webcardinal",
+            "src": "https://github.com/webcardinal/webcardinal-bundler",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false,
+                    "commit": "934a0e528f916e8cc4cd4e5b422b73a3eb2b2f20"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd webcardinal && npm install && npm run bundle-all && npm run build"
+                }
+            ]
+        },
+        {
             "name": "cardinal",
             "src": "http://github.com/privatesky/cardinal.git",
             "actions": [
@@ -18,22 +34,6 @@
                 {
                     "type": "execute",
                     "cmd": "cd cardinal && npm run build"
-                }
-            ]
-        },
-        {
-            "name": "webcardinal",
-            "src": "https://github.com/webcardinal/webcardinal-bundler",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "16c870c38009936ce84a10b669049b538e11126a"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd webcardinal && npm install && npm run bundle-all && npm run build"
                 }
             ]
         },
@@ -355,7 +355,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "46919ddeca49f568c1fe4080f355f44cfe8812a5"
+                    "commit": "6eacc109840b64f677ff5405a42560a812dd7565"
                 },
                 {
                     "type": "execute",
