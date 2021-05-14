@@ -328,6 +328,29 @@
                 }
             ]
         },
+		{
+            "name": "ethadapter",
+            "src": "https://github.com/PharmaLedger-IMI/ethadapter",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd ethadapter && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd ethadapter/EthAdaptor && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd ethadapter/SmartContracts && npm install"
+                }
+            ]
+        },
         {
             "name": "dsu-fabric-ssapp",
             "src": "https://github.com/PharmaLedger-IMI/dsu-fabric-ssapp.git",
