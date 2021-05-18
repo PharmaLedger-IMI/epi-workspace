@@ -56,10 +56,10 @@
   "epidev": {
     "replicas": [],
     "brickStorages": [
-      "$ORIGIN"
+      "https://gov-dev.pharmaledger.dev"
     ],
     "anchoringServices": [
-      "$ORIGIN"
+      "https://gov-dev.pharmaledger.dev"
     ]
   },
   "nvs.epi": {
