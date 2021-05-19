@@ -343,7 +343,7 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd ethadapter/EthAdaptor && npm install"
+                    "cmd": "cd ethadapter/EthAdapter && npm install"
                 },
                 {
                     "type": "execute",
