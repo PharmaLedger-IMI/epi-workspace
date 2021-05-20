@@ -57,29 +57,33 @@ To run the application launch your browser (preferably Chrome) in Incognito mode
 
 Enterprise wallet allows creation of Products and Batches.
 
-#### Step 1: Register details
+#### Step 1: Register new account details
 
 ```
 Username: test1234
 
 Email: test@test.test
 
-Password: test1234567890
+Company: Test Company Inc
+
+Password: Test1234567890#
 ```
 
-#### Step 2: Setup credential for Issuer
-    1. Go to Issuer page
-    2. Put "epi" in application domain field and press "Generate Identity"
-    3. Copy the the generated issuer identity
-    4. Paste and save it into /apihub-root/external-volume/issuers-public-identities file. The entry should be on a single line.
-
-#### Step 3: Setup credentials for Holder
-    1. Go to Holder
-    2. Put "epi" in application domain field and press "Generate Identity"
-    3. Copy the generated User Identity 
-    4. Paste it into Issuer's field named "Identity of a new user in domain [epi]" and press "Generate Credentials"
-    5. Copy the generated credentials (from Issuer's page) and paste it into credential field inside the Holder page and press "Save Credentials"
-
+#### Step 2: Setup credentials for Issuer and Holder
+    1. Go to MAH as Issuer page
+    2. Put "epi" in application domain field and press "Generate an identifier as company" button
+    3. Go to User as Holder page
+    4. Enter the application domain "epi" and press "Generate an Identifier as User" button
+    5. Copy the generated User Identity
+    6. Go again to MAH as Issuer page
+    7. Paste the generated User Identity into the first input field
+    8. Press the "Generate Credential" button
+    9. Copy the generated credential
+    10. Go again to User as Holder page
+    11. In the "Human readable User Identity" section paste the previous generated crendetial and press the button "Save Credential"
+    12. Finally for the current user, the Human readable Credential should look like the following: 
+![alt text](user_credential.png)    
+   
 Now you will act as a Holder thus will be able to add Products (and leaflets for it) and create Batches of products.
 
 
