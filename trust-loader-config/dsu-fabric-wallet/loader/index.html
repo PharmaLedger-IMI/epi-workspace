@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <script src="loader-config.js" type="module"></script>
+    <script src="controllers/MainController.js" type="module"></script>
+    <script src="controllers/services/Validator.js" type="module"></script>
+    <script src="bundles/webshims.js"></script>
+    <script src="bundles/loaderBoot.js"></script>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+
+    <!-- pwa configs -->
+    <link href="manifest.webmanifest" rel="manifest"/>
+    <meta content="#157878" name="theme-color"/>
+
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+
+    <link href="assets/images-pwa/apple-touch-icon.png" rel="apple-touch-icon"/>
+    <link href="assets/images-pwa/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152"/>
+    <link href="assets/images-pwa/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180"/>
+    <link href="assets/images-pwa/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167"/>
+
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <link href="assets/images-pwa/apple_splash_2048.png" rel="apple-touch-startup-image" sizes="2048x2732"/>
+    <link href="assets/images-pwa/apple_splash_1668.png" rel="apple-touch-startup-image" sizes="1668x2224"/>
+    <link href="assets/images-pwa/apple_splash_1536.png" rel="apple-touch-startup-image" sizes="1536x2048"/>
+    <link href="assets/images-pwa/apple_splash_1125.png" rel="apple-touch-startup-image" sizes="1125x2436"/>
+    <link href="assets/images-pwa/apple_splash_1242.png" rel="apple-touch-startup-image" sizes="1242x2208"/>
+    <link href="assets/images-pwa/apple_splash_750.png" rel="apple-touch-startup-image" sizes="750x1334"/>
+    <link href="assets/images-pwa/apple_splash_640.png" rel="apple-touch-startup-image" sizes="640x1136"/>
+    <!-- /pwa configs -->
+
+    <link href="assets/pwa/pwa.css" rel="stylesheet" type="text/css"/>
+    <script src="assets/pwa/pwa.js"></script>
+</head>
+<body style="display: none">
+<script>
+  console.log("Booting SSApp loader...");
+</script>
+<div class="wizard-container">
+    <div class="align-self-center bd-highlight content" id="restore-new-container">
+        <div class="title" id="loader-title"></div>
+        <div class="caption" id="loader-caption"></div>
+        <div class="actions d-flex flex-column align-items-center">
+
+            <a class="btn btn-csb-loader btn-csb-new col-xl-2 col-sm-12 col-md-3" href="newWallet.html" id="new-wallet"
+               type="button"></a>
+            <a class="btn btn-csb-loader btn-csb-restore col-xl-2 col-sm-12 col-md-3 mt-2" href="?login"
+               id="access-wallet" type="button"></a>
+            <a class="btn btn-csb-loader btn-csb-restore col-xl-2 col-sm-12 col-md-3 mt-2" href="recoverWallet.html"
+               id="recover-wallet"
+               type="button"></a>
+
+        </div>
+
+    </div>
+
+    <div class="align-self-center bd-highlight" id="credentials-container">
+        <div class="credentials-panel-container">
+            <div class="credentials-panel card text-white bg-violet mb-3">
+                <div class="card-header" id="wallet-authorization"></div>
+                <div class="card-body">
+                    <h5 class="card-title" id="enter-credentials"></h5>
+                    <form class="credentials-panel-action-box" onsubmit="controller.openWallet(event)">
+                        <div class="d-none" id="pin-container">
+                            <div class="form-group" id="pin-input-container">
+                                <label for="pincode">Insert pin code</label><br>
+                                <input id="pincode" oninput="controller.handlePin(event)"
+                                       type="text"
+                                       valid="false"/>
+                                <small class="form-text text-muted" id="pincode-help"></small>
+                            </div>
+                            <div class="form-group">
+                                <input id="pin-checkbox" name="pin-checkbox"
+                                       oninput="controller.pinCheckboxHandler(event)" type="checkbox">
+                                <label for="pin-checkbox">Login with credentials</label>
+                            </div>
+                        </div>
+
+                        <div class="row ml-1">
+                            <label class="error" id="register-details-error"></label>
+                        </div>
+                        <div class="buttons-box buttons-box-set-register-details d-flex justify-content-between">
+                            <button class="btn btn-csb-loader btn-csb-new" id="back-btn"
+                                    onclick="controller.goToLandingPage()"
+                                    type="button"></button>
+                            <button class="btn btn-csb-loader btn-csb-restore float-right"
+                                    disabled="disabled"
+                                    id="open-wallet-btn"
+                                    type="submit"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

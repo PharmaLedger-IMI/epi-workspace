@@ -1,0 +1,118 @@
+<html>
+<head>
+    <title></title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <!-- <base href=".." target="_self"> -->
+    <script src="bundles/webshims.js"></script>
+    <script src="bundles/loaderBoot.js"></script>
+    <script src="controllers/NewController.js" type="module"></script>
+    <script src="controllers/services/Validator.js" type="module"></script>
+    <script src="assets/js/stepper.min.js"></script>
+    <link href="assets/css/stepper.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/fontawesome-free-5.12.1-web/css/all.min.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body style="display: none">
+<div class="wizard-container">
+    <div class="bs-stepper stepper-content col-md-6 col-xl-4 ml-auto mr-auto overflow-auto" id="psk-wizard">
+        <div class="bs-stepper-header p-0 m-0" role="tablist">
+            <div class="step" data-target="#register-details-step">
+                <button aria-controls="register-details-step" class="step-trigger" id="`stepper1trigger2`" role="tab"
+                        type="button">
+                    <span class="bs-stepper-circle">1</span>
+                    <span class="bs-stepper-label" id="step-register-details"></span>
+                </button>
+            </div>
+            <div class="bs-stepper-line"></div>
+            <div class="step" data-target="#complete-step">
+                <button aria-controls="complete-step" class="step-trigger" id="stepper1trigger3" role="tab"
+                        type="button">
+                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-label" id="step-complete"></span>
+                </button>
+            </div>
+        </div>
+        <div class="bs-stepper-content set-register-details-content">
+            <div aria-labelledby="stepper1trigger2" class="bs-stepper-pane" id="register-details-step" role="tabpanel">
+                <form onSubmit="controller.submitPassword(event)">
+                    <div id="more-information"></div>
+                    <div class="col form-content-container">
+                        <div class="buttons-box buttons-box-set-register-details d-flex justify-content-between">
+                            <button class="btn btn-csb-loader btn-csb-new" id="back-btn"
+                                    onclick="controller.goToLandingPage()"
+                                    type="button"></button>
+                            <button class="btn btn-csb-loader btn-csb-restore btn-primary"
+                                    id="register-btn" onclick="controller.submitPassword(event)"></button>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1">
+                        <label class="error" id="register-details-error"></label>
+                    </div>
+                </form>
+            </div>
+
+            <div aria-labelledby="stepper1trigger3" class="bs-stepper-pane" id="complete-step"
+                 role="tabpanel">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="form-group">
+                        <label id="register-successfully"></label>
+                    </div>
+                    <div class="form-group w-100 d-flex flex-column recovery-code-container">
+                        <div>Please write your recovery code down on paper and keep it in a safe, offline place.
+                            Never share your recovery code with anyone and never share it in any online website or
+                            service.
+                        </div>
+                        <div class="text-danger mt-2">If you lose your recovery code, your wallets cannot be recovered
+                        </div>
+                        <div id="print-area">
+                            <div class="mt-2">Your recovery code:</div>
+                            <div class="text-break text-primary" id="recovery-code"></div>
+                        </div>
+                        <div class="d-flex">
+                            <button class="btn btn-primary hidden-print ml-auto mr-auto mt-1"
+                                    onclick="controller.printCode();">
+                                <span aria-hidden="true"></span> Print code <i class="fas fa-print"></i>
+                            </button>
+                            <button class="btn btn-primary hidden-print ml-auto mr-auto mt-1"
+                                    onclick="controller.copyCode();">
+                                <span aria-hidden="true"></span> Copy to clipboard <i class="far fa-copy"></i></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="d-none" id="pin-container">
+                        <div class="form-group">
+                            <input id="pin-checkbox" name="pin-checkbox" oninput="controller.pinCheckboxHandler(event)"
+                                   type="checkbox"
+                                   value="usepin">
+                            <label for="pin-checkbox">I want to login with pin</label>
+                        </div>
+                        <div class="form-group d-none" id="pin-input-container">
+                            <label for="pincode">Set your pin code</label><br>
+                            <input id="pincode" oninput="validator.regexValidator(event, LOADER_GLOBALS.PINCODE_REGEX)"
+                                   type="text"
+                                   valid="false"/>
+                            <small class="form-text text-muted" id="pincode-help"></small>
+                        </div>
+                    </div>
+
+
+                    <div class="row ml-1">
+                        <label class="error" id="error"></label>
+                    </div>
+
+                    <button class="btn btn-csb-loader btn-csb-restore btn-primary"
+                            id="access-wallet" onclick="controller.submitAfterRegistration(event)">Open Wallet
+                    </button>
+                    <!-- <a class="btn btn-csb-restore btn-csb-loader btn-primary mt-5" href="index.html?login"
+                        id="open-wallet-btn" type="button">Open Wallet</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
