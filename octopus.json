@@ -597,6 +597,21 @@
             ]
         }
     ],
+
+    "build-loader": [  {
+        "name": "trust-loader-config",
+        "actions": [
+            {
+                "type": "copy",
+                "src": "./trust-loader-config",
+                "target": "./apihub-root",
+                "options": {
+                    "overwrite": true
+                }
+            }
+        ]
+    }
+    ],
     "install-mobile" : [
         {
             "name": "mobile/scan-app/android",
