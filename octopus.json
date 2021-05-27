@@ -61,6 +61,19 @@
             ]
         },
         {
+            "name": "installing epi-utils",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd epi-utils && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd epi-utils && npm run build"
+                }
+            ]
+        },
+        {
             "name": "menu-wallet-prototype",
             "src": "http://github.com/privatesky/menu-wallet-prototype.git",
             "actions": [
@@ -368,6 +381,23 @@
         }
     ],
     "build": [
+        {
+            "name": "building epi-utils",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd epi-utils && npm run build"
+                },
+                {
+                    "type": "copy",
+                    "src": "epi-utils/build/bundles/epiUtils.js",
+                    "target": "dsu-fabric-ssapp/code/epiUtils.js",
+                    "options": {
+                        "overwrite": true
+                    }
+                }
+            ]
+        },
         {
             "name": "cardinal-wallet-build",
             "src": "",
