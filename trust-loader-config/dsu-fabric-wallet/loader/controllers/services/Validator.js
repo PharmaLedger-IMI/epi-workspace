@@ -80,6 +80,18 @@ function Validator() {
     this.manageHelpField(confirmPassword, confirmPasswordIsValid, event.target.id);
     return confirmPassword;
   }
+
+  this.validateForm = function (formFields){
+    formFields.forEach((formField)=>{
+      const element = document.getElementById(formField);
+      if(element){
+        element.dispatchEvent(new Event('input'));
+      }
+    });
+
+    let hasInvalidField = !!formFields.find(field => document.getElementById(field).getAttribute('valid') === "false");
+    return !hasInvalidField;
+  }
 }
 
 

@@ -64,9 +64,7 @@ function RecoverWalletController() {
   };
 
   this.formIsValid = function () {
-    const passFiled = document.getElementById("password");
-    const confirmPassField = document.getElementById("confirm-password");
-    return passFiled.getAttribute('valid') && confirmPassField.getAttribute('valid');
+    return validator.validateForm(["password","confirm-password"]);
   }
 
   function createWallet() {

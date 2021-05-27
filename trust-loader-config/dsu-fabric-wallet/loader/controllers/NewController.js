@@ -2,14 +2,10 @@ import "./../loader-config.js";
 import {Spinner, prepareView, createFormElement, toggleViewPassword} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import NavigatorUtils from "./services/NavigatorUtils.js";
-import WalletRunner from "./services/WalletRunner.js";
 
 
 function NewController() {
 
-  let blockchainDomain;
-  const WALLET_MOUNT_POINT = "/writableDSU";
-  const USER_CREDENTIALS_FILE = "user-credentials.json";
   const USER_DETAILS_FILE = "user-details.json";
   let wizard;
   let spinner;
@@ -31,16 +27,9 @@ function NewController() {
   }
 
   this.printCode = function () {
-    var printContents = document.getElementById("print-area").innerHTML;
-    var originalContents = document.body.innerHTML;
-
-    document.body.innerHTML = printContents;
-
     window.print();
-
-    document.body.innerHTML = originalContents;
-
   }
+
   this.copyCode = function copy() {
     let range = document.createRange();
     range.selectNode(document.getElementById("recovery-code"));
@@ -123,27 +112,6 @@ function NewController() {
 
           });
 
-          //document.getElementById("seed").value = keySSI;
-          /*          const keySSIApi = require("opendsu").loadAPI('keyssi');
-                    const resolver = require("opendsu").loadAPI('resolver');
-                    walletService.create(LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(true), (err, wallet) => {
-                      if (err) {
-                        document.getElementById("register-details-error").innerText = "Could not register pin";
-                        return console.error(err);
-                      }
-                      walletService.getConstDSU(LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(true), (err, constDSU) => {
-                        constDSU.unmount(WALLET_MOUNT_POINT, (err) => {
-                          if (err) {
-                            return console.error(err);
-                          }
-                          constDSU.mount(WALLET_MOUNT_POINT, keySSI, (err) => {
-                            if (err) {
-                              return console.error(err);
-                            }
-                          })
-                        })
-                      })
-                    })*/
           document.getElementById("recovery-code").innerHTML = keySSI;
           spinner.removeFromView();
           wizard.next();
@@ -181,28 +149,6 @@ function NewController() {
       console.log('decrypt ', LOADER_GLOBALS.loadPinCodeCredentials(document.getElementById("pincode").value))
     }
 
-    /*   if (LOADER_GLOBALS.credentials.usePinCode && document.getElementById("pincode").getAttribute('valid')) {
-         //create a wallet for credentials
-         walletService.load(LOADER_GLOBALS.environment.domain, document.getElementById("pincode").value, (err, pinwallet) => {
-           if (err) {
-             console.error("Failed to load the wallet in domain:", LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(), err);
-             return (document.getElementById("pincode-helper").innerText = "Wrong pin, try an other one");
-           }
-           pinwallet.getKeySSIAsString((err, keySSI) => {
-             if (err) {
-               console.error(err);
-               return console.error("Operation getKeySSIAsString for pincode failed. Try again");
-             }
-             pinwallet.writeFile(USER_CREDENTIALS_FILE, JSON.stringify(LOADER_GLOBALS.credentials), (err, data) => {
-               if (err) {
-                 return console.log(err);
-               }
-             });
-             console.log("Created pin wallet with data: ", data);
-           })
-         })
-       }*/
-
     walletService.load(LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(), (err, wallet) => {
       if (err) {
         spinner.removeFromView();
@@ -220,10 +166,6 @@ function NewController() {
         spinner.removeFromView();
         const basePath = window.location.href.split("loader")[0];
         window.location.replace(basePath + "loader/?login=auto");
-        /*        new WalletRunner({
-                  seed: keySSI,
-                  spinner
-                }).run();*/
       });
     });
   }
@@ -233,8 +175,7 @@ function NewController() {
   };
 
   this.formIsValid = function () {
-    let hasInvalidField = !!formFields.find(field => document.getElementById(field).getAttribute('valid') === "false");
-    return !hasInvalidField
+   return validator.validateForm(formFields);
   }
 
   this.createForm = function () {
@@ -292,7 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById(item.fieldId)) {
       let htmlElem = document.getElementById(item.fieldId);
       htmlElem.value = LOADER_GLOBALS.credentials[item.fieldId] || "";
-      htmlElem.dispatchEvent(new Event('input'));
     }
   });
 

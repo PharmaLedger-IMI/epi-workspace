@@ -6,7 +6,6 @@ import WalletRunner from "./services/WalletRunner.js";
 
 function MainController() {
 
-  let USER_DETAILS_FILE = "user-details.json";
   const DEVELOPMENT_EMAIL = "dev@autologin.dev";
   const DEVELOPMENT_USERNAME = "autologin";
 
@@ -208,8 +207,7 @@ function MainController() {
   };
 
   this.formIsValid = function () {
-    let hasInvalidField = !!self.formFields.find(field => document.getElementById(field).getAttribute('valid') === "false");
-    return !hasInvalidField
+      return validator.validateForm(self.formFields);
   }
 
   this.pinCheckboxHandler = function (event) {
@@ -236,7 +234,6 @@ function MainController() {
       if (document.getElementById(item)) {
         let htmlElem = document.getElementById(item);
         htmlElem.value = LOADER_GLOBALS.credentials[item] || "";
-        htmlElem.dispatchEvent(new Event('input'));
       }
     });
 
