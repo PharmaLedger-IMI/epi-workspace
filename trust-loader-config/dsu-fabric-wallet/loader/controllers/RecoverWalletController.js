@@ -1,10 +1,8 @@
 import "./../loader-config.js";
-import {Spinner, prepareView, createFormElement, toggleViewPassword} from "./services/UIService.js";
+import {Spinner, prepareView, createFormElement, toggleViewPassword, showFormError} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import FileService from "./services/FileService.js";
 import WalletRunner from "./services/WalletRunner.js";
-
-require
 
 function RecoverWalletController() {
   const WALLET_MOUNT_POINT = "/writableDSU";
@@ -40,7 +38,13 @@ function RecoverWalletController() {
 
   this.getWalletFromKeySSI = function (keySSI, callback) {
     const resolver = require("opendsu").loadAPI("resolver");
-    resolver.loadDSU(keySSI, callback);
+    try {
+      resolver.loadDSU(keySSI, callback);
+    } catch (err) {
+      spinner.removeFromView();
+      showFormError(document.getElementById("recover-key-form"), LOADER_GLOBALS.LABELS_DICTIONARY.WRONG_KEY);
+    }
+
   }
 
   function getWalletSecretArrayKey(usePin) {
@@ -52,12 +56,7 @@ function RecoverWalletController() {
     event.preventDefault();
     event.stopImmediatePropagation();
     if (this.formIsValid()) {
-      LOADER_GLOBALS.clearCredentials();
-      formFields.forEach(field => {
-        if (field !== "confirm-password") {
-          LOADER_GLOBALS.credentials[field] = document.getElementById(field).value;
-        }
-      })
+      LOADER_GLOBALS.credentials.password =document.getElementById('password').value;
       createWallet();
     } else {
       document.getElementById("register-details-error").innerHTML = LOADER_GLOBALS.LABELS_DICTIONARY.INVALID_CREDENTIALS;
@@ -70,20 +69,22 @@ function RecoverWalletController() {
     return passFiled.getAttribute('valid') && confirmPassField.getAttribute('valid');
   }
 
- function createWallet(){
-   walletService.createWithKeySSI(LOADER_GLOBALS.environment.domain, {
-     secret: getWalletSecretArrayKey(),
-     walletKeySSI: recoveryKey
-   }, (err, newWallet) => {
-     if (err) {
-       return console.error(err);
-     }
-     new WalletRunner({
-       seed: recoveryKey,
-       spinner
-     }).run();
-   });
- }
+  function createWallet() {
+    walletService.createWithKeySSI(LOADER_GLOBALS.environment.domain, {
+      secret: getWalletSecretArrayKey(),
+      walletKeySSI: recoveryKey
+    }, (err, newWallet) => {
+      if (err) {
+        spinner.removeFromView();
+        showFormError(document.getElementById("recover-key-form"), LOADER_GLOBALS.LABELS_DICTIONARY.WRONG_KEY);
+        return console.error(err);
+      }
+      new WalletRunner({
+        seed: recoveryKey,
+        spinner
+      }).run();
+    });
+  }
 
   this.openWallet = function (event) {
     if (event) {
@@ -94,6 +95,8 @@ function RecoverWalletController() {
     recoveryKey = document.getElementById("recover-key").value;
     this.getWalletFromKeySSI(recoveryKey, (err, wallet) => {
       if (err) {
+        spinner.removeFromView();
+        showFormError(document.getElementById("recover-key-form"), LOADER_GLOBALS.LABELS_DICTIONARY.WRONG_KEY);
         return console.log(err);
       }
       this.getUserDetailsFromFile(wallet, (err, userData) => {
@@ -107,17 +110,27 @@ function RecoverWalletController() {
         // const domElement = document.getElementsByClassName("recover-key-group")[0];
         formElement.remove();
         let newFromElement = document.getElementsByClassName("credentials-form")[0];
+        newFromElement.classList.remove("d-none");
+        let readonlyFormContent = document.getElementsByClassName("readonly-user-data")[0]
         let newFromContent = document.getElementsByClassName("form-content-container")[0];
+        let recoveryText = document.getElementById("recovery-text").innerHTML = LOADER_GLOBALS.LABELS_DICTIONARY.RECOVERY_TEXT
         newFromElement.append(buttons);
+
+        LOADER_GLOBALS.clearCredentials();
         LOADER_GLOBALS.REGISTRATION_FIELDS.slice().reverse().forEach(field => {
           if (field.visible) {
             formFields.push(field.fieldId);
-            let inputElement = createFormElement(field, {
-              inputType: "labeldInput",
-              readonly: true,
-              value: userData[field.fieldId]
-            });
-            newFromContent.prepend(inputElement);
+            if (field.fieldId === "password" || field.fieldId === "confirm-password") {
+              let inputElement = createFormElement(field, {
+                inputType: "helperInput"
+              });
+              newFromContent.prepend(inputElement);
+            } else {
+              LOADER_GLOBALS.credentials[field.fieldId] = userData[field.fieldId];
+              let readonlyElement = document.createElement("div");
+              readonlyElement.innerHTML = `<b><span class="label">${field.fieldLabel}:</span></b> <span class="field-value">${userData[field.fieldId]}</span>`
+              readonlyFormContent.prepend(readonlyElement);
+            }
           }
         })
         let passToggles = document.getElementsByClassName("toggle-password");
@@ -127,23 +140,6 @@ function RecoverWalletController() {
           })
         }
         spinner.removeFromView();
-        /*        walletService.createWithKeySSI(LOADER_GLOBALS.environment.domain, {
-                  secret: Object.values(userData),
-                  walletKeySSI: recoveryKey
-                }, (err, newWallet) => {
-                  if (err) {
-                    return console.error(err);
-                  }
-                  Object.keys(userData).forEach(key=>{
-                    LOADER_GLOBALS.credentials[key] = userData[key];
-                  })
-                  LOADER_GLOBALS.saveCredentials();
-
-                  new WalletRunner({
-                    seed: recoveryKey,
-                    spinner
-                  }).run();
-                });*/
       });
     })
   };

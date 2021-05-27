@@ -104,7 +104,10 @@ Add a form element based on configuration object ex:
   id: "name",
   type:"text",
   help: "use just text",
-  placeholder: "insert your name"
+  placeholder: "insert your name",
+  fieldLabel: "Label for the field",
+  validator: "a validator to use on filed",
+  inputType: "simpleInput | labeldInput | helperInput"
   }
 * */
 function createFormElement(fieldOptions, controllerOptions) {
@@ -117,10 +120,10 @@ function createFormElement(fieldOptions, controllerOptions) {
   const readonly = controllerOptions.readonly ? "readonly" : "";
   const inputValue = controllerOptions.value || "";
   let element = document.createElement("div");
-  element.classList.add('form-group');
-  element.classList.add('mb-1');
+  element.classList.add('form-group', 'mb-1');
 
   let inputField = `<input class="form-control" id="${id}" oninput="${validator}" ${readonly} type="${type}" value="${inputValue}" placeholder="${placeholder}"/>`;
+
   if (type === "password") {
     inputField = `<div class="d-flex password-wrapper">
                     <input class="form-control" id="${id}" oninput="${validator}" type="${type}" placeholder="${placeholder}"/>
@@ -144,6 +147,28 @@ function createFormElement(fieldOptions, controllerOptions) {
   return element;
 }
 
+/*
+* show error on form submit
+* */
+function showFormError(formElement, message) {
+  let element = document.createElement("div");
+  element.classList.add("row", "ml-1");
+  element.id = "custom-form-error-message";
+  element.innerHTML = `<label class="error" id="register-details-error">${message}</label>`
+  formElement.append(element);
+}
+
+/*
+* remove form error
+* */
+function removeFormError() {
+  let element = document.getElementById("custom-form-error-message");
+  element.remove()
+}
+
+/*
+* show/hide content of a password input
+* */
 function toggleViewPassword(event) {
   const inputId = event.target.getAttribute("input-id");
   event.target.classList.toggle("fa-eye-slash");
@@ -172,5 +197,20 @@ function prepareView(page_labels) {
   }
 }
 
-export {Spinner, prepareView, createFormElement, toggleViewPassword};
+function prepareViewContent() {
+  const domElements = document.querySelectorAll('[data-model]');
+  for (let i = 0; i < domElements.length; i++) {
+    domElements[i].innerHTML = LOADER_GLOBALS.LABELS_DICTIONARY[domElements[i].getAttribute("data-model")];
+  }
+}
+
+export {
+  Spinner,
+  prepareView,
+  prepareViewContent,
+  createFormElement,
+  toggleViewPassword,
+  showFormError,
+  removeFormError
+};
 

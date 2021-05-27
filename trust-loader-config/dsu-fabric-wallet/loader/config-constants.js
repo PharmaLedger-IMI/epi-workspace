@@ -72,7 +72,7 @@ let LOADER_GLOBALS = {
       action: function () {
         localStorage.removeItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY);
         const basePath = window.location.href.split("loader")[0];
-        window.location.replace(basePath + "loader/?login");
+        window.location.replace(basePath + "loader");
       }
     },
     option2: {
@@ -81,6 +81,14 @@ let LOADER_GLOBALS = {
         console.log('opt2 click', window.location.href);
         const basePath = window.location.href.split("loader")[0];
         window.location.replace(basePath + "loader/changePassword.html");
+      }
+    },
+    option3: {
+      label: "Change pin",
+      action: function () {
+        console.log('opt3 click', window.location.href);
+        const basePath = window.location.href.split("loader")[0];
+        window.location.replace(basePath + "loader/changePin.html");
       }
     }
   },
@@ -94,7 +102,9 @@ let LOADER_GLOBALS = {
     REGISTER_DETAILS: "Register details",
     COMPLETE: "Complete",
     INVALID_CREDENTIALS: "Invalid credentials",
-
+    WRONG_KEY: "No wallet was found for provided key, please check if provided key is correct.",
+    RECOVERY_TEXT: "This are recovered wallet data. Please submit a new password. This data and password will be used for future authentication.",
+    PINCODE_LABEL: "Pin code",
     /* USER_FULL_NAME_LABEL: "Enter your full name",
      USER_FULL_NAME_HELP: "User full name",
      USER_FULL_NAME_PLACEHOLDER: "Ex. Jhon Doe",
@@ -124,7 +134,7 @@ let LOADER_GLOBALS = {
         ENTER_CONFIRM_PASSWORD: "Confirm password",*/
 
     BACK_BUTTON_MESSAGE: "Back",
-    REGISTER_BUTTON_MESSAGE: "Register",
+    REGISTER_BUTTON_MESSAGE: "Submit",
     REGISTER_SUCCESSFULLY: "Register successfully",
 
     CHANGE_PASSWORD: "Change your password",

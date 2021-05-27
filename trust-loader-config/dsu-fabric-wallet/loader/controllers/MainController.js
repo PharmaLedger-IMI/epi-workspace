@@ -1,5 +1,5 @@
 import "./../loader-config.js";
-import {Spinner, prepareView, createFormElement, toggleViewPassword} from "./services/UIService.js";
+import {Spinner, prepareView, createFormElement, toggleViewPassword, prepareViewContent} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import FileService from "./services/FileService.js";
 import WalletRunner from "./services/WalletRunner.js";
@@ -302,42 +302,21 @@ if (urlParams.get('login') === "auto" && LOADER_GLOBALS.credentials && Object.ke
   controller.openWallet();
 } else {
   document.addEventListener("DOMContentLoaded", function () {
-    let LABELS = LOADER_GLOBALS.LABELS_DICTIONARY;
-    const page_labels = [
-      {title: LABELS.APP_NAME},
-      {"#loader-title": LABELS.APP_NAME},
-      {"#loader-caption": LABELS.APP_DESCRIPTION},
-      {"#new-wallet": LABELS.NEW_WALLET},
-      {"#access-wallet": LABELS.ACCESS_WALLET},
-      {"#recover-wallet": LABELS.RECOVER_WALLET},
-      {"#wallet-authorization": LABELS.WALLET_AUTHORIZATION},
-      {"#enter-credentials": LABELS.ENTER_CREDENTIALS},
-      {"#open-wallet-btn": LABELS.OPEN_WALLET},
-      {"#back-btn": LABELS.BACK_BUTTON_MESSAGE},
-      {"#old-password-label": "Old pass:"},
-      {"#set-up-password": LABELS.SET_UP_PASSWORD},
-      {"#set-up-password-help": LABELS.SET_UP_PASSWORD_HELP},
-      {"#set-up-confirm-password": LABELS.SET_UP_CONFIRM_PASSWORD},
-      {"#set-up-confirm-password-help": LABELS.SET_UP_CONFIRM_PASSWORD_HELP},
-      {"#confirm-password": LABELS.ENTER_CONFIRM_PASSWORD, attribute: "placeholder",},
-
-      {"#register-btn": LABELS.REGISTER_BUTTON_MESSAGE},
-      {"#register-successfully": LABELS.REGISTER_SUCCESSFULLY},
-    ];
 
     if (LOADER_GLOBALS.hasPinCodes()) {
       document.getElementById("pin-container").classList.remove("d-none");
       document.getElementById("open-wallet-btn").removeAttribute("disabled");
-      prepareView(page_labels);
       controller.init();
       controller.loginWithPin = true;
     } else {
       controller.createForm();
-      prepareView(page_labels);
       controller.init();
       controller.populateForm();
       controller.loginWithPin = false
     }
+
+    prepareViewContent();
+
     let passToggles = document.getElementsByClassName("toggle-password");
     for (let i = 0; i < passToggles.length; i++) {
       passToggles[i].addEventListener("click", (event) => {

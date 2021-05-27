@@ -1,5 +1,5 @@
 import "./../loader-config.js";
-import {Spinner, prepareView} from "./services/UIService.js";
+import {Spinner, prepareView, prepareViewContent} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import FileService from "./services/FileService.js";
 import WalletRunner from "./services/WalletRunner.js";
@@ -182,21 +182,8 @@ function getOldSecretArrKey() {
 let controller = new ChangePasswordController();
 
 document.addEventListener("DOMContentLoaded", function () {
-  let LABELS = LOADER_GLOBALS.LABELS_DICTIONARY;
-  const page_labels = [
-    {title: LABELS.APP_NAME},
-    {"#enter-credentials": LABELS.CHANGE_PASSWORD},
-    {"#old-password-label": LABELS.OLD_PASSWORD_LABEL},
-    {"#old-password-help": LABELS.OLD_PASSWORD_HELP},
-    {"#password-label": LABELS.NEW_PASSWORD_LABEL},
-    {"#password-help": LABELS.NEW_PASSWORD_HELP},
-    {"#confirm-password-label": LABELS.CONFIRM_NEW_PASSWORD_LABEL},
-    {"#confirm-password-help": LABELS.CONFIRM_NEW_PASSWORD_HELP},
-    {"#back-btn": LABELS.BACK_BUTTON_MESSAGE},
-    {"#register-btn": LABELS.SUBMIT_BUTTON_MESSAGE},
-  ];
 
-  prepareView(page_labels);
+  prepareViewContent();
   controller.init();
 
   //for test

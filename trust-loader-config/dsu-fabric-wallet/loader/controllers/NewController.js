@@ -42,9 +42,11 @@ function NewController() {
 
   }
   this.copyCode = function copy() {
-    var range = document.createRange();
+    let range = document.createRange();
     range.selectNode(document.getElementById("recovery-code"));
-    window.getSelection().addRange(range);
+    let selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
     document.execCommand("copy");
   }
 

@@ -17,11 +17,12 @@
 <div class="wizard-container">
     <div class="align-self-center bd-highlight" id="credentials-container">
         <div class="credentials-panel-container">
-            <div class="credentials-panel card text-white bg-violet mb-3">
+            <div class="credentials-panel form-background mb-3">
                 <div class="card-header" id="wallet-authorization"></div>
                 <div class="card-body">
                     <h5 class="card-title" id="recover-wallet"></h5>
-                    <form class="credentials-panel-action-box recover-key-form" onsubmit="controller.openWallet(event)">
+                    <form class="credentials-panel-action-box recover-key-form" id="recover-key-form"
+                          onsubmit="controller.openWallet(event)">
                         <div class="form-group col text-left recover-key-group">
                             <label class="register-detail-label" for="recover-key" id="recover-key-label"></label>
                             <input class="form-control" id="recover-key" type="text"/>
@@ -36,13 +37,14 @@
                                     type="submit"
                             ></button>
                         </div>
-                    </form>
-                    <form class="credentials-panel-action-box credentials-form" onSubmit="controller.submitPassword(event)">
-                           <div class="col form-content-container text-left">
-                        </div>
 
-                        <div class="row ml-1">
-                            <label class="error" id="register-details-error"></label>
+                    </form>
+                    <form class="credentials-panel-action-box credentials-form d-none" id="recover-key-credentials-form"
+                          onSubmit="controller.submitPassword(event)">
+                        <div id="recovery-text" class="text-left mb-3"></div>
+                        <div class="readonly-user-data text-left ml-3"></div>
+                        <div class="col form-content-container text-left mt-3">
+
                         </div>
                     </form>
                 </div>
