@@ -1,5 +1,5 @@
 import "./../loader-config.js";
-import {Spinner, prepareView, createFormElement, toggleViewPassword} from "./services/UIService.js";
+import {Spinner, prepareView, createFormElement, toggleViewPassword, prepareViewContent} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import NavigatorUtils from "./services/NavigatorUtils.js";
 
@@ -212,14 +212,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   controller.createForm();
   prepareView(page_labels);
-
-  //add ckick listener to toggle password view
+  prepareViewContent();
+  /*//add ckick listener to toggle password view
   let passToggles = document.getElementsByClassName("toggle-password");
   for (let i = 0; i < passToggles.length; i++) {
     passToggles[i].addEventListener("click", (event) => {
       toggleViewPassword(event);
     })
-  }
+  }*/
 
 
   if (LOADER_GLOBALS.environment.alowPinLogin) {

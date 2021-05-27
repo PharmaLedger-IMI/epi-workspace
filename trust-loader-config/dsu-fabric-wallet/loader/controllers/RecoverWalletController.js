@@ -1,5 +1,11 @@
 import "./../loader-config.js";
-import {Spinner, prepareView, createFormElement, toggleViewPassword, showFormError} from "./services/UIService.js";
+import {
+  Spinner,
+  toggleViewPassword,
+  showFormError,
+  prepareViewContent,
+  addToggleViewPassword
+} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import FileService from "./services/FileService.js";
 import WalletRunner from "./services/WalletRunner.js";
@@ -56,15 +62,29 @@ function RecoverWalletController() {
     event.preventDefault();
     event.stopImmediatePropagation();
     if (this.formIsValid()) {
-      LOADER_GLOBALS.credentials.password =document.getElementById('password').value;
+      LOADER_GLOBALS.credentials.password = document.getElementById('password').value;
       createWallet();
     } else {
       document.getElementById("register-details-error").innerHTML = LOADER_GLOBALS.LABELS_DICTIONARY.INVALID_CREDENTIALS;
     }
   };
 
+  this.validatePasswords = function (event) {
+    let password = document.getElementById("password");
+    let passwordConfirm = document.getElementById("confirm-password");
+    if (event) {
+      if (event.target.id === "password") {
+        window.validator.regexValidator(event, LOADER_GLOBALS.PASSWORD_REGEX)
+        passwordConfirm.dispatchEvent(new Event("input"));
+      }
+      if (event.target.id === "confirm-password") {
+        window.validator.equalValueValidator(event, password.value);
+      }
+    }
+  }
+
   this.formIsValid = function () {
-    return validator.validateForm(["password","confirm-password"]);
+    return validator.validateForm(["password", "confirm-password"]);
   }
 
   function createWallet() {
@@ -108,22 +128,17 @@ function RecoverWalletController() {
         // const domElement = document.getElementsByClassName("recover-key-group")[0];
         formElement.remove();
         let newFromElement = document.getElementsByClassName("credentials-form")[0];
-        newFromElement.classList.remove("d-none");
+        newFromElement.removeAttribute('hidden');
         let readonlyFormContent = document.getElementsByClassName("readonly-user-data")[0]
         let newFromContent = document.getElementsByClassName("form-content-container")[0];
         let recoveryText = document.getElementById("recovery-text").innerHTML = LOADER_GLOBALS.LABELS_DICTIONARY.RECOVERY_TEXT
         newFromElement.append(buttons);
-
+        addToggleViewPassword();
         LOADER_GLOBALS.clearCredentials();
         LOADER_GLOBALS.REGISTRATION_FIELDS.slice().reverse().forEach(field => {
           if (field.visible) {
             formFields.push(field.fieldId);
-            if (field.fieldId === "password" || field.fieldId === "confirm-password") {
-              let inputElement = createFormElement(field, {
-                inputType: "helperInput"
-              });
-              newFromContent.prepend(inputElement);
-            } else {
+            if (field.fieldId !== "password" && field.fieldId !== "confirm-password") {
               LOADER_GLOBALS.credentials[field.fieldId] = userData[field.fieldId];
               let readonlyElement = document.createElement("div");
               readonlyElement.innerHTML = `<b><span class="label">${field.fieldLabel}:</span></b> <span class="field-value">${userData[field.fieldId]}</span>`
@@ -150,17 +165,8 @@ function getWalletSecretArrayKey() {
 let controller = new RecoverWalletController();
 
 document.addEventListener("DOMContentLoaded", function () {
-  let LABELS = LOADER_GLOBALS.LABELS_DICTIONARY;
-  const page_labels = [
-    {title: LABELS.APP_NAME},
-    {"#recover-wallet": LABELS.RECOVER_WALLET},
-    {"#recover-key-label": LABELS.RECOVER_WALLET_LABEL},
-    {"#recover-key-help": LABELS.RECOVER_WALLET_HELP},
-    {"#back-btn": LABELS.BACK_BUTTON_MESSAGE},
-    {"#register-btn": LABELS.REGISTER_BUTTON_MESSAGE},
-  ];
 
-  prepareView(page_labels);
+  prepareViewContent();
   controller.init();
 
   //for test

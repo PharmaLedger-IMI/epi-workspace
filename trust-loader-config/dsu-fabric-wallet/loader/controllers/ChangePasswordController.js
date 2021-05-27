@@ -1,10 +1,7 @@
 import "./../loader-config.js";
-import {Spinner, prepareView, prepareViewContent} from "./services/UIService.js";
+import {Spinner, prepareViewContent} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import FileService from "./services/FileService.js";
-import WalletRunner from "./services/WalletRunner.js";
-
-require
 
 function ChangePasswordController() {
   const WALLET_MOUNT_POINT = "/writableDSU";
@@ -42,6 +39,7 @@ function ChangePasswordController() {
       }
       if (event.target.id === "password") {
         window.validator.regexValidator(event, LOADER_GLOBALS.PASSWORD_REGEX)
+        passwordConfirm.dispatchEvent(new Event("input"));
       }
       if (event.target.id === "confirm-password") {
         window.validator.equalValueValidator(event, password.value);
@@ -68,41 +66,20 @@ function ChangePasswordController() {
     wallet.writeFile(USER_DETAILS_FILE, JSON.stringify(LOADER_GLOBALS.credentials), callback);
   }
 
-  this.toggleViewPassword = function (event){
-   const inputId= event.target.getAttribute("input-id");
-   event.target.classList.toggle("fa-eye-slash");
-   let inputField = document.getElementById(inputId);
-   if(inputField.getAttribute("type") === "password"){
-     inputField.setAttribute("type", "text");
-   }else{
-     inputField.setAttribute("type", "password");
-   }
-  }
+/*  this.toggleViewPassword = function (event) {
+    const inputId = event.target.getAttribute("input-id");
+    event.target.classList.toggle("fa-eye-slash");
+    let inputField = document.getElementById(inputId);
+    if (inputField.getAttribute("type") === "password") {
+      inputField.setAttribute("type", "text");
+    } else {
+      inputField.setAttribute("type", "password");
+    }
+  }*/
 
   this.goBack = function () {
     const basePath = window.location.href.split("loader")[0];
     window.location.replace(basePath + "loader/?login=auto");
-    /*  walletService.load(LOADER_GLOBALS.environment.domain, getOldSecretArrKey(), (err, wallet) => {
-        if (err) {
-          spinner.removeFromView();
-          console.error("Failed to load the wallet in domain:", LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(wallet), err);
-          return (document.getElementById("register-details-error").innerText = "Invalid credentials");
-        }
-
-        let writableWallet = wallet;
-
-        writableWallet.getKeySSIAsString((err, keySSI) => {
-          if (err) {
-            console.error(err);
-            return console.error("Operation failed. Try again");
-          }
-
-          new WalletRunner({
-            seed: keySSI,
-            spinner
-          }).run();
-        });
-      })*/
   };
 
   this.openWallet = function (event) {
@@ -155,10 +132,10 @@ function ChangePasswordController() {
           }
           const basePath = window.location.href.split("loader")[0];
           window.location.replace(basePath + "loader/?login");
-/*          new WalletRunner({
-            seed: keySSI,
-            spinner
-          }).run();*/
+          /*          new WalletRunner({
+                      seed: keySSI,
+                      spinner
+                    }).run();*/
         });
       });
     });

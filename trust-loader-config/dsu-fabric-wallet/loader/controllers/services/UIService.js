@@ -202,6 +202,17 @@ function prepareViewContent() {
   for (let i = 0; i < domElements.length; i++) {
     domElements[i].innerHTML = LOADER_GLOBALS.LABELS_DICTIONARY[domElements[i].getAttribute("data-model")];
   }
+  addToggleViewPassword();
+}
+
+function addToggleViewPassword() {
+  //add ckick listener to toggle password view
+  let passToggles = document.getElementsByClassName("toggle-password");
+  for (let i = 0; i < passToggles.length; i++) {
+    passToggles[i].addEventListener("click", (event) => {
+      toggleViewPassword(event);
+    })
+  }
 }
 
 export {
@@ -211,6 +222,7 @@ export {
   createFormElement,
   toggleViewPassword,
   showFormError,
-  removeFormError
+  removeFormError,
+  addToggleViewPassword
 };
 
