@@ -1,11 +1,10 @@
-import constants from "../../../dsu-fabric-ssapp/code/scripts/constants";
-
 const gtinResolver = require("gtin-resolver");
 function verifyIfProductMessage(message){
 	return message.messageType === "Product" && typeof message.product === "object";
 }
 
 async function processProductMessage(message){
+		const constants = require("./utils").constants;
 		const productCode = message.product.productCode;
 		let version = parseInt(message.product.version);
 
@@ -14,7 +13,7 @@ async function processProductMessage(message){
 		}
 
 		const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain,this.options.holderInfo.subdomain,productCode);
-		const {dsu, alreadyExisting} =  await this.loadConstSSIDSU(gtinSSI);
+		const {constDSU, alreadyExisting} =  await this.loadConstSSIDSU(gtinSSI);
 
 		let productDSU;
 		let latestProductMetadata;
@@ -47,14 +46,54 @@ async function processProductMessage(message){
 				}
 				latestProductMetadata = {version:version}
 			}
-
-			productDSU = await this.loadDSU(latestProductMetadata.keySSI);
-
-			await this.loadJSONS(productDSU, {product:"/"+version+"/product.json"});
-
-			//TODO: log all the changes
-
 		}
+
+		productDSU = await this.loadDSU(latestProductMetadata.keySSI);
+
+		const indication =  {product:"/"+version+"/product.json"};
+
+		await this.loadJSONS(productDSU, indication);
+
+		if(typeof this.product ==="undefined"){
+			this.product = JSON.parse(JSON.stringify(latestProductMetadata));
+		}
+		const propertiesMapping = require("./utils").productDataSourceMapping;
+
+		for (let prop in propertiesMapping){
+			this.product[prop] = message.product[propertiesMapping[prop]];
+		}
+		await this.saveJSONS(productDSU, indication);
+
+		if(!alreadyExisting){
+			await constDSU.mount(constants.PRODUCT_DSU_MOUNT_POINT, productDSU);
+		}
+
+		if(typeof this.options.logService!=="undefined"){
+			await $$.promisify(this.options.logService.log)({
+				logInfo: this.product,
+				username: message.senderId,
+				action: alreadyExisting?"Edited product":"Created product",
+				logType: 'PRODUCT_LOG'
+			});
+
+			const insertRecord = $$.promisify(this.storageService.insertRecord);
+			const getRecord = $$.promisify(this.storageService.getRecord);
+			const updateRecord = $$.promisify(this.storageService.udateRecord);
+
+			await insertRecord(constants.PRODUCTS_TABLE, `${this.product.gtin}|${this.product.version}`, this.product);
+			let prod = await getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin);
+
+			if (!prod) {
+				this.product.initialVersion = this.product.version;
+				await insertRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin, this.product);
+			} else {
+				await updateRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin, this.product);
+			}
+		}
+		else{
+			throw new Error("LogService is not available!")
+		}
+
 
 }
 

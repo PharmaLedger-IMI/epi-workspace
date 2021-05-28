@@ -7,3 +7,5 @@ module.exports.getEPIMappingEngine = function(dsuStorage, options){
 	const sharedDBStorageService = require("epiUtils").loadApi("services").SharedDBStorageService.getSharedStorage(dsuStorage);
 	return opendsu.loadApi("m2dsu").getMappingEngine(sharedDBStorageService, options);
 }
+
+module.exports.utils = require("./utils.js");
