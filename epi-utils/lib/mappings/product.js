@@ -24,7 +24,11 @@ async function processProductMessage(message){
 			 latestProductMetadata.version = version;
 		}
 		else{
-			latestProductMetadata = await $$.promisify(this.storageService.getRecord)(constants.LAST_VERSION_PRODUCTS_TABLE, this.gtin);
+			try{
+				latestProductMetadata = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.gtin);
+			}
+			catch (e){}
+
 			if(latestProductMetadata && latestProductMetadata.version){
 				latestProductMetadata.version = parseInt(latestProductMetadata.version);
 				if(typeof version ==="undefined"){
@@ -71,20 +75,27 @@ async function processProductMessage(message){
 			await constDSU.mount(constants.PRODUCT_DSU_MOUNT_POINT, productDSU);
 		}
 
+		this.product.keySSI = await productDSU.getKeySSIAsString();
+
 		if(typeof this.options.logService!=="undefined"){
-			await $$.promisify(this.options.logService.log)({
+			await $$.promisify(this.options.logService.log.bind(this.options.logService))({
 				logInfo: this.product,
 				username: message.senderId,
 				action: alreadyExists?"Edited product":"Created product",
 				logType: 'PRODUCT_LOG'
 			});
 
-			const insertRecord = $$.promisify(this.storageService.insertRecord);
-			const getRecord = $$.promisify(this.storageService.getRecord);
-			const updateRecord = $$.promisify(this.storageService.udateRecord);
+			const insertRecord = this.storageService.insertRecord;
+			const getRecord = this.storageService.getRecord;
+			const updateRecord = this.storageService.updateRecord;
 
 			await insertRecord(constants.PRODUCTS_TABLE, `${this.product.gtin}|${this.product.version}`, this.product);
-			let prod = await getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin);
+
+			let prod;
+			try {
+				prod = await getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin);
+			}
+			catch (e){}
 
 			if (!prod) {
 				this.product.initialVersion = this.product.version;

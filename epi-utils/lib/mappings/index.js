@@ -4,7 +4,7 @@ require("./batch.js");
 
 module.exports.getEPIMappingEngine = function(dsuStorage, options){
 	const opendsu = require("opendsu");
-	const sharedDBStorageService = require("epi-utils").loadApi("services").SharedDBStorageService.getSharedStorage(dsuStorage);
+	const sharedDBStorageService = require("epi-utils").loadApi("services").SharedDBStorageService.getPromisifiedSharedObject(dsuStorage);
 	return opendsu.loadApi("m2dsu").getMappingEngine(sharedDBStorageService, options);
 }
 

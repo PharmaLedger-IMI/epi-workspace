@@ -117,3 +117,14 @@ module.exports.getSharedStorage = function(dsuStorage) {
 
     return sharedStorageSingleton;
 }
+module.exports.getPromisifiedSharedObject  = function (dsuStorage){
+    const instance = module.exports.getSharedStorage(dsuStorage);
+    const promisifyFns = ["addSharedFile","cancelBatch","commitBatch","filter","getRecord","getSharedSSI","insertRecord","updateRecord"]
+    for(let i = 0; i<promisifyFns.length; i++){
+        let prop = promisifyFns[i];
+        if(typeof instance[prop] ==="function"){
+            instance[prop] = $$.promisify(instance[prop].bind(instance));
+        }
+    }
+    return instance;
+}
