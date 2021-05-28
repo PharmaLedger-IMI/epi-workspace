@@ -13,12 +13,15 @@ async function processProductMessage(message){
 		}
 
 		const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain,this.options.holderInfo.subdomain,productCode);
-		const {constDSU, alreadyExisting} =  await this.loadConstSSIDSU(gtinSSI);
+		const {dsu, alreadyExists} =  await this.loadConstSSIDSU(gtinSSI);
+		const constDSU = dsu;
 
 		let productDSU;
-		let latestProductMetadata;
-		if(!alreadyExisting){
+		let latestProductMetadata = {};
+		if(!alreadyExists){
 			 productDSU = await this.createDSU(this.options.holderInfo.subdomain,"seed");
+			 version = 1;
+			 latestProductMetadata.version = version;
 		}
 		else{
 			latestProductMetadata = await $$.promisify(this.storageService.getRecord)(constants.LAST_VERSION_PRODUCTS_TABLE, this.gtin);
@@ -46,9 +49,9 @@ async function processProductMessage(message){
 				}
 				latestProductMetadata = {version:version}
 			}
+			productDSU = await this.loadDSU(latestProductMetadata.keySSI);
 		}
 
-		productDSU = await this.loadDSU(latestProductMetadata.keySSI);
 
 		const indication =  {product:"/"+version+"/product.json"};
 
@@ -64,7 +67,7 @@ async function processProductMessage(message){
 		}
 		await this.saveJSONS(productDSU, indication);
 
-		if(!alreadyExisting){
+		if(!alreadyExists){
 			await constDSU.mount(constants.PRODUCT_DSU_MOUNT_POINT, productDSU);
 		}
 
@@ -72,7 +75,7 @@ async function processProductMessage(message){
 			await $$.promisify(this.options.logService.log)({
 				logInfo: this.product,
 				username: message.senderId,
-				action: alreadyExisting?"Edited product":"Created product",
+				action: alreadyExists?"Edited product":"Created product",
 				logType: 'PRODUCT_LOG'
 			});
 
