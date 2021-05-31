@@ -7,6 +7,7 @@ async function processProductMessage(message){
 		const constants = require("./utils").constants;
 		const productCode = message.product.productCode;
 		let version = parseInt(message.product.version);
+		const mappingLogService = require("./logs").createInstance(this.storageService);
 
 		if(Number.isNaN(version)){
 			version = undefined;
@@ -85,30 +86,26 @@ async function processProductMessage(message){
 				logType: 'PRODUCT_LOG'
 			});
 
-			const insertRecord = this.storageService.insertRecord;
-			const getRecord = this.storageService.getRecord;
-			const updateRecord = this.storageService.updateRecord;
-
-			await insertRecord(constants.PRODUCTS_TABLE, `${this.product.gtin}|${this.product.version}`, this.product);
-			//await insertRecord(constants.LAST_VERSION_PRODUCTS_TABLE, `${this.product.gtin}`, this.product);
+			await this.storageService.insertRecord(constants.PRODUCTS_TABLE, `${this.product.gtin}|${this.product.version}`, this.product);
 
 			let prod;
 			try {
-				prod = await getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin);
+				prod = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin);
 			}
 			catch (e){}
 
 			if (!prod) {
 				this.product.initialVersion = this.product.version;
-				await insertRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin, this.product);
+				await this.storageService.insertRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin, this.product);
 			} else {
-				await updateRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin, this.product);
+				await this.storageService.updateRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin, this.product);
 			}
 		}
 		else{
 			throw new Error("LogService is not available!")
 		}
 
+		await mappingLogService.logMapping(message, productCode, alreadyExists ? "updated" : "created", "success");
 
 }
 
