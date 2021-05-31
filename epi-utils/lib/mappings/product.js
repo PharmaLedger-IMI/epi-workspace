@@ -25,10 +25,10 @@ async function processProductMessage(message){
 		}
 		else{
 			try{
-				latestProductMetadata = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.gtin);
+				latestProductMetadata = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, productCode);
 			}
 			catch (e){}
-
+			console.log("INFO:",latestProductMetadata, latestProductMetadata.version)
 			if(latestProductMetadata && latestProductMetadata.version){
 				latestProductMetadata.version = parseInt(latestProductMetadata.version);
 				if(typeof version ==="undefined"){
@@ -90,6 +90,7 @@ async function processProductMessage(message){
 			const updateRecord = this.storageService.updateRecord;
 
 			await insertRecord(constants.PRODUCTS_TABLE, `${this.product.gtin}|${this.product.version}`, this.product);
+			//await insertRecord(constants.LAST_VERSION_PRODUCTS_TABLE, `${this.product.gtin}`, this.product);
 
 			let prod;
 			try {
