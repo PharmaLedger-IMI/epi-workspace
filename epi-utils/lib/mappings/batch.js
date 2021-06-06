@@ -17,9 +17,16 @@ async function processBatchMessage(message) {
 
 
   const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode);
-  const {dsu: prodDSU, alreadyExists: prodExists} = await this.loadConstSSIDSU(gtinSSI);
+  let prodDSU;
+  try {
+    prodDSU = await this.loadDSU(gtinSSI);
+  } catch (err) {
+    mappingLogService.logMapping(message, productCode, "lookup", "missing product DSU");
+    throw new Error("Product not found");
+  }
 
-  if (!prodExists) {
+  if (!prodDSU) {
+    mappingLogService.logMapping(message, productCode, "lookup", "missing product DSU");
     throw new Error("Fail to create a batch for a missing product");
   }
 
@@ -62,12 +69,21 @@ async function processBatchMessage(message) {
   for (let prop in propertiesMapping) {
     this.batch[prop] = message.batch[propertiesMapping[prop]];
   }
+
   if (message.batch.expiryDate) {
     try {
       const y = message.batch.expiryDate.slice(0, 2);
       const m = message.batch.expiryDate.slice(2, 4);
-      const d = message.batch.expiryDate.slice(4, 6);
-      const localDate = new Date(Date.parse(m + '/' + d + '/' + y));
+      let d = message.batch.expiryDate.slice(4, 6);
+      const lastMonthDay = ("0" + new Date(y, m, 0).getDate()).slice(-2);
+      this.batch.enableExpiryDay = d === '00';
+      if (d === '00') {
+        this.batch.enableExpiryDay = true;
+        d = lastMonthDay;
+      } else {
+        this.batch.enableExpiryDay = false;
+      }
+      const localDate = new Date(Date.parse(m + '/' +  d + '/' + y));
       const gmtDate = new Date(localDate.getFullYear() + '-' + m + '-' + d + 'T00:00:00Z');
       this.batch.expiryForDisplay = gmtDate.getTime();
     } catch (e) {
@@ -75,6 +91,7 @@ async function processBatchMessage(message) {
     }
   }
 
+  this.batch.product = prodDSU;
   this.batch.productName = productRecord.name
   this.batch.productDescription = productRecord.description;
   this.batch.creationTime = convertDateTOGMTFormat(new Date());

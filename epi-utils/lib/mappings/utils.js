@@ -1,8 +1,8 @@
 module.exports.productDataSourceMapping = {
-  name: "nameMedicinalProduct",
+  name: "inventedName",
   gtin: "productCode",
   photo: "",
-  description: "",
+  description: "nameMedicinalProduct",
   leaflet: "",
   manufName: "",
   batchSpecificVersion: false,
@@ -26,7 +26,7 @@ module.exports.productDataSourceMapping = {
 module.exports.batchDataSourceMapping = {
   gtin: "productCode",
   batchNumber: "batch",
-  expiryForDisplay: "expiryDate",
+  expiry: "expiryDate",
   version: "epiLeafletVersion",
   versionLabel: "",
   serialNumbers: "snValid",
