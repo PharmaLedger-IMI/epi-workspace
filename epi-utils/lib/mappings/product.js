@@ -105,7 +105,7 @@ async function processProductMessage(message){
 			throw new Error("LogService is not available!")
 		}
 
-		await mappingLogService.logMapping(message, productCode, alreadyExists ? "updated" : "created", "success");
+		await mappingLogService.logSuccessMapping(message, alreadyExists ? "updated" : "created");
 
 }
 

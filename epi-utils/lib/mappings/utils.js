@@ -61,7 +61,10 @@ module.exports.constants = {
   'PRODUCT_IMAGE_FILE': "/image.png",
   'LEAFLET_ATTACHMENT_FILE': "/leaflet.xml",
   'SMPC_ATTACHMENT_FILE': "/smpc.xml",
-  'IMPORT_LOGS': 'import-logs'
+  'IMPORT_LOGS': 'import-logs',
+  'SUCCESS_MAPPING_STATUS':"success",
+  'FAILED_MAPPING_STATUS':"failed",
+  "MISSING_PRODUCT_DSU":"Missing Product DSU"
 };
 
 module.exports.getBloomFilterSerialisation = function (arr, bfSerialisation) {

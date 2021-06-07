@@ -21,12 +21,12 @@ async function processBatchMessage(message) {
   try {
     prodDSU = await this.loadDSU(gtinSSI);
   } catch (err) {
-    mappingLogService.logMapping(message, productCode, "lookup", "missing product DSU");
+    await mappingLogService.logFailedMapping(message, "lookup", constants.MISSING_PRODUCT_DSU);
     throw new Error("Product not found");
   }
 
   if (!prodDSU) {
-    mappingLogService.logMapping(message, productCode, "lookup", "missing product DSU");
+    await mappingLogService.logFailedMapping(message,  "lookup", constants.MISSING_PRODUCT_DSU);
     throw new Error("Fail to create a batch for a missing product");
   }
 
@@ -155,7 +155,7 @@ async function processBatchMessage(message) {
     await this.storageService.updateRecord(constants.BATCHES_STORAGE_TABLE, this.batch.batchNumber, batchClone);
   }
 
-  await mappingLogService.logMapping(message, batchId, batchExists ? "updated" : "created", "success");
+  await mappingLogService.logSuccessMapping(message, batchExists ? "updated" : "created");
 
 }
 
