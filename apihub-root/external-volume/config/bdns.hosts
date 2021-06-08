@@ -6,6 +6,9 @@
     ],
     "anchoringServices": [
       "$ORIGIN"
+    ],
+    "notifications": [
+      "$ORIGIN"
     ]
   },
   "epi": {
@@ -14,6 +17,9 @@
       "$ORIGIN"
     ],
     "anchoringServices": [
+      "$ORIGIN"
+    ],
+    "notifications": [
       "$ORIGIN"
     ]
   },
@@ -24,6 +30,9 @@
     ],
     "anchoringServices": [
       "$ORIGIN"
+    ],
+    "notifications": [
+      "$ORIGIN"
     ]
   },
   "epidev": {
@@ -32,6 +41,9 @@
       "$ORIGIN"
     ],
     "anchoringServices": [
+      "$ORIGIN"
+    ],
+    "notifications": [
       "$ORIGIN"
     ]
   },
@@ -42,6 +54,9 @@
     ],
     "anchoringServices": [
       "$ORIGIN"
+    ],
+    "notifications": [
+      "$ORIGIN"
     ]
   },
   "mah2.epidev": {
@@ -50,6 +65,9 @@
       "$ORIGIN"
     ],
     "anchoringServices": [
+      "$ORIGIN"
+    ],
+    "notifications": [
       "$ORIGIN"
     ]
   },
@@ -60,6 +78,9 @@
     ],
     "anchoringServices": [
       "$ORIGIN"
+    ],
+    "notifications": [
+      "$ORIGIN"
     ]
   },
   "vault": {
@@ -69,6 +90,9 @@
     ],
     "anchoringServices": [
       "$ORIGIN"
+    ],
+    "notifications": [
+      "$ORIGIN"
     ]
   },
     "vault.nvs": {
@@ -77,6 +101,9 @@
         "$ORIGIN"
       ],
       "anchoringServices": [
+        "$ORIGIN"
+      ],
+      "notifications": [
         "$ORIGIN"
       ]
     }
