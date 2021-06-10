@@ -41,12 +41,21 @@ async function processBatchMessage(message) {
   } else {
     try {
       latestProductMetadata = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, productCode);
-      if (latestProductMetadata.version < message.batch.epiLeafletVersion) {
-        throw new Error("Fail to create a batch for a missing product version");
+
+      if(latestProductMetadata && latestProductMetadata.version){
+        if (latestProductMetadata.version < message.batch.epiLeafletVersion) {
+          throw new Error("Fail to create a batch for a missing product version");
+        }
       }
+      else{
+        //TODO heal database records using data from the DSU
+        throw new Error("This case is not implemented. Missing product from the wallet database or database is corrupted");
+      }
+
       batchMetadata = await this.storageService.getRecord(constants.BATCHES_STORAGE_TABLE, batchId);
     } catch (e) {
-      //ignore
+      await mappingLogService.logFailedMapping(message, "lookup","Database corrupted");
+      throw new Error("Missing product from the wallet database or database is corrupted");
     }
     batchDSU = await this.loadDSU(batchMetadata.keySSI);
   }

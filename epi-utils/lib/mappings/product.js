@@ -37,11 +37,13 @@ async function processProductMessage(message){
 				}
 				else{
 				 	if(version>latestProductMetadata.version+1){
+						await mappingLogService.logFailedMapping(message, "versioning","Database corrupted");
 				 		throw new Error("Version of the product is greater than the next available version");
 					}
 				}
 			}else{
 				//TODO heal database records using data from the DSU
+				await mappingLogService.logFailedMapping(message, "lookup","Database corrupted");
 				throw new Error("This case is not implemented. Missing product from the wallet database or database is corrupted");
 
 				if(typeof version ==="undefined"){
