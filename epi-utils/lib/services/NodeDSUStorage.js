@@ -74,15 +74,9 @@ class NodeDSUStorage {
 				}
 
 				if(typeof walletSSI==="undefined"){
-					walletSSI = defaultConfig.endpointsConfig['epi-mapping-engine'].options.walletSSI
+					walletSSI = defaultConfig.endpointsConfig['epi-mapping-engine'].options.walletSSI;
 				}
-
 				console.log(walletSSI);
-
-				//citesc keySSI din server.json folosind path-urile pana la cheia keySSI-ului
-
-
-
 
 				let config = opendsu.loadApi("config");
 				let mainSSI = opendsu.loadApi("keyssi").parse(walletSSI);
@@ -102,14 +96,7 @@ class NodeDSUStorage {
 					continuation();
 				});
 
-
-
-
-
-
-
-
-
+				//TODO: to be removed
 
 				// opendsu.loadAPI("http").doGet("/getSSIForMainDSU", function (err, res) {
 				// 	if (err) {
@@ -140,28 +127,29 @@ class NodeDSUStorage {
 
 		getMainDSU(addFunctionsFromMainDSU);
 	}
+	//TODO: to be removed
 
-	call(name, ...args) {
-		if (args.length === 0) {
-			throw Error('Missing arguments. Usage: call(functionName, arg1, arg2 ... callback)');
-		}
-
-		const callback = args.pop();
-		const url = "/api?" + new URLSearchParams({name: name, arguments: JSON.stringify(args)});
-		fetch(url, {method: "GET"})
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error(response.statusText);
-				}
-				return response.json();
-			})
-			.then((result) => {
-				callback(...result);
-			})
-			.catch((err) => {
-				return callback(err);
-			});
-	}
+	// call(name, ...args) {
+	// 	if (args.length === 0) {
+	// 		throw Error('Missing arguments. Usage: call(functionName, arg1, arg2 ... callback)');
+	// 	}
+	//
+	// 	const callback = args.pop();
+	// 	const url = "/api?" + new URLSearchParams({name: name, arguments: JSON.stringify(args)});
+	// 	fetch(url, {method: "GET"})
+	// 		.then((response) => {
+	// 			if (!response.ok) {
+	// 				throw new Error(response.statusText);
+	// 			}
+	// 			return response.json();
+	// 		})
+	// 		.then((result) => {
+	// 			callback(...result);
+	// 		})
+	// 		.catch((err) => {
+	// 			return callback(err);
+	// 		});
+	// }
 
 	setObject(path, data, callback) {
 		try {

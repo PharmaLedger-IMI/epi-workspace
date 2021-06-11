@@ -19,6 +19,9 @@ class SharedStorage {
     }
 
     waitForDb(func, args) {
+        if(typeof args === "undefined"){
+            args = [];
+        }
         func = func.bind(this)
         setTimeout(function () {
             func(...args);
