@@ -1,3 +1,4 @@
 module.exports = {
-	SharedDBStorageService: require("./SharedDBStorageService")
+	SharedDBStorageService: require("./SharedDBStorageService"),
+	DSUStorage: require("./DSUStorage")
 }

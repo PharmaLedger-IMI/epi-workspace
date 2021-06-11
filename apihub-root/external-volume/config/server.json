@@ -15,10 +15,15 @@
     "anchoring",
     "dsu-wizard",
     "gtin-dsu-wizard",
+    "epi-mapping-engine",
     "debugLogger",
     "staticServer"
   ],
   "endpointsConfig": {
+    "epi-mapping-engine": {
+      "module": "./../../epi-utils",
+      "function": "getEPIMappingEngineForAPIHUB"
+    },
     "gtin-dsu-wizard": {
       "module": "./../../gtin-dsu-wizard"
     },
