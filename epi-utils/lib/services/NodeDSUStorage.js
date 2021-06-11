@@ -52,6 +52,7 @@ class NodeDSUStorage {
 			let mainDSU = undefined;
 			try {
 				mainDSU = sc.getMainDSU();
+
 			} catch (err) {
 				//ignore on purpose
 			}
@@ -60,30 +61,80 @@ class NodeDSUStorage {
 				continuation();
 			} else {
 				const opendsu = require("opendsu");
-				opendsu.loadAPI("http").doGet("/getSSIForMainDSU", function (err, res) {
+				//get server configuration
+				const apiHub = require("apihub");
+				let defaultConfig = apiHub.getServerConfig();
+				let domainConfig = apiHub.getDomainConfig()
+
+				let walletSSI;
+				try {
+					 walletSSI = domainConfig.endpointsConfig['epi-mapping-engine'].options.walletSSI;
+				}catch (e){
+					console.log("Domain is not properly configured")
+				}
+
+				if(typeof walletSSI==="undefined"){
+					walletSSI = defaultConfig.endpointsConfig['epi-mapping-engine'].options.walletSSI
+				}
+
+				console.log(walletSSI);
+
+				//citesc keySSI din server.json folosind path-urile pana la cheia keySSI-ului
+
+
+
+
+				let config = opendsu.loadApi("config");
+				let mainSSI = opendsu.loadApi("keyssi").parse(walletSSI);
+				if (mainSSI.getHint() == "server") {
+					config.disableLocalVault();
+				}
+				opendsu.loadAPI("resolver").loadDSU(walletSSI, (err, mainDSU) => {
 					if (err) {
-						return reportUserRelevantError("Failed to enable direct DSUStorage access from Cardinal", err);
+						//printOpenDSUError(err);
+						//reportUserRelevantInfo("Reattempting to enable direct DSUStorage from Cardinal", err);
+						setTimeout(function () {
+							getMainDSU(continuation);
+						}, 100);
+						return;
 					}
+					sc.setMainDSU(mainDSU);
+					continuation();
+				});
 
-					let config = opendsu.loadApi("config");
 
-					let mainSSI = opendsu.loadApi("keyssi").parse(res);
-					if (mainSSI.getHint() == "server") {
-						config.disableLocalVault();
-					}
-					opendsu.loadAPI("resolver").loadDSU(res, (err, mainDSU) => {
-						if (err) {
-							printOpenDSUError(err);
-							reportUserRelevantInfo("Reattempting to enable direct DSUStorage from Cardinal", err);
-							setTimeout(function () {
-								getMainDSU(continuation);
-							}, 100);
-							return;
-						}
-						sc.setMainDSU(mainDSU);
-						continuation();
-					});
-				})
+
+
+
+
+
+
+
+
+				// opendsu.loadAPI("http").doGet("/getSSIForMainDSU", function (err, res) {
+				// 	if (err) {
+				// 		return reportUserRelevantError("Failed to enable direct DSUStorage access from Cardinal", err);
+				// 	}
+				//
+				// 	let config = opendsu.loadApi("config");
+				//
+				// 	let mainSSI = opendsu.loadApi("keyssi").parse(res);
+				// 	if (mainSSI.getHint() == "server") {
+				// 		config.disableLocalVault();
+				// 	}
+				// 	opendsu.loadAPI("resolver").loadDSU(res, (err, mainDSU) => {
+				// 		if (err) {
+				// 			printOpenDSUError(err);
+				// 			reportUserRelevantInfo("Reattempting to enable direct DSUStorage from Cardinal", err);
+				// 			setTimeout(function () {
+				// 				getMainDSU(continuation);
+				// 			}, 100);
+				// 			return;
+				// 		}
+				// 		sc.setMainDSU(mainDSU);
+				// 		continuation();
+				// 	});
+				// })
 			}
 		}
 

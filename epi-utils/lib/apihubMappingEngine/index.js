@@ -18,15 +18,29 @@ function getEPIMappingEngineForAPIHUB(server) {
 
         //TODO: Implement DSUStorage and after uncomment the next to lines of code to get access to the Mapping Engine
 
+        let data = [];
+        request.on('data', (chunk) => {
+            data.push(chunk);
+        });
+
+        request.on('end',()=>{
+            console.log(data.toString());
+        })
+
+
         const ServerDSUStorageImpl = epiUtils.loadApi("services").DSUStorage.getInstance();
         const mappings = epiUtils.loadApi("mappings")
 
         const holderInfo = {domain: "epi", subdomain: "default"};
+        let LogService = epiUtils.loadApi("services").LogService;
         const mappingEngine = mappings.getEPIMappingEngine(ServerDSUStorageImpl, {
             holderInfo: holderInfo,
-            logService: this.logService
+            logService: new LogService(ServerDSUStorageImpl)
         });
 
+
+
+        //mappingEngine.digestMessages(groupMessages);
 
 
         response.statusCode = 200;
