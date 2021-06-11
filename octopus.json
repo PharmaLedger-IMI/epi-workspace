@@ -650,17 +650,26 @@
                 {
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && gradlew.bat -b ndk.gradle installNDK",
-					"os": "win32"
+					"os": "win32",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
 				{
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
-					"os": "linux"
+					"os": "linux",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
 				{
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
-					"os": "darwin"
+					"os": "darwin",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 }
             ]
         },
@@ -670,17 +679,26 @@
                 {
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && gradlew.bat assembleRelease",
-					"os": "win32"
+					"os": "win32",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
 				{
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
-					"os": "linux"
+					"os": "linux",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
 				{
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
-					"os": "darwin"
+					"os": "darwin",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
                 {
                     "type": "execute",
