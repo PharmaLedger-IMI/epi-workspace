@@ -4,7 +4,7 @@ function verifyIfProductMessage(message){
 }
 
 async function processProductMessage(message){
-		const constants = require("./utils").constants;
+		const constants = require("./../utils").constants;
 		const productCode = message.product.productCode;
 		let version = parseInt(message.product.version);
 		const mappingLogService = require("./logs").createInstance(this.storageService);
@@ -67,7 +67,7 @@ async function processProductMessage(message){
 		if(typeof this.product ==="undefined"){
 			this.product = JSON.parse(JSON.stringify(latestProductMetadata));
 		}
-		const propertiesMapping = require("./utils").productDataSourceMapping;
+		const propertiesMapping = require("./../utils").productDataSourceMapping;
 
 		for (let prop in propertiesMapping){
 			this.product[prop] = message.product[propertiesMapping[prop]];

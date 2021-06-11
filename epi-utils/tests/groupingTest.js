@@ -7,8 +7,6 @@ const assert = require("double-check").assert;
 const messages = require("./messages.json")
 
 
-
-
 assert.callback("message grouping test ", (testFinishCallback) => {
     tir.launchApiHubTestNode(async function (err, port) {
         if (err) {

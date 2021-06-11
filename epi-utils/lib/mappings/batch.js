@@ -5,10 +5,10 @@ function verifyIfBatchMessage(message) {
 }
 
 async function processBatchMessage(message) {
-  const constants = require("./utils").constants;
-  const getBloomFilterSerialisation = require("./utils").getBloomFilterSerialisation;
-  const propertiesMapping = require("./utils").batchDataSourceMapping;
-  const convertDateTOGMTFormat = require("./utils").convertDateTOGMTFormat;
+  const constants = require("./../utils").constants;
+  const getBloomFilterSerialisation = require("./../utils").getBloomFilterSerialisation;
+  const propertiesMapping = require("./../utils").batchDataSourceMapping;
+  const convertDateTOGMTFormat = require("./../utils").convertDateTOGMTFormat;
   const mappingLogService = require("./logs").createInstance(this.storageService);
 
   const batchId = message.batch.batch;

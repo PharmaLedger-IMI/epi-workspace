@@ -8,7 +8,7 @@ module.exports.getEPIMappingEngine = function(dsuStorage, options){
 	return opendsu.loadApi("m2dsu").getMappingEngine(sharedDBStorageService, options);
 }
 
-module.exports.utils = require("./utils.js");
+// module.exports.utils = require("./utils.js");
 module.exports.getMappingLogs = function (storageService){
 	return require("./logs").createInstance(storageService).getMappingLogs;
 }

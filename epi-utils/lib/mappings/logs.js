@@ -1,4 +1,4 @@
-const constants = require("./utils").constants;
+const constants = require("./../utils").constants;
 
 function MappingLogService(storageService){
      this.storageService = storageService;
@@ -16,7 +16,7 @@ function MappingLogService(storageService){
      }
 
      let logMapping = async (message, action, status) => {
-          const constants = require("./utils").constants;
+          const constants = require("./../utils").constants;
           const currentDate = new Date().getTime();
 
           let itemCode;

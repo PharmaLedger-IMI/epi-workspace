@@ -1,5 +1,6 @@
 module.exports = {
 	SharedDBStorageService: require("./SharedDBStorageService"),
-	DSUStorage: require("./DSUStorage"),
+	DSUStorage: require("./NodeDSUStorage"),
+	LogService : require("./LogService"),
 	getMessageQueuingServiceInstance: () => require("./MessageQueuingService").getMessageQueuingServiceInstance()
 }
