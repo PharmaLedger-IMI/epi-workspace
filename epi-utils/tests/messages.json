@@ -1,0 +1,323 @@
+[
+  {
+    "messageType": "Product",
+    "messageTypeVersion": 0.1,
+    "senderId": "NOVARTIS_P75_010",
+    "receiverId": "ePI_DSU_NOVARTIS",
+    "messageId": "00012856374589",
+    "messageDateTime": "2021-04-27T10:12:12CET",
+    "product": {
+      "productCode": "07612791468124",
+      "internalMaterialCode": "100200",
+      "inventedName": "Ritalin",
+      "nameMedicinalProduct": "Ritalin LA HGC 40mg 1x30",
+      "strength": "40mg",
+      "flagEnableAdverseEventReporting": false,
+      "adverseEventReportingURL": "",
+      "flagEnableACFProductCheck": false,
+      "acfProductCheckURL": "",
+      "flagDisplayEPI_BatchRecalled": false,
+      "flagDisplayEPI_SNRecalled": true,
+      "flagDisplayEPI_SNDecommissioned": true,
+      "flagDisplayEPI_SNUnknown": true,
+      "flagDisplayEPI_EXPIncorrect": true,
+      "flagDisplayEPI_BatchExpired": true,
+      "patientSpecificLeaflet": "",
+      "healthcarePractitionerInfo": "",
+      "markets": [
+        {
+          "marketId": "DE",
+          "nationalCode": "1234567",
+          "mahName": "Novartis",
+          "legalEntityName": "Novartis Deutschland AG"
+        },
+        {
+          "marketId": "AT",
+          "nationalCode": "23456",
+          "mahName": "Novartis",
+          "legalEntityName": "Novartis Österreich AG"
+        }
+      ]
+    }
+  },
+  {
+    "messageType": "Product",
+    "messageTypeVersion": 0.1,
+    "senderId": "NOVARTIS_P75_010",
+    "receiverId": "ePI_DSU_NOVARTIS",
+    "messageId": "00012856374590",
+    "messageDateTime": "2021-05-07T09:11:25CET",
+    "product": {
+      "productCode": "04150106266865",
+      "internalMaterialCode": "725335",
+      "inventedName": "COSENTYX",
+      "nameMedicinalProduct": "COSENTYX PSO SOLU 2.0 ML 150.000 MG/ML",
+      "strength": "150.000 MG/ML",
+      "flagEnableAdverseEventReporting": false,
+      "adverseEventReportingURL": "",
+      "flagEnableACFProductCheck": false,
+      "acfProductCheckURL": "",
+      "flagDisplayEPI_BatchRecalled": false,
+      "flagDisplayEPI_SNRecalled": true,
+      "flagDisplayEPI_SNDecommissioned": true,
+      "flagDisplayEPI_SNUnknown": true,
+      "flagDisplayEPI_EXPIncorrect": true,
+      "flagDisplayEPI_BatchExpired": true,
+      "patientSpecificLeaflet": "",
+      "healthcarePractitionerInfo": "",
+      "markets": [
+        {
+          "marketId": "DE",
+          "nationalCode": "10626686",
+          "mahName": "NOVARTIS PHARMA GMBH",
+          "legalEntityName": ""
+        }
+      ]
+    }
+  },
+  {
+    "messageType": "Product",
+    "messageTypeVersion": 0.1,
+    "senderId": "NOVARTIS_P75_010",
+    "receiverId": "ePI_DSU_NOVARTIS",
+    "messageId": "00012856374591",
+    "messageDateTime": "2021-05-07T10:12:12CET",
+    "product": {
+      "productCode": "04150006834829",
+      "internalMaterialCode": "602566",
+      "inventedName": "FENTANYL",
+      "nameMedicinalProduct": "FENTANYL 1A 75MCG/H 5TTSM DE",
+      "strength": "75 ΜG / 1 H",
+      "flagEnableAdverseEventReporting": false,
+      "adverseEventReportingURL": "",
+      "flagEnableACFProductCheck": false,
+      "acfProductCheckURL": "",
+      "flagDisplayEPI_BatchRecalled": false,
+      "flagDisplayEPI_SNRecalled": true,
+      "flagDisplayEPI_SNDecommissioned": true,
+      "flagDisplayEPI_SNUnknown": true,
+      "flagDisplayEPI_EXPIncorrect": true,
+      "flagDisplayEPI_BatchExpired": true,
+      "patientSpecificLeaflet": "",
+      "healthcarePractitionerInfo": "",
+      "markets": [
+        {
+          "marketId": "DE",
+          "nationalCode": "",
+          "mahName": "NOVARTIS GERMANY GMBH",
+          "legalEntityName": ""
+        }
+      ]
+    }
+  },
+  {
+    "messageType": "Product",
+    "messageTypeVersion": 0.1,
+    "senderId": "NOVARTIS_P75_010",
+    "receiverId": "ePI_DSU_NOVARTIS",
+    "messageId": "00012856374591",
+    "messageDateTime": "2021-05-07T10:12:12CET",
+    "product": {
+      "productCode": "04150103804829",
+      "internalMaterialCode": "602566",
+      "inventedName": "FENTANYL",
+      "nameMedicinalProduct": "FENTANYL 1A 75MCG/H 5TTSM DE",
+      "strength": "75 ΜG / 1 H",
+      "flagEnableAdverseEventReporting": false,
+      "adverseEventReportingURL": "",
+      "flagEnableACFProductCheck": false,
+      "acfProductCheckURL": "",
+      "flagDisplayEPI_BatchRecalled": false,
+      "flagDisplayEPI_SNRecalled": true,
+      "flagDisplayEPI_SNDecommissioned": true,
+      "flagDisplayEPI_SNUnknown": true,
+      "flagDisplayEPI_EXPIncorrect": true,
+      "flagDisplayEPI_BatchExpired": true,
+      "patientSpecificLeaflet": "",
+      "healthcarePractitionerInfo": "",
+      "markets": [
+        {
+          "marketId": "DE",
+          "nationalCode": "",
+          "mahName": "NOVARTIS GERMANY GMBH",
+          "legalEntityName": ""
+        }
+      ]
+    }
+  },
+  {
+    "messageType": "Product",
+    "messageTypeVersion": 0.1,
+    "senderId": "NOVARTIS_P75_010",
+    "receiverId": "ePI_DSU_NOVARTIS",
+    "messageId": "00012856374591",
+    "messageDateTime": "2021-05-07T10:12:12CET",
+    "product": {
+      "productCode": "04150106805829",
+      "internalMaterialCode": "602566",
+      "inventedName": "FENTANYL",
+      "nameMedicinalProduct": "FENTANYL 1A 75MCG/H 5TTSM DE",
+      "strength": "75 ΜG / 1 H",
+      "flagEnableAdverseEventReporting": false,
+      "adverseEventReportingURL": "",
+      "flagEnableACFProductCheck": false,
+      "acfProductCheckURL": "",
+      "flagDisplayEPI_BatchRecalled": false,
+      "flagDisplayEPI_SNRecalled": true,
+      "flagDisplayEPI_SNDecommissioned": true,
+      "flagDisplayEPI_SNUnknown": true,
+      "flagDisplayEPI_EXPIncorrect": true,
+      "flagDisplayEPI_BatchExpired": true,
+      "patientSpecificLeaflet": "",
+      "healthcarePractitionerInfo": "",
+      "markets": [
+        {
+          "marketId": "DE",
+          "nationalCode": "",
+          "mahName": "NOVARTIS GERMANY GMBH",
+          "legalEntityName": ""
+        }
+      ]
+    }
+  },
+  {
+    "messageType": "Batch",
+    "messageTypeVersion": 0.1,
+    "senderId": "NOVARTIS_PTT_010",
+    "receiverId": "ePI_DSU_NOVARTIS",
+    "messageId": "00012856374589",
+    "messageDateTime": "2021-04-27T13:52:12CET",
+    "batch": {
+      "productCode": "07612791468124",
+      "batch": "S0001",
+      "expiryDate": "221200",
+      "packagingSiteName": "Novartis Stein/Schweiz",
+      "epiLeafletVersion": "1",
+      "flagEnableEXPVerification": true,
+      "flagEnableExpiredEXPCheck": true,
+      "batchMessage": "this is a batch message",
+      "flagEnableBatchRecallMessage": false,
+      "recallMessage": "",
+      "flagEnableACFBatchCheck": false,
+      "acfBatchCheckURL": "",
+      "flagEnableSNVerification": true,
+      "snValid": [
+        "9049444522221",
+        "QI88v00001",
+        "00360000066000234"
+      ],
+      "snRecalled": [
+        "87365729522221",
+        "QI92XXv00001",
+        "0372190271507"
+      ],
+      "snDecom": [
+        "249852454522221",
+        "PP92XXv00001",
+        "1863565678272367"
+      ]
+    }
+  },
+  {
+    "messageType": "Batch",
+    "messageTypeVersion": 0.1,
+    "senderId": "NOVARTIS_PTT_010",
+    "receiverId": "ePI_DSU_NOVARTIS",
+    "messageId": "00023856374589",
+    "messageDateTime": "2021-05-07T15:52:12CET",
+    "batch": {
+      "productCode": "04150106266865",
+      "batch": "Ab0002T",
+      "expiryDate": "220601",
+      "packagingSiteName": "Sandoz Kundl",
+      "epiLeafletVersion": "1",
+      "flagEnableEXPVerification": true,
+      "flagEnableExpiredEXPCheck": true,
+      "batchMessage": "",
+      "flagEnableBatchRecallMessage": false,
+      "recallMessage": "",
+      "flagEnableACFBatchCheck": false,
+      "acfBatchCheckURL": "",
+      "flagEnableSNVerification": true,
+      "snValid": [
+        "10k0k983681597",
+        "10k04242244401",
+        "10504471929726"
+      ],
+      "snRecalled": [],
+      "snDecom": []
+    }
+  },
+  {
+    "messageType": "Batch",
+    "messageTypeVersion": 0.1,
+    "senderId": "NOVARTIS_PTT_010",
+    "receiverId": "ePI_DSU_NOVARTIS",
+    "messageId": "00025856374589",
+    "messageDateTime": "2021-05-07T15:32:00CET",
+    "batch": {
+      "productCode": "04150006834829",
+      "batch": "0015001",
+      "expiryDate": "231001",
+      "packagingSiteName": "Plant Éppes",
+      "epiLeafletVersion": "1",
+      "flagEnableEXPVerification": true,
+      "flagEnableExpiredEXPCheck": true,
+      "batchMessage": "",
+      "flagEnableBatchRecallMessage": false,
+      "recallMessage": "",
+      "flagEnableACFBatchCheck": false,
+      "acfBatchCheckURL": "",
+      "flagEnableSNVerification": true,
+      "snValid": [],
+      "snRecalled": [],
+      "snDecom": []
+    }
+  },
+  {
+    "messageType": "Batch",
+    "messageTypeVersion": 0.1,
+    "senderId": "NOVARTIS_PTT_010",
+    "receiverId": "ePI_DSU_NOVARTIS",
+    "messageId": "00012856374589",
+    "messageDateTime": "2021-05-07T16:34:18CET",
+    "batch": {
+      "productCode": "07612791468124",
+      "batch": "10244",
+      "expiryDate": "221200",
+      "packagingSiteName": "",
+      "epiLeafletVersion": "1",
+      "flagEnableEXPVerification": true,
+      "flagEnableExpiredEXPCheck": true,
+      "batchMessage": "this is a batch message",
+      "flagEnableBatchRecallMessage": false,
+      "recallMessage": "",
+      "flagEnableACFBatchCheck": false,
+      "acfBatchCheckURL": "",
+      "flagEnableSNVerification": true,
+      "snValid": [
+        "9q25a780774494",
+        "9q25a785334023",
+        "9q25a794383956",
+        "9q259318671988",
+        "9q25939a739755",
+        "9q2594154627c7",
+        "9q259458128677",
+        "9q2594a7129469",
+        "9q259524280985",
+        "9q259527269568",
+        "9q307c42475151",
+        "9q326465568150",
+        "9q329q90737290",
+        "9q259894718989",
+        "9q328647365646",
+        "9q25a754639751",
+        "9q259327313477",
+        "9q259329412057",
+        "9q259336565609"
+      ],
+      "snRecalled": [],
+      "snDecom": []
+    }
+  }
+]
