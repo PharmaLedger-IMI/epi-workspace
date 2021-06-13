@@ -255,6 +255,10 @@
                 {
                     "type": "execute",
                     "cmd": "cd gtin-resolver && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd gtin-resolver && npm run build"
                 }
             ]
         },

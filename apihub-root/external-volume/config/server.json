@@ -22,7 +22,10 @@
   "endpointsConfig": {
     "epi-mapping-engine": {
       "module": "./../../epi-utils",
-      "function": "getEPIMappingEngineForAPIHUB"
+      "function": "getEPIMappingEngineForAPIHUB",
+      "options": {
+        "walletSSI": "#validWalletSSIHere"
+      }
     },
     "gtin-dsu-wizard": {
       "module": "./../../gtin-dsu-wizard"
