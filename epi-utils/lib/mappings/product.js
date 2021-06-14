@@ -29,7 +29,6 @@ async function processProductMessage(message){
 				latestProductMetadata = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, productCode);
 			}
 			catch (e){}
-			console.log("INFO:",latestProductMetadata, latestProductMetadata.version)
 			if(latestProductMetadata && latestProductMetadata.version){
 				latestProductMetadata.version = parseInt(latestProductMetadata.version);
 				if(typeof version ==="undefined"){

@@ -95,66 +95,16 @@ class NodeDSUStorage {
 					sc.setMainDSU(mainDSU);
 					continuation();
 				});
-
-				//TODO: to be removed
-
-				// opendsu.loadAPI("http").doGet("/getSSIForMainDSU", function (err, res) {
-				// 	if (err) {
-				// 		return reportUserRelevantError("Failed to enable direct DSUStorage access from Cardinal", err);
-				// 	}
-				//
-				// 	let config = opendsu.loadApi("config");
-				//
-				// 	let mainSSI = opendsu.loadApi("keyssi").parse(res);
-				// 	if (mainSSI.getHint() == "server") {
-				// 		config.disableLocalVault();
-				// 	}
-				// 	opendsu.loadAPI("resolver").loadDSU(res, (err, mainDSU) => {
-				// 		if (err) {
-				// 			printOpenDSUError(err);
-				// 			reportUserRelevantInfo("Reattempting to enable direct DSUStorage from Cardinal", err);
-				// 			setTimeout(function () {
-				// 				getMainDSU(continuation);
-				// 			}, 100);
-				// 			return;
-				// 		}
-				// 		sc.setMainDSU(mainDSU);
-				// 		continuation();
-				// 	});
-				// })
 			}
 		}
 
 		getMainDSU(addFunctionsFromMainDSU);
 	}
-	//TODO: to be removed
-
-	// call(name, ...args) {
-	// 	if (args.length === 0) {
-	// 		throw Error('Missing arguments. Usage: call(functionName, arg1, arg2 ... callback)');
-	// 	}
-	//
-	// 	const callback = args.pop();
-	// 	const url = "/api?" + new URLSearchParams({name: name, arguments: JSON.stringify(args)});
-	// 	fetch(url, {method: "GET"})
-	// 		.then((response) => {
-	// 			if (!response.ok) {
-	// 				throw new Error(response.statusText);
-	// 			}
-	// 			return response.json();
-	// 		})
-	// 		.then((result) => {
-	// 			callback(...result);
-	// 		})
-	// 		.catch((err) => {
-	// 			return callback(err);
-	// 		});
-	// }
 
 	setObject(path, data, callback) {
 		try {
 			let dataSerialized = JSON.stringify(data);
-			this.setItem(path, dataSerialized, callback);
+			this.setItem(path,dataSerialized,callback)
 		} catch (e) {
 			callback(createOpenDSUErrorWrapper("setObject failed", e));
 		}
@@ -170,18 +120,7 @@ class NodeDSUStorage {
 	}
 
 	setItem(path, data, callback) {
-		if (!this.directAccessEnabled) {
-			let segments = path.split("/");
-			let fileName = segments.splice(segments.length - 1, 1)[0];
-			path = segments.join("/");
-			if (!path) {
-				path = "/";
-			}
-			let url = `/upload?path=${path}&filename=${fileName}`;
-			doUpload(url, data, callback);
-		} else {
-			this.writeFile(path, data, callback);
-		}
+		this.writeFile(path, data, callback);
 	}
 
 	getItem(path, expectedResultType, callback) {
@@ -190,28 +129,19 @@ class NodeDSUStorage {
 			expectedResultType = "arrayBuffer";
 		}
 
-		if (!this.directAccessEnabled) {
-			if (path[0] !== "/") {
-				path = "/" + path;
+		this.readFile(path, function (err, res) {
+			if (err) {
+				return callback(err);
 			}
-
-			path = "/download" + path;
-			doDownload(path, expectedResultType, callback);
-		} else {
-			this.readFile(path, function (err, res) {
-				if (err) {
-					return callback(err);
+			try {
+				if (expectedResultType == "json") {
+					res = JSON.parse(res.toString());
 				}
-				try {
-					if (expectedResultType == "json") {
-						res = JSON.parse(res.toString());
-					}
-				} catch (err) {
-					return callback(err);
-				}
-				callback(undefined, res);
-			})
-		}
+			} catch (err) {
+				return callback(err);
+			}
+			callback(undefined, res);
+		})
 	}
 
 	uploadFile(path, file, options, callback) {

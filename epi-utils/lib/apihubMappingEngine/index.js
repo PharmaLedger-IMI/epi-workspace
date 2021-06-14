@@ -1,6 +1,6 @@
 function getEPIMappingEngineForAPIHUB(server) {
     let mappingEngineInitialized = false;
-
+    let messagesPipe;
     const initializeApiHubMappingEngine = ()=>{
         const gtinResolverBundle = "./../../../gtin-resolver/build/bundles/gtinResolver.js";
         require(gtinResolverBundle);
@@ -10,8 +10,7 @@ function getEPIMappingEngineForAPIHUB(server) {
 
         const MessagesPipe = require("epi-utils").getMessagesPipe();
         const MessageQueuingService = require("epi-utils").loadApi("services").getMessageQueuingServiceInstance();
-        let messagesPipe = new MessagesPipe(10, 2*1000, MessageQueuingService.getNextMessagesBlock);
-
+        messagesPipe = new MessagesPipe(10, 2*1000, MessageQueuingService.getNextMessagesBlock);
 
         const ServerDSUStorageImpl = epiUtils.loadApi("services").DSUStorage.getInstance();
         const mappings = epiUtils.loadApi("mappings")
@@ -59,10 +58,11 @@ function getEPIMappingEngineForAPIHUB(server) {
             catch (e){
                 console.error(e);
             }
-        })
 
-        response.statusCode = 200;
-        response.end();
+            response.statusCode = 200;
+            response.end();
+
+        })
     });
 }
 
