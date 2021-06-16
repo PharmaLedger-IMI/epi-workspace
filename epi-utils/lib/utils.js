@@ -1,7 +1,8 @@
 module.exports.productDataSourceMapping = {
   name: "inventedName",
   gtin: "productCode",
-  photo: "",
+  photo: "photo",
+  version:"version",
   description: "nameMedicinalProduct",
   leaflet: "",
   manufName: "",

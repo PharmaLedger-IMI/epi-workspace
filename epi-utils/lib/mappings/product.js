@@ -69,7 +69,9 @@ async function processProductMessage(message){
 		const propertiesMapping = require("./../utils").productDataSourceMapping;
 
 		for (let prop in propertiesMapping){
-			this.product[prop] = message.product[propertiesMapping[prop]];
+			if(typeof message.product[propertiesMapping[prop]]!=="undefined"){
+				this.product[prop] = message.product[propertiesMapping[prop]];
+			}
 		}
 		await this.saveJSONS(productDSU, indication);
 
