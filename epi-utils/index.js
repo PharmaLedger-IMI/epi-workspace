@@ -13,5 +13,8 @@ module.exports = {
 	getMessagesPipe:function (){
 		const opendsu = require("opendsu");
 		return  opendsu.loadApi("m2dsu").getMessagesPipe();
+	},
+	getMappingsUtils:function (){
+		return require("./lib/utils");
 	}
 }

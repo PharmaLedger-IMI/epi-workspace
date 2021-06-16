@@ -1,6 +1,7 @@
 //loading EPI necessary mappings
 require("./product.js");
 require("./batch.js");
+require("./productPhoto.js");
 
 module.exports.getEPIMappingEngine = function(dsuStorage, options){
 	const opendsu = require("opendsu");

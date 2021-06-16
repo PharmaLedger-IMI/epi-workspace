@@ -31,6 +31,10 @@ function MappingLogService(storageService){
                     itemCode = message.batch.batch;
                     itemType = "batch";
                     break;
+               case typeof message.imageData === "string":
+                    itemCode = message.productCode;
+                    itemType = "product-image";
+                    break;
           }
 
           let logData = {
