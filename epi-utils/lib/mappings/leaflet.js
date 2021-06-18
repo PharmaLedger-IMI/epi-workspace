@@ -54,6 +54,7 @@ async function processLeafletMessage(message){
                         let filePath = `${basePath}/${file.filename}`;
                         await prodDSU.writeFile(filePath, $$.Buffer.from(base64ToArrayBuffer(file.fileContent)));
                     }
+                    await mappingLogService.logSuccessMapping(message, "updated leaflet");
                 }
                 catch (e){
                     console.log("Error writing files in DSU",e);

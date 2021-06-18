@@ -31,9 +31,13 @@ function MappingLogService(storageService){
                     itemCode = message.batch.batch;
                     itemType = "batch";
                     break;
-               case typeof message.imageData === "string":
+               case  message.messageType === "ProductPhoto":
                     itemCode = message.productCode;
                     itemType = "product-image";
+                    break;
+               case  ["leaflet", "smpc"].indexOf(message.messageType) !== -1:
+                    itemCode = message.productCode;
+                    itemType = message.messageType;
                     break;
           }
 
