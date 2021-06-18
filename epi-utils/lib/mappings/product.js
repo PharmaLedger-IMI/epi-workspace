@@ -59,7 +59,7 @@ async function processProductMessage(message){
 		}
 
 
-		const indication =  {product:"/"+version+"/product.json"};
+		const indication =  {product:"/product/"+version+"/product.json"};
 
 		await this.loadJSONS(productDSU, indication);
 
