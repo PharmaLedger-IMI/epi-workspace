@@ -42,7 +42,7 @@ async function processLeafletMessage(message){
             }
             else{
                 let basePath = `/product/${latestProductMetadata.version}/${type}/${language}`
-                let xmlFilePath = `${basePath}/${type}`;
+                let xmlFilePath = `${basePath}/${type}.xml`;
                 let base64ToArrayBuffer = require("./../utils").base64ToArrayBuffer;
                 let base64XMLFileContent = base64ToArrayBuffer(message.xmlFileContent);
 
