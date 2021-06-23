@@ -22,7 +22,8 @@ module.exports.productDataSourceMapping = {
   markets: "markets",
   internalMaterialCode: "internalMaterialCode",
   inventedName: "inventedName",
-  strength: "strength"
+  strength: "strength",
+  showEPIOnUnknownBatchNumber: "flagDisplayEPI_BatchNumberUnknown", // to be confirmed with business
 };
 module.exports.batchDataSourceMapping = {
   gtin: "productCode",
