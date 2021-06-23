@@ -17,15 +17,15 @@ async function processBatchMessage(message) {
 
 
   const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode);
-  let prodDSU;
+  let constProdDSU;
   try {
-    prodDSU = await this.loadDSU(gtinSSI);
+    constProdDSU = await this.loadDSU(gtinSSI);
   } catch (err) {
     await mappingLogService.logFailedMapping(message, "lookup", constants.MISSING_PRODUCT_DSU);
     throw new Error("Product not found");
   }
 
-  if (!prodDSU) {
+  if (!constProdDSU) {
     await mappingLogService.logFailedMapping(message,  "lookup", constants.MISSING_PRODUCT_DSU);
     throw new Error("Fail to create a batch for a missing product");
   }
@@ -43,7 +43,7 @@ async function processBatchMessage(message) {
       latestProductMetadata = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, productCode);
 
       if(latestProductMetadata && latestProductMetadata.version){
-        if (latestProductMetadata.version < message.batch.epiLeafletVersion) {
+        if (typeof message.batch.epiLeafletVersion === "number" && latestProductMetadata.version < message.batch.epiLeafletVersion) {
           throw new Error("Fail to create a batch for a missing product version");
         }
       }
@@ -61,7 +61,7 @@ async function processBatchMessage(message) {
   }
 
 
-  const indication = {batch: constants.BATCH_STORAGE_FILE};
+  const indication = {batch: `/batch/${constants.BATCH_STORAGE_FILE}`};
 
   await this.loadJSONS(batchDSU, indication);
 
@@ -71,9 +71,16 @@ async function processBatchMessage(message) {
 
   let productRecord;
   try {
-    productRecord = await this.storageService.getRecord(constants.PRODUCTS_TABLE, `${productCode}|${message.batch.epiLeafletVersion}`);
+    if (message.batch.epiLeafletVersion === "latest") {
+      productRecord = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, productCode);
+    } else {
+      productRecord = await this.storageService.getRecord(constants.PRODUCTS_TABLE, `${productCode}|${message.batch.epiLeafletVersion}`);
+    }
+
   } catch (e) {
   }
+
+  console.log("Product record",productRecord);
 
   for (let prop in propertiesMapping) {
     this.batch[prop] = message.batch[propertiesMapping[prop]];
@@ -100,8 +107,9 @@ async function processBatchMessage(message) {
     }
   }
 
-  this.batch.product = prodDSU;
-  this.batch.productName = productRecord.name
+
+  this.batch.product = productRecord.keySSI;
+  this.batch.productName = productRecord.name;
   this.batch.productDescription = productRecord.description;
   this.batch.creationTime = convertDateTOGMTFormat(new Date());
   this.batch.msessageTime = message.messageDateTime;
@@ -132,7 +140,6 @@ async function processBatchMessage(message) {
   delete this.batch.serialNumbers;
   delete this.batch.recalledSerialNumbers;
   delete this.batch.decommissionedSerialNumbers;
-
   await this.saveJSONS(batchDSU, indication);
 
 
