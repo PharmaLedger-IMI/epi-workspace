@@ -13,7 +13,7 @@ async function processProductPhotoMessage(message){
     let latestProductMetadata;
 
     try {
-        latestProductMetadata = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, productCode);
+        latestProductMetadata = await this.storageService.getRecord(constants.PRODUCTS_TABLE, productCode);
         prodDSU = await this.loadDSU(latestProductMetadata.keySSI);
         this.product = JSON.parse(JSON.stringify(latestProductMetadata));
     } catch (err) {
@@ -35,23 +35,15 @@ async function processProductPhotoMessage(message){
     }
 
     let base64ToArrayBuffer = require("./../utils").base64ToArrayBuffer;
-    let previousVersionPhotoPath = `/product/${version-1}/image.png`
-    let currentVersionPhotoPath = `/product/${version}/image.png`
-    let productPhotoStat  = await prodDSU.stat(previousVersionPhotoPath);
+    let photoPath = `/image.png`
+    let productPhotoStat  = await prodDSU.stat(photoPath);
     let previousVersionHasPhoto = true;
 
     if( typeof productPhotoStat === "undefined"){
         previousVersionHasPhoto = false;
     }
 
-    if(inherited){
-       if(previousVersionHasPhoto){
-           await prodDSU.cloneFolder(previousVersionPhotoPath,currentVersionPhotoPath)
-       }
-    }
-    else{
-        await prodDSU.writeFile(currentVersionPhotoPath, $$.Buffer.from(base64ToArrayBuffer(message.imageData)));
-    }
+    await prodDSU.writeFile(photoPath, $$.Buffer.from(base64ToArrayBuffer(message.imageData)));
 
     await mappingLogService.logSuccessMapping(message, previousVersionHasPhoto ? "updated photo" : "created photo");
 
@@ -62,9 +54,8 @@ async function processProductPhotoMessage(message){
             action: previousVersionHasPhoto?"Updated Product Photo":"Edited Product Photo",
             logType: 'PRODUCT_LOG'
         });
-
-        await this.storageService.updateRecord(constants.PRODUCTS_TABLE, `${this.product.gtin}|${this.product.version}`, this.product);
-        await this.storageService.updateRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin, this.product);
+        //this is needed in order to ensure an update event when a photo is updated from an incoming message through import file or apihub mapping
+        await this.storageService.updateRecord(constants.PRODUCTS_TABLE, this.product.gtin, this.product);
     }
     else{
         throw new Error("LogService is not available!")

@@ -13,7 +13,9 @@ async function processBatchMessage(message) {
 
   const batchId = message.batch.batch;
   const productCode = message.batch.productCode;
-  const expiryDate = message.batch.expiryDate;
+
+
+  console.log("Batch message", message);
 
 
   const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode);
@@ -30,20 +32,28 @@ async function processBatchMessage(message) {
     throw new Error("Fail to create a batch for a missing product");
   }
 
-  const gtinBatchSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode, batchId, expiryDate);
+  const gtinBatchSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode, batchId);
   const {dsu: batchConstDSU, alreadyExists: batchExists} = await this.loadConstSSIDSU(gtinBatchSSI);
 
   let batchDSU;
   let batchMetadata = {};
-  let latestProductMetadata = {};
+  let productMetadata = {};
+
+  try {
+    productMetadata = await this.storageService.getRecord(constants.PRODUCTS_TABLE, productCode);
+  }
+  catch (e) {
+    await mappingLogService.logFailedMapping(message, "lookup","Database corrupted");
+    throw new Error("Missing product from the wallet database or database is corrupted");
+  }
+
+
+
   if (!batchExists) {
     batchDSU = await this.createDSU(this.options.holderInfo.subdomain, "seed");
   } else {
-    try {
-      latestProductMetadata = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, productCode);
-
-      if(latestProductMetadata && latestProductMetadata.version){
-        if (typeof message.batch.epiLeafletVersion === "number" && latestProductMetadata.version < message.batch.epiLeafletVersion) {
+      if(productMetadata && productMetadata.version){
+        if (typeof message.batch.epiLeafletVersion === "number" && productMetadata.version < message.batch.epiLeafletVersion) {
           throw new Error("Fail to create a batch for a missing product version");
         }
       }
@@ -52,35 +62,18 @@ async function processBatchMessage(message) {
         throw new Error("This case is not implemented. Missing product from the wallet database or database is corrupted");
       }
 
-      batchMetadata = await this.storageService.getRecord(constants.BATCHES_STORAGE_TABLE, batchId);
-    } catch (e) {
-      await mappingLogService.logFailedMapping(message, "lookup","Database corrupted");
-      throw new Error("Missing product from the wallet database or database is corrupted");
-    }
+    batchMetadata = await this.storageService.getRecord(constants.BATCHES_STORAGE_TABLE, batchId);
     batchDSU = await this.loadDSU(batchMetadata.keySSI);
   }
 
 
-  const indication = {batch: `/batch/${constants.BATCH_STORAGE_FILE}`};
+  const indication = {batch: `${constants.BATCH_STORAGE_FILE}`};
 
   await this.loadJSONS(batchDSU, indication);
 
   if (typeof this.batch === "undefined") {
     this.batch = JSON.parse(JSON.stringify(batchMetadata));
   }
-
-  let productRecord;
-  try {
-    if (message.batch.epiLeafletVersion === "latest") {
-      productRecord = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, productCode);
-    } else {
-      productRecord = await this.storageService.getRecord(constants.PRODUCTS_TABLE, `${productCode}|${message.batch.epiLeafletVersion}`);
-    }
-
-  } catch (e) {
-  }
-
-  console.log("Product record",productRecord);
 
   for (let prop in propertiesMapping) {
     this.batch[prop] = message.batch[propertiesMapping[prop]];
@@ -108,9 +101,9 @@ async function processBatchMessage(message) {
   }
 
 
-  this.batch.product = productRecord.keySSI;
-  this.batch.productName = productRecord.name;
-  this.batch.productDescription = productRecord.description;
+  this.batch.product = productMetadata.keySSI;
+  this.batch.productName = productMetadata.name;
+  this.batch.productDescription = productMetadata.description;
   this.batch.creationTime = convertDateTOGMTFormat(new Date());
   this.batch.msessageTime = message.messageDateTime;
 
@@ -144,10 +137,27 @@ async function processBatchMessage(message) {
 
 
   if (!batchExists) {
-    await batchConstDSU.mount(constants.BATCH_DSU_MOUNT_POINT, batchDSU);
+    batchDSU.getKeySSIAsString(async (err, batchKeySSI)=>{
+      if(err){
+        await mappingLogService.logFailedMapping(message, "internal error","Database corrupted");
+        throw new Error("get keySSIAsString  from batch DSU failed");
+      }
+      await batchConstDSU.mount(constants.BATCH_DSU_MOUNT_POINT, batchKeySSI);
+    })
+
+    let prodDSU = await this.loadDSU(productMetadata.keySSI);
+
+    prodDSU.getKeySSIAsString(async (err, prodKeySSI)=>{
+      if(err){
+        await mappingLogService.logFailedMapping(message, "internal error","Database corrupted");
+        throw new Error("get keySSIAsString  from prod DSU failed");
+      }
+      await batchConstDSU.mount(constants.PRODUCT_DSU_MOUNT_POINT, prodKeySSI);
+    })
   }
 
   this.batch.keySSI = await batchDSU.getKeySSIAsString();
+  this.batch.consKeySSI = gtinBatchSSI;
   batchClone.keySSI = this.batch.keySSI;
 
   if (typeof this.options.logService !== "undefined") {

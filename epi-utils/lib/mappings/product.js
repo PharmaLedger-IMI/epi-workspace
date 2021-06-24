@@ -26,7 +26,7 @@ async function processProductMessage(message){
 		}
 		else{
 			try{
-				latestProductMetadata = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, productCode);
+				latestProductMetadata = await this.storageService.getRecord(constants.PRODUCTS_TABLE, productCode);
 			}
 			catch (e){}
 			if(latestProductMetadata && latestProductMetadata.version){
@@ -59,7 +59,7 @@ async function processProductMessage(message){
 		}
 
 
-		const indication =  {product:"/product/"+version+"/product.json"};
+		const indication =  {product:"/product.json"};
 
 		await this.loadJSONS(productDSU, indication);
 
@@ -76,7 +76,13 @@ async function processProductMessage(message){
 		await this.saveJSONS(productDSU, indication);
 
 		if(!alreadyExists){
-			await constDSU.mount(constants.PRODUCT_DSU_MOUNT_POINT, productDSU);
+			productDSU.getKeySSIAsString(async (err,keySSI)=>{
+				if(err){
+					throw new Error("get keySSIAsString  from prod DSU failed");
+				}
+				await constDSU.mount(constants.PRODUCT_DSU_MOUNT_POINT, keySSI);
+			})
+
 		}
 
 		this.product.keySSI = await productDSU.getKeySSIAsString();
@@ -89,20 +95,19 @@ async function processProductMessage(message){
 				logType: 'PRODUCT_LOG'
 			});
 
-			await this.storageService.insertRecord(constants.PRODUCTS_TABLE, `${this.product.gtin}|${this.product.version}`, this.product);
-
 			let prod;
-			try {
-				prod = await this.storageService.getRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin);
+			try{
+				prod = await this.storageService.getRecord(constants.PRODUCTS_TABLE, this.product.gtin);
 			}
 			catch (e){}
 
-			if (!prod) {
-				this.product.initialVersion = this.product.version;
-				await this.storageService.insertRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin, this.product);
-			} else {
-				await this.storageService.updateRecord(constants.LAST_VERSION_PRODUCTS_TABLE, this.product.gtin, this.product);
+			if(prod){
+				await this.storageService.updateRecord(constants.PRODUCTS_TABLE, this.product.gtin, this.product);
 			}
+			else{
+				await this.storageService.insertRecord(constants.PRODUCTS_TABLE, this.product.gtin, this.product)
+			}
+
 		}
 		else{
 			throw new Error("LogService is not available!")

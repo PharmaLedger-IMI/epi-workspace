@@ -171,13 +171,18 @@ let instance;
 module.exports = {
 	getInstance: function(){
 		if(!instance){
-			switch($$.environmentType){
-				case "nodejs":
-					instance = new NodeDSUStorage();
-					break;
-				default:
-					throw new Error('DSU Storage is not implemented for this <${$$.environmentType}> env!');
-			}
+			instance = module.exports.createInstance();
+		}
+		return instance;
+	},
+	createInstance: function(){
+		let instance;
+		switch($$.environmentType){
+			case "nodejs":
+				instance = new NodeDSUStorage();
+				break;
+			default:
+				throw new Error('DSU Storage is not implemented for this <${$$.environmentType}> env!');
 		}
 		return instance;
 	}
