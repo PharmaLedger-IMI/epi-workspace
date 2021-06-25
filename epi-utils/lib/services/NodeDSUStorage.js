@@ -1,6 +1,12 @@
 class NodeDSUStorage {
-	constructor() {
+	constructor(walletSSI) {
 		this.directAccessEnabled = false;
+
+		if(!walletSSI){
+			throw new Error("Wallet SSI was not provided in constructor of NodeDSUStorage!")
+		}
+
+		this.walletSSI = walletSSI;
 	}
 
 	enableDirectAccess(callback) {
@@ -61,29 +67,13 @@ class NodeDSUStorage {
 				continuation();
 			} else {
 				const opendsu = require("opendsu");
-				//get server configuration
-				const apiHub = require("apihub");
-				let defaultConfig = apiHub.getServerConfig();
-				let domainConfig = apiHub.getDomainConfig()
-
-				let walletSSI;
-				try {
-					 walletSSI = domainConfig.endpointsConfig['epi-mapping-engine'].options.walletSSI;
-				}catch (e){
-					console.log("Domain is not properly configured")
-				}
-
-				if(typeof walletSSI==="undefined"){
-					walletSSI = defaultConfig.endpointsConfig['epi-mapping-engine'].options.walletSSI;
-				}
-				console.log(walletSSI);
-
 				let config = opendsu.loadApi("config");
-				let mainSSI = opendsu.loadApi("keyssi").parse(walletSSI);
+
+				let mainSSI = opendsu.loadApi("keyssi").parse(self.walletSSI);
 				if (mainSSI.getHint() == "server") {
 					config.disableLocalVault();
 				}
-				opendsu.loadAPI("resolver").loadDSU(walletSSI, (err, mainDSU) => {
+				opendsu.loadAPI("resolver").loadDSU(self.walletSSI, (err, mainDSU) => {
 					if (err) {
 						//printOpenDSUError(err);
 						//reportUserRelevantInfo("Reattempting to enable direct DSUStorage from Cardinal", err);
@@ -167,19 +157,19 @@ class NodeDSUStorage {
 	}
 }
 
-let instance;
+let instances = {};
 module.exports = {
-	getInstance: function(){
-		if(!instance){
-			instance = module.exports.createInstance();
+	getInstance: function(walletSSI){
+		if(!instances[walletSSI]){
+			instances[walletSSI] = module.exports.createInstance(walletSSI);
 		}
-		return instance;
+		return instances[walletSSI];
 	},
-	createInstance: function(){
+	createInstance: function(walletSSI){
 		let instance;
 		switch($$.environmentType){
 			case "nodejs":
-				instance = new NodeDSUStorage();
+				instance = new NodeDSUStorage(walletSSI);
 				break;
 			default:
 				throw new Error('DSU Storage is not implemented for this <${$$.environmentType}> env!');

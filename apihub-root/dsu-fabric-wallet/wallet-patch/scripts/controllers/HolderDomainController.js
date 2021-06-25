@@ -26,21 +26,27 @@ export default class HolderDomainController extends ContainerController {
                     return this.showError(err, "Could not initialize the holder SSI");
                 }
                 this.DSUStorage.getObject(constants.ISSUER_FILE_PATH, (err, issuer) => {
-                    this.DSUStorage.getObject(constants.HOLDER_FILE_PATH, (err, holder)=>{
-                        if(err || typeof holder === "undefined"){
+                    this.DSUStorage.getObject(constants.WALLET_HOLDER_FILE_PATH, (err, holder) => {
+                        if (err || typeof holder === "undefined") {
                             holder = {};
                         }
                         holder.domain = this.model.domain;
-                        holder.subdomain = typeof issuer === "undefined" ? undefined: issuer.subdomain;
+                        holder.subdomain = typeof issuer === "undefined" ? undefined : issuer.subdomain;
                         holder.ssi = seedSSI.getIdentifier();
                         holder.userDetails = userDetails;
 
-                        this.DSUStorage.setObject(constants.HOLDER_FILE_PATH, holder, (err)=>{
-                            if(err){
+                        this.DSUStorage.setObject(constants.WALLET_HOLDER_FILE_PATH, holder, (err) => {
+                            if (err) {
                                 return this.showError(err);
                             }
-                            this.History.navigateToPageByTag("holder");
-                        });
+                            this.DSUStorage.setObject(constants.SSAPP_HOLDER_FILE_PATH, holder, (err) => {
+                                if (err) {
+                                    return this.showError(err);
+                                }
+
+                                this.History.navigateToPageByTag("holder");
+                            });
+                        })
                     })
                 });
             });
