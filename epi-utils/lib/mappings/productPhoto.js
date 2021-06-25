@@ -5,17 +5,15 @@ function verifyIfProductPhotoMessage(message){
 async function processProductPhotoMessage(message){
     const constants = require("./../utils").constants;
     const productCode = message.productCode;
-    const inherited = message.inherited;
 
     const mappingLogService = require("./logs").createInstance(this.storageService);
-    let version;
     let prodDSU;
-    let latestProductMetadata;
+    let productMetadata;
 
     try {
-        latestProductMetadata = await this.storageService.getRecord(constants.PRODUCTS_TABLE, productCode);
-        prodDSU = await this.loadDSU(latestProductMetadata.keySSI);
-        this.product = JSON.parse(JSON.stringify(latestProductMetadata));
+        productMetadata = await this.storageService.getRecord(constants.PRODUCTS_TABLE, productCode);
+        prodDSU = await this.loadDSU(productMetadata.keySSI);
+        this.product = JSON.parse(JSON.stringify(productMetadata));
     } catch (err) {
         await mappingLogService.logFailedMapping(message, "lookup", constants.MISSING_PRODUCT_DSU);
         throw new Error("Product not found");
@@ -24,14 +22,6 @@ async function processProductPhotoMessage(message){
     if (!prodDSU) {
         await mappingLogService.logFailedMapping(message,  "lookup", constants.MISSING_PRODUCT_DSU);
         throw new Error("Fail to create a batch for a missing product");
-    }
-
-    if(latestProductMetadata && latestProductMetadata.version){
-        version = latestProductMetadata.version;
-    }
-    else{
-        await mappingLogService.logFailedMapping(message, "lookup","Database corrupted");
-        throw new Error("This case is not implemented. Missing product from the wallet database or database is corrupted");
     }
 
     let base64ToArrayBuffer = require("./../utils").base64ToArrayBuffer;
