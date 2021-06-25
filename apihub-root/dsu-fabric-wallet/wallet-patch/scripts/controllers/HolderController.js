@@ -39,6 +39,14 @@ export default class HolderController extends ContainerController {
                 readableCredentialElement.language = "json";
                 readableCredentialElement.innerHTML = this.model.readableCredential;
                 readableContainer.appendChild(readableCredentialElement);
+                this.DSUStorage.enableDirectAccess(()=>{
+                    let sc = require("opendsu").loadAPI("sc");
+                    let mainDSU = sc.getMainDSU();
+                    mainDSU.getKeySSIAsString((err, keySSI)=>{
+                        this.model.walletKeySSI = keySSI
+                    })
+
+                })
             });
         }
 
