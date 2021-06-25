@@ -63,16 +63,22 @@ async function processProductMessage(message){
 
 		await this.loadJSONS(productDSU, indication);
 
-		if(typeof this.product ==="undefined"){
-			this.product = JSON.parse(JSON.stringify(latestProductMetadata));
-		}
-		const propertiesMapping = require("./../utils").productDataSourceMapping;
+    if (typeof this.product === "undefined") {
+      this.product = JSON.parse(JSON.stringify(latestProductMetadata));
+    }
+    const propertiesMapping = require("./../utils").productDataSourceMapping;
 
-		for (let prop in propertiesMapping){
-			if(typeof message.product[propertiesMapping[prop]]!=="undefined"){
-				this.product[prop] = message.product[propertiesMapping[prop]];
-			}
-		}
+    for (let prop in propertiesMapping) {
+      if (typeof message.product[propertiesMapping[prop]] !== "undefined") {
+        this.product[prop] = message.product[propertiesMapping[prop]];
+        if (prop === "practitionerInfo" && !message.product[propertiesMapping[prop]]) {
+          this.product[prop] = "SmPC";
+        }
+        if (prop === "patientLeafletInfo" && !message.product[propertiesMapping[prop]]) {
+          this.product[prop] = "Patient Information";
+        }
+      }
+    }
 		await this.saveJSONS(productDSU, indication);
 
 		if(!alreadyExists){
