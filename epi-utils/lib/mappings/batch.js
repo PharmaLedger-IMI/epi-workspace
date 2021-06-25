@@ -14,8 +14,9 @@ async function processBatchMessage(message) {
   const batchId = message.batch.batch;
   const productCode = message.batch.productCode;
 
-
-  console.log("Batch message", message);
+  if(typeof message.batch.version !== "number") {
+    message.batch.version = 1;
+  }
 
 
   const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode);
@@ -48,24 +49,16 @@ async function processBatchMessage(message) {
   }
 
 
-
   if (!batchExists) {
     batchDSU = await this.createDSU(this.options.holderInfo.subdomain, "seed");
   } else {
-      if(productMetadata && productMetadata.version){
-        if (typeof message.batch.epiLeafletVersion === "number" && productMetadata.version < message.batch.epiLeafletVersion) {
-          throw new Error("Fail to create a batch for a missing product version");
-        }
-      }
-      else{
-        //TODO heal database records using data from the DSU
+      if(!productMetadata){
         throw new Error("This case is not implemented. Missing product from the wallet database or database is corrupted");
       }
 
     batchMetadata = await this.storageService.getRecord(constants.BATCHES_STORAGE_TABLE, batchId);
     batchDSU = await this.loadDSU(batchMetadata.keySSI);
   }
-
 
   const indication = {batch: `${constants.BATCH_STORAGE_FILE}`};
 
