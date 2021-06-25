@@ -1,0 +1,11 @@
+{
+  "anchoring": {
+    "type": "ETH",
+    "option": {
+      "endpoint": "http://a650cecc321a54722a8c32c9a195466a-709616493.eu-west-2.elb.amazonaws.com:3000"
+    },
+    "commands": {
+      "addAnchor": "anchor"
+    }
+  }
+}
