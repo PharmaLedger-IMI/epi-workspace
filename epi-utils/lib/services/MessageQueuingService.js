@@ -36,6 +36,16 @@ function MessageQueuingService() {
                         return letQueuePass();
                     }
                     break;
+                case ["productphoto", "leaflet", "smpc"].indexOf(message.messageType.toLowerCase()) !== -1:
+                    productCode = message.productCode;
+                    if (productsInQueue.indexOf(productCode) === -1) {
+                        productsInQueue.push(productCode);
+                        queue.push(message);
+                    }
+                    else {
+                        return letQueuePass();
+                    }
+                    break;
             }
         }
         letQueuePass();
