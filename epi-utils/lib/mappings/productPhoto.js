@@ -29,7 +29,7 @@ async function processProductPhotoMessage(message){
     let productPhotoStat  = await prodDSU.stat(photoPath);
     let previousVersionHasPhoto = true;
 
-    if( typeof productPhotoStat === "undefined"){
+    if( typeof productPhotoStat.type === "undefined"){
         previousVersionHasPhoto = false;
     }
 

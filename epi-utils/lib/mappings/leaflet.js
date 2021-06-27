@@ -8,7 +8,6 @@ async function processLeafletMessage(message) {
     const mappingLogService = require("./logs").createInstance(this.storageService);
     let language = message.language;
     let type = message.messageType
-    let inherited = message.inherited;
 
     let prodDSU;
     let productMetadata;
