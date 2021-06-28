@@ -110,15 +110,18 @@ async function processBatchMessage(message) {
   if (message.batch.snValid.length > 0) {
     bf = getBloomFilterSerialisation(message.batch.snValid);
     this.batch.bloomFilterSerialisations.push(bf.bloomFilterSerialisation());
+    this.batch.defaultSerialNumber = message.batch.snValid[0];
   }
 
   if (message.batch.snRecalled.length > 0) {
     bf = getBloomFilterSerialisation(message.batch.snRecalled);
     this.batch.bloomFilterRecalledSerialisations.push(bf.bloomFilterSerialisation());
+    this.batch.defaultRecalledSerialNumber = message.batch.snRecalled[0];
   }
   if (message.batch.snDecom.length > 0) {
     bf = getBloomFilterSerialisation(message.batch.snDecom);
     this.batch.bloomFilterDecommissionedSerialisations.push(bf.bloomFilterSerialisation());
+    this.batch.defaultDecommissionedSerialNumber = message.batch.snDecom[0];
   }
 
   const batchClone = JSON.parse(JSON.stringify(this.batch));
