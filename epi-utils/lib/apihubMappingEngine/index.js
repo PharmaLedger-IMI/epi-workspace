@@ -57,15 +57,16 @@ function getEPIMappingEngineForAPIHUB(server) {
 
         console.log("EPI Mapping Engine called for domain: ", domainName);
 
-            let data = '';
+            let data = [];
             request.on('data', (chunk) => {
-                data += chunk;
+                data.push(chunk);
             });
 
             request.on('end', () => {
 
                 try {
-                    let messages = JSON.parse(data.toString());
+                    let body = Buffer.concat(data).toString();
+                    let messages = JSON.parse(body);
 
                     getMessagePipe(domainName,(err, messagesPipe)=>{
                         if(err){
