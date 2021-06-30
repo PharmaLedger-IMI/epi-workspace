@@ -3,6 +3,7 @@ require("./product.js");
 require("./batch.js");
 require("./productPhoto.js");
 require("./leaflet.js");
+require("./delete-leaflet.js");
 
 module.exports.getEPIMappingEngine = function(dsuStorage, options){
 	const opendsu = require("opendsu");

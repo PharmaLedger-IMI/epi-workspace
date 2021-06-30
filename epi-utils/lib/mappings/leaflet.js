@@ -1,48 +1,16 @@
 function verifyIfLeafletMessage(message) {
     return ["leaflet", "smpc"].includes(message.messageType)
         && Object.keys(message).some(key => ['productCode', 'batchCode'].includes(key))
+        && typeof message.delete === "undefined"
 }
 
 async function processLeafletMessage(message) {
-    const constants = require("./../utils").constants;
-    const tablesMappings = {
-        "product": {
-            tableName: constants.PRODUCTS_TABLE,
-            missingDSUMessage: constants.MISSING_PRODUCT_DSU,
-        },
-        "batch": {
-            tableName: constants.BATCHES_STORAGE_TABLE,
-            missingDSUMessage: constants.MISSING_BATCH_DSU,
-        }
-    }
-    const databaseRecordIdentifier = message.productCode ? message.productCode : message.batchCode;
+    const leafletUtils = require("./utils/leaflet-utils");
     const mappingLogService = require("./logs").createInstance(this.storageService);
+    const hostDSU = await leafletUtils.getHostDSU.bind(this)(message);
+
     let language = message.language;
     let type = message.messageType
-
-    let hostDSU;
-    let dsuMetadata;
-
-    let dsuMapping = tablesMappings["product"];
-    if (message.batchCode) {
-        dsuMapping = tablesMappings["batch"];
-    }
-
-    try {
-        dsuMetadata = await this.storageService.getRecord(dsuMapping.tableName, databaseRecordIdentifier);
-        hostDSU = await this.loadDSU(dsuMetadata.keySSI);
-    } catch (err) {
-        await mappingLogService.logFailedMapping(message, "lookup", dsuMapping.missingDSUMessage);
-        throw new Error(dsuMapping.missingDSUMessage);
-    }
-
-    if (!hostDSU) {
-        await mappingLogService.logFailedMapping(message, "lookup", dsuMapping.missingDSUMessage);
-        throw new Error(`Fail to create a ${type} for a missing ${message.productCode?"product":"batch"}`);
-    }
-
-    const dsuKeySSI = await hostDSU.getKeySSIAsString();
-    console.log("DSU keySSI", dsuKeySSI);
 
     let basePath = `/${type}/${language}`
     let xmlFilePath = `${basePath}/${type}.xml`;

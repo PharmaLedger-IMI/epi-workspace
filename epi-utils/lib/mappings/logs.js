@@ -49,7 +49,13 @@ function MappingLogService(storageService){
                status: status,
                message: message
           }
-          await this.storageService.insertRecord(constants.IMPORT_LOGS, itemCode + "|" + currentDate, logData);
+          try {
+               await this.storageService.insertRecord(constants.IMPORT_LOGS, itemCode + "|" + currentDate, logData);
+          }
+          catch (e){
+               console.log(e);
+          }
+
      }
 }
 
