@@ -26,6 +26,20 @@ async function processLeafletMessage(message) {
             await hostDSU.writeFile(filePath, $$.Buffer.from(base64ToArrayBuffer(file.fileContent)));
         }
         await mappingLogService.logSuccessMapping(message, "updated leaflet");
+
+        if(typeof this.options.logService!=="undefined"){
+            await $$.promisify(this.options.logService.log.bind(this.options.logService))({
+                logInfo: message,
+                username: message.senderId,
+                action: message.messageType === "leaflet" ? "Updated Leaflet" : "Updated SMPC",
+                logType:"LEAFLET_LOG",
+                metadata:{
+                    attachedTo:message.productCode?"PRODUCT":"BATCH",
+                    itemCode:message.productCode || message.batchCode
+                }
+            });
+        }
+
     } catch (e) {
         console.log("Error writing files in DSU", e);
     }

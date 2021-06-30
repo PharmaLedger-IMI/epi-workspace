@@ -20,6 +20,18 @@ async function processDeleteLeafletMessage(message) {
     }
 
     await mappingLogService.logSuccessMapping(message, "deleted leaflet");
+    if(typeof this.options.logService!=="undefined"){
+        await $$.promisify(this.options.logService.log.bind(this.options.logService))({
+            logInfo: message,
+            username: message.senderId,
+            action:message.messageType === "leaflet" ? "Deleted Leaflet" : "Deleted SMPC",
+            logType:"LEAFLET_LOG",
+            metadata:{
+                attachedTo:message.productCode?"PRODUCT":"BATCH",
+                itemCode:message.productCode || message.batchCode
+            }
+        });
+    }
 
 }
 

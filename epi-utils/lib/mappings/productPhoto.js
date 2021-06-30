@@ -39,10 +39,14 @@ async function processProductPhotoMessage(message){
 
     if(typeof this.options.logService!=="undefined"){
         await $$.promisify(this.options.logService.log.bind(this.options.logService))({
-            logInfo: this.product,
+            logInfo: message,
             username: message.senderId,
             action: previousVersionHasPhoto?"Updated Product Photo":"Edited Product Photo",
-            logType: 'PRODUCT_LOG'
+            logType: 'PRODUCT_PHOTO_LOG',
+            metadata:{
+                attachedTo:"PRODUCT",
+                itemCode:productCode
+            }
         });
         //this is needed in order to ensure an update event when a photo is updated from an incoming message through import file or apihub mapping
         await this.storageService.updateRecord(constants.PRODUCTS_TABLE, this.product.gtin, this.product);
