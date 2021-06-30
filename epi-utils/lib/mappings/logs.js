@@ -36,7 +36,7 @@ function MappingLogService(storageService){
                     itemType = "product-image";
                     break;
                case  ["leaflet", "smpc"].indexOf(message.messageType) !== -1:
-                    itemCode = message.productCode;
+                    itemCode = message.productCode?message.productCode:message.batchCode;
                     itemType = message.messageType;
                     break;
           }
