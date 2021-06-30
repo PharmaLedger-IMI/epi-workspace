@@ -1,7 +1,7 @@
-module.exports.productDataSourceMapping = {
+productDataSourceMapping = {
   name: "inventedName",
   gtin: "productCode",
-  version:"version",
+  version: "version",
   description: "nameMedicinalProduct",
   manufName: "manufName",
   reportURL: "adverseEventReportingURL",
@@ -14,27 +14,72 @@ module.exports.productDataSourceMapping = {
   showEPIOnSNUnknown: "flagDisplayEPI_SNUnknown",
   showEPIOnIncorrectExpiryDate: "flagDisplayEPI_EXPIncorrect",
   showEPIOnBatchExpired: "flagDisplayEPI_BatchExpired",
-  practitionerInfo: "healthcarePractitionerInfo",
-  patientLeafletInfo: "patientSpecificLeaflet",
+  practitionerInfo: function (param) {
+    if (param.direction === "toMsg") {
+      return "healthcarePractitionerInfo"
+    }
+    param.obj["practitionerInfo"] = param.msg["healthcarePractitionerInfo"] || "SmPC";
+
+  },
+  patientLeafletInfo: function (param) {
+    if (param.direction === "toMsg") {
+      return "patientSpecificLeaflet"
+    }
+    param.obj["patientLeafletInfo"] = param.msg["patientSpecificLeaflet"] || "Patient Information";
+  },
   markets: "markets",
   internalMaterialCode: "internalMaterialCode",
   inventedName: "inventedName",
   strength: "strength",
   showEPIOnUnknownBatchNumber: "flagDisplayEPI_BatchNumberUnknown", // to be confirmed with business
 };
-module.exports.batchDataSourceMapping = {
+
+batchDataSourceMapping = {
   gtin: "productCode",
   batchNumber: "batch",
-  expiry: "expiryDate",
+  expiry: function (param) {
+    if (param.direction === "toMsg") {
+      return "expiryDate"
+    }
+    param.obj['expiry'] = param.msg["expiryDate"];
+    try {
+      const y = param.msg.expiryDate.slice(0, 2);
+      const m = param.msg.expiryDate.slice(2, 4);
+      let d = param.msg.expiryDate.slice(4, 6);
+      const lastMonthDay = ("0" + new Date(y, m, 0).getDate()).slice(-2);
+      if (d === '00') {
+        param.obj.enableExpiryDay = true;
+        d = lastMonthDay;
+      } else {
+        param.obj.enableExpiryDay = false;
+      }
+      const localDate = new Date(Date.parse(m + '/' + d + '/' + y));
+      const gmtDate = new Date(localDate.getFullYear() + '-' + m + '-' + d + 'T00:00:00Z');
+      param.obj.expiryForDisplay = gmtDate.getTime();
+    } catch (e) {
+      throw new Error(`${param.msg.expiryDate} date is invalid`, e);
+    }
+  },
   version: "epiLeafletVersion",
   versionLabel: "",
   serialNumbers: "snValid",
   recalledSerialNumbers: "snRecalled",
-  decommissionedSerialNumbers: "snDecom",
+  decommissionedSerialNumbers: function (param) {
+    if (param.direction === "toMsg") {
+      return "snDecom " + param.obj.decommissionReason;
+    }
+    const decomKey = Object.keys(param.msg).find((key) => key.includes("snDecom"));
+    const keyArr = decomKey.split(" ");
+    if (keyArr.length === 2) {
+      param.obj.decommissionReason = keyArr[1];
+    } else {
+      param.obj.decommissionReason = "unknown";
+    }
+  },
+  decommissionReason: "decommissionReason",
   defaultSerialNumber: "defaultSerialNumber",
-  defaultDecommissionedSerialNumber:"defaultDecommissionedSerialNumber",
-  defaultRecalledSerialNumber:"defaultRecalledSerialNumber",
-  decommissionReason: "",
+  defaultDecommissionedSerialNumber: "defaultDecommissionedSerialNumber",
+  defaultRecalledSerialNumber: "defaultRecalledSerialNumber",
   recalled: "flagEnableBatchRecallMessage",
   serialCheck: "flagEnableSNVerification",
   incorrectDateCheck: "flagEnableEXPVerification",
@@ -43,10 +88,61 @@ module.exports.batchDataSourceMapping = {
   defaultMessage: "batchMessage",
   packagingSiteName: "packagingSiteName",
   flagEnableACFBatchCheck: "flagEnableACFBatchCheck",
-  acfBatchCheckURL: "acfBatchCheckURL"
+  acfBatchCheckURL: "acfBatchCheckURL",
+  snValidReset: function (param) {
+    if (param.direction === "toMsg") {
+      return "snValidReset"
+    }
+    if (param.msg["snValidReset"]) {
+      param.obj.serialNumbers = '';
+      param.obj.defaultSerialNumber = '';
+      param.obj.bloomFilterSerialisations = [];
+    }
+  },
+  snRecalledReset: function (param) {
+    if (param.direction === "toMsg") {
+      return "snRecalledReset"
+    }
+    if (param.msg["snRecalledReset"]) {
+      param.obj.bloomFilterRecalledSerialisations = [];
+    }
+  },
+  snDecomReset: function (param) {
+    if (param.direction === "toMsg") {
+      return "snDecomReset"
+    }
+    if (param.msg["snDecomReset"]) {
+      param.obj.bloomFilterRecalledSerialisations = [];
+    }
+  },
+
 };
 
-module.exports.constants = {
+function transformFromMessage(destinationObj, messageObj, mappingObj) {
+  for (let prop in mappingObj) {
+    if (mappingObj[prop]) {
+      if (typeof mappingObj[prop] === "function") {
+        mappingObj[prop]({direction: "fromMsg", "obj": destinationObj, "msg": messageObj});
+      } else {
+        destinationObj[prop] = messageObj[mappingObj[prop]];
+      }
+    }
+  }
+}
+
+function transformToMessage(sourceObj, messageObj, mappingObj) {
+  for (let prop in mappingObj) {
+    if (mappingObj[prop]) {
+      if (typeof mappingObj[prop] === "function") {
+        messageObj[mappingObj[prop]({direction: "toMsg", "obj": sourceObj, "msg": messageObj})] = sourceObj[prop];
+      } else {
+        messageObj[mappingObj[prop]] = sourceObj[prop];
+      }
+    }
+  }
+}
+
+constants = {
   'PACKAGES_STORAGE_PATH': "/app/data/packages.json",
   'DATA_STORAGE_PATH': "/app/data",
   'PRODUCTS_TABLE': "products",
@@ -62,13 +158,13 @@ module.exports.constants = {
   'LEAFLET_ATTACHMENT_FILE': "/leaflet.xml",
   'SMPC_ATTACHMENT_FILE': "/smpc.xml",
   'IMPORT_LOGS': 'import-logs',
-  'SUCCESS_MAPPING_STATUS':"success",
-  'FAILED_MAPPING_STATUS':"failed",
-  "MISSING_PRODUCT_DSU":"Missing Product DSU",
-  "MISSING_PRODUCT_VERSION":"Missing Product Version"
+  'SUCCESS_MAPPING_STATUS': "success",
+  'FAILED_MAPPING_STATUS': "failed",
+  "MISSING_PRODUCT_DSU": "Missing Product DSU",
+  "MISSING_PRODUCT_VERSION": "Missing Product Version"
 };
 
-module.exports.getBloomFilterSerialisation = function (arr, bfSerialisation) {
+function getBloomFilterSerialisation(arr, bfSerialisation) {
   let crypto = require("opendsu").loadAPI("crypto");
   let bf;
   if (bfSerialisation) {
@@ -82,7 +178,7 @@ module.exports.getBloomFilterSerialisation = function (arr, bfSerialisation) {
   return bf
 }
 
-module.exports.convertDateTOGMTFormat = function (date) {
+function convertDateTOGMTFormat(date) {
   let formatter = new Intl.DateTimeFormat('en', {
     year: 'numeric',
     month: 'short',
@@ -121,6 +217,7 @@ module.exports.convertDateTOGMTFormat = function (date) {
 
   return `${year} ${month} ${day} ${hour}:${minute} ${offsetStr}`;
 }
+
 /**
  * https://gist.github.com/jonleighton/958841#gistcomment-2839519
  * @param arrayBuffer
@@ -135,11 +232,11 @@ for (let i = 0; i < chars.length; i++) {
   lookup[chars.charCodeAt(i)] = i;
 }
 
-module.exports.arrayBufferToBase64 = (arrayBuffer) =>{
+arrayBufferToBase64 = (arrayBuffer) => {
   let bytes = new Uint8Array(arrayBuffer),
-      i, len = bytes.length, base64 = "";
+    i, len = bytes.length, base64 = "";
 
-  for (i = 0; i < len; i+=3) {
+  for (i = 0; i < len; i += 3) {
     base64 += chars[bytes[i] >> 2];
     base64 += chars[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];
     base64 += chars[((bytes[i + 1] & 15) << 2) | (bytes[i + 2] >> 6)];
@@ -159,10 +256,10 @@ module.exports.arrayBufferToBase64 = (arrayBuffer) =>{
  * @param base64
  * @returns {ArrayBuffer}
  */
-module.exports.base64ToArrayBuffer =  (base64) =>{
+base64ToArrayBuffer = (base64) => {
   let bufferLength = base64.length * 0.75,
-      len = base64.length, i, p = 0,
-      encoded1, encoded2, encoded3, encoded4;
+    len = base64.length, i, p = 0,
+    encoded1, encoded2, encoded3, encoded4;
 
   if (base64[base64.length - 1] === "=") {
     bufferLength--;
@@ -172,13 +269,13 @@ module.exports.base64ToArrayBuffer =  (base64) =>{
   }
 
   let arraybuffer = new ArrayBuffer(bufferLength),
-      bytes = new Uint8Array(arraybuffer);
+    bytes = new Uint8Array(arraybuffer);
 
-  for (i = 0; i < len; i+=4) {
+  for (i = 0; i < len; i += 4) {
     encoded1 = lookup[base64.charCodeAt(i)];
-    encoded2 = lookup[base64.charCodeAt(i+1)];
-    encoded3 = lookup[base64.charCodeAt(i+2)];
-    encoded4 = lookup[base64.charCodeAt(i+3)];
+    encoded2 = lookup[base64.charCodeAt(i + 1)];
+    encoded3 = lookup[base64.charCodeAt(i + 2)];
+    encoded4 = lookup[base64.charCodeAt(i + 3)];
 
     bytes[p++] = (encoded1 << 2) | (encoded2 >> 4);
     bytes[p++] = ((encoded2 & 15) << 4) | (encoded3 >> 2);
@@ -187,3 +284,15 @@ module.exports.base64ToArrayBuffer =  (base64) =>{
 
   return arraybuffer;
 };
+
+module.exports = {
+  constants,
+  base64ToArrayBuffer,
+  arrayBufferToBase64,
+  convertDateTOGMTFormat,
+  getBloomFilterSerialisation,
+  transformFromMessage,
+  transformToMessage,
+  batchDataSourceMapping,
+  productDataSourceMapping
+}

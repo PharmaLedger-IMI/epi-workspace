@@ -5,7 +5,8 @@ function verifyIfProductMessage(message) {
 }
 
 async function processProductMessage(message) {
-    const constants = require("./../utils").constants;
+    const utils = require("./../utils");
+    const constants = utils.constants;
     const productCode = message.product.productCode;
     const mappingLogService = require("./logs").createInstance(this.storageService);
     let version;
@@ -38,9 +39,10 @@ async function processProductMessage(message) {
     if (typeof this.product === "undefined") {
         this.product = JSON.parse(JSON.stringify(productMetadata));
     }
-    const propertiesMapping = require("./../utils").productDataSourceMapping;
+   // const propertiesMapping = require("./../utils").productDataSourceMapping;
 
-    for (let prop in propertiesMapping) {
+    utils.transformFromMessage(this.product, message.product, utils.productDataSourceMapping);
+/*    for (let prop in propertiesMapping) {
         if (typeof message.product[propertiesMapping[prop]] !== "undefined") {
             this.product[prop] = message.product[propertiesMapping[prop]];
 
@@ -52,7 +54,7 @@ async function processProductMessage(message) {
                 this.product[prop] = "Patient Information";
             }
         }
-    }
+    }*/
     this.product.version = version;
     await this.saveJSONS(productDSU, indication);
 

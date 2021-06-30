@@ -5,11 +5,9 @@ function verifyIfBatchMessage(message) {
 }
 
 async function processBatchMessage(message) {
-  const constants = require("./../utils").constants;
-  const getBloomFilterSerialisation = require("./../utils").getBloomFilterSerialisation;
-  const propertiesMapping = require("./../utils").batchDataSourceMapping;
-  const convertDateTOGMTFormat = require("./../utils").convertDateTOGMTFormat;
+  const utils = require("./../utils");
   const mappingLogService = require("./logs").createInstance(this.storageService);
+
 
   const batchId = message.batch.batch;
   const productCode = message.batch.productCode;
@@ -24,12 +22,12 @@ async function processBatchMessage(message) {
   try {
     constProdDSU = await this.loadDSU(gtinSSI);
   } catch (err) {
-    await mappingLogService.logFailedMapping(message, "lookup", constants.MISSING_PRODUCT_DSU);
+    await mappingLogService.logFailedMapping(message, "lookup", utils.constants.MISSING_PRODUCT_DSU);
     throw new Error("Product not found");
   }
 
   if (!constProdDSU) {
-    await mappingLogService.logFailedMapping(message,  "lookup", constants.MISSING_PRODUCT_DSU);
+    await mappingLogService.logFailedMapping(message,  "lookup", utils.constants.MISSING_PRODUCT_DSU);
     throw new Error("Fail to create a batch for a missing product");
   }
 
@@ -41,7 +39,7 @@ async function processBatchMessage(message) {
   let productMetadata = {};
 
   try {
-    productMetadata = await this.storageService.getRecord(constants.PRODUCTS_TABLE, productCode);
+    productMetadata = await this.storageService.getRecord(utils.constants.PRODUCTS_TABLE, productCode);
   }
   catch (e) {
     await mappingLogService.logFailedMapping(message, "lookup","Database corrupted");
@@ -56,11 +54,11 @@ async function processBatchMessage(message) {
         throw new Error("This case is not implemented. Missing product from the wallet database or database is corrupted");
       }
 
-    batchMetadata = await this.storageService.getRecord(constants.BATCHES_STORAGE_TABLE, batchId);
+    batchMetadata = await this.storageService.getRecord(utils.constants.BATCHES_STORAGE_TABLE, batchId);
     batchDSU = await this.loadDSU(batchMetadata.keySSI);
   }
 
-  const indication = {batch: `${constants.BATCH_STORAGE_FILE}`};
+  const indication = {batch: `${utils.constants.BATCH_STORAGE_FILE}`};
 
   await this.loadJSONS(batchDSU, indication);
 
@@ -68,36 +66,12 @@ async function processBatchMessage(message) {
     this.batch = JSON.parse(JSON.stringify(batchMetadata));
   }
 
-  for (let prop in propertiesMapping) {
-    this.batch[prop] = message.batch[propertiesMapping[prop]];
-  }
-
-  if (message.batch.expiryDate) {
-    try {
-      const y = message.batch.expiryDate.slice(0, 2);
-      const m = message.batch.expiryDate.slice(2, 4);
-      let d = message.batch.expiryDate.slice(4, 6);
-      const lastMonthDay = ("0" + new Date(y, m, 0).getDate()).slice(-2);
-      this.batch.enableExpiryDay = d === '00';
-      if (d === '00') {
-        this.batch.enableExpiryDay = true;
-        d = lastMonthDay;
-      } else {
-        this.batch.enableExpiryDay = false;
-      }
-      const localDate = new Date(Date.parse(m + '/' +  d + '/' + y));
-      const gmtDate = new Date(localDate.getFullYear() + '-' + m + '-' + d + 'T00:00:00Z');
-      this.batch.expiryForDisplay = gmtDate.getTime();
-    } catch (e) {
-      throw new Error(`${message.batch.expiryDate} date is invalid`, e);
-    }
-  }
-
+  utils.transformFromMessage(this.batch,message.batch, utils.batchDataSourceMapping);
 
   this.batch.product = productMetadata.keySSI;
   this.batch.productName = productMetadata.name;
   this.batch.productDescription = productMetadata.description;
-  this.batch.creationTime = convertDateTOGMTFormat(new Date());
+  this.batch.creationTime = utils.convertDateTOGMTFormat(new Date());
   this.batch.msessageTime = message.messageDateTime;
 
   if (!batchExists) {
@@ -108,18 +82,18 @@ async function processBatchMessage(message) {
 
   let bf;
   if (message.batch.snValid.length > 0) {
-    bf = getBloomFilterSerialisation(message.batch.snValid);
+    bf = utils.getBloomFilterSerialisation(message.batch.snValid);
     this.batch.bloomFilterSerialisations.push(bf.bloomFilterSerialisation());
     this.batch.defaultSerialNumber = message.batch.snValid[0];
   }
 
   if (message.batch.snRecalled.length > 0) {
-    bf = getBloomFilterSerialisation(message.batch.snRecalled);
+    bf = utils.getBloomFilterSerialisation(message.batch.snRecalled);
     this.batch.bloomFilterRecalledSerialisations.push(bf.bloomFilterSerialisation());
     this.batch.defaultRecalledSerialNumber = message.batch.snRecalled[0];
   }
   if (message.batch.snDecom.length > 0) {
-    bf = getBloomFilterSerialisation(message.batch.snDecom);
+    bf = utils.getBloomFilterSerialisation(message.batch.snDecom);
     this.batch.bloomFilterDecommissionedSerialisations.push(bf.bloomFilterSerialisation());
     this.batch.defaultDecommissionedSerialNumber = message.batch.snDecom[0];
   }
@@ -138,7 +112,7 @@ async function processBatchMessage(message) {
         await mappingLogService.logFailedMapping(message, "internal error","Database corrupted");
         throw new Error("get keySSIAsString  from batch DSU failed");
       }
-      await batchConstDSU.mount(constants.BATCH_DSU_MOUNT_POINT, batchKeySSI);
+      await batchConstDSU.mount(utils.constants.BATCH_DSU_MOUNT_POINT, batchKeySSI);
     })
 
     let prodDSU = await this.loadDSU(productMetadata.keySSI);
@@ -148,7 +122,7 @@ async function processBatchMessage(message) {
         await mappingLogService.logFailedMapping(message, "internal error","Database corrupted");
         throw new Error("get keySSIAsString  from prod DSU failed");
       }
-      await batchConstDSU.mount(constants.PRODUCT_DSU_MOUNT_POINT, prodKeySSI);
+      await batchConstDSU.mount(utils.constants.PRODUCT_DSU_MOUNT_POINT, prodKeySSI);
     })
   }
 
@@ -167,14 +141,14 @@ async function processBatchMessage(message) {
 
   let batchRecord;
   try {
-    batchRecord = await this.storageService.getRecord(constants.BATCHES_STORAGE_TABLE, this.batch.batchNumber);
+    batchRecord = await this.storageService.getRecord(utils.constants.BATCHES_STORAGE_TABLE, this.batch.batchNumber);
   } catch (e) {
   }
 
   if (!batchRecord) {
-    await this.storageService.insertRecord(constants.BATCHES_STORAGE_TABLE, this.batch.batchNumber, batchClone);
+    await this.storageService.insertRecord(utils.constants.BATCHES_STORAGE_TABLE, this.batch.batchNumber, batchClone);
   } else {
-    await this.storageService.updateRecord(constants.BATCHES_STORAGE_TABLE, this.batch.batchNumber, batchClone);
+    await this.storageService.updateRecord(utils.constants.BATCHES_STORAGE_TABLE, this.batch.batchNumber, batchClone);
   }
 
   await mappingLogService.logSuccessMapping(message, batchExists ? "updated" : "created");
