@@ -1,32 +1,47 @@
 function verifyIfLeafletMessage(message) {
-    return message.messageType === "leaflet" || message.messageType === "smpc";
+    return ["leaflet", "smpc"].includes(message.messageType)
+        && Object.keys(message).some(key => ['productCode', 'batchCode'].includes(key))
 }
 
 async function processLeafletMessage(message) {
     const constants = require("./../utils").constants;
-    const productCode = message.productCode;
+    const tablesMappings = {
+        "product": {
+            tableName: constants.PRODUCTS_TABLE,
+            missingDSUMessage: constants.MISSING_PRODUCT_DSU,
+        },
+        "batch": {
+            tableName: constants.BATCHES_STORAGE_TABLE,
+            missingDSUMessage: constants.MISSING_BATCH_DSU,
+        }
+    }
+    const databaseRecordIdentifier = message.productCode ? message.productCode : message.batchCode;
     const mappingLogService = require("./logs").createInstance(this.storageService);
     let language = message.language;
     let type = message.messageType
 
-    let prodDSU;
-    let productMetadata;
+    let hostDSU;
+    let dsuMetadata;
 
+    let dsuMapping = tablesMappings["product"];
+    if (message.batchCode) {
+        dsuMapping = tablesMappings["batch"];
+    }
 
     try {
-        productMetadata = await this.storageService.getRecord(constants.PRODUCTS_TABLE, productCode);
-        prodDSU = await this.loadDSU(productMetadata.keySSI);
+        dsuMetadata = await this.storageService.getRecord(dsuMapping.tableName, databaseRecordIdentifier);
+        hostDSU = await this.loadDSU(dsuMetadata.keySSI);
     } catch (err) {
-        await mappingLogService.logFailedMapping(message, "lookup", constants.MISSING_PRODUCT_DSU);
-        throw new Error("Product not found");
+        await mappingLogService.logFailedMapping(message, "lookup", dsuMapping.missingDSUMessage);
+        throw new Error(dsuMapping.missingDSUMessage);
     }
 
-    if (!prodDSU) {
-        await mappingLogService.logFailedMapping(message, "lookup", constants.MISSING_PRODUCT_DSU);
-        throw new Error(`Fail to create a ${type} for a missing product`);
+    if (!hostDSU) {
+        await mappingLogService.logFailedMapping(message, "lookup", dsuMapping.missingDSUMessage);
+        throw new Error(`Fail to create a ${type} for a missing ${message.productCode?"product":"batch"}`);
     }
 
-    const dsuKeySSI = await prodDSU.getKeySSIAsString();
+    const dsuKeySSI = await hostDSU.getKeySSIAsString();
     console.log("DSU keySSI", dsuKeySSI);
 
     let basePath = `/${type}/${language}`
@@ -35,12 +50,12 @@ async function processLeafletMessage(message) {
     let base64XMLFileContent = base64ToArrayBuffer(message.xmlFileContent);
 
     try {
-        await prodDSU.writeFile(xmlFilePath, $$.Buffer.from(base64XMLFileContent));
+        await hostDSU.writeFile(xmlFilePath, $$.Buffer.from(base64XMLFileContent));
 
         for (let i = 0; i < message.otherFilesContent.length; i++) {
             let file = message.otherFilesContent[i];
             let filePath = `${basePath}/${file.filename}`;
-            await prodDSU.writeFile(filePath, $$.Buffer.from(base64ToArrayBuffer(file.fileContent)));
+            await hostDSU.writeFile(filePath, $$.Buffer.from(base64ToArrayBuffer(file.fileContent)));
         }
         await mappingLogService.logSuccessMapping(message, "updated leaflet");
     } catch (e) {

@@ -65,6 +65,7 @@ module.exports.constants = {
   'SUCCESS_MAPPING_STATUS':"success",
   'FAILED_MAPPING_STATUS':"failed",
   "MISSING_PRODUCT_DSU":"Missing Product DSU",
+  "MISSING_BATCH_DSU":"Missing Batch DSU",
   "MISSING_PRODUCT_VERSION":"Missing Product Version"
 };
 
