@@ -81,21 +81,21 @@ async function processBatchMessage(message) {
   }
 
   let bf;
-  if (message.batch.snValid.length > 0) {
-    bf = utils.getBloomFilterSerialisation(message.batch.snValid);
+  if (this.batch.serialNumbers.length > 0) {
+    bf = utils.getBloomFilterSerialisation(this.batch.serialNumbers);
     this.batch.bloomFilterSerialisations.push(bf.bloomFilterSerialisation());
-    this.batch.defaultSerialNumber = message.batch.snValid[0];
+    this.batch.defaultSerialNumber =this.batch.serialNumbers[0];
   }
 
-  if (message.batch.snRecalled.length > 0) {
-    bf = utils.getBloomFilterSerialisation(message.batch.snRecalled);
+  if (this.batch.recalledSerialNumbers.length > 0) {
+    bf = utils.getBloomFilterSerialisation(this.batch.recalledSerialNumbers);
     this.batch.bloomFilterRecalledSerialisations.push(bf.bloomFilterSerialisation());
-    this.batch.defaultRecalledSerialNumber = message.batch.snRecalled[0];
+    this.batch.defaultRecalledSerialNumber = this.batch.recalledSerialNumbers[0];
   }
-  if (message.batch.snDecom.length > 0) {
-    bf = utils.getBloomFilterSerialisation(message.batch.snDecom);
+  if (this.batch.decommissionedSerialNumbers.length > 0) {
+    bf = utils.getBloomFilterSerialisation(this.batch.decommissionedSerialNumbers);
     this.batch.bloomFilterDecommissionedSerialisations.push(bf.bloomFilterSerialisation());
-    this.batch.defaultDecommissionedSerialNumber = message.batch.snDecom[0];
+    this.batch.defaultDecommissionedSerialNumber = this.batch.decommissionedSerialNumbers[0];
   }
 
   const batchClone = JSON.parse(JSON.stringify(this.batch));

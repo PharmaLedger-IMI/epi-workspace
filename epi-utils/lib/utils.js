@@ -29,7 +29,6 @@ productDataSourceMapping = {
   },
   markets: "markets",
   internalMaterialCode: "internalMaterialCode",
-  inventedName: "inventedName",
   strength: "strength",
   showEPIOnUnknownBatchNumber: "flagDisplayEPI_BatchNumberUnknown", // to be confirmed with business
 };
@@ -61,12 +60,12 @@ batchDataSourceMapping = {
     }
   },
   version: "epiLeafletVersion",
-  versionLabel: "",
+  versionLabel: "versionLabel",
   serialNumbers: "snValid",
   recalledSerialNumbers: "snRecalled",
   decommissionedSerialNumbers: function (param) {
     if (param.direction === "toMsg") {
-      return "snDecom " + param.obj.decommissionReason;
+      return param.obj.decommissionReason ? "snDecom " + param.obj.decommissionReason : "snDecom";
     }
     const decomKey = Object.keys(param.msg).find((key) => key.includes("snDecom"));
     const keyArr = decomKey.split(" ");
@@ -75,8 +74,8 @@ batchDataSourceMapping = {
     } else {
       param.obj.decommissionReason = "unknown";
     }
+    param.obj.decommissionedSerialNumbers =  param.msg[decomKey];
   },
-  decommissionReason: "decommissionReason",
   defaultSerialNumber: "defaultSerialNumber",
   defaultDecommissionedSerialNumber: "defaultDecommissionedSerialNumber",
   defaultRecalledSerialNumber: "defaultRecalledSerialNumber",
@@ -115,24 +114,21 @@ batchDataSourceMapping = {
       param.obj.bloomFilterRecalledSerialisations = [];
     }
   },
-
 };
 
 function transformFromMessage(destinationObj, messageObj, mappingObj) {
   for (let prop in mappingObj) {
-    if (mappingObj[prop]) {
-      if (typeof mappingObj[prop] === "function") {
-        mappingObj[prop]({direction: "fromMsg", "obj": destinationObj, "msg": messageObj});
-      } else {
-        destinationObj[prop] = messageObj[mappingObj[prop]];
-      }
+    if (typeof mappingObj[prop] === "function") {
+      mappingObj[prop]({direction: "fromMsg", "obj": destinationObj, "msg": messageObj});
+    } else {
+      destinationObj[prop] = messageObj[mappingObj[prop]];
     }
   }
 }
 
 function transformToMessage(sourceObj, messageObj, mappingObj) {
   for (let prop in mappingObj) {
-    if (mappingObj[prop]) {
+    if (sourceObj[prop] !== "undefined") {
       if (typeof mappingObj[prop] === "function") {
         messageObj[mappingObj[prop]({direction: "toMsg", "obj": sourceObj, "msg": messageObj})] = sourceObj[prop];
       } else {
@@ -161,7 +157,7 @@ constants = {
   'SUCCESS_MAPPING_STATUS': "success",
   'FAILED_MAPPING_STATUS': "failed",
   "MISSING_PRODUCT_DSU": "Missing Product DSU",
-  "MISSING_BATCH_DSU":"Missing Batch DSU",
+  "MISSING_BATCH_DSU": "Missing Batch DSU",
   "MISSING_PRODUCT_VERSION": "Missing Product Version"
 };
 
