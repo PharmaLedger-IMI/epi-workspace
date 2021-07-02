@@ -4,17 +4,23 @@ productDataSourceMapping = {
   version: "version",
   description: "nameMedicinalProduct",
   manufName: "manufName",
-  reportURL: function(param){
+  reportURL: function (param) {
     if (param.direction === "toMsg") {
       return "adverseEventReportingURL"
     }
-    param.obj['reportURL'] = `${window.top.location.origin}/default-report.html`;
+    if (window) {
+      param.obj['reportURL'] = `${window.top.location.origin}/default-report.html`;
+    }
+    param.obj['reportURL'] = param.msg["adverseEventReportingURL"];
   },
-  antiCounterfeitingURL:function(param){
+  antiCounterfeitingURL: function (param) {
     if (param.direction === "toMsg") {
       return "acfProductCheckURL"
     }
-    param.obj['antiCounterfeitingURL'] = `${window.top.location.origin}/default-anti-counterfeiting.html`;
+    if (window) {
+      param.obj['antiCounterfeitingURL'] = `${window.top.location.origin}/default-anti-counterfeiting.html`;
+    }
+    param.obj['antiCounterfeitingURL'] = param.msg["acfProductCheckURL"];
   },
   adverseEventsReportingEnabled: "flagEnableAdverseEventReporting",
   antiCounterfeitingEnabled: "flagEnableACFProductCheck",
@@ -84,7 +90,7 @@ batchDataSourceMapping = {
     } else {
       param.obj.decommissionReason = "unknown";
     }
-    param.obj.decommissionedSerialNumbers =  param.msg[decomKey];
+    param.obj.decommissionedSerialNumbers = param.msg[decomKey];
   },
   defaultSerialNumber: "defaultSerialNumber",
   defaultDecommissionedSerialNumber: "defaultDecommissionedSerialNumber",
