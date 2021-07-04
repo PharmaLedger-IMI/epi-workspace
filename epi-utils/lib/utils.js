@@ -8,7 +8,7 @@ productDataSourceMapping = {
     if (param.direction === "toMsg") {
       return "adverseEventReportingURL"
     }
-    if (window) {
+    if (typeof window !== "undefined" && window.top) {
       param.obj['reportURL'] = `${window.top.location.origin}/default-report.html`;
     }
     param.obj['reportURL'] = param.msg["adverseEventReportingURL"];
@@ -17,7 +17,7 @@ productDataSourceMapping = {
     if (param.direction === "toMsg") {
       return "acfProductCheckURL"
     }
-    if (window) {
+    if (typeof window !== "undefined" && window.top) {
       param.obj['antiCounterfeitingURL'] = `${window.top.location.origin}/default-anti-counterfeiting.html`;
     }
     param.obj['antiCounterfeitingURL'] = param.msg["acfProductCheckURL"];
