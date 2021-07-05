@@ -94,13 +94,12 @@ data:
     \       # Load configuration files for the default server block.\n        include
     /etc/nginx/default.d/*.conf;\n\n        location / {\n\t\t\tproxy_pass http://127.0.0.1:8080/;\n
     \       }\n\n    }\n\n}\n\n"
-  server.json: |-
+  apihub.json: |-
     {
-      "port": 8080,
       "storage": "../apihub-root",
+      "port": 8080,
       "preventRateLimit": true,
-      "enableRequestLogger": true,
-      "activeEndpoints": [
+      "activeComponents": [
         "virtualMQ",
         "messaging",
         "notifications",
@@ -112,77 +111,30 @@ data:
         "anchoring",
         "dsu-wizard",
         "gtin-dsu-wizard",
+        "debugLogger",
         "staticServer"
       ],
-      "endpointsConfig": {
+      "componentsConfig": {
         "gtin-dsu-wizard": {
           "module": "./../../gtin-dsu-wizard"
         },
-        "bricking": {
-          "domains": {
-            "epi": {
-              "path": "/external-volume/domains/epi/brick-storage"
-            },
-            "default": {
-              "path": "/internal-volume/domains/default/brick-storage"
-            },
-            "predefined": {
-              "path": "/internal-volume/domains/predefined/brick-storage"
-            },
-            "vault": {
-              "path": "/external-volume/domains/vault/brick-storage"
-            }
-          }
-        },
-        "anchoring": {
-          "domainStrategies": {
-            "epi": {
-              "type": "ETH",
-              "option": {
-                "endpoint" : "http://nvsquorum.westeurope.cloudapp.azure.com:3000"
-              },
-              "commands": {
-                "addAnchor": "anchor"
-              }
-
-            },
-            "default": {
-              "type": "FS",
-              "option": {
-                "path": "/external-volume/domains/default/anchors",
-                "enableBricksLedger": false
-              },
-              "commands": {
-                "addAnchor": "anchor"
-              }
-
-            },
-            "predefined": {
-              "type": "FS",
-              "option": {
-                "path": "/internal-volume/domains/predefined/anchors"
-              }
-            },
-            "vault": {
-              "type": "FS",
-              "option": {
-                "path": "/external-volume/domains/vault/anchors"
-              }
-            }
-          }
-        }
+        "bricking": {},
+        "anchoring": {}
       },
-      "enableAuthorisation": false,
+      "enableRequestLogger": true,
+      "enableJWTAuthorisation": false,
       "enableLocalhostAuthorization": false,
-      "skipAuthorisation": [
+      "skipJWTAuthorisation": [
+        "/assets",
         "/leaflet-wallet",
         "/dsu-fabric-wallet",
         "/directory-summary",
         "/resources",
         "/bdns",
-        "/anchor/epi/versions",
+        "/anchor/epi",
         "/anchor/default",
-        "/bricking/default",
+        "/anchor/vault",
+        "/bricking",
         "/bricksFabric",
         "/bricksledger",
         "/create-channel",
@@ -197,7 +149,3 @@ data:
 kind: ConfigMap
 metadata:
   name: epi-defaults
-  namespace: default
-  resourceVersion: "18599"
-  selfLink: /api/v1/namespaces/default/configmaps/epi-defaults
-  uid: ebd84a7c-ef59-46b0-bb6f-a542d42d6195

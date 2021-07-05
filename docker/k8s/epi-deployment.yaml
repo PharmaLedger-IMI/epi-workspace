@@ -24,8 +24,35 @@ spec:
         resources: {}
         volumeMounts:
           - name: epi-defaults-volume
-            mountPath: /ePi-workspace/apihub-root/external-config/server.json
-            subPath: server.json
+            mountPath: /ePi-workspace/apihub-root/external-config/apihub.json
+            subPath: apihub.json
+          - name: epi-domains
+            mountPath: /ePi-workspace/apihub-root/external-config/domains/default.json
+            subPath: default.json
+          - name: epi-domains
+            mountPath: /ePi-workspace/apihub-root/external-config/domains/epipharma.json
+            subPath: epipharma.json
+          - name: epi-domains
+            mountPath: /ePi-workspace/apihub-root/external-config/domains/epi.json
+            subPath: epi.json
+          - name: epi-domains
+            mountPath: /ePi-workspace/apihub-root/external-config/domains/epiqa.json
+            subPath: epiqa.json
+          - name: epi-domains
+            mountPath: /ePi-workspace/apihub-root/external-config/domains/predefined.json
+            subPath: predefined.json
+          - name: epi-domains
+            mountPath: /ePi-workspace/apihub-root/external-config/domains/vault.jnj.json
+            subPath: vault.jnj.json
+          - name: epi-domains
+            mountPath: /ePi-workspace/apihub-root/external-config/domains/vault.json
+            subPath: vault.json
+          - name: epi-domains
+            mountPath: /ePi-workspace/apihub-root/external-config/domains/vault.msd.json
+            subPath: vault.msd.json
+          - name: epi-domains
+            mountPath: /ePi-workspace/apihub-root/external-config/domains/vault.nvs.json
+            subPath: vault.nvs.json
           - name: epi-defaults-volume
             mountPath: /ePi-workspace/apihub-root/external-config/bdns.hosts
             subPath: bdns.hosts
@@ -41,4 +68,7 @@ spec:
         - name: epi-defaults-volume
           configMap:
             name: epi-defaults
+        - name: epi-domains
+          configMap:
+            name: epi-default-domains
 status: {}
