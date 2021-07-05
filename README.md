@@ -167,3 +167,28 @@ This concludes the steps to build the APK file.
 ```
 mobile/scan-app/android/app/build/outputs/apk/release
 ```
+
+## Configuring ApiHub for Messages Mapping Engine
+
+The purpose of the EPI Mapping Engine is to process various types of messages received from an external source in order to create/update various types of DSUs.
+
+###Configuring Domain for ApiHub Mapping Engine usage
+
+1. After finishing Step 2: *Setup credentials for Issuer and Holder* from **Running** section please copy
+the desired wallet identifier from **User as Holder** page in wallet app.
+![alt text](wallet_identifier.png)
+2. Find the domain configuration in ```/apihub-root/external-volume/config/domains/<domainName.json>```
+and ```modify mappingEnginWalletSSI``` property with the wallet identifier and ```bricksDomain``` property with wallet subdomain value.   
+![alt text](domain_config.png)
+3. Restart the server. 
+Now the ApiHub Mapping Engine is configured for processing messages from external sources through ```/mappingEngine/:domainName"``` endpoint via the PUT HTTP verb.
+
+###Testing ApiHub Mapping Engine
+In order to test the mapping engine functionality it can be used any API testing tools.
+
+Please note that the content should be on the request body as a raw string containing the JSON message.
+JSON messages examples could be downloaded from the import section page in the wallet app. 
+
+A 200 response status means that message was successfully sent to the mapping engine, and the processing of message has started.
+A 500 response status means that the domain might not be well configured, or the message is malformed.
+
