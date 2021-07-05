@@ -205,6 +205,6 @@ In order to test the mapping engine functionality it can be used any API testing
 Please note that the content should be on the request body as a raw string containing the JSON message.
 JSON messages examples could be downloaded from the import section page in the wallet app. 
 
-A 200 response status means that message was successfully sent to the mapping engine, and the processing of message has started.
-A 500 response status means that the domain might not be well configured, or the message is malformed.
+A 200 response status means that the message was successfully sent to the mapping engine, and the processing of the message has started.
+c
 
