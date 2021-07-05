@@ -205,12 +205,12 @@ In order to test the mapping engine functionality it can be used any API testing
 Please note that the content should be on the request body as a raw string containing the JSON message.
 JSON messages examples could be downloaded from the import section page in the wallet app. 
 
-A 200 response status means that the message was successfully sent to the mapping engine, and the processing of message has started.
-This middleware make use of a message queuing service, which groups and digests messages all at once.
+A 200 response status means that the message was successfully sent to the mapping engine, and the processing of the message has started.
+This middleware makes use of a message queuing service, which groups and digests messages all at once.
 Grouping is important because some messages could depend on other messages (e.g. a batch could not be created until a product is first created and anchored in blockchain), and the service is queuing messages until a previous group is digested.
 As a result, a 200 HTTP status code does not imply that the message was successfully digested.
 The Import page in the wallet app displays the import's details and status.
 
-A 500 response status means that the domain might not be well configured, or the message is malformed. 
+A 500 response status means that the domain might not be well configured, or the message is malformed.
 The message will not appear in the Import page in the wallet app.
 
