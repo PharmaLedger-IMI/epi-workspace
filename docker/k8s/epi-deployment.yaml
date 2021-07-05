@@ -24,37 +24,37 @@ spec:
         resources: {}
         volumeMounts:
           - name: epi-defaults-volume
-            mountPath: /ePI-workspace/apihub-root/external-config/apihub.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/apihub.json
             subPath: apihub.json
           - name: epi-domains
-            mountPath: /ePI-workspace/apihub-root/external-config/domains/default.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/default.json
             subPath: default.json
           - name: epi-domains
-            mountPath: /ePI-workspace/apihub-root/external-config/domains/epipharma.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/epipharma.json
             subPath: epipharma.json
           - name: epi-domains
-            mountPath: /ePI-workspace/apihub-root/external-config/domains/epi.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/epi.json
             subPath: epi.json
           - name: epi-domains
-            mountPath: /ePI-workspace/apihub-root/external-config/domains/epiqa.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/epiqa.json
             subPath: epiqa.json
           - name: epi-domains
-            mountPath: /ePI-workspace/apihub-root/external-config/domains/predefined.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/predefined.json
             subPath: predefined.json
           - name: epi-domains
-            mountPath: /ePI-workspace/apihub-root/external-config/domains/vault.jnj.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/vault.jnj.json
             subPath: vault.jnj.json
           - name: epi-domains
-            mountPath: /ePI-workspace/apihub-root/external-config/domains/vault.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/vault.json
             subPath: vault.json
           - name: epi-domains
-            mountPath: /ePI-workspace/apihub-root/external-config/domains/vault.msd.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/vault.msd.json
             subPath: vault.msd.json
           - name: epi-domains
-            mountPath: /ePI-workspace/apihub-root/external-config/domains/vault.nvs.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/vault.nvs.json
             subPath: vault.nvs.json
           - name: epi-defaults-volume
-            mountPath: /ePI-workspace/apihub-root/external-config/bdns.hosts
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/bdns.hosts
             subPath: bdns.hosts
           - name: epi-defaults-volume
             mountPath: /ePI-workspace/env.json
