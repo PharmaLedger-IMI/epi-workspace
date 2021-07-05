@@ -190,7 +190,7 @@ The purpose of the EPI Mapping Engine is to process various types of messages re
 
 ### Configuring Domain for ApiHub Mapping Engine usage
 
-1. After finishing Step 2: *Setup credentials for Issuer and Holder* from **Running** section please copy
+1. After finishing [Step 2: Setup credentials for Issuer and Holder](#step-2-setup-credentials-for-issuer-and-holder) from [Running section](#running) section please copy
 the desired wallet identifier from **User as Holder** page in wallet app.
 ![alt text](wallet_identifier.png)
 2. Find the domain configuration in ```/apihub-root/external-volume/config/domains/<domainName.json>```
