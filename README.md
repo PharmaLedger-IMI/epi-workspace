@@ -15,7 +15,7 @@ For more details about what a *workspace* is check out the [template-workspace](
     3. [Setup credentials for Issuer and Holder](#step-2-setup-credentials-for-issuer-and-holder)
 3. [Prepare & release a new stable version of the workspace](#step-2-setup-credentials-for-issuer-and-holder)        
 4. [Build Android APK](#build-android-apk)
-5. [Configuring ApiHub for Messages Mapping Engine](#configuring-apihub-for-messages-mapping-engine)
+5. [Configuring ApiHub for Messages Mapping Engine Middleware](#configuring-apihub-for-messages-mapping-engine-middleware)
     1. [Configuring Domain for ApiHub Mapping Engine usage](#configuring-domain-for-apihub-mapping-engine-usage)
     2. [Testing ApiHub Mapping Engine](#testing-apihub-mapping-engine)
 
@@ -184,7 +184,7 @@ This concludes the steps to build the APK file.
 mobile/scan-app/android/app/build/outputs/apk/release
 ```
 
-## Configuring ApiHub for Messages Mapping Engine
+## Configuring ApiHub for Messages Mapping Engine Middleware
 
 The purpose of the EPI Mapping Engine is to process various types of messages received from an external source in order to create/update various types of DSUs.
 
@@ -205,6 +205,12 @@ In order to test the mapping engine functionality it can be used any API testing
 Please note that the content should be on the request body as a raw string containing the JSON message.
 JSON messages examples could be downloaded from the import section page in the wallet app. 
 
-A 200 response status means that the message was successfully sent to the mapping engine, and the processing of the message has started.
-c
+A 200 response status means that the message was successfully sent to the mapping engine, and the processing of message has started.
+This middleware make use of a message queuing service, which groups and digests messages all at once.
+Grouping is important because some messages could depend on other messages (e.g. a batch could not be created until a product is first created and anchored in blockchain), and the service is queuing messages until a previous group is digested.
+As a result, a 200 HTTP status code does not imply that the message was successfully digested.
+The Import page in the wallet app displays the import's details and status.
+
+A 500 response status means that the domain might not be well configured, or the message is malformed. 
+The message will not appear in the Import page in the wallet app.
 
