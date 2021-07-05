@@ -4,17 +4,17 @@
 
 For more details about what a *workspace* is check out the [template-workspace](https://github.com/PrivateSky/template-workspace).
 
-##Table of contents
+## Table of contents
 1. [Installation](#installation)    
    1. [Clone the workspace](#step-1-clone-the-workspace)
    2. [Launch the "server"](#step-2-launch-the-server)
    3. [Build all things needed for the application to run](#step-3-build-all-things-needed-for-the-application-to-run)
 2. [Running](#running)
     1. [Enterprise wallet](#enterprise-wallet)
-        2. [Register new account details](#step-1-register-new-account-details) 
-        3. [Setup credentials for Issuer and Holder](#step-2-setup-credentials-for-issuer-and-holder)
+    2. [Register new account details](#step-1-register-new-account-details) 
+    3. [Setup credentials for Issuer and Holder](#step-2-setup-credentials-for-issuer-and-holder)
 3. [Prepare & release a new stable version of the workspace](#step-2-setup-credentials-for-issuer-and-holder)        
-4. [Build Android APK](#epi-workspace#build-android-apk)
+4. [Build Android APK](#build-android-apk)
 5. [Configuring ApiHub for Messages Mapping Engine](#configuring-apihub-for-messages-mapping-engine)
     1. [Configuring Domain for ApiHub Mapping Engine usage](#configuring-domain-for-apihub-mapping-engine-usage)
     2. [Testing ApiHub Mapping Engine](#testing-apihub-mapping-engine)
