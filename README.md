@@ -4,6 +4,22 @@
 
 For more details about what a *workspace* is check out the [template-workspace](https://github.com/PrivateSky/template-workspace).
 
+##Table of contents
+1. [Installation](#installation)    
+   1. [Clone the workspace](#step-1-clone-the-workspace)
+   2. [Launch the "server"](#step-2-launch-the-server)
+   3. [Build all things needed for the application to run](#step-3-build-all-things-needed-for-the-application-to-run)
+2. [Running](#running)
+    1. [Enterprise wallet](#enterprise-wallet)
+        2. [Register new account details](#step-1-register-new-account-details) 
+        3. [Setup credentials for Issuer and Holder](#step-2-setup-credentials-for-issuer-and-holder)
+3. [Prepare & release a new stable version of the workspace](#step-2-setup-credentials-for-issuer-and-holder)        
+4. [Build Android APK](#epi-workspace#build-android-apk)
+5. [Configuring ApiHub for Messages Mapping Engine](#configuring-apihub-for-messages-mapping-engine)
+    1. [Configuring Domain for ApiHub Mapping Engine usage](#configuring-domain-for-apihub-mapping-engine-usage)
+    2. [Testing ApiHub Mapping Engine](#testing-apihub-mapping-engine)
+
+
 ## Installation
 
 In order to use the workspace, we need to follow a list of steps presented below. 
@@ -172,7 +188,7 @@ mobile/scan-app/android/app/build/outputs/apk/release
 
 The purpose of the EPI Mapping Engine is to process various types of messages received from an external source in order to create/update various types of DSUs.
 
-###Configuring Domain for ApiHub Mapping Engine usage
+### Configuring Domain for ApiHub Mapping Engine usage
 
 1. After finishing Step 2: *Setup credentials for Issuer and Holder* from **Running** section please copy
 the desired wallet identifier from **User as Holder** page in wallet app.
@@ -183,7 +199,7 @@ and ```modify mappingEnginWalletSSI``` property with the wallet identifier and `
 3. Restart the server. 
 Now the ApiHub Mapping Engine is configured for processing messages from external sources through ```/mappingEngine/:domainName"``` endpoint via the PUT HTTP verb.
 
-###Testing ApiHub Mapping Engine
+### Testing ApiHub Mapping Engine
 In order to test the mapping engine functionality it can be used any API testing tools.
 
 Please note that the content should be on the request body as a raw string containing the JSON message.
