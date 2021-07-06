@@ -632,7 +632,7 @@
         },
         {
             "name": "mobile/scan-app/ios",
-            "src": "https://github.com/PrivateSky/ios-edge-agent",
+            "src": "https://github.com/PharmaLedger-IMI/ios-edge-agent",
             "actions": [
                 {
                     "type": "smartClone",
