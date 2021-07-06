@@ -6,6 +6,9 @@
     ],
     "anchoringServices": [
       "$ORIGIN"
+    ],
+    "notifications": [
+      "$ORIGIN"
     ]
   },
   "epi": {
@@ -14,6 +17,9 @@
       "https://epi.westeurope.cloudapp.azure.com"
     ],
     "anchoringServices": [
+      "https://epi.westeurope.cloudapp.azure.com"
+    ],
+    "notifications": [
       "https://epi.westeurope.cloudapp.azure.com"
     ]
   },
@@ -24,6 +30,9 @@
     ],
     "anchoringServices": [
       "https://epiqa.westeurope.cloudapp.azure.com"
+    ],
+    "notifications": [
+      "https://epiqa.westeurope.cloudapp.azure.com"
     ]
   },
   "nvs.epipharma": {
@@ -32,6 +41,9 @@
       "https://epiqa.westeurope.cloudapp.azure.com"
     ],
     "anchoringServices": [
+      "https://epiqa.westeurope.cloudapp.azure.com"
+    ],
+    "notifications": [
       "https://epiqa.westeurope.cloudapp.azure.com"
     ]
   },
@@ -42,6 +54,9 @@
     ],
     "anchoringServices": [
       "https://epi-test.epi-jnj.com"
+    ],
+    "notifications": [
+      "https://epi-test.epi-jnj.com"
     ]
   },
   "predefined": {
@@ -50,6 +65,9 @@
       "$ORIGIN"
     ],
     "anchoringServices": [
+      "$ORIGIN"
+    ],
+    "notifications": [
       "$ORIGIN"
     ]
   },
@@ -60,6 +78,9 @@
     ],
     "anchoringServices": [
       "https://gov-dev.pharmaledger.dev"
+    ],
+    "notifications": [
+      "https://gov-dev.pharmaledger.dev"
     ]
   },
   "nvs.epi": {
@@ -68,6 +89,9 @@
       "https://epi.westeurope.cloudapp.azure.com"
     ],
     "anchoringServices": [
+      "https://epi.westeurope.cloudapp.azure.com"
+    ],
+    "notifications": [
       "https://epi.westeurope.cloudapp.azure.com"
     ]
   },
@@ -78,6 +102,9 @@
     ],
     "anchoringServices": [
       "$ORIGIN"
+    ],
+    "notifications": [
+      "$ORIGIN"
     ]
   },
   "nvs.epiqa": {
@@ -86,6 +113,9 @@
       "https://epiqa.westeurope.cloudapp.azure.com"
     ],
     "anchoringServices": [
+      "https://epiqa.westeurope.cloudapp.azure.com"
+    ],
+    "notifications": [
       "https://epiqa.westeurope.cloudapp.azure.com"
     ]
   },
@@ -96,6 +126,9 @@
     ],
     "anchoringServices": [
       "$ORIGIN"
+    ],
+    "notifications": [
+      "$ORIGIN"
     ]
   },
   "epiqa": {
@@ -104,6 +137,9 @@
       "https://epiqa.westeurope.cloudapp.azure.com"
     ],
     "anchoringServices": [
+      "https://epiqa.westeurope.cloudapp.azure.com"
+    ],
+    "notifications": [
       "https://epiqa.westeurope.cloudapp.azure.com"
     ]
   },
@@ -114,6 +150,9 @@
     ],
     "anchoringServices": [
       "$ORIGIN"
+    ],
+    "notifications": [
+      "$ORIGIN"
     ]
   },
   "vault.nvs": {
@@ -122,6 +161,9 @@
       "https://epiqa.westeurope.cloudapp.azure.com"
     ],
     "anchoringServices": [
+      "https://epiqa.westeurope.cloudapp.azure.com"
+    ],
+    "notifications": [
       "https://epiqa.westeurope.cloudapp.azure.com"
     ]
   },
@@ -132,6 +174,9 @@
     ],
     "anchoringServices": [
       "https://epi-test.epi-jnj.com"
+    ],
+    "notifications": [
+      "https://epi-test.epi-jnj.com"
     ]
   },
   "vault.msd": {
@@ -140,6 +185,9 @@
       "$ORIGIN"
     ],
     "anchoringServices": [
+      "$ORIGIN"
+    ],
+    "notifications": [
       "$ORIGIN"
     ]
   }
