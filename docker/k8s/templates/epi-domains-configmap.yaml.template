@@ -15,39 +15,39 @@ data:
          }
        }
      }
-  %domain%.json: |-
-    {
-      "anchoring": {
-        "type": "FS",
-        "option": {
-          "enableBricksLedger": false
-        },
-        "commands": {
-          "addAnchor": "anchor"
-        }
-      }
-    }
-  %subdomain%.json: |-
-    {
-      "anchoring": {
-        "type": "FS",
-        "option": {
-          "enableBricksLedger": false
-        },
-        "commands": {
-          "addAnchor": "anchor"
-        }
-      }
-    }
-  %vaultdomain%.json: |-
-    {
-      "anchoring": {
-        "type": "FS",
-        "option": {
-          "enableBricksLedger": false
-        },
-        "commands": {
-          "addAnchor": "anchor"
-        }
-      }
-    }
+   %domain%.json: |-
+     {
+       "anchoring": {
+         "type": "FS",
+         "option": {
+           "enableBricksLedger": false
+         },
+         "commands": {
+           "addAnchor": "anchor"
+         }
+       }
+     }
+   %subdomain%.json: |-
+     {
+       "anchoring": {
+         "type": "FS",
+         "option": {
+           "enableBricksLedger": false
+         },
+         "commands": {
+           "addAnchor": "anchor"
+         }
+       }
+     }
+   %vaultdomain%.json: |-
+     {
+       "anchoring": {
+         "type": "FS",
+         "option": {
+           "enableBricksLedger": false
+         },
+         "commands": {
+           "addAnchor": "anchor"
+         }
+       }
+     }
