@@ -255,6 +255,10 @@
                 {
                     "type": "execute",
                     "cmd": "cd gtin-resolver && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd gtin-resolver && npm run build"
                 }
             ]
         },
@@ -352,15 +356,15 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd ethadapter && npm install"
+                    "cmd": "echo \"manualy run cd ethadapter && npm install\""
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd ethadapter/EthAdapter && npm install"
+                    "cmd": "echo \"manualy run cd ethadapter/EthAdapter && npm install\""
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd ethadapter/SmartContracts && npm install"
+                    "cmd": "echo \"manualy run cd ethadapter/SmartContracts && npm install\""
                 }
             ]
         },
@@ -628,7 +632,7 @@
         },
         {
             "name": "mobile/scan-app/ios",
-            "src": "https://github.com/PrivateSky/ios-edge-agent",
+            "src": "https://github.com/PharmaLedger-IMI/ios-edge-agent",
             "actions": [
                 {
                     "type": "smartClone",
@@ -650,17 +654,26 @@
                 {
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && gradlew.bat -b ndk.gradle installNDK",
-					"os": "win32"
+					"os": "win32",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
 				{
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
-					"os": "linux"
+					"os": "linux",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
 				{
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
-					"os": "darwin"
+					"os": "darwin",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 }
             ]
         },
@@ -670,17 +683,26 @@
                 {
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && gradlew.bat assembleRelease",
-					"os": "win32"
+					"os": "win32",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
 				{
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
-					"os": "linux"
+					"os": "linux",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
 				{
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
-					"os": "darwin"
+					"os": "darwin",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
                 {
                     "type": "execute",

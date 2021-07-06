@@ -1,6 +1,9 @@
 //loading EPI necessary mappings
 require("./product.js");
 require("./batch.js");
+require("./productPhoto.js");
+require("./leaflet.js");
+require("./delete-leaflet.js");
 
 module.exports.getEPIMappingEngine = function(dsuStorage, options){
 	const opendsu = require("opendsu");
@@ -8,7 +11,7 @@ module.exports.getEPIMappingEngine = function(dsuStorage, options){
 	return opendsu.loadApi("m2dsu").getMappingEngine(sharedDBStorageService, options);
 }
 
-module.exports.utils = require("./utils.js");
+// module.exports.utils = require("./utils.js");
 module.exports.getMappingLogs = function (storageService){
 	return require("./logs").createInstance(storageService).getMappingLogs;
 }

@@ -1,0 +1,92 @@
+apiVersion: v1
+data:
+  default.json: |-
+    {
+      "anchoring": {
+        "type": "FS",
+        "option": {
+          "enableBricksLedger": false
+        },
+        "commands": {
+          "addAnchor": "anchor"
+        }
+      }
+    }
+  epipharma.json: |-
+    {
+      "anchoring": {
+        "type": "ETH",
+        "option": {
+          "endpoint": "http://pharmadev.westeurope.cloudapp.azure.com:3000"
+        },
+        "commands": {
+          "addAnchor": "anchor"
+        }
+      }
+    }
+  epi.json: |-
+    {
+      "anchoring": {
+        "type": "ETH",
+        "option": {
+          "endpoint": "http://nvsquorum.westeurope.cloudapp.azure.com:3000"
+        },
+        "commands": {
+          "addAnchor": "anchor"
+        }
+      },
+      "mappingEngineWalletSSI":"REPLACE_WITH_A_CUSTOM_WALLET_KEYSSI_DISPLAYED_IN_DSU_FABRIC_HOLDER_PAGE",
+      "bricksDomain":"vault.nvs"
+    }
+  epiqa.json: |-
+    {
+      "anchoring": {
+        "type": "ETH",
+        "option": {
+          "endpoint": "http://nvsquorumqa.westeurope.cloudapp.azure.com:3000"
+        },
+        "commands": {
+          "addAnchor": "anchor"
+        }
+      },
+      "mappingEngineWalletSSI":"REPLACE_WITH_A_CUSTOM_WALLET_KEYSSI_DISPLAYED_IN_DSU_FABRIC_HOLDER_PAGE",
+      "bricksDomain":"vault.nvs"
+    }
+  predefined.json: |-
+    {
+      "anchoring": {
+        "type": "FS",
+        "option": {}
+      }
+    }
+  vault.jnj.json: |-
+    {
+      "anchoring": {
+        "type": "FS",
+        "option": {}
+      }
+    }
+  vault.json: |-
+    {
+      "anchoring": {
+        "type": "FS",
+        "option": {}
+      }
+    }
+  vault.msd.json: |-
+    {
+      "anchoring": {
+        "type": "FS",
+        "option": {}
+      }
+    }
+  vault.nvs.json: |-
+    {
+      "anchoring": {
+        "type": "FS",
+        "option": {}
+      }
+    }
+kind: ConfigMap
+metadata:
+  name: epi-default-domains

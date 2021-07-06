@@ -1,4 +1,4 @@
-const constants = require("./utils").constants;
+const constants = require("./../utils").constants;
 
 function MappingLogService(storageService){
      this.storageService = storageService;
@@ -16,7 +16,7 @@ function MappingLogService(storageService){
      }
 
      let logMapping = async (message, action, status) => {
-          const constants = require("./utils").constants;
+          const constants = require("./../utils").constants;
           const currentDate = new Date().getTime();
 
           let itemCode;
@@ -31,6 +31,14 @@ function MappingLogService(storageService){
                     itemCode = message.batch.batch;
                     itemType = "batch";
                     break;
+               case  message.messageType === "ProductPhoto":
+                    itemCode = message.productCode;
+                    itemType = "product-image";
+                    break;
+               case  ["leaflet", "smpc"].indexOf(message.messageType) !== -1:
+                    itemCode = message.productCode?message.productCode:message.batchCode;
+                    itemType = message.messageType;
+                    break;
           }
 
           let logData = {
@@ -41,7 +49,13 @@ function MappingLogService(storageService){
                status: status,
                message: message
           }
-          await this.storageService.insertRecord(constants.IMPORT_LOGS, itemCode + "|" + currentDate, logData);
+          try {
+               await this.storageService.insertRecord(constants.IMPORT_LOGS, itemCode + "|" + currentDate, logData);
+          }
+          catch (e){
+               console.log(e);
+          }
+
      }
 }
 

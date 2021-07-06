@@ -1,0 +1,55 @@
+{
+  "storage": "../apihub-root",
+  "port": 8080,
+  "preventRateLimit": true,
+  "iframeHandlerDsuBootPath": "./nodeBoot.js",
+  "activeComponents": [
+    "virtualMQ",
+    "messaging",
+    "notifications",
+    "filesManager",
+    "bdns",
+    "bricksLedger",
+    "bricksFabric",
+    "bricking",
+    "anchoring",
+    "dsu-wizard",
+    "debugLogger",
+    "staticServer"
+  ],
+  "componentsConfig": {
+    "epi-mapping-engine": {
+      "module": "./../../epi-utils",
+      "function": "getEPIMappingEngineForAPIHUB"
+    },
+    "gtin-dsu-wizard": {
+      "module": "./../../gtin-dsu-wizard"
+    },
+    "bricking": {},
+    "anchoring": {}
+  },
+  "enableRequestLogger": true,
+  "enableJWTAuthorisation": false,
+  "enableLocalhostAuthorization": false,
+  "skipJWTAuthorisation": [
+    "/assets",
+    "/leaflet-wallet",
+    "/dsu-fabric-wallet",
+    "/directory-summary",
+    "/resources",
+    "/bdns",
+    "/anchor/epi",
+    "/anchor/default",
+    "/anchor/vault",
+    "/bricking",
+    "/bricksFabric",
+    "/bricksledger",
+    "/create-channel",
+    "/forward-zeromq",
+    "/send-message",
+    "/receive-message",
+    "/files",
+    "/notifications",
+    "/mq"
+  ]
+}

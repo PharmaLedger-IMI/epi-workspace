@@ -4,6 +4,22 @@
 
 For more details about what a *workspace* is check out the [template-workspace](https://github.com/PrivateSky/template-workspace).
 
+## Table of contents
+1. [Installation](#installation)    
+   1. [Clone the workspace](#step-1-clone-the-workspace)
+   2. [Launch the "server"](#step-2-launch-the-server)
+   3. [Build all things needed for the application to run](#step-3-build-all-things-needed-for-the-application-to-run)
+2. [Running](#running)
+    1. [Enterprise wallet](#enterprise-wallet)
+    2. [Register new account details](#step-1-register-new-account-details) 
+    3. [Setup credentials for Issuer and Holder](#step-2-setup-credentials-for-issuer-and-holder)
+3. [Prepare & release a new stable version of the workspace](#step-2-setup-credentials-for-issuer-and-holder)        
+4. [Build Android APK](#build-android-apk)
+5. [Configuring ApiHub for Messages Mapping Engine Middleware](#configuring-apihub-for-messages-mapping-engine-middleware)
+    1. [Configuring Domain for ApiHub Mapping Engine usage](#configuring-domain-for-apihub-mapping-engine-usage)
+    2. [Testing ApiHub Mapping Engine](#testing-apihub-mapping-engine)
+
+
 ## Installation
 
 In order to use the workspace, we need to follow a list of steps presented below. 
@@ -145,20 +161,20 @@ npm run server
 4. Prepare the Node files that will be packed into the Android app
 ```sh
 #In another tab / console
-npm build-mobile
+npm run build-mobile
 ```
 
 5. Have /mobile/scan-app/android/local.properties file with the following content
 
 ```sh
 # Change the value to your SDK path
-sdk.dir=/home/alex/Android/Sdk
+sdk.dir=/home/username/Android/Sdk
 ```
 More on this [here](https://github.com/PrivateSky/android-edge-agent#iv-setup-local-environment-values)
 
 6. Build the APK
 ```sh
-npm build-android-apk
+npm run build-android-apk
 ```
 
 This concludes the steps to build the APK file.
@@ -167,3 +183,34 @@ This concludes the steps to build the APK file.
 ```
 mobile/scan-app/android/app/build/outputs/apk/release
 ```
+
+## Configuring ApiHub for Messages Mapping Engine Middleware
+
+The purpose of the EPI Mapping Engine is to process various types of messages received from an external source in order to create/update various types of DSUs.
+
+### Configuring Domain for ApiHub Mapping Engine usage
+
+1. After finishing [Step 2: Setup credentials for Issuer and Holder](#step-2-setup-credentials-for-issuer-and-holder) from [Running section](#running) section please copy
+the desired wallet identifier from **User as Holder** page in wallet app.
+![alt text](wallet_identifier.png)
+2. Find the domain configuration in ```/apihub-root/external-volume/config/domains/<domainName.json>```
+and ```modify mappingEngineWalletSSI``` property with the wallet identifier and ```bricksDomain``` property with wallet subdomain value.   
+![alt text](domain_config.png)
+3. Restart the server. 
+Now the ApiHub Mapping Engine is configured for processing messages from external sources through ```/mappingEngine/:domainName"``` endpoint via the PUT HTTP verb.
+
+### Testing ApiHub Mapping Engine
+In order to test the mapping engine functionality it can be used any API testing tools.
+
+Please note that the content should be on the request body as a raw string containing the JSON message.
+JSON messages examples could be downloaded from the import section page in the wallet app. 
+
+A 200 response status means that the message was successfully sent to the mapping engine, and the processing of the message has started.
+This middleware makes use of a message queuing service, which groups and digests messages all at once.
+Grouping is important because some messages could depend on other messages (e.g. a batch could not be created until a product is first created and anchored in blockchain), and the service is queuing messages until a previous group is digested.
+As a result, a 200 HTTP status code does not imply that the message was successfully digested.
+The Import page in the wallet app displays the import's details and status.
+
+A 500 response status means that the domain might not be well configured, or the message is malformed.
+The message will not appear in the Import page in the wallet app.
+

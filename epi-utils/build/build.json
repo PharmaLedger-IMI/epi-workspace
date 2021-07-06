@@ -1,3 +1,3 @@
 {
-  "epiUtils":{"deps":"epi-utils","autoLoad":true}
+  "epiUtils":{"deps":"epi-utils, privatesky/modules/psk-dbf:psk-dbf","autoLoad":true}
 }

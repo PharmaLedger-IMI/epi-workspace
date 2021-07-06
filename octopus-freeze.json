@@ -9,7 +9,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "934a0e528f916e8cc4cd4e5b422b73a3eb2b2f20"
+                    "commit": "6bb81c647601a9592e37f30709b104ef6896375c"
                 },
                 {
                     "type": "execute",
@@ -25,7 +25,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "2ffbfae1d80b3251c5d39c3820fb2e99dba7bda3"
+                    "commit": "5e240fd0714f6802917347421d19cf73a4a8e8d8"
                 },
                 {
                     "type": "execute",
@@ -45,8 +45,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "branch": "release_important_fix",
-                    "commit": "518e0e6a62427052be09ce4a8be59503fd2a245b"
+                    "commit": "0153080f1839c985a7efc2f3045e7dcfe3b8241b"
                 },
                 {
                     "type": "execute",
@@ -64,6 +63,19 @@
             ]
         },
         {
+            "name": "installing epi-utils",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd epi-utils && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd epi-utils && npm run build"
+                }
+            ]
+        },
+        {
             "name": "menu-wallet-prototype",
             "src": "http://github.com/privatesky/menu-wallet-prototype.git",
             "actions": [
@@ -71,7 +83,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "43cdecf66b1dfbeaba003cb46e03390a7bcc8f29"
+                    "commit": "f1b399830c426eca33c3ee5af57a918441f808e7"
                 },
                 {
                     "type": "execute",
@@ -87,7 +99,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "3a99cce80291d675fde3da7d9e99579dbdb1f1da"
+                    "commit": "5bb73ca20cef0dca1b3dc87ab9f656753eacea30"
                 },
                 {
                     "type": "execute",
@@ -97,7 +109,7 @@
         },
         {
             "name": "apihub-root/leaflet-wallet/loader",
-            "src": "http://github.com/privatesky/web-dossier-loader.git",
+            "src": "http://github.com/privatesky/trust-loader.git",
             "actions": [
                 {
                     "type": "smartClone",
@@ -121,7 +133,7 @@
         },
         {
             "name": "apihub-root/dsu-fabric-wallet/loader",
-            "src": "http://github.com/privatesky/web-dossier-loader.git",
+            "src": "http://github.com/privatesky/trust-loader.git",
             "actions": [
                 {
                     "type": "smartClone",
@@ -147,7 +159,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "5c5b7b299f02126f6f06966000fa22dd45185c5e"
+                    "commit": "3b5593866ead4dfa9d16358bacd24cdea83ffd3d"
                 },
                 {
                     "type": "execute",
@@ -179,7 +191,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "82ea912284cbd8b19a8a2a8ab40d03103b983c7a"
+                    "commit": "8e8d13a44fadff7a2c31e2bc6fd2dd1db2b10bbe"
                 },
                 {
                     "type": "execute",
@@ -221,7 +233,7 @@
         },
         {
             "name": "apihub-root/dsu-explorer/loader",
-            "src": "https://github.com/PrivateSky/web-dossier-loader.git",
+            "src": "https://github.com/PrivateSky/trust-loader.git",
             "actions": [
                 {
                     "type": "smartClone",
@@ -256,6 +268,10 @@
                 {
                     "type": "execute",
                     "cmd": "cd gtin-resolver && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd gtin-resolver && npm run build"
                 }
             ]
         },
@@ -283,7 +299,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "347d1aceaf1f06b09d0307f9b78049f313b783aa"
+                    "commit": "7dfa8dd6bd13239b698e0bd1a71e0aa353e16ba2"
                 },
                 {
                     "type": "execute",
@@ -299,7 +315,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "8dca0843e30741e4137bebfcc73911e0e9ae6756"
+                    "commit": "4c4654fab88439ea9a57b28b83eba798e46f205a"
                 },
                 {
                     "type": "execute",
@@ -348,6 +364,30 @@
             ]
         },
         {
+            "name": "ethadapter",
+            "src": "https://github.com/PharmaLedger-IMI/ethadapter",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false,
+                    "commit": "d312ffb4dc46e35ad2c37380025ba9df5d73f683"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo \"manualy run cd ethadapter && npm install\""
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo \"manualy run cd ethadapter/EthAdapter && npm install\""
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo \"manualy run cd ethadapter/SmartContracts && npm install\""
+                }
+            ]
+        },
+        {
             "name": "dsu-fabric-ssapp",
             "src": "https://github.com/PharmaLedger-IMI/dsu-fabric-ssapp.git",
             "actions": [
@@ -355,7 +395,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "6eacc109840b64f677ff5405a42560a812dd7565"
+                    "commit": "dae43a1f2a29075f7d17b8a2952a7be54d79530e"
                 },
                 {
                     "type": "execute",
@@ -603,7 +643,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "276c98b3987c6267523e379beb3f55fd40b5cc66"
+                    "commit": "60d0d94ce8caf8bc48421a99b920e52e748c70ff"
                 },
                 {
                     "type": "execute",
@@ -619,7 +659,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "8842e5fcb41888a781728ba58cb0a99d8dd31a9d"
+                    "commit": "f7fb877a6945d1d215f116ea8144c33272c3569a"
                 },
                 {
                     "type": "execute",
@@ -635,17 +675,26 @@
                 {
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && gradlew.bat -b ndk.gradle installNDK",
-                    "os": "win32"
+                    "os": "win32",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
                 {
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
-                    "os": "linux"
+                    "os": "linux",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
                 {
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
-                    "os": "darwin"
+                    "os": "darwin",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 }
             ]
         },
@@ -655,17 +704,26 @@
                 {
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && gradlew.bat assembleRelease",
-                    "os": "win32"
+                    "os": "win32",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
                 {
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
-                    "os": "linux"
+                    "os": "linux",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
                 {
                     "type": "execute",
                     "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
-                    "os": "darwin"
+                    "os": "darwin",
+                    "options": {
+                        "ignoreErrors": true
+                    }
                 },
                 {
                     "type": "execute",
@@ -803,4 +861,4 @@
             ]
         }
     ]
-}
+} 
