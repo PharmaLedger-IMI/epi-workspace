@@ -1,0 +1,144 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: epi-%subdomain%
+data:
+  bdns.hosts: |-
+    {
+      "%domain%": {
+        "replicas": [],
+        "brickStorages": [
+          "$ORIGIN"
+        ],
+        "anchoringServices": [
+          "$ORIGIN"
+        ],
+        "notifications": [
+          "$ORIGIN"
+        ]
+      },
+      "%subdomain%": {
+        "replicas": [],
+        "brickStorages": [
+          "$ORIGIN"
+        ],
+        "anchoringServices": [
+          "$ORIGIN"
+        ],
+        "notifications": [
+          "$ORIGIN"
+        ]
+      },
+      "%vaultdomain%": {
+        "replicas": [],
+        "brickStorages": [
+            "$ORIGIN"
+        ],
+        "anchoringServices": [
+            "$ORIGIN"
+        ],
+        "notifications": [
+            "$ORIGIN"
+        ]
+      }
+    }
+
+  server.json: |-
+    {
+      "port": 8080,
+      "storage": "../apihub-root",
+      "preventRateLimit": true,
+      "enableRequestLogger": true,
+      "activeEndpoints": [
+        "virtualMQ",
+        "messaging",
+        "notifications",
+        "filesManager",
+        "bdns",
+        "debugLogger",
+        "bricksLedger",
+        "bricksFabric",
+        "bricking",
+        "anchoring",
+        "dsu-wizard",
+        "gtin-dsu-wizard",
+        "debugLogger",
+        "staticServer"
+      ],
+      "endpointsConfig": {
+        "gtin-dsu-wizard": {
+          "module": "./../../gtin-dsu-wizard"
+        },
+        "bricking": {
+          "domains": {
+            "%domain%": {
+              "path": "/external-volume/domains/%domain%/brick-storage"
+            },
+            "%subdomain%": {
+              "path": "/external-volume/domains/%subdomain%/brick-storage"
+            },
+            "%vaultdomain%": {
+              "path": "/external-volume/domains/%vaultdomain%/brick-storage"
+            }
+          }
+        },
+        "anchoring": {
+          "domainStrategies": {
+            "%domain%": {
+              "type": "FS",
+              "option": {
+                "path": "/external-volume/domains/%domain%/anchors",
+                "enableBricksLedger": false
+              },
+              "commands": {
+                "addAnchor": "anchor"
+              }
+            },
+            "%subdomain%": {
+              "type": "FS",
+              "option": {
+                "path": "/external-volume/domains/%subdomain%/anchors",
+                "enableBricksLedger": false
+              },
+              "commands": {
+                "addAnchor": "anchor"
+              }
+            },
+            "%vaultdomain%": {
+              "type": "FS",
+              "option": {
+                "path": "/external-volume/domains/%vaultdomain%/anchors",
+                "enableBricksLedger": false
+              },
+              "commands": {
+                "addAnchor": "anchor"
+              }
+            }
+          }
+        }
+      },
+      "enableAuthorisation": false,
+      "enableLocalhostAuthorization": false,
+      "skipAuthorisation": [
+        "/assets",
+        "/leaflet-wallet",
+        "/dsu-fabric-wallet",
+        "/directory-summary",
+        "/resources",
+        "/bdns",
+        "/anchor/epi",
+        "/anchor/default",
+        "/anchor/vault",
+        "/bricking",
+        "/bricksFabric",
+        "/bricksledger",
+        "/create-channel",
+        "/forward-zeromq",
+        "/send-message",
+        "/receive-message",
+        "/files",
+        "/notifications",
+        "/log",
+        "/mq"
+      ]
+    }
