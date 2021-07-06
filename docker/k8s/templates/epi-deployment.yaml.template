@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     io.kompose.service: %subdomain%
-  name: epi
+  name: %subdomain%
 spec:
   replicas: 1
   selector:
