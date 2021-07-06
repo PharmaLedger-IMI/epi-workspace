@@ -168,7 +168,7 @@ npm build-mobile
 
 ```sh
 # Change the value to your SDK path
-sdk.dir=/home/alex/Android/Sdk
+sdk.dir=/home/username/Android/Sdk
 ```
 More on this [here](https://github.com/PrivateSky/android-edge-agent#iv-setup-local-environment-values)
 
