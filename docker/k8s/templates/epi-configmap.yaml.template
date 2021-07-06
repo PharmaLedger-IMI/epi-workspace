@@ -43,83 +43,42 @@ data:
       }
     }
 
-  server.json: |-
+  apihub.json: |-
     {
-      "port": 8080,
       "storage": "../apihub-root",
+      "port": 8080,
       "preventRateLimit": true,
-      "enableRequestLogger": true,
-      "activeEndpoints": [
+      "activeComponents": [
         "virtualMQ",
         "messaging",
         "notifications",
         "filesManager",
         "bdns",
-        "debugLogger",
         "bricksLedger",
         "bricksFabric",
         "bricking",
         "anchoring",
         "dsu-wizard",
         "gtin-dsu-wizard",
+        "epi-mapping-engine",
         "debugLogger",
         "staticServer"
       ],
-      "endpointsConfig": {
+      "componentsConfig": {
+        "epi-mapping-engine": {
+          "module": "./../../epi-utils",
+          "function": "getEPIMappingEngineForAPIHUB"
+        },
         "gtin-dsu-wizard": {
           "module": "./../../gtin-dsu-wizard"
         },
-        "bricking": {
-          "domains": {
-            "%domain%": {
-              "path": "/external-volume/domains/%domain%/brick-storage"
-            },
-            "%subdomain%": {
-              "path": "/external-volume/domains/%subdomain%/brick-storage"
-            },
-            "%vaultdomain%": {
-              "path": "/external-volume/domains/%vaultdomain%/brick-storage"
-            }
-          }
-        },
-        "anchoring": {
-          "domainStrategies": {
-            "%domain%": {
-              "type": "FS",
-              "option": {
-                "path": "/external-volume/domains/%domain%/anchors",
-                "enableBricksLedger": false
-              },
-              "commands": {
-                "addAnchor": "anchor"
-              }
-            },
-            "%subdomain%": {
-              "type": "FS",
-              "option": {
-                "path": "/external-volume/domains/%subdomain%/anchors",
-                "enableBricksLedger": false
-              },
-              "commands": {
-                "addAnchor": "anchor"
-              }
-            },
-            "%vaultdomain%": {
-              "type": "FS",
-              "option": {
-                "path": "/external-volume/domains/%vaultdomain%/anchors",
-                "enableBricksLedger": false
-              },
-              "commands": {
-                "addAnchor": "anchor"
-              }
-            }
-          }
-        }
+        "bricking": {},
+        "anchoring": {}
       },
-      "enableAuthorisation": false,
+      "enableRequestLogger": true,
+      "enableJWTAuthorisation": false,
       "enableLocalhostAuthorization": false,
-      "skipAuthorisation": [
+      "skipJWTAuthorisation": [
         "/assets",
         "/leaflet-wallet",
         "/dsu-fabric-wallet",
@@ -138,7 +97,6 @@ data:
         "/receive-message",
         "/files",
         "/notifications",
-        "/log",
         "/mq"
       ]
     }
