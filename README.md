@@ -161,7 +161,7 @@ npm run server
 4. Prepare the Node files that will be packed into the Android app
 ```sh
 #In another tab / console
-npm build-mobile
+npm run build-mobile
 ```
 
 5. Have /mobile/scan-app/android/local.properties file with the following content
@@ -174,7 +174,7 @@ More on this [here](https://github.com/PrivateSky/android-edge-agent#iv-setup-lo
 
 6. Build the APK
 ```sh
-npm build-android-apk
+npm run build-android-apk
 ```
 
 This concludes the steps to build the APK file.
