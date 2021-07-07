@@ -44,7 +44,7 @@ spec:
       volumes:
         - name: epi-config-volume
           configMap:
-            name: epi-%subdomain%
+            name: %subdomain%
         - name: epi-domains-volume
           configMap:
-            name: epi-domains-%subdomain%
+            name: domains-%subdomain%

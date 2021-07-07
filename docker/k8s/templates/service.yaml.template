@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     io.kompose.service: %subdomain%
-  name: %subdomain%
+  name: %domain%
 spec:
   ports:
     - name: "80"
