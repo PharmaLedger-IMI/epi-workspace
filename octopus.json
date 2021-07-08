@@ -639,6 +639,10 @@
                     "target": ".",
                     "collectLog": false
                 },
+		{
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/ios/PSKNodeServer && carthage bootstrap"
+                },
                 {
                     "type": "execute",
                     "cmd": "echo \"Continue with ipa builds\""
