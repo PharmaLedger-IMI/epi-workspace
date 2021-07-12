@@ -12,7 +12,7 @@ async function processBatchMessage(message) {
   const batchId = message.batch.batch;
   const productCode = message.batch.productCode;
 
-  if(typeof message.batch.version !== "number") {
+  if (typeof message.batch.version !== "number") {
     message.batch.version = 1;
   }
 
@@ -27,7 +27,7 @@ async function processBatchMessage(message) {
   }
 
   if (!constProdDSU) {
-    await mappingLogService.logFailedMapping(message,  "lookup", utils.constants.MISSING_PRODUCT_DSU);
+    await mappingLogService.logFailedMapping(message, "lookup", utils.constants.MISSING_PRODUCT_DSU);
     throw new Error("Fail to create a batch for a missing product");
   }
 
@@ -40,9 +40,8 @@ async function processBatchMessage(message) {
 
   try {
     productMetadata = await this.storageService.getRecord(utils.constants.PRODUCTS_TABLE, productCode);
-  }
-  catch (e) {
-    await mappingLogService.logFailedMapping(message, "lookup","Database corrupted");
+  } catch (e) {
+    await mappingLogService.logFailedMapping(message, "lookup", "Database corrupted");
     throw new Error("Missing product from the wallet database or database is corrupted");
   }
 
@@ -50,9 +49,9 @@ async function processBatchMessage(message) {
   if (!batchExists) {
     batchDSU = await this.createDSU(this.options.holderInfo.subdomain, "seed");
   } else {
-      if(!productMetadata){
-        throw new Error("This case is not implemented. Missing product from the wallet database or database is corrupted");
-      }
+    if (!productMetadata) {
+      throw new Error("This case is not implemented. Missing product from the wallet database or database is corrupted");
+    }
 
     batchMetadata = await this.storageService.getRecord(utils.constants.BATCHES_STORAGE_TABLE, batchId);
     batchDSU = await this.loadDSU(batchMetadata.keySSI);
@@ -66,7 +65,7 @@ async function processBatchMessage(message) {
     this.batch = JSON.parse(JSON.stringify(batchMetadata));
   }
 
-  utils.transformFromMessage(this.batch,message.batch, utils.batchDataSourceMapping);
+  utils.transformFromMessage(this.batch, message.batch, utils.batchDataSourceMapping);
 
   this.batch.product = productMetadata.keySSI;
   this.batch.productName = productMetadata.name;
@@ -80,11 +79,26 @@ async function processBatchMessage(message) {
     this.batch.bloomFilterDecommissionedSerialisations = [];
   }
 
+  if (this.batch.snValidReset) {
+    this.batch.bloomFilterSerialisations = [];
+    this.batch.defaultSerialNumber = "";
+  }
+
+  if (this.batch.snRecalledReset) {
+    this.batch.bloomFilterRecalledSerialisations = [];
+    this.batch.defaultRecalledSerialNumber = "";
+  }
+
+  if (this.batch.snDecomReset) {
+    this.batch.bloomFilterDecommissionedSerialisations = [];
+    this.batch.defaultDecommissionedSerialNumber = "";
+  }
+
   let bf;
   if (this.batch.serialNumbers.length > 0) {
     bf = utils.getBloomFilterSerialisation(this.batch.serialNumbers);
     this.batch.bloomFilterSerialisations.push(bf.bloomFilterSerialisation());
-    this.batch.defaultSerialNumber =this.batch.serialNumbers[0];
+    this.batch.defaultSerialNumber = this.batch.serialNumbers[0];
   }
 
   if (this.batch.recalledSerialNumbers.length > 0) {
@@ -107,9 +121,9 @@ async function processBatchMessage(message) {
 
 
   if (!batchExists) {
-    batchDSU.getKeySSIAsString(async (err, batchKeySSI)=>{
-      if(err){
-        await mappingLogService.logFailedMapping(message, "internal error","Database corrupted");
+    batchDSU.getKeySSIAsString(async (err, batchKeySSI) => {
+      if (err) {
+        await mappingLogService.logFailedMapping(message, "internal error", "Database corrupted");
         throw new Error("get keySSIAsString  from batch DSU failed");
       }
       await batchConstDSU.mount(utils.constants.BATCH_DSU_MOUNT_POINT, batchKeySSI);
@@ -117,9 +131,9 @@ async function processBatchMessage(message) {
 
     let prodDSU = await this.loadDSU(productMetadata.keySSI);
 
-    prodDSU.getKeySSIAsString(async (err, prodKeySSI)=>{
-      if(err){
-        await mappingLogService.logFailedMapping(message, "internal error","Database corrupted");
+    prodDSU.getKeySSIAsString(async (err, prodKeySSI) => {
+      if (err) {
+        await mappingLogService.logFailedMapping(message, "internal error", "Database corrupted");
         throw new Error("get keySSIAsString  from prod DSU failed");
       }
       await batchConstDSU.mount(utils.constants.PRODUCT_DSU_MOUNT_POINT, prodKeySSI);

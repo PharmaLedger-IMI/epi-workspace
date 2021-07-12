@@ -104,36 +104,9 @@ batchDataSourceMapping = {
   packagingSiteName: "packagingSiteName",
   flagEnableACFBatchCheck: "flagEnableACFBatchCheck",
   acfBatchCheckURL: "acfBatchCheckURL",
-  snValidReset: function (param) {
-    if (param.direction === "toMsg") {
-      return "snValidReset"
-    }
-    if (param.msg["snValidReset"]) {
-      param.obj.serialNumbers = '';
-      param.obj.defaultSerialNumber = '';
-      param.obj.bloomFilterSerialisations = [];
-    }
-  },
-  snRecalledReset: function (param) {
-    if (param.direction === "toMsg") {
-      return "snRecalledReset"
-    }
-    if (param.msg["snRecalledReset"]) {
-      param.obj.recalledSerialNumbers = '';
-      param.obj.defaultRecalledSerialNumber = '';
-      param.obj.bloomFilterRecalledSerialisations = [];
-    }
-  },
-  snDecomReset: function (param) {
-    if (param.direction === "toMsg") {
-      return "snDecomReset"
-    }
-    if (param.msg["snDecomReset"]) {
-      param.obj.decommissionedSerialNumbers = ''
-      param.obj.defaultDecommissionedSerialNumber = '';
-      param.obj.bloomFilterRecalledSerialisations = [];
-    }
-  },
+  snValidReset: "snValidReset",
+  snRecalledReset: "snRecalledReset",
+  snDecomReset: "snDecomReset"
 };
 
 function transformFromMessage(destinationObj, messageObj, mappingObj) {
