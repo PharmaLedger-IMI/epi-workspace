@@ -1,5 +1,6 @@
 let LOADER_GLOBALS = {
 	THEME: "app",
+	SHOW_ACTION_BUTTON: false,
 	LABELS_DICTIONARY: {
 		APP_NAME: "Leaflet wallet",
 		APP_DESCRIPTION: "Prepare to access e-leaflets world",

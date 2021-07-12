@@ -1,5 +1,6 @@
 let LOADER_GLOBALS = {
 	THEME: "app",
+	SHOW_ACTION_BUTTON: false,
 	LABELS_DICTIONARY: {
 		APP_NAME: "DSU Fabric",
 		APP_DESCRIPTION: "The \"backend\" application for EPI",
