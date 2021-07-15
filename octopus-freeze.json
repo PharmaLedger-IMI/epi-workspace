@@ -45,7 +45,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "0153080f1839c985a7efc2f3045e7dcfe3b8241b"
+                    "commit": "b65d9329dfa43b03e099857992a15cf87c916412"
                 },
                 {
                     "type": "execute",
@@ -99,7 +99,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "5bb73ca20cef0dca1b3dc87ab9f656753eacea30"
+                    "commit": "6e0c3e2dad339b56009022d0bc34406ed1f17bdf"
                 },
                 {
                     "type": "execute",
@@ -115,7 +115,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "dd2d5a6bd5c431478cd6a75239e2c3f72c6fdff4"
+                    "commit": "84e1ee30f002fbc860473965e2fa47f78656876d"
                 },
                 {
                     "type": "execute",
@@ -139,7 +139,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "dd2d5a6bd5c431478cd6a75239e2c3f72c6fdff4"
+                    "commit": "84e1ee30f002fbc860473965e2fa47f78656876d"
                 },
                 {
                     "type": "execute",
@@ -239,7 +239,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "dd2d5a6bd5c431478cd6a75239e2c3f72c6fdff4"
+                    "commit": "84e1ee30f002fbc860473965e2fa47f78656876d"
                 },
                 {
                     "type": "execute",
@@ -395,7 +395,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "dae43a1f2a29075f7d17b8a2952a7be54d79530e"
+                    "commit": "a58b53277585c734f90ba7c861fd398183c0238a"
                 },
                 {
                     "type": "execute",
@@ -653,13 +653,17 @@
         },
         {
             "name": "mobile/scan-app/ios",
-            "src": "https://github.com/PrivateSky/ios-edge-agent",
+            "src": "https://github.com/PharmaLedger-IMI/ios-edge-agent",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "f7fb877a6945d1d215f116ea8144c33272c3569a"
+                    "commit": "3667710c947530b8f96f5cb5ab2fc4d96d48f48c"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd mobile/scan-app/ios/PSKNodeServer && carthage bootstrap"
                 },
                 {
                     "type": "execute",
@@ -861,4 +865,4 @@
             ]
         }
     ]
-} 
+}
