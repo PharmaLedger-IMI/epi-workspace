@@ -43,8 +43,15 @@ function getEPIMappingEngineForAPIHUB(server) {
 
             messagesPipe[domain].onNewGroup(async (groupMessages) => {
                 console.log(`[MAPPING ENGINE]: ${groupMessages.length} new messages arrived. Processing...`)
-                let undigestedMessages = await mappingEngine.digestMessages(groupMessages);
-                console.log("[MAPPING ENGINE]:Undigested messages:", undigestedMessages.length)
+                try {
+                    let undigestedMessages = await mappingEngine.digestMessages(groupMessages);
+                    console.log("[MAPPING ENGINE]:Undigested messages:", undigestedMessages.length);
+                }
+                catch (e){
+                    console.log(e);
+                }
+
+
             });
         }
 
