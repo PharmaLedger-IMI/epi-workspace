@@ -82,16 +82,19 @@ async function processBatchMessage(message) {
   if (this.batch.snValidReset) {
     this.batch.bloomFilterSerialisations = [];
     this.batch.defaultSerialNumber = "";
+    this.batch.snValidReset = false;
   }
 
   if (this.batch.snRecalledReset) {
     this.batch.bloomFilterRecalledSerialisations = [];
     this.batch.defaultRecalledSerialNumber = "";
+    this.batch.snRecalledReset = false;
   }
 
   if (this.batch.snDecomReset) {
     this.batch.bloomFilterDecommissionedSerialisations = [];
     this.batch.defaultDecommissionedSerialNumber = "";
+    this.batch.snDecomReset = false;
   }
 
   let bf;
