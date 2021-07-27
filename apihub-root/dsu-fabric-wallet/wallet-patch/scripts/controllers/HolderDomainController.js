@@ -7,6 +7,7 @@ export default class HolderDomainController extends ContainerController {
 
         this.setModel({});
         this.model.domain = "epi";
+
         this.on('openFeedback', (e) => {
             this.feedbackEmitter = e.detail;
         });
@@ -17,9 +18,14 @@ export default class HolderDomainController extends ContainerController {
             console.log("userDetails:", userDetails);
         });
 
-        this.on("generate-identity", (event) => {
+        this.on("generate-identity", async (event) => {
             const opendsu = require("opendsu");
             const keyssiSpace = opendsu.loadApi("keyssi");
+            const bdns = opendsu.loadApi("bdns");
+            const bdnsDomain = await $$.promisify(bdns.getRawInfo)(this.model.domain)
+            if (!bdnsDomain) {
+                return this.showError(new Error(`${this.model.domain} is not a valid domain. Please check your settings`), "Unknown domain");
+            }
             const seedSSI = keyssiSpace.createTemplateSeedSSI(this.model.domain);
             seedSSI.initialize(this.model.domain, (err)=>{
                 if(err){

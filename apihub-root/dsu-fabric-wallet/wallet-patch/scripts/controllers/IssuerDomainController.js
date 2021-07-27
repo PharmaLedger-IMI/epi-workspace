@@ -15,10 +15,21 @@ export default class IssuerDomainController extends ContainerController {
             this.feedbackEmitter = e.detail;
         });
 
-        this.on("generate-identity", (event) => {
-            this.model.wip = true;
+        this.on("generate-identity", async (event) => {
             const opendsu = require("opendsu");
             const keyssiSpace = opendsu.loadApi("keyssi");
+            const bdns = opendsu.loadApi("bdns");
+            const bdnsDomain = await $$.promisify(bdns.getRawInfo)(this.model.domain);
+            let bdnsSubDomain = this.model.subdomain ? await $$.promisify(bdns.getRawInfo)(this.model.subdomain) : {};
+
+            if (!bdnsDomain) {
+                return this.showError(new Error(`${this.model.domain} is not a valid domain. Please check your settings`), "Unknown domain");
+            }
+            if (!bdnsSubDomain) {
+              return this.showError(new Error(`${this.model.subdomain} is not a valid subdomain. Please check your settings`), "Unknown subdomain");
+            }
+
+            this.model.wip = true;
             //TODO: temporary fix to prevent cache mechanism intercepting vault domain anchoring processes
             const vault_domain_name = "vault.nvs";
             const seedSSI = keyssiSpace.createTemplateSeedSSI(vault_domain_name);
