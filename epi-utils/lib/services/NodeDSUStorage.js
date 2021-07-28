@@ -42,53 +42,23 @@ class NodeDSUStorage {
 				];
 
 
-				let mainDSU = sc.getMainDSU();
-				for (let f of availableFunctions) {
-					self[f] = mainDSU[f];
-				}
-				self.directAccessEnabled = true;
-				callback(undefined, true);
-			} else {
-				callback(undefined, true);
-			}
-		}
-
-		function getMainDSU(continuation) {
-			let sc = require("opendsu").loadAPI("sc");
-			let mainDSU = undefined;
-			try {
-				mainDSU = sc.getMainDSU();
-
-			} catch (err) {
-				//ignore on purpose
-			}
-
-			if (mainDSU) {
-				continuation();
-			} else {
-				const opendsu = require("opendsu");
-				let config = opendsu.loadApi("config");
-
-				let mainSSI = opendsu.loadApi("keyssi").parse(self.walletSSI);
-				if (mainSSI.getHint() == "server") {
-					config.disableLocalVault();
-				}
-				opendsu.loadAPI("resolver").loadDSU(self.walletSSI, (err, mainDSU) => {
+				sc.getMainDSU((err, mainDSU)=>{
 					if (err) {
-						//printOpenDSUError(err);
-						//reportUserRelevantInfo("Reattempting to enable direct DSUStorage from Cardinal", err);
-						setTimeout(function () {
-							getMainDSU(continuation);
-						}, 100);
-						return;
+						return callback(err);
 					}
-					sc.setMainDSU(mainDSU);
-					continuation();
-				});
+
+					for (let f of availableFunctions) {
+						self[f] = mainDSU[f];
+					}
+					self.directAccessEnabled = true;
+					callback(undefined, true);
+				})
+			} else {
+				callback(undefined, true);
 			}
 		}
 
-		getMainDSU(addFunctionsFromMainDSU);
+		addFunctionsFromMainDSU();
 	}
 
 	setObject(path, data, callback) {
