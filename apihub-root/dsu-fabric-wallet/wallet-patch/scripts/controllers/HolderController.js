@@ -1,9 +1,8 @@
 import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 import constants from "./constants.js";
-import { copyToClipboard } from "../helpers/document-utils.js";
+import {copyToClipboard} from "../helpers/document-utils.js";
 
 let crypto = require("opendsu").loadApi("crypto");
-
 
 
 export default class HolderController extends ContainerController {
@@ -11,7 +10,7 @@ export default class HolderController extends ContainerController {
         super(element, history);
 
 
-        this.setModel({ displayCredentialArea: true, isInvalidCredential: false });
+        this.setModel({displayCredentialArea: true, isInvalidCredential: false});
         this.model.domain = "epi";
 
         const setCredential = credential => {
@@ -24,8 +23,8 @@ export default class HolderController extends ContainerController {
                     return console.log('Error parsing user credential', parseError);
                 }
                 //console.log('Parsed credential', jwtContent);
-                const { header, body } = jwtContent;
-                this.model.readableCredential = JSON.stringify({ header, body }, null, 4);
+                const {header, body} = jwtContent;
+                this.model.readableCredential = JSON.stringify({header, body}, null, 4);
 
                 const readableContainer = this.element.querySelector('#readableContainer');
                 let readableCredentialElement = readableContainer.querySelector('#readableCredential');
@@ -39,13 +38,16 @@ export default class HolderController extends ContainerController {
                 readableCredentialElement.language = "json";
                 readableCredentialElement.innerHTML = this.model.readableCredential;
                 readableContainer.appendChild(readableCredentialElement);
-                this.DSUStorage.enableDirectAccess(()=>{
+                this.DSUStorage.enableDirectAccess(() => {
                     let sc = require("opendsu").loadAPI("sc");
-                    let mainDSU = sc.getMainDSU();
-                    mainDSU.getKeySSIAsString((err, keySSI)=>{
-                        this.model.walletKeySSI = keySSI
+                    sc.getMainDSU((err, mainDSU) => {
+                        if (err) {
+                            return console.log('Error getting mainDSU', err);
+                        }
+                        mainDSU.getKeySSIAsString((err, keySSI) => {
+                            this.model.walletKeySSI = keySSI
+                        });
                     })
-
                 })
             });
         }
@@ -109,7 +111,7 @@ export default class HolderController extends ContainerController {
             } else {
                 this.showError("Invalid credential");
             }
-        }, { capture: true });
+        }, {capture: true});
 
         this.on('copy-text', (e) => {
             copyToClipboard(e.data);
