@@ -8,6 +8,14 @@ async function processBatchMessage(message) {
   const utils = require("./../utils");
   const mappingLogService = require("./logs").createInstance(this.storageService);
 
+  const schemaValidator = require("./utils/schema-validator");
+  const schema = require("./schemas/batchSchema");
+  const msgValidation = schemaValidator.validateMsgOnSchema(message, schema);
+  if (!msgValidation.valid) {
+    message.invalidFields = msgValidation.invalidFields;
+    await mappingLogService.logFailedMapping(message, "lookup", "Invalid message format");
+    throw new Error(`Invalid message format ${JSON.stringify(msgValidation.invalidFields)}`);
+  }
 
   const batchId = message.batch.batch;
   const productCode = message.batch.productCode;
