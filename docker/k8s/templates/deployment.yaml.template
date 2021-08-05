@@ -26,19 +26,19 @@ spec:
             mountPath: /ePI-workspace/apihub-root/external-volume/config/apihub.json
             subPath: apihub.json
           - name: epi-config-volume
-            mountPath: /ePi-workspace/apihub-root/external-volume/config/bdns.hosts
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/bdns.hosts
             subPath: bdns.hosts
           - name: epi-domains-volume
-            mountPath: /ePi-workspace/apihub-root/external-volume/config/domains/%domain%.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/%domain%.json
             subPath: %domain%.json
           - name: epi-domains-volume
-            mountPath: /ePi-workspace/apihub-root/external-volume/config/domains/%subdomain%.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/%subdomain%.json
             subPath: %subdomain%.json
           - name: epi-domains-volume
-            mountPath: /ePi-workspace/apihub-root/external-volume/config/domains/%vaultdomain%.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/%vaultdomain%.json
             subPath: %vaultdomain%.json
           - name: epi-domains-volume
-            mountPath: /ePi-workspace/apihub-root/external-volume/config/domains/default.json
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/default.json
             subPath: default.json
       restartPolicy: Always
       volumes:
