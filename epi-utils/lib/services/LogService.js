@@ -1,10 +1,10 @@
 const constants = require('../utils').constants;
-const getSharedStorage  = require("./SharedDBStorageService.js").getSharedStorage;
+const getSharedStorageInstance  = require("./SharedDBStorageService.js").getSharedStorageInstance;
 
 module.exports = class LogService {
 
     constructor(dsuStorage, logsTable) {
-        this.storageService = getSharedStorage(dsuStorage);
+        this.storageService = getSharedStorageInstance(dsuStorage);
         if (typeof logsTable === "undefined") {
             this.logsTable = constants.LOGS_TABLE;
         } else {

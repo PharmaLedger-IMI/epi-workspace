@@ -13,85 +13,91 @@ function getEPIMappingEngineForAPIHUB(server) {
     const mappings = epiUtils.loadApi("mappings")
     const MessagesPipe = epiUtils.getMessagesPipe();
 
-    function getMessagePipe(domain, callback) {
-        if (messagesPipe[domain] === undefined) {
-
-            let domainConfig,subdomain, walletSSI;
-            domainConfig = apiHub.getDomainConfig(domain);
-
-            if(!domainConfig){
-                return callback(new Error(`Domain configuration ${domain} not found`));
-            }
-
-            if(!domainConfig.mappingEngineWalletSSI) {
-                return callback(new Error(`mappingEngineWalletSSI is not set in the domain with name ${domain} configuration`));
-            }
-
-            walletSSI = domainConfig.mappingEngineWalletSSI;
-            subdomain = domainConfig.bricksDomain || domain;
-
-            const holderInfo = {domain: domain, subdomain: subdomain};
-            const ServerDSUStorageImpl = epiUtils.loadApi("services").DSUStorage.getInstance(walletSSI);
-            let mappingEngine = mappings.getEPIMappingEngine(ServerDSUStorageImpl, {
-                holderInfo: holderInfo,
-                logService: new LogService(ServerDSUStorageImpl)
-            });
-
-
-            const MessageQueuingService = require("epi-utils").loadApi("services").getMessageQueuingServiceInstance();
-            messagesPipe[domain] = new MessagesPipe(MAX_GROUP_SIZE, GROUPING_TIMEOUT, MessageQueuingService.getNextMessagesBlock);
-
-            messagesPipe[domain].onNewGroup(async (groupMessages) => {
-                console.log(`[MAPPING ENGINE]: ${groupMessages.length} new messages arrived. Processing...`)
-                try {
-                    let undigestedMessages = await mappingEngine.digestMessages(groupMessages);
-                    console.log("[MAPPING ENGINE]:Undigested messages:", undigestedMessages.length);
-                }
-                catch (e){
-                    console.log(e);
-                }
-
-
-            });
+    async function getMessagePipe(domain, wltSSI, callback) {
+      let domainConfig, subdomain, walletSSI;
+      domainConfig = apiHub.getDomainConfig(domain);
+      /*
+       if walletSSI not provided in request header get it form config
+      */
+      if (!wltSSI) {
+        if (!domainConfig) {
+          return callback(new Error(`Domain configuration ${domain} not found`));
         }
 
-        callback(undefined, messagesPipe[domain]);
+        if (!domainConfig.mappingEngineWalletSSI) {
+          return callback(new Error(`mappingEngineWalletSSI is not set in the domain with name ${domain} configuration`));
+        }
+      }
+
+      walletSSI = wltSSI || domainConfig.mappingEngineWalletSSI;
+      if (messagesPipe[walletSSI] === undefined) {
+        subdomain = domainConfig.bricksDomain || domain;
+        const holderInfo = {domain: domain, subdomain: subdomain};
+        try {
+          const ServerDSUStorageImpl = epiUtils.loadApi("services").DSUStorage.getInstance(walletSSI);
+          const logService = new LogService(ServerDSUStorageImpl);
+          const mappingEngine = mappings.getEPIMappingEngine(ServerDSUStorageImpl, {
+            holderInfo: holderInfo,
+            logService: logService
+          })
+          const MessageQueuingService = require("epi-utils").loadApi("services").getMessageQueuingServiceInstance();
+          messagesPipe[walletSSI] = new MessagesPipe(MAX_GROUP_SIZE, GROUPING_TIMEOUT, MessageQueuingService.getNextMessagesBlock);
+          messagesPipe[walletSSI].onNewGroup(async (groupMessages) => {
+            console.log(`[MAPPING ENGINE]: ${groupMessages.length} new messages arrived. Processing...`)
+            try {
+              let undigestedMessages = await mappingEngine.digestMessages(groupMessages);
+              console.log("[MAPPING ENGINE]:Undigested messages:", undigestedMessages.length);
+            } catch (e) {
+              console.log(e);
+            }
+          });
+
+        } catch (err) {
+          callback(err);
+            }
+        }
+
+      callback(undefined, messagesPipe[walletSSI]);
     }
 
     server.put("/mappingEngine/:domain", function (request, response, next) {
 
         let domainName = request.params.domain;
-
-        console.log("EPI Mapping Engine called for domain: ", domainName);
+        const walletSSI = request.headers.token
+        console.log(`EPI Mapping Engine called for domain:  ${domainName}, and walletSSI : ${walletSSI}`);
 
             let data = [];
             request.on('data', (chunk) => {
                 data.push(chunk);
             });
 
-            request.on('end', () => {
+            request.on('end', async () => {
 
-                try {
-                    let body = Buffer.concat(data).toString();
-                    let messages = JSON.parse(body);
+              try {
+                let body = Buffer.concat(data).toString();
+                let messages = JSON.parse(body);
 
-                    getMessagePipe(domainName,(err, messagesPipe)=>{
-                        if(err){
-                            console.log(err);
-                            response.statusCode = 500;
-                            return response.end();
+                getMessagePipe(domainName, walletSSI, (err, messagesPipe) => {
+                  if (err) {
+                    console.log(err);
+                    err.debug_message === "Invalid credentials" ? response.statusCode = 403 : response.statusCode = 500;
+                    return response.end();
 
-                        }
-                        messagesPipe.addInQueue(messages);
-                        response.statusCode = 200;
-                        response.end();
-                    });
+                  }
+                  if (!messagesPipe) {
+                    response.statusCode = 403;
+                    return response.end();
+                  }
+                  messagesPipe.addInQueue(messages);
+                  response.statusCode = 200;
+                  response.end();
+                });
 
-                } catch (e) {
-                    console.error(e);
-                    response.statusCode = 500;
-                    response.end();
-                }
+              } catch (err) {
+                console.error(err);
+                err.debug_message === "Invalid credentials" ? response.statusCode = 403 : response.statusCode = 500;
+                response.end();
+              }
             })
 
     });
