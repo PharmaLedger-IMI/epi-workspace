@@ -18,9 +18,9 @@ data:
    %domain%.json: |-
      {
        "anchoring": {
-         "type": "FS",
+         "type": "%anchoring%",
          "option": {
-           "enableBricksLedger": false
+           %anchoringEndPoint%
          },
          "commands": {
            "addAnchor": "anchor"
