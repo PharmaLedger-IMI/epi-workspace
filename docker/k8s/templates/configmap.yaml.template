@@ -5,6 +5,19 @@ metadata:
 data:
   bdns.hosts: |-
     {
+      %bdns-entries%
+      "default": {
+        "replicas": [],
+        "brickStorages": [
+          "$ORIGIN"
+        ],
+        "anchoringServices": [
+          "$ORIGIN"
+        ],
+        "notifications": [
+          "$ORIGIN"
+        ]
+      },      
       "%domain%": {
         "replicas": [],
         "brickStorages": [
