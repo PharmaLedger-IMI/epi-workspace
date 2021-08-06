@@ -15,13 +15,13 @@ data:
          }
        }
      }
-  vault.json: |-
-    {
-      "anchoring": {
-        "type": "FS",
-        "option": {}
-      }
-    }     
+   vault.json: |-
+     {
+       "anchoring": {
+         "type": "FS",
+         "option": {}
+       }
+     }     
    %domain%.json: |-
      {
        "anchoring": {
