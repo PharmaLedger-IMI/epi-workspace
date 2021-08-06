@@ -17,6 +17,18 @@ data:
         "notifications": [
           "$ORIGIN"
         ]
+      },   
+      "vault": {
+        "replicas": [],
+        "brickStorages": [
+          "$ORIGIN"
+        ],
+        "anchoringServices": [
+          "$ORIGIN"
+        ],
+        "notifications": [
+          "$ORIGIN"
+        ]
       },      
       "%domain%": {
         "replicas": [],
