@@ -34,11 +34,11 @@ function getEPIMappingEngineForAPIHUB(server) {
 			subdomain = domainConfig.bricksDomain || domain;
 			const holderInfo = {domain: domain, subdomain: subdomain};
 			const ServerDSUStorageImpl = epiUtils.loadApi("services").DSUStorage.getInstance(walletSSI);
-			return ServerDSUStorageImpl.enableDirectAccess((err) => {
-				if(err){
-					return callback(err);
-				}
-				try {
+			try {
+				return ServerDSUStorageImpl.enableDirectAccess((err) => {
+					if (err) {
+						return callback(err);
+					}
 					const logService = new LogService(ServerDSUStorageImpl);
 					const mappingEngine = mappings.getEPIMappingEngine(ServerDSUStorageImpl, {
 						holderInfo: holderInfo,
@@ -55,11 +55,13 @@ function getEPIMappingEngineForAPIHUB(server) {
 							console.log(e);
 						}
 					});
-				} catch (err) {
-					callback(err);
-				}
-				callback(undefined, messagesPipe[walletSSI]);
-			});
+
+					callback(undefined, messagesPipe[walletSSI]);
+				});
+			} catch (err) {
+				return callback(err);
+			}
+
 		}
 
 		callback(undefined, messagesPipe[walletSSI]);

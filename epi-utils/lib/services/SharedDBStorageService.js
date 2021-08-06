@@ -131,7 +131,9 @@ module.exports.getSharedStorage = function (dsuStorage) {
 let instances = {};
 
 module.exports.getSharedStorageInstance = function (dsuStorage) {
-  console.log('--- --- ---->>>>> ', dsuStorage.walletSSI);
+  if (!dsuStorage.walletSSI) {
+    return module.exports.getSharedStorage(dsuStorage);
+  }
   if (!instances[dsuStorage.walletSSI]) {
     instances[dsuStorage.walletSSI] = new SharedStorage(dsuStorage)
   }
