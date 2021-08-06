@@ -40,6 +40,9 @@ spec:
           - name: epi-domains-volume
             mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/default.json
             subPath: default.json
+          - name: epi-domains-volume
+            mountPath: /ePI-workspace/apihub-root/external-volume/config/domains/vault.json
+            subPath: vault.json            
       restartPolicy: Always
       volumes:
         - name: epi-config-volume
