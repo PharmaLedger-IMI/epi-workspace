@@ -29,6 +29,18 @@ data:
         "notifications": [
           "$ORIGIN"
         ]
+      },
+      "vault.nvs": {
+        "replicas": [],
+        "brickStorages": [
+          "$ORIGIN"
+        ],
+        "anchoringServices": [
+          "$ORIGIN"
+        ],
+        "notifications": [
+          "$ORIGIN"
+        ]
       },      
       "%domain%": {
         "replicas": [],
