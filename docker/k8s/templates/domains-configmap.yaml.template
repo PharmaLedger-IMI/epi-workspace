@@ -15,6 +15,13 @@ data:
          }
        }
      }
+   vault.nvs.json: |-
+    {
+      "anchoring": {
+        "type": "FS",
+        "option": {}
+      }
+    }     
    vault.json: |-
      {
        "anchoring": {
