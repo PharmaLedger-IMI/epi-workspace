@@ -6,6 +6,7 @@ function verifyIfProductMessage(message) {
 
 async function processProductMessage(message) {
   const utils = require("./../utils");
+  const errMap = require("opendsu").loadApi("m2dsu").getErrorsMap();
   const constants = utils.constants;
   const productCode = message.product.productCode;
   const mappingLogService = require("./logs").createInstance(this.storageService);
@@ -17,7 +18,7 @@ async function processProductMessage(message) {
   if (!msgValidation.valid) {
     message.invalidFields = msgValidation.invalidFields;
     await mappingLogService.logFailedMapping(message, "lookup", "Invalid message format");
-    throw new Error(`Invalid message format ${JSON.stringify(msgValidation.invalidFields)}`);
+    throw errMap.newCustomError(errMap.errorTypes.INVALID_MESSAGE_FORMAT, msgValidation.invalidFields);
   }
 
   const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode);
@@ -37,7 +38,7 @@ async function processProductMessage(message) {
       }
     } catch (e) {
       await mappingLogService.logFailedMapping(message, "lookup", "Database corrupted");
-      throw new Error("This case is not implemented. Missing product from the wallet database or database is corrupted");
+      throw errMap.newCustomError(errMap.errorTypes.NOT_IMPLEMENTED);
     }
     productDSU = await this.loadDSU(productMetadata.keySSI);
   }
@@ -70,7 +71,7 @@ async function processProductMessage(message) {
   if (!alreadyExists) {
     productDSU.getKeySSIAsString(async (err, keySSI) => {
       if (err) {
-        throw new Error("get keySSIAsString  from prod DSU failed");
+        throw new Error("get keySSIAsString from prod DSU failed");
       }
       await constDSU.mount(constants.PRODUCT_DSU_MOUNT_POINT, keySSI);
     })

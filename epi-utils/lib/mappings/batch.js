@@ -6,6 +6,7 @@ function verifyIfBatchMessage(message) {
 
 async function processBatchMessage(message) {
   const utils = require("./../utils");
+  const errMap = require("opendsu").loadApi("m2dsu").getErrorsMap();
   const mappingLogService = require("./logs").createInstance(this.storageService);
 
   const schemaValidator = require("./utils/schema-validator");
@@ -14,7 +15,7 @@ async function processBatchMessage(message) {
   if (!msgValidation.valid) {
     message.invalidFields = msgValidation.invalidFields;
     await mappingLogService.logFailedMapping(message, "lookup", "Invalid message format");
-    throw new Error(`Invalid message format ${JSON.stringify(msgValidation.invalidFields)}`);
+    throw errMap.newCustomError(errMap.errorTypes.INVALID_MESSAGE_FORMAT, msgValidation.invalidFields);
   }
 
   const batchId = message.batch.batch;
@@ -31,12 +32,13 @@ async function processBatchMessage(message) {
     constProdDSU = await this.loadDSU(gtinSSI);
   } catch (err) {
     await mappingLogService.logFailedMapping(message, "lookup", utils.constants.MISSING_PRODUCT_DSU);
-    throw new Error("Product not found");
+    throw errMap.newCustomError(errMap.errorTypes.PRODUCT_NOT_FOUND);
   }
 
   if (!constProdDSU) {
     await mappingLogService.logFailedMapping(message, "lookup", utils.constants.MISSING_PRODUCT_DSU);
-    throw new Error("Fail to create a batch for a missing product");
+    throw errMap.newCustomError(errMap.errorTypes.BATCH_MISSING_PRODUCT);
+
   }
 
   const gtinBatchSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode, batchId);
@@ -50,7 +52,7 @@ async function processBatchMessage(message) {
     productMetadata = await this.storageService.getRecord(utils.constants.PRODUCTS_TABLE, productCode);
   } catch (e) {
     await mappingLogService.logFailedMapping(message, "lookup", "Database corrupted");
-    throw new Error("Missing product from the wallet database or database is corrupted");
+    throw errMap.newCustomError(errMap.errorTypes.NOT_IMPLEMENTED);
   }
 
 
@@ -58,7 +60,7 @@ async function processBatchMessage(message) {
     batchDSU = await this.createDSU(this.options.holderInfo.subdomain, "seed");
   } else {
     if (!productMetadata) {
-      throw new Error("This case is not implemented. Missing product from the wallet database or database is corrupted");
+      throw errMap.newCustomError(errMap.errorTypes.NOT_IMPLEMENTED);
     }
 
     batchMetadata = await this.storageService.getRecord(utils.constants.BATCHES_STORAGE_TABLE, batchId);
