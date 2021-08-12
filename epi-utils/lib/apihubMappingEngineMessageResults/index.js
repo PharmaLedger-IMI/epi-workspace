@@ -79,7 +79,7 @@ function getEPIMappingEngineMessageResults(server) {
         if (err) {
           console.log(err);
           response.statusCode = 500;
-          response.end(JSON.stringify({result: "Error", error: err}));
+          response.end(JSON.stringify({result: "Error", message: "No logs"}));
         }
         if (!logs || logs.length === 0) {
           logs = "Log list is empty";

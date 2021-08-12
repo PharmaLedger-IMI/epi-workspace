@@ -15,3 +15,7 @@ module.exports.getEPIMappingEngine = function(dsuStorage, options){
 module.exports.getMappingLogs = function (storageService){
 	return require("./logs").createInstance(storageService).getMappingLogs;
 }
+
+module.exports.buildResponse = function(version){
+	return require("./responses").buildResponse(version);
+}

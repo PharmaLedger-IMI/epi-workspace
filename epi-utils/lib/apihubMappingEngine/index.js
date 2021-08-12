@@ -14,8 +14,9 @@ function getEPIMappingEngineForAPIHUB(server) {
   const MessagesPipe = epiUtils.getMessagesPipe();
 
   async function getMessagePipe(domain, subdomainName, wltSSI, callback) {
-    let domainConfig, subdomain, walletSSI;
+    let domainConfig, subdomain, walletSSI, messagesEndpoint;
     domainConfig = apiHub.getDomainConfig(domain);
+    let getBaseUrl = require("opendsu").loadApi("system").getBaseURL();
 
     /*
      if walletSSI not provided in request header get it form config
@@ -23,9 +24,6 @@ function getEPIMappingEngineForAPIHUB(server) {
     if (!wltSSI) {
       if (!domainConfig) {
         return callback(new Error(`Domain configuration ${domain} not found`));
-      }
-      if (!domainConfig.messagesEndpoint) {
-        return callback(new Error(`messagesEndpoint is not set in the domain with name ${domain} configuration`));
       }
 
       if (!domainConfig.mappingEngineWalletSSI) {
@@ -36,6 +34,7 @@ function getEPIMappingEngineForAPIHUB(server) {
     walletSSI = wltSSI || domainConfig.mappingEngineWalletSSI;
     if (messagesPipe[walletSSI] === undefined) {
       let subdomain = domainConfig.bricksDomain || subdomainName;
+      messagesEndpoint = domainConfig.messagesEndpoint || `${getBaseUrl()}/mappingEngine/${domain}/${subdomain}/saveResult`
       const holderInfo = {domain: domain, subdomain: subdomain};
       const ServerDSUStorageImpl = epiUtils.loadApi("services").DSUStorage.getInstance(walletSSI);
       try {
@@ -51,36 +50,33 @@ function getEPIMappingEngineForAPIHUB(server) {
           const MessageQueuingService = require("epi-utils").loadApi("services").getMessageQueuingServiceInstance();
           messagesPipe[walletSSI] = new MessagesPipe(MAX_GROUP_SIZE, GROUPING_TIMEOUT, MessageQueuingService.getNextMessagesBlock);
           messagesPipe[walletSSI].onNewGroup(async (groupMessages) => {
-            console.log(`[MAPPING ENGINE]: ${groupMessages.length} new messages arrived. Processing...`)
+            console.log(`[MAPPING ENGINE]: ${groupMessages.length} new messages arrived. Processing...`);
+
             let messagesToPersist = groupMessages.map(msg => {
-              return {
-                header: {
-                  messageId: msg.messageId,
-                  messageType: msg.messageType,
-                  messageTypeVersion: msg.messageTypeVersion,
-                  senderId: msg.senderId,
-                  receiverId: msg.receiverId,
-                  messageId: msg.messageId,
-                  messageDateTime: msg.messageDateTime
-                }
-              }
+              let response = mappings.buildResponse(0.2);
+              response.setReceiverId(msg.senderId);
+              response.setSenderId(msg.receiverId);
+              response.setMessageType(msg.messageType);
+              response.setRequestData(msg);
+              return response;
             });
             try {
               let undigestedMessages = await mappingEngine.digestMessages(groupMessages);
               console.log("[MAPPING ENGINE]:Undigested messages:", undigestedMessages.length);
 
               messagesToPersist.forEach(item => {
-                let index = undigestedMessages.findIndex(elem => elem.message.messageId === item.header.messageId)
+                let index = undigestedMessages.findIndex(elem => elem.message.messageId === item.requestMessageId)
+
                 if (index >= 0) {
                   let messageErrors = [];
-                  item.errorsCounter = 1;
-                  if (undigestedMessages[index].error.otherErrors.details.length) {
-                    item.errorsCounter = undigestedMessages[index].error.otherErrors.details.length;
+                  let undigestedMessage = undigestedMessages[index];
+                  if (undigestedMessage.error && undigestedMessage.error.otherErrors && undigestedMessage.error.otherErrors.details.length) {
+                    undigestedMessage.error.otherErrors.details.forEach((element, index) => {
+                      item.addErrorResponse(element.errorType, element.errorMessage, element.errorDetails, element.errorField);
+                    })
                   }
-                  item.errors = undigestedMessages[index].error.otherErrors.details;
                 } else {
-                  item.errorsCounter = 0;
-                  item.errors = [];
+                  item.addSuccessResponse();
                 }
               })
 
@@ -90,14 +86,12 @@ function getEPIMappingEngineForAPIHUB(server) {
 
             const httpSpace = require("opendsu").loadApi('http');
             messagesToPersist.forEach(item => {
-              httpSpace.doPut(`${domainConfig.messagesEndpoint}/mappingEngine/${domain}/${subdomain}/saveResult`,
-                JSON.stringify(item), (err, data) => {
-                  if (err) {
-                    console.log("Could not persist message ", item);
-                  }
-                })
+              httpSpace.doPut(messagesEndpoint, JSON.stringify(item), (err, data) => {
+                if (err) {
+                  console.log("Could not persist message ", item);
+                }
+              })
             })
-
 
           });
 
@@ -112,7 +106,7 @@ function getEPIMappingEngineForAPIHUB(server) {
     callback(undefined, messagesPipe[walletSSI]);
   }
 
-  function putMessage(request, response){
+  function putMessage(request, response) {
 
     let domainName = request.params.domain;
     let subdomainName = request.params.subdomain;

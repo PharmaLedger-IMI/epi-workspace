@@ -23,7 +23,6 @@ function MessageQueuingService() {
             return letQueuePass();
           }
           break;
-
         case message.messageType.toLowerCase() === "batch":
           productCode = message.batch.productCode;
           batchNumber = message.batch.batch;
@@ -58,7 +57,11 @@ function MessageQueuingService() {
           }
 
           break;
+        default:
+          queue.push(message);
+          return letQueuePass();
       }
+
     }
     letQueuePass();
   }
