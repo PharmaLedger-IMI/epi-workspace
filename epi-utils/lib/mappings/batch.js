@@ -1,4 +1,5 @@
 const gtinResolver = require("gtin-resolver");
+const constants = require("../constants.js");
 
 function verifyIfBatchMessage(message) {
   return message.messageType === "Batch" && typeof message.batch === "object";
@@ -85,24 +86,22 @@ async function processBatchMessage(message) {
 
   if (!batchExists) {
     this.batch.bloomFilterSerialisations = [];
-    this.batch.bloomFilterRecalledSerialisations = [];
-    this.batch.bloomFilterDecommissionedSerialisations = [];
   }
 
   if (this.batch.snValidReset) {
-    this.batch.bloomFilterSerialisations = [];
+    this.batch.bloomFilterSerialisations = removeAllBloomFiltersOfType(this.batch.bloomFilterSerialisations, constants.VALID_SERIAL_NUMBER_TYPE)
     this.batch.defaultSerialNumber = "";
     this.batch.snValidReset = false;
   }
 
   if (this.batch.snRecalledReset) {
-    this.batch.bloomFilterRecalledSerialisations = [];
+    this.batch.bloomFilterSerialisations = removeAllBloomFiltersOfType(this.batch.bloomFilterSerialisations, constants.RECALLED_SERIAL_NUMBER_TYPE)
     this.batch.defaultRecalledSerialNumber = "";
     this.batch.snRecalledReset = false;
   }
 
   if (this.batch.snDecomReset) {
-    this.batch.bloomFilterDecommissionedSerialisations = [];
+    this.batch.bloomFilterSerialisations = removeAllBloomFiltersOfType(this.batch.bloomFilterSerialisations, constants.DECOMMISSIONED_SERIAL_NUMBER_TYPE)
     this.batch.defaultDecommissionedSerialNumber = "";
     this.batch.snDecomReset = false;
   }
@@ -110,18 +109,30 @@ async function processBatchMessage(message) {
   let bf;
   if (this.batch.serialNumbers.length > 0) {
     bf = utils.getBloomFilterSerialisation(this.batch.serialNumbers);
-    this.batch.bloomFilterSerialisations.push(bf.bloomFilterSerialisation());
+    // this.batch.bloomFilterSerialisations.push(bf.bloomFilterSerialisation());
+    this.batch.bloomFilterSerialisations.push({
+      serialisation: bf.bloomFilterSerialisation(),
+      type: constants.VALID_SERIAL_NUMBER_TYPE
+    });
     this.batch.defaultSerialNumber = this.batch.serialNumbers[0];
   }
 
   if (this.batch.recalledSerialNumbers.length > 0) {
     bf = utils.getBloomFilterSerialisation(this.batch.recalledSerialNumbers);
-    this.batch.bloomFilterRecalledSerialisations.push(bf.bloomFilterSerialisation());
+    // this.batch.bloomFilterRecalledSerialisations.push(bf.bloomFilterSerialisation());
+    this.batch.bloomFilterSerialisations.push({
+      serialisation: bf.bloomFilterSerialisation(),
+      type: constants.RECALLED_SERIAL_NUMBER_TYPE
+    });
     this.batch.defaultRecalledSerialNumber = this.batch.recalledSerialNumbers[0];
   }
   if (this.batch.decommissionedSerialNumbers.length > 0) {
     bf = utils.getBloomFilterSerialisation(this.batch.decommissionedSerialNumbers);
-    this.batch.bloomFilterDecommissionedSerialisations.push(bf.bloomFilterSerialisation());
+    // this.batch.bloomFilterDecommissionedSerialisations.push(bf.bloomFilterSerialisation());
+    this.batch.bloomFilterSerialisations.push({
+      serialisation: bf.bloomFilterSerialisation(),
+      type: constants.DECOMMISSIONED_SERIAL_NUMBER_TYPE
+    });
     this.batch.defaultDecommissionedSerialNumber = this.batch.decommissionedSerialNumbers[0];
   }
 
@@ -180,6 +191,10 @@ async function processBatchMessage(message) {
 
   await mappingLogService.logSuccessMapping(message, batchExists ? "updated" : "created");
 
+}
+
+function removeAllBloomFiltersOfType(bfList, type) {
+  return bfList.filter((bfObj) => bfObj.type !== type);
 }
 
 require("opendsu").loadApi("m2dsu").defineMapping(verifyIfBatchMessage, processBatchMessage);
