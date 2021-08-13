@@ -1,6 +1,7 @@
 const gtinResolver = require("gtin-resolver");
 const constants = require("../constants.js");
 
+
 function verifyIfBatchMessage(message) {
   return message.messageType === "Batch" && typeof message.batch === "object";
 }
@@ -8,6 +9,8 @@ function verifyIfBatchMessage(message) {
 async function processBatchMessage(message) {
   const utils = require("./../utils");
   const errMap = require("opendsu").loadApi("m2dsu").getErrorsMap();
+  errMap.addNewErrorType("BATCH_MISSING_PRODUCT", 7, "Fail to create a batch for a missing product");
+
   const mappingLogService = require("./logs").createInstance(this.storageService);
 
   const schemaValidator = require("./utils/schema-validator");
@@ -26,20 +29,17 @@ async function processBatchMessage(message) {
     message.batch.version = 1;
   }
 
-
   const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode);
   let constProdDSU;
   try {
     constProdDSU = await this.loadDSU(gtinSSI);
   } catch (err) {
     await mappingLogService.logFailedMapping(message, "lookup", utils.constants.MISSING_PRODUCT_DSU);
-    throw errMap.newCustomError(errMap.errorTypes.PRODUCT_NOT_FOUND);
   }
 
   if (!constProdDSU) {
     await mappingLogService.logFailedMapping(message, "lookup", utils.constants.MISSING_PRODUCT_DSU);
-    throw errMap.newCustomError(errMap.errorTypes.BATCH_MISSING_PRODUCT);
-
+    throw errMap.newCustomError(errMap.errorTypes.BATCH_MISSING_PRODUCT, "productCode" );
   }
 
   const gtinBatchSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode, batchId);
@@ -53,7 +53,7 @@ async function processBatchMessage(message) {
     productMetadata = await this.storageService.getRecord(utils.constants.PRODUCTS_TABLE, productCode);
   } catch (e) {
     await mappingLogService.logFailedMapping(message, "lookup", "Database corrupted");
-    throw errMap.newCustomError(errMap.errorTypes.NOT_IMPLEMENTED);
+    throw errMap.newCustomError(errMap.errorTypes.DB_OPERATION_FAIL, "productCode" );
   }
 
 
@@ -61,7 +61,7 @@ async function processBatchMessage(message) {
     batchDSU = await this.createDSU(this.options.holderInfo.subdomain, "seed");
   } else {
     if (!productMetadata) {
-      throw errMap.newCustomError(errMap.errorTypes.NOT_IMPLEMENTED);
+      throw errMap.newCustomError(errMap.errorTypes.DB_OPERATION_FAIL, "productCode");
     }
 
     batchMetadata = await this.storageService.getRecord(utils.constants.BATCHES_STORAGE_TABLE, batchId);

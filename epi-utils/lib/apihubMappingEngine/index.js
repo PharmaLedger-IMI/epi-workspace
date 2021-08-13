@@ -142,9 +142,9 @@ function getEPIMappingEngineForAPIHUB(server) {
         });
 
       } catch (err) {
-        console.error(err);
+        console.error("Error on parse request message",err);
         err.debug_message === "Invalid credentials" ? response.statusCode = 403 : response.statusCode = 500;
-        response.end();
+        response.end(err.message);
       }
     })
 

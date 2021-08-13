@@ -1,5 +1,6 @@
 const gtinResolver = require("gtin-resolver");
 
+
 function verifyIfProductMessage(message) {
   return message.messageType === "Product" && typeof message.product === "object";
 }
@@ -38,7 +39,7 @@ async function processProductMessage(message) {
       }
     } catch (e) {
       await mappingLogService.logFailedMapping(message, "lookup", "Database corrupted");
-      throw errMap.newCustomError(errMap.errorTypes.NOT_IMPLEMENTED);
+      throw errMap.newCustomError(errMap.errorTypes.DB_OPERATION_FAIL, "productCode");
     }
     productDSU = await this.loadDSU(productMetadata.keySSI);
   }
@@ -49,22 +50,9 @@ async function processProductMessage(message) {
   if (typeof this.product === "undefined") {
     this.product = JSON.parse(JSON.stringify(productMetadata));
   }
-  // const propertiesMapping = require("./../utils").productDataSourceMapping;
 
   utils.transformFromMessage(this.product, message.product, utils.productDataSourceMapping);
-  /*    for (let prop in propertiesMapping) {
-          if (typeof message.product[propertiesMapping[prop]] !== "undefined") {
-              this.product[prop] = message.product[propertiesMapping[prop]];
 
-              //TODO: move this logic in leaflet app
-              if (prop === "practitionerInfo" && !message.product[propertiesMapping[prop]]) {
-                  this.product[prop] = "SmPC";
-              }
-              if (prop === "patientLeafletInfo" && !message.product[propertiesMapping[prop]]) {
-                  this.product[prop] = "Patient Information";
-              }
-          }
-      }*/
   this.product.version = version;
   await this.saveJSONS(productDSU, indication);
 
