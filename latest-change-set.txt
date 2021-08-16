@@ -1,4 +1,0 @@
-    Create LICENSE
-    Merge pull request #6 from PharmaLedger-IMI/feature/integrate-scandit
-    
-    Scandit API
