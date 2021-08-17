@@ -190,17 +190,18 @@ The purpose of the EPI Mapping Engine is to process various types of messages re
 
 ### Configuring Domain for ApiHub Mapping Engine usage
 
-1. After finishing [Step 2: Setup credentials for Issuer and Holder](#step-2-setup-credentials-for-issuer-and-holder) from [Running section](#running) section please copy
-the desired wallet identifier from **User as Holder** page in wallet app.
-![alt text](wallet_identifier.png)
-2. Find the domain configuration in ```/apihub-root/external-volume/config/domains/<domainName.json>```
-and ```modify mappingEngineWalletSSI``` property with the wallet identifier and ```bricksDomain``` property with wallet subdomain value.   
+1. Find the domain configuration in ```/apihub-root/external-volume/config/domains/<domainName.json>```
+and modify or add the ```bricksDomain``` property with wallet subdomain value.   
 ![alt text](domain_config.png)
 3. Restart the server. 
-Now the ApiHub Mapping Engine is configured for processing messages from external sources through ```/mappingEngine/:domainName"``` endpoint via the PUT HTTP verb.
+Now the ApiHub Mapping Engine is configured for processing messages from external sources through ```/mappingEngine/:domainName"``` endpoint via the **PUT** HTTP verb.
 
 ### Testing ApiHub Mapping Engine
 In order to test the mapping engine functionality it can be used any API testing tools.
+
+Make a request like this ``` PUT http://localhost:8080/mappingEngine/<domainName> ```
+
+Set header **token** on the request with the value of the WalletSSI copied from the Holder page after the Issuer-Holder credentials workflow completed.
 
 Please note that the content should be on the request body as a raw string containing the JSON message.
 JSON messages examples could be downloaded from the import section page in the wallet app. 
