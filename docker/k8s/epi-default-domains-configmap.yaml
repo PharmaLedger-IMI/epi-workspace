@@ -35,7 +35,6 @@ data:
           "addAnchor": "anchor"
         }
       },
-      "mappingEngineWalletSSI":"REPLACE_WITH_A_CUSTOM_WALLET_KEYSSI_DISPLAYED_IN_DSU_FABRIC_HOLDER_PAGE",
       "bricksDomain":"vault.nvs"
     }
   epiqa.json: |-
