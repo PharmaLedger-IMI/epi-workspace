@@ -25,6 +25,9 @@ async function processLeafletMessage(message) {
             let filePath = `${basePath}/${file.filename}`;
             await hostDSU.writeFile(filePath, $$.Buffer.from(base64ToArrayBuffer(file.fileContent)));
         }
+
+        await hostDSU.writeFile(`${basePath}/artworkId.json`, JSON.stringify({"value": message.artworkId}));
+
         await mappingLogService.logSuccessMapping(message, "updated leaflet");
 
         if(typeof this.options.logService!=="undefined"){

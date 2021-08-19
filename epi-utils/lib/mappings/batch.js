@@ -25,10 +25,6 @@ async function processBatchMessage(message) {
   const batchId = message.batch.batch;
   const productCode = message.batch.productCode;
 
-  if (typeof message.batch.version !== "number") {
-    message.batch.version = 1;
-  }
-
   const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode);
   let constProdDSU;
   try {
@@ -63,7 +59,6 @@ async function processBatchMessage(message) {
     if (!productMetadata) {
       throw errMap.newCustomError(errMap.errorTypes.DB_OPERATION_FAIL, "productCode");
     }
-
     batchMetadata = await this.storageService.getRecord(utils.constants.BATCHES_STORAGE_TABLE, batchId);
     batchDSU = await this.loadDSU(batchMetadata.keySSI);
   }
@@ -86,7 +81,9 @@ async function processBatchMessage(message) {
 
   if (!batchExists) {
     this.batch.bloomFilterSerialisations = [];
+    this.batch.version = 0;
   }
+  this.batch.version++;
 
   if (this.batch.snValidReset) {
     this.batch.bloomFilterSerialisations = removeAllBloomFiltersOfType(this.batch.bloomFilterSerialisations, constants.VALID_SERIAL_NUMBER_TYPE)
