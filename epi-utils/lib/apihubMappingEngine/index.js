@@ -12,12 +12,29 @@ function getEPIMappingEngineForAPIHUB(server) {
   let LogService = epiUtils.loadApi("services").LogService;
   const mappings = epiUtils.loadApi("mappings")
   const MessagesPipe = epiUtils.getMessagesPipe();
+  let getBaseUrl = require("opendsu").loadApi("system").getBaseURL();
+  let defaultMessagesEndPoint;
+
+  function getMessageEndPoint(domainConfig, message) {
+    let messagesEndpoint = defaultMessagesEndPoint;
+    if (message.senderId && domainConfig.messagesEndPoints && Array.isArray(domainConfig.messagesEndPoints)) {
+      let endpointObj = domainConfig.messagesEndPoints.find(item => item["endPointId"] === message.senderId);
+      if (endpointObj) {
+        messagesEndpoint = endpointObj.endPointURL;
+      }
+    }
+
+    return messagesEndpoint
+  }
 
   async function getMessagePipe(domain, subdomainName, wltSSI, callback) {
     let domainConfig, subdomain, walletSSI, messagesEndpoint;
     domainConfig = apiHub.getDomainConfig(domain);
-    let getBaseUrl = require("opendsu").loadApi("system").getBaseURL();
 
+    if ((!domainConfig && !subdomainName) || (domainConfig && !domainConfig.bricksDomain && !subdomainName)) {
+      return callback(new Error(`Missing subdomain. Must be provided in url or set in configuration`));
+    }
+    subdomain = domainConfig.bricksDomain || subdomainName;
     /*
      if walletSSI not provided in request header get it form config
     */
@@ -33,8 +50,8 @@ function getEPIMappingEngineForAPIHUB(server) {
 
     walletSSI = wltSSI || domainConfig.mappingEngineWalletSSI;
     if (messagesPipe[walletSSI] === undefined) {
-      let subdomain = domainConfig.bricksDomain || subdomainName;
-      messagesEndpoint = domainConfig.messagesEndpoint || `${getBaseUrl()}/mappingEngine/${domain}/${subdomain}/saveResult`
+
+      defaultMessagesEndPoint = `${getBaseUrl()}/mappingEngine/${domain}/${subdomain}/saveResult`;
       const holderInfo = {domain: domain, subdomain: subdomain};
       const ServerDSUStorageImpl = epiUtils.loadApi("services").DSUStorage.getInstance(walletSSI);
       try {
@@ -58,6 +75,7 @@ function getEPIMappingEngineForAPIHUB(server) {
               response.setSenderId(msg.receiverId);
               response.setMessageType(msg.messageType);
               response.setRequestData(msg);
+              response.endPoint = getMessageEndPoint(domainConfig, msg);
               return response;
             });
             try {
@@ -86,7 +104,9 @@ function getEPIMappingEngineForAPIHUB(server) {
 
             const httpSpace = require("opendsu").loadApi('http');
             messagesToPersist.forEach(item => {
-              httpSpace.doPut(messagesEndpoint, JSON.stringify(item), (err, data) => {
+              let endPoint = item.endPoint;
+              delete item.endPoint;
+              httpSpace.doPut(endPoint, JSON.stringify(item), (err, data) => {
                 if (err) {
                   console.log("Could not persist message ", item);
                 }
@@ -142,7 +162,7 @@ function getEPIMappingEngineForAPIHUB(server) {
         });
 
       } catch (err) {
-        console.error("Error on parse request message",err);
+        console.error("Error on parse request message", err);
         err.debug_message === "Invalid credentials" ? response.statusCode = 403 : response.statusCode = 500;
         response.end(err.message);
       }
