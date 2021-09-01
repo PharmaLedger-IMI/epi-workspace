@@ -1,5 +1,6 @@
 const MAX_GROUP_SIZE = 10;
 const GROUPING_TIMEOUT = 5 * 1000; //5 seconds
+
 function getEPIMappingEngineForAPIHUB(server) {
   let messagesPipe = {};
   const gtinResolverBundle = "./../../../gtin-resolver/build/bundles/gtinResolver.js";
@@ -7,13 +8,58 @@ function getEPIMappingEngineForAPIHUB(server) {
   const epiUtilsBundle = "./../../../epi-utils/build/bundles/epiUtils.js";
   require(epiUtilsBundle);
   const apiHub = require("apihub");
+  const enclaveDB = require("default-enclave");
 
   const epiUtils = require("epi-utils");
   let LogService = epiUtils.loadApi("services").LogService;
   const mappings = epiUtils.loadApi("mappings")
   const MessagesPipe = epiUtils.getMessagesPipe();
   let getBaseUrl = require("opendsu").loadApi("system").getBaseURL();
+
+  const maxMesagesToDigest = 50;
   let defaultMessagesEndPoint;
+  const fs = require('fs');
+
+  let queuePath = require("path").resolve(server.rootFolder);
+  queuePath = require("path").join(queuePath, "messageQueueDB");
+  let backUpDBPath = require("path").join(queuePath, "backUpDB");
+  try {
+    if (!fs.existsSync(queuePath)) {
+      fs.mkdirSync(queuePath, {recursive: true});
+    }
+    if (!fs.existsSync(backUpDBPath)) {
+      fs.mkdirSync(backUpDBPath, {recursive: true});
+    }
+  } catch (e) {
+    console.log("cannot create dir", e);
+  }
+
+  let enclaveQueue;
+  let backUpDB;
+  try {
+    enclaveQueue = new enclaveDB(queuePath + "/queue.db", 200);
+    backUpDB = new enclaveDB(backUpDBPath + "/backUpDB.db", 200);
+  } catch (e) {
+    console.log("cannot create db ", e);
+  }
+
+  let backUpCollections = backUpDB.getCollections();
+  if (backUpCollections) {
+    backUpCollections.forEach(async (collection) => {
+      let walletSSI = collection
+      let record = await $$.promisify(backUpDB.getRecord)("", collection, walletSSI);
+      let messagePipe = await $$.promisify(getMessagePipe)(record.domain, record.subdomain, walletSSI);
+      enclaveQueue.listQueue("", walletSSI, "asc", async (err, dbMessages) => {
+        let messagesForQueue = [];
+        for (let i = 0; i < dbMessages.length; i++) {
+          let queueObject = await $$.promisify(enclaveQueue.getObjectFromQueue)("", walletSSI, dbMessages[i]);
+          messagesForQueue.push(queueObject.value);
+        }
+        messagesPipe.addInQueue(messagesForQueue);
+      })
+    })
+  }
+
 
   function getMessageEndPoint(domainConfig, message) {
     let messagesEndpoint = defaultMessagesEndPoint;
@@ -30,11 +76,12 @@ function getEPIMappingEngineForAPIHUB(server) {
   async function getMessagePipe(domain, subdomainName, wltSSI, callback) {
     let domainConfig, subdomain, walletSSI, messagesEndpoint;
     domainConfig = apiHub.getDomainConfig(domain);
+    subdomain = domainConfig.bricksDomain || subdomainName;
 
-    if ((!domainConfig && !subdomainName) || (domainConfig && !domainConfig.bricksDomain && !subdomainName)) {
+    if (!subdomain) {
       return callback(new Error(`Missing subdomain. Must be provided in url or set in configuration`));
     }
-    subdomain = domainConfig.bricksDomain || subdomainName;
+
     /*
      if walletSSI not provided in request header get it form config
     */
@@ -49,6 +96,11 @@ function getEPIMappingEngineForAPIHUB(server) {
     }
 
     walletSSI = wltSSI || domainConfig.mappingEngineWalletSSI;
+    backUpDB.insertRecord("", walletSSI, walletSSI, {domain: domain, subdomain: subdomain}, (err, result) => {
+      if (err) {
+        console.log("Could not save data for backup");
+      }
+    })
     if (messagesPipe[walletSSI] === undefined) {
 
       defaultMessagesEndPoint = `${getBaseUrl()}/mappingEngine/${domain}/${subdomain}/saveResult`;
@@ -81,6 +133,15 @@ function getEPIMappingEngineForAPIHUB(server) {
             try {
               let undigestedMessages = await mappingEngine.digestMessages(groupMessages);
               console.log("[MAPPING ENGINE]:Undigested messages:", undigestedMessages.length);
+              groupMessages.forEach(item => {
+                const crypto = require("opendsu").loadApi("crypto");
+                const hash = crypto.sha256(item);
+                enclaveQueue.deleteObjectFromQueue("", walletSSI, hash, (err, result) => {
+                  if (err) {
+                    throw err;
+                  }
+                })
+              })
 
               messagesToPersist.forEach(item => {
                 let index = undigestedMessages.findIndex(elem => elem.message.messageId === item.requestMessageId)
@@ -156,7 +217,28 @@ function getEPIMappingEngineForAPIHUB(server) {
             response.statusCode = 403;
             return response.end();
           }
-          messagesPipe.addInQueue(messages);
+
+          if (!Array.isArray(messages)) {
+            messages = [messages]
+          }
+
+          for (let i = 0; i < messages.length; i++) {
+            enclaveQueue.addInQueue("", walletSSI, messages[i], (err, result) => {
+              if (err) {
+                throw err;
+              }
+            })
+          }
+
+          enclaveQueue.listQueue("", walletSSI, "asc", maxMesagesToDigest, async (err, dbMessages) => {
+            let messagesForQueue = [];
+            for (let i = 0; i < dbMessages.length; i++) {
+              let queueObject = await $$.promisify(enclaveQueue.getObjectFromQueue)("", walletSSI, dbMessages[i]);
+              messagesForQueue.push(queueObject.value);
+            }
+            messagesPipe.addInQueue(messagesForQueue);
+          })
+
           response.statusCode = 200;
           response.end();
         });

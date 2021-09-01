@@ -25,10 +25,6 @@ async function processBatchMessage(message) {
   const batchId = message.batch.batch;
   const productCode = message.batch.productCode;
 
-  if (typeof message.batch.version !== "number") {
-    message.batch.version = 1;
-  }
-
   const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode);
   let constProdDSU;
   try {
@@ -83,6 +79,7 @@ async function processBatchMessage(message) {
   this.batch.productDescription = productMetadata.description;
   this.batch.creationTime = utils.convertDateTOGMTFormat(new Date());
   this.batch.msessageTime = message.messageDateTime;
+  this.batch.version = this.batch.version || 1;
 
   if (!batchExists) {
     this.batch.bloomFilterSerialisations = [];

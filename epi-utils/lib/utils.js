@@ -1,7 +1,6 @@
 productDataSourceMapping = {
   name: "inventedName",
   gtin: "productCode",
-  version: "version",
   description: "nameMedicinalProduct",
   manufName: "manufName",
   reportURL: function (param) {
@@ -75,7 +74,6 @@ batchDataSourceMapping = {
       throw new Error(`${param.msg.expiryDate} date is invalid`, e);
     }
   },
-  version: "epiLeafletVersion",
   versionLabel: "versionLabel",
   serialNumbers: "snValid",
   recalledSerialNumbers: "snRecalled",
