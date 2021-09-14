@@ -6,6 +6,7 @@ export default {
   "browser":  "any",
   "mode":  "dev-autologin",
   "domain":  "vault",
+  "enclaveType": "WalletDBEnclave",
   "sw": true,
   "pwa": false,
   "allowPinLogin": false,

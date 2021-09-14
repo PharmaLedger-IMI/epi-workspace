@@ -1,11 +1,12 @@
 export default  {
   "appName": "eLeaflet",
-  "vault": "browser",
+  "vault": "server",
   "agent": "browser",
   "system":   "any",
   "browser":  "any",
   "mode":  "autologin",
   "domain":  "vault",
+  "enclaveType": "WalletDBEnclave",
   "sw": true,
   "pwa": true,
   "allowPinLogin": false,
