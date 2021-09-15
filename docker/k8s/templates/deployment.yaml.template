@@ -16,7 +16,7 @@ spec:
         io.kompose.service: %subdomain%
     spec:
       containers:
-      - image: public.ecr.aws/n4q1q0z2/pharmaledger-%domain%:1.0
+      - image: %POD_DOCKER_REPOSITORY%:%ORGANISATION__DEPLOYMENT_PREFIX%-%domain%_%usecase_version%
         imagePullPolicy: "Always"
         name: epi
         ports:
