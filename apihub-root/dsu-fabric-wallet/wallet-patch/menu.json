@@ -9,11 +9,10 @@
   },
   "pages": [
     {
-      "name": "Home"
+      "name": "Generate DID"
     },
     {
-      "name": "MAH as Issuer",
-      "tags": "issuer"
+      "name": "Home"
     },
     {
       "name": "User as Holder",
