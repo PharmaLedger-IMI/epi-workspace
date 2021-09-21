@@ -104,6 +104,44 @@
             ]
         },
         {
+            "name": "demiurge",
+            "src": "https://github.com/OpenDSU/demiurge.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd demiurge && npm install"
+                }
+            ]
+        },
+        {
+            "name": "apihub-root/demiurge-wallet/loader",
+            "src": "http://github.com/privatesky/web-dossier-loader.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd apihub-root/demiurge-wallet/loader && npm install"
+                },
+                {
+                    "type": "copy",
+                    "src": "apihub-root/demiurge-wallet/loader/loader-config.local.json-template",
+                    "target": "apihub-root/demiurge-wallet/loader/loader-config.local.json",
+                    "options": {
+                        "overwrite": true
+                    }
+                }
+            ]
+        },
+        {
             "name": "apihub-root/leaflet-wallet/loader",
             "src": "http://github.com/privatesky/trust-loader.git",
             "actions": [
@@ -531,6 +569,36 @@
                 {
                     "type": "execute",
                     "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/readme"
+                }
+            ]
+        },
+        {
+            "name": "demiurge-wallet_bind_to_demiurge",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd demiurge && npm run build"
+                },
+                {
+                    "type": "copy",
+                    "src": "./demiurge/seed",
+                    "target": "./apihub-root/demiurge-wallet/apps-patch/demiurge/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./demiurge/seed",
+                    "target": "./apihub-root/demiurge-wallet/wallet-patch/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/demiurge-wallet/apps-patch/demiurge/readme"
                 }
             ]
         },

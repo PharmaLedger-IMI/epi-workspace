@@ -17,6 +17,7 @@
     "epi-mapping-engine",
     "epi-mapping-engine-results",
     "debugLogger",
+    "mq",
     "staticServer"
   ],
   "componentsConfig": {

@@ -2,5 +2,6 @@
   "anchoring": {
     "type": "FS",
     "option": {}
-  }
+  },
+  "enable": ["mq", "enclave"]
 }
