@@ -603,24 +603,6 @@
             ]
         },
         {
-            "name": "dsu-fabric-wallet_bind_to_menu-wallet-prototype",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd menu-wallet-prototype && npm run build"
-                },
-                {
-                    "type": "copy",
-                    "src": "./menu-wallet-prototype/seed",
-                    "target": "./apihub-root/dsu-fabric-wallet/wallet-patch/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                }
-            ]
-        },
-        {
             "name": "dsu-fabric-wallet_bind_to_dsu-fabric-ssapp",
             "src": "",
             "actions": [
@@ -632,6 +614,14 @@
                     "type": "copy",
                     "src": "./dsu-fabric-ssapp/seed",
                     "target": "./apihub-root/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./dsu-fabric-ssapp/seed",
+                    "target": "./apihub-root/dsu-fabric-wallet/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }

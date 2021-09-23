@@ -3,39 +3,45 @@ const SHARED_DB = "sharedDB";
 const envTypes = require("overwrite-require").constants;
 
 class SharedStorage {
-    constructor(dsuStorage) {
-    this.DSUStorage = dsuStorage;
-    this.DSUStorage.enableDirectAccess(() => {
-      this.mydb = "initialising";
-      this.getSharedSSI((err, sharedSSI) => {
-        if (!err && sharedSSI) {
-          let opendsu = require("opendsu");
-          let db = opendsu.loadAPI("db");
-          this.mydb = db.getWalletDB(sharedSSI, SHARED_DB);
-        } else {
-          if ($$.environmentType !== envTypes.BROWSER_ENVIRONMENT_TYPE) {
-            console.log("Wrong configuration as user/holder:", err);
-          } else {
-            alert("Wrong configuration as user/holder");
-          }
-          throw err;
-        }
-      })
+  constructor(dsuStorage) {
+    const dbAPI = require("opendsu").loadAPI("db");
+    debugger
+    dbAPI.getMainEnclaveDB((err, enclaveDB) => {
+      this.mydb = enclaveDB;
+      this.DSUStorage = dsuStorage;
     });
+    // this.DSUStorage = dsuStorage;
+    // this.DSUStorage.enableDirectAccess(() => {
+    //   this.mydb = "initialising";
+    //   this.getSharedSSI((err, sharedSSI) => {
+    //     if (!err && sharedSSI) {
+    //       let opendsu = require("opendsu");
+    //       let db = opendsu.loadAPI("db");
+    //       this.mydb = db.getWalletDB(sharedSSI, SHARED_DB);
+    //     } else {
+    //       if ($$.environmentType !== envTypes.BROWSER_ENVIRONMENT_TYPE) {
+    //         console.log("Wrong configuration as user/holder:", err);
+    //       } else {
+    //         alert("Wrong configuration as user/holder");
+    //       }
+    //       throw err;
+    //     }
+    //   })
+    // });
   }
 
   waitForDb(func, args) {
     if (typeof args === "undefined") {
       args = [];
     }
-    func = func.bind(this)
+    func = func.bind(this);
     setTimeout(function () {
       func(...args);
     }, 10);
   }
 
   dbReady() {
-    return (this.mydb !== undefined && this.mydb !== "initialising");
+    return this.mydb !== undefined && this.mydb !== "initialising";
   }
 
   filter(tableName, query, sort, limit, callback) {
@@ -47,7 +53,7 @@ class SharedStorage {
   }
 
   addSharedFile(path, value, callback) {
-    throw Error("Not implemented")
+    throw Error("Not implemented");
   }
 
   getRecord(tableName, key, callback) {
@@ -99,6 +105,14 @@ class SharedStorage {
     }
   }
 
+  getKeySSI(callback) {
+    if (this.dbReady()) {
+      this.mydb.getKeySSI(callback);
+    } else {
+      this.waitForDb(this.getKeySSI, [callback]);
+    }
+  }
+
   getSharedSSI(callback) {
     this.DSUStorage.getObject(CREDENTIAL_FILE_PATH, (err, credential) => {
       console.log(`Got:
@@ -109,13 +123,21 @@ class SharedStorage {
       } else {
         const crypto = require("opendsu").loadApi("crypto");
         const keyssi = require("opendsu").loadApi("keyssi");
-        crypto.parseJWTSegments(credential.credential, (parseError, jwtContent) => {
-          if (parseError) {
-            return callback(createOpenDSUErrorWrapper('Error parsing user credential:', parseError));
+        crypto.parseJWTSegments(
+          credential.credential,
+          (parseError, jwtContent) => {
+            if (parseError) {
+              return callback(
+                createOpenDSUErrorWrapper(
+                  "Error parsing user credential:",
+                  parseError
+                )
+              );
+            }
+            console.log("Parsed credential", jwtContent);
+            callback(undefined, keyssi.parse(jwtContent.body.iss));
           }
-          console.log('Parsed credential', jwtContent);
-          callback(undefined, keyssi.parse(jwtContent.body.iss));
-        });
+        );
       }
     });
   }
@@ -123,10 +145,10 @@ class SharedStorage {
 
 module.exports.getSharedStorage = function (dsuStorage) {
   if (typeof sharedStorageSingleton === "undefined") {
-    sharedStorageSingleton = new SharedStorage(dsuStorage)
+    sharedStorageSingleton = new SharedStorage(dsuStorage);
   }
   return sharedStorageSingleton;
-}
+};
 
 let instances = {};
 
@@ -135,14 +157,42 @@ module.exports.getSharedStorageInstance = function (dsuStorage) {
     return module.exports.getSharedStorage(dsuStorage);
   }
   if (!instances[dsuStorage.walletSSI]) {
-    instances[dsuStorage.walletSSI] = new SharedStorage(dsuStorage)
+    instances[dsuStorage.walletSSI] = new SharedStorage(dsuStorage);
   }
   return instances[dsuStorage.walletSSI];
-}
+};
 
 module.exports.getPromisifiedSharedObject = function (dsuStorage) {
-  const instance = module.exports.getSharedStorageInstance(dsuStorage)
-  const promisifyFns = ["addSharedFile", "cancelBatch", "commitBatch", "filter", "getRecord", "getSharedSSI", "insertRecord", "updateRecord"]
+  debugger
+  const scAPI = require("opendsu").loadAPI("sc");
+  // const vaultDomain = await $$.promisify(scAPI.getVaultDomain)();
+  scAPI.getMainDSU(async (err, mainDSU)=>{
+    let env = await $$.promisify(mainDSU.readFile)("/environment.json");
+    env = JSON.parse(env.toString());
+    console.log("#########################################################################################################")
+    console.log(env);
+    console.log("#########################################################################################################")
+    await $$.promisify(mainDSU.refresh)()
+    env = await $$.promisify(mainDSU.readFile)("/environment.json");
+    env = JSON.parse(env.toString());
+    console.log("#########################################################################################################")
+    console.log(env);
+    console.log("#########################################################################################################")
+
+  });
+
+  const instance = module.exports.getSharedStorageInstance(dsuStorage);
+  const promisifyFns = [
+    "addSharedFile",
+    "cancelBatch",
+    "commitBatch",
+    "filter",
+    "getRecord",
+    "getSharedSSI",
+    "insertRecord",
+    "updateRecord",
+      "getKeySSI"
+  ];
   for (let i = 0; i < promisifyFns.length; i++) {
     let prop = promisifyFns[i];
     if (typeof instance[prop] === "function") {
@@ -150,5 +200,4 @@ module.exports.getPromisifiedSharedObject = function (dsuStorage) {
     }
   }
   return instance;
-
-}
+};

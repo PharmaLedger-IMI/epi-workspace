@@ -8,10 +8,17 @@ function verifyIfProductMessage(message) {
 async function processProductMessage(message) {
   const utils = require("./../utils");
   const errMap = require("opendsu").loadApi("m2dsu").getErrorsMap();
+  debugger
   const constants = utils.constants;
   const productCode = message.product.productCode;
   const mappingLogService = require("./logs").createInstance(this.storageService);
   let version;
+  const scAPI = require("opendsu").loadAPI("sc");
+  const mainDSU = await $$.promisify(scAPI.getMainDSU)()
+  const storageServiceSSI = await $$.promisify(mainDSU.getKeySSI)();
+  console.log("========================================================================================================")
+  console.log(storageServiceSSI);
+  console.log("========================================================================================================")
   const schemaValidator = require("./utils/schema-validator");
   const schema = require("./schemas/productSchema");
   const msgValidation = schemaValidator.validateMsgOnSchema(message, schema);
