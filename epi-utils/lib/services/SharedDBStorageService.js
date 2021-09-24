@@ -5,29 +5,13 @@ const envTypes = require("overwrite-require").constants;
 class SharedStorage {
   constructor(dsuStorage) {
     const dbAPI = require("opendsu").loadAPI("db");
-    debugger
     dbAPI.getMainEnclaveDB((err, enclaveDB) => {
+      if (err) {
+        return console.log(err);
+      }
       this.mydb = enclaveDB;
       this.DSUStorage = dsuStorage;
     });
-    // this.DSUStorage = dsuStorage;
-    // this.DSUStorage.enableDirectAccess(() => {
-    //   this.mydb = "initialising";
-    //   this.getSharedSSI((err, sharedSSI) => {
-    //     if (!err && sharedSSI) {
-    //       let opendsu = require("opendsu");
-    //       let db = opendsu.loadAPI("db");
-    //       this.mydb = db.getWalletDB(sharedSSI, SHARED_DB);
-    //     } else {
-    //       if ($$.environmentType !== envTypes.BROWSER_ENVIRONMENT_TYPE) {
-    //         console.log("Wrong configuration as user/holder:", err);
-    //       } else {
-    //         alert("Wrong configuration as user/holder");
-    //       }
-    //       throw err;
-    //     }
-    //   })
-    // });
   }
 
   waitForDb(func, args) {
@@ -163,24 +147,6 @@ module.exports.getSharedStorageInstance = function (dsuStorage) {
 };
 
 module.exports.getPromisifiedSharedObject = function (dsuStorage) {
-  debugger
-  const scAPI = require("opendsu").loadAPI("sc");
-  // const vaultDomain = await $$.promisify(scAPI.getVaultDomain)();
-  scAPI.getMainDSU(async (err, mainDSU)=>{
-    let env = await $$.promisify(mainDSU.readFile)("/environment.json");
-    env = JSON.parse(env.toString());
-    console.log("#########################################################################################################")
-    console.log(env);
-    console.log("#########################################################################################################")
-    await $$.promisify(mainDSU.refresh)()
-    env = await $$.promisify(mainDSU.readFile)("/environment.json");
-    env = JSON.parse(env.toString());
-    console.log("#########################################################################################################")
-    console.log(env);
-    console.log("#########################################################################################################")
-
-  });
-
   const instance = module.exports.getSharedStorageInstance(dsuStorage);
   const promisifyFns = [
     "addSharedFile",
