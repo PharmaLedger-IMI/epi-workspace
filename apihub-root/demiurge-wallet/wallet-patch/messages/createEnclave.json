@@ -1,0 +1,7 @@
+[
+  {
+    "messageType": "CreateEnclave",
+    "enclaveName": "Main Enclave DB",
+    "enclaveType": "WalletDBEnclave"
+  }
+]
