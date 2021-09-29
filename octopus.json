@@ -659,6 +659,10 @@
                 {
                     "type": "execute",
                     "cmd": "cd apihub-root/dsu-explorer/loader && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd apihub-root/demiurge-wallet/loader && npm install"
                 }
             ]
         },
