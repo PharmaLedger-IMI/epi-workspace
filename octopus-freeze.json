@@ -9,7 +9,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "daf6f94e69e5b20e787d08df8974b1ad3cd8c064"
+                    "commit": "fc9f2fe9c6250d7911f08df5e9d38182bd97bfe3"
                 },
                 {
                     "type": "execute",
@@ -45,7 +45,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7955152325022430f5af82ac2cc5dc29192f8828"
+                    "commit": "2821cbb98a6c2570d171de2bdeff5f9595e9637f"
                 },
                 {
                     "type": "execute",
@@ -99,11 +99,51 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "1b1ee7a08011c6f13c17aed37b3ef97fb002056a"
+                    "commit": "193ae53f92fde76924d287ee9fe8513f6fd8bb40"
                 },
                 {
                     "type": "execute",
                     "cmd": "cd leaflet-ssapp && npm install"
+                }
+            ]
+        },
+        {
+            "name": "demiurge",
+            "src": "https://github.com/OpenDSU/demiurge.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false,
+                    "commit": "a2bd09e69ecc4a22b84af921ed62febabe41c36c"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd demiurge && npm install"
+                }
+            ]
+        },
+        {
+            "name": "apihub-root/demiurge-wallet/loader",
+            "src": "http://github.com/privatesky/web-dossier-loader.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false,
+                    "commit": "5c937a26cfc1de1a0cfe5fceade1c4bfd0b72f35"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd apihub-root/demiurge-wallet/loader && npm install"
+                },
+                {
+                    "type": "copy",
+                    "src": "apihub-root/demiurge-wallet/loader/loader-config.local.json-template",
+                    "target": "apihub-root/demiurge-wallet/loader/loader-config.local.json",
+                    "options": {
+                        "overwrite": true
+                    }
                 }
             ]
         },
@@ -115,7 +155,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "743222816345ca11e4d90e9a2e60406331e2f1b2"
+                    "commit": "5c937a26cfc1de1a0cfe5fceade1c4bfd0b72f35"
                 },
                 {
                     "type": "execute",
@@ -139,7 +179,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "743222816345ca11e4d90e9a2e60406331e2f1b2"
+                    "commit": "5c937a26cfc1de1a0cfe5fceade1c4bfd0b72f35"
                 },
                 {
                     "type": "execute",
@@ -239,7 +279,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "743222816345ca11e4d90e9a2e60406331e2f1b2"
+                    "commit": "5c937a26cfc1de1a0cfe5fceade1c4bfd0b72f35"
                 },
                 {
                     "type": "execute",
@@ -331,7 +371,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "b28cc29a2017227841017a1006d2942a962bdc24"
+                    "commit": "7d5f95429acd780a422054a84a75fd5c9380e735"
                 },
                 {
                     "type": "execute",
@@ -371,7 +411,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "6ed981e2cd3a3f22a8147f82e2969474242decb3"
+                    "commit": "fccefa9339613786a2940df71eb155164e5c0ec8"
                 },
                 {
                     "type": "execute",
@@ -395,7 +435,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "76b11d2d685f49c871ec427a65d5032c5844e9bf"
+                    "commit": "439c3c84ef1f1888c4b0bfa3edf13b9389af9598"
                 },
                 {
                     "type": "execute",
@@ -555,20 +595,32 @@
             ]
         },
         {
-            "name": "dsu-fabric-wallet_bind_to_menu-wallet-prototype",
+            "name": "demiurge-wallet_bind_to_demiurge",
             "src": "",
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd menu-wallet-prototype && npm run build"
+                    "cmd": "cd demiurge && npm run build"
                 },
                 {
                     "type": "copy",
-                    "src": "./menu-wallet-prototype/seed",
-                    "target": "./apihub-root/dsu-fabric-wallet/wallet-patch/seed",
+                    "src": "./demiurge/seed",
+                    "target": "./apihub-root/demiurge-wallet/apps-patch/demiurge/seed",
                     "options": {
                         "overwrite": true
                     }
+                },
+                {
+                    "type": "copy",
+                    "src": "./demiurge/seed",
+                    "target": "./apihub-root/demiurge-wallet/wallet-patch/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/demiurge-wallet/apps-patch/demiurge/readme"
                 }
             ]
         },
@@ -584,6 +636,14 @@
                     "type": "copy",
                     "src": "./dsu-fabric-ssapp/seed",
                     "target": "./apihub-root/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./dsu-fabric-ssapp/seed",
+                    "target": "./apihub-root/dsu-fabric-wallet/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }
@@ -621,6 +681,10 @@
                 {
                     "type": "execute",
                     "cmd": "cd apihub-root/dsu-explorer/loader && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd apihub-root/demiurge-wallet/loader && npm install"
                 }
             ]
         },
