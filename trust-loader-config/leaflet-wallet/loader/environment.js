@@ -9,7 +9,7 @@ export default  {
   "didDomain":  "vault",
   "enclaveType": "WalletDBEnclave",
   "sw": false,
-  "pwa": true,
+  "pwa": false,
   "allowPinLogin": false,
   "legenda for properties": " vault:(server, browser) agent:(mobile,  browser)  system:(iOS, Android, any) browser:(Chrome, Firefox, any) mode:(development, release) sw:(true, false) pwa:(true, false)"
 }
