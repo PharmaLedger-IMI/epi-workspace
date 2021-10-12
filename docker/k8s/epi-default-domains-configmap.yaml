@@ -70,7 +70,8 @@ data:
       "anchoring": {
         "type": "FS",
         "option": {}
-      }
+      },
+      "enable": ["mq", "enclave"]
     }
   vault.msd.json: |-
     {
@@ -84,7 +85,16 @@ data:
       "anchoring": {
         "type": "FS",
         "option": {}
-      }
+      },
+    "enable": ["mq", "enclave"]
+    }
+  vault.bayer.json: |-
+    {
+      "anchoring": {
+        "type": "FS",
+        "option": {}
+      },
+    "enable": ["mq", "enclave"]
     }
 kind: ConfigMap
 metadata:
