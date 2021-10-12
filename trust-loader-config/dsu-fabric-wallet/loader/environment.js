@@ -10,7 +10,7 @@ export default {
   "epiDomain":  "epi",
   "epiSubdomain":  "default",
   "enclaveType": "WalletDBEnclave",
-  "sw": true,
+  "sw": false,
   "pwa": false,
   "allowPinLogin": false,
   "legenda for properties": " vault:(server, browser) agent:(mobile,  browser)  system:(iOS, Android, any) browser:(Chrome, Firefox, any) mode:(autologin,dev-autologin, secure, dev-secure) sw:(true, false) pwa:(true, false)"
