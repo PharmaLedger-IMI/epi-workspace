@@ -4,6 +4,10 @@ mobile/scan-app
 privatesky
 menu-wallet-prototype
 leaflet-ssapp
+webcardinal
+demiurge
+ethadapter
+apihub-root/demiurge-wallet/loader
 apihub-root/leaflet-wallet/loader
 apihub-root/dsu-fabric-wallet/loader
 themes
