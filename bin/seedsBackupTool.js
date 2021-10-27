@@ -95,6 +95,7 @@ if(op == "backup"){
             }
         }
     } catch(err){
-        console.log("File ./apihub-root/seedsBackup does not exist, hopefuly you are doing an initial build by generating fresh seeds");
+        console.log("Caught an error while trying to read the backup file. ", err);
+        console.log("File ./apihub-root/seedsBackup does not exist, hopefully you are doing an initial build by generating fresh seeds");
     }
 }
