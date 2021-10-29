@@ -12,11 +12,11 @@ function getEPIMappingEngineForAPIHUB(server) {
   let LogService = epiUtils.loadApi("services").LogService;
   const mappings = epiUtils.loadApi("mappings")
   const MessagesPipe = epiUtils.getMessagesPipe();
-
+  const openDSU = require("opendsu");
   async function getMessagePipe(domain, subdomainName, wltSSI, callback) {
     let domainConfig, subdomain, walletSSI, messagesEndpoint;
     domainConfig = apiHub.getDomainConfig(domain);
-    let getBaseUrl = require("opendsu").loadApi("system").getBaseURL();
+    let getBaseUrl = openDSU.loadApi("system").getBaseURL;
 
     /*
      if walletSSI not provided in request header get it form config

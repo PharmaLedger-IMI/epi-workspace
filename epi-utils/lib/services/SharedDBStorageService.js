@@ -1,16 +1,28 @@
 const CREDENTIAL_FILE_PATH = "/myKeys/credential.json";
-const SHARED_DB = "sharedDB";
-const envTypes = require("overwrite-require").constants;
 
 class SharedStorage {
   constructor(dsuStorage) {
-    const dbAPI = require("opendsu").loadAPI("db");
-    dbAPI.getMainEnclaveDB((err, enclaveDB) => {
-      if (err) {
-        return console.log(err);
-      }
-      this.mydb = enclaveDB;
-      this.DSUStorage = dsuStorage;
+    const openDSU = require("opendsu");
+    const dbAPI = openDSU.loadAPI("db");
+    const scAPI = openDSU.loadAPI("sc");
+    dsuStorage.getObject("/environment.json", async (err, env) => {
+      const mainDSU = await $$.promisify(scAPI.getMainDSU)();
+      await $$.promisify(mainDSU.writeFile)(
+        "/environment.json",
+        JSON.stringify(env)
+      );
+      await $$.promisify(mainDSU.refresh)();
+      const data = await $$.promisify(mainDSU.readFile)("/environment.json");
+      console.log(data.toString());
+      scAPI.setMainDSU(mainDSU);
+      scAPI.refreshSecurityContext();
+      dbAPI.getSharedEnclaveDB((err, enclaveDB) => {
+        if (err) {
+          return console.log(err);
+        }
+        this.mydb = enclaveDB;
+        this.DSUStorage = dsuStorage;
+      });
     });
   }
 
@@ -148,7 +160,7 @@ module.exports.getPromisifiedSharedObject = function (dsuStorage) {
     "getRecord",
     "getSharedSSI",
     "insertRecord",
-    "updateRecord"
+    "updateRecord",
   ];
   for (let i = 0; i < promisifyFns.length; i++) {
     let prop = promisifyFns[i];
