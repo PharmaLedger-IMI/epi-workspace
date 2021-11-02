@@ -37,6 +37,8 @@
   },
   "enableRequestLogger": true,
   "enableJWTAuthorisation": false,
+  "enableOAuth": false,
+  "oauthJWKSEndpoint": "http://localhost:8000/auth/realms/sso/protocol/openid-connect/certs",
   "enableLocalhostAuthorization": false,
   "skipJWTAuthorisation": [
     "/assets",
@@ -58,5 +60,25 @@
     "/files",
     "/notifications",
     "/mq"
+  ],
+  "skipOAuth": [
+    "/assets",
+    "/bundles",
+    "/getAuthorization",
+    "/external-volume",
+    "/directory-summary",
+    "/resources",
+    "/bdns",
+    "/anchor/epi",
+    "/anchor/default",
+    "/anchor/vault",
+    "/bricking",
+    "/bricksFabric",
+    "/bricksledger",
+    "/create-channel",
+    "/forward-zeromq",
+    "/send-message",
+    "/receive-message",
+    "/files"
   ]
 }
