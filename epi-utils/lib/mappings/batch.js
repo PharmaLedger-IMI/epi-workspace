@@ -21,13 +21,10 @@ async function processBatchMessage(message) {
     await mappingLogService.logFailedMapping(message, "lookup", "Invalid message format");
     throw errMap.newCustomError(errMap.errorTypes.INVALID_MESSAGE_FORMAT, msgValidation.invalidFields);
   }
-
+  let version;
   const batchId = message.batch.batch;
   const productCode = message.batch.productCode;
 
-  if (typeof message.batch.version !== "number") {
-    message.batch.version = 1;
-  }
 
   const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode);
   let constProdDSU;
@@ -39,7 +36,7 @@ async function processBatchMessage(message) {
 
   if (!constProdDSU) {
     await mappingLogService.logFailedMapping(message, "lookup", utils.constants.MISSING_PRODUCT_DSU);
-    throw errMap.newCustomError(errMap.errorTypes.BATCH_MISSING_PRODUCT, "productCode" );
+    throw errMap.newCustomError(errMap.errorTypes.BATCH_MISSING_PRODUCT, "productCode");
   }
 
   const gtinBatchSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode, batchId);
@@ -53,12 +50,13 @@ async function processBatchMessage(message) {
     productMetadata = await this.storageService.getRecord(utils.constants.PRODUCTS_TABLE, productCode);
   } catch (e) {
     await mappingLogService.logFailedMapping(message, "lookup", "Database corrupted");
-    throw errMap.newCustomError(errMap.errorTypes.DB_OPERATION_FAIL, "productCode" );
+    throw errMap.newCustomError(errMap.errorTypes.DB_OPERATION_FAIL, "productCode");
   }
 
 
   if (!batchExists) {
     batchDSU = await this.createDSU(this.options.holderInfo.subdomain, "seed");
+    version = 1;
   } else {
     if (!productMetadata) {
       throw errMap.newCustomError(errMap.errorTypes.DB_OPERATION_FAIL, "productCode");
@@ -66,6 +64,9 @@ async function processBatchMessage(message) {
 
     batchMetadata = await this.storageService.getRecord(utils.constants.BATCHES_STORAGE_TABLE, batchId);
     batchDSU = await this.loadDSU(batchMetadata.keySSI);
+    if (batchMetadata.version) {
+      version = batchMetadata.version + 1;
+    }
   }
 
   const indication = {batch: `${utils.constants.BATCH_STORAGE_FILE}`};
@@ -141,6 +142,7 @@ async function processBatchMessage(message) {
   delete this.batch.serialNumbers;
   delete this.batch.recalledSerialNumbers;
   delete this.batch.decommissionedSerialNumbers;
+  this.batch.version = version;
   await this.saveJSONS(batchDSU, indication);
 
 
