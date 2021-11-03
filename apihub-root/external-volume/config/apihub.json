@@ -57,28 +57,16 @@
     "/forward-zeromq",
     "/send-message",
     "/receive-message",
-    "/files",
     "/notifications",
     "/mq"
   ],
   "skipOAuth": [
     "/assets",
-    "/bundles",
-    "/getAuthorization",
-    "/external-volume",
-    "/directory-summary",
-    "/resources",
     "/bdns",
-    "/anchor/epi",
-    "/anchor/default",
     "/anchor/vault",
     "/bricking",
-    "/bricksFabric",
-    "/bricksledger",
-    "/create-channel",
-    "/forward-zeromq",
-    "/send-message",
-    "/receive-message",
-    "/files"
+    "/bundles",
+    "/getAuthorization",
+    "/external-volume"
   ]
 }
