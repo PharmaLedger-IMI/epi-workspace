@@ -663,6 +663,22 @@
                 {
                     "type": "execute",
                     "cmd": "cd apihub-root/demiurge-wallet/loader && npm install"
+                },
+                {
+                    "type": "copy",
+                    "src": "./privatesky/psknode/bundles/webshims.js",
+                    "target": "./apihub-root/bundles/webshims.js",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./privatesky/psknode/bundles/loaderBoot.js",
+                    "target": "./apihub-root/bundles/loaderBoot.js",
+                    "options": {
+                        "overwrite": true
+                    }
                 }
             ]
         },
