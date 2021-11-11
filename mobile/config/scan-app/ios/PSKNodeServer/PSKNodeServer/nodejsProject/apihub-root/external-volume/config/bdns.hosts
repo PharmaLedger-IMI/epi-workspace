@@ -1,5 +1,89 @@
 {
-  "default": {
+  "epipoc": {
+    "anchoringServices": [
+      "https://epidemo.pharmaledger.dev",
+      "https://epipoc.msd-bcn.net",
+      "https://intepitest.epi-jnj.com",
+      "https://epi-pilot.535161841476.cloud.bayer.com",
+      "https://dev.epi.novartis.com",
+      "https://epi.int.gsk.com"
+    ],
+    "notifications": [
+      "https://epidemo.pharmaledger.dev",
+      "https://epipoc.msd-bcn.net",
+      "https://intepitest.epi-jnj.com",
+      "https://epi-pilot.535161841476.cloud.bayer.com",
+      "https://dev.epi.novartis.com",
+      "https://epi.int.gsk.com"
+    ]
+  },
+  "epipoc.demo": {
+    "brickStorages": [
+      "https://epidemo.pharmaledger.dev"
+    ],
+    "anchoringServices": [
+      "https://epidemo.pharmaledger.dev"
+    ],
+    "notifications": [
+      "https://epidemo.pharmaledger.dev"
+    ]
+  },
+  "epipoc.msd": {
+    "brickStorages": [
+      "https://epipoc.msd-bcn.net"
+    ],
+    "anchoringServices": [
+      "https://epipoc.msd-bcn.net"
+    ],
+    "notifications": [
+      "https://epipoc.msd-bcn.net"
+    ]
+  },
+  "epipoc.jnj": {
+    "brickStorages": [
+      "https://intepitest.epi-jnj.com"
+    ],
+    "anchoringServices": [
+      "https://intepitest.epi-jnj.com"
+    ],
+    "notifications": [
+      "https://intepitest.epi-jnj.com"
+    ]
+  },
+  "epipoc.bayer": {
+    "brickStorages": [
+      "https://epi-pilot.535161841476.cloud.bayer.com"
+    ],
+    "anchoringServices": [
+      "https://epi-pilot.535161841476.cloud.bayer.com"
+    ],
+    "notifications": [
+      "https://epi-pilot.535161841476.cloud.bayer.com"
+    ]
+  },
+  "epipoc.nvs": {
+    "brickStorages": [
+      "https://dev.epi.novartis.com"
+    ],
+    "anchoringServices": [
+      "https://dev.epi.novartis.com"
+    ],
+    "notifications": [
+      "https://dev.epi.novartis.com"
+    ]
+  },
+  "epipoc.gsk": {
+    "brickStorages": [
+      "https://epi.int.gsk.com"
+    ],
+    "anchoringServices": [
+      "https://epi.int.gsk.com"
+    ],
+    "notifications": [
+      "https://epi.int.gsk.com"
+    ]
+  },
+  "vault": {
     "replicas": [],
     "brickStorages": [
       "$ORIGIN"
@@ -59,18 +143,6 @@
       "https://epi-test.epi-jnj.com"
     ]
   },
-  "predefined": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
-    ]
-  },
   "epidev": {
     "replicas": [],
     "brickStorages": [
@@ -95,18 +167,6 @@
       "https://epi.westeurope.cloudapp.azure.com"
     ]
   },
-  "msd.epi": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
-    ]
-  },
   "nvs.epiqa": {
     "replicas": [],
     "brickStorages": [
@@ -119,18 +179,6 @@
       "https://epiqa.westeurope.cloudapp.azure.com"
     ]
   },
-  "msd.epiqa": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
-    ]
-  },
   "epiqa": {
     "replicas": [],
     "brickStorages": [
@@ -141,54 +189,6 @@
     ],
     "notifications": [
       "https://epiqa.westeurope.cloudapp.azure.com"
-    ]
-  },
-  "vault": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
-    ]
-  },
-  "vault.nvs": {
-    "replicas": [],
-    "brickStorages": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ],
-    "anchoringServices": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ],
-    "notifications": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ]
-  },
-  "vault.jnj": {
-    "replicas": [],
-    "brickStorages": [
-      "https://epi-test.epi-jnj.com"
-    ],
-    "anchoringServices": [
-      "https://epi-test.epi-jnj.com"
-    ],
-    "notifications": [
-      "https://epi-test.epi-jnj.com"
-    ]
-  },
-  "vault.msd": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
     ]
   }
 }
