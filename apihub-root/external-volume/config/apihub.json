@@ -38,7 +38,7 @@
   "enableRequestLogger": true,
   "enableJWTAuthorisation": false,
   "enableOAuth": false,
-  "oauthJWKSEndpoint": "http://localhost:8000/auth/realms/sso/protocol/openid-connect/certs",
+  "oauthJWKSEndpoint": "https://login.microsoftonline.com/3e7449a0-8ac3-426b-81b8-cd89c85cbe8c/discovery/v2.0/keys",
   "enableLocalhostAuthorization": false,
   "skipJWTAuthorisation": [
     "/assets",
@@ -64,7 +64,7 @@
     "/assets",
     "/bdns",
     "/anchor/vault",
-    "/bricking",
+    "/bricking/vault",
     "/bundles",
     "/getAuthorization",
     "/external-volume"
