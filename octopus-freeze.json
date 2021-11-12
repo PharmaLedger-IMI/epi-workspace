@@ -9,7 +9,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "27db074e8ac160ce84d5c1f48ce97d83a30b1956"
+                    "commit": "3311ea69d24662e039d0b2b5670df3193740424c"
                 },
                 {
                     "type": "execute",
@@ -45,7 +45,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "008c451ef5a6bed1039532ee217305e5d6ad8feb"
+                    "commit": "d7d3cc2c1a3b597fdfd50606f08962bdbd7894c7"
                 },
                 {
                     "type": "execute",
@@ -99,7 +99,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "6a09ec603880f76cb43ee7f61d09b64c120f4edd"
+                    "commit": "c1959e966d34cde918478c954bb1999ec50ffb0e"
                 },
                 {
                     "type": "execute",
@@ -115,7 +115,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "2a074cc5bef020edffec1deb36e24430a2881e69"
+                    "commit": "588c89d6d335916cacac377a2015d785f780eecb"
                 },
                 {
                     "type": "execute",
@@ -131,7 +131,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "21fd1451020a665f1b192b6f61565ec2542e1cd3"
+                    "commit": "a3561487a678482986c267512d222a5396ef19aa"
                 },
                 {
                     "type": "execute",
@@ -155,7 +155,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "21fd1451020a665f1b192b6f61565ec2542e1cd3"
+                    "commit": "a3561487a678482986c267512d222a5396ef19aa"
                 },
                 {
                     "type": "execute",
@@ -179,7 +179,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "21fd1451020a665f1b192b6f61565ec2542e1cd3"
+                    "commit": "a3561487a678482986c267512d222a5396ef19aa"
                 },
                 {
                     "type": "execute",
@@ -279,7 +279,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "21fd1451020a665f1b192b6f61565ec2542e1cd3"
+                    "commit": "a3561487a678482986c267512d222a5396ef19aa"
                 },
                 {
                     "type": "execute",
@@ -411,7 +411,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "194431a1a2b6baf60045d1ad9f15689eec37e984"
+                    "commit": "f03d5422d18a3005740906e66ae0dc9961d43ba4"
                 },
                 {
                     "type": "execute",
@@ -435,7 +435,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "abb61232d07bf686e3f09fce58e2e1fc86894b61"
+                    "commit": "2560aa26764e027e7bf9a5626c0e374482a463d5"
                 },
                 {
                     "type": "execute",
@@ -685,6 +685,22 @@
                 {
                     "type": "execute",
                     "cmd": "cd apihub-root/demiurge-wallet/loader && npm install"
+                },
+                {
+                    "type": "copy",
+                    "src": "./privatesky/psknode/bundles/webshims.js",
+                    "target": "./apihub-root/bundles/webshims.js",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./privatesky/psknode/bundles/loaderBoot.js",
+                    "target": "./apihub-root/bundles/loaderBoot.js",
+                    "options": {
+                        "overwrite": true
+                    }
                 }
             ]
         },
@@ -707,7 +723,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "60d0d94ce8caf8bc48421a99b920e52e748c70ff"
+                    "commit": "0fe1811bf6ee1db3eed3db724d0a279a5a156e8a"
                 },
                 {
                     "type": "execute",
