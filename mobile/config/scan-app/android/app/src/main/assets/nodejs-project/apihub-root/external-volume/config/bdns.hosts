@@ -155,7 +155,7 @@
       "https://gov-dev.pharmaledger.dev"
     ]
   },
-  "nvs.epi": {
+    "epi.nvs": {
     "replicas": [],
     "brickStorages": [
       "https://epi.westeurope.cloudapp.azure.com"
@@ -167,7 +167,7 @@
       "https://epi.westeurope.cloudapp.azure.com"
     ]
   },
-  "nvs.epiqa": {
+  "epiqa.nvs": {
     "replicas": [],
     "brickStorages": [
       "https://epiqa.westeurope.cloudapp.azure.com"
