@@ -6,9 +6,5 @@
   {
     "messageType": "CreateGroup",
     "groupName": "ePI Write Group"
-  },
-  {
-    "messageType": "CreateGroup",
-    "groupName": "ePI Read Group"
   }
 ]
