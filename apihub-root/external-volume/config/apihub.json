@@ -35,6 +35,10 @@
     "bricking": {},
     "anchoring": {}
   },
+  "responseHeaders": {
+    "X-Frame-Options": "SAMEORIGIN",
+    "X-XSS-Protection": "1; mode=block"
+  },
   "enableRequestLogger": true,
   "enableJWTAuthorisation": false,
   "enableOAuth": false,
