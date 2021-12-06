@@ -83,6 +83,9 @@ batchDataSourceMapping = {
       return param.obj.decommissionReason ? "snDecom " + param.obj.decommissionReason : "snDecom";
     }
     const decomKey = Object.keys(param.msg).find((key) => key.includes("snDecom"));
+    if (!decomKey) {
+      return
+    }
     const keyArr = decomKey.split(" ");
     if (keyArr.length === 2) {
       param.obj.decommissionReason = keyArr[1];
