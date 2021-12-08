@@ -4,11 +4,20 @@ function verifyIfLeafletMessage(message) {
         && typeof message.delete === "undefined"
 }
 
+const acceptedFileExtensions = ["xml", "apng", "avif", "gif", "jpg", "jpeg", "jfif", "pjpeg", "pjp", "png", "svg", "webp", "bmp", "ico", "cur"];
+
 async function processLeafletMessage(message) {
     const leafletUtils = require("./utils/leaflet-utils");
     const mappingLogService = require("./logs").createInstance(this.storageService);
     const hostDSU = await leafletUtils.getHostDSU.bind(this)(message);
-
+    message.otherFilesContent.forEach(fileObj => {
+        const splitFileName = fileObj.filename.split(".");
+        const fileExtension = splitFileName[splitFileName.length - 1];
+        const index = acceptedFileExtensions.findIndex(acceptedExtension => acceptedExtension === fileExtension);
+        if (index === -1) {
+            throw Error("Trying to upload an unsupported file format");
+        }
+    });
     let language = message.language;
     let type = message.messageType
 
