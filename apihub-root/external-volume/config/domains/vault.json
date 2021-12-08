@@ -3,5 +3,9 @@
     "type": "FS",
     "option": {}
   },
-  "enable": ["mq", "enclave"]
+  "enable": ["mq", "enclave"],
+  "skipOAuth": [
+    "/bricking/vault",
+    "/anchor/vault"
+  ]
 }
