@@ -41,9 +41,9 @@
   },
   "enableRequestLogger": true,
   "enableJWTAuthorisation": false,
-  "enableOAuth": true,
+  "enableOAuth": false,
   "oauthJWKSEndpoint": "https://login.microsoftonline.com/d69968dd-8f36-47eb-b724-7f5e6e660066/discovery/v2.0/keys",
-  "enableLocalhostAuthorization": true,
+  "enableLocalhostAuthorization": false,
   "skipOAuth": [
     "/assets",
     "/bdns",
