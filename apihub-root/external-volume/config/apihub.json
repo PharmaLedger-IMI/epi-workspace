@@ -47,8 +47,6 @@
   "skipOAuth": [
     "/assets",
     "/bdns",
-    "/anchor/vault",
-    "/bricking/vault",
     "/bundles",
     "/getAuthorization",
     "/external-volume/config/oauthConfig.js"
