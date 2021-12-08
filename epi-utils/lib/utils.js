@@ -46,6 +46,7 @@ productDataSourceMapping = {
   markets: "markets",
   internalMaterialCode: "internalMaterialCode",
   strength: "strength",
+  videoLink: "videoLink",
   showEPIOnUnknownBatchNumber: "flagDisplayEPI_BatchNumberUnknown", // to be confirmed with business
 };
 
