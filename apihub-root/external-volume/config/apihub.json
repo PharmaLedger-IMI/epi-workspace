@@ -51,7 +51,7 @@
     "/bricking/vault",
     "/bundles",
     "/getAuthorization",
-    "/external-volume/oauthConfig"
+    "/external-volume/config/oauthConfig.js"
   ],
   "oauthConfig": {
     "issuer": {
@@ -69,5 +69,5 @@
     },
     "sessionTimeout": 30000
   },
-  "serverAuthentication": true
+  "serverAuthentication": false
 }
