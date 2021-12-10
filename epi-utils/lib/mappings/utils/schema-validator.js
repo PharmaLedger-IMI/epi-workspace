@@ -40,7 +40,11 @@ const schemaParser = function (message, schema) {
   for (let i = 0; i < schemaKeys.length; i++) {
     const schemaKey = schemaKeys[i];
     if (schemaObject[schemaKey].type === "object") {
-      schemaParser(message[schemaKey], schemaObject[schemaKey]);
+      if (!message[schemaKey]) {
+        itemValidator(message[schemaKey], schemaObject[schemaKey], schemaKey);
+      } else {
+        schemaParser(message[schemaKey], schemaObject[schemaKey]);
+      }
     }
     if (schemaObject[schemaKey].type === "array" && Array.isArray(message[schemaKey])) {
       message[schemaKey].forEach(msg => {

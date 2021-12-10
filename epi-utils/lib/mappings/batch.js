@@ -3,7 +3,7 @@ const constants = require("../constants.js");
 
 
 function verifyIfBatchMessage(message) {
-  return message.messageType === "Batch" && typeof message.batch === "object";
+  return message.messageType === "Batch";
 }
 
 async function processBatchMessage(message) {
@@ -12,7 +12,6 @@ async function processBatchMessage(message) {
   errMap.addNewErrorType("BATCH_MISSING_PRODUCT", 7, "Fail to create a batch for a missing product");
 
   const mappingLogService = require("./logs").createInstance(this.storageService);
-
   const schemaValidator = require("./utils/schema-validator");
   const schema = require("./schemas/batchSchema");
   const msgValidation = schemaValidator.validateMsgOnSchema(message, schema);

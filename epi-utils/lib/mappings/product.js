@@ -1,17 +1,14 @@
 const gtinResolver = require("gtin-resolver");
 
-
 function verifyIfProductMessage(message) {
-  return message.messageType === "Product" && typeof message.product === "object";
+  return message.messageType === "Product";
 }
 
 async function processProductMessage(message) {
   const utils = require("./../utils");
   const errMap = require("opendsu").loadApi("m2dsu").getErrorsMap();
-  const constants = utils.constants;
-  const productCode = message.product.productCode;
   const mappingLogService = require("./logs").createInstance(this.storageService);
-  let version;
+  const constants = utils.constants;
   const schemaValidator = require("./utils/schema-validator");
   const schema = require("./schemas/productSchema");
   const msgValidation = schemaValidator.validateMsgOnSchema(message, schema);
@@ -22,6 +19,9 @@ async function processProductMessage(message) {
     throw errMap.newCustomError(errMap.errorTypes.INVALID_MESSAGE_FORMAT, msgValidation.invalidFields);
   }
 
+  const productCode = message.product.productCode;
+
+  let version;
   const gtinSSI = gtinResolver.createGTIN_SSI(this.options.holderInfo.domain, this.options.holderInfo.subdomain, productCode);
   const {dsu, alreadyExists} = await this.loadConstSSIDSU(gtinSSI);
   const constDSU = dsu;

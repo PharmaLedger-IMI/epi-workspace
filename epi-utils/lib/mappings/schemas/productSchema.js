@@ -2,14 +2,14 @@ module.exports = {
   "type": "object",
   "properties":
     {
-      "messageType": {"type": "string"},
+      "messageType": {"type": "string","required": true},
       "messageTypeVersion": {"type": "number"},
       "senderId": {"type": "string"},
       "receiverId": {"type": "string"},
       "messageId": {"type": "string"},
       "messageDateTime": {"type": "string"},
       "product": {
-        "type": "object",
+        "type": "object", "required": true,
         "properties": {
           "productCode": {"type": "string", "required": true},
           "internalMaterialCode": {"type": "string", "required": true},

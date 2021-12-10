@@ -36,21 +36,33 @@ function MappingLogService(storageService){
                     itemType = "product-image";
                     break;
                case  ["leaflet", "smpc"].indexOf(message.messageType) !== -1:
-                    itemCode = message.productCode?message.productCode:message.batchCode;
+                    itemCode = message.productCode ? message.productCode : message.batchCode;
                     itemType = message.messageType;
                     break;
+               default:
+                    if (message.product && message.product.productCode) {
+                         itemCode = message.product.productCode;
+                    } else {
+                         itemCode = "unknown"
+                    }
+                    if (message.messageType) {
+                         itemType = message.messageType;
+                    } else {
+                         itemType = "unknown"
+                    }
+
           }
 
           let logData = {
-               itemCode:itemCode,
-               itemType:itemType,
+               itemCode: itemCode,
+               itemType: itemType,
                timestamp: currentDate,
                action: action,
                status: status,
                message: message
           }
           try {
-               await this.storageService.insertRecord(constants.IMPORT_LOGS, itemCode + "|" + currentDate, logData);
+               await this.storageService.insertRecord(constants.IMPORT_LOGS, logData.itemCode + "|" + currentDate, logData);
           }
           catch (e){
                console.log(e);

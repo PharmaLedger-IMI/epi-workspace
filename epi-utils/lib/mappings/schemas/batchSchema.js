@@ -9,7 +9,7 @@ module.exports = {
       "messageId": {"type": "string"},
       "messageDateTime": {"type": "string"},
       "batch": {
-        "type": "object",
+        "type": "object", "required": true,
         "properties": {
           "productCode": {"type": "string", "required": true},
           "batch": {"type": "string", "required": true},
