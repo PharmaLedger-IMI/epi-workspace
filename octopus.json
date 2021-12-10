@@ -375,11 +375,11 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd ethereum-anchoring/ApiAdaptor && npm install"
+                    "cmd": "echo \"manualy run cd ethereum-anchoring/ApiAdaptor && npm install\""
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd ethereum-anchoring/SmartContract && npm install"
+                    "cmd": "echo \"manualy run cd ethereum-anchoring/SmartContract && npm install\""
                 }
             ]
         },
