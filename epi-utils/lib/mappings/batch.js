@@ -136,12 +136,13 @@ async function processBatchMessage(message) {
     this.batch.defaultDecommissionedSerialNumber = this.batch.decommissionedSerialNumbers[0];
   }
 
+  this.batch.version = version;
   const batchClone = JSON.parse(JSON.stringify(this.batch));
 
   delete this.batch.serialNumbers;
   delete this.batch.recalledSerialNumbers;
   delete this.batch.decommissionedSerialNumbers;
-  this.batch.version = version;
+
   await this.saveJSONS(batchDSU, indication);
 
 
