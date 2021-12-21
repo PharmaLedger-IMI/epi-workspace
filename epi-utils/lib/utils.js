@@ -76,7 +76,6 @@ batchDataSourceMapping = {
       throw new Error(`${param.msg.expiryDate} date is invalid`, e);
     }
   },
-  versionLabel: "versionLabel",
   serialNumbers: "snValid",
   recalledSerialNumbers: "snRecalled",
   decommissionedSerialNumbers: function (param) {
@@ -95,9 +94,6 @@ batchDataSourceMapping = {
     }
     param.obj.decommissionedSerialNumbers = param.msg[decomKey];
   },
-  defaultSerialNumber: "defaultSerialNumber",
-  defaultDecommissionedSerialNumber: "defaultDecommissionedSerialNumber",
-  defaultRecalledSerialNumber: "defaultRecalledSerialNumber",
   recalled: "flagEnableBatchRecallMessage",
   serialCheck: "flagEnableSNVerification",
   incorrectDateCheck: "flagEnableEXPVerification",
