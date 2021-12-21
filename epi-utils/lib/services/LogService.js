@@ -19,7 +19,8 @@ module.exports = class LogService {
 
         const log = {
             ...logDetails,
-            timestamp: new Date().getTime()
+            timestamp: new Date().getTime(),
+            itemCode: logDetails.logInfo.gtin || logDetails.logInfo.productCode || logDetails.metadata.itemCode || ""
         };
 
         this.storageService.insertRecord(this.logsTable, log.timestamp, log, (err) => {
