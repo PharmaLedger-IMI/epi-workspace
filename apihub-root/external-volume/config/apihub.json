@@ -65,7 +65,8 @@
       "logoutUrl": "https://login.microsoftonline.com/d69968dd-8f36-47eb-b724-7f5e6e660066/oauth2/logout",
       "postLogoutRedirectUrl": "http://localhost:8080/?logout=true"
     },
-    "sessionTimeout": 1800000
+    "sessionTimeout": 1800000,
+    "keyTTL": 3600000
   },
   "serverAuthentication": false
 }
