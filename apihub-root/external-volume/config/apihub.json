@@ -34,8 +34,7 @@
     },
     "staticServer": {
       "excludedFiles": [
-        "currentEncryptionKey",
-        "previousEncryptionKey"
+        ".*.secret"
       ]
     },
     "bricking": {},
