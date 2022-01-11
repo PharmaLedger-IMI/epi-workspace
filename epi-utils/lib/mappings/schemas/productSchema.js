@@ -16,7 +16,6 @@ module.exports = {
           "inventedName": {"type": "string", "required": true},
           "nameMedicinalProduct": {"type": "string", "required": true},
           "strength": {"type": "string", "required": false},
-          "videoLink": {"type": "string", "required": false},
           "flagEnableAdverseEventReporting": {"type": "boolean"},
           "adverseEventReportingURL": {"type": "string"},
           "flagEnableACFProductCheck": {"type": "boolean"},

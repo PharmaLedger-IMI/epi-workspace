@@ -44,15 +44,13 @@ async function processProductMessage(message) {
     productDSU = await this.loadDSU(productMetadata.keySSI);
   }
 
-  const indication = {product: "/product.json"};
+  const indication = {product: `${utils.constants.PRODUCT_STORAGE_FILE}`};
   await this.loadJSONS(productDSU, indication);
 
   if (typeof this.product === "undefined") {
     this.product = JSON.parse(JSON.stringify(productMetadata));
   }
-
   utils.transformFromMessage(this.product, message.product, utils.productDataSourceMapping);
-
   this.product.version = version;
   await this.saveJSONS(productDSU, indication);
 

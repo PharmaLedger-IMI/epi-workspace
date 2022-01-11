@@ -2,6 +2,7 @@
 require("./product.js");
 require("./batch.js");
 require("./productPhoto.js");
+require("./videoSource.js");
 require("./leaflet.js");
 require("./delete-leaflet.js");
 
