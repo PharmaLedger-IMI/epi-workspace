@@ -123,13 +123,13 @@ async function processVideoMessage(message) {
   }
   if (typeof this.options.logService !== "undefined") {
     await $$.promisify(this.options.logService.log.bind(this.options.logService))({
-      logInfo: message,
+      logInfo: message.videos,
       username: message.senderId,
       action: "Edited video source",
       logType: 'VIDEO_LOG',
       metadata: {
-        attachedTo: "PRODUCT",
-        itemCode: productCode
+        attachedTo: message.videos.batch ? "BATCH" : "PRODUCT",
+        itemCode: message.videos.batch ? message.videos.batch : message.videos.productCode
       }
     });
 

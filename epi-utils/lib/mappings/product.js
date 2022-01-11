@@ -78,6 +78,7 @@ async function processProductMessage(message) {
     try {
       prod = await this.storageService.getRecord(constants.PRODUCTS_TABLE, this.product.gtin);
     } catch (e) {
+      //possible issue on db.
     }
 
     if (prod) {
