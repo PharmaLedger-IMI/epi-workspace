@@ -71,7 +71,8 @@
       "postLogoutRedirectUrl": "http://localhost:8080/?logout=true"
     },
     "sessionTimeout": 1800000,
-    "keyTTL": 3600000
+    "keyTTL": 3600000,
+    "debugLogEnabled": false
   },
   "serverAuthentication": false
 }
