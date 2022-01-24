@@ -52,6 +52,8 @@ async function processProductMessage(message) {
   }
   utils.transformFromMessage(this.product, message.product, utils.productDataSourceMapping);
   this.product.version = version;
+  this.product.epiProtocol = constants.EPI_PROTOCOL_VERSION;
+
   await this.saveJSONS(productDSU, indication);
 
   if (!alreadyExists) {

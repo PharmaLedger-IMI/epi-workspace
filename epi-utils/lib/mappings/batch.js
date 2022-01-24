@@ -143,6 +143,8 @@ async function processBatchMessage(message) {
   delete this.batch.recalledSerialNumbers;
   delete this.batch.decommissionedSerialNumbers;
 
+  this.batch.epiProtocol = utils.constants.EPI_PROTOCOL_VERSION;
+
   await this.saveJSONS(batchDSU, indication);
 
 

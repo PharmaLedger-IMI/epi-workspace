@@ -137,6 +137,7 @@ constants = {
   'SERIAL_NUMBERS_LOGS_TABLE': "serial_numbers_logs",
   'PRODUCT_KEYSSI_STORAGE_TABLE': "productKeySSIs",
   'BATCHES_STORAGE_TABLE': "batches",
+  'EPI_PROTOCOL_VERSION':"1.0",
   'PRODUCT_DSU_MOUNT_POINT': "/product",
   'BATCH_DSU_MOUNT_POINT': "/batch",
   'BATCH_STORAGE_FILE': "/batch.json",
