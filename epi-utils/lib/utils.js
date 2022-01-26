@@ -101,6 +101,9 @@ batchDataSourceMapping = {
   defaultMessage: "batchMessage",
   packagingSiteName: "packagingSiteName",
   flagEnableACFBatchCheck: "flagEnableACFBatchCheck",
+  // ACDC PATCH START
+  acdcAuthFeatureSSI: "acdcAuthFeatureSSI",
+  // ACDC PATCH END
   acfBatchCheckURL: "acfBatchCheckURL",
   snValidReset: "snValidReset",
   snRecalledReset: "snRecalledReset",

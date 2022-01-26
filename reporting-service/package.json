@@ -1,0 +1,18 @@
+{
+  "name": "acdc-reporting-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./node_modules/octopus/scripts/run build devmode"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PharmaLedger-IMI/gtin-resolver.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "octopus": "git+http://github.com/privatesky/octopus.git"
+  }
+}

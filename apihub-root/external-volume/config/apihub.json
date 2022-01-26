@@ -16,6 +16,7 @@
     "gtin-dsu-wizard",
     "epi-mapping-engine",
     "epi-mapping-engine-results",
+    "acdc-reporting",
     "debugLogger",
     "mq",
     "secrets",
@@ -29,6 +30,10 @@
     "epi-mapping-engine-results": {
       "module": "./../../epi-utils",
       "function": "getEPIMappingEngineMessageResults"
+    },
+    "acdc-reporting": {
+      "module": "./../../reporting-service/middleware",
+      "function": "Init"
     },
     "gtin-dsu-wizard": {
       "module": "./../../gtin-dsu-wizard"

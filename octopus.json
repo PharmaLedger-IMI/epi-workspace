@@ -301,6 +301,16 @@
             ]
         },
         {
+            "name": "acdc-reporting",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd reporting-service && npm install"
+                }
+            ]
+        },
+        {
             "name": "gtin-dsu-wizard",
             "src": "https://github.com/PharmaLedger-IMI/gtin-dsu-wizard.git",
             "actions": [
@@ -543,9 +553,28 @@
             ]
         },
         {
+            "name": "acdc-reporting",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd reporting-service && npm run build"
+                },
+                {
+                    "type": "copy",
+                    "src": "./reporting-service/build/bundles/acdc.js",
+                    "target": "./leaflet-ssapp/code/scripts/bundles/acdc.js",
+                    "options": {
+                        "overwrite": true
+                    }
+                }
+            ]
+        },
+        {
             "name": "leaflet-wallet_bind_to_leaflet-ssapp",
             "src": "",
             "actions": [
+
                 {
                     "type": "execute",
                     "cmd": "cd leaflet-ssapp && npm run build"
