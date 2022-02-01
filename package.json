@@ -24,6 +24,7 @@
     "watch": "node ./bin/watcher/watcher.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "node ./bin/clean.js ./",
+    "create-did": "node ./bin/createKeyDID.js ./",
     "clean-build": "npm run clean && npm run build privatesky && npm run build-all",
     "freeze": "node ./node_modules/octopus/scripts/freeze dependencies install-mobile"
   },
