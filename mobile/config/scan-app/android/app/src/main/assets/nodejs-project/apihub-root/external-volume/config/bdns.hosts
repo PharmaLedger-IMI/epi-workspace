@@ -1,5 +1,5 @@
 {
-  "epipoc": {
+  "epi": {
     "anchoringServices": [
       "https://epidemo.pharmaledger.dev",
       "https://epipoc.msd-bcn.net",
@@ -17,69 +17,39 @@
       "https://epi.int.gsk.com"
     ]
   },
-  "epipoc.demo": {
-    "brickStorages": [
-      "https://epidemo.pharmaledger.dev"
-    ],
+  "dev.epi": {
     "anchoringServices": [
-      "https://epidemo.pharmaledger.dev"
-    ],
-    "notifications": [
-      "https://epidemo.pharmaledger.dev"
-    ]
-  },
-  "epipoc.msd": {
-    "brickStorages": [
-      "https://epipoc.msd-bcn.net"
-    ],
-    "anchoringServices": [
-      "https://epipoc.msd-bcn.net"
-    ],
-    "notifications": [
-      "https://epipoc.msd-bcn.net"
-    ]
-  },
-  "epipoc.jnj": {
-    "brickStorages": [
-      "https://intepitest.epi-jnj.com"
-    ],
-    "anchoringServices": [
-      "https://intepitest.epi-jnj.com"
-    ],
-    "notifications": [
-      "https://intepitest.epi-jnj.com"
-    ]
-  },
-  "epipoc.bayer": {
-    "brickStorages": [
-      "https://epi-pilot.535161841476.cloud.bayer.com"
-    ],
-    "anchoringServices": [
-      "https://epi-pilot.535161841476.cloud.bayer.com"
-    ],
-    "notifications": [
-      "https://epi-pilot.535161841476.cloud.bayer.com"
-    ]
-  },
-  "epipoc.nvs": {
-    "brickStorages": [
-      "https://dev.epi.novartis.com"
-    ],
-    "anchoringServices": [
-      "https://dev.epi.novartis.com"
-    ],
-    "notifications": [
-      "https://dev.epi.novartis.com"
-    ]
-  },
-  "epipoc.gsk": {
-    "brickStorages": [
-      "https://epi.int.gsk.com"
-    ],
-    "anchoringServices": [
+      "https://epidemo.pharmaledger.dev",
+      "https://epipoc.msd-bcn.net",
+      "https://intepitest.epi-jnj.com",
+      "https://epi-pilot.535161841476.cloud.bayer.com",
+      "https://dev.epi.novartis.com",
       "https://epi.int.gsk.com"
     ],
     "notifications": [
+      "https://epidemo.pharmaledger.dev",
+      "https://epipoc.msd-bcn.net",
+      "https://intepitest.epi-jnj.com",
+      "https://epi-pilot.535161841476.cloud.bayer.com",
+      "https://dev.epi.novartis.com",
+      "https://epi.int.gsk.com"
+    ]
+  },
+  "qa.epi": {
+    "anchoringServices": [
+      "https://epidemo.pharmaledger.dev",
+      "https://epipoc.msd-bcn.net",
+      "https://intepitest.epi-jnj.com",
+      "https://epi-pilot.535161841476.cloud.bayer.com",
+      "https://dev.epi.novartis.com",
+      "https://epi.int.gsk.com"
+    ],
+    "notifications": [
+      "https://epidemo.pharmaledger.dev",
+      "https://epipoc.msd-bcn.net",
+      "https://intepitest.epi-jnj.com",
+      "https://epi-pilot.535161841476.cloud.bayer.com",
+      "https://dev.epi.novartis.com",
       "https://epi.int.gsk.com"
     ]
   },
@@ -95,66 +65,6 @@
       "$ORIGIN"
     ]
   },
-  "epi": {
-    "replicas": [],
-    "brickStorages": [
-      "https://epi.westeurope.cloudapp.azure.com"
-    ],
-    "anchoringServices": [
-      "https://epi.westeurope.cloudapp.azure.com"
-    ],
-    "notifications": [
-      "https://epi.westeurope.cloudapp.azure.com"
-    ]
-  },
-  "epipharma": {
-    "replicas": [],
-    "brickStorages": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ],
-    "anchoringServices": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ],
-    "notifications": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ]
-  },
-  "nvs.epipharma": {
-    "replicas": [],
-    "brickStorages": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ],
-    "anchoringServices": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ],
-    "notifications": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ]
-  },
-  "jnj.epipharma": {
-    "replicas": [],
-    "brickStorages": [
-      "https://epi-test.epi-jnj.com"
-    ],
-    "anchoringServices": [
-      "https://epi-test.epi-jnj.com"
-    ],
-    "notifications": [
-      "https://epi-test.epi-jnj.com"
-    ]
-  },
-  "epidev": {
-    "replicas": [],
-    "brickStorages": [
-      "https://gov-dev.pharmaledger.dev"
-    ],
-    "anchoringServices": [
-      "https://gov-dev.pharmaledger.dev"
-    ],
-    "notifications": [
-      "https://gov-dev.pharmaledger.dev"
-    ]
-  },
   "epi.nvs": {
     "replicas": [],
     "brickStorages": [
@@ -167,7 +77,7 @@
       "https://epi.westeurope.cloudapp.azure.com"
     ]
   },
-  "epiqa.nvs": {
+  "qa.epi.nvs": {
     "replicas": [],
     "brickStorages": [
       "https://epiqa.westeurope.cloudapp.azure.com"
@@ -178,8 +88,8 @@
     "notifications": [
       "https://epiqa.westeurope.cloudapp.azure.com"
     ]
-  },
-  "epiqa": {
+  }, 
+  "dev.epi.nvs": {
     "replicas": [],
     "brickStorages": [
       "https://epiqa.westeurope.cloudapp.azure.com"
@@ -190,8 +100,8 @@
     "notifications": [
       "https://epiqa.westeurope.cloudapp.azure.com"
     ]
-  },
-  "epi.dev.axl": {
+  },  
+  "dev.epi.axl": {
     "replicas": [],
     "brickStorages": [
       "https://gov-dev.pharmaledger.dev"
@@ -203,60 +113,7 @@
       "https://gov-dev.pharmaledger.dev"
     ]
   },
-  "epi.dev.nvs": {
-    "replicas": [],
-    "brickStorages": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ],
-    "anchoringServices": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ],
-    "notifications": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ]
-  },
-  "epi.dev": {
-    "replicas": [],
-    "brickStorages": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ],
-    "anchoringServices": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ],
-    "notifications": [
-      "https://epiqa.westeurope.cloudapp.azure.com"
-    ]
-  },
-  "epi.qa": {
-    "anchoringServices": [
-      "https://epidemo.pharmaledger.dev",
-      "https://epipoc.msd-bcn.net",
-      "https://intepitest.epi-jnj.com",
-      "https://epi-pilot.535161841476.cloud.bayer.com",
-      "https://dev.epi.novartis.com",
-      "https://epi.int.gsk.com"
-    ],
-    "notifications": [
-      "https://epidemo.pharmaledger.dev",
-      "https://epipoc.msd-bcn.net",
-      "https://intepitest.epi-jnj.com",
-      "https://epi-pilot.535161841476.cloud.bayer.com",
-      "https://dev.epi.novartis.com",
-      "https://epi.int.gsk.com"
-    ]
-  },
-  "epi.qa.demo": {
-    "brickStorages": [
-      "https://epidemo.pharmaledger.dev"
-    ],
-    "anchoringServices": [
-      "https://epidemo.pharmaledger.dev"
-    ],
-    "notifications": [
-      "https://epidemo.pharmaledger.dev"
-    ]
-  },
-  "epi.qa.msd": {
+  "qa.epi.msd": {
     "brickStorages": [
       "https://epipoc.msd-bcn.net"
     ],
@@ -267,7 +124,7 @@
       "https://epipoc.msd-bcn.net"
     ]
   },
-  "epi.qa.jnj": {
+  "qa.epi.jnj": {
     "brickStorages": [
       "https://intepitest.epi-jnj.com"
     ],
@@ -278,7 +135,7 @@
       "https://intepitest.epi-jnj.com"
     ]
   },
-  "epi.qa.bayer": {
+  "qa.epi.bayer": {
     "brickStorages": [
       "https://epi-pilot.535161841476.cloud.bayer.com"
     ],
@@ -289,7 +146,7 @@
       "https://epi-pilot.535161841476.cloud.bayer.com"
     ]
   },
-  "epi.qa.nvs": {
+  "qa.epi.nvs": {
     "brickStorages": [
       "https://dev.epi.novartis.com"
     ],
@@ -300,7 +157,7 @@
       "https://dev.epi.novartis.com"
     ]
   },
-  "epi.qa.gsk": {
+  "qa.epi.gsk": {
     "brickStorages": [
       "https://epi.int.gsk.com"
     ],
