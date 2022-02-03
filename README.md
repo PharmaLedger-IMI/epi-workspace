@@ -189,7 +189,7 @@ This concludes the steps to build the APK file.
 mobile/scan-app/android/app/build/outputs/apk/release
 ```
 
-##Build iOS ipa
+### Build iOS ipa
 1. Install all dependencies for this workspace (if needed)
 ```sh
 #freeze
@@ -217,22 +217,23 @@ npm run server
 ```sh 
 npm run build-mobile
 ```
-4. Go to xCode
+5. Go to xCode
 
 Open mobile/scan-app/ios/PSSmartWalletNativeLayer.xcworkspace file with XCode
-5. Setup the signing & capabilities
+
+6. Setup the signing & capabilities
 ```text
 select pskNodeServer from the explorer right pane > into the signing & capabilities tab change the team and bundleID (hint for dev team: if forgot the easy way to find it is in the default bundleId is in firebase/settings ios-epi)
 ```
-6. Ensure that both targets are set for iOS 12
+7. Ensure that both targets are set for iOS 12
 ```text
 select one by one the psKNodeServer and PSSmartWalletNativeLayer and in general tab check/set version 12 to deployment info section
 ```
-7. Choose target device
+8. Choose target device
 ```text
 before build select the type (phone or any ios) depending on your needs
 ```
-8. Build, Archive and Distribute
+9. Build, Archive and Distribute
 ```text
 Before running the build - archive - distribute process ensure that the certificate that you will use contains necessary device ids. (hint: https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices)
 ```
