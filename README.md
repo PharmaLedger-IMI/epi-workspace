@@ -203,9 +203,9 @@ npm run dev-install
 ```sh
 npm run install-mobile
 ```
-If the installation script fails check if you have cartridge tool. If you don't have it then install it and rerun the install-mobile step.
+If the installation script fails check if you have carthage tool. If you don't have it then install it and rerun the install-mobile step.
 ```sh
-brew install cartridge 
+brew install carthage 
 ``` 
 
 3. Launch API HUB
