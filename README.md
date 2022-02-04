@@ -15,7 +15,8 @@ For more details about what a *workspace* is check out the [template-workspace](
     3. [Setup credentials for Issuer and Holder](#step-2-setup-credentials-for-issuer-and-holder)
 3. [Prepare & release a new stable version of the workspace](#step-2-setup-credentials-for-issuer-and-holder)        
 4. [Build Android APK](#build-android-apk)
-5. [Configuring ApiHub for Messages Mapping Engine Middleware](#configuring-apihub-for-messages-mapping-engine-middleware)
+5. [Build iOS ipa](#build-ios-ipa)
+6. [Configuring ApiHub for Messages Mapping Engine Middleware](#configuring-apihub-for-messages-mapping-engine-middleware)
     1. [Configuring Domain for ApiHub Mapping Engine usage](#configuring-domain-for-apihub-mapping-engine-usage)
     2. [Testing ApiHub Mapping Engine](#testing-apihub-mapping-engine)
 
@@ -143,8 +144,12 @@ npm run freeze
 
 Steps
 
-1. Install all dependencies (as develoment) for this workspace
+1. Install all dependencies for this workspace
 ```sh
+#freeze
+npm install
+
+#or development
 npm run dev-install
 ```
 
@@ -182,6 +187,55 @@ This concludes the steps to build the APK file.
 **Note:** The .apk file should be in folder
 ```
 mobile/scan-app/android/app/build/outputs/apk/release
+```
+
+### Build iOS ipa
+1. Install all dependencies for this workspace (if needed)
+```sh
+#freeze
+npm install
+
+#or development
+npm run dev-install
+```
+
+2. Bind iOS repository into workspace
+```sh
+npm run install-mobile
+```
+If the installation script fails check if you have carthage tool. If you don't have it then install it and rerun the install-mobile step.
+```sh
+brew install carthage 
+``` 
+
+3. Launch API HUB
+```sh
+npm run server
+```
+
+4. Prepare the Node files that will be packed into the iOS app
+```sh 
+npm run build-mobile
+```
+5. Go to xCode
+
+Open mobile/scan-app/ios/PSSmartWalletNativeLayer.xcworkspace file with XCode
+
+6. Setup the signing & capabilities
+```text
+select pskNodeServer from the explorer right pane > into the signing & capabilities tab change the team and bundleID (hint for dev team: if forgot the easy way to find it is in the default bundleId is in firebase/settings ios-epi)
+```
+7. Ensure that both targets are set for iOS 12
+```text
+select one by one the psKNodeServer and PSSmartWalletNativeLayer and in general tab check/set version 12 to deployment info section
+```
+8. Choose target device
+```text
+before build select the type (phone or any ios) depending on your needs
+```
+9. Build, Archive and Distribute
+```text
+Before running the build - archive - distribute process ensure that the certificate that you will use contains necessary device ids. (hint: https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices)
 ```
 
 ## Configuring ApiHub for Messages Mapping Engine Middleware
