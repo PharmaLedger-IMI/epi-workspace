@@ -11,16 +11,19 @@ function getEPIMappingEngineMessageResults(server) {
 
     let result;
     const fileDir = `${server.rootFolder}/messages/${domain}`
+    if (!fs.existsSync(`${fileDir}/logs.json`)) {
+      return callback(`No logs found for domain -  ${domain}`);
+    }
     try {
 
-  /*    if (msgParam === "all") {
-        let result = fs.readdirSync(`${fileDir}`).map((elem) => {
-          return JSON.parse(fs.readFileSync(`${fileDir}/${elem}`, 'utf8'));
-        })
+      /*    if (msgParam === "all") {
+            let result = fs.readdirSync(`${fileDir}`).map((elem) => {
+              return JSON.parse(fs.readFileSync(`${fileDir}/${elem}`, 'utf8'));
+            })
 
-        return callback(null, result)
-      }
-*/
+            return callback(null, result)
+          }
+    */
       result = JSON.parse(fs.readFileSync(`${fileDir}/logs.json`, 'utf8'));
       return callback(null, result);
     } catch (e) {
@@ -80,6 +83,7 @@ function getEPIMappingEngineMessageResults(server) {
           console.log(err);
           response.statusCode = 500;
           response.end(JSON.stringify({result: "Error", message: "No logs"}));
+          return;
         }
         if (!logs || logs.length === 0) {
           logs = "Log list is empty";

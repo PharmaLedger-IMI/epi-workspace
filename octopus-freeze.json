@@ -9,7 +9,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "a9e21f1d70e82be5b2a99aae4d3ba762b7de1df9"
+                    "commit": "b7640b60cf0928e4a42547f243cf7d98b7da13ef"
                 },
                 {
                     "type": "execute",
@@ -45,7 +45,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "b179e32155898a1227b9a1d91f3d2b3985a70bff"
+                    "commit": "af5e336e0c64b56ec88c02156af6f0a73e049a64"
                 },
                 {
                     "type": "execute",
@@ -99,7 +99,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "9fbb7fc8a71f43f21b8148c0e4ca0a3964d0c30a"
+                    "commit": "f830f45a8acab41dc9fce5e7012591eb3b6b237c"
                 },
                 {
                     "type": "execute",
@@ -131,7 +131,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "45cabec3923c06ae20ab074745d7492a360f28ec"
+                    "commit": "2ba38dd623498d2c452812ff855876b8e91e7a2a"
                 },
                 {
                     "type": "execute",
@@ -155,7 +155,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "45cabec3923c06ae20ab074745d7492a360f28ec"
+                    "commit": "2ba38dd623498d2c452812ff855876b8e91e7a2a"
                 },
                 {
                     "type": "execute",
@@ -179,7 +179,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "45cabec3923c06ae20ab074745d7492a360f28ec"
+                    "commit": "2ba38dd623498d2c452812ff855876b8e91e7a2a"
                 },
                 {
                     "type": "execute",
@@ -279,7 +279,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "45cabec3923c06ae20ab074745d7492a360f28ec"
+                    "commit": "2ba38dd623498d2c452812ff855876b8e91e7a2a"
                 },
                 {
                     "type": "execute",
@@ -312,16 +312,6 @@
                 {
                     "type": "execute",
                     "cmd": "cd gtin-resolver && npm run build"
-                }
-            ]
-        },
-        {
-            "name": "acdc-reporting",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd reporting-service && npm install"
                 }
             ]
         },
@@ -445,7 +435,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "c40d92da5e4fed5501559104d69ed5550dc5b39d"
+                    "commit": "8e273ca7d7be6bde2673517bebebea8056e1482a"
                 },
                 {
                     "type": "execute",
@@ -571,24 +561,6 @@
                 {
                     "type": "execute",
                     "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/dsu-explorer/apps-patch/dossier-explorer-ssapp/readme"
-                }
-            ]
-        },
-        {
-            "name": "acdc-reporting",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd reporting-service && npm run build"
-                },
-                {
-                    "type": "copy",
-                    "src": "./reporting-service/build/bundles/acdc.js",
-                    "target": "./leaflet-ssapp/code/scripts/bundles/acdc.js",
-                    "options": {
-                        "overwrite": true
-                    }
                 }
             ]
         },
@@ -766,8 +738,7 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false,
-                    "commit": "b19aac40079f8c54c1bfe617bd16cbbc03e83931"
+                    "collectLog": false
                 },
                 {
                     "type": "execute",

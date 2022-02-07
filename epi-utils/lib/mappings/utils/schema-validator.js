@@ -10,7 +10,11 @@ const itemValidator = function (messageValue, schemaObj, schemaKey) {
   }
 
   if (schemaObj.regex && !schemaObj.regex.test(messageValue)) {
-    invalidFields.push({field: schemaKey, message: `Invalid format`});
+    if (schemaKey === "marketId") {
+      invalidFields.push({field: schemaKey, message: `not recognized`});
+    } else {
+      invalidFields.push({field: schemaKey, message: `Invalid format`});
+    }
     return;
   }
 
