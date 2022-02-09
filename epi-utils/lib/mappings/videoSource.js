@@ -27,12 +27,12 @@ async function processVideoMessage(message) {
     productMetadata = await this.storageService.getRecord(constants.PRODUCTS_TABLE, productCode);
     prodDSU = await this.loadDSU(productMetadata.keySSI);
   } catch (err) {
-    await mappingLogService.logFailedMapping(message, "lookup", utils.constants.MISSING_PRODUCT_DSU);
-    throw new Error("Product not found");
+    await mappingLogService.logFailedMapping(message, "lookup", `${err.message}` || `${utils.constants.DSU_LOAD_FAIL}`);
+    throw errMap.newCustomError(errMap.errorTypes.VIDEO_SOURCE_MISSING_PRODUCT, "productCode");
   }
 
   if (!prodDSU) {
-    await mappingLogService.logFailedMapping(message, "lookup", utils.constants.MISSING_PRODUCT_DSU);
+    await mappingLogService.logFailedMapping(message, "lookup", utils.constants.DSU_LOAD_FAIL);
     throw errMap.newCustomError(errMap.errorTypes.VIDEO_SOURCE_MISSING_PRODUCT, "productCode");
   }
 
