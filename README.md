@@ -10,10 +10,13 @@ For more details about what a *workspace* is check out the [template-workspace](
    2. [Launch the "server"](#step-2-launch-the-server)
    3. [Build all things needed for the application to run](#step-3-build-all-things-needed-for-the-application-to-run)
 2. [Running](#running)
-    1. [Enterprise wallet](#enterprise-wallet)
-    2. [Register new account details](#step-1-register-new-account-details) 
-    3. [Setup credentials for Issuer and Holder](#step-2-setup-credentials-for-issuer-and-holder)
-3. [Prepare & release a new stable version of the workspace](#step-2-setup-credentials-for-issuer-and-holder)        
+    1. [Demiurge wallet](#demiurge-wallet)
+        1. [Admin authorization flow](#admin-authorization-flow)
+        2. [Enterprise wallet user authorization flow](#enterprise-wallet-user-authorization-flow)
+    3. [Enterprise wallet](#enterprise-wallet)
+        1. [Register new account details](#step-1-register-new-account-details) 
+        2. [Authorization process](#step-2-authorization-process)
+3. [Prepare & release a new stable version of the workspace](#prepare--release-a-new-stable-version-of-the-workspace)        
 4. [Build Android APK](#build-android-apk)
 5. [Build iOS ipa](#build-ios-ipa)
 6. [Configuring ApiHub for Messages Mapping Engine Middleware](#configuring-apihub-for-messages-mapping-engine-middleware)
@@ -65,10 +68,27 @@ Open a new console inside *epi-workspace* folder and run:
 $ npm run build-all
 ```
 
-
-
 ## Running 
 To run the application launch your browser (preferably Chrome) in Incognito mode and access the http://localhost:8080 link.
+
+### Demiurge wallet
+Demiurge is intended to be a management platform. Important flows include the user authorization flow for the Enterprise Wallet users.
+Once a user create an Enterprise wallet he gets authorized to use the features only after an admin Demiurge user adds the enterprise wallet DID into the ePI write group.
+
+#### Admin authorization flow
+The first Demiurge wallet will be the "super admin". This first user will be able to make other users admin by adding them into the ePI admin group.
+1. As Demiurge admin open your Demiurge wallet
+2. Navigate to the Groups page
+3. Select ePI admin group
+4. Input the user DID that needs admin priviledges
+5. Click add button.
+
+#### Enterprise wallet user authorization flow
+1. As Demiurge admin open your Demiurge wallet
+2. Navigate to the Groups page
+3. Select ePI write group
+4. Input the user DID that needs to be authorized to used the Enterprise wallet
+5. Click add button.
 
 ### Enterprise wallet
 
@@ -86,22 +106,12 @@ Company: Test Company Inc
 Password: Test1234567890#
 ```
 
-#### Step 2: Setup credentials for Issuer and Holder
-    1. Go to MAH as Issuer page
-    2. Put "epi" in application domain field and press "Generate an identifier as company" button
-    3. Go to User as Holder page
-    4. Enter the application domain "epi" and press "Generate an Identifier as User" button
-    5. Copy the generated User Identity
-    6. Go again to MAH as Issuer page
-    7. Paste the generated User Identity into the first input field
-    8. Press the "Generate Credential" button
-    9. Copy the generated credential
-    10. Go again to User as Holder page
-    11. In the "Human readable User Identity" section paste the previous generated crendetial and press the button "Save Credential"
-    12. Finally for the current user, the Human readable Credential should look like the following: 
-![alt text](user_credential.png)    
-   
-Now you will act as a Holder thus will be able to add Products (and leaflets for it) and create Batches of products.
+
+#### Step 2: Authorization process
+Once the Enterprise wallet opens will prompt a message to share your DID information with an admin in order get authorized and gain access to the features.
+
+
+Now you will be able to add Products (and leaflets for it) and create Batches of products and other ePI cool features.
 
 
 
