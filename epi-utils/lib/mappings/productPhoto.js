@@ -1,5 +1,5 @@
-function verifyIfProductPhotoMessage(message){
-    return message.messageType === "ProductPhoto";
+function verifyIfProductPhotoMessage(message) {
+  return message.messageType === "ProductPhoto";
 }
 
 async function processProductPhotoMessage(message) {
@@ -15,12 +15,12 @@ async function processProductPhotoMessage(message) {
     prodDSU = await this.loadDSU(productMetadata.keySSI);
     this.product = JSON.parse(JSON.stringify(productMetadata));
   } catch (err) {
-    await mappingLogService.logFailedMapping(message, "lookup", constants.MISSING_PRODUCT_DSU);
-    throw new Error("Product not found");
+    await mappingLogService.logFailedMapping(message, "lookup", `${err.message}` || `${constants.DSU_LOAD_FAIL}`);
+    throw new Error("Fail to create a batch for a missing product");
   }
 
   if (!prodDSU) {
-    await mappingLogService.logFailedMapping(message, "lookup", constants.MISSING_PRODUCT_DSU);
+    await mappingLogService.logFailedMapping(message, "lookup", constants.DSU_LOAD_FAIL);
     throw new Error("Fail to create a batch for a missing product");
   }
 
