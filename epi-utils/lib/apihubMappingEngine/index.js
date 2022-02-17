@@ -13,6 +13,7 @@ function getEPIMappingEngineForAPIHUB(server) {
   const mappings = epiUtils.loadApi("mappings")
   const MessagesPipe = epiUtils.getMessagesPipe();
   const openDSU = require("opendsu");
+
   async function getMessagePipe(domain, subdomainName, wltSSI, callback) {
     let domainConfig, subdomain, walletSSI, messagesEndpoint;
     domainConfig = apiHub.getDomainConfig(domain);
@@ -85,14 +86,13 @@ function getEPIMappingEngineForAPIHUB(server) {
             }
 
             const httpSpace = require("opendsu").loadApi('http');
-            messagesToPersist.forEach(item => {
-              httpSpace.doPut(messagesEndpoint, JSON.stringify(item), (err, data) => {
-                if (err) {
-                  console.log("Could not persist message ", item);
-                }
-              })
-            })
-
+            for (let item of messagesToPersist) {
+              try {
+                await $$.promisify(httpSpace.doPut)(messagesEndpoint, JSON.stringify(item));
+              } catch (err) {
+                console.log(`Could not persist message: ${item} with error ${err}`);
+              }
+            }
           });
 
           callback(undefined, messagesPipe[walletSSI]);
@@ -142,7 +142,7 @@ function getEPIMappingEngineForAPIHUB(server) {
         });
 
       } catch (err) {
-        console.error("Error on parse request message",err);
+        console.error("Error on parse request message", err);
         err.debug_message === "Invalid credentials" ? response.statusCode = 403 : response.statusCode = 500;
         response.end(err.message);
       }

@@ -1,7 +1,6 @@
 productDataSourceMapping = {
   name: "inventedName",
   gtin: "productCode",
-  version: "version",
   description: "nameMedicinalProduct",
   manufName: "manufName",
   reportURL: function (param) {

@@ -6,6 +6,8 @@ async function processProductPhotoMessage(message) {
   const constants = require("./../utils").constants;
   const productCode = message.productCode;
   const mappingLogService = require("./logs").createInstance(this.storageService);
+  const errMap = require("opendsu").loadApi("m2dsu").getErrorsMap();
+  errMap.addNewErrorType("PHOTO_MISSING_PRODUCT", 10, "Fail to create a product photo for a missing product");
 
   let prodDSU;
   let productMetadata;
@@ -16,12 +18,7 @@ async function processProductPhotoMessage(message) {
     this.product = JSON.parse(JSON.stringify(productMetadata));
   } catch (err) {
     await mappingLogService.logFailedMapping(message, "lookup", `${err.message}` || `${constants.DSU_LOAD_FAIL}`);
-    throw new Error("Fail to create a batch for a missing product");
-  }
-
-  if (!prodDSU) {
-    await mappingLogService.logFailedMapping(message, "lookup", constants.DSU_LOAD_FAIL);
-    throw new Error("Fail to create a batch for a missing product");
+    throw errMap.newCustomError(errMap.errorTypes.PHOTO_MISSING_PRODUCT, "productCode");
   }
 
   let base64ToArrayBuffer = require("./../utils").base64ToArrayBuffer;
