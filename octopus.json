@@ -823,7 +823,6 @@
         }
     ],
 
-
     "build-mobile" : [
         {
             "name": "prebuild",
@@ -953,5 +952,35 @@
                 }
             ]
         }
+    ],
+
+    "install-acdc" : [        {
+        "name": "acdc",
+        "src": "https://github.com/adiganga2002/acdc-workspace.git",
+        "actions": [
+            {
+                "type": "smartClone",
+                "target": ".",
+                "collectLog": false
+            },
+            {
+                "type": "execute",
+                "cmd": "cd acdc && npm install"
+            },
+            {
+                "type": "execute",
+                "cmd": "cd acdc/backoffice-backend && npm install"
+            },
+            {
+                "type": "execute",
+                "cmd": "cd acdc/backoffice-frontend && npm install"
+            },
+            {
+                "type": "execute",
+                "cmd": "cd acdc/reporting-service && npm install"
+            }
+
+        ]
+    }
     ]
 }

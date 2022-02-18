@@ -7,6 +7,7 @@
     "postinstall": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"npm run do-install\"",
     "do-install": "node ./node_modules/octopus/scripts/ensureFreezeState.js && node ./node_modules/octopus/scripts/run",
     "install-mobile": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run install-mobile\"",
+    "install-acdc": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run install-acdc\"",
     "add": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/add\"",
     "remove": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/remove\"",
     "add-loader": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/add\"",
@@ -26,7 +27,10 @@
     "clean": "node ./bin/clean.js ./",
     "create-did": "node ./bin/createKeyDID.js ./",
     "clean-build": "npm run clean && npm run build privatesky && npm run build-all",
-    "freeze": "node ./node_modules/octopus/scripts/freeze dependencies install-mobile"
+    "freeze": "node ./node_modules/octopus/scripts/freeze dependencies install-mobile",
+    "start-backoffice-backend": "cd acdc/backoffice-backend && npm run start",
+    "start-backoffice-frontend": "cd acdc/backoffice-frontend && npm run start",
+    "acdc-server": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"(cd acdc/backoffice-frontend && npm run start) & (cd acdc/backoffice-backend && npm run start)\""
   },
   "repository": {
     "type": "git",
