@@ -956,7 +956,7 @@
 
     "install-acdc" : [        {
         "name": "acdc",
-        "src": "https://github.com/adiganga2002/acdc-workspace.git",
+        "src": "https://github.com/PharmaLedger-IMI/acdc-components.git",
         "actions": [
             {
                 "type": "smartClone",
