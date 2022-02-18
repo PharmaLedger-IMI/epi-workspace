@@ -8,6 +8,12 @@ module.exports = function () {
       case "batch":
         this.messageType = "BatchResponse";
         break;
+      case "productphoto":
+        this.messageType = "ProductPhotoResponse";
+        break;
+      case "videosource":
+        this.messageType = "VideoSourceResponse";
+        break;
       default:
         this.messageType = "UnknownTypeResponse";
         break;

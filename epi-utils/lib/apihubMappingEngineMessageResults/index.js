@@ -1,17 +1,18 @@
 const MAX_GROUP_SIZE = 10;
 const GROUPING_TIMEOUT = 5 * 1000; //5 seconds
 const fs = require('fs');
+const MESSAGE_SEPARATOR = "#$%/N";
 
 function getEPIMappingEngineMessageResults(server) {
-  const epiUtils = require("epi-utils");
+/*  const epiUtils = require("epi-utils");
   const mappings = epiUtils.loadApi("mappings")
-  const apiHub = require("apihub");
+  const apiHub = require("apihub");*/
 
   function getLogs(msgParam, domain, callback) {
 
     let result;
     const fileDir = `${server.rootFolder}/messages/${domain}`
-    if (!fs.existsSync(`${fileDir}/logs.json`)) {
+    if (!fs.existsSync(`${fileDir}/logs`)) {
       return callback(`No logs found for domain -  ${domain}`);
     }
     try {
@@ -24,8 +25,15 @@ function getEPIMappingEngineMessageResults(server) {
             return callback(null, result)
           }
     */
-      result = JSON.parse(fs.readFileSync(`${fileDir}/logs.json`, 'utf8'));
-      return callback(null, result);
+      result = fs.readFileSync(`${fileDir}/logs`, 'utf8');
+      let messages = result.split(MESSAGE_SEPARATOR)
+      if (messages[messages.length - 1] === "") {
+        messages.pop();
+      }
+      messages = messages.map(msg => {
+        return JSON.parse(msg)
+      });
+      return callback(null, messages.reverse());
     } catch (e) {
       return callback(e);
     }
@@ -43,26 +51,18 @@ function getEPIMappingEngineMessageResults(server) {
 
       try {
         let body = Buffer.concat(data).toString();
-        let msgToPersist = JSON.parse(body);
+
         const fileDir = `${server.rootFolder}/messages/${msgDomain}`
         if (!fs.existsSync(fileDir)) {
           fs.mkdirSync(fileDir, {recursive: true});
         }
-        // append json to file
-        let arr = [msgToPersist];
-        fs.readFile(`${fileDir}/logs.json`, (err, data) => {
-          if (!err && data) {
-            let jsonData = JSON.parse(data);
-            arr = [...arr, ...jsonData]
-          }
-          fs.writeFile(`${fileDir}/logs.json`, JSON.stringify(arr), (err) => {
-            if (err) {
-              throw err;
-            }
-            response.statusCode = 200
-            response.end();
-          });
-        })
+        //create file if not exists;
+        fs.closeSync(fs.openSync(`${fileDir}/logs`, 'a'));
+
+        fs.appendFileSync(`${fileDir}/logs`, body + MESSAGE_SEPARATOR);
+
+        response.statusCode = 200
+        response.end();
 
       } catch (e) {
         response.statusCode = 500;
@@ -97,7 +97,6 @@ function getEPIMappingEngineMessageResults(server) {
       response.statusCode = 500;
       response.end(JSON.stringify({result: "Error", error: err}));
     }
-
 
   });
 }
