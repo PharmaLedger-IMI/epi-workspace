@@ -279,3 +279,14 @@ The Import page in the wallet app displays the import's details and status.
 A 500 response status means that the domain might not be well configured, or the message is malformed.
 The message will not appear in the Import page in the wallet app.
 
+### ACDC reporting functionality
+
+ACDC means Anti-Counterfeiting Data Collaboration - Use-Case 4 of PharmaLedger
+
+1. Bind ACDC repository into workspace
+```sh
+npm run install-acdc
+
+2. Launch ACDC servers
+npm run acdc-server
+
