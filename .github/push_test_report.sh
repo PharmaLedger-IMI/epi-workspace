@@ -11,7 +11,8 @@ setup_git() {
 
 commit_test_report() {
   git pull --all
-  git add -f testReport.html
+  ls -al
+  git add -f epi-workspace/testReport.html
   git commit --message "Github Actions build: $GITHUB_RUN_NUMBER"
 }
 
