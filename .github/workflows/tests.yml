@@ -1,0 +1,63 @@
+# This is a basic workflow to help you get started with Actions
+
+name: TESTS
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  # Triggers the workflow at the end of the day
+  schedule:
+    - cron: "0 0 * * 1-5"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment: github-actions-tests
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Setup Node version
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # install dependencies
+      - name: Install dependencies (dev-install)
+        run: npm run dev-install
+
+      # build Privatesky bundles
+      - name: Build Privatesky bundles
+        run: npm run build privatesky
+
+      # build epi-utils bundle
+      - name: Build epi-utils bundle
+        run: cd epi-utils && npm run build
+
+      # run tests
+      - name: Run tests
+        run: npm run tests
+        env:
+          DOUBLE_CHECK_POOL_SIZE: 2
+          DOUBLE_CHECK_TIMEOUT_FACTOR: 10
+
+      # Pushing results to test_reports branch
+      - name: Pushing results to test_reports branch
+        if: ${{ always() }}
+        run: |
+             chmod +x .github/push_test_report.sh
+             .github/push_test_report.sh
+        env:
+          GIT_TOKEN: ${{secrets.TOKEN}}
