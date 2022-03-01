@@ -829,7 +829,51 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "npm run clean && npm run build-all"
+                    "cmd": "npm run clean"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd webcardinal && npm run build-dossier"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd reporting-service && npm run build"
+                },
+                {
+                    "type": "copy",
+                    "src": "./reporting-service/build/bundles/acdc.js",
+                    "target": "./leaflet-ssapp/code/scripts/bundles/acdc.js",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "npm run build leaflet-ssapp"
+                },
+                {
+                    "type": "copy",
+                    "src": "./leaflet-ssapp/seed",
+                    "target": "./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./leaflet-ssapp/seed",
+                    "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./trust-loader-config",
+                    "target": "./apihub-root",
+                    "options": {
+                        "overwrite": true
+                    }
                 }]
         },
         {
