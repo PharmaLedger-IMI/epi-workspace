@@ -370,29 +370,6 @@
                 }
             ]
         },
-        {
-            "name": "ethereum-anchoring",
-            "src": "https://github.com/PharmaLedger-IMI/ethereum-anchoring",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd ethereum-anchoring && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo \"manualy run cd ethereum-anchoring/ApiAdaptor && npm install\""
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo \"manualy run cd ethereum-anchoring/SmartContract && npm install\""
-                }
-            ]
-        },
 		{
             "name": "ethadapter",
             "src": "https://github.com/PharmaLedger-IMI/ethadapter",
