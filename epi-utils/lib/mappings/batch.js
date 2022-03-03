@@ -8,7 +8,9 @@ function verifyIfBatchMessage(message) {
 
 async function processBatchMessage(message) {
   const utils = require("./../utils");
-  const errMap = require("opendsu").loadApi("m2dsu").getErrorsMap();
+  const openDSU = require("opendsu");
+  const errMap = openDSU.loadApi("m2dsu").getErrorsMap();
+  const SSI_TYPES = openDSU.constants.KEY_SSIS;
   errMap.addNewErrorType("BATCH_MISSING_PRODUCT", 7, "Fail to create a batch for a missing product");
 
   const mappingLogService = require("./logs").createInstance(this.storageService);
@@ -150,7 +152,7 @@ async function processBatchMessage(message) {
 
 
   if (!batchExists) {
-    batchDSU.getKeySSIAsString(async (err, batchKeySSI) => {
+    batchDSU.getKeySSIAsString(SSI_TYPES.SREAD_SSI, async (err, batchKeySSI) => {
       if (err) {
         await mappingLogService.logFailedMapping(message, "internal error", "Database corrupted");
         throw new Error("get keySSIAsString  from batch DSU failed");
@@ -160,7 +162,7 @@ async function processBatchMessage(message) {
 
     let prodDSU = await this.loadDSU(productMetadata.keySSI);
 
-    prodDSU.getKeySSIAsString(async (err, prodKeySSI) => {
+    prodDSU.getKeySSIAsString(SSI_TYPES.SREAD_SSI, async (err, prodKeySSI) => {
       if (err) {
         await mappingLogService.logFailedMapping(message, "internal error", "Database corrupted");
         throw new Error("get keySSIAsString  from prod DSU failed");

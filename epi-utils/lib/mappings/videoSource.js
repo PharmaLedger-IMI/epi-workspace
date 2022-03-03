@@ -4,8 +4,9 @@ function verifyIfVideoMessage(message) {
 
 async function processVideoMessage(message) {
   const utils = require("./../utils");
-  const errMap = require("opendsu").loadApi("m2dsu").getErrorsMap();
-  errMap.addNewErrorType("VIDEO_SOURCE_MISSING_PRODUCT", 9, "Fail to add video source for missing batch or missing product");
+  const openDSU = require("opendsu");
+  const errMap = openDSU.loadApi("m2dsu").getErrorsMap();
+  const SSI_TYPES = openDSU.constants.KEY_SSIS;  errMap.addNewErrorType("VIDEO_SOURCE_MISSING_PRODUCT", 9, "Fail to add video source for missing batch or missing product");
   const mappingLogService = require("./logs").createInstance(this.storageService);
 
   const schemaValidator = require("./utils/schema-validator");

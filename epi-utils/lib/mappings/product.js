@@ -6,7 +6,9 @@ function verifyIfProductMessage(message) {
 
 async function processProductMessage(message) {
   const utils = require("./../utils");
-  const errMap = require("opendsu").loadApi("m2dsu").getErrorsMap();
+  const openDSU = require("opendsu");
+  const errMap = openDSU.loadApi("m2dsu").getErrorsMap();
+  const SSI_TYPES = openDSU.constants.KEY_SSIS;
   const mappingLogService = require("./logs").createInstance(this.storageService);
   const constants = utils.constants;
   const schemaValidator = require("./utils/schema-validator");
@@ -57,7 +59,7 @@ async function processProductMessage(message) {
   await this.saveJSONS(productDSU, indication);
 
   if (!alreadyExists) {
-    productDSU.getKeySSIAsString(async (err, keySSI) => {
+    productDSU.getKeySSIAsString(SSI_TYPES.SREAD_SSI, async (err, keySSI) => {
       if (err) {
         throw new Error("get keySSIAsString from prod DSU failed");
       }
