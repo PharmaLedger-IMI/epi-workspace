@@ -1,6 +1,6 @@
 module.exports = function () {
   this.setMessageType = (type) => {
-    type = type.toLowerCase();
+    type = type ? type.toLowerCase() : "";
     switch (type) {
       case "product":
         this.messageType = "ProductResponse";
