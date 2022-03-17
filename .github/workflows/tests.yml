@@ -42,9 +42,9 @@ jobs:
       - name: Build Privatesky bundles
         run: npm run build privatesky
 
-      # build epi-utils bundle
-      - name: Build epi-utils bundle
-        run: cd epi-utils && npm run build
+      # build gtin-resolver bundle
+      - name: Build gtin-resolver bundle
+        run: cd gtin-resolver && npm run build
 
       # run tests
       - name: Run tests

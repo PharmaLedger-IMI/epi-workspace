@@ -182,11 +182,11 @@ data:
       ],
       "componentsConfig": {
         "epi-mapping-engine": {
-          "module": "./../../epi-utils",
+          "module": "./../../gtin-resolver",
           "function": "getEPIMappingEngineForAPIHUB"
         },
         "epi-mapping-engine-results": {
-          "module": "./../../epi-utils",
+          "module": "./../../gtin-resolver",
           "function": "getEPIMappingEngineMessageResults"
         },
         "gtin-dsu-wizard": {

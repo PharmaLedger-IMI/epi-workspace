@@ -19,7 +19,7 @@
   ],
   "componentsConfig": {
     "epi-mapping-engine": {
-      "module": "./../../epi-utils",
+      "module": "./../../gtin-resolver",
       "function": "getEPIMappingEngineForAPIHUB"
     },
     "gtin-dsu-wizard": {
