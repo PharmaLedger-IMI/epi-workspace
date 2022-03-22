@@ -41,10 +41,10 @@ function  walk(dir, filterFiles, filterFolders, done) {
 
 function filterFiles(name){
 
-    if(name.endsWith("\\seed") || name.endsWith("/seed")){
-            console.log("Deleting seed file:", name);
-            fs.unlinkSync(name);
-        }
+    // if(name.endsWith("\\seed") || name.endsWith("/seed")){
+    //         console.log("Deleting seed file:", name);
+    //         fs.unlinkSync(name);
+    //     }
     return undefined;
 }
 
