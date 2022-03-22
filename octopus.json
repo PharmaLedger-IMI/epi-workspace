@@ -61,19 +61,6 @@
             ]
         },
         {
-            "name": "installing epi-utils",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd epi-utils && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd epi-utils && npm run build"
-                }
-            ]
-        },
-        {
             "name": "menu-wallet-prototype",
             "src": "http://github.com/privatesky/menu-wallet-prototype.git",
             "actions": [
