@@ -474,7 +474,7 @@
           "cmd": "cd dossier-explorer-wallet-prototype && npm run build"
         },
         {
-          "type": "copy",
+          "type": "copySeed",
           "src": "./dossier-explorer-wallet-prototype/seed",
           "target": "./apihub-root/dsu-explorer/wallet-patch/seed",
           "options": {
@@ -502,7 +502,7 @@
           "cmd": "cd dossier-explorer-ssapp && npm run build"
         },
         {
-          "type": "copy",
+          "type": "copySeed",
           "src": "./dossier-explorer-ssapp/seed",
           "target": "./apihub-root/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
           "options": {
@@ -542,7 +542,7 @@
           "cmd": "cd leaflet-ssapp && npm run build"
         },
         {
-          "type": "copy",
+          "type": "copySeed",
           "src": "./leaflet-ssapp/seed",
           "target": "./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
           "options": {
@@ -550,7 +550,7 @@
           }
         },
         {
-          "type": "copy",
+          "type": "copySeed",
           "src": "./leaflet-ssapp/seed",
           "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
           "options": {
@@ -572,7 +572,7 @@
           "cmd": "cd demiurge && npm run build"
         },
         {
-          "type": "copy",
+          "type": "copySeed",
           "src": "./demiurge/seed",
           "target": "./apihub-root/demiurge-wallet/apps-patch/demiurge/seed",
           "options": {
@@ -580,7 +580,7 @@
           }
         },
         {
-          "type": "copy",
+          "type": "copySeed",
           "src": "./demiurge/seed",
           "target": "./apihub-root/demiurge-wallet/wallet-patch/seed",
           "options": {
@@ -602,7 +602,7 @@
           "cmd": "cd dsu-fabric-ssapp && npm run build"
         },
         {
-          "type": "copy",
+          "type": "copySeed",
           "src": "./dsu-fabric-ssapp/seed",
           "target": "./apihub-root/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed",
           "options": {
@@ -610,7 +610,7 @@
           }
         },
         {
-          "type": "copy",
+          "type": "copySeed",
           "src": "./dsu-fabric-ssapp/seed",
           "target": "./apihub-root/dsu-fabric-wallet/wallet-patch/seed",
           "options": {
