@@ -42,6 +42,26 @@ const getReadSSIForAlias = (aliasSSI, callback) => {
     })
 }
 
+const writeFile = (path, data, callback) => {
+    const dirPath = require("path").dirname(path);
+    fs.access(dirPath, (err) => {
+        if (err) {
+            if (err.code === 'ENOENT') {
+                return fs.mkdir(dirPath, {recursive: true}, err => {
+                    if (err) {
+                        return callback(err);
+                    }
+
+                    fs.writeFile(path, data, callback);
+                });
+            }
+
+            return callback(err);
+        }
+        fs.writeFile(path, data, callback);
+    })
+}
+
 const copySeed = (action, dependency, callback) => {
     let src = action.src || dependency.src;
     if (!src) {
@@ -66,7 +86,8 @@ const copySeed = (action, dependency, callback) => {
                 return;
             }
 
-            fs.writeFile(action.target, readSSI, callback);
+
+            writeFile(action.target, readSSI, callback);
         })
     })
 }
