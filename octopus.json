@@ -534,6 +534,28 @@
       ]
     },
     {
+      "name": "acdc-native-integration-build",
+      "src": "",
+      "actions": [
+        {
+          "type": "execute",
+          "cmd": "cd acdc/native-integration && npm run build",
+          "options": {
+            "ignoreErrors": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "./acdc/native-integration/build/bundles/default/camera.js",
+          "target": "./leaflet-ssapp/code/scripts/bundles/camera.js",
+          "options": {
+            "overwrite": true,
+            "ignoreErrors": true
+          }
+        }
+      ]
+    },
+    {
       "name": "leaflet-wallet_bind_to_leaflet-ssapp",
       "src": "",
       "actions": [
@@ -809,7 +831,10 @@
         },
         {
           "type": "execute",
-          "cmd": "cd acdc/native-integration && npm run build"
+          "cmd": "cd acdc/native-integration && npm run build",
+          "options": {
+            "ignoreErrors": true
+          }
         }
       ]
     }
@@ -862,7 +887,8 @@
           "src": "./acdc/native-integration/build/bundles/default/camera.js",
           "target": "./leaflet-ssapp/code/scripts/bundles/camera.js",
           "options": {
-            "overwrite": true
+            "overwrite": true,
+            "ignoreErrors": true
           }
         },
         {
@@ -938,7 +964,8 @@
           "src": "./acdc/native-integration/build/bundles/ios/camera.js",
           "target": "./leaflet-ssapp/code/scripts/bundles/camera.js",
           "options": {
-            "overwrite": true
+            "overwrite": true,
+            "ignoreErrors": true
           }
         },
         {
