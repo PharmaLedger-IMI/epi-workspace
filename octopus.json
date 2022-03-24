@@ -848,7 +848,7 @@
           "cmd": "npm run build leaflet-ssapp"
         },
         {
-          "type": "copy",
+          "type": "copySeed",
           "src": "./leaflet-ssapp/seed",
           "target": "./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
           "options": {
@@ -856,7 +856,7 @@
           }
         },
         {
-          "type": "copy",
+          "type": "copySeed",
           "src": "./leaflet-ssapp/seed",
           "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
           "options": {
