@@ -1063,6 +1063,10 @@
         {
           "type": "execute",
           "cmd": "cd acdc/reporting-service && npm install"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd acdc/native-integration && npm install"
         }
       ]
     }
