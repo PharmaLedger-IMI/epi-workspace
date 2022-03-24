@@ -880,7 +880,7 @@
       "actions": [
         {
           "type": "execute",
-          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run prepare-build-mobile\""
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js prepare-build-mobile\""
         },
         {
           "type": "copy",
@@ -893,7 +893,7 @@
         },
         {
           "type": "execute",
-          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run build-ssapps-and-configure-apihub-mobile\""
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-ssapps-and-configure-apihub-mobile\""
         }
       ]
     },
@@ -957,7 +957,7 @@
       "actions": [
         {
           "type": "execute",
-          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run prepare-build-mobile\""
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js prepare-build-mobile\""
         },
         {
           "type": "copy",
@@ -970,7 +970,7 @@
         },
         {
           "type": "execute",
-          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run build-ssapps-and-configure-apihub-mobile\""
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-ssapps-and-configure-apihub-mobile\""
         }
       ]
     },
