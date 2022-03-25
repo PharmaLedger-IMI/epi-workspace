@@ -32,14 +32,14 @@ const getReadSSIForAlias = (aliasSSI, callback) => {
 
         let sharedEnclave;
         try {
-            sharedEnclave = await $$.promisify(scAPI.getSharedEnclave);
+            sharedEnclave = await $$.promisify(scAPI.getSharedEnclave)();
         } catch (e) {
             octopus.handleError("Failed to get shared enclave", err);
             return;
         }
 
         try {
-            await $$.promisify(sharedEnclave.refresh);
+            await $$.promisify(sharedEnclave.refresh)();
         } catch (e) {
             return callback(e);
         }
