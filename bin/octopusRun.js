@@ -21,7 +21,6 @@ const readAlias = (src, callback) => {
 
 const getReadSSIForAlias = (aliasSSI, callback) => {
     const openDSU = require("opendsu");
-    const keySSISpace = openDSU.loadAPI("keyssi");
     aliasSSI = aliasSSI.toString();
 
     const scAPI = openDSU.loadAPI("sc");
@@ -72,7 +71,7 @@ const copySeed = (action, dependency, callback) => {
         throw "No target attribute found on: " + JSON.stringify(action);
     }
 
-    console.log("Start copying " + src + " to folder " + action.target);
+    console.log("Start expanding " + src + " to folder " + action.target);
 
     readAlias(src, (err, alias) => {
         if (err) {
