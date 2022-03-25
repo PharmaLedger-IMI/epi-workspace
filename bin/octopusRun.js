@@ -25,21 +25,28 @@ const getReadSSIForAlias = (aliasSSI, callback) => {
 
     const scAPI = openDSU.loadAPI("sc");
     const dt = openDSU.loadAPI("dt");
-    dt.initialiseBuildWallet((err) => {
+    dt.initialiseBuildWallet(async (err) => {
         if (err) {
             return callback(err);
         }
 
-        scAPI.getSharedEnclave((err, sharedEnclave) => {
-            if (err) {
-                octopus.handleError("Failed to get shared enclave", err);
-                return;
-            }
+        let sharedEnclave;
+        try {
+            sharedEnclave = await $$.promisify(scAPI.getSharedEnclave);
+        } catch (e) {
+            octopus.handleError("Failed to get shared enclave", err);
+            return;
+        }
 
-            sharedEnclave.getReadForKeySSI(aliasSSI, callback);
-        })
-    })
+        try {
+            await $$.promisify(sharedEnclave.refresh);
+        } catch (e) {
+            return callback(e);
+        }
+        sharedEnclave.getReadForKeySSI(aliasSSI, callback);
+    });
 }
+
 
 const writeFile = (path, data, callback) => {
     const dirPath = require("path").dirname(path);
