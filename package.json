@@ -29,6 +29,7 @@
     "create-did": "node ./bin/createKeyDID.js ./",
     "clean-build": "npm run clean && npm run build privatesky && npm run build-all",
     "freeze": "node ./node_modules/octopus/scripts/freeze dependencies install-mobile",
+    "tag-freeze": "node ./node_modules/octopus/scripts/tagFreeze dependencies install-mobile",
     "start-backoffice-backend": "cd acdc/backoffice-backend && npm run start",
     "start-backoffice-frontend": "cd acdc/backoffice-frontend && npm run start",
     "acdc-server": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"(cd acdc/backoffice-frontend && npm run start) & (cd acdc/backoffice-backend && npm run start)\""
