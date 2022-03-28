@@ -1,0 +1,11 @@
+{
+  "name": "webcardinal",
+  "license": "MIT",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node ./node_modules/octopus/scripts/buildDSU.js --bundles=./../privatesky/psknode/bundles"
+  },
+  "dependencies": {
+    "octopus": "git+https://github.com/PrivateSky/octopus.git"
+  }
+}
