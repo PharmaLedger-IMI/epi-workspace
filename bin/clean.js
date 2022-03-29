@@ -3,27 +3,27 @@ let myPath = process.argv[2];
 let fs = require('fs');
 let path = require('path');
 
-function  walk(dir, filterFiles, filterFolders, done) {
+function walk(dir, filterFiles, filterFolders, done) {
     let results = [];
 
-    let recWalk = function(dir, filterFiles, filterFolders, done) {
-        fs.readdir(dir, function(err, list) {
+    let recWalk = function (dir, filterFiles, filterFolders, done) {
+        fs.readdir(dir, function (err, list) {
             if (err) return done(err, result);
             let i = 0;
             (function next() {
                 let file = list[i++];
                 if (!file) return done(null, results);
                 file = path.resolve(dir, file);
-                fs.stat(file, function(err, stat) {
+                fs.stat(file, function (err, stat) {
                     if (stat && stat.isDirectory()) {
-                        if(filterFolders(file)) {
+                        if (filterFolders(file)) {
                             results.push(file);
                         }
-                        recWalk(file, filterFiles, filterFolders,function(err, res) {
+                        recWalk(file, filterFiles, filterFolders, function (err, res) {
                             next();
                         });
                     } else {
-                        if(filterFiles(file)) {
+                        if (filterFiles(file)) {
                             results.push(file);
                         }
                         next();
@@ -37,33 +37,40 @@ function  walk(dir, filterFiles, filterFolders, done) {
 }
 
 
-
-
-function filterFiles(name){
-
-    if(name.endsWith("cardinal\\seed") || name.endsWith("cardinal/seed")){
+function filterFiles(name) {
+    if (name.endsWith("/seed") || name.endsWith("\\seed")) {
+        let readSSI;
+        try {
+            readSSI = fs.readFileSync(name);
+            readSSI = readSSI.toString();
+        } catch (e) {
+            return console.log(e);
+        }
+        if (!readSSI.includes("ssi:alias")) {
             console.log("Deleting seed file:", name);
             fs.unlinkSync(name);
         }
-    return undefined;
+        return undefined;
+    }
 }
 
 
-function deleteFolderContent(name, text){
+function deleteFolderContent(name, text) {
     console.log(text, name);
     walk(name,
-        function(name){
+        function (name) {
             fs.unlinkSync(name);
         },
-        function(name){
+        function (name) {
         },
-        function(err, result){}
-        );
+        function (err, result) {
+        }
+    );
 }
 
-function filterFolders(name){
-    if(name){
-        if(name.endsWith("/anchors") || name.endsWith("\\anchors")){
+function filterFolders(name) {
+    if (name) {
+        if (name.endsWith("/anchors") || name.endsWith("\\anchors")) {
             deleteFolderContent(name, "Deleting anchors:")
         }
 
@@ -71,15 +78,15 @@ function filterFolders(name){
         //     deleteFolderContent(name, "Deleting bundles:")
         // }
 
-        if(name.indexOf("/brick-storage/") > 0 || name.indexOf("\\brick-storage\\") > 0 ){
+        if (name.indexOf("/brick-storage/") > 0 || name.indexOf("\\brick-storage\\") > 0) {
             deleteFolderContent(name, "Deleting bricks:")
         }
     }
     return undefined;
 }
 
-walk(myPath, filterFiles, filterFolders, function(err, result){
-    result.map( name => {
+walk(myPath, filterFiles, filterFolders, function (err, result) {
+    result.map(name => {
         console.log("Deleting folder:", name);
         fs.unlinkSync(name);
     })
