@@ -43,12 +43,16 @@ jobs:
         run: npm run dev-install
 
       # install dependencies
-      - name: Install dependencies (dev-install)
+      - name: Install dependencies (install-mobile)
         run: npm run install-mobile
 
+      # create a replacement for missing sleep cmd
+      - name: sleep-alternative
+        run: echo 'console.log('TIC'); setTimeout(()=>{console.log('TAC')}, process.argv[3])' >> timeout.js
+        
       # prepare test script
       - name: Prepare test script
-        run: echo 'npm run server & \n timeout 60s tail -f /dev/null \n npm run build-all \n npm run build-mobile \n killall -9 node' >> run-test.sh && chmod 711 run-test.sh 
+        run: echo 'npm run server & \n node timout.js 60*1000 /dev/null \n npm run build-all \n npm run build-mobile \n killall -9 node' >> run-test.sh && chmod 711 run-test.sh 
         
       # Run build tests
       - name: Run build tests
