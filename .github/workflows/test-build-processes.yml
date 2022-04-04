@@ -46,6 +46,10 @@ jobs:
       - name: Install dependencies (dev-install)
         run: npm run install-mobile
 
-      # run build process
-      - name: Run build all process
-        run: npm run server & \n sleep 1m \n npm run build-all \n npm run build-mobile \n killall -9 node
+      # prepare test script
+      - name: Prepare test script
+        run: echo 'npm run server & \n sleep 1m \n npm run build-all \n npm run build-mobile \n killall -9 node' >> run-test.sh 
+        
+      # Run build tests
+      - name: Run build tests
+        run: ./run-test.sh
