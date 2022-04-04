@@ -52,7 +52,7 @@ jobs:
         
       # prepare test script
       - name: Prepare test script
-        run: echo 'npm run server & \n node timout.js 60*1000 /dev/null \n npm run build-all \n npm run build-mobile \n killall -9 node' >> run-test.sh && chmod 711 run-test.sh 
+        run: echo 'npm run server &' >> run-test.sh && echo 'node timout.js 60*1000' >> run-test.sh && echo 'npm run build-all' >> run-test.sh && echo 'npm run build-mobile' >> run-test.sh && echo 'killall -9 node' >> run-test.sh && chmod 711 run-test.sh 
         
       # Run build tests
       - name: Run build tests
