@@ -36,7 +36,7 @@ jobs:
 
       # install psmisc for killall
       - name: Install psmisc package
-        run: apt-get install -y psmisc
+        run: sudo apt-get install -y psmisc
 
       # install dependencies
       - name: Install dependencies (dev-install)
