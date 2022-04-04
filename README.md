@@ -1,3 +1,5 @@
+[![Testing workflow](https://github.com/PharmaLedger-IMI/epi-workspace/actions/workflows/tests.yml/badge.svg)](https://github.com/PharmaLedger-IMI/epi-workspace/actions/workflows/tests.yml)
+[![Testing SSApps building workflow](https://github.com/PharmaLedger-IMI/epi-workspace/actions/workflows/test-build-processes.yml/badge.svg)](https://github.com/PharmaLedger-IMI/epi-workspace/actions/workflows/test-build-processes.yml)
 # epi-workspace
 
 *epi-workspace*  bundles all the necessary dependencies for building and running EPI SSApps in a single package.
