@@ -48,7 +48,7 @@ jobs:
 
       # create a replacement for missing sleep cmd
       - name: sleep-alternative
-        run: echo 'console.log('TIC'); setTimeout(()=>{console.log('TAC')}, process.argv[3])' >> timeout.js
+        run: echo 'console.log("TIC"); setTimeout(()=>{console.log("TAC")}, process.argv[3])' >> timeout.js
         
       # prepare test script
       - name: Prepare test script
