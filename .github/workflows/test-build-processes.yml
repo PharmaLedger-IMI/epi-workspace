@@ -48,7 +48,7 @@ jobs:
 
       # prepare test script
       - name: Prepare test script
-        run: echo 'npm run server & \n sleep 1m \n npm run build-all \n npm run build-mobile \n killall -9 node' >> run-test.sh 
+        run: echo 'npm run server & \n sleep 1m \n npm run build-all \n npm run build-mobile \n killall -9 node' >> run-test.sh && chmod +X run-test.sh 
         
       # Run build tests
       - name: Run build tests
