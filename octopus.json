@@ -678,14 +678,6 @@
           "cmd": "cd apihub-root/leaflet-wallet/loader && npm run build"
         }
       ]
-    },
-    {"name": "build-acdc-parts",
-      "actions": [
-        {
-          "type": "execute",
-          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acdc\""
-        }
-      ]
     }
   ],
   "install-mobile": [
