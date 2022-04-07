@@ -846,6 +846,14 @@
             "overwrite": true
           }
         },
+        {"name": "build-acdc-parts",
+          "actions": [
+            {
+              "type": "execute",
+              "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acdc\""
+            }
+          ]
+        },
         {
           "type": "copy",
           "src": "./trust-loader-config",
