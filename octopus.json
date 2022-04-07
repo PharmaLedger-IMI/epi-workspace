@@ -185,21 +185,6 @@
       ]
     },
     {
-      "name": "themes/savana-theme",
-      "src": "http://github.com/privatesky/savana-theme.git",
-      "actions": [
-        {
-          "type": "smartClone",
-          "target": ".",
-          "collectLog": false
-        },
-        {
-          "type": "execute",
-          "cmd": "cd themes/savana-theme && npm install"
-        }
-      ]
-    },
-    {
       "name": "themes/clear-sky-theme",
       "src": "http://github.com/privatesky/clear-sky-theme.git",
       "actions": [
@@ -432,16 +417,6 @@
         {
           "type": "execute",
           "cmd": "cd themes/citrus-theme && npm run build-dossier"
-        }
-      ]
-    },
-    {
-      "name": "savana-theme-wallet-build",
-      "src": "",
-      "actions": [
-        {
-          "type": "execute",
-          "cmd": "cd themes/savana-theme && npm run build-dossier"
         }
       ]
     },
@@ -701,6 +676,14 @@
         {
           "type": "execute",
           "cmd": "cd apihub-root/leaflet-wallet/loader && npm run build"
+        }
+      ]
+    },
+    {"name": "build-acdc-parts",
+      "actions": [
+        {
+          "type": "execute",
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acdc\""
         }
       ]
     }
@@ -1054,6 +1037,74 @@
         {
           "type": "execute",
           "cmd": "cd acdc/native-integration && npm install"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd acdc/pdm-web-components && npm install"
+        }
+      ]
+    },
+    {
+      "name": "delayv-auth-feat-ssapp",
+      "src": "https://github.com/asaccool/acdc-authentication-feature-59k3",
+      "actions": [
+        {
+          "type": "smartClone",
+          "target": ".",
+          "collectLog": false
+        },
+        {
+          "type": "execute",
+          "cmd": "cd delayv-auth-feat-ssapp && npm install"
+        }
+      ]
+    },
+    {
+      "name": "acdc-authentication-feature-template",
+      "src": "https://github.com/PharmaLedger-IMI/acdc-authentication-feature-template",
+      "actions": [
+        {
+          "type": "smartClone",
+          "target": ".",
+          "collectLog": false
+        },
+        {
+          "type": "execute",
+          "cmd": "cd acdc-authentication-feature-template && npm install"
+        }
+      ]
+    },
+    {
+      "name": "truemedhemo-auth-feat-ssapp",
+      "src": "https://github.com/resilient-research-development/acdc-authentication-feature-template",
+      "actions": [
+        {
+          "type": "smartClone",
+          "target": ".",
+          "collectLog": false
+        },
+        {
+          "type": "execute",
+          "cmd": "cd truemedhemo-auth-feat-ssapp && npm install"
+        }
+      ]
+    }
+  ],
+  "build-acdc": [
+    {
+      "name": "build-pdm-web-components",
+      "actions": [
+        {
+          "type": "execute",
+          "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd delayv-auth-feat-ssapp && npm run build"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
         }
       ]
     }
