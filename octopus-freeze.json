@@ -1,19 +1,20 @@
- {
+{
     "workDir": ".",
     "dependencies": [
         {
-            "name": "webcardinal",
-            "src": "https://github.com/webcardinal/webcardinal-bundler",
+            "name": "webcardinal/bundle",
+            "src": "https://github.com/webcardinal/webcardinal-all-release",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "68984b25ec39755e11caf03a6dca77d95cac16d9"
+                    "commit": "0b8ef9818b375a2f99da2c990507fce59ab0bec1",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd webcardinal && npm install && npm run bundle-all && npm run build"
+                    "cmd": "cd webcardinal && npm install"
                 }
             ]
         },
@@ -25,7 +26,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "f2080909d6780d532225389eefadbbba494d70b4"
+                    "commit": "517a141d5b84fd87f69b2e51d838cd410652febd",
+                    "tag": "v0.1.2"
                 },
                 {
                     "type": "execute",
@@ -45,7 +47,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "be6671410fcfede5f451127112d6879f90922810"
+                    "commit": "f3e2be682f94022c7ecfcb4fec1e5529a7d4f213",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -70,7 +73,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "f1b399830c426eca33c3ee5af57a918441f808e7"
+                    "commit": "f1b399830c426eca33c3ee5af57a918441f808e7",
+                    "tag": "v0.0.1"
                 },
                 {
                     "type": "execute",
@@ -86,7 +90,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "bad2bf28a39bfd50f3297f9a7946c659d5251176"
+                    "commit": "b34fd66973e6c0525835826278eda8abf78cfbe4",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -102,7 +107,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "cfee0acfce31d693317df092c003a2a18c0b044c"
+                    "commit": "90cf7f8d74c6e2e16e78a2d7952f85de41fd3612",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -118,7 +124,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "6915612d81ccfb5af2addaee6f399947b08304f1"
+                    "commit": "a5e306c43a836a947687aa35a24ae2ebb946e45f",
+                    "tag": "v0.2.0"
                 },
                 {
                     "type": "execute",
@@ -142,7 +149,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "3c644faf0d489c33362e4b57dcb7f1bce6e7a6f6"
+                    "commit": "a5e306c43a836a947687aa35a24ae2ebb946e45f",
+                    "tag": "v0.2.0"
                 },
                 {
                     "type": "execute",
@@ -166,7 +174,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "3c644faf0d489c33362e4b57dcb7f1bce6e7a6f6"
+                    "commit": "a5e306c43a836a947687aa35a24ae2ebb946e45f",
+                    "tag": "v0.2.0"
                 },
                 {
                     "type": "execute",
@@ -186,27 +195,12 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "3b5593866ead4dfa9d16358bacd24cdea83ffd3d"
+                    "commit": "f10c0658bdb3bca8d230319bb48551f63d32c235",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
                     "cmd": "cd themes/citrus-theme && npm install"
-                }
-            ]
-        },
-        {
-            "name": "themes/savana-theme",
-            "src": "http://github.com/privatesky/savana-theme.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "e5f7f37a94e7e47d6ab92b2592827826ed708998"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/savana-theme && npm install"
                 }
             ]
         },
@@ -218,7 +212,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "8e8d13a44fadff7a2c31e2bc6fd2dd1db2b10bbe"
+                    "commit": "e80ebf1d3214c37470cfd3bbc6925727bc7d052a",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -234,7 +229,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "fc2ee2879299cd68184e5798093a34da1ea92b86"
+                    "commit": "28a1388ee90ad3d7fbaedd302674c8c9e8b45fe8",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -250,7 +246,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "8ccb66adb594da6571bb5024c4556b2c899388df"
+                    "commit": "402bf949d3c623b96e2acef28fb2969998cbed2e",
+                    "tag": "v0.2.0"
                 },
                 {
                     "type": "execute",
@@ -266,7 +263,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "3c644faf0d489c33362e4b57dcb7f1bce6e7a6f6"
+                    "commit": "a5e306c43a836a947687aa35a24ae2ebb946e45f",
+                    "tag": "v0.2.0"
                 },
                 {
                     "type": "execute",
@@ -290,7 +288,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "f1be80a76e7a07f644c161c8095802344c4a62a2"
+                    "commit": "7e41aeaa8c8ded1d27d9f34d5eaada3ae74bc6d1",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -320,7 +319,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "357b163b46d94c8ed06af83a61f8d2cf7da2368b"
+                    "commit": "357b163b46d94c8ed06af83a61f8d2cf7da2368b",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -336,7 +336,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7dfa8dd6bd13239b698e0bd1a71e0aa353e16ba2"
+                    "commit": "7a2a9ad3f6e38b7a5bc34c07cccba5ac52c65da6",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -352,7 +353,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "6e7bed56f5c040908c32c099f5dd2a313fb1652c"
+                    "commit": "7bfc82280ddc11449b1a4f302d2eb2bbc2cf6174",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -368,35 +370,12 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7d5f95429acd780a422054a84a75fd5c9380e735"
+                    "commit": "7d5f95429acd780a422054a84a75fd5c9380e735",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
                     "cmd": "cd express-demo && npm install"
-                }
-            ]
-        },
-        {
-            "name": "ethereum-anchoring",
-            "src": "https://github.com/PharmaLedger-IMI/ethereum-anchoring",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "5930b8044c03b7a9c77bef2298879fd156dba1d8"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd ethereum-anchoring && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo \"manualy run cd ethereum-anchoring/ApiAdaptor && npm install\""
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo \"manualy run cd ethereum-anchoring/SmartContract && npm install\""
                 }
             ]
         },
@@ -408,7 +387,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "f308a44ed20c98c01e09ba794ab74fc6b40193ff"
+                    "commit": "1d40dbfede266b7bc5e923d864afa8329ce8f50d",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -432,7 +412,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "9471f05566652c6caddd33832052d0ced9d66ea4"
+                    "commit": "0f65b913a2c034f9b19c7f6e3501095f534450a6",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -457,7 +438,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd webcardinal && npm run build-dossier"
+                    "cmd": "cd webcardinal && npm run build"
                 }
             ]
         },
@@ -478,16 +459,6 @@
                 {
                     "type": "execute",
                     "cmd": "cd themes/citrus-theme && npm run build-dossier"
-                }
-            ]
-        },
-        {
-            "name": "savana-theme-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/savana-theme && npm run build-dossier"
                 }
             ]
         },
@@ -520,7 +491,7 @@
                     "cmd": "cd dossier-explorer-wallet-prototype && npm run build"
                 },
                 {
-                    "type": "copy",
+                    "type": "copySeed",
                     "src": "./dossier-explorer-wallet-prototype/seed",
                     "target": "./apihub-root/dsu-explorer/wallet-patch/seed",
                     "options": {
@@ -548,7 +519,7 @@
                     "cmd": "cd dossier-explorer-ssapp && npm run build"
                 },
                 {
-                    "type": "copy",
+                    "type": "copySeed",
                     "src": "./dossier-explorer-ssapp/seed",
                     "target": "./apihub-root/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
                     "options": {
@@ -580,6 +551,28 @@
             ]
         },
         {
+            "name": "acdc-native-integration-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/native-integration && npm run build",
+                    "options": {
+                        "ignoreErrors": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./acdc/native-integration/build/bundles/default/camera.js",
+                    "target": "./apihub-root/leaflet-wallet/loader/camera.js",
+                    "options": {
+                        "overwrite": true,
+                        "ignoreErrors": true
+                    }
+                }
+            ]
+        },
+        {
             "name": "leaflet-wallet_bind_to_leaflet-ssapp",
             "src": "",
             "actions": [
@@ -588,7 +581,7 @@
                     "cmd": "cd leaflet-ssapp && npm run build"
                 },
                 {
-                    "type": "copy",
+                    "type": "copySeed",
                     "src": "./leaflet-ssapp/seed",
                     "target": "./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
                     "options": {
@@ -596,7 +589,7 @@
                     }
                 },
                 {
-                    "type": "copy",
+                    "type": "copySeed",
                     "src": "./leaflet-ssapp/seed",
                     "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
                     "options": {
@@ -618,7 +611,7 @@
                     "cmd": "cd demiurge && npm run build"
                 },
                 {
-                    "type": "copy",
+                    "type": "copySeed",
                     "src": "./demiurge/seed",
                     "target": "./apihub-root/demiurge-wallet/apps-patch/demiurge/seed",
                     "options": {
@@ -626,7 +619,7 @@
                     }
                 },
                 {
-                    "type": "copy",
+                    "type": "copySeed",
                     "src": "./demiurge/seed",
                     "target": "./apihub-root/demiurge-wallet/wallet-patch/seed",
                     "options": {
@@ -648,7 +641,7 @@
                     "cmd": "cd dsu-fabric-ssapp && npm run build"
                 },
                 {
-                    "type": "copy",
+                    "type": "copySeed",
                     "src": "./dsu-fabric-ssapp/seed",
                     "target": "./apihub-root/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed",
                     "options": {
@@ -656,7 +649,7 @@
                     }
                 },
                 {
-                    "type": "copy",
+                    "type": "copySeed",
                     "src": "./dsu-fabric-ssapp/seed",
                     "target": "./apihub-root/dsu-fabric-wallet/wallet-patch/seed",
                     "options": {
@@ -738,7 +731,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "0fe1811bf6ee1db3eed3db724d0a279a5a156e8a"
+                    "commit": "0fe1811bf6ee1db3eed3db724d0a279a5a156e8a",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -754,7 +748,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "8d487cf95a8885497d938df88da640de94304c6c"
+                    "commit": "0076688beedfcbd9d36c7e576350abc00e4dab1d",
+                    "tag": "v1.0.0"
                 },
                 {
                     "type": "execute",
@@ -831,7 +826,7 @@
             ]
         }
     ],
-    "build-mobile": [
+    "prepare-build-mobile": [
         {
             "name": "prebuild",
             "actions": [
@@ -841,7 +836,7 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd webcardinal && npm run build-dossier"
+                    "cmd": "cd webcardinal && npm run build"
                 },
                 {
                     "type": "execute",
@@ -857,10 +852,24 @@
                 },
                 {
                     "type": "execute",
+                    "cmd": "cd acdc/native-integration && npm run build",
+                    "options": {
+                        "ignoreErrors": true
+                    }
+                }
+            ]
+        }
+    ],
+    "build-ssapps-and-configure-apihub-mobile": [
+        {
+            "name": "prebuild",
+            "actions": [
+                {
+                    "type": "execute",
                     "cmd": "npm run build leaflet-ssapp"
                 },
                 {
-                    "type": "copy",
+                    "type": "copySeed",
                     "src": "./leaflet-ssapp/seed",
                     "target": "./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
                     "options": {
@@ -868,12 +877,16 @@
                     }
                 },
                 {
-                    "type": "copy",
+                    "type": "copySeed",
                     "src": "./leaflet-ssapp/seed",
                     "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acdc\""
                 },
                 {
                     "type": "copy",
@@ -882,6 +895,21 @@
                     "options": {
                         "overwrite": true
                     }
+                }
+            ]
+        }
+    ],
+    "build-mobile": [
+        {
+            "name": "prepare-phase",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js prepare-build-mobile\""
+                },
+                {
+                    "type": "execute",
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-ssapps-and-configure-apihub-mobile\""
                 }
             ]
         },
@@ -916,6 +944,15 @@
                     "type": "copy",
                     "src": "apihub-root/external-volume",
                     "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/external-volume"
+                },
+                {
+                    "type": "copy",
+                    "src": "./acdc/native-integration/build/bundles/default/camera.js",
+                    "target": "./apihub-root/leaflet-wallet/loader/camera.js",
+                    "options": {
+                        "overwrite": true,
+                        "ignoreErrors": true
+                    }
                 },
                 {
                     "type": "copy",
@@ -974,6 +1011,15 @@
                 },
                 {
                     "type": "copy",
+                    "src": "./acdc/native-integration/build/bundles/ios/camera.js",
+                    "target": "./apihub-root/leaflet-wallet/loader/camera.js",
+                    "options": {
+                        "overwrite": true,
+                        "ignoreErrors": true
+                    }
+                },
+                {
+                    "type": "copy",
                     "src": "apihub-root/leaflet-wallet",
                     "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app"
                 },
@@ -1029,6 +1075,78 @@
                 {
                     "type": "execute",
                     "cmd": "cd acdc/reporting-service && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/native-integration && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/pdm-web-components && npm install"
+                }
+            ]
+        },
+        {
+            "name": "delayv-auth-feat-ssapp",
+            "src": "https://github.com/asaccool/acdc-authentication-feature-59k3",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd delayv-auth-feat-ssapp && npm install"
+                }
+            ]
+        },
+        {
+            "name": "acdc-authentication-feature-template",
+            "src": "https://github.com/PharmaLedger-IMI/acdc-authentication-feature-template",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc-authentication-feature-template && npm install"
+                }
+            ]
+        },
+        {
+            "name": "truemedhemo-auth-feat-ssapp",
+            "src": "https://github.com/resilient-research-development/acdc-authentication-feature-template",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd truemedhemo-auth-feat-ssapp && npm install"
+                }
+            ]
+        }
+    ],
+    "build-acdc": [
+        {
+            "name": "build-pdm-web-components",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd delayv-auth-feat-ssapp && npm run build"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
                 }
             ]
         }
