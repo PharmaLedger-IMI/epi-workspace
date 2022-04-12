@@ -60,21 +60,6 @@
       ]
     },
     {
-      "name": "menu-wallet-prototype",
-      "src": "http://github.com/privatesky/menu-wallet-prototype.git",
-      "actions": [
-        {
-          "type": "smartClone",
-          "target": ".",
-          "collectLog": false
-        },
-        {
-          "type": "execute",
-          "cmd": "cd menu-wallet-prototype && npm install"
-        }
-      ]
-    },
-    {
       "name": "leaflet-ssapp",
       "src": "https://github.com/PharmaLedger-IMI/leaflet-ssapp.git",
       "actions": [
