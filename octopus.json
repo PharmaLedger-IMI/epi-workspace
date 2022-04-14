@@ -684,7 +684,7 @@
   ],
   "postbuild": [
     {
-      "name": "webcardinal/bundle",
+      "name": "patching trust loaders configs",
       "actions": [
         {
           "type": "execute",
