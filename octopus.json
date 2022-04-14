@@ -417,7 +417,7 @@
       ]
     }
   ],
-  "prebuild": [
+  "ssapps-and-wallets-build": [
     {
       "name": "cardinal-wallet-build",
       "src": "",
@@ -656,6 +656,15 @@
           "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/readme"
         }
       ]
+    },
+    {
+      "name": "ssapps-and-wallets-build-finish",
+      "actions": [
+        {
+          "type": "execute",
+          "cmd": "echo \"----ssapps-and-wallets-build-finished----\""
+        }
+      ]
     }
   ],
   "build": [
@@ -664,7 +673,7 @@
       "actions": [
         {
           "type": "execute",
-          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js prebuild\""
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js ssapps-and-wallets-build\""
         },
         {
           "type": "execute",
