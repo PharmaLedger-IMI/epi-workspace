@@ -60,7 +60,11 @@ let LOADER_GLOBALS = {
   <p class="lead">After completing the following wizard you will gain access to your private data.</p>
   <p class="m-0">In order to access your private data you have to set up your credentials.</p>
   <hr/>
-</div>`
+</div>`,
+	WALLET_BUILDER_SERVICE:{
+		WALLET_TEMPLATE_FOLDER_NAME: "../external-volume/wallets/leaflet-wallet/wallet-patch",
+		APPS_TEMPLATE_FOLDER_NAME: "../external-volume/wallets/leaflet-wallet/apps-patch"
+	}
 };
 
 export default LOADER_GLOBALS;

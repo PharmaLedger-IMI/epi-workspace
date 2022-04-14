@@ -365,7 +365,59 @@
       ]
     }
   ],
-  "build": [
+  "postinstall": [
+    {
+      "name": "trust-loader-config",
+      "actions": [
+        {
+          "type": "copy",
+          "src": "./trust-loader-config",
+          "target": "./apihub-root",
+          "options": {
+            "overwrite": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "copy-bundles",
+      "actions": [
+        {
+          "type": "execute",
+          "cmd": "cd apihub-root/leaflet-wallet/loader && npm install"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm install"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd apihub-root/dsu-explorer/loader && npm install"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd apihub-root/demiurge-wallet/loader && npm install"
+        },
+        {
+          "type": "copy",
+          "src": "./privatesky/psknode/bundles/webshims.js",
+          "target": "./apihub-root/bundles/webshims.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "./privatesky/psknode/bundles/loaderBoot.js",
+          "target": "./apihub-root/bundles/loaderBoot.js",
+          "options": {
+            "overwrite": true
+          }
+        }
+      ]
+    }
+  ],
+  "prebuild": [
     {
       "name": "cardinal-wallet-build",
       "src": "",
@@ -436,7 +488,7 @@
         {
           "type": "copySeed",
           "src": "./dossier-explorer-wallet-prototype/seed",
-          "target": "./apihub-root/dsu-explorer/wallet-patch/seed",
+          "target": "./apihub-root/external-volume/wallets/dsu-explorer/wallet-patch/seed",
           "options": {
             "overwrite": true
           }
@@ -464,14 +516,14 @@
         {
           "type": "copySeed",
           "src": "./dossier-explorer-ssapp/seed",
-          "target": "./apihub-root/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
+          "target": "./apihub-root/external-volume/wallets/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
           "options": {
             "overwrite": true
           }
         },
         {
           "type": "execute",
-          "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/dsu-explorer/apps-patch/dossier-explorer-ssapp/readme"
+          "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/dsu-explorer/apps-patch/dossier-explorer-ssapp/readme"
         }
       ]
     },
@@ -526,7 +578,7 @@
         {
           "type": "copySeed",
           "src": "./leaflet-ssapp/seed",
-          "target": "./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
+          "target": "./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
           "options": {
             "overwrite": true
           }
@@ -534,14 +586,14 @@
         {
           "type": "copySeed",
           "src": "./leaflet-ssapp/seed",
-          "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
+          "target": "./apihub-root/external-volume/wallets/leaflet-wallet/wallet-patch/seed",
           "options": {
             "overwrite": true
           }
         },
         {
           "type": "execute",
-          "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/readme"
+          "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/readme"
         }
       ]
     },
@@ -556,7 +608,7 @@
         {
           "type": "copySeed",
           "src": "./demiurge/seed",
-          "target": "./apihub-root/demiurge-wallet/apps-patch/demiurge/seed",
+          "target": "./apihub-root/external-volume/wallets/demiurge-wallet/apps-patch/demiurge/seed",
           "options": {
             "overwrite": true
           }
@@ -564,14 +616,14 @@
         {
           "type": "copySeed",
           "src": "./demiurge/seed",
-          "target": "./apihub-root/demiurge-wallet/wallet-patch/seed",
+          "target": "./apihub-root/external-volume/wallets/demiurge-wallet/wallet-patch/seed",
           "options": {
             "overwrite": true
           }
         },
         {
           "type": "execute",
-          "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/demiurge-wallet/apps-patch/demiurge/readme"
+          "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/demiurge-wallet/apps-patch/demiurge/readme"
         }
       ]
     },
@@ -586,7 +638,7 @@
         {
           "type": "copySeed",
           "src": "./dsu-fabric-ssapp/seed",
-          "target": "./apihub-root/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed",
+          "target": "./apihub-root/external-volume/wallets/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed",
           "options": {
             "overwrite": true
           }
@@ -594,64 +646,40 @@
         {
           "type": "copySeed",
           "src": "./dsu-fabric-ssapp/seed",
-          "target": "./apihub-root/dsu-fabric-wallet/wallet-patch/seed",
+          "target": "./apihub-root/external-volume/wallets/dsu-fabric-wallet/wallet-patch/seed",
           "options": {
             "overwrite": true
           }
         },
         {
           "type": "execute",
-          "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/readme"
+          "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/readme"
         }
       ]
-    },
+    }
+  ],
+  "build": [
     {
-      "name": "trust-loader-config",
-      "actions": [
-        {
-          "type": "copy",
-          "src": "./trust-loader-config",
-          "target": "./apihub-root",
-          "options": {
-            "overwrite": true
-          }
-        }
-      ]
-    },
-    {
-      "name": "copy-bundles",
+      "name": "build-all",
       "actions": [
         {
           "type": "execute",
-          "cmd": "cd apihub-root/leaflet-wallet/loader && npm install"
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js prebuild\""
         },
         {
           "type": "execute",
-          "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm install"
-        },
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js postbuild\""
+        }
+      ]
+    }
+  ],
+  "postbuild": [
+    {
+      "name": "webcardinal/bundle",
+      "actions": [
         {
           "type": "execute",
-          "cmd": "cd apihub-root/dsu-explorer/loader && npm install"
-        },
-        {
-          "type": "execute",
-          "cmd": "cd apihub-root/demiurge-wallet/loader && npm install"
-        },
-        {
-          "type": "copy",
-          "src": "./privatesky/psknode/bundles/webshims.js",
-          "target": "./apihub-root/bundles/webshims.js",
-          "options": {
-            "overwrite": true
-          }
-        },
-        {
-          "type": "copy",
-          "src": "./privatesky/psknode/bundles/loaderBoot.js",
-          "target": "./apihub-root/bundles/loaderBoot.js",
-          "options": {
-            "overwrite": true
-          }
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js postinstall\""
         }
       ]
     },

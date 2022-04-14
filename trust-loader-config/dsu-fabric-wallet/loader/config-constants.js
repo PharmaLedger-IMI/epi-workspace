@@ -61,7 +61,11 @@ let LOADER_GLOBALS = {
   <p class="lead">After completing the following wizard you will gain access to EPI backend app.</p>
   <p class="m-0">In order to gain access you have to set up your credentials.</p>
   <hr/>
-</div>`
+</div>`,
+	WALLET_BUILDER_SERVICE:{
+		WALLET_TEMPLATE_FOLDER_NAME: "../external-volume/wallets/dsu-fabric-wallet/wallet-patch",
+		APPS_TEMPLATE_FOLDER_NAME: "../external-volume/wallets/dsu-fabric-wallet/apps-patch"
+	}
 };
 
 export default LOADER_GLOBALS;
