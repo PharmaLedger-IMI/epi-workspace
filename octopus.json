@@ -847,7 +847,7 @@
         {
           "type": "copySeed",
           "src": "./leaflet-ssapp/seed",
-          "target": "./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
+          "target": "./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
           "options": {
             "overwrite": true
           }
@@ -855,7 +855,7 @@
         {
           "type": "copySeed",
           "src": "./leaflet-ssapp/seed",
-          "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
+          "target": "./apihub-root/external-volume/wallets/leaflet-wallet/wallet-patch/seed",
           "options": {
             "overwrite": true
           }
