@@ -1,6 +1,6 @@
 const {ACDC_STATUS, HEADERS} = require('../constants');
 const ScanResult = require('../model/ScanResult');
-const {constants} = require('../../gtin-resolver/lib/utils/commonUtils');
+const {constants} = require('../../gtin-resolver/lib/utils/CommonUtils');
 
 const DEFAULT_ENDPOINT = 'http://localhost:8080'
 /**
