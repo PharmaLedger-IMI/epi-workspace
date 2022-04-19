@@ -25,7 +25,7 @@ For more details about what a *workspace* is check out the [template-workspace](
     1. [Configuring Domain for ApiHub Mapping Engine usage](#configuring-domain-for-apihub-mapping-engine-usage)
     2. [Testing ApiHub Mapping Engine](#testing-apihub-mapping-engine)
 7. [ACDC reporting functionality](#acdc-reporting-functionality)
-8. [ACDC Authentication SSApps instalation and test](#acdc-authentication-ssapps-instalation-and-test)
+8. [ACF SSApps instalation and test](#acf-ssapps-instalation-and-test)
 
 
 ## Installation
@@ -296,24 +296,28 @@ npm run install-acdc
 npm run acdc-server
 
 
-### ACDC Authentication SSApps instalation and test
-For the moment, DelayV and TrueMed Auth SSApps are added into epi-workspace to facilitate the integration of the ACDC workspace and results. In order to accomplish this, special commands where created like npm run install-acdc and npm run build-acdc. 
+### ACF SSApps instalation and test
+For the moment, DelayV and TrueMed Auth SSApps are added into epi-workspace to facilitate the integration of the ACDC workspace and results. In order to accomplish this, special commands where created like npm run install-acf and npm run build-acf-ssapps. 
 
 1. Bind ACDC repository into workspace
 ```sh
 npm run install-acdc
 ```
-2. Update the apiKeys and secrets in the Auth SSApps
-
-3. Build ACDC Authentication SSApps
+2. Install ACF SSApps
 ```sh
-npm run build-acdc
+npm run install-acf-ssapps
+```
+3. Update the apiKeys and secrets in the Auth SSApps
+
+4. Build ACDC Authentication SSApps
+```sh
+npm run build-acf-ssapps
 ```
 In the console there should be the KeySSI's of the Auth SSApps. We need them in order to properly create and edit batches in order to activate the Authentication feature for them.
 
-Keep in mind that also for testing purpose and fast development the Auth SSApps are also included into the epi mobile build if the npm run install-acdc was executed.
+Keep in mind that also for testing purpose and fast development the Auth SSApps are also included into the epi mobile build if the npm run install-acf-ssaps was executed.
 
-1. Test ACDC Authentication SSApps into mobile build
+1. Test ACF Authentication SSApps into mobile build
 ```sh
 npm run build-mobile
 ```
