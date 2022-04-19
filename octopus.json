@@ -862,7 +862,11 @@
         },
         {
           "type": "execute",
-          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acdc\""
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acf-ssapps\"",
+          "options": {
+            "overwrite": true,
+            "ignoreErrors": true
+          }
         },
         {
           "type": "copy",
@@ -1026,42 +1030,7 @@
       ]
     }
   ],
-  "install-acdc": [
-    {
-      "name": "acdc",
-      "src": "https://github.com/PharmaLedger-IMI/acdc-components.git",
-      "actions": [
-        {
-          "type": "smartClone",
-          "target": ".",
-          "collectLog": false
-        },
-        {
-          "type": "execute",
-          "cmd": "cd acdc && npm install"
-        },
-        {
-          "type": "execute",
-          "cmd": "cd acdc/backoffice-backend && npm install"
-        },
-        {
-          "type": "execute",
-          "cmd": "cd acdc/backoffice-frontend && npm install"
-        },
-        {
-          "type": "execute",
-          "cmd": "cd acdc/reporting-service && npm install"
-        },
-        {
-          "type": "execute",
-          "cmd": "cd acdc/native-integration && npm install"
-        },
-        {
-          "type": "execute",
-          "cmd": "cd acdc/pdm-web-components && npm install"
-        }
-      ]
-    },
+  "install-acf-ssapps": [
     {
       "name": "delayv-auth-feat-ssapp",
       "src": "https://github.com/asaccool/acdc-authentication-feature-59k3",
@@ -1108,6 +1077,43 @@
       ]
     }
   ],
+  "install-acdc": [
+    {
+      "name": "acdc",
+      "src": "https://github.com/PharmaLedger-IMI/acdc-components.git",
+      "actions": [
+        {
+          "type": "smartClone",
+          "target": ".",
+          "collectLog": false
+        },
+        {
+          "type": "execute",
+          "cmd": "cd acdc && npm install"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd acdc/backoffice-backend && npm install"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd acdc/backoffice-frontend && npm install"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd acdc/reporting-service && npm install"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd acdc/native-integration && npm install"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd acdc/pdm-web-components && npm install"
+        }
+      ]
+    }
+  ],
   "build-acdc": [
     {
       "name": "build-pdm-web-components",
@@ -1115,16 +1121,25 @@
         {
           "type": "execute",
           "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
-        },
-        {
-          "type": "execute",
-          "cmd": "cd delayv-auth-feat-ssapp && npm run build"
-        },
-        {
-          "type": "execute",
-          "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
         }
       ]
     }
-  ]
+  ],
+  "build-acf-ssapps": [{
+    "name": "build-pdm-web-components",
+    "actions": [
+      {
+        "type": "execute",
+        "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acdc\""
+      },
+      {
+        "type": "execute",
+        "cmd": "cd delayv-auth-feat-ssapp && npm run build"
+      },
+      {
+        "type": "execute",
+        "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
+      }
+    ]
+  }]
 }
