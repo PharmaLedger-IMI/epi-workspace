@@ -417,6 +417,58 @@
       ]
     }
   ],
+  "dsu-explorer-build": [
+    {
+      "name": "blue-fluorite-theme-wallet-build",
+      "src": "",
+      "actions": [
+        {
+          "type": "execute",
+          "cmd": "cd themes/blue-fluorite-theme && npm run build-dossier"
+        }
+      ]
+    },
+    {
+      "name": "dossier-explorer-wallet-prototype-build",
+      "src": "",
+      "actions": [
+        {
+          "type": "execute",
+          "cmd": "cd dossier-explorer-wallet-prototype && npm run build"
+        },
+        {
+          "type": "copySeed",
+          "src": "./dossier-explorer-wallet-prototype/seed",
+          "target": "./apihub-root/external-volume/wallets/dsu-explorer/wallet-patch/seed",
+          "options": {
+            "overwrite": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "dsu-explorer_bind_to_dossier-explorer-ssapp",
+      "src": "",
+      "actions": [
+        {
+          "type": "execute",
+          "cmd": "cd dossier-explorer-ssapp && npm run build"
+        },
+        {
+          "type": "copySeed",
+          "src": "./dossier-explorer-ssapp/seed",
+          "target": "./apihub-root/external-volume/wallets/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "execute",
+          "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/dsu-explorer/apps-patch/dossier-explorer-ssapp/readme"
+        }
+      ]
+    }
+  ],
   "ssapps-and-wallets-build": [
     {
       "name": "cardinal-wallet-build",
@@ -434,16 +486,6 @@
         {
           "type": "execute",
           "cmd": "cd webcardinal && npm run build"
-        }
-      ]
-    },
-    {
-      "name": "blue-fluorite-theme-wallet-build",
-      "src": "",
-      "actions": [
-        {
-          "type": "execute",
-          "cmd": "cd themes/blue-fluorite-theme && npm run build-dossier"
         }
       ]
     },
@@ -478,52 +520,12 @@
       ]
     },
     {
-      "name": "dossier-explorer-wallet-prototype-build",
-      "src": "",
-      "actions": [
-        {
-          "type": "execute",
-          "cmd": "cd dossier-explorer-wallet-prototype && npm run build"
-        },
-        {
-          "type": "copySeed",
-          "src": "./dossier-explorer-wallet-prototype/seed",
-          "target": "./apihub-root/external-volume/wallets/dsu-explorer/wallet-patch/seed",
-          "options": {
-            "overwrite": true
-          }
-        }
-      ]
-    },
-    {
       "name": "gtin-resolver-build",
       "src": "",
       "actions": [
         {
           "type": "execute",
           "cmd": "cd gtin-resolver && npm run build"
-        }
-      ]
-    },
-    {
-      "name": "dsu-explorer_bind_to_dossier-explorer-ssapp",
-      "src": "",
-      "actions": [
-        {
-          "type": "execute",
-          "cmd": "cd dossier-explorer-ssapp && npm run build"
-        },
-        {
-          "type": "copySeed",
-          "src": "./dossier-explorer-ssapp/seed",
-          "target": "./apihub-root/external-volume/wallets/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
-          "options": {
-            "overwrite": true
-          }
-        },
-        {
-          "type": "execute",
-          "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/dsu-explorer/apps-patch/dossier-explorer-ssapp/readme"
         }
       ]
     },
@@ -654,15 +656,6 @@
         {
           "type": "execute",
           "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/readme"
-        }
-      ]
-    },
-    {
-      "name": "ssapps-and-wallets-build-finish",
-      "actions": [
-        {
-          "type": "execute",
-          "cmd": "echo \"----ssapps-and-wallets-build-finished----\""
         }
       ]
     }
