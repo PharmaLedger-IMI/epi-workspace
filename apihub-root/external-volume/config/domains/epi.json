@@ -11,6 +11,10 @@
   "skipOAuth": [
     "/bricking/epi/get-brick"
   ],
-  "messagesEndpoint": "http://localhost:8080/mappingEngine/epi/default/saveResult",
+  "mappingEnginResultURLs": [{
+    "endPointId": "NOVARTIS_P75_010",
+    "endPointURL": "http://localhost:8080/mappingEngine/epi/default/saveResult"
+  }],
+  "mappingEnginResultURL": "http://localhost:8080/mappingEngine/epi/default/saveResult",
   "bricksDomain": "default"
 }
