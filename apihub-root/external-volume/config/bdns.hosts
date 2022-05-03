@@ -23,6 +23,18 @@
       "$ORIGIN"
     ]
   },
+  "dev.epi.axl": {
+      "replicas": [],
+      "brickStorages": [
+        "$ORIGIN"
+      ],
+      "anchoringServices": [
+        "$ORIGIN"
+      ],
+      "notifications": [
+        "$ORIGIN"
+      ]
+  },
   "predefined": {
     "replicas": [],
     "brickStorages": [

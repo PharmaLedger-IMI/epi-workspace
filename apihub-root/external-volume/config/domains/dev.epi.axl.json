@@ -1,0 +1,21 @@
+{
+  "anchoring": {
+    "type": "ETH",
+    "option": {
+      "enableBricksLedger": false,
+    },
+    "commands": {
+      "addAnchor": "anchor"
+    }
+  },
+  "skipOAuth": [
+    "/bricking/epi/get-brick"
+  ],
+  "mappingEnginResultURLs": [{
+    "endPointId": "Axl",
+    "endPointURL": "http://localhost:8080/mappingEngine/dev.epi.axl/default/saveResult"
+  }],
+  "mappingEnginResultURL": "http://localhost:8080/mappingEngine/dev.epi.axl/default/saveResult",
+  "bricksDomain": "default",
+  "enable": ["mq", "enclave"]
+}
