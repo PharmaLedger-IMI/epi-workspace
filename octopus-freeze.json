@@ -47,7 +47,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "f3e2be682f94022c7ecfcb4fec1e5529a7d4f213",
+                    "commit": "6b99a357b0bfb44f9a4830b46bb02c2ad355f2be",
                     "tag": "v1.0.0"
                 },
                 {
@@ -66,23 +66,6 @@
             ]
         },
         {
-            "name": "menu-wallet-prototype",
-            "src": "http://github.com/privatesky/menu-wallet-prototype.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "f1b399830c426eca33c3ee5af57a918441f808e7",
-                    "tag": "v0.0.1"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd menu-wallet-prototype && npm install"
-                }
-            ]
-        },
-        {
             "name": "leaflet-ssapp",
             "src": "https://github.com/PharmaLedger-IMI/leaflet-ssapp.git",
             "actions": [
@@ -90,7 +73,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "b34fd66973e6c0525835826278eda8abf78cfbe4",
+                    "commit": "0755b54d698ab6491140f5d96bccfb917462749c",
                     "tag": "v1.0.0"
                 },
                 {
@@ -107,7 +90,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "90cf7f8d74c6e2e16e78a2d7952f85de41fd3612",
+                    "commit": "6673e05124613210f9ccc6655a61631e240d1824",
                     "tag": "v1.0.0"
                 },
                 {
@@ -124,7 +107,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "a5e306c43a836a947687aa35a24ae2ebb946e45f",
+                    "commit": "237698879e33c95b8332ef548dca2b6c0cc59f03",
                     "tag": "v0.2.0"
                 },
                 {
@@ -149,7 +132,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "a5e306c43a836a947687aa35a24ae2ebb946e45f",
+                    "commit": "237698879e33c95b8332ef548dca2b6c0cc59f03",
                     "tag": "v0.2.0"
                 },
                 {
@@ -174,7 +157,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "a5e306c43a836a947687aa35a24ae2ebb946e45f",
+                    "commit": "237698879e33c95b8332ef548dca2b6c0cc59f03",
                     "tag": "v0.2.0"
                 },
                 {
@@ -195,7 +178,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "f10c0658bdb3bca8d230319bb48551f63d32c235",
+                    "commit": "7a788caef09fa62ca8154aa90e32a4002132e215",
                     "tag": "v1.0.0"
                 },
                 {
@@ -212,7 +195,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "e80ebf1d3214c37470cfd3bbc6925727bc7d052a",
+                    "commit": "ca25f02e268f6bcc7c383a976cc5006d9d902506",
                     "tag": "v1.0.0"
                 },
                 {
@@ -229,7 +212,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "28a1388ee90ad3d7fbaedd302674c8c9e8b45fe8",
+                    "commit": "a16daca55db3993925db6f13726b2291d3e4a839",
                     "tag": "v1.0.0"
                 },
                 {
@@ -246,7 +229,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "402bf949d3c623b96e2acef28fb2969998cbed2e",
+                    "commit": "ad1860a8d45d2731414d9ea6b465613cf05899d7",
                     "tag": "v0.2.0"
                 },
                 {
@@ -263,7 +246,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "a5e306c43a836a947687aa35a24ae2ebb946e45f",
+                    "commit": "237698879e33c95b8332ef548dca2b6c0cc59f03",
                     "tag": "v0.2.0"
                 },
                 {
@@ -288,7 +271,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7e41aeaa8c8ded1d27d9f34d5eaada3ae74bc6d1",
+                    "commit": "b90556310c490582da6b0c8f8207b2623733893b",
                     "tag": "v1.0.0"
                 },
                 {
@@ -336,7 +319,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7a2a9ad3f6e38b7a5bc34c07cccba5ac52c65da6",
+                    "commit": "4d0e4cf319bfdd7b8ca406a93a2d95372a96d394",
                     "tag": "v1.0.0"
                 },
                 {
@@ -353,7 +336,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7bfc82280ddc11449b1a4f302d2eb2bbc2cf6174",
+                    "commit": "995bb658026eb8b2d9fc6eb4eaf96d53ef971b62",
                     "tag": "v1.0.0"
                 },
                 {
@@ -387,7 +370,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "1d40dbfede266b7bc5e923d864afa8329ce8f50d",
+                    "commit": "b49975531012a989c2c10d9ac56a89ad0b11e06f",
                     "tag": "v1.0.0"
                 },
                 {
@@ -412,7 +395,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "0f65b913a2c034f9b19c7f6e3501095f534450a6",
+                    "commit": "0a1140c057cb3aa8dbbc90ddb75e7d1b874b8e94",
                     "tag": "v1.0.0"
                 },
                 {
@@ -422,246 +405,7 @@
             ]
         }
     ],
-    "build": [
-        {
-            "name": "cardinal-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd cardinal && npm run build-dossier"
-                }
-            ]
-        },
-        {
-            "name": "webcardinal-wallet-build",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd webcardinal && npm run build"
-                }
-            ]
-        },
-        {
-            "name": "blue-fluorite-theme-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/blue-fluorite-theme && npm run build-dossier"
-                }
-            ]
-        },
-        {
-            "name": "citrus-theme-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/citrus-theme && npm run build-dossier"
-                }
-            ]
-        },
-        {
-            "name": "clear-sky-theme-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/clear-sky-theme && npm run build-dossier"
-                }
-            ]
-        },
-        {
-            "name": "epi-theme-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/epi-theme && npm run build-dossier"
-                }
-            ]
-        },
-        {
-            "name": "dossier-explorer-wallet-prototype-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd dossier-explorer-wallet-prototype && npm run build"
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./dossier-explorer-wallet-prototype/seed",
-                    "target": "./apihub-root/dsu-explorer/wallet-patch/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                }
-            ]
-        },
-        {
-            "name": "gtin-resolver-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd gtin-resolver && npm run build"
-                }
-            ]
-        },
-        {
-            "name": "dsu-explorer_bind_to_dossier-explorer-ssapp",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd dossier-explorer-ssapp && npm run build"
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./dossier-explorer-ssapp/seed",
-                    "target": "./apihub-root/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/dsu-explorer/apps-patch/dossier-explorer-ssapp/readme"
-                }
-            ]
-        },
-        {
-            "name": "acdc-reporting",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd reporting-service && npm run build"
-                },
-                {
-                    "type": "copy",
-                    "src": "./reporting-service/build/bundles/acdc.js",
-                    "target": "./leaflet-ssapp/code/scripts/bundles/acdc.js",
-                    "options": {
-                        "overwrite": true
-                    }
-                }
-            ]
-        },
-        {
-            "name": "acdc-native-integration-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/native-integration && npm run build",
-                    "options": {
-                        "ignoreErrors": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "./acdc/native-integration/build/bundles/default/camera.js",
-                    "target": "./apihub-root/leaflet-wallet/loader/camera.js",
-                    "options": {
-                        "overwrite": true,
-                        "ignoreErrors": true
-                    }
-                }
-            ]
-        },
-        {
-            "name": "leaflet-wallet_bind_to_leaflet-ssapp",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd leaflet-ssapp && npm run build"
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./leaflet-ssapp/seed",
-                    "target": "./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./leaflet-ssapp/seed",
-                    "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/readme"
-                }
-            ]
-        },
-        {
-            "name": "demiurge-wallet_bind_to_demiurge",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd demiurge && npm run build"
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./demiurge/seed",
-                    "target": "./apihub-root/demiurge-wallet/apps-patch/demiurge/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./demiurge/seed",
-                    "target": "./apihub-root/demiurge-wallet/wallet-patch/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/demiurge-wallet/apps-patch/demiurge/readme"
-                }
-            ]
-        },
-        {
-            "name": "dsu-fabric-wallet_bind_to_dsu-fabric-ssapp",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd dsu-fabric-ssapp && npm run build"
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./dsu-fabric-ssapp/seed",
-                    "target": "./apihub-root/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./dsu-fabric-ssapp/seed",
-                    "target": "./apihub-root/dsu-fabric-wallet/wallet-patch/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/readme"
-                }
-            ]
-        },
+    "postinstall": [
         {
             "name": "trust-loader-config",
             "actions": [
@@ -713,6 +457,302 @@
             ]
         },
         {
+            "name": "gtin-resolver-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd gtin-resolver && npm run build"
+                }
+            ]
+        },
+        {
+            "name": "acdc-reporting",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd reporting-service && npm run build"
+                }
+            ]
+        }
+    ],
+    "dsu-explorer-build": [
+        {
+            "name": "blue-fluorite-theme-wallet-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd themes/blue-fluorite-theme && npm run build-dossier"
+                }
+            ]
+        },
+        {
+            "name": "dossier-explorer-wallet-prototype-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd dossier-explorer-wallet-prototype && npm run build"
+                },
+                {
+                    "type": "copySeed",
+                    "src": "./dossier-explorer-wallet-prototype/seed",
+                    "target": "./apihub-root/external-volume/wallets/dsu-explorer/wallet-patch/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "dsu-explorer_bind_to_dossier-explorer-ssapp",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd dossier-explorer-ssapp && npm run build"
+                },
+                {
+                    "type": "copySeed",
+                    "src": "./dossier-explorer-ssapp/seed",
+                    "target": "./apihub-root/external-volume/wallets/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/dsu-explorer/apps-patch/dossier-explorer-ssapp/readme"
+                }
+            ]
+        }
+    ],
+    "epi-ssapps-and-wallets-build": [
+        {
+            "name": "cardinal-wallet-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd cardinal && npm run build-dossier"
+                }
+            ]
+        },
+        {
+            "name": "webcardinal-wallet-build",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd webcardinal && npm run build"
+                }
+            ]
+        },
+        {
+            "name": "citrus-theme-wallet-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd themes/citrus-theme && npm run build-dossier"
+                }
+            ]
+        },
+        {
+            "name": "clear-sky-theme-wallet-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd themes/clear-sky-theme && npm run build-dossier"
+                }
+            ]
+        },
+        {
+            "name": "epi-theme-wallet-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd themes/epi-theme && npm run build-dossier"
+                }
+            ]
+        },
+        {
+            "name": "leaflet-wallet_bind_to_leaflet-ssapp",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd leaflet-ssapp && npm run build"
+                },
+                {
+                    "type": "copySeed",
+                    "src": "./leaflet-ssapp/seed",
+                    "target": "./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copySeed",
+                    "src": "./leaflet-ssapp/seed",
+                    "target": "./apihub-root/external-volume/wallets/leaflet-wallet/wallet-patch/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/readme"
+                }
+            ]
+        },
+        {
+            "name": "demiurge-wallet_bind_to_demiurge",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd demiurge && npm run build"
+                },
+                {
+                    "type": "copySeed",
+                    "src": "./demiurge/seed",
+                    "target": "./apihub-root/external-volume/wallets/demiurge-wallet/apps-patch/demiurge/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copySeed",
+                    "src": "./demiurge/seed",
+                    "target": "./apihub-root/external-volume/wallets/demiurge-wallet/wallet-patch/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/demiurge-wallet/apps-patch/demiurge/readme"
+                }
+            ]
+        },
+        {
+            "name": "dsu-fabric-wallet_bind_to_dsu-fabric-ssapp",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd dsu-fabric-ssapp && npm run build"
+                },
+                {
+                    "type": "copySeed",
+                    "src": "./dsu-fabric-ssapp/seed",
+                    "target": "./apihub-root/external-volume/wallets/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copySeed",
+                    "src": "./dsu-fabric-ssapp/seed",
+                    "target": "./apihub-root/external-volume/wallets/dsu-fabric-wallet/wallet-patch/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/dsu-fabric-wallet/apps-patch/dsu-fabric-ssapp/readme"
+                }
+            ]
+        }
+    ],
+    "ssapps-and-wallets-build": [
+        {
+            "name": "gtin-resolver-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd gtin-resolver && npm run build"
+                }
+            ]
+        },
+        {
+            "name": "acdc-reporting",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd reporting-service && npm run build"
+                }
+            ]
+        },
+        {
+            "name": "acdc-native-integration-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/native-integration && npm run build",
+                    "options": {
+                        "ignoreErrors": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./acdc/native-integration/build/bundles/default/camera.js",
+                    "target": "./apihub-root/leaflet-wallet/loader/camera.js",
+                    "options": {
+                        "overwrite": true,
+                        "ignoreErrors": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "epi-ssapps-and-wallets-build",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js epi-ssapps-and-wallets-build\""
+                }
+            ]
+        }
+    ],
+    "build": [
+        {
+            "name": "build-all",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js ssapps-and-wallets-build\""
+                },
+                {
+                    "type": "execute",
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js dsu-explorer-build\""
+                },
+                {
+                    "type": "execute",
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js postbuild\""
+                }
+            ]
+        }
+    ],
+    "postbuild": [
+        {
+            "name": "patching trust loaders configs",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js postinstall\""
+                }
+            ]
+        },
+        {
             "name": "leaflet-wallet-loader-build",
             "actions": [
                 {
@@ -748,7 +788,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "0076688beedfcbd9d36c7e576350abc00e4dab1d",
+                    "commit": "1d77d91a0d54a7e5a6f346e33aef337aedff6c12",
                     "tag": "v1.0.0"
                 },
                 {
@@ -871,7 +911,7 @@
                 {
                     "type": "copySeed",
                     "src": "./leaflet-ssapp/seed",
-                    "target": "./apihub-root/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
+                    "target": "./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
@@ -879,14 +919,18 @@
                 {
                     "type": "copySeed",
                     "src": "./leaflet-ssapp/seed",
-                    "target": "./apihub-root/leaflet-wallet/wallet-patch/seed",
+                    "target": "./apihub-root/external-volume/wallets/leaflet-wallet/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acdc\""
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acf-ssapps\"",
+                    "options": {
+                        "overwrite": true,
+                        "ignoreErrors": true
+                    }
                 },
                 {
                     "type": "copy",
@@ -1050,42 +1094,7 @@
             ]
         }
     ],
-    "install-acdc": [
-        {
-            "name": "acdc",
-            "src": "https://github.com/PharmaLedger-IMI/acdc-components.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/backoffice-backend && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/backoffice-frontend && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/reporting-service && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/native-integration && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/pdm-web-components && npm install"
-                }
-            ]
-        },
+    "install-acf-ssapps": [
         {
             "name": "delayv-auth-feat-ssapp",
             "src": "https://github.com/asaccool/acdc-authentication-feature-59k3",
@@ -1132,13 +1141,103 @@
             ]
         }
     ],
+    "install-acdc": [
+        {
+            "name": "acdc",
+            "src": "https://github.com/PharmaLedger-IMI/acdc-components.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/backoffice-backend && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/backoffice-frontend && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/reporting-service && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/native-integration && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/pdm-web-components && npm install"
+                }
+            ]
+        },
+        {
+            "name": "acdc-reporting",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd reporting-service && npm run build"
+                }
+            ]
+        }
+    ],
     "build-acdc": [
+        {
+            "name": "acdc-reporting",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd reporting-service && npm run build"
+                }
+            ]
+        },
+        {
+            "name": "acdc-native-integration-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/native-integration && npm run build",
+                    "options": {
+                        "ignoreErrors": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./acdc/native-integration/build/bundles/default/camera.js",
+                    "target": "./apihub-root/leaflet-wallet/loader/camera.js",
+                    "options": {
+                        "overwrite": true,
+                        "ignoreErrors": true
+                    }
+                }
+            ]
+        },
         {
             "name": "build-pdm-web-components",
             "actions": [
                 {
                     "type": "execute",
                     "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
+                }
+            ]
+        }
+    ],
+    "build-acf-ssapps": [
+        {
+            "name": "build-acdc",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acdc\""
                 },
                 {
                     "type": "execute",
