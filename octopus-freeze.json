@@ -47,8 +47,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "182dedc87f5c78833402f8087761e5c1bf9c6fb6",
-                    "tag": "v1.0.1"
+                    "commit": "b163b9b127cd4cbc5e69e3d2094c1c14691bbbad",
+                    "tag": "v1.0.2"
                 },
                 {
                     "type": "execute",
@@ -73,8 +73,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "b40be1da4c00d3a84eb858629c6664142b9b11aa",
-                    "tag": "v1.0.1"
+                    "commit": "983a9249e201f42c825b8a5b1a623f1da6fb4ff1",
+                    "tag": "v1.0.2"
                 },
                 {
                     "type": "execute",
@@ -90,8 +90,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "390ab7ca7d37f0cbddfc32756910916fc1bac7b1",
-                    "tag": "v1.0.1"
+                    "commit": "c3085173834d4bcbd473552a2afdca581507871f",
+                    "tag": "v1.0.2"
                 },
                 {
                     "type": "execute",
@@ -132,7 +132,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit":  "7b1b86fb70da80de46b0ad559064a47b3b1dbac8",
+                    "commit": "7b1b86fb70da80de46b0ad559064a47b3b1dbac8",
                     "tag": "v0.2.1"
                 },
                 {
@@ -157,7 +157,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit":  "7b1b86fb70da80de46b0ad559064a47b3b1dbac8",
+                    "commit": "7b1b86fb70da80de46b0ad559064a47b3b1dbac8",
                     "tag": "v0.2.1"
                 },
                 {
@@ -271,8 +271,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "3f5f3015f405c6975a25cad6cf121b9f692fe47f",
-                    "tag": "v1.0.1"
+                    "commit": "5def7fad9357579ea9941d7c8674b05cfd5aee79",
+                    "tag": "v1.0.2"
                 },
                 {
                     "type": "execute",
@@ -370,8 +370,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "8508f6c3b949e44007aa9933902b3c026f214b82",
-                    "tag": "v1.0.1"
+                    "commit": "d7e80cd2271f0963801d044497f20290f2ae5857",
+                    "tag": "v1.0.2"
                 },
                 {
                     "type": "execute",
@@ -395,8 +395,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "ec5f14e473d491b2fcec5b786d575c15dcaa04cf",
-                    "tag": "v1.0.1"
+                    "commit": "143c25c8953b900d55dfdbab033185aeffa17023",
+                    "tag": "v1.0.2"
                 },
                 {
                     "type": "execute",
@@ -414,7 +414,8 @@
                     "src": "./trust-loader-config",
                     "target": "./apihub-root",
                     "options": {
-                        "overwrite": true
+                        "overwrite": true,
+                        "ignoreErrors": true
                     }
                 }
             ]
@@ -788,8 +789,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "97e66bd6154e4c104a90f54b16b789db48757baa",
-                    "tag": "v1.0.1"
+                    "commit": "c1aa00d503f166b49a4b0992ad2a8257c5d250b6",
+                    "tag": "v1.0.2"
                 },
                 {
                     "type": "execute",
