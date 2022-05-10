@@ -374,7 +374,8 @@
           "src": "./trust-loader-config",
           "target": "./apihub-root",
           "options": {
-            "overwrite": true
+            "overwrite": true,
+            "ignoreErrors": true
           }
         }
       ]
