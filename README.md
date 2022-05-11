@@ -26,6 +26,7 @@ For more details about what a *workspace* is check out the [template-workspace](
     2. [Testing ApiHub Mapping Engine](#testing-apihub-mapping-engine)
 7. [ACDC reporting functionality](#acdc-reporting-functionality)
 8. [ACF SSApps instalation and test](#acf-ssapps-instalation-and-test)
+9. [BDNS conventions](#bdns-conventions)
 
 
 ## Installation
@@ -324,53 +325,68 @@ npm run build-mobile
 2. Follow the rest of the standard steps to obtain the mobile build
 
 
-#BDNS concentions
-##Company Sandbox – (Unconnected Blockchain)
+## BDNS conventions
 
- Domain: sandbox.epi.company  
- Subdomain: sandbox.epi.company 
- Vault: sandbox.vault.company  
+### Company Sandbox – (Unconnected Blockchain)
 
-
-## Company Dev – (Connected Blockchain)​
-
- Domain: dev.epi  
- Subdomain: dev.epi.company  
- Vault: dev.vault.company  
+Domain: sandbox.epi.companyShortName  
+ 
+Subdomain: sandbox.epi.companyShortName 
+ 
+Vault: sandbox.vault.companyShortName  
 
 
-## Company QA – (Connected Blockchain)
+### Company Dev – (Connected Blockchain)
 
-Domain: qa.epi 
-Subdomain: qa.epi.company 
-Vault: qa.vault.company 
+Domain: dev.epi  
+ 
+Subdomain: dev.epi.companyShortName
+ 
+Vault: dev.vault.companyShortName  
 
 
-## Company Prod – (Connected Blockchain)​
+### Company QA – (Connected Blockchain)
+
+Domain: qa.epi
+
+Subdomain: qa.epi.companyShortName
+
+Vault: qa.vault.companyShortName 
+
+
+### Company Prod – (Connected Blockchain)
  
 Domain: epi  
-Subdomain: epi.company  
-Vault: vault.company  
+
+Subdomain: epi.companyShortName
+
+Vault: vault.companyShortName  
 
 
-## Developer Sandbox – (No Blockchain)
+### Developer Sandbox – (No Blockchain)
 
-Domain: sandbox.epi.company
-Subdomain: sandbox.epi.company  
-Vault: sandbox.vault.company  
+Domain: sandbox.epi.companyShortName
+
+Subdomain: sandbox.epi.companyShortName
+
+Vault: sandbox.vault.companyShortName  
 
 
-## PLA Demo– (Unconnected Blockchain)
+### PLA Demo – (Unconnected Blockchain)
 
 Domain: demo.epi.pla
+
 Subdomain: demo.epi.pla
+
 Vault: demo.vault.pla 
 
 
-## PLA Quality – (cted Blockchain)
+### PLA Quality – (cted Blockchain)
 
 Domain: quality.epi.pla 
+
 Subdomain: quality.epi.pla 
+
 Vault: quality.vault.pla 
 
 
