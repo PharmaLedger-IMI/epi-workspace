@@ -323,3 +323,53 @@ npm run build-mobile
 ```
 2. Follow the rest of the standard steps to obtain the mobile build
 
+
+#BDNS concentions
+##Company Sandbox – (Unconnected Blockchain)​
+
+ Domain: sandbox.epi.company​
+ Subdomain: sandbox.epi.company​
+ Vault: sandbox.vault.company
+
+
+## Company Dev – (Connected Blockchain)​
+
+ Domain: dev.epi​
+ Subdomain: dev.epi.company​
+ Vault: dev.vault.company
+
+
+## Company QA – (Connected Blockchain)​
+
+Domain: qa.epi​
+Subdomain: qa.epi.company​
+Vault: qa.vault.company
+
+
+## Company Prod – (Connected Blockchain)​
+
+Domain: epi​
+Subdomain: epi.company​
+Vault: vault.company
+
+
+## Developer Sandbox – (No Blockchain)​
+
+Domain: sandbox.epi.company​
+Subdomain: sandbox.epi.company​
+Vault: sandbox.vault.company
+
+
+## PLA Demo– (Unconnected Blockchain)​
+
+Domain: demo.epi.pla​
+Subdomain: demo.epi.pla​
+Vault: demo.vault.pla
+
+
+## PLA Quality – (cted Blockchain)​
+
+Domain: quality.epi.pla​
+Subdomain: quality.epi.pla​
+Vault: quality.vault.pla
+
