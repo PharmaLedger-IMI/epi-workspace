@@ -107,6 +107,30 @@
       "https://gov-dev.pharmaledger.dev"
     ]
   },
+  "sandbox.epi.axl": {
+    "replicas": [],
+    "brickStorages": [
+      "https://gov-dev.pharmaledger.dev"
+    ],
+    "anchoringServices": [
+      "https://gov-dev.pharmaledger.dev"
+    ],
+    "notifications": [
+      "https://gov-dev.pharmaledger.dev"
+    ]
+  },
+  "sandbox.epi.nvs": {
+    "replicas": [],
+    "brickStorages": [
+      "https://epiqa.westeurope.cloudapp.azure.com"
+    ],
+    "anchoringServices": [
+      "https://epiqa.westeurope.cloudapp.azure.com"
+    ],
+    "notifications": [
+      "https://epiqa.westeurope.cloudapp.azure.com"
+    ]
+  },
   "qa.epi": {
     "anchoringServices": [
       "https://epidemo.pharmaledger.dev",
@@ -179,6 +203,18 @@
     ],
     "notifications": [
       "https://epi.int.gsk.com"
+    ]
+  },
+  "demo.epi.pla": {
+    "replicas": [],
+    "brickStorages": [
+      "https://gov-dev.pharmaledger.dev"
+    ],
+    "anchoringServices": [
+      "https://gov-dev.pharmaledger.dev"
+    ],
+    "notifications": [
+      "https://gov-dev.pharmaledger.dev"
     ]
   }
 }
