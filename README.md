@@ -325,51 +325,52 @@ npm run build-mobile
 
 
 #BDNS concentions
-##Company Sandbox – (Unconnected Blockchain)​
+##Company Sandbox – (Unconnected Blockchain)
 
- Domain: sandbox.epi.company​
- Subdomain: sandbox.epi.company​
- Vault: sandbox.vault.company
+ Domain: sandbox.epi.company  
+ Subdomain: sandbox.epi.company 
+ Vault: sandbox.vault.company  
 
 
 ## Company Dev – (Connected Blockchain)​
 
- Domain: dev.epi​
- Subdomain: dev.epi.company​
- Vault: dev.vault.company
+ Domain: dev.epi  
+ Subdomain: dev.epi.company  
+ Vault: dev.vault.company  
 
 
-## Company QA – (Connected Blockchain)​
+## Company QA – (Connected Blockchain)
 
-Domain: qa.epi​
-Subdomain: qa.epi.company​
-Vault: qa.vault.company
+Domain: qa.epi 
+Subdomain: qa.epi.company 
+Vault: qa.vault.company 
 
 
 ## Company Prod – (Connected Blockchain)​
-
-Domain: epi​
-Subdomain: epi.company​
-Vault: vault.company
-
-
-## Developer Sandbox – (No Blockchain)​
-
-Domain: sandbox.epi.company​
-Subdomain: sandbox.epi.company​
-Vault: sandbox.vault.company
+ 
+Domain: epi  
+Subdomain: epi.company  
+Vault: vault.company  
 
 
-## PLA Demo– (Unconnected Blockchain)​
+## Developer Sandbox – (No Blockchain)
 
-Domain: demo.epi.pla​
-Subdomain: demo.epi.pla​
-Vault: demo.vault.pla
+Domain: sandbox.epi.company
+Subdomain: sandbox.epi.company  
+Vault: sandbox.vault.company  
 
 
-## PLA Quality – (cted Blockchain)​
+## PLA Demo– (Unconnected Blockchain)
 
-Domain: quality.epi.pla​
-Subdomain: quality.epi.pla​
-Vault: quality.vault.pla
+Domain: demo.epi.pla
+Subdomain: demo.epi.pla
+Vault: demo.vault.pla 
+
+
+## PLA Quality – (cted Blockchain)
+
+Domain: quality.epi.pla 
+Subdomain: quality.epi.pla 
+Vault: quality.vault.pla 
+
 
