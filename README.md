@@ -336,6 +336,15 @@ Subdomain: sandbox.epi.companyShortName
 Vault: sandbox.vault.companyShortName  
 
 
+### Developer Sandbox – (No Blockchain/Unconnected Blockchain)
+
+Domain: sandbox.epi.companyShortName
+
+Subdomain: sandbox.epi.companyShortName
+
+Vault: sandbox.vault.companyShortName  
+
+
 ### Company Dev – (Connected Blockchain)
 
 Domain: dev.epi  
@@ -363,16 +372,10 @@ Subdomain: epi.companyShortName
 Vault: vault.companyShortName  
 
 
-### Developer Sandbox – (No Blockchain/Unconnected Blockchain)
-
-Domain: sandbox.epi.companyShortName
-
-Subdomain: sandbox.epi.companyShortName
-
-Vault: sandbox.vault.companyShortName  
 
 
-### PLA Demo – (Unconnected Blockchain)
+
+### PLA Demo – (Unconnected Blockchain - 4 Clusters)
 
 Domain: demo.epi.pla
 
