@@ -363,7 +363,7 @@ Subdomain: epi.companyShortName
 Vault: vault.companyShortName  
 
 
-### Developer Sandbox – (No Blockchain)
+### Developer Sandbox – (No Blockchain/Unconnected Blockchain)
 
 Domain: sandbox.epi.companyShortName
 
