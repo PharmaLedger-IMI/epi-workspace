@@ -327,7 +327,7 @@ npm run build-mobile
 
 ## BDNS conventions
 
-### Company Sandbox – (Unconnected Blockchain)
+### Company Sandbox – (Unconnected Blockchain - a single cluster or multiple clusters)
 
 Domain: sandbox.epi.companyShortName  
  
@@ -336,7 +336,7 @@ Subdomain: sandbox.epi.companyShortName
 Vault: sandbox.vault.companyShortName  
 
 
-### Developer Sandbox – (No Blockchain/Unconnected Blockchain)
+### Developer Sandbox – (No Blockchain/Unconnected Blockchain - a single cluster or multiple clusters)
 
 Domain: sandbox.epi.companyShortName
 
@@ -370,9 +370,6 @@ Domain: epi
 Subdomain: epi.companyShortName
 
 Vault: vault.companyShortName  
-
-
-
 
 
 ### PLA Demo – (Unconnected Blockchain - 4 Clusters)
