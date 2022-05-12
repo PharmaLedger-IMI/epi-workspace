@@ -320,6 +320,7 @@ Keep in mind that also for testing purpose and fast development the Auth SSApps 
 
 1. Test ACF Authentication SSApps into mobile build
 ```sh
+npm run install-mobile
 npm run build-mobile
 npm run build-acf-ssapps
 ```
