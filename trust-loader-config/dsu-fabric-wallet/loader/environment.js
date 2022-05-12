@@ -8,7 +8,7 @@ export default {
   "vaultDomain": "vault",
   "didDomain": "vault",
   "epiDomain": "epi",
-  "epiSubdomain": "default",
+  "epiSubdomain": "epi",
   "enclaveType": "WalletDBEnclave",
   "sw": false,
   "pwa": false,
