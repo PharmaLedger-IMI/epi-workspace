@@ -257,7 +257,7 @@
             ]
         },
         {
-            "name": "acdc-reporting",
+            "name": "dfm-reporting",
             "src": "",
             "actions": [
                 {
@@ -439,7 +439,7 @@
             ]
         },
         {
-            "name": "acdc-reporting",
+            "name": "dfm-reporting",
             "src": "",
             "actions": [
                 {
@@ -654,7 +654,7 @@
             ]
         },
         {
-            "name": "acdc-reporting",
+            "name": "dfm-reporting",
             "src": "",
             "actions": [
                 {
@@ -664,7 +664,7 @@
             ]
         },
         {
-            "name": "acdc-native-integration-build",
+            "name": "dfm-native-integration-build",
             "src": "",
             "actions": [
                 {
@@ -893,14 +893,6 @@
                     }
                 },
                 {
-                    "type": "execute",
-                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acf-ssapps\"",
-                    "options": {
-                        "overwrite": true,
-                        "ignoreErrors": true
-                    }
-                },
-                {
                     "type": "copy",
                     "src": "./trust-loader-config",
                     "target": "./apihub-root",
@@ -925,6 +917,17 @@
                 }
             ]
         },
+        {
+            "name": "prepare-phase",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js patching-mobile\""
+                }
+            ]
+        }
+    ],
+    "patching-mobile": [
         {
             "name": "build-android-app",
             "actions": [
@@ -1109,7 +1112,7 @@
             ]
         }
     ],
-    "install-acdc": [
+    "install-dfm": [
         {
             "name": "acdc",
             "src": "https://github.com/PharmaLedger-IMI/acdc-components.git",
@@ -1146,7 +1149,7 @@
             ]
         },
         {
-            "name": "acdc-reporting",
+            "name": "dfm-reporting",
             "src": "",
             "actions": [
                 {
@@ -1156,9 +1159,9 @@
             ]
         }
     ],
-    "build-acdc": [
+    "build-dfm": [
         {
-            "name": "acdc-reporting",
+            "name": "dfm-reporting",
             "src": "",
             "actions": [
                 {
@@ -1168,7 +1171,7 @@
             ]
         },
         {
-            "name": "acdc-native-integration-build",
+            "name": "dfm-native-integration-build",
             "src": "",
             "actions": [
                 {
@@ -1201,11 +1204,11 @@
     ],
     "build-acf-ssapps": [
         {
-            "name": "build-acdc",
+            "name": "build-dfm",
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acdc\""
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-dfm\""
                 },
                 {
                     "type": "execute",
@@ -1214,6 +1217,10 @@
                 {
                     "type": "execute",
                     "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js patching-mobile\""
                 }
             ]
         }

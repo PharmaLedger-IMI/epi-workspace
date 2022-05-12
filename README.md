@@ -284,25 +284,25 @@ The Import page in the wallet app displays the import's details and status.
 A 500 response status means that the domain might not be well configured, or the message is malformed.
 The message will not appear in the Import page in the wallet app.
 
-### ACDC reporting functionality
+### DFM reporting functionality
 
-ACDC means Anti-Counterfeiting Data Collaboration - Use-Case 4 of PharmaLedger
+DFM stands for Detecting Falsified Medicines (formerly Anti-Counterfeiting Data Collaboration) - Use-Case 4 of PharmaLedger
 
-1. Bind ACDC repository into workspace
+1. Bind DFM repository into workspace
 ```sh
-npm run install-acdc
+npm run install-dfm
 ```
 
-2. Launch ACDC servers
-npm run acdc-server
+2. Launch DFM servers
+npm run dfm-server
 
 
 ### ACF SSApps instalation and test
-For the moment, DelayV and TrueMed Auth SSApps are added into epi-workspace to facilitate the integration of the ACDC workspace and results. In order to accomplish this, special commands where created like npm run install-acf and npm run build-acf-ssapps. 
+For the moment, DelayV and TrueMed Auth SSApps are added into epi-workspace to facilitate the integration of the use case 4 results. In order to accomplish this, special commands where created like npm run install-acf and npm run build-acf-ssapps. 
 
 1. Bind ACDC repository into workspace
 ```sh
-npm run install-acdc
+npm run install-dfm
 ```
 2. Install ACF SSApps
 ```sh
@@ -321,6 +321,7 @@ Keep in mind that also for testing purpose and fast development the Auth SSApps 
 1. Test ACF Authentication SSApps into mobile build
 ```sh
 npm run build-mobile
+npm run build-acf-ssapps
 ```
 2. Follow the rest of the standard steps to obtain the mobile build
 
