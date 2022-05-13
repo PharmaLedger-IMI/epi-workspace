@@ -24,7 +24,7 @@ For more details about what a *workspace* is check out the [template-workspace](
 6. [Configuring ApiHub for Messages Mapping Engine Middleware](#configuring-apihub-for-messages-mapping-engine-middleware)
     1. [Configuring Domain for ApiHub Mapping Engine usage](#configuring-domain-for-apihub-mapping-engine-usage)
     2. [Testing ApiHub Mapping Engine](#testing-apihub-mapping-engine)
-7. [ACDC reporting functionality](#acdc-reporting-functionality)
+7. [DFM reporting functionality](#dfm-reporting-functionality)
 8. [ACF SSApps instalation and test](#acf-ssapps-instalation-and-test)
 9. [BDNS conventions](#bdns-conventions)
 
@@ -296,21 +296,26 @@ npm run install-dfm
 2. Launch DFM servers
 npm run dfm-server
 
-
-### ACF SSApps instalation and test
+### ACF SSApps installation and test
 For the moment, DelayV and TrueMed Auth SSApps are added into epi-workspace to facilitate the integration of the use case 4 results. In order to accomplish this, special commands where created like npm run install-acf and npm run build-acf-ssapps. 
 
-1. Bind ACDC repository into workspace
+1. Start by installing the Mobile Trust Loaders
+```sh
+npm run install-mobile
+```
+2. Bind DFM repository into workspace
 ```sh
 npm run install-dfm
 ```
-2. Install ACF SSApps
+3. Install ACF SSApps
 ```sh
 npm run install-acf-ssapps
 ```
-3. Update the apiKeys and secrets in the Auth SSApps
+4. Update the apiKeys and secrets in the Auth SSApps
 
-4. Build ACDC Authentication SSApps
+5. Edit the mobile/config/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/external-volume/config/bdns.hosts file in order to point the epi domain to your desired location.
+For example, durring local development if your iPhone and developer machine are into the same network you can use your local machine ip as url into the mobile bdns config file.
+6. Build ACDC Authentication SSApps
 ```sh
 npm run build-acf-ssapps
 ```
@@ -326,6 +331,22 @@ npm run build-acf-ssapps
 ```
 2. Follow the rest of the standard steps to obtain the mobile build
 
+#### Commands Cheatsheet for ACF SSApps installation and development
+```sh
+git clone http://github.com/pharmaledger-imi/epi-workspace
+cd epi-workspace
+npm run dev-install
+npm run install-mobile
+npm run install-dfm
+npm run install-acf-ssapps
+#until here we have everything that we need installed into our workspace
+#before continuing please make necessary corrections for apikeys and mobile bdns file
+npm run build-mobile
+npm run build-acf-ssapps
+#at this point you can switch to Xcode and build your native app
+#now we need to return to workspace and prepare the dsu-fabric wallet and create some products to test
+npm run build-all
+```
 
 ## BDNS conventions
 
