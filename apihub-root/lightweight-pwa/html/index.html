@@ -1,0 +1,49 @@
+<head>
+    <link href="../css/main.css" rel="stylesheet">
+    <script src="../js/controllers/MainController.js" type="module"></script>
+
+</head>
+<body>
+<div class="page-container">
+    <div class="mobile-container">
+        <div class="page-header">
+            <span>Pharmaledger</span>
+        </div>
+        <div class="page-content">
+            <div class="welcome-container">
+                <div class="app-image"></div>
+                <div class="title">Welcome to Pharmaledger</div>
+                <div class="welcome-text">
+                    An app created to help you inquire about new or prescribed medications
+                </div>
+            </div>
+
+            <div class="wizard-steps">
+                <div class="step1 step-item">
+                    <div class="step-icon"></div>
+                    <span class="step-title">STEP 1</span>
+                    <span>Locate data matrix code.</span>
+                </div>
+                <div class="step2 step-item">
+                    <div class="step-icon"></div>
+                    <span class="step-title">STEP 2</span>
+                    <span>Scan data matrix code.</span>
+                </div>
+                <div class="step3 step-item">
+                    <div class="step-icon"></div>
+                    <span class="step-title">STEP 3</span>
+                    <span>Track your medicine info.</span>
+                </div>
+            </div>
+            <div class="scan-button scan-button-text">
+                <button onclick="mainController.scanHandler()">
+                    <img class="scan-image" slot="start" src="../images/scan_icon.svg"/>
+                    <span class="scan-button-text">Scan Now</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
