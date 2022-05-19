@@ -1080,7 +1080,7 @@
   "install-acf-ssapps": [
     {
       "name": "delayv-auth-feat-ssapp",
-      "src": "https://github.com/asaccool/acdc-authentication-feature-59k3",
+      "src": "https://github.com/delayv/acdc-authentication-feature-59k3.git",
       "actions": [
         {
           "type": "smartClone",
