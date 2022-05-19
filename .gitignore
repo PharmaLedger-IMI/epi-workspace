@@ -24,3 +24,15 @@ dsu-fabric-ssapp
 node_modules
 package-lock.json
 env.json.devel
+
+
+
+acdc-authentication-feature-template/
+acdc/
+apihub-root/bundles/
+apihub-root/external-volume/mqs/
+apihub-root/external-volume/wallets/
+apihub-root/lightweight-pwa/lib/
+delayv-auth-feat-ssapp/
+reporting-service/
+truemedhemo-auth-feat-ssapp/

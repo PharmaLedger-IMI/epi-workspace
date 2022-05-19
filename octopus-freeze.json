@@ -1258,6 +1258,10 @@
                 {
                     "type": "execute",
                     "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc-authentication-feature-template && npm run build"
                 }
             ]
         }
