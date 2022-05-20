@@ -1122,6 +1122,21 @@
           "cmd": "cd truemedhemo-auth-feat-ssapp && npm install"
         }
       ]
+    },
+    {
+        "name": "uniqode-auth-feat-ssapp",
+        "src": "https://github.com/PharmaLedger-IMI/pharma-incmlab.git",
+        "actions": [
+            {
+                "type": "smartClone",
+                "target": ".",
+                "collectLog": false
+            },
+            {
+                "type": "execute",
+                "cmd": "cd uniqode-auth-feat-ssapp && npm install"
+            }
+        ]
     }
   ],
   "install-dfm": [
@@ -1229,6 +1244,10 @@
         {
           "type": "execute",
           "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
+        },
+        {
+            "type": "execute",
+            "cmd": "cd uniqode-auth-feat-ssapp && npm run build"
         },
         {
           "type": "execute",
