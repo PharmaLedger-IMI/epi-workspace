@@ -1,11 +1,11 @@
 import {convertFromISOtoYYYY_HM, goToPage} from "../utils/utils.js";
 import interpretGS1scan from "../utils/interpretGS1scan/interpretGS1scan.js";
-import ScanService from "../services/ScanService.js";
+import ScanService, {switchFacingMode} from "../services/ScanService.js";
 
 function ScanController() {
-  this.init = async function () {
+  this.init = async function (facingMode) {
     let placeHolderElement = document.querySelector("#scanner-placeholder");
-    this.scanService = new ScanService(placeHolderElement);
+    this.scanService = new ScanService(placeHolderElement, facingMode);
     try {
       await this.scanService.setup();
     } catch (err) {
@@ -19,6 +19,9 @@ function ScanController() {
     goToPage("error.html")
   }
 
+  this.cancelHandler = function () {
+    goToPage("index.html");
+  }
 
   this.startScanning = async function () {
     this.scanInterval = setInterval(() => {
@@ -71,16 +74,20 @@ function ScanController() {
   }
 
   this.processGS1Fields = function (gs1Fields) {
-    console.log("ta da ---------- >>>>> ", gs1Fields);
     let domainName = "epi";
-    /* let gtinSSI = createGTIN_SSI(domainName, undefined, gs1Fields.gtin, gs1Fields.batchNumber);
-     let leafletXmlService = new XMLDisplayService(null, gtinSSI, {}, "leaflet");
-     let response = leafletXmlService.getHtmlForLanguage("en");
-     console.log("------- response", response);*/
-    goToPage(`leaflet.html?gtin=${gs1Fields.gtin}&batch=${gs1Fields.batchNumber}`)
+    goToPage(`leaflet.html?gtin=${gs1Fields.gtin}&batch=${gs1Fields.batchNumber}&expiry=${gs1Fields.expiry}`)
+  }
 
+  this.switchCamera = function () {
+    let facingMode = this.scanService._facingMode;
+    this.scanService.stop();
+    clearInterval(this.scanInterval);
+    switchFacingMode(facingMode);
+    scanController.init();
   }
 }
 
 const scanController = new ScanController();
 scanController.init();
+
+window.scanController = scanController;

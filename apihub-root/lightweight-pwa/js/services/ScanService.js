@@ -98,9 +98,9 @@ function switchFacingMode(facingMode) {
 }
 
 class ScanService {
-  constructor(domElement) {
+  constructor(domElement, facingMode) {
     this._status = SCANNER_STATUS.INITIALIZING;
-    this._facingMode = null;
+    this._facingMode = facingMode || null;
 
     this.scanner = new Scanner(domElement);
 
@@ -151,7 +151,9 @@ class ScanService {
     console.log(`Status has changed to "${status}"`);
   }
 }
+
 export default ScanService
 export {
-  SCANNER_STATUS
+  SCANNER_STATUS,
+  switchFacingMode
 }

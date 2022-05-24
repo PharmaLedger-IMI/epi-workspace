@@ -1,1 +1,21 @@
-Error !!!!
+<head>
+    <link href="../css/main.css" rel="stylesheet">
+    <script src="../js/translations.js"></script>
+    <script src="../js/controllers/ErrorController.js" type="module"></script>
+
+</head>
+
+<body onload="translate()">
+<div class="page-container error-page">
+    <div class="page-header">
+        <span class="header-title" translate="error-title"></span>
+        <span class="header-subtitle" translate="error-subtitle"></span>
+    </div>
+    <div class="page-content">
+        <div class="error-text" translate="error-text">
+        </div>
+        <div class="scan-button" onclick="errorController.scanAgainHandler()" translate="scan_again"></div>
+    </div>
+</div>
+
+</body>

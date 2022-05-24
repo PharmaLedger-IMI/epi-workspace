@@ -1,20 +1,30 @@
 <head>
     <link href="../css/main.css" rel="stylesheet">
+    <script src="../js/translations.js"></script>
     <script src="../js/controllers/LeafletController.js" type="module"></script>
 
 </head>
 
-<body>
-<div class="page-container">
-    <div class="mobile-container">
-        <div class="page-header">
-            <span>Pharmaledger</span>
+<body onload="translate()">
+<div class="page-container leaflet-page">
+    <div class="page-header">
+        <span class="product-name">Product name</span>
+        <span class="product-description">product description</span>
+    </div>
+    <div class="page-content">
+        <div id="leaflet-content">
         </div>
-        <div class="page-content">
-            <div id="leaflet-content">
-            </div>
-        </div>
+        <div class="scan-button" onclick="leafletController.scanAgainHandler()" translate="scan_again"></div>
     </div>
 </div>
-
+<div id="warning-modal">
+    <div class="modal-body">
+        <div class="modal-header">
+            <div class="modal-icon"></div>
+            <div class="modal-title" translate="leaflet-expired-title"></div>
+            <div class="close-modal" onclick="leafletController.closeModal()"></div>
+        </div>
+        <div class="modal-content" translate="leaflet-expired-message"></div>
+    </div>
+</div>
 </body>

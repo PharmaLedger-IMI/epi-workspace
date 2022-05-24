@@ -1,20 +1,20 @@
 <head>
     <link href="../css/main.css" rel="stylesheet">
+    <script src="../js/translations.js"></script>
     <script src="../js/controllers/ScanController.js" type="module"></script>
 
 </head>
-<body>
-<div class="page-container">
-    <div class="mobile-container">
-        <div class="page-header">
-            <span>Pharmaledger</span>
-        </div>
-        <div class="page-content scan-page">
-
-            <div id="scanner-placeholder">
-                <!-- injected automatically -->
-            </div>
-        </div>
+<body onload="translate()">
+<div class="page-container scan-page">
+    <div class="scan-header">
+        <div class="scan-cancel" translate="cancel" onclick="scanController.cancelHandler()" ></div>
+        <div class="camera-switch" onclick="scanController.switchCamera()" translate="change_camera"></div>
     </div>
+
+    <div id="scanner-placeholder">
+        <!-- injected automatically -->
+    </div>
+
+
 </div>
 </body>
