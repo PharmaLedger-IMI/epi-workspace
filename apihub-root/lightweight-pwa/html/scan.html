@@ -1,10 +1,9 @@
 <head>
     <link href="../css/main.css" rel="stylesheet">
-    <script src="../js/translations.js"></script>
     <script src="../js/controllers/ScanController.js" type="module"></script>
 
 </head>
-<body onload="translate()">
+<body>
 <div class="page-container scan-page">
     <div class="scan-header">
         <div class="scan-cancel" translate="cancel" onclick="scanController.cancelHandler()" ></div>
@@ -18,3 +17,8 @@
 
 </div>
 </body>
+<script type="module">
+  import {translate} from "../js/translations.js";
+
+  document.getElementsByTagName("body").onload = translate()
+</script>

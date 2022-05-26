@@ -1,15 +1,14 @@
 <head>
     <link href="../css/main.css" rel="stylesheet">
-    <script src="../js/translations.js"></script>
     <script src="../js/controllers/LeafletController.js" type="module"></script>
 
 </head>
 
-<body onload="translate()">
+<body>
 <div class="page-container leaflet-page">
     <div class="page-header">
-        <span class="product-name">Product name</span>
-        <span class="product-description">product description</span>
+        <span class="product-name"></span>
+        <span class="product-description"></span>
     </div>
     <div class="page-content">
         <div id="leaflet-content">
@@ -28,3 +27,8 @@
     </div>
 </div>
 </body>
+<script type="module">
+  import {translate} from "../js/translations.js";
+
+  document.getElementsByTagName("body").onload = translate()
+</script>

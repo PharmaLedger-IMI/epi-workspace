@@ -1,10 +1,9 @@
 <head>
     <link href="../css/main.css" rel="stylesheet">
-    <script src="../js/translations.js"></script>
     <script src="../js/controllers/MainController.js" type="module"></script>
 
 </head>
-<body onload="translate()">
+<body>
 <div class="page-container">
     <div class="icon-container"></div>
     <div class="welcome-container">
@@ -12,12 +11,7 @@
     </div>
 
     <div class="content-container">
-
-        <div class="good-example">
-        </div>
-        <div class="wrong-example">
-
-        </div>
+        <div class="icon-div"></div>
     </div>
     <div class="explain-container">
         <span translate="scan_explain"></span>
@@ -28,3 +22,8 @@
 </div>
 
 </body>
+<script type="module">
+  import {translate} from "../js/translations.js";
+
+  document.getElementsByTagName("body").onload = translate()
+</script>

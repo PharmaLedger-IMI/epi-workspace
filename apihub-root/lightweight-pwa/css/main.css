@@ -83,7 +83,6 @@
 
     .page-header {
         font-size: 2rem;
-        padding: 24px 24px 0px;
     }
 
 
@@ -107,7 +106,9 @@
         font-size: 1.5rem;
     }
 
-    #leaflet-content h5 {
+    #leaflet-content h5,
+    #leaflet-content .select-lang-text,
+    #leaflet-content .languages-list {
         font-size: 1rem;
     }
 
@@ -168,10 +169,6 @@
 
 
 @media only screen and (max-device-width: 480px) {
-
-    .page-header {
-        padding: 24px 35px 0px;
-    }
 
     .welcome-container {
         font-size: 3rem;
@@ -241,6 +238,10 @@
         padding: 5px;
     }
 
+    #leaflet-content .languages-list {
+        margin: 0px 35px;
+    }
+
     .leaflet-accordion-item.active .leaflet-accordion-item-content {
         line-height: 2.5rem;
     }
@@ -302,6 +303,10 @@ body {
     font-family: "DM Sans";
 }
 
+.page-header {
+    padding: 0px 35px;
+}
+
 .page-container {
     background: var(--olivegreen);
     color: #fff;
@@ -333,6 +338,14 @@ body {
     }
 }
 
+@keyframes animatedIcon {
+    0% {
+        background-image: url(../images/good-icon.svg);
+    }
+    55% {
+        background-image: url(../images/wrong-icon.svg);
+    }
+}
 
 .content-container {
     align-self: center;
@@ -356,70 +369,21 @@ body {
     margin-right: auto;
 }
 
-@keyframes animatedImageGood {
-    0% {
-        top: 35%;
-        left: 18%
-    }
-    60% {
-        background-image: none
-    }
-    100% {
-        top: 55%;
-        left: -49%;
-        background-image: none
-    }
-}
-
-.good-example {
-    width: 26px;
-    height: 49px;
-    background-image: url(../images/good-2dmatrix.svg);
-    animation: animatedImageGood 5s linear infinite;
-    -moz-animation: animatedImageGood 5s linear infinite;
-    -webkit-animation: animatedImageGood 5s linear infinite;
-    -ms-animation: animatedImageGood 5s linear infinite;
-    -o-animation: animatedImageGood 5s linear infinite;
+.icon-div {
+    position: relative;
+    top: -32px;
+    right: -32px;
+    width: 64px;
+    height: 64px;
+    animation: animatedIcon 5s steps(1, end) infinite;
+    -moz-animation: animatedIcon 5s steps(1, end) infinite;
+    -webkit-animation: animatedIcon 5s steps(1, end) infinite;
+    -ms-animation: animatedIcon 5s steps(1, end) infinite;
+    -o-animation: animatedIcon 5s steps(1, end) infinite;
     animation-delay: 1s;
     animation-direction: alternate;
-    position: relative;
-    top: 35%;
-    left: 18%;
-    animation-fill-mode: both;
-}
-
-
-@keyframes -animatedImageWrong {
-    0% {
-        top: 35%;
-        left: 105%;
-        background-image: none;
-        content: ""
-    }
-    60% {
-        background-image: url(../images/wrong-2dmatrix.svg);
-    }
-    100% {
-        top: 52%;
-        left: 32%;
-    }
-}
-
-.wrong-example {
-    width: 38px;
-    height: 48px;
-    background-image: url(../images/wrong-2dmatrix.svg);
-    animation: -animatedImageWrong 5s linear infinite;
-    -moz-animation: -animatedImageWrong 5s linear infinite;
-    -webkit-animation: -animatedImageWrong 5s linear infinite;
-    -ms-animation: -animatedImageWrong 5s linear infinite;
-    -o-animation: -animatedImageWrong 5s linear infinite;
-    animation-delay: 1s;
-    animation-direction: alternate;
-    position: relative;
-    top: 32%;
-    left: 105%;
-    animation-fill-mode: both;
+    background-image: url(../images/good-icon.svg);
+    float: right;
 }
 
 .explain-container {
@@ -497,13 +461,25 @@ body {
     display: flex;
     flex-direction: column;
     height: 12%;
+    justify-content: center;
 }
 
 .leaflet-page .page-content, .error-page .page-content {
-    height: calc(88% - 24px);
+    height: 88%;
     position: relative;
     color: #04313B;
     background: #fff;
+}
+
+#leaflet-content .select-lang-text {
+    padding: 35px;
+}
+
+#leaflet-content .languages-list li {
+    text-underline-position: under;
+    text-decoration: underline;
+    padding: 0px 0px 55px 0px;
+    color: blue;
 }
 
 #leaflet-content h5 {
