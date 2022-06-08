@@ -1,38 +1,42 @@
 import XMLDisplayService from "../services/XMLDisplayService/XMLDisplayService.js"
 import environment from "../../environment.js";
-import {goToPage} from "../utils/utils.js"
+import {goToPage} from "../utils/utils.js";
+import {translations} from "../translations.js";
 
 function LeafletController() {
+
+  this.leafletLang = window.currentLanguage || "en";
+
   this.getLeaflet = function () {
     let leafletApiUrl = environment.leafletWebApiUrl + "/" + environment.epiDomain;
-    let userLanguage = window.navigator.language.slice(0, 2);
-    let leafletLang = userLanguage || "en";
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let gtin = urlParams.get("gtin");
     let batch = urlParams.get("batch");
-    let fetchUrl = batch ? `${leafletApiUrl}?leaflet_type=leaflet&lang=${leafletLang}&gtin=${gtin}&batch=${batch}` : `${leafletApiUrl}?leaflet_type=leaflet&lang=${leafletLang}&gtin=${gtin}`
-
-    fetch(fetchUrl)
+    let expiry = urlParams.get("expiry");
+    let fetchUrl = `${leafletApiUrl}?leaflet_type=leaflet&lang=${this.leafletLang}&gtin=${gtin}&expiry=${expiry}`;
+    fetchUrl = batch ? `${fetchUrl}&batch=${batch}` : `${fetchUrl}`
+    let header = new Headers();
+    header.append("epiProtocolVersion", environment.epiProtocolVersion || 1);
+    header.append("getProductData", true);
+    const myRequest = new Request(fetchUrl, {
+      method: "GET",
+      headers: header
+    });
+    fetch(myRequest)
       .then(response => {
-        console.log("------- response", response);
         response.json().then(result => {
           console.log(result);
-          let xmlService = new XMLDisplayService("#leaflet-content");
-          let resultDocument = xmlService.getHTMLFromXML(result.pathBase, result.xmlContent);
-          let leafletImages = resultDocument.querySelectorAll("img");
-          for (let image of leafletImages) {
-            image.setAttribute("src", result.leafletImages[image.getAttribute("src")]);
+          if (result.resultStatus === "xml_found") {
+            showXML(result);
+            if (result.expired) {
+              showExpired();
+            }
           }
-          let sectionsElements = resultDocument.querySelectorAll(".leaflet-accordion-item");
-          let htmlContent = "";
-          sectionsElements.forEach(section => {
-            htmlContent = htmlContent + section.innerHTML;
-          })
-          document.querySelector("#leaflet-content").innerHTML = htmlContent;
-          let leafletLinks = document.querySelectorAll(".leaflet-link");
-          xmlService.activateLeafletInnerLinks(leafletLinks);
-          this.handleLeafletAccordion();
+          if (result.resultStatus === "no_xml_for_lang") {
+            showAvailableLanguages(result)
+          }
         }).catch((err) => {
           goToPage("error.html")
         });
@@ -43,17 +47,78 @@ function LeafletController() {
       });
   };
   this.handleLeafletAccordion = function () {
-    let accordionItems = document.querySelectorAll(".leaflet-accordion-item-content");
+    let accordionItems = document.querySelectorAll(".leaflet-accordion-item");
     accordionItems.forEach(accItem => {
       accItem.addEventListener("click", (evt) => {
         evt.target.classList.toggle("active");
       })
     })
   }
+
+  this.getLangLeaflet = function () {
+    let lang = document.querySelector("input[name='languages']:checked").value
+    this.leafletLang = lang;
+    this.getLeaflet();
+    document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:none !important');
+  }
+
+  this.scanAgainHandler = function () {
+    goToPage("scan.html")
+  }
+
+  this.goHome = function () {
+    goToPage("index.html")
+  }
+
+  this.closeModal = function (modalId) {
+    document.querySelector("#"+modalId).setAttribute('style', 'display:none !important');
+  }
+
+  let showExpired = function () {
+    document.querySelector("#expired-modal").setAttribute('style', 'display:flex !important');
+  }
+
+  let self = this;
+
+  let showXML = function (result) {
+    document.querySelector(".product-name").innerText = result.productData.name;
+    document.querySelector(".product-description").innerText = result.productData.description;
+    let xmlService = new XMLDisplayService("#leaflet-content");
+    let resultDocument = xmlService.getHTMLFromXML(result.pathBase, result.xmlContent);
+    let leafletImages = resultDocument.querySelectorAll("img");
+    for (let image of leafletImages) {
+      image.setAttribute("src", result.leafletImages[image.getAttribute("src")]);
+    }
+    let sectionsElements = resultDocument.querySelectorAll(".leaflet-accordion-item");
+    let htmlContent = "";
+    sectionsElements.forEach(section => {
+      htmlContent = htmlContent + section.outerHTML;
+    })
+    document.querySelector("#leaflet-content").innerHTML = htmlContent;
+    let leafletLinks = document.querySelectorAll(".leaflet-link");
+    xmlService.activateLeafletInnerLinks(leafletLinks);
+    self.handleLeafletAccordion();
+  }
+
+  let showAvailableLanguages = function (result) {
+   // document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
+   // document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];
+   // let langList = `<div class="select-lang-text">${translations[window.currentLanguage]["select_lang_text"]}</div><select class="languages-list">`;
+    let languagesContainer = document.querySelector(".languages-container");
+    result.availableLanguages.forEach((lang, index) => {
+      let langRadio = `<img src="../images/flags/${lang.value}.png" class="language-flag"></img><label for="${lang.value}"> ${lang.label} - (${lang.nativeName})</label> <input type="radio" name="languages" ${index === 0 ? "checked" : ""} value="${lang.value}" id="${lang.value}">`;
+      let radioFragment = document.createElement('div');
+      radioFragment.classList.add("language-item-container");
+      radioFragment.innerHTML = langRadio;
+      languagesContainer.appendChild(radioFragment);
+    })
+    document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:flex !important');
+  }
 }
 
 const leafletController = new LeafletController();
-leafletController.getLeaflet();
+leafletController.getLeaflet(leafletController.leafletLang);
+window.leafletController = leafletController;
 
 
 

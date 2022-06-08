@@ -5,45 +5,25 @@
 </head>
 <body>
 <div class="page-container">
-    <div class="mobile-container">
-        <div class="page-header">
-            <span>Pharmaledger</span>
-        </div>
-        <div class="page-content">
-            <div class="welcome-container">
-                <div class="app-image"></div>
-                <div class="title">Welcome to Pharmaledger</div>
-                <div class="welcome-text">
-                    An app created to help you inquire about new or prescribed medications
-                </div>
-            </div>
+    <div class="icon-container"></div>
+    <div class="welcome-container">
+        <span translate="welcome"></span>
+    </div>
 
-            <div class="wizard-steps">
-                <div class="step1 step-item">
-                    <div class="step-icon"></div>
-                    <span class="step-title">STEP 1</span>
-                    <span>Locate data matrix code.</span>
-                </div>
-                <div class="step2 step-item">
-                    <div class="step-icon"></div>
-                    <span class="step-title">STEP 2</span>
-                    <span>Scan data matrix code.</span>
-                </div>
-                <div class="step3 step-item">
-                    <div class="step-icon"></div>
-                    <span class="step-title">STEP 3</span>
-                    <span>Track your medicine info.</span>
-                </div>
-            </div>
-            <div class="scan-button scan-button-text">
-                <button onclick="mainController.scanHandler()">
-                    <img class="scan-image" slot="start" src="../images/scan_icon.svg"/>
-                    <span class="scan-button-text">Scan Now</span>
-                </button>
-            </div>
-        </div>
-
+    <div class="content-container">
+        <div class="icon-div"></div>
+    </div>
+    <div class="explain-container">
+        <span translate="scan_explain"></span>
+    </div>
+    <div class="scan-button-container" onclick="mainController.scanHandler()">
+        <span translate="scan_button"></span>
     </div>
 </div>
 
 </body>
+<script type="module">
+  import {translate} from "../js/translations.js";
+
+  document.getElementsByTagName("body").onload = translate()
+</script>
