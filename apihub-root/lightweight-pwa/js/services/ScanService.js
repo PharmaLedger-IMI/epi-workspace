@@ -105,7 +105,7 @@ class ScanService {
     this.scanner = new Scanner(domElement);
 
     // TODO: remove this changeWorker call when possible
-    this.scanner.changeWorker("../lib/zxing-wrapper/worker/zxing-0.18.6-worker.js");
+    this.scanner.changeWorker("lib/zxing-wrapper/worker/zxing-0.18.6-worker.js");
 
     this.scanner.drawOverlay = (centralPoints, canvasDimensions) => {
       return createOverlay(centralPoints, canvasDimensions);
