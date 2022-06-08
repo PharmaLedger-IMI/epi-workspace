@@ -55,24 +55,29 @@ function LeafletController() {
     })
   }
 
-  this.getLangLeaflet = function (event) {
-    let lang = event.target.getAttribute("lang-value");
+  this.getLangLeaflet = function () {
+    let lang = document.querySelector("input[name='languages']:checked").value
     this.leafletLang = lang;
     this.getLeaflet();
+    document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:none !important');
   }
 
   this.scanAgainHandler = function () {
     goToPage("scan.html")
   }
 
-  this.closeModal = function () {
-    document.querySelector("#warning-modal").setAttribute('style', 'display:none !important');
+  this.goHome = function () {
+    goToPage("index.html")
+  }
+
+  this.closeModal = function (modalId) {
+    document.querySelector("#"+modalId).setAttribute('style', 'display:none !important');
   }
 
   let showExpired = function () {
-    document.querySelector("#warning-modal").setAttribute('style', 'display:flex !important');
-
+    document.querySelector("#expired-modal").setAttribute('style', 'display:flex !important');
   }
+
   let self = this;
 
   let showXML = function (result) {
@@ -96,15 +101,18 @@ function LeafletController() {
   }
 
   let showAvailableLanguages = function (result) {
-    document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
-    document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];
-    let langList = `<div class="select-lang-text">${translations[window.currentLanguage]["select_lang_text"]}</div><ul class="languages-list">`;
-    result.availableLanguages.forEach(lang => {
-      langList = langList + `<li> <div class="lang-item" lang-value="${lang.value}" onclick="leafletController.getLangLeaflet(event)">
-              ${lang.label} - (${lang.nativeName})</div></li>`
+   // document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
+   // document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];
+   // let langList = `<div class="select-lang-text">${translations[window.currentLanguage]["select_lang_text"]}</div><select class="languages-list">`;
+    let languagesContainer = document.querySelector(".languages-container");
+    result.availableLanguages.forEach((lang, index) => {
+      let langRadio = `<img src="../images/flags/${lang.value}.png" class="language-flag"></img><label for="${lang.value}"> ${lang.label} - (${lang.nativeName})</label> <input type="radio" name="languages" ${index === 0 ? "checked" : ""} value="${lang.value}" id="${lang.value}">`;
+      let radioFragment = document.createElement('div');
+      radioFragment.classList.add("language-item-container");
+      radioFragment.innerHTML = langRadio;
+      languagesContainer.appendChild(radioFragment);
     })
-    langList = langList + "</ul>"
-    document.querySelector("#leaflet-content").innerHTML = langList;
+    document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:flex !important');
   }
 }
 

@@ -16,19 +16,38 @@
         <div class="scan-button" onclick="leafletController.scanAgainHandler()" translate="scan_again"></div>
     </div>
 </div>
-<div id="warning-modal">
+<div id="expired-modal" class="modal-container error-modal">
     <div class="modal-body">
         <div class="modal-header">
             <div class="modal-icon"></div>
-            <div class="modal-title" translate="leaflet-expired-title"></div>
-            <div class="close-modal" onclick="leafletController.closeModal()"></div>
+            <div class="modal-title" id="expired-title" translate="leaflet_expired_title"></div>
+            <div class="modal-subtitle"  id="expired-subtitle" translate="leaflet_expired_subtitle"></div>
+
+            <div class="close-modal" onclick="leafletController.closeModal('expired-modal')"></div>
         </div>
-        <div class="modal-content" translate="leaflet-expired-message"></div>
+        <div class="modal-content" translate="leaflet_expired_message"></div>
+    </div>
+</div>
+<div id="leaflet-lang-select" class="modal-container warning-modal" >
+    <div class="modal-body">
+        <div class="modal-header">
+            <div class="modal-icon"></div>
+            <div class="modal-title"  id="lang-title" translate="select_lang_title"></div>
+            <div class="modal-subtitle"  id="lang-subtitle" translate="select_lang_subtitle"></div>
+            <div class="close-modal" onclick="leafletController.closeModal('leaflet-lang-select')"></div>
+        </div>
+        <div class="modal-content">
+            <div class="text-section" translate="leaflet_lang_select_message"></div>
+            <div class="languages-container"></div>
+            <div class="proceed-button" onclick="leafletController.getLangLeaflet()" translate="lang_proceed"></div>
+            <div class="go-back-button" onclick="leafletController.goHome()" translate="go_home"></div>
+        </div>
+
     </div>
 </div>
 </body>
 <script type="module">
-  import {translate} from "../js/translations.js";
+    import {translate} from "../js/translations.js";
 
-  document.getElementsByTagName("body").onload = translate()
+    document.getElementsByTagName("body").onload = translate()
 </script>
