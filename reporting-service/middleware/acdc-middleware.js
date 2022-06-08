@@ -1,6 +1,6 @@
 const {ACDC_STATUS, HEADERS} = require('../constants');
 const ScanResult = require('../model/ScanResult');
-const {constants} = require('../../gtin-resolver/lib/utils/CommonUtils');
+const versionTransformerUtils = require("../../gtin-resolver/lib/EpiVersionTransformer");
 
 const DEFAULT_ENDPOINT = 'http://localhost:8080'
 /**
@@ -58,11 +58,11 @@ function startACDCMiddleware(server){
 
                 const productSSI = keyssi.createArraySSI('epi', [event.productCode]);
 
-                resolver.loadDSU(productSSI, (err, dsu) => {
+                resolver.loadDSU(productSSI, async (err, dsu) => {
                     if (err)
                         return errCb();
 
-                    dsu.readFile('/product' + constants['PRODUCT_STORAGE_FILE'], (err, product) => {
+                    dsu.readFile(versionTransformerUtils.getProductPath(1), (err, product) => {
                         if (err)
                             return errCb();
                         try {
