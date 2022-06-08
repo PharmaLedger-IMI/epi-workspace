@@ -1216,11 +1216,11 @@
   ],
   "build-acf-ssapps": [
     {
-      "name": "build-acdc",
+      "name": "build-dfm",
       "actions": [
         {
           "type": "execute",
-          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-acdc\""
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-dfm\""
         },
         {
           "type": "execute",
@@ -1232,7 +1232,15 @@
         },
         {
           "type": "execute",
+          "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
+        },
+        {
+          "type": "execute",
           "cmd": "cd acdc-authentication-feature-template && npm run build"
+        },
+        {
+          "type": "execute",
+          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js patching-mobile\""
         }
       ]
     }
