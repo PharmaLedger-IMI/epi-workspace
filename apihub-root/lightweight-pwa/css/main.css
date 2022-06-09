@@ -37,7 +37,7 @@
     url('../fonts/dm-sans-v11-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/dm-sans-v11-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-@media only screen and (min-device-width: 480px) and (max-device-width: 3000px) {
+@media only screen and (min-device-width: 900px) and (max-device-width: 3000px) {
     body {
         padding: 0;
         max-width: 414px;
@@ -230,7 +230,8 @@
         font-size: 16px;
         font-weight: 700;
     }
-    .go-back-button{
+
+    .go-back-button {
         font-weight: 700;
         font-size: 14px;
         line-height: 140%;
@@ -241,7 +242,7 @@
 }
 
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-device-width: 900px) {
 
     .welcome-container {
         font-size: 3rem;
@@ -438,13 +439,23 @@
         font-size: 1.5rem;
         font-weight: 700;
     }
-    .go-back-button{
+
+    .go-back-button {
         font-weight: 700;
         font-size: 1.5rem;
         line-height: 140%;
         text-align: center;
         color: #516266;
         margin-top: 8%;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    body {
+        min-height: 1000px;
+        width: 100%;
+        max-width: 600px;
+        margin: auto;
     }
 }
 
@@ -744,6 +755,7 @@ body {
     background: #fff;
     position: relative;
     overflow: auto;
+    color: #04313B;
 }
 
 .modal-content .languages-container {

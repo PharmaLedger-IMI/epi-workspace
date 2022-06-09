@@ -14,9 +14,14 @@ function ScanController() {
     await this.startScanning();
   }
 
+  this.closeModal = function (modalId) {
+    document.querySelector("#"+modalId).setAttribute('style', 'display:none !important');
+  }
+
   this.redirectToError = function (err) {
     console.log("Error on scanService ", err);
-    goToPage("error.html")
+    document.querySelector("#scan-error").setAttribute('style', 'display:flex !important');
+  //  goToPage("error.html")
   }
 
   this.cancelHandler = function () {
