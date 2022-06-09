@@ -388,6 +388,7 @@
         line-height: 3rem;
         max-height: 65%;
         min-height: 42%;
+        font-size: 1.5rem;
     }
 
     .modal-content .text-section {
@@ -732,6 +733,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 100;
 }
 
 
