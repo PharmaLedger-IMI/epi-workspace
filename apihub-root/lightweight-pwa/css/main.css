@@ -77,6 +77,10 @@
         font-size: 14px;
     }
 
+    .scan-page .modal-container {
+        height: 85%;
+    }
+
     .scan-page #scanner-placeholder {
         max-width: 414px;
         height: 90%;
@@ -347,6 +351,7 @@
         border-top-right-radius: 64px;
         border-top-left-radius: 64px;
         height: 11%;
+        padding-bottom: 3%;
     }
 
     .warning-modal .modal-header {
@@ -728,7 +733,7 @@ body {
 }
 
 .modal-container {
-    position: absolute;
+    position: fixed;
     display: none !important;
     background: rgba(0, 0, 0, 0.7);
     height: 100%;
