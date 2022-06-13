@@ -47,8 +47,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "fa396ec63bb29b5faf75ae6663ef0a151093d982",
-                    "tag": "v1.0.12"
+                    "commit": "5f275bfbe53855615c428fd5fdb21e223cc0ff17",
+                    "tag": "v1.0.13"
                 },
                 {
                     "type": "execute",
@@ -107,8 +107,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "58de360387164984652e14fe4050d16d981eb3d6",
-                    "tag": "v0.2.2"
+                    "commit": "a37d6f1c62463fb67cece7ae5d51dc21610675c0",
+                    "tag": "v0.2.3"
                 },
                 {
                     "type": "execute",
@@ -132,8 +132,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "58de360387164984652e14fe4050d16d981eb3d6",
-                    "tag": "v0.2.2"
+                    "commit": "717be90886cfce32751acc61fb747cf509522eba",
+                    "tag": "v0.2.3"
                 },
                 {
                     "type": "execute",
@@ -157,8 +157,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "58de360387164984652e14fe4050d16d981eb3d6",
-                    "tag": "v0.2.2"
+                    "commit": "717be90886cfce32751acc61fb747cf509522eba",
+                    "tag": "v0.2.3"
                 },
                 {
                     "type": "execute",
@@ -246,8 +246,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "58de360387164984652e14fe4050d16d981eb3d6",
-                    "tag": "v0.2.2"
+                    "commit": "717be90886cfce32751acc61fb747cf509522eba",
+                    "tag": "v0.2.3"
                 },
                 {
                     "type": "execute",
