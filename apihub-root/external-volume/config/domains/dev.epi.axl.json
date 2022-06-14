@@ -2,7 +2,7 @@
   "anchoring": {
     "type": "ETH",
     "option": {
-      "enableBricksLedger": false,
+      "enableBricksLedger": false
     },
     "commands": {
       "addAnchor": "anchor"
