@@ -8,6 +8,8 @@ function LeafletController() {
   this.leafletLang = window.currentLanguage || "en";
 
   this.getLeaflet = function () {
+    document.querySelector(".loader").setAttribute('style', 'display:block');
+
     let leafletApiUrl = environment.leafletWebApiUrl + "/" + environment.epiDomain;
 
     const queryString = window.location.search;
@@ -48,7 +50,10 @@ function LeafletController() {
   };
   this.handleLeafletAccordion = function () {
     let accordionItems = document.querySelectorAll(".leaflet-accordion-item");
-    accordionItems.forEach(accItem => {
+    accordionItems.forEach((accItem, index) => {
+      if (index === 0) {
+        accItem.classList.toggle("active");
+      }
       accItem.addEventListener("click", (evt) => {
         evt.target.classList.toggle("active");
       })
@@ -101,6 +106,7 @@ function LeafletController() {
     let leafletLinks = document.querySelectorAll(".leaflet-link");
     xmlService.activateLeafletInnerLinks(leafletLinks);
     self.handleLeafletAccordion();
+    document.querySelector(".loader").setAttribute('style', 'display:none');
   }
 
   let showAvailableLanguages = function (result) {
@@ -116,6 +122,7 @@ function LeafletController() {
       languagesContainer.appendChild(radioFragment);
     })
     document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:flex !important');
+    document.querySelector(".loader").setAttribute('style', 'display:none');
   }
 }
 
