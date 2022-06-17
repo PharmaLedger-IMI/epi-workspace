@@ -480,7 +480,7 @@ body {
     height: 70px;
     animation: spin 2s linear infinite;
     top: 38%;
-    left:  calc(50% - 70px);
+    left:  calc(50% - 35px);
     position: absolute;
     z-index: 200;
 }
