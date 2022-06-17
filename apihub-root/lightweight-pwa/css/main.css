@@ -479,8 +479,8 @@ body {
     width: 70px;
     height: 70px;
     animation: spin 2s linear infinite;
-    top: calc(50% - 35px);
-    left:  calc(50% - 35px);
+    top: 38%;
+    left:  calc(50% - 70px);
     position: absolute;
     z-index: 200;
 }
