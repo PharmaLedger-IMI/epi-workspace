@@ -49,13 +49,13 @@ function LeafletController() {
       });
   };
   this.handleLeafletAccordion = function () {
-    let accordionItems = document.querySelectorAll(".leaflet-accordion-item");
+    let accordionItems = document.querySelectorAll("div.leaflet-accordion-item");
     accordionItems.forEach((accItem, index) => {
       if (index === 0) {
         accItem.classList.toggle("active");
       }
       accItem.addEventListener("click", (evt) => {
-        evt.target.classList.toggle("active");
+        evt.currentTarget.classList.toggle("active");
       })
     })
   }
