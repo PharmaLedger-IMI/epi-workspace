@@ -1265,6 +1265,14 @@
                 },
                 {
                     "type": "execute",
+                    "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc-authentication-feature-template && npm run build"
+                },
+                {
+                    "type": "execute",
                     "cmd": "cd delayv-auth-feat-ssapp && npm run build"
                 },
                 {
@@ -1279,3 +1287,6 @@
         }
     ]
 }
+
+
+

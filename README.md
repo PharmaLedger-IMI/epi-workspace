@@ -320,7 +320,7 @@ For example, durring local development if your iPhone and developer machine are 
 npm run build-acf-ssapps
 ```
 In the console there should be the KeySSI's of the Auth SSApps. We need them in order to properly create and edit batches in order to activate the Authentication feature for them.
-
+ 
 Keep in mind that also for testing purpose and fast development the Auth SSApps are also included into the epi mobile build if the npm run install-acf-ssaps was executed.
 
 1. Test ACF Authentication SSApps into mobile build
