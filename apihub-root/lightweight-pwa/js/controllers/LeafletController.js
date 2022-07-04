@@ -31,9 +31,13 @@ function LeafletController() {
         response.json().then(result => {
           console.log(result);
           if (result.resultStatus === "xml_found") {
-            showXML(result);
-            if (result.expired) {
-              showExpired();
+            try {
+              showXML(result);
+              if (result.expired) {
+                showExpired();
+              }
+            } catch (e) {
+              goToPage("error.html")
             }
           }
           if (result.resultStatus === "no_xml_for_lang") {
@@ -76,8 +80,8 @@ function LeafletController() {
   }
 
   this.closeModal = function (modalId) {
-    document.querySelector("#"+modalId).setAttribute('style', 'display:none !important');
-    if(modalId === "leaflet-lang-select"){
+    document.querySelector("#" + modalId).setAttribute('style', 'display:none !important');
+    if (modalId === "leaflet-lang-select") {
       goToPage("index.html");
     }
   }
@@ -110,9 +114,9 @@ function LeafletController() {
   }
 
   let showAvailableLanguages = function (result) {
-   // document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
-   // document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];
-   // let langList = `<div class="select-lang-text">${translations[window.currentLanguage]["select_lang_text"]}</div><select class="languages-list">`;
+    // document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
+    // document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];
+    // let langList = `<div class="select-lang-text">${translations[window.currentLanguage]["select_lang_text"]}</div><select class="languages-list">`;
     let languagesContainer = document.querySelector(".languages-container");
     result.availableLanguages.forEach((lang, index) => {
       let langRadio = `<img src="./images/flags/${lang.value}.png" class="language-flag"></img><label for="${lang.value}"> ${lang.label} - (${lang.nativeName})</label> <input type="radio" name="languages" ${index === 0 ? "checked" : ""} value="${lang.value}" id="${lang.value}">`;
