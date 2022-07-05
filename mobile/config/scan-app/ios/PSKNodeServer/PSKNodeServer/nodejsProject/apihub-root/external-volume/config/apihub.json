@@ -25,6 +25,10 @@
     "gtin-dsu-wizard": {
       "module": "./../../gtin-dsu-wizard"
     },
+    "cloudWallet": {
+      "module": "./components/cloudWallet",
+      "dsuBootPath": "./nodeBoot.js"
+    },
     "bricking": {},
     "anchoring": {}
   },
