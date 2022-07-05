@@ -1110,7 +1110,7 @@
     },
     {
       "name": "truemedhemo-auth-feat-ssapp",
-      "src": "https://github.com/resilient-research-development/acdc-authentication-feature-template",
+      "src": "https://github.com/TrueMedHemmo/acdc-authentication-feature-template",
       "actions": [
         {
           "type": "smartClone",
