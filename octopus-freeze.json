@@ -9,7 +9,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "45ccae41e1b474fb21ae9fd80a771a89dbc94e80",
+                    "commit": "d6a80ff39a897da05595c36241e20952ce455884",
                     "tag": "v1.0.2"
                 },
                 {
@@ -47,8 +47,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "e27aa7f8c83b68abb43e45e8b962d741eabbb173",
-                    "tag": "v1.0.21"
+                    "commit": "55a044c7bb17f60eecd7ae490f0320e18e799855",
+                    "tag": "v1.0.24"
                 },
                 {
                     "type": "execute",
@@ -73,8 +73,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "db090a13428fda920ebcfb56f3ee558c772ca9d4",
-                    "tag": "v1.0.4"
+                    "commit": "afb641dccaf9f27b7d49a975ccc9b6e20ced9e72",
+                    "tag": "v1.0.5"
                 },
                 {
                     "type": "execute",
@@ -107,7 +107,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "e79bd762997cb76eef894cbb0dd7ac4eca148390",
+                    "commit": "734cdac7e3ed3c8c603982fcd7c2022a4bb2a250",
                     "tag": "v0.2.4"
                 },
                 {
@@ -132,7 +132,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "6bb75a152a30cf82f875af2aaf28daf030d4af92",
+                    "commit": "734cdac7e3ed3c8c603982fcd7c2022a4bb2a250",
                     "tag": "v0.2.4"
                 },
                 {
@@ -157,7 +157,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "6bb75a152a30cf82f875af2aaf28daf030d4af92",
+                    "commit": "734cdac7e3ed3c8c603982fcd7c2022a4bb2a250",
                     "tag": "v0.2.4"
                 },
                 {
@@ -246,7 +246,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "6bb75a152a30cf82f875af2aaf28daf030d4af92",
+                    "commit": "734cdac7e3ed3c8c603982fcd7c2022a4bb2a250",
                     "tag": "v0.2.4"
                 },
                 {
@@ -271,8 +271,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "9aeca0d0f4f739a84ccbce5d11d311fd26435230",
-                    "tag": "v1.0.7"
+                    "commit": "118350ee08b5b1221b46b70a861b0583491a516b",
+                    "tag": "v1.0.8"
                 },
                 {
                     "type": "execute",
@@ -370,8 +370,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "ee6b2a4e048f505867b0f9532b3c7b34799bf75f",
-                    "tag": "v1.0.3"
+                    "commit": "6c797868b31898a09ad3af38ce85132c4937a855",
+                    "tag": "v1.0.4"
                 },
                 {
                     "type": "execute",
@@ -395,8 +395,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "61252b1f5ae810bf72275899a2e1d15ea770831c",
-                    "tag": "v1.0.4"
+                    "commit": "a4a77d9b105e620680a4c11c52f678fe7520ea4b",
+                    "tag": "v1.0.5"
                 },
                 {
                     "type": "execute",
@@ -1151,7 +1151,7 @@
         },
         {
             "name": "truemedhemo-auth-feat-ssapp",
-            "src": "https://github.com/resilient-research-development/acdc-authentication-feature-template",
+            "src": "https://github.com/TrueMedHemmo/acdc-authentication-feature-template",
             "actions": [
                 {
                     "type": "smartClone",
@@ -1161,6 +1161,21 @@
                 {
                     "type": "execute",
                     "cmd": "cd truemedhemo-auth-feat-ssapp && npm install"
+                }
+            ]
+        },
+        {
+            "name": "uniqode-auth-feat-ssapp",
+            "src": "https://github.com/PharmaLedger-IMI/pharma-incmlab.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd uniqode-auth-feat-ssapp && npm install"
                 }
             ]
         }
@@ -1265,19 +1280,23 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc-authentication-feature-template && npm run build"
-                },
-                {
-                    "type": "execute",
                     "cmd": "cd delayv-auth-feat-ssapp && npm run build"
                 },
                 {
                     "type": "execute",
                     "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd uniqode-auth-feat-ssapp && npm run build"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc-authentication-feature-template && npm run build"
                 },
                 {
                     "type": "execute",
@@ -1287,6 +1306,3 @@
         }
     ]
 }
-
-
-

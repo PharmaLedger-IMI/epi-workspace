@@ -18,12 +18,19 @@
     "staticServer"
   ],
   "componentsConfig": {
+    "bdns": {
+      "url": "https://raw.githubusercontent.com/PharmaLedger-IMI/mobile-bdns/master/bdns.json"
+    },
     "epi-mapping-engine": {
       "module": "./../../gtin-resolver",
       "function": "getEPIMappingEngineForAPIHUB"
     },
     "gtin-dsu-wizard": {
       "module": "./../../gtin-dsu-wizard"
+    },
+    "cloudWallet": {
+      "module": "./components/cloudWallet",
+      "dsuBootPath": "./nodeBoot.js"
     },
     "bricking": {},
     "anchoring": {}
