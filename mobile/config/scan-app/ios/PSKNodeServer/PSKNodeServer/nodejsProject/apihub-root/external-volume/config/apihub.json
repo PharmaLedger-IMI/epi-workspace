@@ -18,6 +18,9 @@
     "staticServer"
   ],
   "componentsConfig": {
+    "bdns": {
+      "url": "https://raw.githubusercontent.com/PharmaLedger-IMI/mobile-bdns/master/bdns.json"
+    },
     "epi-mapping-engine": {
       "module": "./../../gtin-resolver",
       "function": "getEPIMappingEngineForAPIHUB"
