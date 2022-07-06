@@ -1,0 +1,28 @@
+html,
+body{
+    height: 100%;
+}
+html {
+    background-color: #ffcecc;
+    background-image: linear-gradient(232deg, #ffcecc 0%, #DDD6F3 54%);
+}
+.main-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.main-container h1{
+    text-align: center;
+}
+.main-container p{
+    word-wrap: break-word;
+    text-align: justify;
+    text-align: center;
+}
+
+
+        
