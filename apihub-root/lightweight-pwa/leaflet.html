@@ -1,7 +1,7 @@
 <head>
     <link href="css/main.css" rel="stylesheet">
     <script src="./js/controllers/LeafletController.js" type="module"></script>
-
+    <title>Pharmaledger</title>
 </head>
 
 <body>
@@ -11,6 +11,7 @@
         <span class="product-description"></span>
     </div>
     <div class="page-content">
+        <div class="loader"></div>
         <div id="leaflet-content">
         </div>
         <div class="scan-button" onclick="leafletController.scanAgainHandler()" translate="scan_again"></div>
@@ -22,7 +23,6 @@
             <div class="modal-icon"></div>
             <div class="modal-title" id="expired-title" translate="leaflet_expired_title"></div>
             <div class="modal-subtitle"  id="expired-subtitle" translate="leaflet_expired_subtitle"></div>
-
             <div class="close-modal" onclick="leafletController.closeModal('expired-modal')"></div>
         </div>
         <div class="modal-content" translate="leaflet_expired_message"></div>

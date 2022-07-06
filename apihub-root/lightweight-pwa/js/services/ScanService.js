@@ -149,6 +149,9 @@ class ScanService {
 
   onStatusChanged(status) {
     console.log(`Status has changed to "${status}"`);
+    if (status && status === "Access to the camera was denied!") {
+          throw new Error(status)
+    }
   }
 }
 

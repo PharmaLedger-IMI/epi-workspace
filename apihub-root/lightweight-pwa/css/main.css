@@ -21,7 +21,7 @@
 
 /* dm-sans-500 - latin-ext_latin */
 @font-face {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans semi-bold';
     font-style: normal;
     font-weight: 500;
     src: local(''),
@@ -30,14 +30,14 @@
 
 /* dm-sans-700 - latin-ext_latin */
 @font-face {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans bold';
     font-style: normal;
     font-weight: 700;
     src: local(''),
     url('../fonts/dm-sans-v11-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/dm-sans-v11-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-@media only screen and (min-device-width: 480px) and (max-device-width: 3000px) {
+@media only screen and (min-device-width: 900px) and (max-device-width: 3000px) {
     body {
         padding: 0;
         max-width: 414px;
@@ -75,6 +75,10 @@
 
     .scan-header {
         font-size: 14px;
+    }
+
+    .scan-page .modal-container {
+        height: 85%;
     }
 
     .scan-page #scanner-placeholder {
@@ -230,7 +234,8 @@
         font-size: 16px;
         font-weight: 700;
     }
-    .go-back-button{
+
+    .go-back-button {
         font-weight: 700;
         font-size: 14px;
         line-height: 140%;
@@ -241,7 +246,10 @@
 }
 
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-device-width: 900px) {
+    body {
+        background: var(--olivegreen);
+    }
 
     .welcome-container {
         font-size: 3rem;
@@ -295,8 +303,8 @@
         font-size: 2rem;
     }
 
-    #leaflet-content {
-        font-size: 2rem;
+    #leaflet-content h5{
+        font-size: 2.5rem;
     }
 
     .leaflet-accordion-item {
@@ -304,12 +312,7 @@
     }
 
     .leaflet-accordion-item:before {
-        font-size: 3.5rem;
-    }
-
-    #leaflet-content h5 {
-        font-size: 1rem;
-        padding: 5px;
+        font-size: 4rem;
     }
 
     #leaflet-content .languages-list {
@@ -317,7 +320,7 @@
     }
 
     .leaflet-accordion-item.active .leaflet-accordion-item-content {
-        line-height: 2.5rem;
+        line-height: 1.5rem;
     }
 
     .leaflet-page .scan-button, .error-page .scan-button {
@@ -343,6 +346,7 @@
         border-top-right-radius: 64px;
         border-top-left-radius: 64px;
         height: 11%;
+        padding-bottom: 3%;
     }
 
     .warning-modal .modal-header {
@@ -387,6 +391,7 @@
         line-height: 3rem;
         max-height: 65%;
         min-height: 42%;
+        font-size: 1.5rem;
     }
 
     .modal-content .text-section {
@@ -438,7 +443,8 @@
         font-size: 1.5rem;
         font-weight: 700;
     }
-    .go-back-button{
+
+    .go-back-button {
         font-weight: 700;
         font-size: 1.5rem;
         line-height: 140%;
@@ -448,10 +454,37 @@
     }
 }
 
+@media only screen and (orientation: landscape) {
+    body {
+        min-height: 1000px;
+        width: 100%;
+        max-width: 600px;
+        margin: auto;
+    }
+}
+
 body {
     font-family: "DM Sans";
 }
 
+.loader {
+    border: 16px solid var(--olivegreen);
+    border-top: 16px solid var(--grey);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 2s linear infinite;
+    top: 38%;
+    left:  calc(50% - 35px);
+    position: absolute;
+    z-index: 200;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 .page-header {
     padding: 0px 35px;
 }
@@ -686,14 +719,12 @@ body {
 .leaflet-accordion-item-content {
     display: none;
     margin-right: 5px;
-    font-size: 1rem;
     height: fit-content;
 }
 
 .leaflet-accordion-item.active .leaflet-accordion-item-content {
     height: fit-content;
     display: block;
-    font-size: 0.85rem;
     position: relative;
     font-style: normal;
     font-weight: normal;
@@ -713,7 +744,7 @@ body {
 }
 
 .modal-container {
-    position: absolute;
+    position: fixed;
     display: none !important;
     background: rgba(0, 0, 0, 0.7);
     height: 100%;
@@ -721,6 +752,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 100;
 }
 
 
@@ -744,6 +776,7 @@ body {
     background: #fff;
     position: relative;
     overflow: auto;
+    color: #04313B;
 }
 
 .modal-content .languages-container {

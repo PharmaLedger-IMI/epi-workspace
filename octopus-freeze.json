@@ -9,8 +9,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "0b8ef9818b375a2f99da2c990507fce59ab0bec1",
-                    "tag": "v1.0.0"
+                    "commit": "d6a80ff39a897da05595c36241e20952ce455884",
+                    "tag": "v1.0.2"
                 },
                 {
                     "type": "execute",
@@ -47,8 +47,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "8ecc10fc1697c65a305f82d65cce9714605ad58a",
-                    "tag": "v1.0.3"
+                    "commit": "55a044c7bb17f60eecd7ae490f0320e18e799855",
+                    "tag": "v1.0.24"
                 },
                 {
                     "type": "execute",
@@ -73,8 +73,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "5c34b8e37466244491085c2cbdc1d6ecfeea2a44",
-                    "tag": "v1.0.3"
+                    "commit": "afb641dccaf9f27b7d49a975ccc9b6e20ced9e72",
+                    "tag": "v1.0.5"
                 },
                 {
                     "type": "execute",
@@ -90,8 +90,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "2071457e1cc56573974acc763d1204bb7fcd46fc",
-                    "tag": "v1.0.3"
+                    "commit": "81d48ce57b5704b8fa7a6d3431f8f3adc3a7b48f",
+                    "tag": "v1.0.4"
                 },
                 {
                     "type": "execute",
@@ -107,8 +107,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7b1b86fb70da80de46b0ad559064a47b3b1dbac8",
-                    "tag": "v0.2.1"
+                    "commit": "734cdac7e3ed3c8c603982fcd7c2022a4bb2a250",
+                    "tag": "v0.2.4"
                 },
                 {
                     "type": "execute",
@@ -132,8 +132,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7b1b86fb70da80de46b0ad559064a47b3b1dbac8",
-                    "tag": "v0.2.1"
+                    "commit": "734cdac7e3ed3c8c603982fcd7c2022a4bb2a250",
+                    "tag": "v0.2.4"
                 },
                 {
                     "type": "execute",
@@ -157,8 +157,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7b1b86fb70da80de46b0ad559064a47b3b1dbac8",
-                    "tag": "v0.2.1"
+                    "commit": "734cdac7e3ed3c8c603982fcd7c2022a4bb2a250",
+                    "tag": "v0.2.4"
                 },
                 {
                     "type": "execute",
@@ -246,8 +246,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7b1b86fb70da80de46b0ad559064a47b3b1dbac8",
-                    "tag": "v0.2.1"
+                    "commit": "734cdac7e3ed3c8c603982fcd7c2022a4bb2a250",
+                    "tag": "v0.2.4"
                 },
                 {
                     "type": "execute",
@@ -271,8 +271,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "60daccbde68de966b6337b45f52de9902d49e630",
-                    "tag": "v1.0.3"
+                    "commit": "118350ee08b5b1221b46b70a861b0583491a516b",
+                    "tag": "v1.0.8"
                 },
                 {
                     "type": "execute",
@@ -370,8 +370,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "d7e80cd2271f0963801d044497f20290f2ae5857",
-                    "tag": "v1.0.2"
+                    "commit": "6c797868b31898a09ad3af38ce85132c4937a855",
+                    "tag": "v1.0.4"
                 },
                 {
                     "type": "execute",
@@ -395,8 +395,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "143c25c8953b900d55dfdbab033185aeffa17023",
-                    "tag": "v1.0.2"
+                    "commit": "a4a77d9b105e620680a4c11c52f678fe7520ea4b",
+                    "tag": "v1.0.5"
                 },
                 {
                     "type": "execute",
@@ -795,9 +795,7 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false,
-                    "commit": "0fe1811bf6ee1db3eed3db724d0a279a5a156e8a",
-                    "tag": "v1.0.0"
+                    "collectLog": false
                 },
                 {
                     "type": "execute",
@@ -812,9 +810,7 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false,
-                    "commit": "c1aa00d503f166b49a4b0992ad2a8257c5d250b6",
-                    "tag": "v1.0.2"
+                    "collectLog": false
                 },
                 {
                     "type": "execute",
@@ -1155,7 +1151,7 @@
         },
         {
             "name": "truemedhemo-auth-feat-ssapp",
-            "src": "https://github.com/resilient-research-development/acdc-authentication-feature-template",
+            "src": "https://github.com/TrueMedHemmo/acdc-authentication-feature-template",
             "actions": [
                 {
                     "type": "smartClone",
@@ -1165,6 +1161,21 @@
                 {
                     "type": "execute",
                     "cmd": "cd truemedhemo-auth-feat-ssapp && npm install"
+                }
+            ]
+        },
+        {
+            "name": "uniqode-auth-feat-ssapp",
+            "src": "https://github.com/PharmaLedger-IMI/pharma-incmlab.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd uniqode-auth-feat-ssapp && npm install"
                 }
             ]
         }
@@ -1282,6 +1293,18 @@
                 {
                     "type": "execute",
                     "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd uniqode-auth-feat-ssapp && npm run build"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd acdc-authentication-feature-template && npm run build"
                 },
                 {
                     "type": "execute",

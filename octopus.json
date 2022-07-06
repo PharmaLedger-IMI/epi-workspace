@@ -1110,7 +1110,7 @@
     },
     {
       "name": "truemedhemo-auth-feat-ssapp",
-      "src": "https://github.com/resilient-research-development/acdc-authentication-feature-template",
+      "src": "https://github.com/TrueMedHemmo/acdc-authentication-feature-template",
       "actions": [
         {
           "type": "smartClone",
@@ -1122,6 +1122,21 @@
           "cmd": "cd truemedhemo-auth-feat-ssapp && npm install"
         }
       ]
+    },
+    {
+        "name": "uniqode-auth-feat-ssapp",
+        "src": "https://github.com/PharmaLedger-IMI/pharma-incmlab.git",
+        "actions": [
+            {
+                "type": "smartClone",
+                "target": ".",
+                "collectLog": false
+            },
+            {
+                "type": "execute",
+                "cmd": "cd uniqode-auth-feat-ssapp && npm install"
+            }
+        ]
     }
   ],
   "install-dfm": [
@@ -1229,6 +1244,18 @@
         {
           "type": "execute",
           "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
+        },
+        {
+            "type": "execute",
+            "cmd": "cd uniqode-auth-feat-ssapp && npm run build"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
+        },
+        {
+          "type": "execute",
+          "cmd": "cd acdc-authentication-feature-template && npm run build"
         },
         {
           "type": "execute",
