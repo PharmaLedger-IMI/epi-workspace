@@ -1069,7 +1069,7 @@
                 {
                     "type": "copy",
                     "src": "privatesky/psknode/bundles/nodeBoot.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/nodeBoot.js"
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/psknode/bundles/nodeBoot.js"
                 },
                 {
                     "type": "copy",
