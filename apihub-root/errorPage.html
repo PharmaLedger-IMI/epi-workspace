@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>404 - Page not found</title>
+    <title>File not found</title>
     <link rel="stylesheet" href="./assets/css/error.css" >
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   </head>
   <body>
     <main class="main-container">
-        <div>
-            <img src="assets/images/error.png " width="600px" height="400px"
+        <div class="img-container">
+            <img src="assets/images/error.png "
             alt="error"/>
         </div>
-        <div>
-            <h1>404 - Page not found!</h1>
-            <p>Oops! It seems like you're lost, let me help you find your way back home!<br />
-                    Please check the configure file before refreshing. Make sure it exist and it's location is correct.<br><br>
-                    
+        <div class="error-container">
+            <p id="error-text"></p>
         </div>
         
     </main>
+    <script>
+      let errorMessage=sessionStorage.getItem("error-message");
+      if(!errorMessage) errorMessage="You're not supposed to be here."
+      document.getElementById("error-text").innerHTML=errorMessage;
+      
+    </script>
   </body>
 </html>

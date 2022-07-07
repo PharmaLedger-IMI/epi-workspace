@@ -1,9 +1,8 @@
 :root{
-    --my-margin:2%;
-    --my-elements-per-row:4;
-    --my-width1: calc((100% - var(--my-margin) * ((var(--my-elements-per-row) - 2) * 2 + 2)) / (var(--my-elements-per-row) - 1));
-    --my-width2: calc((100% - var(--my-margin) * ((var(--my-elements-per-row) - 3) * 2 + 2)) / (var(--my-elements-per-row) - 2));
-    --my-width3: calc((100% - var(--my-margin) * ((var(--my-elements-per-row) - 4) * 2 + 2)) / (var(--my-elements-per-row) - 3));
+    --elements-per-row:4;
+    --elements-per-row-1200px:3;
+    --elements-per-row-900px:2;
+    --elements-per-row-600px:1;
 }
 
 *{
@@ -22,18 +21,13 @@ body{
 .main-container{
     margin:0 5%;
     height: 100%;
-    display: flex;
-    justify-content: space-around flex-start;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(var(--elements-per-row),1fr);
 }
 
 .anchor-container{
-
     display: flex;
     flex-direction: column;
-    margin:var(--my-margin);
-    width: calc((100% - var(--my-margin) * ((var(--my-elements-per-row)-1)*2 +2)) / (var(--my-elements-per-row)));
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -67,39 +61,33 @@ body{
     margin-bottom: 50px;
 }
 
-.anchor-container:hover{
-   transform:scale(1.05);
-}
-.anchor-container:hover p{
-    color:rgb(186, 224, 236);
-}
 
-p.label-error{
-    margin:20px 50px;
-    font-family: "Lato", "Helvetica Neue", sans-serif;
-    background-color: black;
-    text-align: justify;
-    
-    width: calc(100% - 100px);
-    top:0;
-    color:white;
-    font-size: 30px;
-}
+.anchor-container a:hover{
+    transform:scale(1.05);
+ }
+ 
+ .anchor-container a:hover+p{
+    color:rgb(186, 224, 236);
+ }
 
 @media screen and (max-width:1200px){
-    .anchor-container{
-        width: var(--my-width1);
+    .main-container{
+        grid-template-columns: repeat(var(--elements-per-row-1200px),1fr); 
     }
 }
 
 @media screen and (max-width:900px){
-    .anchor-container{
-        width: var(--my-width2);
-     }
-}
-
-@media screen and (max-width:575px){
-    .anchor-container{
-        width: var(--my-width3);   
+    .main-container{
+        grid-template-columns: repeat(var(--elements-per-row-900px),1fr); 
     }
 }
+
+@media screen and (max-width:600px){
+    .main-container{
+        grid-template-columns: repeat(var(--elements-per-row-600px),1fr); 
+    }
+}
+
+
+
+

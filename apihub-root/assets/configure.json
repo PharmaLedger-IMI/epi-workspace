@@ -15,11 +15,6 @@
         "background_color":"#33B9D4",
         "icon":"fa-solid fa-user-tie fa-4x",
         "label":"Pacient Wallet"
-        },
-        {"href":"leaflet-wallet/loader/",
-        "background_color":"#33B9D4",
-        "icon":"fa-solid fa-user-tie fa-4x",
-        "label":"Pacient Wallet"
         }
     ]
 }

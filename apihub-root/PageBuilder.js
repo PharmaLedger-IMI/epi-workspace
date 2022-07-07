@@ -1,7 +1,6 @@
 import defaultData from "./assets/defaultValues.js"
-import defaultProperties from "./defaultProperties.js";
-
 const configureFilePath="./assets/configure.json";
+
 const randomGenerator=((length)=>length>1? Math.floor(Math.random() * length) : 0);
 
 class MediaScreenWidth{
@@ -9,21 +8,22 @@ class MediaScreenWidth{
         this.elements=items;
     }
     execute(){
-        document.documentElement.style.setProperty('--my-elements-per-row', this.elements);
+        document.documentElement.style.setProperty('--elements-per-row', this.elements);
         switch(this.elements){
             case 1:
-                document.documentElement.style.setProperty('--my-width1',"calc((100% - var(--my-margin) * 2)/1)");
-                document.documentElement.style.setProperty('--my-width2',"calc((100% - var(--my-margin) * 2)/1)");
-                document.documentElement.style.setProperty('--my-width3',"calc((100% - var(--my-margin) * 2)/1)");
+                document.documentElement.style.setProperty('--elements-per-row-1200px',"1");
+                document.documentElement.style.setProperty('--elements-per-row-900px',"1");
+                document.documentElement.style.setProperty('--elements-per-row-600px',"1");
                 break;
             case 2:
-                document.documentElement.style.setProperty('--my-width1',"calc((100% - var(--my-margin) * 4)/2)");
-                document.documentElement.style.setProperty('--my-width2',"calc((100% - var(--my-margin) * 4)/2)");
-                document.documentElement.style.setProperty('--my-width3',"calc((100% - var(--my-margin) * 2)/1)");
+                document.documentElement.style.setProperty('--elements-per-row-1200px',"2");
+                document.documentElement.style.setProperty('--elements-per-row-900px',"2");
+                document.documentElement.style.setProperty('--elements-per-row-600px',"1");
                 break;
             case 3:
-                document.documentElement.style.setProperty('--my-width1',"calc((100% - var(--my-margin) * 6)/3)");
-                document.documentElement.style.setProperty('--my-width2',"calc((100% - var(--my-margin) * 4)/2)");
+                document.documentElement.style.setProperty('--elements-per-row-1200px',"3");
+                document.documentElement.style.setProperty('--elements-per-row-900px',"2");
+                document.documentElement.style.setProperty('--elements-per-row-600px',"1");
                 break;
             default:
                 
@@ -41,9 +41,8 @@ class Model {
 
 
 };
-class View {
-    constructor(dataDefault,defaultProperties) {
-        this.defaultProperties=defaultProperties.properties;
+class PageBuilder {
+    constructor(dataDefault) {
         this.defaultData=dataDefault;
         this.buttonContainer=this.createElement("div","main-container");
         document.querySelector("body").append(this.buttonContainer);
@@ -56,11 +55,6 @@ class View {
         return element
     }
 
-    emptyPage(){
-        while(this.buttonContainer.firstChild){
-            this.buttonContainer.removeChild(this.buttonContainer.firstChild);
-        }
-    }
 
     chooseBackground(names){
         let backgroundImage="url(";
@@ -72,9 +66,9 @@ class View {
     createButtons(data){
         document.body.style.backgroundImage=this.chooseBackground(data.background);
         data["menu-items"].forEach((element,index) => {
-            for (var key of this.defaultProperties){
+            for (var key of Object.keys(data.default_item)){
                 if (!element.hasOwnProperty(key)||element[key]=="") {
-                    let defaultValues=this.defaultData[key];
+                    let defaultValues=data.default_item[key];
                     let index=randomGenerator(defaultValues.length);
                     element[key]=defaultValues[index];
                 }
@@ -106,7 +100,6 @@ class View {
     loadButtons(data){
         var myData=Object.assign({},this.defaultData,data);
         try{
-            this.emptyPage();
             this.createButtons(myData);
         }
         catch(error){
@@ -118,15 +111,16 @@ class View {
 fetch(configureFilePath)
     .then(response=>{
         if(response.ok) return response.json();
-        else throw new Error("File not found");
+        else throw new Error(`File path ${configureFilePath} is invalid. Please check your configuration file.`);
     })
     .then(data=>{
         let model=new Model(data);
-        let view=new View(defaultData,defaultProperties);
+        let view=new PageBuilder(defaultData);
         view.loadButtons(model.getData());
     })
     .catch(error=>{
-        document.location.href="errorPage.html"
+        sessionStorage.setItem("error-message",error)
+        document.location.href="errorPage.html";
     })
 
 
