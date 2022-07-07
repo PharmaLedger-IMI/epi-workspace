@@ -37,9 +37,11 @@
             <div class="close-modal" onclick="leafletController.closeModal('leaflet-lang-select')"></div>
         </div>
         <div class="modal-content">
-            <div class="text-section" translate="leaflet_lang_select_message"></div>
+            <div class="text-section has-leaflets" translate="leaflet_lang_select_message"></div>
+            <div class="text-section no-leaflet" translate="no_leaflet_message"></div>
             <div class="languages-container"></div>
-            <div class="proceed-button" onclick="leafletController.getLangLeaflet()" translate="lang_proceed"></div>
+            <div class="proceed-button has-leaflets" onclick="leafletController.getLangLeaflet()" translate="lang_proceed"></div>
+            <div class="proceed-button no-leaflet" onclick="leafletController.scanAgainHandler()" translate="scan_again"></div>
             <div class="go-back-button" onclick="leafletController.goHome()" translate="go_home"></div>
         </div>
 

@@ -117,16 +117,23 @@ function LeafletController() {
     // document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
     // document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];
     // let langList = `<div class="select-lang-text">${translations[window.currentLanguage]["select_lang_text"]}</div><select class="languages-list">`;
-    let languagesContainer = document.querySelector(".languages-container");
-    result.availableLanguages.forEach((lang, index) => {
-      let langRadio = `<img src="./images/flags/${lang.value}.png" class="language-flag"></img><label for="${lang.value}"> ${lang.label} - (${lang.nativeName})</label> <input type="radio" name="languages" ${index === 0 ? "checked" : ""} value="${lang.value}" id="${lang.value}">`;
-      let radioFragment = document.createElement('div');
-      radioFragment.classList.add("language-item-container");
-      radioFragment.innerHTML = langRadio;
-      languagesContainer.appendChild(radioFragment);
-    })
     document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:flex !important');
     document.querySelector(".loader").setAttribute('style', 'display:none');
+    if (result.availableLanguages.length >= 1) {
+      document.querySelector(".proceed-button.no-leaflet").setAttribute('style', 'display:none');
+      document.querySelector(".text-section.no-leaflet").setAttribute('style', 'display:none');
+      let languagesContainer = document.querySelector(".languages-container");
+      result.availableLanguages.forEach((lang, index) => {
+        let langRadio = `<img src="./images/flags/${lang.value}.png" class="language-flag"></img><label for="${lang.value}"> ${lang.label} - (${lang.nativeName})</label> <input type="radio" name="languages" ${index === 0 ? "checked" : ""} value="${lang.value}" id="${lang.value}">`;
+        let radioFragment = document.createElement('div');
+        radioFragment.classList.add("language-item-container");
+        radioFragment.innerHTML = langRadio;
+        languagesContainer.appendChild(radioFragment);
+      })
+    } else {
+      document.querySelector(".proceed-button.has-leaflets").setAttribute('style', 'display:none');
+      document.querySelector(".text-section.has-leaflets").setAttribute('style', 'display:none');
+    }
   }
 }
 

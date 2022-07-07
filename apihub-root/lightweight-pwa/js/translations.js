@@ -19,6 +19,7 @@ export const translations = {
     "scan_error_subtitle": "Can't access camera",
     "camera_error_message": "Something went wrong and selected camera can not be accessed properly. Please check your device camera settings or try to change camera form the menu",
     "leaflet_lang_select_message": "We are sorry but for your current language leaflet is unavailable. You can choose form the available language list.",
+    "no_leaflet_message": "We are sorry but there are no available leaflets at the moment. <br> For your own safety, please contact the pharmacy or doctor who issued the package of medicines.",
     "lang_proceed": "Proceed",
     "go_home": "Go Back Home"
   }, "de": {
@@ -41,7 +42,7 @@ export const translations = {
     "scan_error_subtitle": "Kein Zugriff auf die Kamera",
     "camera_error_message": "Etwas ist schief gelaufen, sodass auf die ausgewählte Kamera nicht in geeigneter Weise zugegriffen werden kann. Bitte überprüfen Sie die Kameraeinstellungen auf Ihrem Gerät oder versuchen Sie, vom Menü aus die Kamera zu wechseln.",
     "leaflet_lang_select_message": "Es tut uns leid. Die aktuelle Packungsbeilage ist in Ihrer Sprache nicht verfügbar. Sie können eine der verfügbaren Sprachen aus der Liste auswählen.",
-    "lang_proceed": "Fortfahren",
+    "no_leaflet_message": "Es tut uns leid, aber im Moment sind keine Packungsbeilagen verfügbar. <br> Wenden Sie sich zu Ihrer eigenen Sicherheit bitte an die Apotheke oder den Arzt, der die Arzneimittelpackung ausgestellt hat.",    "lang_proceed": "Fortfahren",
     "go_home": "Zurück zum Startbildschirm"
   }, "fr": {
     "welcome": "Bienvenue dans Pharmaledger",
@@ -63,6 +64,7 @@ export const translations = {
     "scan_error_subtitle": "Appareil photo inaccessible",
     "camera_error_message": "Une erreur s'est produite. L'accès à la caméra sélectionnée ne fonctionne pas correctement. Veuillez vérifier les paramètres de l'appareil photo ou essayez de changer d'appareil photo à partir du menu.",
     "leaflet_lang_select_message": "Nous sommes désolés, mais la notice n'est actuellement pas disponible dans votre langue. Vous pouvez choisir parmi la liste des langues disponibles.",
+    "no_leaflet_message": "Nous sommes désolés mais il n'y a pas de notice disponible pour le moment. <br> Pour votre propre sécurité, veuillez contacter la pharmacie ou le médecin qui a délivré le paquet de médicaments.",
     "lang_proceed": "Continuer",
     "go_home": "Retour à la page d'accueil"
   }, "nl": {
@@ -85,7 +87,7 @@ export const translations = {
     "scan_error_subtitle": "Geen toegang tot camera",
     "camera_error_message": "Er is iets fout gegaan en de geselecteerde camera kan niet juist worden geopend. Controleer de camera-instellingen van uw toestel of probeer de camera in het menu aan te passen",
     "leaflet_lang_select_message": "Het spijt ons, maar de bijsluiter is voor uw huidige taal niet beschikbaar. U kunt kiezen uit de lijst met beschikbare talen.",
-    "lang_proceed": "Doorgaan",
+    "no_leaflet_message": "Het spijt ons, maar er zijn momenteel geen bijsluiters beschikbaar. <br> Neem voor uw eigen veiligheid contact op met de apotheek of arts die het pakket met geneesmiddelen heeft afgegeven.",    "lang_proceed": "Doorgaan",
     "go_home": "Terug naar start"
   }, "ro": {
     "welcome": "Bine ați venit la Pharmaledger",
@@ -107,6 +109,7 @@ export const translations = {
     "scan_error_subtitle": "Nu pot accesa camera",
     "camera_error_message": "Ceva a mers prost și camera selectată nu poate fi accesată corect. Verificați setările camerei dispozitivului dvs. sau încercați să schimbați camera din meniu",
     "leaflet_lang_select_message": "Ne pare rău, dar broșura în limba dvs. actuală nu este disponibilă. Puteți alege din lista de limbi disponibile.",
+    "no_leaflet_message": "Ne pare rău, dar nu există prospecte disponibile momentan. <br> Pentru siguranța dumneavoastră, vă rugăm să contactați farmacia sau medicul care a eliberat pachetul de medicamente.",
     "lang_proceed": "Continuați",
     "go_home": "Întoarceți-vă acasă"
   }
