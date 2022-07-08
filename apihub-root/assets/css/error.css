@@ -30,12 +30,12 @@ body {
     font-size: 28px;
     font-weight: bold;
 }
-
-.img-container img{
-    max-width: 100%;
-    height: auto;
-    display: block;
+.img-container{
+    height:100%;
+}
+.img-container i{
     position: relative;
-    left:49%;
-    transform:translate(-49%,0);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
 }

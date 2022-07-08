@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>File not found</title>
+    <link href="assets/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="./assets/css/error.css" >
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,7 @@
   <body>
     <main class="main-container">
         <div class="img-container">
-            <img src="assets/images/error.png "
-            alt="error"/>
+          <i class="fa-solid fa-file-circle-exclamation fa-10x"></i>
         </div>
         <div class="error-container">
             <p id="error-text"></p>
@@ -20,8 +20,11 @@
     </main>
     <script>
       let errorMessage=sessionStorage.getItem("error-message");
-      if(!errorMessage) errorMessage="You're not supposed to be here."
+      if(!errorMessage) {
+        document.location.href="/";
+      }
       document.getElementById("error-text").innerHTML=errorMessage;
+      sessionStorage.removeItem("error-message");
       
     </script>
   </body>
