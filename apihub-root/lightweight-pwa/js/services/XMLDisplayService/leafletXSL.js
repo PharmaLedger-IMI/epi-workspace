@@ -264,8 +264,15 @@ const acordisXslContent = `<?xml version="1.0" encoding="UTF-8"?>
         <p><xsl:apply-templates select="node()" /></p>
     </xsl:template>
     
+    
+    <xsl:param name="quote">"</xsl:param>
+    <xsl:param name="space">\\0020</xsl:param>
     <xsl:template match="//ul">
-        <ul><xsl:apply-templates select="node()" /></ul>
+
+        <ul>
+          <xsl:attribute name="style"> list-style-type: <xsl:value-of select="$quote"/><xsl:value-of select="@data-type"/><xsl:value-of select="$space"/><xsl:value-of select="$quote"/>;
+          </xsl:attribute>
+        <xsl:apply-templates select="node()" /></ul>
     </xsl:template>
 
     <xsl:template match="//ul/li">
@@ -288,8 +295,8 @@ const acordisXslContent = `<?xml version="1.0" encoding="UTF-8"?>
         <figure><xsl:apply-templates select="node()" /></figure>
     </xsl:template>
 
-    <xsl:template match="//figure/p">
-        <p style="display:none;" class="ignored_from_ui"><xsl:apply-templates select="node()" /></p>
+    <xsl:template match="//figure/*[not(self::img)]">
+        <section style="display:none;" class="ignored_from_ui"><xsl:apply-templates select="node()" /></section>
     </xsl:template>
 
     <xsl:template match="//table">

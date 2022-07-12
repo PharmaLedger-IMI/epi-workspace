@@ -37,432 +37,6 @@
     url('../fonts/dm-sans-v11-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/dm-sans-v11-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-@media only screen and (min-device-width: 900px) and (max-device-width: 3000px) {
-    body {
-        padding: 0;
-        max-width: 414px;
-        margin-right: auto;
-        margin-left: auto;
-        background-image: url("./../images/background.jpg");
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        display: flex;
-    }
-
-    .page-container {
-        align-self: center;
-        max-height: 960px;
-        width: 414px;
-    }
-
-    .welcome-container, .scan-button-container {
-        font-size: 18px;
-    }
-
-    .scan-button-container {
-        height: 6%;
-        margin: 70% auto 0 auto;
-    }
-
-    .content-container {
-        border-radius: 15px;
-    }
-
-    .explain-container {
-        font-size: 15px;
-    }
-
-    .scan-header {
-        font-size: 14px;
-    }
-
-    .scan-page .modal-container {
-        height: 85%;
-    }
-
-    .scan-page #scanner-placeholder {
-        max-width: 414px;
-        height: 90%;
-    }
-
-    .page-header {
-        font-size: 2rem;
-    }
-
-
-    .leaflet-page .product-description, .error-page .header-subtitle {
-        font-size: 1rem;
-    }
-
-    .page-container.error-page .page-header .header-title:after {
-        margin-left: 10px;
-    }
-
-    #leaflet-content {
-        font-size: 0.7rem;
-    }
-
-    .leaflet-accordion-item {
-        line-height: 1.5rem;
-    }
-
-    .leaflet-accordion-item:before {
-        font-size: 1.5rem;
-    }
-
-    #leaflet-content h5,
-    #leaflet-content .select-lang-text,
-    #leaflet-content .languages-list {
-        font-size: 1rem;
-    }
-
-    .leaflet-accordion-item.active .leaflet-accordion-item-content {
-        line-height: 1.5rem;
-    }
-
-    .leaflet-page .scan-button, .error-page .scan-button {
-        bottom: 35px;
-        width: 128px;
-        height: 40px;
-        font-size: 14px;
-    }
-
-    .modal-container {
-        max-width: 414px;
-    }
-
-    .modal-container .modal-body {
-        margin: 0px 12px;
-        position: relative;
-    }
-
-    .modal-header {
-        border-top-right-radius: 32px;
-        border-top-left-radius: 32px;
-        height: 96px;
-    }
-
-    .warning-modal .modal-header {
-        background-color: var(--yellow-200);
-    }
-
-    .error-modal .modal-header {
-        background-color: var(--red-200);
-    }
-
-    .modal-header .modal-icon {
-        height: 21px;
-        top: 24px;
-        left: 24px;
-    }
-
-    .modal-header .modal-title {
-        font-size: 14px;
-        left: 52px;
-        margin-top: 3px;
-    }
-
-    .modal-header .modal-subtitle {
-        font-size: 20px;
-        font-weight: 700;
-        left: 24px;
-        position: relative;
-        margin-top: 5px;
-    }
-
-    .modal-header .close-modal {
-        height: 20px;
-        width: 20px;
-        right: 24px;
-        top: 21px;
-    }
-
-    .modal-content {
-        min-height: 354px;
-        border-bottom-right-radius: 32px;
-        border-bottom-left-radius: 32px;
-        padding: 24px;
-        line-height: 1.5rem;
-        max-height: 650px;
-    }
-
-    .modal-content .text-section {
-        padding-bottom: 24px;
-        font-size: 14px;
-        line-height: 155%;
-        font-weight: 500;
-        text-align: justify-all;
-    }
-
-    .modal-content .languages-container .language-item-container {
-        padding: 10px 14px 0px;
-        border-radius: 8px;
-        font-size: 14px;
-        margin-bottom: 8px;;
-    }
-
-    .modal-content .languages-container .language-item-container input {
-        left: 0px;
-        width: 100%;
-        position: relative;
-        height: 16px;
-        margin-left: 45%;
-
-        top: -23px;
-    }
-
-    .modal-content .languages-container .language-item-container .language-flag {
-        width: 24px;
-        border-radius: 50%;
-        top: 7px;
-        position: relative;
-    }
-
-    .proceed-button {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 8px;
-        gap: 10px;
-        height: 56px;
-        margin-top: 16px;
-        background: var(--olivegreen);
-        border-radius: 62px;
-        color: #fff;
-        font-size: 16px;
-        font-weight: 700;
-    }
-
-    .go-back-button {
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 140%;
-        text-align: center;
-        color: #516266;
-        margin-top: 24px;
-    }
-}
-
-
-@media only screen and (max-device-width: 900px) {
-    body {
-        background: var(--olivegreen);
-    }
-
-    .welcome-container {
-        font-size: 3rem;
-    }
-
-    .scan-button-container {
-        font-size: 2.5rem;
-        height: 7%;
-        margin: 30% auto 0 auto;
-    }
-
-    .content-container {
-        border-radius: 47px;
-    }
-
-    .explain-container {
-        font-size: 2.2rem;
-    }
-
-    .scan-header {
-        font-size: 2rem;
-    }
-
-    #scanner-placeholder {
-        height: 90%;
-    }
-
-    #scanner-placeholder canvas#scene {
-        width: 200%;
-        height: 200%;
-    }
-
-    #scanner-placeholder canvas#overlay {
-        width: 200%;
-        height: 200%;
-        top: -10%;
-        left: 0%;
-        transform: translate(-30%, 10%);
-    }
-
-    .page-container.error-page .page-header .header-title:after {
-        margin-left: 1.5rem;
-    }
-
-    .leaflet-page .product-name, .error-page .header-title {
-        font-size: 4rem;
-        font-weight: 700;
-    }
-
-    .leaflet-page .product-description, .error-page .header-subtitle, .error-page .page-content {
-        font-size: 2rem;
-    }
-
-    #leaflet-content h5 {
-        font-size: 2.5rem;
-    }
-
-    .leaflet-accordion-item {
-        line-height: 5rem;
-    }
-
-    .leaflet-accordion-item:before {
-        font-size: 4rem;
-    }
-
-    #leaflet-content .languages-list {
-        margin: 0px 35px;
-    }
-
-    .leaflet-accordion-item.active .leaflet-accordion-item-content {
-        line-height: 1.5rem;
-    }
-
-    .leaflet-page .scan-button, .error-page .scan-button {
-        bottom: 5%;
-        width: 30%;
-        height: 5%;
-        font-size: 2rem;
-    }
-
-    .modal-container {
-        top: 0px;
-    }
-
-    .modal-container .modal-body {
-        border-radius: 25px;
-        margin: 0px 3%;
-        position: relative;
-        height: 70%;
-
-    }
-
-    .modal-header {
-        border-top-right-radius: 64px;
-        border-top-left-radius: 64px;
-        height: 11%;
-        padding-bottom: 3%;
-    }
-
-    .warning-modal .modal-header {
-        background-color: var(--yellow-200);
-    }
-
-    .error-modal .modal-header {
-        background-color: var(--red-200);
-    }
-
-    .modal-header .modal-icon {
-        top: 25%;
-        background-size: contain !important;
-        height: 25%;
-        width: 7%;
-        left: 7%;
-    }
-
-    .modal-header .modal-title {
-        font-size: 2rem;
-        left: 12%;
-    }
-
-    .modal-header .modal-subtitle {
-        left: 7%;
-        position: relative;
-        font-size: 3rem;
-        font-weight: 700;
-    }
-
-    .modal-header .close-modal {
-        height: 3%;
-        width: 5%;
-        right: 5%;
-        top: 3%;
-    }
-
-    .modal-content {
-        border-bottom-right-radius: 64px;
-        border-bottom-left-radius: 64px;
-        padding: 7%;
-        line-height: 3rem;
-        max-height: 65%;
-        min-height: 42%;
-        font-size: 1.5rem;
-    }
-
-    .modal-content .text-section {
-        font-size: 1.5rem;
-        line-height: 155%;
-        font-weight: 500;
-        text-align: justify;
-        padding-bottom: 7%;
-    }
-
-    .modal-content .languages-container .language-item-container {
-        font-size: 1.5rem;
-        padding: 20px 28px;
-        margin-bottom: 2%;
-        border-radius: 16px;
-        height: 3%;
-    }
-
-    .modal-content .languages-container .language-item-container .language-flag {
-        width: 24px;
-        height: 24px;
-    }
-
-    .modal-content .languages-container .language-item-container label {
-        font-size: 1.7rem;
-    }
-
-    .modal-content .languages-container .language-item-container input {
-        left: 0px;
-        width: 100%;
-        position: relative;
-        height: 65%;
-        top: -100%;
-        margin-left: 45%;
-    }
-
-    .proceed-button {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 2%;
-        gap: 3%;
-        height: 6%;
-        margin-top: 4%;
-        background: var(--olivegreen);
-        border-radius: 62px;
-        color: #fff;
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
-
-    .go-back-button {
-        font-weight: 700;
-        font-size: 1.5rem;
-        line-height: 140%;
-        text-align: center;
-        color: #516266;
-        margin-top: 8%;
-    }
-}
-
-@media only screen and (orientation: landscape) {
-    body {
-        min-height: 1000px;
-        width: 100%;
-        max-width: 600px;
-        margin: auto;
-    }
-}
-
 body {
     font-family: "DM Sans";
 }
@@ -655,6 +229,12 @@ body {
     background: #fff;
 }
 
+#leaflet-content h5,
+#leaflet-content .select-lang-text,
+#leaflet-content .languages-list {
+    font-size: 1.8vh;
+}
+
 #leaflet-content .select-lang-text {
     padding: 35px;
 }
@@ -675,6 +255,8 @@ body {
     text-align: start;
     overflow-y: auto;
     height: 100%;
+    font-size: 1.5vh;
+    height: 95%;
 }
 
 #leaflet-content table {
@@ -736,16 +318,35 @@ body {
 }
 
 .leaflet-accordion-item:before {
-    content: "\002b";;
-    margin-right: 5px;
+    content: "";
+    margin-right: -20px;
     visibility: visible;
-    right: 0px;
     position: relative;
     float: right;
+    width: 7%;
+    height: 4%;
+    background-image: url(../images/accordion-open.svg);
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .leaflet-accordion-item.active:before {
-    content: '\2212';
+    background-image: url("../images/accordion-close.svg");
+}
+
+.leaflet-accordion-item table,
+.leaflet-accordion-item table td,
+.leaflet-accordion-item table th {
+    border: 1px solid;
+    border-collapse: collapse;
+    font-size: inherit;
+}
+
+.leaflet-accordion-item td, th {
+    padding: 15px;
+    width: 100%;
+    height: 100%;
 }
 
 .modal-container {
@@ -791,4 +392,401 @@ body {
 .modal-content .languages-container .language-item-container {
     font-weight: 500;
     border: 0.5px solid #D0D5DD;
+}
+
+
+@media only screen and (min-device-width: 900px) {
+    body {
+        padding: 0;
+        max-width: 414px;
+        margin-right: auto;
+        margin-left: auto;
+        background-image: url("./../images/background.jpg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        display: flex;
+    }
+
+    .page-container {
+        align-self: center;
+        max-height: 960px;
+        width: 414px;
+    }
+
+    .welcome-container, .scan-button-container {
+        font-size: 18px;
+    }
+
+    .scan-button-container {
+        height: 6%;
+        margin: 70% auto 0 auto;
+    }
+
+    .content-container {
+        border-radius: 15px;
+    }
+
+    .explain-container {
+        font-size: 15px;
+    }
+
+    .scan-header {
+        font-size: 14px;
+    }
+
+    .scan-page .modal-container {
+        height: 85%;
+    }
+
+    .scan-page #scanner-placeholder {
+        max-width: 414px;
+        height: 90%;
+    }
+
+    .page-header {
+        font-size: 2vh;
+    }
+
+
+    .leaflet-page .product-description, .error-page .header-subtitle {
+        font-size: 1vh;
+    }
+
+    .page-container.error-page .page-header .header-title:after {
+        margin-left: 10px;
+    }
+
+    #leaflet-content h5 {
+        margin-right: 1rem;
+    }
+
+    .leaflet-page .scan-button, .error-page .scan-button {
+        bottom: 15px;
+        width: 128px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .modal-container {
+        max-width: 414px;
+    }
+
+    .modal-container .modal-body {
+        margin: 0px 12px;
+        position: relative;
+    }
+
+    .modal-header {
+        border-top-right-radius: 32px;
+        border-top-left-radius: 32px;
+        height: 96px;
+    }
+
+    .warning-modal .modal-header {
+        background-color: var(--yellow-200);
+    }
+
+    .error-modal .modal-header {
+        background-color: var(--red-200);
+    }
+
+    .modal-header .modal-icon {
+        height: 21px;
+        top: 24px;
+        left: 24px;
+    }
+
+    .modal-header .modal-title {
+        font-size: 14px;
+        left: 52px;
+        margin-top: 3px;
+    }
+
+    .modal-header .modal-subtitle {
+        font-size: 20px;
+        font-weight: 700;
+        left: 24px;
+        position: relative;
+        margin-top: 5px;
+    }
+
+    .modal-header .close-modal {
+        height: 20px;
+        width: 20px;
+        right: 24px;
+        top: 21px;
+    }
+
+    .modal-content {
+        min-height: 354px;
+        border-bottom-right-radius: 32px;
+        border-bottom-left-radius: 32px;
+        padding: 24px;
+        line-height: 1.5rem;
+        max-height: 650px;
+    }
+
+    .modal-content .text-section {
+        padding-bottom: 24px;
+        font-size: 14px;
+        line-height: 155%;
+        font-weight: 500;
+        text-align: justify-all;
+    }
+
+    .modal-content .languages-container .language-item-container {
+        padding: 10px 14px 0px;
+        border-radius: 8px;
+        font-size: 14px;
+        margin-bottom: 8px;;
+    }
+
+    .modal-content .languages-container .language-item-container input {
+        left: 0px;
+        width: 100%;
+        position: relative;
+        height: 16px;
+        margin-left: 45%;
+
+        top: -23px;
+    }
+
+    .modal-content .languages-container .language-item-container .language-flag {
+        width: 24px;
+        border-radius: 50%;
+        top: 7px;
+        position: relative;
+    }
+
+    .proceed-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        gap: 10px;
+        height: 56px;
+        margin-top: 16px;
+        background: var(--olivegreen);
+        border-radius: 62px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .go-back-button {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 140%;
+        text-align: center;
+        color: #516266;
+        margin-top: 24px;
+    }
+}
+
+
+@media only screen and (max-device-width: 900px) {
+    body {
+        background: var(--olivegreen);
+    }
+
+    .welcome-container {
+        font-size: 3vh;
+    }
+
+    .scan-button-container {
+        font-size: 2.5vh;
+        height: 7%;
+        margin: 30% auto 0 auto;
+    }
+
+    .content-container {
+        border-radius: 47px;
+    }
+
+    .explain-container {
+        font-size: 2.2vh;
+    }
+
+    .scan-header {
+        font-size: 2vh;
+    }
+
+    #scanner-placeholder {
+        height: 90%;
+    }
+
+    #scanner-placeholder canvas#scene {
+        width: 200%;
+        height: 200%;
+    }
+
+    #scanner-placeholder canvas#overlay {
+        width: 200%;
+        height: 200%;
+        top: -10%;
+        left: 0%;
+        transform: translate(-30%, 10%);
+    }
+
+    .page-container.error-page .page-header .header-title:after {
+        margin-left: 1.5rem;
+    }
+
+    .leaflet-page .product-name, .error-page .header-title {
+        font-size: 4vh;
+        font-weight: 700;
+    }
+
+    .leaflet-page .product-description, .error-page .header-subtitle, .error-page .page-content {
+        font-size: 2vh;
+    }
+
+    #leaflet-content h5 {
+        margin-right: 4rem;
+    }
+
+    #leaflet-content .languages-list {
+        margin: 0px 35px;
+    }
+
+    .leaflet-page .scan-button, .error-page .scan-button {
+        bottom: 3%;
+        width: 30%;
+        height: 5%;
+        font-size: 1.5vh;
+    }
+
+    .modal-container {
+        top: 0px;
+    }
+
+    .modal-container .modal-body {
+        border-radius: 25px;
+        margin: 0px 3%;
+        position: relative;
+        height: 70%;
+
+    }
+
+    .modal-header {
+        border-top-right-radius: 64px;
+        border-top-left-radius: 64px;
+        height: 11%;
+        padding-bottom: 3%;
+    }
+
+    .warning-modal .modal-header {
+        background-color: var(--yellow-200);
+    }
+
+    .error-modal .modal-header {
+        background-color: var(--red-200);
+    }
+
+    .modal-header .modal-icon {
+        top: 25%;
+        background-size: contain !important;
+        height: 25%;
+        width: 7%;
+        left: 7%;
+    }
+
+    .modal-header .modal-title {
+        font-size: 2vh;
+        left: 12%;
+    }
+
+    .modal-header .modal-subtitle {
+        left: 7%;
+        position: relative;
+        font-size: 3vh;
+        font-weight: 700;
+    }
+
+    .modal-header .close-modal {
+        height: 3%;
+        width: 5%;
+        right: 5%;
+        top: 3%;
+    }
+
+    .modal-content {
+        border-bottom-right-radius: 64px;
+        border-bottom-left-radius: 64px;
+        padding: 7%;
+        line-height: 3rem;
+        max-height: 65%;
+        min-height: 42%;
+        font-size: 1.5vh;
+    }
+
+    .modal-content .text-section {
+        font-size: 1.5vh;
+        line-height: 155%;
+        font-weight: 500;
+        text-align: justify;
+        padding-bottom: 7%;
+    }
+
+    .modal-content .languages-container .language-item-container {
+        font-size: 1.5vh;
+        padding: 20px 28px;
+        margin-bottom: 2%;
+        border-radius: 16px;
+        height: 3%;
+    }
+
+    .modal-content .languages-container .language-item-container .language-flag {
+        width: 24px;
+        height: 24px;
+    }
+
+    .modal-content .languages-container .language-item-container label {
+        font-size: 1.7vh;
+    }
+
+    .modal-content .languages-container .language-item-container input {
+        left: 0px;
+        width: 100%;
+        position: relative;
+        height: 65%;
+        top: -100%;
+        margin-left: 45%;
+    }
+
+    .proceed-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2%;
+        gap: 3%;
+        height: 6%;
+        margin-top: 4%;
+        background: var(--olivegreen);
+        border-radius: 62px;
+        color: #fff;
+        font-size: 1.5vh;
+        font-weight: 700;
+    }
+
+    .go-back-button {
+        font-weight: 700;
+        font-size: 1.5vh;
+        line-height: 140%;
+        text-align: center;
+        color: #516266;
+        margin-top: 8%;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    body {
+        min-height: 1000px;
+        width: 100%;
+        max-width: 600px;
+        margin: auto;
+    }
 }
