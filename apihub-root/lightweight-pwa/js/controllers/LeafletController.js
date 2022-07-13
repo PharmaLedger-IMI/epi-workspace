@@ -55,11 +55,12 @@ function LeafletController() {
   this.handleLeafletAccordion = function () {
     let accordionItems = document.querySelectorAll("div.leaflet-accordion-item");
     accordionItems.forEach((accItem, index) => {
-      if (index === 0) {
-        accItem.classList.toggle("active");
-      }
       accItem.addEventListener("click", (evt) => {
-        evt.currentTarget.classList.toggle("active");
+        accItem.classList.toggle("active");
+        accItem.querySelector(".leaflet-accordion-item-content").addEventListener("click", (event) => {
+          event.stopImmediatePropagation();
+          event.stopPropagation();
+        })
       })
     })
   }
