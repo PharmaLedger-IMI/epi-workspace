@@ -409,6 +409,7 @@ body {
         align-self: center;
         max-height: 960px;
         width: 414px;
+        height: 100vh;
     }
 
     .welcome-container, .scan-button-container {
@@ -547,11 +548,10 @@ body {
 
     .modal-content .languages-container .language-item-container input {
         left: 0px;
-        width: 100%;
+        width: 10%;
         position: relative;
         height: 16px;
-        margin-left: 45%;
-
+        margin-left: 90%;
         top: -23px;
     }
 
