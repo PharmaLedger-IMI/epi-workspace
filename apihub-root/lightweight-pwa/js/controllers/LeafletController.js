@@ -125,7 +125,7 @@ function LeafletController() {
       document.querySelector(".text-section.no-leaflet").setAttribute('style', 'display:none');
       let languagesContainer = document.querySelector(".languages-container");
       result.availableLanguages.forEach((lang, index) => {
-        let langRadio = `<img src="./images/flags/${lang.value}.png" class="language-flag"></img><label for="${lang.value}"> ${lang.label} - (${lang.nativeName})</label> <input type="radio" name="languages" ${index === 0 ? "checked" : ""} value="${lang.value}" id="${lang.value}">`;
+        let langRadio = `<div class="flag-label-wrapper"><img src="./images/flags/${lang.value}.png" class="language-flag"/><span for="${lang.value}"> ${lang.label} - (${lang.nativeName})</span> </div><input type="radio" name="languages" ${index === 0 ? "checked" : ""} value="${lang.value}" id="${lang.value}">`;
         let radioFragment = document.createElement('div');
         radioFragment.classList.add("language-item-container");
         radioFragment.innerHTML = langRadio;

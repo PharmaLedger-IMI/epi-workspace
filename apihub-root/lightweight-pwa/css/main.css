@@ -232,7 +232,7 @@ body {
 #leaflet-content,
 #leaflet-content .select-lang-text,
 #leaflet-content .languages-list {
-    font-size: calc(100% + 1vh);
+    font-size: calc(100% + 0.8vmin);
 }
 
 #leaflet-content .select-lang-text {
@@ -248,6 +248,7 @@ body {
 
 #leaflet-content h5 {
     font-weight: normal;
+    font-size: 110%;
 }
 
 
@@ -389,8 +390,25 @@ body {
 .modal-content .languages-container .language-item-container {
     font-weight: 500;
     border: 0.5px solid #D0D5DD;
+    font-size: 2.5vh;
+    padding: 8px 10px 0px;
+    line-height: 1;
 }
 
+.flag-label-wrapper {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 85%;
+}
+
+.modal-content .languages-container .language-item-container .language-flag {
+    vertical-align: baseline;
+    width: 10%;
+    top: 5px;
+    position: relative;
+    margin-right: 5px;
+}
 
 @media only screen and (min-device-width: 900px) {
     body {
@@ -443,12 +461,12 @@ body {
     }
 
     .page-header {
-        font-size: 2vh;
+        font-size: 2.5vh;
     }
 
 
     .leaflet-page .product-description, .error-page .header-subtitle {
-        font-size: 1vh;
+        font-size: 2.5vh;
     }
 
     .page-container.error-page .page-header .header-title:after {
@@ -462,7 +480,7 @@ body {
     .leaflet-accordion-item table,
     .leaflet-accordion-item table td,
     .leaflet-accordion-item table th {
-        font-size: large;
+        font-size: inherit;
     }
 
     .leaflet-page .scan-button, .error-page .scan-button {
@@ -502,13 +520,13 @@ body {
     }
 
     .modal-header .modal-title {
-        font-size: 14px;
+        font-size: 1.5vh;
         left: 52px;
         margin-top: 3px;
     }
 
     .modal-header .modal-subtitle {
-        font-size: 20px;
+        font-size: 2.5vh;
         font-weight: 700;
         left: 24px;
         position: relative;
@@ -533,16 +551,13 @@ body {
 
     .modal-content .text-section {
         padding-bottom: 24px;
-        font-size: 14px;
-        line-height: 155%;
+        font-size: 2vh;
         font-weight: 500;
-        text-align: justify-all;
+        text-align: justify;
     }
 
     .modal-content .languages-container .language-item-container {
-        padding: 10px 14px 0px;
         border-radius: 8px;
-        font-size: 14px;
         margin-bottom: 8px;;
     }
 
@@ -553,13 +568,6 @@ body {
         height: 16px;
         margin-left: 90%;
         top: -23px;
-    }
-
-    .modal-content .languages-container .language-item-container .language-flag {
-        width: 24px;
-        border-radius: 50%;
-        top: 7px;
-        position: relative;
     }
 
     .proceed-button {
@@ -646,6 +654,12 @@ body {
         font-size: 2vh;
     }
 
+    #leaflet-content,
+    #leaflet-content .select-lang-text,
+    #leaflet-content .languages-list {
+        font-size: calc(100% + 2.5vmin);
+    }
+
     #leaflet-content h5 {
         margin-right: 4rem;
     }
@@ -653,7 +667,7 @@ body {
     .leaflet-accordion-item table,
     .leaflet-accordion-item table td,
     .leaflet-accordion-item table th {
-        font-size: larger;
+        font-size: 100%;
     }
 
     #leaflet-content .languages-list {
@@ -695,16 +709,16 @@ body {
     }
 
     .modal-header .modal-icon {
-        top: 25%;
+        top: 32%;
         background-size: contain !important;
-        height: 25%;
-        width: 7%;
+        height: 28%;
+        width: 20%;
         left: 7%;
     }
 
     .modal-header .modal-title {
         font-size: 2vh;
-        left: 12%;
+        left: 13%;
     }
 
     .modal-header .modal-subtitle {
@@ -725,43 +739,36 @@ body {
         border-bottom-right-radius: 64px;
         border-bottom-left-radius: 64px;
         padding: 7%;
-        line-height: 3rem;
+        line-height: 3vh;
         max-height: 65%;
         min-height: 42%;
-        font-size: 1.5vh;
+        font-size: 3vh;
     }
 
     .modal-content .text-section {
-        font-size: 1.5vh;
-        line-height: 155%;
+        font-size: 65%;
         font-weight: 500;
         text-align: justify;
         padding-bottom: 7%;
     }
 
+    .modal-content .languages-container .language-item-container .language-flag {
+        top: 16px;
+        margin-left: 10px;
+    }
+
     .modal-content .languages-container .language-item-container {
-        font-size: 1.5vh;
-        padding: 20px 28px;
         margin-bottom: 2%;
         border-radius: 16px;
-        height: 3%;
-    }
-
-    .modal-content .languages-container .language-item-container .language-flag {
-        width: 24px;
-        height: 24px;
-    }
-
-    .modal-content .languages-container .language-item-container label {
-        font-size: 1.7vh;
     }
 
     .modal-content .languages-container .language-item-container input {
+        left: 0px;
         width: 10%;
         position: relative;
-        height: 65%;
-        top: -130%;
-        margin-left: 95%;
+        height: 36px;
+        margin-left: 90%;
+        top: -43px;
     }
 
     .proceed-button {
@@ -776,7 +783,7 @@ body {
         background: var(--olivegreen);
         border-radius: 62px;
         color: #fff;
-        font-size: 1.5vh;
+        font-size: 2vh;
         font-weight: 700;
     }
 
