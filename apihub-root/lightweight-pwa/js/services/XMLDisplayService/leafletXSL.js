@@ -291,13 +291,18 @@ const acordisXslContent = `<?xml version="1.0" encoding="UTF-8"?>
         <p><xsl:apply-templates select="node()" /></p>
     </xsl:template>
 
-    <xsl:template match="//figure">
-        <figure><xsl:apply-templates select="node()" /></figure>
-    </xsl:template>
+       <xsl:template match="//figure">
+        <figure class="selective">
+              <style>
+                .selective :not(img){
+                display:none;
+                }
+              </style>
+            <xsl:apply-templates select="node()" />
+        </figure>
+       </xsl:template>
 
-    <xsl:template match="//figure/*[not(self::img)]">
-        <section style="display:none;" class="ignored_from_ui"><xsl:apply-templates select="node()" /></section>
-    </xsl:template>
+   
 
     <xsl:template match="//table">
         <table><xsl:apply-templates select="node()" /></table>
