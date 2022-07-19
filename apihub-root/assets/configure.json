@@ -1,0 +1,20 @@
+ {
+    "menu-items":[
+        {
+        "href":"dsu-fabric-wallet/loader/",
+        "background_color":"#FAA368",
+        "icon":"fa-solid fa-atom fa-4x",
+        "label":"Demiurge Wallet"
+        },
+        {"href":"demiurge-wallet/loader/",
+        "background_color":"#8782E1",
+        "icon":"fa-solid fa-building-columns fa-4x",
+        "label":"Enterprise Wallet"
+        },
+        {"href":"leaflet-wallet/loader/",
+        "background_color":"#33B9D4",
+        "icon":"fa-solid fa-user-tie fa-4x",
+        "label":"Pacient Wallet"
+        }
+    ]
+}
