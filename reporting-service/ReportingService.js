@@ -263,18 +263,24 @@ class ReportingService {
                 console.log(result);
             }
 
-            this._bindUserDetails(evt, (err, boundEvt) => {
+            self.settingsService.readSetting(SETTINGS.networkName, (err, networkName) => {
                 if (err)
-                    return callback(`Could not bind user details`);
-                self.http.doPost(API_HUB_ENDPOINT, JSON.stringify(boundEvt), HEADERS, (err, result) => {
+                    return callback(err);
+
+                evt.networkName = networkName;
+                this._bindUserDetails(evt, (err, boundEvt) => {
                     if (err)
-                        return callback(err);
-                    try{
-                        result = JSON.parse(result);
-                    } catch (e) {
-                        return callback(e);
-                    }
-                    callback(undefined, result);
+                        return callback(`Could not bind user details`);
+                    self.http.doPost(API_HUB_ENDPOINT, JSON.stringify(boundEvt), HEADERS, (err, result) => {
+                        if (err)
+                            return callback(err);
+                        try{
+                            result = JSON.parse(result);
+                        } catch (e) {
+                            return callback(e);
+                        }
+                        callback(undefined, result);
+                    });
                 });
             });
         });

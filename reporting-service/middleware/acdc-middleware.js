@@ -56,7 +56,7 @@ function startACDCMiddleware(server){
                 const resolver = opendsu.loadApi('resolver');
                 const keyssi = opendsu.loadApi('keyssi');
 
-                const productSSI = keyssi.createArraySSI('epi', [event.productCode]);
+                const productSSI = keyssi.createArraySSI(event.networkName, [event.productCode]);
 
                 resolver.loadDSU(productSSI, async (err, dsu) => {
                     if (err)

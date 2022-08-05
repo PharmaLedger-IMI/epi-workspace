@@ -25,7 +25,8 @@ const HEADERS = {
 const SETTINGS = {
     enableAcdc: 'acdc-enabled',
     didKey: 'acdc-did',
-    locationKey: 'acdc-location'
+    locationKey: 'acdc-location',
+    networkName: "networkName"
 }
 
 /**
