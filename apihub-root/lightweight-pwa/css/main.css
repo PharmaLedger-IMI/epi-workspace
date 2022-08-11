@@ -38,6 +38,15 @@
 }
 
 body {
+    padding: 0;
+    max-width: 414px;
+    margin-right: auto;
+    margin-left: auto;
+    background-image: url("./../images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
     font-family: "DM Sans";
 }
 
@@ -66,15 +75,20 @@ body {
 
 .page-header {
     padding: 0px 35px;
+    font-size: 2.5vh;
 }
 
 .page-container {
     background: var(--olivegreen);
     color: #fff;
-    height: 100%;
     padding: 0px 35px;
-    border-radius: 25px;
+    border-radius: 30px;
+    align-self: center;
+    max-height: 960px;
+    width: 414px;
+    height: 100vh;
 }
+
 
 .icon-container {
     background: url(../images/app-icon.svg) no-repeat center;
@@ -88,6 +102,7 @@ body {
     width: 100%;
     text-align: center;
     line-height: 27px;
+    font-size: 18px;
 }
 
 @keyframes animatedBackground {
@@ -124,10 +139,8 @@ body {
     -o-animation: animatedBackground 5s linear infinite;
     animation-delay: 1s;
     animation-direction: alternate;
-    margin-top: 12%;
-    margin-bottom: 6%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 12% auto 6%;
+    border-radius: 15px;
 }
 
 .icon-div {
@@ -150,6 +163,7 @@ body {
 .explain-container {
     align-self: center;
     text-align: center;
+    font-size: 15px;
 }
 
 .scan-button-container {
@@ -163,6 +177,9 @@ body {
     border-radius: 80px;
     position: relative;
     font-width: 700;
+    font-size: 18px;
+    height: 6%;
+    margin: 70% auto 0 auto;
 }
 
 .page-container.scan-page, .page-container.leaflet-page {
@@ -181,11 +198,14 @@ body {
     align-items: end;
     font-weight: 500;
     font-style: normal;
+    font-size: 14px;
 }
 
 .scan-page #scanner-placeholder {
     overflow: hidden;
     position: relative !important;
+    max-width: 414px;
+    height: 90%;
 }
 
 
@@ -193,6 +213,10 @@ body {
     padding-bottom: 4%;
     padding-left: 6%;
     padding-right: 6%;
+}
+
+#scan-error {
+    top: calc((100% - 960px) / 2);
 }
 
 .page-container.error-page {
@@ -213,6 +237,7 @@ body {
     height: 4%;
     background-size: contain !important;
     background-position: center !important;
+    margin-left: 10px;
 }
 
 .leaflet-page .page-header, .error-page .page-header {
@@ -227,6 +252,8 @@ body {
     position: relative;
     color: #04313B;
     background: #fff;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 #leaflet-content,
@@ -249,6 +276,7 @@ body {
 #leaflet-content h5 {
     font-weight: normal;
     font-size: 110%;
+    margin-right: 1rem;
 }
 
 
@@ -287,6 +315,10 @@ body {
     color: #02272F;
     font-weight: 700;
     font-style: normal;
+    bottom: 15px;
+    width: 128px;
+    height: 40px;
+    font-size: 14px;
 }
 
 .error-page .page-content {
@@ -340,6 +372,8 @@ body {
 .leaflet-accordion-item table th {
     border: 1px solid;
     border-collapse: collapse;
+    font-size: inherit;
+
 }
 
 .leaflet-accordion-item td, th {
@@ -356,24 +390,37 @@ body {
     width: 100%;
     flex-direction: column;
     justify-content: center;
+    align-self: center;
     z-index: 100;
+    max-width: 414px;
+    max-height: 960px;
+    border-radius: 30px;
 }
 
 
 .modal-header .modal-title {
     position: relative;
+    font-size: 1.5vh;
+    left: 52px;
+    margin-top: 3px;
 }
 
 .modal-header .modal-icon {
     background: url(./../images/warning-icon.svg) no-repeat;
     position: relative;
+    height: 21px;
+    top: 24px;
+    left: 24px;
 }
 
 .modal-header .close-modal {
-    background: url(./../images/close-modal.svg) no-repeat;
     position: absolute;
-    background-position: center;
+    background: url(./../images/close-modal.svg) no-repeat center;
     background-size: contain;
+    height: 20px;
+    width: 20px;
+    right: 24px;
+    top: 21px;
 }
 
 .modal-content {
@@ -381,6 +428,12 @@ body {
     position: relative;
     overflow: auto;
     color: #04313B;
+    min-height: 354px;
+    border-bottom-right-radius: 32px;
+    border-bottom-left-radius: 32px;
+    padding: 24px;
+    line-height: 1.5rem;
+    max-height: 650px;
 }
 
 .modal-content .languages-container {
@@ -408,198 +461,96 @@ body {
     top: 5px;
     position: relative;
     margin-right: 5px;
+    border-radius: 8px;
 }
 
-@media only screen and (min-device-width: 900px) {
-    body {
-        padding: 0;
-        max-width: 414px;
-        margin-right: auto;
-        margin-left: auto;
-        background-image: url("./../images/background.jpg");
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        display: flex;
-    }
 
-    .page-container {
-        align-self: center;
-        max-height: 960px;
-        width: 414px;
-        height: 100vh;
-    }
+/*.scan-page .modal-container {
+    height: 90%;
+}*/
 
-    .welcome-container, .scan-button-container {
-        font-size: 18px;
-    }
-
-    .scan-button-container {
-        height: 6%;
-        margin: 70% auto 0 auto;
-    }
-
-    .content-container {
-        border-radius: 15px;
-    }
-
-    .explain-container {
-        font-size: 15px;
-    }
-
-    .scan-header {
-        font-size: 14px;
-    }
-
-    .scan-page .modal-container {
-        height: 85%;
-    }
-
-    .scan-page #scanner-placeholder {
-        max-width: 414px;
-        height: 90%;
-    }
-
-    .page-header {
-        font-size: 2.5vh;
-    }
-
-
-    .leaflet-page .product-description, .error-page .header-subtitle {
-        font-size: 2.5vh;
-    }
-
-    .page-container.error-page .page-header .header-title:after {
-        margin-left: 10px;
-    }
-
-    #leaflet-content h5 {
-        margin-right: 1rem;
-    }
-
-    .leaflet-accordion-item table,
-    .leaflet-accordion-item table td,
-    .leaflet-accordion-item table th {
-        font-size: inherit;
-    }
-
-    .leaflet-page .scan-button, .error-page .scan-button {
-        bottom: 15px;
-        width: 128px;
-        height: 40px;
-        font-size: 14px;
-    }
-
-    .modal-container {
-        max-width: 414px;
-    }
-
-    .modal-container .modal-body {
-        margin: 0px 12px;
-        position: relative;
-    }
-
-    .modal-header {
-        border-top-right-radius: 32px;
-        border-top-left-radius: 32px;
-        height: 96px;
-    }
-
-    .warning-modal .modal-header {
-        background-color: var(--yellow-200);
-    }
-
-    .error-modal .modal-header {
-        background-color: var(--red-200);
-    }
-
-    .modal-header .modal-icon {
-        height: 21px;
-        top: 24px;
-        left: 24px;
-    }
-
-    .modal-header .modal-title {
-        font-size: 1.5vh;
-        left: 52px;
-        margin-top: 3px;
-    }
-
-    .modal-header .modal-subtitle {
-        font-size: 2.5vh;
-        font-weight: 700;
-        left: 24px;
-        position: relative;
-        margin-top: 5px;
-    }
-
-    .modal-header .close-modal {
-        height: 20px;
-        width: 20px;
-        right: 24px;
-        top: 21px;
-    }
-
-    .modal-content {
-        min-height: 354px;
-        border-bottom-right-radius: 32px;
-        border-bottom-left-radius: 32px;
-        padding: 24px;
-        line-height: 1.5rem;
-        max-height: 650px;
-    }
-
-    .modal-content .text-section {
-        padding-bottom: 24px;
-        font-size: 2vh;
-        font-weight: 500;
-        text-align: justify;
-    }
-
-    .modal-content .languages-container .language-item-container {
-        border-radius: 8px;
-        margin-bottom: 8px;;
-    }
-
-    .modal-content .languages-container .language-item-container input {
-        left: 0px;
-        width: 10%;
-        position: relative;
-        height: 16px;
-        margin-left: 90%;
-        top: -23px;
-    }
-
-    .proceed-button {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 8px;
-        gap: 10px;
-        height: 56px;
-        margin-top: 16px;
-        background: var(--olivegreen);
-        border-radius: 62px;
-        color: #fff;
-        font-size: 16px;
-        font-weight: 700;
-    }
-
-    .go-back-button {
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 140%;
-        text-align: center;
-        color: #516266;
-        margin-top: 24px;
-    }
+.leaflet-page .product-description, .error-page .header-subtitle {
+    font-size: 2.5vh;
 }
 
+.modal-container .modal-body {
+    margin: 0px 12px;
+    position: relative;
+}
+
+.modal-header {
+    border-top-right-radius: 32px;
+    border-top-left-radius: 32px;
+    height: 96px;
+    color: #02272F;
+}
+
+.warning-modal .modal-header {
+    background-color: var(--yellow-200);
+}
+
+.error-modal .modal-header {
+    background-color: var(--red-200);
+}
+
+.modal-header .modal-subtitle {
+    font-size: 2.5vh;
+    font-weight: 700;
+    left: 24px;
+    position: relative;
+    margin-top: 5px;
+}
+
+.modal-content .text-section {
+    padding-bottom: 24px;
+    font-size: 2vh;
+    font-weight: 500;
+    text-align: justify;
+}
+
+.modal-content .languages-container .language-item-container input {
+    left: 0px;
+    width: 10%;
+    position: relative;
+    height: 16px;
+    margin-left: 90%;
+    top: -23px;
+}
+
+
+.proceed-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    gap: 10px;
+    height: 56px;
+    margin-top: 16px;
+    background: var(--olivegreen);
+    border-radius: 62px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.go-back-button {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 140%;
+    text-align: center;
+    color: #516266;
+    margin-top: 24px;
+}
 
 @media only screen and (max-device-width: 900px) {
-    body {
+    body, .page-container {
         background: var(--olivegreen);
+        height: 100%;
+        max-height: 100%;
+        width: 100%;
+        max-width: 100%;
     }
 
     .welcome-container {
@@ -624,8 +575,13 @@ body {
         font-size: 2vh;
     }
 
-    #scanner-placeholder {
+    .scan-page #scanner-placeholder {
         height: 90%;
+        max-width: 100%;
+    }
+
+    #scan-error {
+        top: 0px;
     }
 
     #scanner-placeholder canvas#scene {
@@ -683,14 +639,16 @@ body {
 
     .modal-container {
         top: 0px;
+        max-width: 100%;
+        max-height: 100%;
+        position: fixed;
     }
 
     .modal-container .modal-body {
         border-radius: 25px;
-        margin: 0px 3%;
+        margin: 50% 3% 0px;
         position: relative;
-        height: 70%;
-
+        height: 75%;
     }
 
     .modal-header {
