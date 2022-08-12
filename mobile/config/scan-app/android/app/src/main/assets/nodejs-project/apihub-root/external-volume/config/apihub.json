@@ -15,6 +15,7 @@
     "anchoring",
     "dsu-wizard",
     "debugLogger",
+    "requestForwarder",
     "staticServer"
   ],
   "componentsConfig": {
