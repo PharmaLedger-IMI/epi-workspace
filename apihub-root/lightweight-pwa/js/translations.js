@@ -1,9 +1,9 @@
 export const translations = {
   "en": {
-    "welcome": "Welcome to Pharmaledger",
+    "welcome": "Welcome to PharmaLedger",
     "scan_explain": "Find the 2D code on your medicine to scan and view information",
     "scan_button": "Scan 2D Code",
-    "app_name": "Pharmaledger",
+    "app_name": "PharmaLedger",
     "cancel": "Cancel",
     "change_camera": "Change camera",
     "scan_again": "Scan Again",
@@ -23,10 +23,10 @@ export const translations = {
     "lang_proceed": "Proceed",
     "go_home": "Go Back Home"
   }, "de": {
-    "welcome": "Willkommen bei Pharmaledger",
+    "welcome": "Willkommen bei PharmaLedger",
     "scan_explain": "Suchen Sie den 2D-Code auf Ihrem Arzneimittel, um ihn zu scannen und sich Informationen anzeigen zu lassen.",
     "scan_button": "2D-Code scannen",
-    "app_name": "Pharmaledger",
+    "app_name": "PharmaLedger",
     "cancel": "Abbrechen",
     "change_camera": "Kamera wechseln",
     "scan_again": "Erneut scannen",
@@ -45,10 +45,10 @@ export const translations = {
     "no_leaflet_message": "Es tut uns leid, aber im Moment sind keine Packungsbeilagen verfügbar. <br> Wenden Sie sich zu Ihrer eigenen Sicherheit bitte an die Apotheke oder den Arzt, der die Arzneimittelpackung ausgestellt hat.",    "lang_proceed": "Fortfahren",
     "go_home": "Zurück zum Startbildschirm"
   }, "fr": {
-    "welcome": "Bienvenue dans Pharmaledger",
+    "welcome": "Bienvenue dans PharmaLedger",
     "scan_explain": "Trouvez le code2D sur votre médicament pour le scanner et afficher les informations le concernant.",
     "scan_button": "Scanner le code 2D",
-    "app_name": "Pharmaledger",
+    "app_name": "PharmaLedger",
     "cancel": "Annuler",
     "change_camera": "Changer d'appareil photo",
     "scan_again": "Rescanner",
@@ -68,10 +68,10 @@ export const translations = {
     "lang_proceed": "Continuer",
     "go_home": "Retour à la page d'accueil"
   }, "nl": {
-    "welcome": "Welkom bij Pharmaledger",
+    "welcome": "Welkom bij PharmaLedger",
     "scan_explain": "Zoek de 2D-code op uw geneesmiddel om informatie te scannen en te bekijken",
     "scan_button": "2D-code scannen",
-    "app_name": "Pharmaledger",
+    "app_name": "PharmaLedger",
     "cancel": "Annuleren",
     "change_camera": "Camera wijzigen",
     "scan_again": "Opnieuw scannen",
@@ -90,10 +90,10 @@ export const translations = {
     "no_leaflet_message": "Het spijt ons, maar er zijn momenteel geen bijsluiters beschikbaar. <br> Neem voor uw eigen veiligheid contact op met de apotheek of arts die het pakket met geneesmiddelen heeft afgegeven.",    "lang_proceed": "Doorgaan",
     "go_home": "Terug naar start"
   }, "ro": {
-    "welcome": "Bine ați venit la Pharmaledger",
+    "welcome": "Bine ați venit la PharmaLedger",
     "scan_explain": "Găsiți codul 2D pe medicament pentru a scana și vizualiza informații",
     "scan_button": "Scanați codul 2D",
-    "app_name": "Pharmaledger",
+    "app_name": "PharmaLedger",
     "cancel": "Anulează",
     "change_camera": "Schimbați camera",
     "scan_again": "Scanați din nou",
