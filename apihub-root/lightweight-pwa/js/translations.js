@@ -2,7 +2,7 @@ export const translations = {
   "en": {
     "welcome": "Welcome to PharmaLedger",
     "scan_explain": "Find the 2D code on your medicine to scan and view information",
-    "scan_button": "Scan 2D Code",
+    "scan_button": "Scan Datamatrix",
     "app_name": "PharmaLedger",
     "cancel": "Cancel",
     "change_camera": "Change camera",
@@ -25,7 +25,7 @@ export const translations = {
   }, "de": {
     "welcome": "Willkommen bei PharmaLedger",
     "scan_explain": "Suchen Sie den 2D-Code auf Ihrem Arzneimittel, um ihn zu scannen und sich Informationen anzeigen zu lassen.",
-    "scan_button": "2D-Code scannen",
+    "scan_button": "Datamatrix scannen",
     "app_name": "PharmaLedger",
     "cancel": "Abbrechen",
     "change_camera": "Kamera wechseln",
@@ -47,7 +47,7 @@ export const translations = {
   }, "fr": {
     "welcome": "Bienvenue dans PharmaLedger",
     "scan_explain": "Trouvez le code2D sur votre médicament pour le scanner et afficher les informations le concernant.",
-    "scan_button": "Scanner le code 2D",
+    "scan_button": "Scanner Datamatrix",
     "app_name": "PharmaLedger",
     "cancel": "Annuler",
     "change_camera": "Changer d'appareil photo",
@@ -70,7 +70,7 @@ export const translations = {
   }, "nl": {
     "welcome": "Welkom bij PharmaLedger",
     "scan_explain": "Zoek de 2D-code op uw geneesmiddel om informatie te scannen en te bekijken",
-    "scan_button": "2D-code scannen",
+    "scan_button": "Datamatrix scannen",
     "app_name": "PharmaLedger",
     "cancel": "Annuleren",
     "change_camera": "Camera wijzigen",
@@ -92,7 +92,7 @@ export const translations = {
   }, "ro": {
     "welcome": "Bine ați venit la PharmaLedger",
     "scan_explain": "Găsiți codul 2D pe medicament pentru a scana și vizualiza informații",
-    "scan_button": "Scanați codul 2D",
+    "scan_button": "Scanați codul Datamatrix",
     "app_name": "PharmaLedger",
     "cancel": "Anulează",
     "change_camera": "Schimbați camera",
