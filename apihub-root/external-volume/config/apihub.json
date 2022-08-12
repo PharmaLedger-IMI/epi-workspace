@@ -18,6 +18,7 @@
     "epi-mapping-engine-results",
     "leaflet-web-api",
     "acdc-reporting",
+    "requestForwarder",
     "debugLogger",
     "mq",
     "secrets",
