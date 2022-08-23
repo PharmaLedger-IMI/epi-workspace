@@ -15,13 +15,13 @@ function ScanController() {
   }
 
   this.closeModal = function (modalId) {
-    document.querySelector("#"+modalId).setAttribute('style', 'display:none !important');
+    document.querySelector("#" + modalId).setAttribute('style', 'display:none !important');
   }
 
   this.redirectToError = function (err) {
     console.log("Error on scanService ", err);
     document.querySelector("#scan-error").setAttribute('style', 'display:flex !important');
-  //  goToPage("error.html")
+    //  goToPage("error.html")
   }
 
   this.cancelHandler = function () {
@@ -72,7 +72,12 @@ function ScanController() {
     })
 
     if (gs1Fields.expiry) {
-      gs1Fields.expiry = convertFromISOtoYYYY_HM(gs1Fields.expiry);
+      try {
+        gs1Fields.expiry = convertFromISOtoYYYY_HM(gs1Fields.expiry);
+      } catch (e) {
+        gs1Fields.expiry = null;
+      }
+
     }
 
     return gs1Fields;
