@@ -1,7 +1,6 @@
 import XMLDisplayService from "../services/XMLDisplayService/XMLDisplayService.js"
 import environment from "../../environment.js";
 import {goToPage} from "../utils/utils.js";
-import {translations} from "../translations.js";
 
 function LeafletController() {
 

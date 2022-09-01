@@ -87,6 +87,8 @@ body {
     max-height: 960px;
     width: 414px;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -101,8 +103,108 @@ body {
     font-weight: 700;
     width: 100%;
     text-align: center;
-    line-height: 27px;
+    line-height: 1.5em;
     font-size: 18px;
+    max-height: 70%;
+}
+
+.terms-container {
+    max-height: 65vh;
+    height: 65vh;
+    overflow: auto;
+    background: #F0EEEC;
+    border-radius: 20px;
+    margin-top: 30px;
+    color: #516266;
+    padding: 24px;
+    text-align: justify;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.terms-container span {
+    flex-grow: 1;
+}
+.terms-container .terms-buttons-container{
+    display: flex;
+}
+.menu-icon {
+    background: url("../images/menu.svg");
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    position: absolute;
+    right: -15px;
+    bottom: 0px;
+}
+
+.terms-button {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 1em;
+    border: 1px solid #516266;
+    border-radius: 62px;
+    flex-grow: 1;
+    margin: 0px 1em;
+}
+
+.terms-button.agree {
+    background: var(--olivegreen);
+    color: white;
+}
+
+.bottom-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.bottom-container .more-options-link {
+    flex-grow: 1;
+    display: flex;
+    align-items: end;
+    text-decoration: underline;
+    color: var(--mintgreen);
+}
+
+.app-menu-container {
+    background: #fff;
+    color: var(--olivegreen);
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    bottom: 4vh;
+    text-align: left;
+    border-radius: 8px;
+}
+
+.app-menu-container:after {
+    border: 0.8em solid transparent;
+    border-top-color: #fff;
+    content: '';
+    position: inherit;
+    width: 0;
+    height: 0;
+    bottom: -18%;
+    left: 47%;
+}
+
+.app-menu-container > div {
+    margin: 10px 15px;
+}
+
+.app-menu-container.hidden {
+    display: none;
+}
+
+.hiddenElement {
+    display: none;
 }
 
 @keyframes animatedBackground {
@@ -167,19 +269,25 @@ body {
 }
 
 .scan-button-container {
+    flex-grow: 1;
+    padding-bottom: 20px;
+}
+
+.scan-button {
     color: #02272F;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    max-width: 70%;
     background: var(--mintgreen);
     border-radius: 80px;
     position: relative;
     font-width: 700;
     font-size: 18px;
-    height: 6%;
-    margin: 70% auto 0 auto;
+    height: 6vh;
+    margin: 100% auto 0px;
+    text-align: center;
 }
 
 .page-container.scan-page, .page-container.leaflet-page {
@@ -383,7 +491,7 @@ body {
 }
 
 .modal-container {
-    position: fixed;
+    position: absolute;
     display: none !important;
     background: rgba(0, 0, 0, 0.7);
     height: 100%;
@@ -399,10 +507,10 @@ body {
 
 
 .modal-header .modal-title {
-    position: relative;
     font-size: 1.5vh;
-    left: 52px;
     margin-top: 3px;
+    margin-left: 52px;
+    padding-right: 52px;
 }
 
 .modal-header .modal-icon {
@@ -421,6 +529,19 @@ body {
     width: 20px;
     right: 24px;
     top: 21px;
+}
+
+.info-modal .modal-header {
+    background-color: var(--mintgreen);
+
+}
+
+.warning-modal .modal-header {
+    background-color: var(--yellow-200);
+}
+
+.error-modal .modal-header {
+    background-color: var(--red-200);
 }
 
 .modal-content {
@@ -483,14 +604,7 @@ body {
     border-top-left-radius: 32px;
     height: 96px;
     color: #02272F;
-}
-
-.warning-modal .modal-header {
-    background-color: var(--yellow-200);
-}
-
-.error-modal .modal-header {
-    background-color: var(--red-200);
+    padding-bottom: 15px;
 }
 
 .modal-header .modal-subtitle {
@@ -557,10 +671,31 @@ body {
         font-size: 3vh;
     }
 
-    .scan-button-container {
+    .bottom-container {
         font-size: 2.5vh;
-        height: 7%;
-        margin: 30% auto 0 auto;
+    }
+
+    .scan-button {
+        font-size: 2.5vh;
+        height: 7vh;
+        margin: 60% auto 0px;
+    }
+
+    .app-options-container {
+        margin: 10% auto;
+        font-size: 1.8vh;
+        width: 75%;
+    }
+
+    .app-menu-container:after {
+        border: 0.5em solid transparent;
+        border-top-color: #fff;
+        content: '';
+        position: inherit;
+        width: 0;
+        height: 0;
+        bottom: -15%;
+        left: 47%;
     }
 
     .content-container {
@@ -654,29 +789,22 @@ body {
     .modal-header {
         border-top-right-radius: 64px;
         border-top-left-radius: 64px;
-        height: 11%;
+        min-height: 11%;
         padding-bottom: 3%;
-    }
-
-    .warning-modal .modal-header {
-        background-color: var(--yellow-200);
-    }
-
-    .error-modal .modal-header {
-        background-color: var(--red-200);
+        height: auto;
     }
 
     .modal-header .modal-icon {
-        top: 32%;
         background-size: contain !important;
-        height: 28%;
-        width: 20%;
-        left: 7%;
+        height: 4%;
+        left: 5%;
     }
 
     .modal-header .modal-title {
         font-size: 2vh;
-        left: 13%;
+        margin-left: 13%;
+        padding-right: 13%;
+        margin-top: -24px;
     }
 
     .modal-header .modal-subtitle {
@@ -759,7 +887,7 @@ body {
     body {
         min-height: 1000px;
         width: 100%;
-        max-width: 600px;
+        max-width: 414px;
         margin: auto;
     }
 }
