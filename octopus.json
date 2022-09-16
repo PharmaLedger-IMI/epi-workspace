@@ -855,8 +855,8 @@
           "cmd": "npm run clean"
         },
         {
-          "type": "execute",
-          "cmd": "cd webcardinal && npm run build"
+            "type": "remove",
+            "target": "apihub-root/external-volume/cache"
         },
         {
           "type": "execute",
@@ -922,10 +922,6 @@
         {
           "type": "execute",
           "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js prepare-build-mobile\""
-        },
-        {
-          "type": "execute",
-          "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-ssapps-and-configure-apihub-mobile\""
         }
       ]
     },
@@ -982,17 +978,40 @@
           }
         },
         {
-          "type": "copy",
-          "src": "apihub-root/leaflet-wallet",
-          "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app"
+            "type": "copy",
+            "src": "./leaflet-ssapp/code",
+            "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root"
         },
         {
-          "type": "remove",
-          "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader/node_modules"
+            "type": "replaceString",
+            "src": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/index.html",
+            "oldValue": "PLACEHOLDER_THAT_WILL_BE_REPLACED_BY_SW_OR_SERVER_WITH_BASE_TAG",
+            "newValue": "<base href=\"/\">"
         },
         {
-          "type": "remove",
-          "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader/.git"
+            "type": "copy",
+            "src": "./webcardinal/bundle/dist",
+            "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/webcardinal"
+        },
+        {
+            "type": "copy",
+            "src": "./privatesky/psknode/bundles/pskruntime.js",
+            "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/scripts/bundles/pskruntime.js"
+        },
+        {
+            "type": "copy",
+            "src": "./privatesky/psknode/bundles/webshims.js",
+            "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/scripts/bundles/webshims.js"
+        },
+        {
+            "type": "copy",
+            "src": "./privatesky/psknode/bundles/iframeBoot.js",
+            "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/scripts/bundles/iframeBoot.js"
+        },
+        {
+            "type": "copy",
+            "src": "./gtin-resolver/build/bundles/gtinResolver.js",
+            "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/scripts/bundles/gtinResolver.js"
         },
         {
           "type": "copy",
