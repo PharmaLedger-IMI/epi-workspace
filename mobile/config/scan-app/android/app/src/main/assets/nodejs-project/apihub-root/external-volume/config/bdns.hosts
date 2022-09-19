@@ -65,6 +65,18 @@
       "$ORIGIN"
     ]
   },
+  "mobile-vault": {
+    "replicas": [],
+    "brickStorages": [
+      "$ORIGIN"
+    ],
+    "anchoringServices": [
+      "$ORIGIN"
+    ],
+    "notifications": [
+      "$ORIGIN"
+    ]
+  },
   "dev.epi": {
     "anchoringServices": [
       "https://epidemo.pharmaledger.dev",

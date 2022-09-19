@@ -1,11 +1,11 @@
-export default  {
+module.exports = {
   "appName": "eLeaflet",
   "vault": "server",
   "agent": "browser",
   "system":   "any",
   "browser":  "any",
   "mode":  "mobile-autologin",
-  "vaultDomain":  "vault",
+  "vaultDomain":  "mobile-vault",
   "didDomain":  "vault",
   "enclaveType": "WalletDBEnclave",
   "sw": false,
