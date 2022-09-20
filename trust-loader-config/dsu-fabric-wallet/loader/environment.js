@@ -14,8 +14,8 @@ export default {
   "pwa": false,
   "allowPinLogin": false,
   "companyName": "Company Inc",
-  "disabledFeatures": "",
-  "lockFeatures": false,
+  "disabledFeatures": "04",
+  "lockFeatures": true,
   "epiProtocolVersion": 1,
   "legenda for properties": " vault:(server, browser) agent:(mobile,  browser)  system:(iOS, Android, any) browser:(Chrome, Firefox, any)" +
     " mode:(autologin,dev-autologin, secure, dev-secure, sso-direct, sso-pin) sw:(true, false) pwa:(true, false) lockFeatures: (true, false)" +
