@@ -25,6 +25,7 @@ export const translations = {
     "onboarding_welcome": "Almost There! <br> Please read and agree to the terms and conditions",
     "disagree": "Disagree",
     "agree": "Agree",
+    "disagree_extra_text": "\"PharmaLedger\" will not work until you agree to the terms and conditions. Please read the terms and conditions.",
     "fwd_privacy": "Privacy policy",
     "fwd_terms": "Terms and conditions",
     "fwd_help": "Help",

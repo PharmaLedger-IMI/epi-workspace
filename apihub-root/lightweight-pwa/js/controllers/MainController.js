@@ -36,11 +36,12 @@ function MainController() {
     let usrAgreedTerms = getCookie("usr_agreed_terms");
     if (!usrAgreedTerms) {
       let welcomeText = getTranslation("onboarding_welcome");
-      let termsText = getTranslation("terms_content");
-      document.querySelector(".welcome-container").innerHTML = `
-      <span>${welcomeText}</span>
+      document.querySelector(".welcome-container").innerHTML = `<span>${welcomeText}</span>`;
+      document.querySelector(".terms-content-container").innerHTML = `
       <div class="terms-container">
-        <span>${termsText}</span>
+        <span class="extra-text" translate="disagree_extra_text"></span>
+        <iframe style="width: 100%; height: 100%; margin-bottom: 24px; border: 0"
+        src="https://app.termly.io/document/terms-of-use-for-website/76a94ec4-766a-4a6a-b7fe-c68834af6811"></iframe>  
         <div class="terms-buttons-container">
           <div class="terms-button disagree" onclick="mainController.submitTerms(false)">${getTranslation("disagree")}</div>
           <div class="terms-button agree" onclick="mainController.submitTerms(true)">${getTranslation("agree")}</div>
@@ -52,9 +53,10 @@ function MainController() {
       document.querySelector(".bottom-container").classList.add("hiddenElement");
     } else {
       let welcomeText = getTranslation("welcome");
+      document.querySelector(".terms-content-container").classList.add("hiddenElement");
       document.querySelector(".welcome-container").innerHTML = `<span>${welcomeText}</span>`;
       document.querySelector(".content-container").innerHTML = `<div class="icon-div"></div>`;
-      document.querySelector(".more-options-link").innerHTML = `<span> ePI ${environment.appBuildVersion} </span>`;
+      document.querySelector(".more-options-link").innerHTML = `<span> ${environment.appBuildVersion} </span>`;
     }
   }
 
