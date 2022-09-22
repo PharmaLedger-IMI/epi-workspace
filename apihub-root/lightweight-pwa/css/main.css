@@ -194,6 +194,7 @@ body {
     padding: 5px 0px;
     top: 50%;
     left: 4%;
+    font-size: 2.2vh;
 }
 
 /*.app-menu-container:after {
@@ -567,6 +568,11 @@ body {
     padding: 24px;
     line-height: 1.5rem;
     max-height: 650px;
+}
+
+.modal-content.terms,
+.modal-content.privacy {
+    padding: 0;
 }
 
 .modal-content .languages-container {
