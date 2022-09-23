@@ -32,8 +32,11 @@ function LeafletController() {
           if (result.resultStatus === "xml_found") {
             try {
               showXML(result);
-              if (result.expired) {
+              if (result.dateStatus === "expired_date") {
                 showExpired();
+              }
+              if (result.dateStatus === "incorrect_date") {
+                showIncorrectDate();
               }
             } catch (e) {
               goToPage("error.html")
@@ -89,6 +92,10 @@ function LeafletController() {
   let showExpired = function () {
     document.querySelector("#expired-modal").setAttribute('style', 'display:flex !important');
   }
+  let showIncorrectDate = function () {
+    document.querySelector("#incorrect-date-modal").setAttribute('style', 'display:flex !important');
+  }
+
 
   let self = this;
 
