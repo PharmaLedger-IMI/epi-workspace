@@ -1063,7 +1063,7 @@
           {
             "type": "copy",
             "src": "./acdc/native-integration/build/bundles/default/camera.js",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app/camera.js",
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/camera.js",
             "options": {
               "overwrite": true,
               "ignoreErrors": true
@@ -1072,7 +1072,7 @@
           {
             "type": "copy",
             "src": "./leaflet-ssapp/code",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app"
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app"
           },
           {
             "type": "copy",
@@ -1081,34 +1081,34 @@
           },
           {
             "type": "replaceString",
-            "src": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app/index.html",
+            "src": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/index.html",
             "oldValue": "PLACEHOLDER_THAT_WILL_BE_REPLACED_BY_SW_OR_SERVER_WITH_BASE_TAG",
             "newValue": "<base href=\"/\">"
           },
           {
             "type": "copy",
             "src": "./webcardinal/bundle/dist",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app/webcardinal"
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/webcardinal"
           },
           {
             "type": "copy",
             "src": "./privatesky/psknode/bundles/pskruntime.js",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app/scripts/bundles/pskruntime.js"
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/pskruntime.js"
           },
           {
             "type": "copy",
             "src": "./privatesky/psknode/bundles/webshims.js",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app/scripts/bundles/webshims.js"
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/webshims.js"
           },
           {
             "type": "copy",
             "src": "./privatesky/psknode/bundles/iframeBoot.js",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app/scripts/bundles/iframeBoot.js"
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/iframeBoot.js"
           },
           {
             "type": "copy",
             "src": "./gtin-resolver/build/bundles/gtinResolver.js",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app/scripts/bundles/gtinResolver.js"
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/gtinResolver.js"
           },
           {
             "type": "copy",
