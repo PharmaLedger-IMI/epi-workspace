@@ -12,7 +12,7 @@ export default  {
   "pwa": false,
   "allowPinLogin": false,
   "lockFeatures": true,
-  "disabledFeatures": "04",
+  "disabledFeatures": "04, 05, 06, 07, 08, 09",
   "allowAdvancedSettings": true,
   "epiProtocolVersion": 1,
   "appBuildVersion": "v1.5.4",

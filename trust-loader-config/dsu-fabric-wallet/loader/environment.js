@@ -14,7 +14,7 @@ export default {
   "pwa": false,
   "allowPinLogin": false,
   "companyName": "Company Inc",
-  "disabledFeatures": "04",
+  "disabledFeatures": "04, 05, 06, 07, 08, 09",
   "lockFeatures": true,
   "epiProtocolVersion": 1,
   "appBuildVersion": "v1.5.4",
