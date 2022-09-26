@@ -267,6 +267,10 @@ const acordisXslContent = `<?xml version="1.0" encoding="UTF-8"?>
         <div style="display:none;" class="leaflet_hidden_section ignore_from_ui"><xsl:apply-templates select="@class|node()"/></div>
     </xsl:template>
     
+    <xsl:template match="//*[@class='ignore_from_ui']" priority="9">
+        <div style="display:none;" class="leaflet_hidden_section ignore_from_ui"><xsl:apply-templates select="@class|node()"/></div>
+    </xsl:template>
+    
     <xsl:template match="document/section">
         <div class="section leaflet-accordion-item">
             <xsl:apply-templates select="header"/>
