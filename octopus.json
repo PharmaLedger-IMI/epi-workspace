@@ -1038,27 +1038,27 @@
           {
             "type": "copy",
             "src": "bin/MobileServerLauncher.js",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/MobileServerLauncher.js"
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/MobileServerLauncher.js"
           },
           {
             "type": "copy",
             "src": "privatesky/psknode/bundles/pskWebServer.js",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/pskWebServer.js"
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/pskWebServer.js"
           },
           {
             "type": "copy",
             "src": "privatesky/psknode/bundles/nodeBoot.js",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/nodeBoot.js"
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/nodeBoot.js"
           },
           {
             "type": "copy",
             "src": "apihub-root/internal-volume",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/internal-volume"
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/apihub-root/internal-volume"
           },
           {
             "type": "copy",
             "src": "apihub-root/external-volume",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/external-volume"
+            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/apihub-root/external-volume"
           },
           {
             "type": "copy",
