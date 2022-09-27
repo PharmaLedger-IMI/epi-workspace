@@ -47,8 +47,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "91f408228995fa697bc0371bd2a13a880d4489e2",
-                    "tag": "v1.0.29"
+                    "commit": "905b29cd57671ce8c58af7e7a30c761315ed0eac",
+                    "tag": "v1.0.30"
                 },
                 {
                     "type": "execute",
@@ -73,8 +73,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "47b5894ee0e5a2ae99ae6149c9df8822e7523fa5",
-                    "tag": "v1.0.13"
+                    "commit": "16bb406b17b0796262c4999f9b4f7af779554e9a",
+                    "tag": "v1.0.14"
                 },
                 {
                     "type": "execute",
@@ -90,8 +90,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "1a30f9a68de2099b1ba2690e0bede3c3e990b5aa",
-                    "tag": "v1.0.7"
+                    "commit": "580cf5fd71ca07b161a99d246a481fb7ebc1aecd",
+                    "tag": "v1.0.8"
                 },
                 {
                     "type": "execute",
@@ -107,8 +107,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "cc8376ec7c7e054e6347ee59abe18c81de34bcda",
-                    "tag": "v0.2.6"
+                    "commit": "d7f9cc7c9a814709c8c735dcfdcbcbc57c001044",
+                    "tag": "v0.2.7"
                 },
                 {
                     "type": "execute",
@@ -132,8 +132,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "cc8376ec7c7e054e6347ee59abe18c81de34bcda",
-                    "tag": "v0.2.6"
+                    "commit": "30385e2928cbc5cc9454d12502ac16252b5d3db9",
+                    "tag": "v0.2.7"
                 },
                 {
                     "type": "execute",
@@ -157,8 +157,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "cc8376ec7c7e054e6347ee59abe18c81de34bcda",
-                    "tag": "v0.2.6"
+                    "commit": "30385e2928cbc5cc9454d12502ac16252b5d3db9",
+                    "tag": "v0.2.7"
                 },
                 {
                     "type": "execute",
@@ -246,8 +246,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "cc8376ec7c7e054e6347ee59abe18c81de34bcda",
-                    "tag": "v0.2.6"
+                    "commit": "30385e2928cbc5cc9454d12502ac16252b5d3db9",
+                    "tag": "v0.2.7"
                 },
                 {
                     "type": "execute",
@@ -271,8 +271,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "55c693fa0551a09927ad15acf8cf1d9af6a2331e",
-                    "tag": "v1.0.11"
+                    "commit": "7ef95cab68c4b1c92b17262001a258a4c3f122c7",
+                    "tag": "v1.0.12"
                 },
                 {
                     "type": "execute",
@@ -302,8 +302,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "357b163b46d94c8ed06af83a61f8d2cf7da2368b",
-                    "tag": "v1.0.0"
+                    "commit": "4fe0632db8efd360783798fd7f37834dbc128bb1",
+                    "tag": "v1.0.1"
                 },
                 {
                     "type": "execute",
@@ -370,8 +370,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "6c797868b31898a09ad3af38ce85132c4937a855",
-                    "tag": "v1.0.4"
+                    "commit": "664222578c485f00c4599dcbd0906fcdcce049d9",
+                    "tag": "v1.0.5"
                 },
                 {
                     "type": "execute",
@@ -395,8 +395,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "3d0e4e0d7158839c71f2c873d006eb7e6478b18e",
-                    "tag": "v1.0.7"
+                    "commit": "43ba346c84940acecbeb7daa3158e2c3b7cda33b",
+                    "tag": "v1.0.8"
                 },
                 {
                     "type": "execute",
@@ -796,8 +796,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "0aa6556d143b5660a6f9cdbe0bdffcf6c1576b04",
-                    "tag": "v1.0.1"
+                    "commit": "ca8cee610f10fc39e524d1caae50aebfcfbe3d75",
+                    "tag": "v1.0.2"
                 },
                 {
                     "type": "execute",
@@ -813,8 +813,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "8ff6a8343fe7dd53bc9da334524bf17572c802f2",
-                    "tag": "v1.0.3"
+                    "commit": "9e19643bfe3e828b878d3f02d19e58b070466b27",
+                    "tag": "v1.0.4"
                 },
                 {
                     "type": "execute",
@@ -900,8 +900,8 @@
                     "cmd": "npm run clean"
                 },
                 {
-                    "type": "execute",
-                    "cmd": "cd webcardinal && npm run build"
+                    "type": "remove",
+                    "target": "apihub-root/external-volume/cache"
                 },
                 {
                     "type": "execute",
@@ -967,10 +967,6 @@
                 {
                     "type": "execute",
                     "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js prepare-build-mobile\""
-                },
-                {
-                    "type": "execute",
-                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-ssapps-and-configure-apihub-mobile\""
                 }
             ]
         },
@@ -1020,7 +1016,7 @@
                 {
                     "type": "copy",
                     "src": "./acdc/native-integration/build/bundles/default/camera.js",
-                    "target": "./apihub-root/leaflet-wallet/loader/camera.js",
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/camera.js",
                     "options": {
                         "overwrite": true,
                         "ignoreErrors": true
@@ -1028,16 +1024,44 @@
                 },
                 {
                     "type": "copy",
-                    "src": "apihub-root/leaflet-wallet",
+                    "src": "./leaflet-ssapp/code",
                     "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app"
                 },
                 {
-                    "type": "remove",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader/node_modules"
+                    "type": "copy",
+                    "src": "./preloader/index.html",
+                    "target": "mobile/scan-app/android/app/src/main/assets/preloader.html"
                 },
                 {
-                    "type": "remove",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/loader/.git"
+                    "type": "replaceString",
+                    "src": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/index.html",
+                    "oldValue": "PLACEHOLDER_THAT_WILL_BE_REPLACED_BY_SW_OR_SERVER_WITH_BASE_TAG",
+                    "newValue": "<base href=\"/\">"
+                },
+                {
+                    "type": "copy",
+                    "src": "./webcardinal/bundle/dist",
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/webcardinal"
+                },
+                {
+                    "type": "copy",
+                    "src": "./privatesky/psknode/bundles/pskruntime.js",
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/scripts/bundles/pskruntime.js"
+                },
+                {
+                    "type": "copy",
+                    "src": "./privatesky/psknode/bundles/webshims.js",
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/scripts/bundles/webshims.js"
+                },
+                {
+                    "type": "copy",
+                    "src": "./privatesky/psknode/bundles/iframeBoot.js",
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/scripts/bundles/iframeBoot.js"
+                },
+                {
+                    "type": "copy",
+                    "src": "./gtin-resolver/build/bundles/gtinResolver.js",
+                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/scripts/bundles/gtinResolver.js"
                 },
                 {
                     "type": "copy",
@@ -1059,32 +1083,32 @@
                 {
                     "type": "copy",
                     "src": "bin/MobileServerLauncher.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/MobileServerLauncher.js"
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/MobileServerLauncher.js"
                 },
                 {
                     "type": "copy",
                     "src": "privatesky/psknode/bundles/pskWebServer.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/pskWebServer.js"
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/pskWebServer.js"
                 },
                 {
                     "type": "copy",
                     "src": "privatesky/psknode/bundles/nodeBoot.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/nodeBoot.js"
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/nodeBoot.js"
                 },
                 {
                     "type": "copy",
                     "src": "apihub-root/internal-volume",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/internal-volume"
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/apihub-root/internal-volume"
                 },
                 {
                     "type": "copy",
                     "src": "apihub-root/external-volume",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/external-volume"
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/apihub-root/external-volume"
                 },
                 {
                     "type": "copy",
-                    "src": "./acdc/native-integration/build/bundles/ios/camera.js",
-                    "target": "./apihub-root/leaflet-wallet/loader/camera.js",
+                    "src": "./acdc/native-integration/build/bundles/default/camera.js",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/camera.js",
                     "options": {
                         "overwrite": true,
                         "ignoreErrors": true
@@ -1092,16 +1116,44 @@
                 },
                 {
                     "type": "copy",
-                    "src": "apihub-root/leaflet-wallet",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app"
+                    "src": "./leaflet-ssapp/code",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app"
                 },
                 {
-                    "type": "remove",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app/loader/node_modules"
+                    "type": "copy",
+                    "src": "./preloader/index.html",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/preloader.html"
                 },
                 {
-                    "type": "remove",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/app/loader/.git"
+                    "type": "replaceString",
+                    "src": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/index.html",
+                    "oldValue": "PLACEHOLDER_THAT_WILL_BE_REPLACED_BY_SW_OR_SERVER_WITH_BASE_TAG",
+                    "newValue": "<base href=\"/\">"
+                },
+                {
+                    "type": "copy",
+                    "src": "./webcardinal/bundle/dist",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/webcardinal"
+                },
+                {
+                    "type": "copy",
+                    "src": "./privatesky/psknode/bundles/pskruntime.js",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/pskruntime.js"
+                },
+                {
+                    "type": "copy",
+                    "src": "./privatesky/psknode/bundles/webshims.js",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/webshims.js"
+                },
+                {
+                    "type": "copy",
+                    "src": "./privatesky/psknode/bundles/iframeBoot.js",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/iframeBoot.js"
+                },
+                {
+                    "type": "copy",
+                    "src": "./gtin-resolver/build/bundles/gtinResolver.js",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/gtinResolver.js"
                 },
                 {
                     "type": "copy",
@@ -1114,7 +1166,7 @@
                 {
                     "type": "copy",
                     "src": "mobile/scan-app/ios/nativeBridge.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/apihub-root/nativeBridge.js",
+                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/nativeBridge.js",
                     "options": {
                         "overwrite": true
                     }
