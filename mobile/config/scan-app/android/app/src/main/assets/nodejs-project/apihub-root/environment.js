@@ -12,8 +12,8 @@ module.exports = {
   "pwa": false,
   "allowPinLogin": false,
   "lockFeatures": true,
-  "disabledFeatures": "04",
-  "allowAdvancedSettings": true,
+  "disabledFeatures": "04, 05, 06, 07, 08, 09",
+  "easterEggEnabled": true,
   "epiProtocolVersion": 1,
   "appBuildVersion": "v1.5.4",
   "legenda for properties": " vault:(server, browser) agent:(mobile,  browser)  system:(iOS, Android, any) browser:(Chrome, Firefox, any) mode:(development, release) sw:(true, false) pwa:(true, false) lockFeatures: (true, false)"+
