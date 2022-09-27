@@ -105,7 +105,7 @@ body {
     height: auto;
     text-align: center;
     line-height: 1.5em;
-    font-size: 18px;
+    font-size: calc(100% + 0.8vmin);
     max-height: 86%;
 }
 
@@ -278,7 +278,7 @@ body {
 .explain-container {
     align-self: center;
     text-align: center;
-    font-size: 15px;
+    font-size: calc(100% + 0.1vmin);
 }
 
 .scan-button-container {
@@ -297,7 +297,7 @@ body {
     border-radius: 80px;
     position: relative;
     font-width: 700;
-    font-size: 18px;
+    font-size: calc(100% + 0.8vmin);
     height: 6vh;
     margin: 100% auto 0px;
     text-align: center;
@@ -319,7 +319,7 @@ body {
     align-items: end;
     font-weight: 500;
     font-style: normal;
-    font-size: 14px;
+    font-size: calc(100% + 0.1vmin);
 }
 
 .scan-page #scanner-placeholder {
