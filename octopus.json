@@ -372,7 +372,7 @@
             "type": "smartClone",
             "target": "./apihub-root/lightweight-pwa/lib",
             "collectLog": false,
-            "commit": "e9ec10b58d9ad3c9c07d3868ecf8f918aa440d9c"
+            "commit": "799680f04fb2e6ad3708fc0b9e02066595c6eb7f"
           }
         ]
       }
@@ -1318,4 +1318,3 @@
     ]
   
   }
-  
