@@ -395,8 +395,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "46a3caf405fd9b07e9c16fb336359baf18bbfbd6",
-                    "tag": "v1.0.9"
+                    "commit": "811b66576e83e8cd0ce6b745209c86905b2689bd",
+                    "tag": "v1.0.10"
                 },
                 {
                     "type": "execute",
@@ -412,7 +412,7 @@
                     "type": "smartClone",
                     "target": "./apihub-root/lightweight-pwa/lib",
                     "collectLog": false,
-                    "commit": "f688e293adf1ed3c5f247856d2751da6a4cf83df",
+                    "commit": "14672a2e474ab12133134f98a9133229f23ad532",
                     "branch": "temporaryRevert",
                     "tag": "v1.0.2"
                 }
