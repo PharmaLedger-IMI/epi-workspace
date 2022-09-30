@@ -15,7 +15,7 @@ export default {
   "allowPinLogin": false,
   "companyName": "Company Inc",
   "disabledFeatures": "04, 05, 06, 07, 08, 09",
-  "lockFeatures": true,
+  "lockFeatures": false,
   "epiProtocolVersion": 1,
   "appBuildVersion": "v1.5.4",
   "legenda for properties": " vault:(server, browser) agent:(mobile,  browser)  system:(iOS, Android, any) browser:(Chrome, Firefox, any)" +

@@ -11,7 +11,7 @@ export default  {
   "sw": false,
   "pwa": false,
   "allowPinLogin": false,
-  "lockFeatures": true,
+  "lockFeatures": false,
   "disabledFeatures": "04, 05, 06, 07, 08, 09",
   "easterEggEnabled": true,
   "epiProtocolVersion": 1,

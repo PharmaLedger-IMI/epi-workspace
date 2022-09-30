@@ -11,7 +11,7 @@ module.exports = {
   "sw": false,
   "pwa": false,
   "allowPinLogin": false,
-  "lockFeatures": true,
+  "lockFeatures": false,
   "disabledFeatures": "04",
   "easterEggEnabled": true,
   "allowAdvancedSettings": true,
