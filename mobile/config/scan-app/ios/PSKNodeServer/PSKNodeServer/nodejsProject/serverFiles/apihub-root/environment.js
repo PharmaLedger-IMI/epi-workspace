@@ -13,6 +13,7 @@ module.exports = {
   "allowPinLogin": false,
   "lockFeatures": true,
   "disabledFeatures": "04",
+  "easterEggEnabled": true,
   "allowAdvancedSettings": true,
   "epiProtocolVersion": 1,
   "appBuildVersion": "v1.5.4",
