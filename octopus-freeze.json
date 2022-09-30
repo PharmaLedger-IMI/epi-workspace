@@ -47,8 +47,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "4066da234599603f41f752f8d0d9fadba51cdab5",
-                    "tag": "v1.0.31"
+                    "commit": "13001a1f685911c731226b607403ec15a4e27b72",
+                    "tag": "v1.0.32"
                 },
                 {
                     "type": "execute",
@@ -73,8 +73,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "796eec3c67142c77db0a1cb08a0c58590b4ba080",
-                    "tag": "v1.0.15"
+                    "commit": "3ae9a26f3373834f42dddff216f4babe28c73d82",
+                    "tag": "v1.0.16"
                 },
                 {
                     "type": "execute",
@@ -395,8 +395,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "43ba346c84940acecbeb7daa3158e2c3b7cda33b",
-                    "tag": "v1.0.8"
+                    "commit": "46a3caf405fd9b07e9c16fb336359baf18bbfbd6",
+                    "tag": "v1.0.9"
                 },
                 {
                     "type": "execute",
@@ -412,9 +412,9 @@
                     "type": "smartClone",
                     "target": "./apihub-root/lightweight-pwa/lib",
                     "collectLog": false,
-                    "commit": "362945424db6d2b6dac8132c5a6b5c83bcb9eecf",
+                    "commit": "f688e293adf1ed3c5f247856d2751da6a4cf83df",
                     "branch": "temporaryRevert",
-                    "tag": "v1.0.1"
+                    "tag": "v1.0.2"
                 }
             ]
         }
