@@ -1063,7 +1063,7 @@
           },
           {
             "type": "copy",
-            "src": "./acdc/native-integration/build/bundles/default/camera.js",
+            "src": "./acdc/native-integration/build/bundles/ios/camera.js",
             "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/camera.js",
             "options": {
               "overwrite": true,
