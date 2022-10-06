@@ -7,6 +7,7 @@ export default  {
   "mode":  "autologin",
   "vaultDomain":  "vault",
   "didDomain":  "vault",
+  "epiDomain": "epi",
   "enclaveType": "WalletDBEnclave",
   "sw": false,
   "pwa": false,
