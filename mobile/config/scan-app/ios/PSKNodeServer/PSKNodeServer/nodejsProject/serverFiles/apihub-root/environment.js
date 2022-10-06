@@ -5,6 +5,7 @@ module.exports = {
   "system":   "any",
   "browser":  "any",
   "mode":  "mobile-autologin",
+  "epiDomain": "epi",
   "vaultDomain":  "mobile-vault",
   "didDomain":  "vault",
   "enclaveType": "WalletDBEnclave",
