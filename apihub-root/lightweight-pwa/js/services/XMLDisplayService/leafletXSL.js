@@ -174,7 +174,7 @@ const defualtXslContent = `<?xml version="1.0" encoding="UTF-8"?>
     </xsl:template>
 </xsl:stylesheet>`
 
-const acordisXslContent = `<?xml version="1.0" encoding="UTF-8"?>
+const acordisXslContent =  `<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="urn:hl7-org:v3"
@@ -198,14 +198,13 @@ const acordisXslContent = `<?xml version="1.0" encoding="UTF-8"?>
     <xsl:param name="quote">"</xsl:param>
     <xsl:param name="space">\\0020</xsl:param>
     <xsl:template match="//ul">
-        <ul>
-          <xsl:attribute name="style"> list-style-type: <xsl:value-of select="$quote"/><xsl:value-of select="@data-type"/><xsl:value-of select="$space"/><xsl:value-of select="$quote"/>;
-          </xsl:attribute>
-        <xsl:apply-templates select="node()" /></ul>
+        <ul> <xsl:apply-templates select="node()" /></ul>
     </xsl:template>
 
     <xsl:template match="//ul/li">
-        <li><xsl:apply-templates select="node()" /></li>
+        <li>
+          <xsl:attribute name="style"> list-style-type: <xsl:value-of select="$quote"/><xsl:value-of select="@data-enum"/><xsl:value-of select="$space"/><xsl:value-of select="$quote"/>; </xsl:attribute>
+        <xsl:apply-templates select="node()" /></li>
     </xsl:template>
 
     <xsl:template match="//ol">
@@ -213,7 +212,9 @@ const acordisXslContent = `<?xml version="1.0" encoding="UTF-8"?>
     </xsl:template>
 
     <xsl:template match="//ol/li">
-        <li><xsl:apply-templates select="node()" /></li>
+        <li>
+         <xsl:attribute name="style"> list-style-type: <xsl:value-of select="$quote"/><xsl:value-of select="@data-enum"/><xsl:value-of select="$space"/><xsl:value-of select="$quote"/>; </xsl:attribute>
+        <xsl:apply-templates select="node()" /></li>
     </xsl:template>
 
     <xsl:template match="//section//p">
@@ -266,11 +267,9 @@ const acordisXslContent = `<?xml version="1.0" encoding="UTF-8"?>
    <xsl:template match="//*[@class='Read Instructions']" priority="9">
         <div style="display:none;" class="leaflet_hidden_section ignore_from_ui"><xsl:apply-templates select="@class|node()"/></div>
     </xsl:template>
-    
     <xsl:template match="//*[@class='ignore_from_ui']" priority="9">
         <div style="display:none;" class="leaflet_hidden_section ignore_from_ui"><xsl:apply-templates select="@class|node()"/></div>
     </xsl:template>
-    
     <xsl:template match="document/section">
         <div class="section leaflet-accordion-item">
             <xsl:apply-templates select="header"/>
