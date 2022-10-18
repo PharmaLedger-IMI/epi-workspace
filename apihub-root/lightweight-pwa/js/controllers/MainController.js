@@ -49,7 +49,6 @@ function MainController() {
       document.querySelector(".content-container").classList.add("hiddenElement");
       document.querySelector(".explain-container").classList.add("hiddenElement");
       document.querySelector(".scan-button-container").classList.add("hiddenElement");
-      document.querySelector(".bottom-container").classList.add("hiddenElement");
     } else {
       let welcomeText = getTranslation("welcome");
       document.querySelector(".terms-content-container").classList.add("hiddenElement");

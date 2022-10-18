@@ -13,12 +13,9 @@ export const translations = {
     "leaflet_expired_title": "Expired",
     "leaflet_expired_subtitle": "This item is Expired",
     "leaflet_expired_message": "<p> <b> This product has been identified as expired </b>. </p> <p> Expired medical products may be less effective and may pose a risk to the patient due to changes in composition. Once the expiration date has passed, there is no guarantee that the medicine is safe and effective. Replace expired medicines to make sure you are using the latest product with the latest instructions for use. </p> ",
-
     "leaflet_incorrect_date_title": "Incorrect date",
     "leaflet_incorrect_date_subtitle": "Scanned date is incorrect",
     "leaflet_incorrect_date_message": "<p> <b> This product's date is incorrect</b>. </p> <p> For your own safety, please contact the pharmacy or doctor who issued the package of medicines. </p> ",
-
-
     "select_lang_title": "Leaflet unavailable",
     "select_lang_subtitle": "Language Missing",
     "scan_error_title": "Scan error",
