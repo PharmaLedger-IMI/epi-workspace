@@ -36,7 +36,7 @@ class XMLDisplayService {
         xslContent = acordisXslContent;
         break
       case "document":
-        if (xmlDoc.documentElement.hasAttribute("type") && xmlDoc.documentElement.getAttribute("type") === "newFormat") {
+        if (xmlDoc.documentElement.hasAttribute("type") && xmlDoc.documentElement.getAttribute("type") === "pharmaledger-1.0") {
           xslContent = acordisXslContent;
           break;
         }
