@@ -89,6 +89,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 
@@ -143,12 +144,12 @@ body {
 .menu-icon {
     background: url(../images/new-menu-icon.svg) no-repeat;
     width: 8%;
-    height: 22%;
+    aspect-ratio: 1/1;
     background-size: contain;
     position: relative;
-    right: -93%;
+    float: right;
     top: 40%;
-    margin-right: 100%;
+
 }
 
 .terms-button {
@@ -173,12 +174,12 @@ body {
     border-radius: 14px;
     background: #fff;
     color: #667085;
-    position: relative;
-    width: 100%;
+    position: absolute;
+    width: calc(100% - 70px);
     z-index: 10;
     text-align: left;
     padding: 5px 0px;
-    top: 50%;
+    top: 10%;
     font-size: 1.2rem;
     box-shadow: 0px 15px 20px rgba(28, 34, 40, 0.3);
 }
@@ -195,7 +196,7 @@ body {
 }*/
 
 .app-menu-container > div {
-    margin: 10px 15px;
+    margin: 2% 3%;
 }
 
 .app-menu-container.hidden {
@@ -227,7 +228,8 @@ body {
 .content-container {
     align-self: center;
     background-image: url(../images/medicine-pack.png);
-    width: 62%;
+    max-width: 55%;
+    width: -webkit-fill-available;
     aspect-ratio: 1 / 1;
     background-position: 15% 97%;
     background-repeat: no-repeat;
@@ -246,10 +248,10 @@ body {
 
 .icon-div {
     position: relative;
-    top: -32px;
-    right: -32px;
-    width: 64px;
-    height: 64px;
+    top: -16px;
+    right: -16px;
+    width: 32px;
+    height: 32px;
     animation: animatedIcon 5s steps(1, end) infinite;
     -moz-animation: animatedIcon 5s steps(1, end) infinite;
     -webkit-animation: animatedIcon 5s steps(1, end) infinite;
@@ -258,6 +260,7 @@ body {
     animation-delay: 1s;
     animation-direction: alternate;
     background-image: url(../images/good-icon.svg);
+    background-size: contain;
     float: right;
 }
 
@@ -671,6 +674,13 @@ body {
         max-width: 100%;
     }
 
+    .icon-div {
+        top: -48px;
+        right: -48px;
+        width: 96px;
+        height: 96px;
+    }
+
     .welcome-container {
         font-size: 3vh;
     }
@@ -685,6 +695,10 @@ body {
         margin: 10% auto;
         font-size: 1.8vh;
         width: 75%;
+    }
+
+    .app-menu-container {
+        font-size: 2.2vh;
     }
 
     .app-menu-container:after {
