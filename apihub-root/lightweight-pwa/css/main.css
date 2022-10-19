@@ -272,6 +272,11 @@ body {
 
 .scan-button-container {
     flex-grow: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 4vh;
 }
 
 .scan-button {
@@ -287,7 +292,6 @@ body {
     font-weight: 700;
     font-size: calc(100% + 0.8vmin);
     height: 6vh;
-    margin: 100% auto 0px;
     text-align: center;
 }
 
@@ -688,7 +692,6 @@ body {
     .scan-button {
         font-size: 2.5vh;
         height: 7vh;
-        margin: 60% auto 0px;
     }
 
     .app-options-container {
