@@ -204,7 +204,7 @@ body {
 }
 
 .hiddenElement {
-    display: none;
+    display: none !important;
 }
 
 @keyframes animatedBackground {
