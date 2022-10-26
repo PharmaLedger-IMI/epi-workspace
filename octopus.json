@@ -91,7 +91,7 @@
       },
       {
         "name": "apihub-root/demiurge-wallet/loader",
-        "src": "http://github.com/privatesky/web-dossier-loader.git",
+        "src": "http://github.com/opendsu/trust-loader.git",
         "actions": [
           {
             "type": "smartClone",
@@ -114,7 +114,7 @@
       },
       {
         "name": "apihub-root/leaflet-wallet/loader",
-        "src": "http://github.com/privatesky/trust-loader.git",
+        "src": "http://github.com/opendsu/trust-loader.git",
         "actions": [
           {
             "type": "smartClone",
@@ -137,7 +137,7 @@
       },
       {
         "name": "apihub-root/dsu-fabric-wallet/loader",
-        "src": "http://github.com/privatesky/trust-loader.git",
+        "src": "http://github.com/opendsu/trust-loader.git",
         "actions": [
           {
             "type": "smartClone",
@@ -156,7 +156,7 @@
       },
       {
         "name": "themes/citrus-theme",
-        "src": "http://github.com/privatesky/citrus-theme.git",
+        "src": "http://github.com/opendsu/citrus-theme.git",
         "actions": [
           {
             "type": "smartClone",
@@ -171,7 +171,7 @@
       },
       {
         "name": "themes/clear-sky-theme",
-        "src": "http://github.com/privatesky/clear-sky-theme.git",
+        "src": "http://github.com/opendsu/clear-sky-theme.git",
         "actions": [
           {
             "type": "smartClone",
@@ -201,7 +201,7 @@
       },
       {
         "name": "dossier-explorer-wallet-prototype",
-        "src": "https://github.com/opendsu-sdk/dossier-explorer-wallet-prototype.git",
+        "src": "https://github.com/opendsu/dossier-explorer-wallet-prototype.git",
         "actions": [
           {
             "type": "smartClone",
@@ -216,7 +216,7 @@
       },
       {
         "name": "apihub-root/dsu-explorer/loader",
-        "src": "https://github.com/PrivateSky/trust-loader.git",
+        "src": "https://github.com/opendsu/trust-loader.git",
         "actions": [
           {
             "type": "smartClone",
@@ -283,7 +283,7 @@
       },
       {
         "name": "themes/blue-fluorite-theme",
-        "src": "https://github.com/PrivateSky/blue-fluorite-theme.git",
+        "src": "https://github.com/opendsu/blue-fluorite-theme.git",
         "actions": [
           {
             "type": "smartClone",
