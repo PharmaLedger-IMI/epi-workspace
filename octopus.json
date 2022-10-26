@@ -18,7 +18,7 @@
       },
       {
         "name": "cardinal",
-        "src": "http://github.com/privatesky/cardinal.git",
+        "src": "http://github.com/opendsu/cardinal.git",
         "actions": [
           {
             "type": "smartClone",
