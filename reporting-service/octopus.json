@@ -8,7 +8,7 @@
       "actions": [
         {
           "type": "execute",
-          "cmd": "node ../privatesky/psknode/bin/scripts/pskbuild.js --source=./../ --projectMap=./build/build.json  --prod=true --output=./build/bundles"
+          "cmd": "node ../opendsu-sdk/psknode/bin/scripts/pskbuild.js --source=./../ --projectMap=./build/build.json  --prod=true --output=./build/bundles"
         },
         {
           "type": "remove",

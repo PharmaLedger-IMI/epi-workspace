@@ -36,8 +36,8 @@
         ]
       },
       {
-        "name": "privatesky",
-        "src": "http://github.com/privatesky/privatesky.git",
+        "name": "opendsu-sdk",
+        "src": "http://github.com/opendsu/opendsu-sdk.git",
         "actions": [
           {
             "type": "smartClone",
@@ -46,16 +46,16 @@
           },
           {
             "type": "execute",
-            "cmd": "cd privatesky && npm install"
+            "cmd": "cd opendsu-sdk && npm install"
           }
         ]
       },
       {
-        "name": "build privatesky",
+        "name": "build opendsu-sdk",
         "actions": [
           {
             "type": "execute",
-            "cmd": "cd privatesky && npm run build"
+            "cmd": "cd opendsu-sdk && npm run build"
           }
         ]
       },
@@ -201,7 +201,7 @@
       },
       {
         "name": "dossier-explorer-wallet-prototype",
-        "src": "https://github.com/PrivateSky/dossier-explorer-wallet-prototype.git",
+        "src": "https://github.com/opendsu-sdk/dossier-explorer-wallet-prototype.git",
         "actions": [
           {
             "type": "smartClone",
@@ -298,7 +298,7 @@
       },
       {
         "name": "dossier-explorer-ssapp",
-        "src": "https://github.com/PrivateSky/dossier-explorer-ssapp.git",
+        "src": "https://github.com/opendsu/dossier-explorer-ssapp.git",
         "actions": [
           {
             "type": "smartClone",
@@ -425,7 +425,7 @@
           },
           {
             "type": "copy",
-            "src": "./privatesky/psknode/bundles/webshims.js",
+            "src": "./opendsu-sdk/psknode/bundles/webshims.js",
             "target": "./apihub-root/bundles/webshims.js",
             "options": {
               "overwrite": true
@@ -433,7 +433,7 @@
           },
           {
             "type": "copy",
-            "src": "./privatesky/psknode/bundles/loaderBoot.js",
+            "src": "./opendsu-sdk/psknode/bundles/loaderBoot.js",
             "target": "./apihub-root/bundles/loaderBoot.js",
             "options": {
               "overwrite": true
@@ -951,12 +951,12 @@
           },
           {
             "type": "copy",
-            "src": "privatesky/psknode/bundles/pskWebServer.js",
+            "src": "opendsu-sdk/psknode/bundles/pskWebServer.js",
             "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/pskWebServer.js"
           },
           {
             "type": "copy",
-            "src": "privatesky/psknode/bundles/nodeBoot.js",
+            "src": "opendsu-sdk/psknode/bundles/nodeBoot.js",
             "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/nodeBoot.js"
           },
           {
@@ -1001,17 +1001,17 @@
           },
           {
               "type": "copy",
-              "src": "./privatesky/psknode/bundles/pskruntime.js",
+              "src": "./opendsu-sdk/psknode/bundles/pskruntime.js",
               "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/scripts/bundles/pskruntime.js"
           },
           {
               "type": "copy",
-              "src": "./privatesky/psknode/bundles/webshims.js",
+              "src": "./opendsu-sdk/psknode/bundles/webshims.js",
               "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/scripts/bundles/webshims.js"
           },
           {
               "type": "copy",
-              "src": "./privatesky/psknode/bundles/iframeBoot.js",
+              "src": "./opendsu-sdk/psknode/bundles/iframeBoot.js",
               "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/scripts/bundles/iframeBoot.js"
           },
           {
@@ -1043,12 +1043,12 @@
           },
           {
             "type": "copy",
-            "src": "privatesky/psknode/bundles/pskWebServer.js",
+            "src": "opendsu-sdk/psknode/bundles/pskWebServer.js",
             "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/pskWebServer.js"
           },
           {
             "type": "copy",
-            "src": "privatesky/psknode/bundles/nodeBoot.js",
+            "src": "opendsu-sdk/psknode/bundles/nodeBoot.js",
             "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/nodeBoot.js"
           },
           {
@@ -1093,17 +1093,17 @@
           },
           {
             "type": "copy",
-            "src": "./privatesky/psknode/bundles/pskruntime.js",
+            "src": "./opendsu-sdk/psknode/bundles/pskruntime.js",
             "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/pskruntime.js"
           },
           {
             "type": "copy",
-            "src": "./privatesky/psknode/bundles/webshims.js",
+            "src": "./opendsu-sdk/psknode/bundles/webshims.js",
             "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/webshims.js"
           },
           {
             "type": "copy",
-            "src": "./privatesky/psknode/bundles/iframeBoot.js",
+            "src": "./opendsu-sdk/psknode/bundles/iframeBoot.js",
             "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/iframeBoot.js"
           },
           {
