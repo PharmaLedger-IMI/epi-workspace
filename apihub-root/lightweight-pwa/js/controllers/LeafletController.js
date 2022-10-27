@@ -1,59 +1,38 @@
 import XMLDisplayService from "../services/XMLDisplayService/XMLDisplayService.js"
-import environment from "../../environment.js";
 import {goToPage} from "../utils/utils.js";
+import LeafletService from "../services/LeafletService.js";
 
 function LeafletController() {
 
   this.leafletLang = window.currentLanguage || "en";
+  let leafletService = new LeafletService();
 
   this.getLeaflet = function () {
     document.querySelector(".loader").setAttribute('style', 'display:block');
 
-    let leafletApiUrl = environment.leafletWebApiUrl + "/" + environment.epiDomain;
-
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    let gtin = urlParams.get("gtin");
-    let batch = urlParams.get("batch");
-    let expiry = urlParams.get("expiry");
-    let fetchUrl = `${leafletApiUrl}?leaflet_type=leaflet&lang=${this.leafletLang}&gtin=${gtin}&expiry=${expiry}`;
-    fetchUrl = batch ? `${fetchUrl}&batch=${batch}` : `${fetchUrl}`
-    let header = new Headers();
-    header.append("epiProtocolVersion", environment.epiProtocolVersion || 1);
-    header.append("getProductData", true);
-    const myRequest = new Request(fetchUrl, {
-      method: "GET",
-      headers: header
-    });
-    fetch(myRequest)
-      .then(response => {
-        response.json().then(result => {
-          console.log(result);
-          if (result.resultStatus === "xml_found") {
-            try {
-              showXML(result);
-              if (result.dateStatus === "expired_date") {
-                showExpired();
-              }
-              if (result.dateStatus === "incorrect_date") {
-                showIncorrectDate();
-              }
-            } catch (e) {
-              goToPage("error.html")
-            }
+    leafletService.setLeafletLanguage(this.leafletLang);
+    leafletService.getLeafletResult().then((result) => {
+      if (result.resultStatus === "xml_found") {
+        try {
+          showXML(result);
+          if (result.dateStatus === "expired_date") {
+            showExpired();
           }
-          if (result.resultStatus === "no_xml_for_lang") {
-            showAvailableLanguages(result)
+          if (result.dateStatus === "incorrect_date") {
+            showIncorrectDate();
           }
-        }).catch((err) => {
+        } catch (e) {
           goToPage("error.html")
-        });
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        goToPage("error.html")
-      });
+        }
+      }
+      if (result.resultStatus === "no_xml_for_lang") {
+        showAvailableLanguages(result)
+      }
+    }).catch(err => {
+      goToPage("error.html")
+    })
   };
+
   this.handleLeafletAccordion = function () {
     let accordionItems = document.querySelectorAll("div.leaflet-accordion-item");
     accordionItems.forEach((accItem, index) => {
