@@ -31,9 +31,7 @@ For more details about what a *workspace* is check out the [template-workspace](
 
 ## Installation
 
-In order to use the workspace, we need to follow a list of steps presented below. 
-
-If you have trouble installing the *epi-workspace*, please try to follow the guide provided on [PrivateSky.xyz](https://privatesky.xyz/?Start/installation)
+In order to use the workspace, we need to follow a list of steps presented below.
 
 ### Step 1: Clone the workspace
 
@@ -45,8 +43,7 @@ After the repository was cloned, you must install all the dependencies.
 
 ```sh
 $ cd epi-workspace
-#Important: If you plan to contribute to the project and/or dependecies please set DEV:true
-#in the file env.json before you run the installation!
+#Important: If you plan to contribute to the project and/or dependencies please use npm run dev-install cmd instead
 $ npm install
 ```
 **Note:** this command might take quite some time depending on your internet connection and you machine processing power.
@@ -190,7 +187,7 @@ npm run build-mobile
 # Change the value to your SDK path
 sdk.dir=/home/username/Android/Sdk
 ```
-More on this [here](https://github.com/PrivateSky/android-edge-agent#iv-setup-local-environment-values)
+More on this [here](https://github.com/opendsu/android-edge-agent#iv-setup-local-environment-values)
 
 6. Build the APK
 ```sh
