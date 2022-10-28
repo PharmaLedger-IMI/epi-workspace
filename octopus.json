@@ -750,7 +750,7 @@
     "install-mobile": [
       {
         "name": "mobile/scan-app/android",
-        "src": "https://github.com/PrivateSky/android-edge-agent",
+        "src": "https://github.com/opendsu/android-edge-agent",
         "actions": [
           {
             "type": "smartClone",
