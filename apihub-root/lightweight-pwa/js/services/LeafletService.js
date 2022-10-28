@@ -67,7 +67,7 @@ class LeafletService {
               resolve(null);
             })
           }).catch(e => {
-          reject(e)
+          resolve(null)
         })
       })
     }
@@ -125,7 +125,7 @@ class LeafletService {
           });
         })
         .catch((error) => {
-          reject(error)
+          resolve(null)
         });
     })
 

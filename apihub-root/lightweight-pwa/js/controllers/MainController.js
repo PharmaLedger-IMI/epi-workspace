@@ -94,6 +94,7 @@ function MainController() {
 }
 
 const mainController = new MainController();
+let lsEpiDomain = localStorage.setItem("_epiDomain_", environment.epiDomain);
 mainController.checkOnboarding();
 
 window.mainController = mainController;
