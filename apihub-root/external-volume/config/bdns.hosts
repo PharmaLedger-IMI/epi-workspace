@@ -23,6 +23,18 @@
       "$ORIGIN"
     ]
   },
+  "localhost.epi": {
+    "replicas": [],
+    "brickStorages": [
+      "$ORIGIN"
+    ],
+    "anchoringServices": [
+      "$ORIGIN"
+    ],
+    "notifications": [
+      "$ORIGIN"
+    ]
+  },
   "dev.epi.axl": {
       "replicas": [],
       "brickStorages": [
