@@ -1,6 +1,6 @@
 {
   "name": "ePI-workspace",
-  "version": "1.5.3",
+  "version": "1.6.0",
   "description": "",
   "scripts": {
     "dev-install": "node ./bin/mkDevEnv.js && npm install",
