@@ -54,8 +54,8 @@ function MainController() {
       document.querySelector(".terms-content-container").classList.add("hiddenElement");
       document.querySelector(".welcome-container").innerHTML = `<span>${welcomeText}</span>`;
       document.querySelector(".content-container").innerHTML = `<div class="icon-div"></div>`;
-      document.querySelector("#app_version_number").innerHTML = `${environment.appBuildVersion}`;
     }
+    document.querySelector("#app_version_number").innerHTML = `${environment.appBuildVersion}`;
   }
 
   this.submitTerms = function (status) {
