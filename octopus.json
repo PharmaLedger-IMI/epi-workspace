@@ -128,10 +128,6 @@
           {
             "type": "execute",
             "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm install"
-          },
-          {
-            "type": "execute",
-            "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm run build"
           }
         ]
       },
