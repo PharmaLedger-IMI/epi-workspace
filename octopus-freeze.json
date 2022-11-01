@@ -26,8 +26,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "379ef149b7151e3fe3148afa2741ed9d2c9b4749",
-                    "tag": "v1.0.0"
+                    "commit": "684042b5f4cb29e641c35fcd7b909a5e2fc3b4aa",
+                    "tag": "v1.0.1"
                 },
                 {
                     "type": "execute",
@@ -86,7 +86,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "70497252b0fdf46a548e2c91f824cd2d64e7504c",
+                    "commit": "4e6dff921296e891684816eed5b172359515ec0b",
                     "tag": "v0.3.0"
                 },
                 {
@@ -111,7 +111,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "70497252b0fdf46a548e2c91f824cd2d64e7504c",
+                    "commit": "4e6dff921296e891684816eed5b172359515ec0b",
                     "tag": "v0.3.0"
                 },
                 {
@@ -136,12 +136,16 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "70497252b0fdf46a548e2c91f824cd2d64e7504c",
+                    "commit": "4e6dff921296e891684816eed5b172359515ec0b",
                     "tag": "v0.3.0"
                 },
                 {
                     "type": "execute",
                     "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm run build"
                 }
             ]
         },
