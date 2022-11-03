@@ -124,18 +124,18 @@ function interpretScan(scan) {
                 gs1ElementStrings = gs1dlt.gs1digitalLinkToGS1elementStrings(scan, true);
                 gs1DigitalLinkURI = scan;
             } catch(err) {
-                throwError(err.message);
+                throwError(typeof err === "string" ? err : err.message);
             }
         } else {
             try {
                 gs1DigitalLinkURI = gs1dlt.gs1ElementStringsToGS1DigitalLink(scan, false, gs1Url);
             } catch(err) {
-                throwError(err.message);
+                throwError(typeof err === "string" ? err : err.message);
             }
         }
         //    console.log('We have a DL of ' + gs1DigitalLinkURI);
     } catch(err) {
-        throwError(err.message);
+        throwError(typeof err === "string" ? err : err.message);
     }
 
     // Whatever the input, we have a DL or an error. If an error, the value of gs1DigitalLinkURI is undefined
@@ -145,7 +145,7 @@ function interpretScan(scan) {
         try {
             gs1Array = gs1dlt.extractFromGS1digitalLink(gs1DigitalLinkURI);
         } catch(err) {
-            throwError(err.message);
+            throwError(typeof err === "string" ? err : err.message);
         }
 
         // Want to find the primary identifier

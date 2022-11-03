@@ -9,12 +9,13 @@
         <div class="scan-cancel" translate="cancel" onclick="scanController.cancelHandler()" ></div>
         <div class="camera-switch" onclick="scanController.switchCamera()" translate="change_camera"></div>
     </div>
-    <div id="scan-error" class="modal-container error-modal">
+    <div id="scan-error" class="modal-container error-modal popup-modal">
         <div class="modal-body">
-            <div class="modal-header">
-                <div class="modal-icon"></div>
-                <div class="modal-title" translate="scan_error_title"></div>
-                <div class="modal-subtitle"  id="lang-subtitle" translate="scan_error_subtitle"></div>
+            <div class="modal-header centred-header">
+                <div class="icon-title-container">
+                    <div class="modal-icon"></div>
+                    <div class="modal-title" translate="scan_error_title"></div>
+                </div>
                 <div class="close-modal" onclick="scanController.closeModal('scan-error')"></div>
             </div>
             <div class="modal-content" translate="camera_error_message">

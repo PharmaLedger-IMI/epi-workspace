@@ -5,46 +5,54 @@
 </head>
 
 <body>
-<div class="page-container leaflet-page">
-    <div class="page-header">
-        <span class="product-name"></span>
-        <span class="product-description"></span>
-    </div>
-    <div class="page-content">
-        <div class="loader"></div>
-        <div id="leaflet-content">
+<div id="settings-modal" class="page-container leaflet-page info-modal">
+    <div class="modal-body">
+        <div class="page-header modal-header left-aligned-header">
+            <div class="icon-title-container">
+                <div class="product-name"></div>
+                <div class="modal-icon"></div>
+            </div>
+            <div class="product-description"></div>
         </div>
-        <div class="scan-button" onclick="leafletController.scanAgainHandler()" translate="scan_again"></div>
+        <div class="page-content">
+            <div class="loader"></div>
+            <div id="leaflet-content">
+            </div>
+            <div class="scan-button" onclick="leafletController.scanAgainHandler()" translate="scan_again"></div>
+        </div>
     </div>
 </div>
-<div id="expired-modal" class="modal-container error-modal">
+<div id="expired-modal" class="modal-container popup-modal error-modal">
     <div class="modal-body">
-        <div class="modal-header">
-            <div class="modal-icon"></div>
-            <div class="modal-title" id="expired-title" translate="leaflet_expired_title"></div>
-            <div class="modal-subtitle" id="expired-subtitle" translate="leaflet_expired_subtitle"></div>
+        <div class="modal-header centred-header">
+            <div class="icon-title-container">
+                <div class="modal-icon"></div>
+                <div class="modal-title" id="expired-title" translate="leaflet_expired_title"></div>
+            </div>
             <div class="close-modal" onclick="leafletController.closeModal('expired-modal')"></div>
         </div>
         <div class="modal-content" translate="leaflet_expired_message"></div>
     </div>
 </div>
-<div id="incorrect-date-modal" class="modal-container error-modal">
+<div id="incorrect-date-modal" class="modal-container popup-modal error-modal">
     <div class="modal-body">
-        <div class="modal-header">
-            <div class="modal-icon"></div>
-            <div class="modal-title" id="incorrect-date-title" translate="leaflet_incorrect_date_title"></div>
-            <div class="modal-subtitle" id="incorrect-date-subtitle" translate="leaflet_incorrect_date_subtitle"></div>
+        <div class="modal-header centred-header">
+            <div class="icon-title-container">
+                <div class="modal-icon"></div>
+                <div class="modal-title" id="incorrect-date-title" translate="leaflet_incorrect_date_title"></div>
+            </div>
             <div class="close-modal" onclick="leafletController.closeModal('incorrect-date-modal')"></div>
         </div>
         <div class="modal-content" translate="leaflet_incorrect_date_message"></div>
     </div>
 </div>
-<div id="leaflet-lang-select" class="modal-container warning-modal">
+<div id="leaflet-lang-select" class="modal-container popup-modal warning-modal">
     <div class="modal-body">
-        <div class="modal-header">
-            <div class="modal-icon"></div>
-            <div class="modal-title" id="lang-title" translate="select_lang_title"></div>
-            <div class="modal-subtitle" id="lang-subtitle" translate="select_lang_subtitle"></div>
+        <div class="modal-header centred-header">
+            <div class="icon-title-container">
+                <div class="modal-icon"></div>
+                <div class="modal-title" id="lang-title" translate="select_lang_title"></div>
+            </div>
             <div class="close-modal" onclick="leafletController.closeModal('leaflet-lang-select')"></div>
         </div>
         <div class="modal-content">

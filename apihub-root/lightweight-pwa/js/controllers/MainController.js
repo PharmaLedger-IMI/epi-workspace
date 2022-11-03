@@ -68,6 +68,10 @@ function MainController() {
     goToPage("scan.html")
   }
 
+  this.goHome = function () {
+    goToPage("index.html")
+  }
+
   this.closeModal = function () {
     document.querySelector("#settings-modal").setAttribute('style', 'display:none !important');
   }
@@ -94,7 +98,10 @@ function MainController() {
 }
 
 const mainController = new MainController();
-let lsEpiDomain = localStorage.setItem("_epiDomain_", environment.epiDomain);
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+let epiDomain = urlParams.get("setdomain") || environment.epiDomain;
+let lsEpiDomain = localStorage.setItem("_epiDomain_", epiDomain);
 mainController.checkOnboarding();
 
 window.mainController = mainController;
