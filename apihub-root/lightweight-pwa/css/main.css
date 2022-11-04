@@ -392,7 +392,7 @@ body {
 }
 
 .leaflet-page .page-content, .error-page .page-content {
-    height: 88%;
+    height: 73vh;
     position: relative;
     color: #04313B;
     background: #fff;
@@ -428,7 +428,6 @@ body {
     text-align: start;
     overflow-y: auto;
     height: 100%;
-    height: 75vh;
 }
 
 #leaflet-content table {
