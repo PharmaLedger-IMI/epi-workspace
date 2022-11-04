@@ -260,7 +260,7 @@ body {
 .content-container {
     align-self: center;
     background-image: url(../images/medicine-pack.png);
-    max-width: 55%;
+    max-width: 75%;
     width: -webkit-fill-available;
     aspect-ratio: 1 / 1;
     background-position: 15% 97%;
@@ -312,19 +312,30 @@ body {
 }
 
 .scan-button {
-    color: #02272F;
+    color: var(--olivegreen);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     max-width: 100%;
     background: var(--mintgreen);
-    border-radius: 80px;
-    position: relative;
+    box-shadow: -1px 8px 24px rgba(0, 0, 0, 0.16);
+    border-radius: 60px;
     font-family: 'DM Sans bold';
-    font-size: calc(100% + 0.6vmin);
-    height: 6vh;
+    font-size: 1.7vh;
+    height: 5vh;
     text-align: center;
+    position: absolute;
+    bottom: 4vh;
+    right: 4vh;
+    padding: 0 4vh;
+}
+
+.scan-button.full_width{
+    position: relative;
+    width: 100%;
+    padding: 0;
+    right: 0;
 }
 
 .page-container.scan-page, .page-container.leaflet-page {
@@ -342,7 +353,6 @@ body {
     height: 10%;
     align-items: end;
     font-family: 'DM Sans semi-bold';
-    font-style: normal;
     font-size: calc(100% + 0.1vmin);
 }
 
@@ -418,7 +428,7 @@ body {
     text-align: start;
     overflow-y: auto;
     height: 100%;
-    height: 95%;
+    height: 75vh;
 }
 
 #leaflet-content table {
@@ -433,26 +443,6 @@ body {
 .leaflet-link {
     color: #4f4edf;;
     text-decoration: underline;
-}
-
-.leaflet-page .scan-button, .error-page .scan-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
-    position: absolute;
-    right: 35px;
-    background: #61E4A3;
-    box-shadow: -1px 8px 24px rgba(0, 0, 0, 0.16);
-    border-radius: 62px;
-    color: #02272F;
-    font-family: 'DM Sans bold';
-    font-style: normal;
-    bottom: 15px;
-    width: 128px;
-    height: 40px;
-    font-size: 14px;
 }
 
 .error-page .page-content {
@@ -522,7 +512,7 @@ body {
 }
 
 .modal-header.centred-header {
-    height: 15vh;
+    height: 18vh;
     position: relative;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
@@ -544,6 +534,7 @@ body {
     height: 100%;
     justify-content: center;
     gap: 8px;
+    padding-top: 1vh;
 }
 
 .modal-header.left-aligned-header .icon-title-container {
@@ -650,14 +641,6 @@ body {
     flex-direction: column;
 }
 
-#settings-modal .scan-button {
-    bottom: 4vh;
-    right: 4vh;
-    min-width: 37%;
-    position: absolute !important;
-    font-size: 1.7vh;
-}
-
 .info-modal .modal-body .modal-content {
     padding: 0;
     width: 100%;
@@ -693,7 +676,6 @@ body {
     line-height: 1.5rem;
     max-height: 650px;
     border-radius: 0px 0px 30px 30px;
-    height: 70%;
 }
 
 .popup-modal .modal-content {
@@ -777,6 +759,7 @@ body {
         max-height: 100%;
         width: 100%;
         max-width: 100%;
+        overflow: hidden;
     }
 
     .icon-div {
@@ -836,7 +819,7 @@ body {
     }
 
     .scan-page #scanner-placeholder {
-        height: 90%;
+        height: 100%;
         max-width: 100%;
     }
 
@@ -897,13 +880,6 @@ body {
         margin: 0px 35px;
     }
 
-    .leaflet-page .scan-button, .error-page .scan-button {
-        bottom: 3%;
-        width: 30%;
-        height: 5%;
-        font-size: 1.7vh;
-    }
-
     .modal-container {
         top: 0px;
         max-width: 100%;
@@ -915,7 +891,6 @@ body {
         border-radius: 25px;
         margin: 0px 3%;
         position: relative;
-        max-height: 60%;
     }
 
     #settings-modal.modal-container .modal-body {
@@ -924,8 +899,12 @@ body {
 
     .modal-header {
         min-height: 11%;
-        padding-bottom: 3%;
         height: auto;
+    }
+
+    .modal-header.centred-header {
+        border-top-right-radius: 60px;
+        border-top-left-radius: 60px;
     }
 
     .info-modal .modal-header, .info-modal .modal-content {
@@ -958,6 +937,10 @@ body {
         font-size: 3vh;
         border-radius: 30px;
         top: -30px;
+    }
+
+    .popup-modal .modal-content {
+        border-radius: 15px 15px 60px 60px;
     }
 
     #settings-modal .modal-content {
