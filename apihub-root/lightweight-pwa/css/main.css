@@ -913,8 +913,13 @@ body {
 
     .modal-container .modal-body {
         border-radius: 25px;
-        margin: 35% 3%;
+        margin: 0px 3%;
         position: relative;
+        max-height: 60%;
+    }
+
+    #settings-modal.modal-container .modal-body {
+        max-height: 100%;
     }
 
     .modal-header {
@@ -948,7 +953,7 @@ body {
     .modal-content {
         padding: 7%;
         line-height: 3vh;
-        max-height: 65%;
+        max-height: 45%;
         min-height: 42%;
         font-size: 3vh;
         border-radius: 30px;
@@ -957,6 +962,7 @@ body {
 
     #settings-modal .modal-content {
         top: 0px;
+        max-height: 100%;
     }
 
     .modal-content .text-section {
