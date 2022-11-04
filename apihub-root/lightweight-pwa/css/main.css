@@ -651,8 +651,8 @@ body {
 }
 
 #settings-modal .scan-button {
-    bottom: 30px;
-    right: 25px;
+    bottom: 4vh;
+    right: 4vh;
     min-width: 37%;
     position: absolute !important;
     font-size: 1.7vh;
@@ -693,6 +693,7 @@ body {
     line-height: 1.5rem;
     max-height: 650px;
     border-radius: 0px 0px 30px 30px;
+    height: 70%;
 }
 
 .popup-modal .modal-content {
@@ -912,9 +913,8 @@ body {
 
     .modal-container .modal-body {
         border-radius: 25px;
-        margin: 50% 3% 0px;
+        margin: 35% 3%;
         position: relative;
-        height: 75%;
     }
 
     .modal-header {
