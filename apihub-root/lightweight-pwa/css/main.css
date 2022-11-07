@@ -427,9 +427,8 @@ body {
 #leaflet-content {
     text-align: start;
     overflow-y: auto;
-    position: absolute;
+    position: relative;
     height: 88%;
-    width: 100vw;
 }
 
 #leaflet-content table {
@@ -862,6 +861,10 @@ body {
     }
 
 
+    #leaflet-content{
+        width: 100vw;
+    }
+    
     #leaflet-content,
     #leaflet-content .select-lang-text,
     #leaflet-content .languages-list {
