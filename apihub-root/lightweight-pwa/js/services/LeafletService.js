@@ -131,7 +131,7 @@ class LeafletService {
 
   }
 
-  async getLeafletResult(timePerCall = 3000, totalWaitTime = 30000, gto_TimePerCall = 1000, gto_TotalWaitTime = 10000) {
+  async getLeafletResult(timePerCall = 10000, totalWaitTime = 30000, gto_TimePerCall = 2000, gto_TotalWaitTime = 10000) {
     return new Promise(async (resolve, reject) => {
       let leafletResult = null;
       setTimeout(() => {
