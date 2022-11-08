@@ -31,7 +31,7 @@ function ScanController() {
   }
 
   this.cancelHandler = function () {
-    goToPage("index.html");
+    goToPage("/index.html");
   }
 
   this.startScanning = async function () {
@@ -93,7 +93,7 @@ function ScanController() {
   }
 
   this.processGS1Fields = function (gs1Fields) {
-    goToPage(`leaflet.html?gtin=${gs1Fields.gtin}&batch=${gs1Fields.batchNumber}&expiry=${gs1Fields.expiry}`)
+    goToPage(`/leaflet.html?gtin=${gs1Fields.gtin}&batch=${gs1Fields.batchNumber}&expiry=${gs1Fields.expiry}`)
   }
 
   this.switchCamera = function () {

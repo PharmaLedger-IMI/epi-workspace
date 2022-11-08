@@ -65,11 +65,11 @@ function MainController() {
     location.reload();
   }
   this.scanHandler = async function () {
-    goToPage("scan.html")
+    goToPage("/scan.html")
   }
 
   this.goHome = function () {
-    goToPage("index.html")
+    goToPage("/index.html")
   }
 
   this.closeModal = function () {

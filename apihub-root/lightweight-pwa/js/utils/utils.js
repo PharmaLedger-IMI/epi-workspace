@@ -14,9 +14,14 @@ function convertFromISOtoYYYY_HM(dateString, useFullMonthName, separator) {
   }
   return `${splitDate[2]} ${separatorString} ${monthNames[month - 1].slice(0, 3)} ${separatorString} ${splitDate[0]}`;
 }
-function goToPage(urlFragment) {
-  let url = window.location.href.replace(/\/[^\/]*$/, '/' + urlFragment);
-  window.location.replace(url);
+
+function goToPage(pageName) {
+
+  if (!pageName || typeof pageName !== "string" || pageName[0] !== "/" || window.location.hash) {
+    pageName = "/error.html"
+  }
+  let pagePath = window.location.pathname.replace(/\/[^\/]*$/, pageName)
+  window.location.href = (window.location.origin + pagePath);
 }
 
 export {
