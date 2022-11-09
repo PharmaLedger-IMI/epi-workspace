@@ -22,14 +22,14 @@ function LeafletController() {
             showIncorrectDate();
           }
         } catch (e) {
-          goToPage("/error.html")
+          showError(e)
         }
       }
       if (result.resultStatus === "no_xml_for_lang") {
         showAvailableLanguages(result)
       }
     }).catch(err => {
-      goToPage("/error.html")
+      showError(err)
     })
   };
 
@@ -100,6 +100,13 @@ function LeafletController() {
     document.querySelector(".loader").setAttribute('style', 'display:none');
   }
 
+  let showError = function (err) {
+    let pageName = "/error.html";
+    if (err.errorCode) {
+      pageName = `/error.html?errorCode=${err.errorCode}`
+    }
+    goToPage(pageName)
+  }
   let showAvailableLanguages = function (result) {
     // document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
     // document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];

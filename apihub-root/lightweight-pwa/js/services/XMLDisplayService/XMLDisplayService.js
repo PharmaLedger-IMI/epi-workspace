@@ -1,4 +1,6 @@
 import {defualtXslContent, acordisXslContent} from "./leafletXSL.js"
+import CustomError from "../../utils/CustomError.js";
+import {constants} from "../../constants.js";
 
 class XMLDisplayService {
   constructor(containerIdSelector) {
@@ -24,7 +26,7 @@ class XMLDisplayService {
     let xmlDoc = parser.parseFromString(xmlContent, "text/xml");
     if (!xmlDoc || !xmlDoc.children) {
       console.log("Error on parsing xml file. Please check xml file format and content");
-      throw new Error("Error on parsing xml file");
+      throw new CustomError(constants.errorCodes.xmlParseError, "Error on parsing xml file");
     }
     let xslContent;
     switch (xmlDoc.children[0].tagName) {
@@ -46,7 +48,7 @@ class XMLDisplayService {
 
     if (!xslContent) {
       console.log("Error on parsing xsl file. Couldn't find a valid xslContent");
-      throw new Error("Error on parsing xsl file. Please check if xml file respects accepted document structure");
+      throw new CustomError(constants.errorCodes.xslParseError, "Error on parsing xsl file. Please check if xml file respects accepted document structure");
     }
 
     let xslDoc = parser.parseFromString(xslContent, "text/xml");

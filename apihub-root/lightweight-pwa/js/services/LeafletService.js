@@ -136,7 +136,7 @@ class LeafletService {
       let leafletResult = null;
       setTimeout(() => {
         if (!leafletResult) {
-          reject(new Error("Could not get a valid result"));
+          reject({errorCode: "leafletTimeout"});
           return
         }
       }, totalWaitTime)
@@ -151,11 +151,19 @@ class LeafletService {
 
           } catch (e) {
             console.log("error on request leafletRequest ", e)
-            reject(e);
+            reject({errorCode: "leafletTimeout"});
           }
         } else {
           let bdnsResult = await this.getBDNS();
-          let ownerDomain = await this.detectGTINOwner(this.gtin, bdnsResult, gto_TimePerCall, gto_TotalWaitTime);
+          let ownerDomain;
+          try {
+            ownerDomain = await this.detectGTINOwner(this.gtin, bdnsResult, gto_TimePerCall, gto_TotalWaitTime);
+          } catch (e) {
+            reject({errorCode: "gtoTimeout"})
+          }
+          if (!ownerDomain) {
+            reject({errorCode: "gtoTimeout"})
+          }
           let anchoringServices = this.getAnchoringServices(bdnsResult, ownerDomain);
           let roundRobinService = new RandomRoundRobinService(anchoringServices);
 
@@ -175,7 +183,7 @@ class LeafletService {
           return;
         }
       } catch (e) {
-        reject(e)
+        reject({errorCode: "leafletTimeout"});
       }
     })
   }
