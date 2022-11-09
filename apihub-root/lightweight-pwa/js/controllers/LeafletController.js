@@ -81,7 +81,7 @@ function LeafletController() {
   let showXML = function (result) {
     document.querySelector(".product-name").innerText = result.productData.name;
     document.querySelector(".product-description").innerText = result.productData.description;
-    document.querySelector(".leaflet-title-icon").classList.remove("hiddenElement");
+   /* document.querySelector(".leaflet-title-icon").classList.remove("hiddenElement");*/
     let xmlService = new XMLDisplayService("#leaflet-content");
     let resultDocument = xmlService.getHTMLFromXML(result.pathBase, result.xmlContent);
     let leafletImages = resultDocument.querySelectorAll("img");
