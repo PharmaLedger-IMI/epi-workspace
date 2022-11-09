@@ -1,14 +1,20 @@
 [
   {
     "messageType": "CreateGroup",
-    "groupName": "ePI Administration Group"
+    "groupName": "ePI Administration Group",
+    "groupTags": "Demiurge",
+    "accessModes": "demiurgeSharedEnclave:admin"
   },
   {
     "messageType": "CreateGroup",
-    "groupName": "ePI Write Group"
+    "groupName": "ePI Write Group",
+    "groupTags": "DSU_Fabric",
+    "accessModes": "epiEnclave:write"
   },
   {
     "messageType": "CreateGroup",
-    "groupName": "ePI Read Group"
+    "groupName": "ePI Read Group",
+    "groupTags": "DSU_Fabric",
+    "accessModes": "epiEnclave:read"
   }
 ]
