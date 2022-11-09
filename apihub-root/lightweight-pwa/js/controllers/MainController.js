@@ -42,8 +42,8 @@ function MainController() {
         <span class="extra-text" translate="disagree_extra_text"></span>
         <iframe style="width: 100%; height: 100%; margin-bottom: 24px; border: 0" src="https://app.termly.io/document/terms-of-use-for-website/76a94ec4-766a-4a6a-b7fe-c68834af6811"></iframe>  
         <div class="terms-buttons-container">
-          <div class="terms-button disagree" onclick="mainController.submitTerms(false)">${getTranslation("disagree")}</div>
-          <div class="terms-button agree" onclick="mainController.submitTerms(true)">${getTranslation("agree")}</div>
+          <div class="scan-button terms-button disagree" onclick="mainController.submitTerms(false)">${getTranslation("disagree")}</div>
+          <div class="scan-button terms-button agree" onclick="mainController.submitTerms(true)">${getTranslation("agree")}</div>
         </div>
       </div>`;
       document.querySelector(".content-container").classList.add("hiddenElement");
@@ -65,7 +65,11 @@ function MainController() {
     location.reload();
   }
   this.scanHandler = async function () {
-    goToPage("scan.html")
+    goToPage("/scan.html")
+  }
+
+  this.goHome = function () {
+    goToPage("/index.html")
   }
 
   this.closeModal = function () {
@@ -94,7 +98,10 @@ function MainController() {
 }
 
 const mainController = new MainController();
-let lsEpiDomain = localStorage.setItem("_epiDomain_", environment.epiDomain);
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+let epiDomain = urlParams.get("setdomain") || environment.epiDomain;
+let lsEpiDomain = localStorage.setItem("_epiDomain_", epiDomain);
 mainController.checkOnboarding();
 
 window.mainController = mainController;

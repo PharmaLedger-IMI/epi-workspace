@@ -52,8 +52,8 @@ class XMLDisplayService {
     let xslDoc = parser.parseFromString(xslContent, "text/xml");
 
     xsltProcessor.importStylesheet(xslDoc);
-
-    let resultDocument = xsltProcessor.transformToFragment(xmlDoc, document);
+    const ownerDocument = document.implementation.createDocument("", "epi", null);
+    let resultDocument = xsltProcessor.transformToFragment(xmlDoc, ownerDocument);
     return resultDocument;
   }
 

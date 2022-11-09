@@ -2,7 +2,7 @@ import {goToPage} from "../utils/utils.js"
 
 function ErrorController() {
   this.scanAgainHandler = function(){
-    goToPage("scan.html")
+    goToPage("/scan.html")
   }
 }
 

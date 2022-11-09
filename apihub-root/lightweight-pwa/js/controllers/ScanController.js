@@ -1,6 +1,7 @@
 import {convertFromISOtoYYYY_HM, goToPage} from "../utils/utils.js";
 import interpretGS1scan from "../utils/interpretGS1scan/interpretGS1scan.js";
 import ScanService, {switchFacingMode} from "../services/ScanService.js";
+import {getTranslation} from "../translations.js";
 
 function ScanController() {
   this.init = async function (facingMode) {
@@ -20,15 +21,21 @@ function ScanController() {
 
   this.redirectToError = function (err) {
     console.log("Error on scanService ", err);
-    document.querySelector("#scan-error").setAttribute('style', 'display:flex !important');
+    let modal = document.querySelector("#scan-error")
+    if (err.scanResult) {
+      modal.querySelector(".modal-title").innerHTML = getTranslation("scan_parse_error");
+      modal.querySelector(".modal-content").innerHTML = `<div>${getTranslation("scan_parse_error_message")}  ${err.scanResult}</div>`;
+    }
+    modal.setAttribute('style', 'display:flex !important');
     //  goToPage("error.html")
   }
 
   this.cancelHandler = function () {
-    goToPage("index.html");
+    goToPage("/index.html");
   }
 
   this.startScanning = async function () {
+    let scanResult = null;
     this.scanInterval = setInterval(() => {
       this.scanService.scan().then(result => {
         if (!result) {
@@ -37,9 +44,11 @@ function ScanController() {
         console.log("Scan result:", result);
         this.scanService.stop();
         clearInterval(this.scanInterval);
-
+        scanResult = result.text;
         this.processGS1Fields(this.parseGS1Code(result.text));
       }).catch(err => {
+        err.scanResult = scanResult;
+        this.redirectToError(err);
         console.log("Caught", err);
       });
     }, 100);
@@ -50,7 +59,7 @@ function ScanController() {
     try {
       gs1FormatFields = interpretGS1scan.interpretScan(scannedBarcode);
     } catch (e) {
-      this.redirectToError(e);
+      throw e;
       return;
     }
 
@@ -84,8 +93,7 @@ function ScanController() {
   }
 
   this.processGS1Fields = function (gs1Fields) {
-    let domainName = "epi";
-    goToPage(`leaflet.html?gtin=${gs1Fields.gtin}&batch=${gs1Fields.batchNumber}&expiry=${gs1Fields.expiry}`)
+    goToPage(`/leaflet.html?gtin=${gs1Fields.gtin}&batch=${gs1Fields.batchNumber}&expiry=${gs1Fields.expiry}`)
   }
 
   this.switchCamera = function () {

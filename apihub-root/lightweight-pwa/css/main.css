@@ -17,7 +17,8 @@
     font-style: normal;
     font-weight: 400;
     src: local(''),
-    url('../fonts/dm-sans-v11-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/dm-sans-v11-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('../fonts/dm-sans-v11-latin-ext_latin-regular.woff2') format('woff2'), url('../fonts/dm-sans-v11-latin-ext_latin-regular.woff') format('woff'),
+    url('../fonts/DMSans-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 /* dm-sans-500 - latin-ext_latin */
@@ -26,7 +27,9 @@
     font-style: normal;
     font-weight: 500;
     src: local(''),
-    url('../fonts/dm-sans-v11-latin-ext_latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/dm-sans-v11-latin-ext_latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('../fonts/dm-sans-v11-latin-ext_latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/dm-sans-v11-latin-ext_latin-500.woff') format('woff'),
+    url('../fonts/DMSans-Medium.ttf') format('truetype'); /* Safari, Android, iOS */
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* dm-sans-700 - latin-ext_latin */
@@ -35,7 +38,8 @@
     font-style: normal;
     font-weight: 700;
     src: local(''),
-    url('../fonts/dm-sans-v11-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/dm-sans-v11-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('../fonts/dm-sans-v11-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/dm-sans-v11-latin-ext_latin-700.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ url('../fonts/DMSans-Bold.ttf') format('truetype'); /* Safari, Android, iOS */
+
 }
 
 body {
@@ -102,7 +106,7 @@ body {
 
 .welcome-container {
     align-self: center;
-    font-weight: 700;
+    font-family: 'DM Sans bold';
     width: 100%;
     height: auto;
     text-align: center;
@@ -140,6 +144,7 @@ body {
 
 .terms-container .terms-buttons-container {
     display: flex;
+    justify-content: space-around;
 }
 
 .menu-icon {
@@ -153,22 +158,18 @@ body {
 
 }
 
-.terms-button {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 1em;
+.scan-button.terms-button {
     border: 1px solid #516266;
-    border-radius: 62px;
-    flex-grow: 1;
-    margin: 0px 1em;
+    position: unset;
 }
 
 .terms-button.agree {
     background: var(--olivegreen);
     color: white;
+}
+
+.terms-button.disagree {
+    background: transparent;
 }
 
 .app-menu-container {
@@ -210,6 +211,8 @@ body {
 
 .forward-to-page .label {
     flex-grow: 1;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
 }
 
 .forward-to-page .label:hover {
@@ -218,8 +221,9 @@ body {
 }
 
 .forward-to-page .fwd-icon {
-    width: 10px;
+    width: 0.7vh;
     background: url("../images/right-arrow-icon.svg") no-repeat center;
+    background-size: contain;
 }
 
 .app-menu-container.hidden {
@@ -251,7 +255,7 @@ body {
 .content-container {
     align-self: center;
     background-image: url(../images/medicine-pack.png);
-    max-width: 55%;
+    max-width: 75%;
     width: -webkit-fill-available;
     aspect-ratio: 1 / 1;
     background-position: 15% 97%;
@@ -298,24 +302,36 @@ body {
     display: flex;
     width: 100%;
     flex-direction: column;
-    justify-content: flex-end;
-    margin-bottom: 4vh;
+    max-width: 75%;
+    align-self: center;
+    position: relative;
+    align-items: stretch;
 }
 
 .scan-button {
-    color: #02272F;
+    color: var(--olivegreen);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     max-width: 100%;
     background: var(--mintgreen);
-    border-radius: 80px;
-    position: relative;
-    font-weight: 700;
-    font-size: calc(100% + 0.8vmin);
-    height: 6vh;
+    box-shadow: -1px 8px 24px rgba(0, 0, 0, 0.16);
+    border-radius: 5vh;
+    font-family: 'DM Sans bold';
+    font-size: 2vh;
     text-align: center;
+    position: absolute;
+    bottom: 4vh;
+    right: 4vh;
+    padding: 1vh 4vh;
+}
+
+.scan-button.full_width {
+    position: relative;
+    right: 0;
+    top: calc(100% - 12vh);
+    padding: 2vh 10px;
 }
 
 .page-container.scan-page, .page-container.leaflet-page {
@@ -332,8 +348,7 @@ body {
     justify-content: space-between;
     height: 10%;
     align-items: end;
-    font-weight: 500;
-    font-style: normal;
+    font-family: 'DM Sans semi-bold';
     font-size: calc(100% + 0.1vmin);
 }
 
@@ -362,29 +377,18 @@ body {
 
 .page-container.error-page .page-header {
     background: var(--green-200);
-    border-radius: 25px 25px 0px 0px;
-}
-
-.page-container.error-page .page-header .header-title:after {
-    content: "";
-    position: absolute;
-    background: url(./../images/error-icon.svg) no-repeat;
-    width: 7%;
-    height: 4%;
-    background-size: contain !important;
-    background-position: center !important;
-    margin-left: 10px;
+    border-radius: 30px 30px 0px 0px;
 }
 
 .leaflet-page .page-header, .error-page .page-header {
     display: flex;
     flex-direction: column;
-    height: 12%;
+    height: 20%;
     justify-content: center;
 }
 
 .leaflet-page .page-content, .error-page .page-content {
-    height: 88%;
+    height: 86%;
     position: relative;
     color: #04313B;
     background: #fff;
@@ -410,17 +414,22 @@ body {
 }
 
 #leaflet-content h5 {
-    font-weight: normal;
+    font-family: 'DM Sans';
     font-size: 110%;
     margin-right: 1rem;
 }
 
-
+.leaflet-content-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 #leaflet-content {
     text-align: start;
     overflow-y: auto;
-    height: 100%;
-    height: 95%;
+    position: absolute;
+    height: 88%;
+    width: 100%;
 }
 
 #leaflet-content table {
@@ -437,32 +446,12 @@ body {
     text-decoration: underline;
 }
 
-.leaflet-page .scan-button, .error-page .scan-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
-    position: absolute;
-    right: 35px;
-    background: #61E4A3;
-    box-shadow: -1px 8px 24px rgba(0, 0, 0, 0.16);
-    border-radius: 62px;
-    color: #02272F;
-    font-weight: 700;
-    font-style: normal;
-    bottom: 15px;
-    width: 128px;
-    height: 40px;
-    font-size: 14px;
-}
-
 .error-page .page-content {
-    padding: 0px 35px;
+    padding: 0px 24px;
 }
 
 .leaflet-accordion-item {
-    padding: 0px 35px;
+    padding: 0px 1vh;
     border-bottom: 1px solid #E5EAEB;
 }
 
@@ -482,21 +471,21 @@ body {
     display: block;
     position: relative;
     font-style: normal;
-    font-weight: normal;
+    font-family: 'DM Sans';
 }
 
 .leaflet-accordion-item:before {
     content: "";
-    margin-right: -20px;
     visibility: visible;
     position: relative;
     float: right;
     width: 7%;
-    height: 4%;
+    height: 5%;
     background-image: url(../images/accordion-open.svg);
     background-position: top;
     background-size: contain;
     background-repeat: no-repeat;
+    top: 7px;
 }
 
 .leaflet-accordion-item.active:before {
@@ -518,6 +507,72 @@ body {
     height: 100%;
 }
 
+.modal-container .modal-body {
+    margin: 0px 12px;
+    position: relative;
+}
+
+.modal-header.centred-header {
+    height: 18vh;
+    position: relative;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    color: #02272F;
+}
+
+.modal-header.left-aligned-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 30px 30px 0px 0px;
+    height: fit-content;
+    padding: 1.5vh 1.5vh 0vh;
+    min-height: 14%;
+}
+
+.modal-header.centred-header .icon-title-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 1vh;
+}
+
+.modal-header.left-aligned-header .icon-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.leaflet-page .product-name,
+.modal-header .modal-title,
+.error-page .header-title {
+    font-size: 2.5vh;
+    font-family: 'DM Sans bold';
+}
+
+.modal-header.centred-header .modal-title {
+    text-align: center;
+}
+
+.modal-header.left-aligned-header .modal-title {
+    text-align: left;
+}
+
+#settings-modal .modal-header {
+    background-color: var(--olivegreen);
+    color: #fff;
+    padding: 1.5vh 1.5vh 0vh;
+    min-height: 14%;
+}
+
+#settings-modal .modal-header .close-modal {
+    background: url(./../images/close-modal-white.svg) no-repeat center;
+    background-size: contain;
+}
+
 .modal-container {
     position: absolute;
     display: none !important;
@@ -533,20 +588,33 @@ body {
     border-radius: 30px;
 }
 
-
-.modal-header .modal-title {
-    font-size: 1.5vh;
-    margin-top: 3px;
-    margin-left: 52px;
-    padding-right: 52px;
+.modal-header .modal-icon {
+    position: relative;
+    background-size: contain !important;
+    background: url(./../images/error-icon.svg) no-repeat;
 }
 
-.modal-header .modal-icon {
-    background: url(./../images/warning-icon.svg) no-repeat;
-    position: relative;
-    height: 21px;
-    top: 24px;
-    left: 24px;
+.modal-header.left-aligned-header .modal-icon {
+    height: 2.5vh;
+    width: 15%;
+}
+
+.modal-header.centred-header .modal-icon {
+    height: 22%;
+    width: 100%;
+    background-position: center;
+}
+
+.error-modal .modal-header .modal-icon {
+    background: url(./../images/modal-error-icon.svg) no-repeat center;
+}
+
+.warning-modal .modal-header .modal-icon {
+    background: url(./../images/modal-warning-icon.svg) no-repeat center;
+}
+
+.info-modal .modal-header .modal-icon {
+    background: url(./../images/modal-info-icon.svg) no-repeat left;
 }
 
 .modal-header .close-modal {
@@ -559,8 +627,11 @@ body {
     top: 21px;
 }
 
-.info-modal .modal-header {
-    background-color: var(--info-grey);
+.modal-content .text-section {
+    padding-bottom: 24px;
+    font-size: 2vh;
+    font-family: 'DM Sans semi-bold';
+    text-align: justify;
 }
 
 #settings-modal.info-modal .modal-body {
@@ -570,10 +641,6 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.info-modal .modal-body .modal-header {
-    height: auto;
 }
 
 .info-modal .modal-body .modal-content {
@@ -594,11 +661,11 @@ body {
 }
 
 .warning-modal .modal-header {
-    background-color: var(--yellow-200);
+    background: linear-gradient(0deg, #FFFAED, #FFFAED), #FFFFFF;
 }
 
 .error-modal .modal-header {
-    background-color: var(--red-200);
+    background: linear-gradient(0deg, rgba(248, 100, 88, 0.1), rgba(248, 100, 88, 0.1)), #FFFFFF;
 }
 
 .modal-content {
@@ -607,11 +674,15 @@ body {
     overflow: auto;
     color: #04313B;
     min-height: 354px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
     padding: 24px;
     line-height: 1.5rem;
-    max-height: 650px;
+    max-height: 60vh;
+    border-radius: 0px 0px 30px 30px;
+}
+
+.popup-modal .modal-content {
+    top: -15px;
+    border-radius: 15px 15px 30px 30px;
 }
 
 .modal-content.terms,
@@ -624,7 +695,7 @@ body {
 }
 
 .modal-content .languages-container .language-item-container {
-    font-weight: 500;
+    font-family: 'DM Sans semi-bold';
     border: 0.5px solid #D0D5DD;
     font-size: 2.5vh;
     padding: 8px 10px 0px;
@@ -648,43 +719,6 @@ body {
     border-radius: 8px;
 }
 
-
-/*.scan-page .modal-container {
-    height: 90%;
-}*/
-
-.leaflet-page .product-description, .error-page .header-subtitle {
-    font-size: 2.5vh;
-}
-
-.modal-container .modal-body {
-    margin: 0px 12px;
-    position: relative;
-}
-
-.modal-header {
-    border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
-    height: 96px;
-    color: #02272F;
-    padding-bottom: 15px;
-}
-
-.modal-header .modal-subtitle {
-    font-size: 2.5vh;
-    font-weight: 700;
-    left: 24px;
-    position: relative;
-    margin-top: 5px;
-}
-
-.modal-content .text-section {
-    padding-bottom: 24px;
-    font-size: 2vh;
-    font-weight: 500;
-    text-align: justify;
-}
-
 .modal-content .languages-container .language-item-container input {
     left: 0px;
     width: 10%;
@@ -693,7 +727,6 @@ body {
     margin-left: 90%;
     top: -23px;
 }
-
 
 .proceed-button {
     display: flex;
@@ -708,12 +741,12 @@ body {
     border-radius: 62px;
     color: #fff;
     font-size: 16px;
-    font-weight: 700;
+    font-family: 'DM Sans bold';
 }
 
 
 .go-back-button {
-    font-weight: 700;
+    font-family: 'DM Sans bold';
     font-size: 14px;
     line-height: 140%;
     text-align: center;
@@ -728,6 +761,7 @@ body {
         max-height: 100%;
         width: 100%;
         max-width: 100%;
+        overflow: hidden;
     }
 
     .icon-div {
@@ -743,7 +777,7 @@ body {
 
     .scan-button {
         font-size: 2.5vh;
-        height: 7vh;
+        bottom: 2vh;
     }
 
     .app-options-container {
@@ -770,6 +804,10 @@ body {
         margin-top: 30px;
     }
 
+    .forward-to-page .fwd-icon {
+        width: 0.9vh;
+    }
+
     .content-container {
         border-radius: 47px;
     }
@@ -783,7 +821,7 @@ body {
     }
 
     .scan-page #scanner-placeholder {
-        height: 90%;
+        height: 100%;
         max-width: 100%;
     }
 
@@ -808,13 +846,25 @@ body {
         margin-left: 1.5rem;
     }
 
-    .leaflet-page .product-name, .error-page .header-title {
+
+    .leaflet-page .product-name,
+    .error-page .header-title {
         font-size: 4vh;
-        font-weight: 700;
+        font-family: 'DM Sans bold';
     }
 
     .leaflet-page .product-description, .error-page .header-subtitle, .error-page .page-content {
         font-size: 2vh;
+        border-radius: 0px;
+    }
+
+    .leaflet-page .page-content {
+        border-radius: 0;
+    }
+
+
+    #leaflet-content{
+        width: 100vw;
     }
 
     #leaflet-content,
@@ -837,13 +887,6 @@ body {
         margin: 0px 35px;
     }
 
-    .leaflet-page .scan-button, .error-page .scan-button {
-        bottom: 3%;
-        width: 30%;
-        height: 5%;
-        font-size: 1.5vh;
-    }
-
     .modal-container {
         top: 0px;
         max-width: 100%;
@@ -853,70 +896,66 @@ body {
 
     .modal-container .modal-body {
         border-radius: 25px;
-        margin: 50% 3% 0px;
+        margin: 0px 3%;
         position: relative;
-        height: 75%;
+    }
+
+    #settings-modal.modal-container .modal-body {
+        max-height: 100%;
     }
 
     .modal-header {
-        border-top-right-radius: 64px;
-        border-top-left-radius: 64px;
-        min-height: 11%;
-        padding-bottom: 3%;
         height: auto;
     }
 
-    .modal-header .modal-icon {
-        background-size: contain !important;
-        height: 4%;
-        left: 5%;
+    .modal-header.centred-header {
+        border-top-right-radius: 60px;
+        border-top-left-radius: 60px;
     }
 
     .info-modal .modal-header, .info-modal .modal-content {
         border-radius: unset;
     }
 
-    .info-modal .modal-header .modal-icon {
-        background-size: contain !important;
-        height: 20%;
-        left: 5%;
-        top: 13%;
-    }
-
     .modal-header .modal-title {
-        font-size: 2vh;
-        margin-left: 13%;
-        padding-right: 13%;
-        margin-top: -16px;
+        font-size: 3vh;
+        font-family: 'DM Sans bold';
     }
 
     .modal-header .modal-subtitle {
-        left: 7%;
         position: relative;
-        font-size: 3vh;
-        font-weight: 700;
+        font-size: 2vh;
+
     }
 
     .modal-header .close-modal {
-        height: 3%;
-        width: 5%;
-        right: 5%;
-        top: 3%;
+        height: 3vh;
+        width: 3vh;
+        right: 2vh;
+        top: 2vh;
     }
 
     .modal-content {
-        border-bottom-right-radius: 64px;
-        border-bottom-left-radius: 64px;
         padding: 7%;
         line-height: 3vh;
-        max-height: 65%;
         min-height: 42%;
         font-size: 3vh;
+        border-radius: 30px;
+        top: -30px;
+    }
+
+    .popup-modal .modal-content {
+        border-radius: 15px 15px 60px 60px;
+    }
+
+    #settings-modal .modal-content {
+        top: 0px;
+        max-height: 100%;
     }
 
     .modal-content .text-section {
         font-size: 65%;
-        font-weight: 500;
+        font-family: 'DM Sans semi-bold';
         text-align: justify;
         padding-bottom: 7%;
     }
@@ -953,11 +992,11 @@ body {
         border-radius: 62px;
         color: #fff;
         font-size: 2vh;
-        font-weight: 700;
+        font-family: 'DM Sans bold';
     }
 
     .go-back-button {
-        font-weight: 700;
+        font-family: 'DM Sans bold';
         font-size: 1.5vh;
         line-height: 140%;
         text-align: center;

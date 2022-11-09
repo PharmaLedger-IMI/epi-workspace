@@ -22,14 +22,14 @@ function LeafletController() {
             showIncorrectDate();
           }
         } catch (e) {
-          goToPage("error.html")
+          goToPage("/error.html")
         }
       }
       if (result.resultStatus === "no_xml_for_lang") {
         showAvailableLanguages(result)
       }
     }).catch(err => {
-      goToPage("error.html")
+      goToPage("/error.html")
     })
   };
 
@@ -54,17 +54,17 @@ function LeafletController() {
   }
 
   this.scanAgainHandler = function () {
-    goToPage("scan.html")
+    goToPage("/scan.html")
   }
 
   this.goHome = function () {
-    goToPage("index.html")
+    goToPage("/index.html")
   }
 
   this.closeModal = function (modalId) {
     document.querySelector("#" + modalId).setAttribute('style', 'display:none !important');
     if (modalId === "leaflet-lang-select") {
-      goToPage("index.html");
+      goToPage("/index.html");
     }
   }
 
@@ -81,6 +81,7 @@ function LeafletController() {
   let showXML = function (result) {
     document.querySelector(".product-name").innerText = result.productData.name;
     document.querySelector(".product-description").innerText = result.productData.description;
+    document.querySelector(".leaflet-title-icon").classList.remove("hiddenElement");
     let xmlService = new XMLDisplayService("#leaflet-content");
     let resultDocument = xmlService.getHTMLFromXML(result.pathBase, result.xmlContent);
     let leafletImages = resultDocument.querySelectorAll("img");
