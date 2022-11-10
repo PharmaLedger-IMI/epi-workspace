@@ -1,5 +1,6 @@
 import XMLDisplayService from "../services/XMLDisplayService/XMLDisplayService.js"
-import {goToPage} from "../utils/utils.js";
+import {goToPage, goToErrorPage} from "../utils/utils.js";
+import {constants} from "../constants.js"
 import LeafletService from "../services/LeafletService.js";
 
 function LeafletController() {
@@ -22,14 +23,14 @@ function LeafletController() {
             showIncorrectDate();
           }
         } catch (e) {
-          showError(e)
+          goToErrorPage(e.errorCode)
         }
       }
       if (result.resultStatus === "no_xml_for_lang") {
         showAvailableLanguages(result)
       }
     }).catch(err => {
-      showError(err)
+      goToErrorPage(err.errorCode)
     })
   };
 
@@ -81,7 +82,7 @@ function LeafletController() {
   let showXML = function (result) {
     document.querySelector(".product-name").innerText = result.productData.name;
     document.querySelector(".product-description").innerText = result.productData.description;
-   /* document.querySelector(".leaflet-title-icon").classList.remove("hiddenElement");*/
+    /* document.querySelector(".leaflet-title-icon").classList.remove("hiddenElement");*/
     let xmlService = new XMLDisplayService("#leaflet-content");
     let resultDocument = xmlService.getHTMLFromXML(result.pathBase, result.xmlContent);
     let leafletImages = resultDocument.querySelectorAll("img");
@@ -100,13 +101,6 @@ function LeafletController() {
     document.querySelector(".loader").setAttribute('style', 'display:none');
   }
 
-  let showError = function (err) {
-    let pageName = "/error.html";
-    if (err.errorCode) {
-      pageName = `/error.html?errorCode=${err.errorCode}`
-    }
-    goToPage(pageName)
-  }
   let showAvailableLanguages = function (result) {
     // document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
     // document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];
@@ -125,8 +119,9 @@ function LeafletController() {
         languagesContainer.appendChild(radioFragment);
       })
     } else {
-      document.querySelector(".proceed-button.has-leaflets").setAttribute('style', 'display:none');
-      document.querySelector(".text-section.has-leaflets").setAttribute('style', 'display:none');
+      goToErrorPage(constants.errorCodes.no_uploaded_epi);
+      /*      document.querySelector(".proceed-button.has-leaflets").setAttribute('style', 'display:none');
+            document.querySelector(".text-section.has-leaflets").setAttribute('style', 'display:none');*/
     }
   }
 }

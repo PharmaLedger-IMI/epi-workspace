@@ -1,4 +1,4 @@
-import {convertFromISOtoYYYY_HM, goToPage} from "../utils/utils.js";
+import {convertFromISOtoYYYY_HM, goToErrorPage, goToPage, validateGTIN} from "../utils/utils.js";
 import interpretGS1scan from "../utils/interpretGS1scan/interpretGS1scan.js";
 import ScanService, {switchFacingMode} from "../services/ScanService.js";
 import {getTranslation} from "../translations.js";
@@ -93,7 +93,12 @@ function ScanController() {
   }
 
   this.processGS1Fields = function (gs1Fields) {
-    goToPage(`/leaflet.html?gtin=${gs1Fields.gtin}&batch=${gs1Fields.batchNumber}&expiry=${gs1Fields.expiry}`)
+    let gtinValidationResult = validateGTIN(gs1Fields.gtin);
+    if (gtinValidationResult.isValid) {
+      goToPage(`/leaflet.html?gtin=${gs1Fields.gtin}&batch=${gs1Fields.batchNumber}&expiry=${gs1Fields.expiry}`)
+    } else {
+      goToErrorPage(gtinValidationResult.errorCode);
+    }
   }
 
   this.switchCamera = function () {
