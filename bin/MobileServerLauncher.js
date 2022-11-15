@@ -15,7 +15,7 @@ if (process.argv.length > 2) {
 console.log("Received arguments =  " + arguments);
 
 
-const pskBundle = arguments.bundle || "../privatesky/psknode/bundles/pskWebServer";
+const pskBundle = arguments.bundle || "../opendsu-sdk/psknode/bundles/pskWebServer";
 require(pskBundle);
 
 if(typeof arguments.env !== 'undefined'){

@@ -1,4 +1,4 @@
-require("../privatesky/psknode/bundles/openDSU");
+require("../opendsu-sdk/psknode/bundles/openDSU");
 const openDSU = require("opendsu");
 const w3cDID = openDSU.loadAPI("w3cdid");
 const crypto = openDSU.loadAPI("crypto");

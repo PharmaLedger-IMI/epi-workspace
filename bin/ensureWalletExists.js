@@ -1,4 +1,4 @@
-require("../privatesky/psknode/bundles/openDSU");
+require("../opendsu-sdk/psknode/bundles/openDSU");
 const openDSU = require("opendsu");
 const scAPI = openDSU.loadAPI("sc");
 const enclaveAPI = openDSU.loadAPI("enclave");

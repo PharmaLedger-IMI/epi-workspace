@@ -1,5 +1,5 @@
 /**
- * Wrapper script for `privatesky/bin/scripts/watcher.js`.
+ * Wrapper script for `opendsu-sdk/bin/scripts/watcher.js`.
  */
 const path = require('path');
 const childProcess = require('child_process');
