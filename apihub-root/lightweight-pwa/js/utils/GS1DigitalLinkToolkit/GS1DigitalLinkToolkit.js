@@ -4399,7 +4399,7 @@ export default class GS1DigitalLinkToolkit {
         let queryStringArray=[];
         let queryString="";
         let webURI="";
-        let canonicalStem="https://id.gs1.org";
+        let canonicalStem="https://id.gs1.orgx";
         let rv={};
 
         // Need to remove unwanted trailing slash
@@ -5623,7 +5623,7 @@ export default class GS1DigitalLinkToolkit {
         let queryStringArray=[];
         let queryString="";
         let webURI="";
-        let canonicalStem="https://id.gs1.org";
+        let canonicalStem="https://id.gs1.orgx";
         let rv={};
 
         if (!(compressOtherKeyValuePairs)) {

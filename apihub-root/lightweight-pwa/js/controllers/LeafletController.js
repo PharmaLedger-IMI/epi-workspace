@@ -1,6 +1,6 @@
 import XMLDisplayService from "../services/XMLDisplayService/XMLDisplayService.js"
 import {goToPage, goToErrorPage} from "../utils/utils.js";
-import {constants} from "../constants.js"
+import constants from "../constants.js"
 import LeafletService from "../services/LeafletService.js";
 
 function LeafletController() {

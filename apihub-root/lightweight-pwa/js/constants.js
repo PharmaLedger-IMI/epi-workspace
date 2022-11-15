@@ -1,4 +1,4 @@
-export const constants = {
+const constants = {
   /*error code value matches with a key in translations. Adding a new code should sync with translations*/
   errorCodes: {
     "gtin_not_created": "001",
@@ -14,3 +14,4 @@ export const constants = {
     "no_uploaded_epi": "011"
   }
 }
+export default constants;

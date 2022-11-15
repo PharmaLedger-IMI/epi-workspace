@@ -2,6 +2,7 @@ import {convertFromISOtoYYYY_HM, goToErrorPage, goToPage, validateGTIN} from "..
 import interpretGS1scan from "../utils/interpretGS1scan/interpretGS1scan.js";
 import ScanService, {switchFacingMode} from "../services/ScanService.js";
 import {getTranslation} from "../translations.js";
+import constants from "../constants.js";
 
 function ScanController() {
   this.init = async function (facingMode) {
@@ -45,7 +46,7 @@ function ScanController() {
         this.scanService.stop();
         clearInterval(this.scanInterval);
         scanResult = result.text;
-        this.processGS1Fields(this.parseGS1Code(result.text));
+        this.processGS1Fields(scanResult)
       }).catch(err => {
         err.scanResult = scanResult;
         this.redirectToError(err);
@@ -92,12 +93,21 @@ function ScanController() {
     return gs1Fields;
   }
 
-  this.processGS1Fields = function (gs1Fields) {
-    let gtinValidationResult = validateGTIN(gs1Fields.gtin);
-    if (gtinValidationResult.isValid) {
+  this.processGS1Fields = function (scanResultText) {
+    let gs1Fields = null;
+    try {
+      gs1Fields = this.parseGS1Code(scanResultText);
       goToPage(`/leaflet.html?gtin=${gs1Fields.gtin}&batch=${gs1Fields.batchNumber}&expiry=${gs1Fields.expiry}`)
-    } else {
-      goToErrorPage(gtinValidationResult.errorCode);
+    } catch (err) {
+      if (err.message) {
+        if (err.message.includes("INVALID CHECK DIGIT:")) {
+          goToErrorPage(constants.errorCodes.gtin_wrong_digit);
+        }
+        if (err.message.includes("SYNTAX ERROR:")) {
+          goToErrorPage(constants.errorCodes.gtin_wrong_chars);
+        }
+      }
+      goToErrorPage(constants.errorCodes.unknown_error);
     }
   }
 
