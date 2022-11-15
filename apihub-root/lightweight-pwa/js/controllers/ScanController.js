@@ -97,14 +97,16 @@ function ScanController() {
     let gs1Fields = null;
     try {
       gs1Fields = this.parseGS1Code(scanResultText);
-      goToPage(`/leaflet.html?gtin=${gs1Fields.gtin}&batch=${gs1Fields.batchNumber}&expiry=${gs1Fields.expiry}`)
+      goToPage(`/leaflet.html?gtin=${gs1Fields.gtin}&batch=${gs1Fields.batchNumber}&expiry=${gs1Fields.expiry}`);
     } catch (err) {
       if (err.message) {
         if (err.message.includes("INVALID CHECK DIGIT:")) {
           goToErrorPage(constants.errorCodes.gtin_wrong_digit);
+          return;
         }
         if (err.message.includes("SYNTAX ERROR:")) {
           goToErrorPage(constants.errorCodes.gtin_wrong_chars);
+          return;
         }
       }
       goToErrorPage(constants.errorCodes.unknown_error);
