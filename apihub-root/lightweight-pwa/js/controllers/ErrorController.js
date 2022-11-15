@@ -1,5 +1,4 @@
 import {goToPage} from "../utils/utils.js"
-import {constants} from "../constants.js"
 import {getTranslation} from "../translations.js";
 
 function ErrorController() {

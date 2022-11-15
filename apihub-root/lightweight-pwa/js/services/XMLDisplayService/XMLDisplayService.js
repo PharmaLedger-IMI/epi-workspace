@@ -1,6 +1,6 @@
 import {defualtXslContent, acordisXslContent} from "./leafletXSL.js"
 import CustomError from "../../utils/CustomError.js";
-import {constants} from "../../constants.js";
+import constants from "../../constants.js";
 
 class XMLDisplayService {
   constructor(containerIdSelector) {

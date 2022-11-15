@@ -1,6 +1,6 @@
 import RandomRoundRobinService from "./RandomRoundRobinService.js";
 import environment from "../../environment.js";
-import {constants} from "../constants.js"
+import constants from "../constants.js"
 import CustomError from "../utils/CustomError.js";
 import {goToErrorPage, goToPage, validateGTIN} from "../utils/utils.js";
 
