@@ -528,6 +528,7 @@ body {
     height: fit-content;
     padding: 1.5vh 1.5vh 0vh;
     min-height: 14%;
+    height: fit-content;
 }
 
 .modal-header.centred-header .icon-title-container {
@@ -544,13 +545,23 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 12px;
+    width: -webkit-fill-available;
+    position: relative;
 }
 
 .leaflet-page .product-name,
-.modal-header .modal-title,
-.error-page .header-title {
-    font-size: 3vh;
+.modal-header .header-title,
+.modal-header .modal-title {
+    font-size: 3.5vh;
     font-family: 'DM Sans bold';
+    height: -webkit-fill-available;
+}
+
+.error-page .modal-header .modal-title {
+    font-size: 4.5vh;
+}
+
+.leaflet-page .product-name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -598,8 +609,9 @@ body {
 }
 
 .modal-header.left-aligned-header .modal-icon {
-    height: 2.5vh;
-    width: 15%;
+    height: 4.5vh;
+    aspect-ratio: 1;
+    background-position: center;
 }
 
 .modal-header.centred-header .modal-icon {
@@ -859,9 +871,6 @@ body {
     .error-page .header-title {
         font-size: 4vh;
         font-family: 'DM Sans bold';
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     .leaflet-page .product-description, .error-page .header-subtitle, .error-page .page-content {

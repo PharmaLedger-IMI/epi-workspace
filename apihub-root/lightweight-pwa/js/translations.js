@@ -8,7 +8,8 @@ export const translations = {
     "cancel": "Cancel",
     "change_camera": "Change camera",
     "scan_again": "Scan Again",
-    "error_title": "Not Recognized",
+    "product_not_found_title": "Not Recognized",
+    "product_not_loaded_title": "Product information not available",
     "error_subtitle": "Unverified Product",
     "product_not_found": "This product cannot be found",
     "product_not_loaded": "Unfortunately, no product information has been loaded",
@@ -24,12 +25,12 @@ export const translations = {
     "scan_error_title": "Scan Error",
     "scan_parse_error_message": "Error parsing GS1 non standard code:",
     "scan_parse_error": "Failed to parse 2d matrix",
-    "camera_error_message": "Something went wrong and selected camera can not be accessed properly. Please check your device camera settings or try to change camera form the menu",
+    "camera_error_message": "Something went wrong and selected camera can not be accessed properly. Please check your device camera settings or try to change camera from the menu",
     "leaflet_lang_select_message": "We are sorry but for your current language leaflet is unavailable. You can choose form the available language list.",
     "no_leaflet_message": "We are sorry but there are no available leaflets at the moment. <br> For your own safety, please contact the pharmacy or doctor who issued the package of medicines.",
     "lang_proceed": "Proceed",
     "go_home": "Go Back Home",
-    "onboarding_welcome": "Almost There! <br> Please read and agree to the terms and conditions",
+    "onboarding_welcome": "Almost There! <br> Please read and agree to the terms and conditions <br> Button: «Agree» / «Disagree»",
     "disagree": "Disagree",
     "agree": "Agree",
     "disagree_extra_text": "\"PharmaLedger\" will not work until you agree to the terms and conditions. Please read the terms and conditions.",
@@ -53,13 +54,10 @@ export const translations = {
       "<br><br><b>What is PharmaLedger?</b><br><br>" +
       "PharmaLedger is a 29 member blockchain consortium, including 12 global pharmaceutical companies. It aims to enable healthcare innovation for supply chain, clinical trials and health data. The goal of the PharmaLedger project is to deliver a blockchain-based platform for the healthcare sector, using the supply chain, clinicaltrials, and health data as case studies." +
       "<br><br><b>How to use the app?</b><br><br>" +
-      "Click on 'Scan Pack' and allow the application to use the camera. In a decently lit environment, align the pack physically to the scanning area and wait for a green indicator and beep sound. Once the pack is scanned successfully a code appears. Click on the 'Product information' button to view the leaflet." +
+      "Click on 'Scan DataMatrix' and allow the application to use the camera. In a decently lit environment, align the pack physically to the camera that the DataMatrix Barcode was scanned. Once the pack is scanned successfully you can view the leaflet." +
       "<br><br><b>Why does my 2D code not give a result?</b><br><br>" +
-      "There are multiple reasons why the code on your pack could not be resolved. One of the reasons being that the code is illegible or out of focus for the camera. Please try to scan the code in a well lit place and code clearly visible on the screen. The other reason could be that the product is not a part of the product database of PharmaLedger yet. Please check with the manufacturer if their product is a part of the PharmaLedger yet." +
-      "<br><br><b>What does the product status on my app indicate?</b><br><br>" +
-      "The product status indicator is used to verify if your pack is issued by the manufacturer. This doesn’t certify that the physical pack is authentic but is an assurance that it has been digitally verified and is available in the manufacturer's database." +
-      "<br><br><b>What is Product Information?</b><br><br>" +
-      "The electronic version of the printed materials available in the legal pharmacologic description of a drug, subject to detailed regulatory specifications, including approved chemical and proprietary names, description and classification, clinical pharmacology, approved indications and usage, contraindications, warnings, precautions, adverse reactions, drug abuse and dependence information, overdosage discussion, dosage and administration, formulations, and appropriate references; in the U.S., such materials are negotiated between the drug's manufacturer(s) and the U.S. Food and Drug Administration.</div>"
+      "There are multiple reasons why the code on your pack could not be resolved. One of the reasons being that the code is illegible or out of focus for the camera. Please try to scan the code in a well lit place and code clearly visible on the screen" +      "<br><br><b>What is Product Information?</b><br><br>" +
+      "The electronic version of the printed materials available in the legal pharmacologic description of a drug, subject to detailed regulatory specifications, including approved chemical and proprietary names, description and classification,  approved indications and usage, contraindications, warnings, precautions, adverse reactions, drug abuse and dependence information, overdosage discussion, dosage and administration, formulations, and appropriate references</div>"
   },
   "de": {
     "app_version": "App version: ",
@@ -74,7 +72,7 @@ export const translations = {
     "error_subtitle": "nicht verifiziertes Arzneimittel",
     "product_not_found": "This product cannot be found",
     "product_not_loaded": "Unfortunately, no product information has been loaded",
-    "err_code": "Error code",    "leaflet_expired_title": "Abgelaufen",
+    "err_code": "Error code", "leaflet_expired_title": "Abgelaufen",
     "leaflet_expired_subtitle": "Das Verfalldatum dieses Artikels ist überschritten.",
     "leaflet_expired_message": "<p> <b> Dieses Arzneimittel wurde als „abgelaufen” identifiziert </b>. </p> <p> Abgelaufene Arzneimittel können an Wirksamkeit verloren haben und aufgrund der veränderten Zusammensetzung ein Risiko für den Patienten darstellen. Sobald das Verfalldatum überschritten wurde, besteht keine Garantie mehr, dass das Arzneimittel sicher und wirksam ist. Ersetzen Sie abgelaufene Arzneimittel, um sicherzustellen, dass Sie das neueste Arzneimittel mit der neuesten Gebrauchsanweisung verwenden. </p> ",
     "leaflet_incorrect_date_title": "Falsches Datum",
@@ -134,7 +132,7 @@ export const translations = {
     "error_subtitle": "produit non vérifié",
     "product_not_found": "This product cannot be found",
     "product_not_loaded": "Unfortunately, no product information has been loaded",
-    "err_code": "Error code",    "leaflet_expired_title": "Périmé",
+    "err_code": "Error code", "leaflet_expired_title": "Périmé",
     "leaflet_expired_subtitle": "Cet article est périmé",
     "leaflet_expired_message": "<p> <b> Ce produit a été identifié comme étant périmé </b>. </p> <p> Les médicaments périmés peuvent être moins efficaces et présenter un risque pour le patient en raison de changements dans leur composition. Une fois la date de péremption passée, il n'existe aucune garantie que le médicament soit efficace et sans danger. Remplacez les médicaments périmés pour avoir la certitude d'utiliser le produit le plus récent avec les dernières instructions d'utilisation. </p> ",
     "leaflet_incorrect_date_title": "Date incorrecte",
@@ -173,7 +171,7 @@ export const translations = {
       "<br><br><b>Qu'est-ce que PharmaLedger?</b><br><br>" +
       "PharmaLedger est un consortium blockchain de 29 membres, dont 12 sociétés pharmaceutiques mondiales. Il vise à permettre l'innovation des soins de santé pour la chaîne d'approvisionnement, les essais cliniques et les données de santé. L'objectif du projet PharmaLedger est de fournir une plate-forme basée sur la blockchain pour le secteur de la santé, en utilisant la chaîne d'approvisionnement, les essais cliniques et les données de santé comme études de cas." +
       "<br><br><b>Comment utiliser l'application?</b><br><br>" +
-      "Cliquez sur 'Scan Pack' et autorisez l'application à utiliser l'appareil photo. Dans un environnement correctement éclairé, alignez physiquement le pack sur la zone de numérisation et attendez un indicateur vert et un bip sonore. Une fois le pack scanné avec succès, un code apparaît. Cliquez sur le bouton <Informations sur le produit> pour afficher la notice." +
+      "Cliquez sur 'Scan DataMatrix' et autorisez l'application à utiliser l'appareil photo. Dans un environnement correctement éclairé, alignez physiquement le pack sur la zone de numérisation et attendez un indicateur vert et un bip sonore. Une fois le pack scanné avec succès, un code apparaît. Cliquez sur le bouton <Informations sur le produit> pour afficher la notice." +
       "<br><br><b>Pourquoi mon code 2D ne donne-t-il pas de résultat?</b><br><br>" +
       "Il y a plusieurs raisons pour lesquelles le code sur votre pack n'a pas pu être résolu. L'une des raisons étant que le code est illisible ou flou pour l'appareil photo. Veuillez essayer de scanner le code dans un endroit bien éclairé et le code clairement visible sur l'écran. L'autre raison pourrait être que le produit ne fait pas encore partie de la base de données de produits de PharmaLedger. Veuillez vérifier auprès du fabricant si son produit fait déjà partie de PharmaLedger." +
       "<br><br><b>Qu'indique l'état du produit sur mon application?</b><br><br>" +
@@ -194,7 +192,7 @@ export const translations = {
     "error_subtitle": "niet-geverifieerd product",
     "product_not_found": "This product cannot be found",
     "product_not_loaded": "Unfortunately, no product information has been loaded",
-    "err_code": "Error code",    "leaflet_expired_title": "Over de datum",
+    "err_code": "Error code", "leaflet_expired_title": "Over de datum",
     "leaflet_expired_subtitle": "Dit item is over de datum",
     "leaflet_expired_message": "<p> <b> Dit product is geïdentificeerd als over de datum</b>. </p> <p> Een medisch product dat over de datum is, kan minder werkzaam zijn en een risico voor de patiënt inhouden door veranderingen in de samenstelling. Als de houdbaarheidsdatum verstreken is, is er geen garantie dat het geneesmiddel veilig en werkzaam is. Vervang geneesmiddelen waarvan de houdbaarheidsdatum is verstreken om er zeker van te zijn dat u het nieuwste product met de nieuwste gebruiksaanwijzing gebruikt. </p> ",
     "leaflet_incorrect_date_title": "Onjuiste datum",
@@ -233,7 +231,7 @@ export const translations = {
       "<br><br><b>Wat is PharmaLedger?</b><br><br>" +
       "PharmaLedger is een blockchain-consortium met 29 leden, waaronder 12 wereldwijde farmaceutische bedrijven. Het heeft tot doel innovatie in de gezondheidszorg mogelijk te maken voor de toeleveringsketen, klinische proeven en gezondheidsgegevens. Het doel van het PharmaLedger-project is om een ​​op blockchain gebaseerd platform voor de gezondheidszorg te leveren, met behulp van de toeleveringsketen, klinische onderzoeken en gezondheidsgegevens als casestudy's." +
       "<br><br><b>Hoe gebruik ik de app?</b><br><br>" +
-      "Klik op 'Scan Pack' en laat de applicatie de camera gebruiken. In een fatsoenlijk verlichte omgeving, lijn het pack fysiek uit met het scangebied en wacht op een groene indicator en pieptoon. Zodra het pack succesvol is gescand, verschijnt er een code. Klik op de knop 'Productinformatie' om de folder te bekijken." +
+      "Klik op 'Scan DataMatrix' en laat de applicatie de camera gebruiken. In een fatsoenlijk verlichte omgeving, lijn het pack fysiek uit met het scangebied en wacht op een groene indicator en pieptoon. Zodra het pack succesvol is gescand, verschijnt er een code. Klik op de knop 'Productinformatie' om de folder te bekijken." +
       "<br><br><b>Waarom geeft mijn 2D-code geen resultaat?</b><br><br>" +
       "Er zijn meerdere redenen waarom de code op uw pakket niet kon worden opgelost. Een van de redenen is dat de code onleesbaar of onscherp is voor de camera. Probeer de code op een goed verlichte plaats te scannen en de code duidelijk zichtbaar op het scherm. De andere reden kan zijn dat het product nog geen onderdeel is van de productdatabase van PharmaLedger. Controleer bij de fabrikant of hun product al deel uitmaakt van de PharmaLedger." +
       "<br><br><b>Wat geeft de productstatus in mijn app aan?</b><br><br>" +
@@ -254,7 +252,7 @@ export const translations = {
     "error_subtitle": "produs neverificat",
     "product_not_found": "This product cannot be found",
     "product_not_loaded": "Unfortunately, no product information has been loaded",
-    "err_code": "Error code",    "leaflet_expired_title": "Expirat",
+    "err_code": "Error code", "leaflet_expired_title": "Expirat",
     "leaflet_expired_subtitle": "Acest articol a expirat",
     "leaflet_expired_message": "<p> <b> Acest produs a fost identificat ca fiind expirat </b>. </p> <p> Produsele medicale expirate pot fi mai puțin eficiente și pot prezenta un risc pentru pacient din cauza modificărilor compoziției . Odată ce data de expirare a trecut, nu există nicio garanție că medicamentul este sigur și eficient. Înlocuiți medicamentele expirate pentru a vă asigura că utilizați cel mai recent produs cu cele mai recente instrucțiuni de utilizare. </p> ",
     "leaflet_incorrect_date_title": "Data incorectă",

@@ -16,13 +16,18 @@ function ErrorController() {
     case "008":
     case "009":
     case "010":
+      document.querySelector(".modal-title.header-title").innerHTML = getTranslation("product_not_found_title");
       document.querySelector(".page-content .error-text").innerHTML = `<p> <b>${getTranslation("product_not_found")} </b></p> <p>${getTranslation("err_code")} ${errorCode}</p>`;
       break;
     case "011":
-      document.querySelector(".page-content .error-text").innerHTML = `<p> <b>${getTranslation("product_not_loaded")} </b></p> <p>${getTranslation("err_code")} ${errorCode}</p>`;
+      document.querySelector(".modal-title.header-title").innerHTML = getTranslation("product_not_loaded_title");
+      document.querySelector(".page-content .error-text").innerHTML = `<p> <b>${getTranslation("product_not_loaded")} </b></p>`;
       break;
   }
-
+  if (document.querySelector(".modal-title.header-title").innerText.length > 22) {
+    document.querySelector(".modal-title.header-title").style.fontSize = "3vh";
+    document.querySelector(".modal-icon").style.height = "7vh";
+  }
 
   this.scanAgainHandler = function () {
     goToPage("/scan.html")

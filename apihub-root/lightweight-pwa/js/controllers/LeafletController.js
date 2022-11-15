@@ -19,9 +19,10 @@ function LeafletController() {
           if (result.dateStatus === "expired_date") {
             showExpired();
           }
+          /* removed for  MVP1
           if (result.dateStatus === "incorrect_date") {
             showIncorrectDate();
-          }
+          }*/
         } catch (e) {
           goToErrorPage(e.errorCode)
         }
