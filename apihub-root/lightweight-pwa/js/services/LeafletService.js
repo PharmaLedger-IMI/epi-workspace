@@ -2,19 +2,16 @@ import RandomRoundRobinService from "./RandomRoundRobinService.js";
 import environment from "../../environment.js";
 import constants from "../constants.js"
 import CustomError from "../utils/CustomError.js";
-import {goToErrorPage, goToPage, validateGTIN} from "../utils/utils.js";
+import {goToErrorPage, validateGTIN} from "../utils/utils.js";
 
 class LeafletService {
-  constructor() {
+  constructor(gtin, batch, expiry, leafletLang, epiDomain) {
 
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    this.gtin = urlParams.get("gtin");
-    this.batch = urlParams.get("batch");
-    this.expiry = urlParams.get("expiry");
-    this.leafletLang = window.currentLanguage || "en";
-    let lsEpiDomain = localStorage.getItem("_epiDomain_");
-    this.epiDomain = lsEpiDomain || environment.epiDomain;
+    this.gtin = gtin;
+    this.batch = batch;
+    this.expiry = expiry;
+    this.leafletLang = leafletLang;
+    this.epiDomain = epiDomain;
 
     let gtinValidationResult = validateGTIN(this.gtin);
     if (!gtinValidationResult.isValid) {

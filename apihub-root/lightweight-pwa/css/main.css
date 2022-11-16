@@ -554,7 +554,6 @@ body {
 .modal-header .modal-title {
     font-size: 3.5vh;
     font-family: 'DM Sans bold';
-    height: -webkit-fill-available;
 }
 
 .error-page .modal-header .modal-title {

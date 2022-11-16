@@ -4,6 +4,55 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
+function convertToLastMonthDay(date) {
+  let expireDateConverted = date.replace("00", "01");
+  expireDateConverted = new Date(expireDateConverted.replaceAll(' ', ''));
+  expireDateConverted.setFullYear(expireDateConverted.getFullYear(), expireDateConverted.getMonth() + 1, 0);
+  expireDateConverted = expireDateConverted.getTime();
+  return expireDateConverted;
+}
+
+function getDateForDisplay(date) {
+  if (date.slice(0, 2) === "00") {
+    return date.slice(5);
+  }
+  return date;
+}
+
+
+function getExpiryTime(expiry) {
+  let normalizedExpiryDate;
+  let expiryTime;
+  try {
+    if (expiry.slice(0, 2) === "00") {
+      normalizedExpiryDate = convertToLastMonthDay(expiry);
+    } else {
+      let expiryForDisplay = getDateForDisplay(expiry);
+      normalizedExpiryDate = expiryForDisplay.replace(/\s/g, '')
+    }
+
+    expiryTime = new Date(normalizedExpiryDate).getTime();
+    if (expiryTime > 0) {
+      return expiryTime
+    }
+  } catch (err) {
+    return null;
+  }
+
+  return null;
+
+}
+
+function isExpired(expiry) {
+  let expiryTime = getExpiryTime(expiry);
+  if (!expiryTime) {
+    //expiry is incorrect date format, can not determine if is expired so it will be treated as not expired  
+    return false;
+  }
+  return !expiryTime || expiryTime <= Date.now()
+}
+
+
 function convertFromISOtoYYYY_HM(dateString, useFullMonthName, separator) {
   const splitDate = dateString.split('-');
   const month = parseInt(splitDate[1]);
@@ -77,6 +126,10 @@ function goToErrorPage(errorCode) {
 
 export {
   convertFromISOtoYYYY_HM,
+  convertToLastMonthDay,
+  getDateForDisplay,
+  isExpired,
+  getExpiryTime,
   goToPage,
   validateGTIN,
   goToErrorPage

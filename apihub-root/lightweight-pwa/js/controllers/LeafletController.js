@@ -1,26 +1,33 @@
 import XMLDisplayService from "../services/XMLDisplayService/XMLDisplayService.js"
-import {goToPage, goToErrorPage} from "../utils/utils.js";
+import {goToErrorPage, goToPage, isExpired, getExpiryTime} from "../utils/utils.js";
 import constants from "../constants.js"
 import LeafletService from "../services/LeafletService.js";
+import environment from "../../environment.js";
 
 function LeafletController() {
 
-  this.leafletLang = window.currentLanguage || "en";
-  let leafletService = new LeafletService();
+  this.getLeaflet = function (lang) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let gtin = urlParams.get("gtin");
+    let batch = urlParams.get("batch");
+    let expiry = urlParams.get("expiry");
+    let lsEpiDomain = localStorage.getItem("_epiDomain_");
+    lsEpiDomain = lsEpiDomain || environment.epiDomain;
+    let leafletService = new LeafletService(gtin, batch, expiry, lang, lsEpiDomain);
 
-  this.getLeaflet = function () {
     document.querySelector(".loader").setAttribute('style', 'display:block');
 
-    leafletService.setLeafletLanguage(this.leafletLang);
     leafletService.getLeafletResult().then((result) => {
       if (result.resultStatus === "xml_found") {
         try {
           showXML(result);
-          if (result.dateStatus === "expired_date") {
+          if (isExpired(expiry)) {
             showExpired();
           }
+
           /* removed for  MVP1
-          if (result.dateStatus === "incorrect_date") {
+          if (!getExpiryTime(expiry)) {
             showIncorrectDate();
           }*/
         } catch (e) {
@@ -51,7 +58,7 @@ function LeafletController() {
   this.getLangLeaflet = function () {
     let lang = document.querySelector("input[name='languages']:checked").value
     this.leafletLang = lang;
-    this.getLeaflet();
+    this.getLeaflet(lang);
     document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:none !important');
   }
 
@@ -85,7 +92,7 @@ function LeafletController() {
     document.querySelector(".product-description").innerText = result.productData.description;
     /* document.querySelector(".leaflet-title-icon").classList.remove("hiddenElement");*/
     let xmlService = new XMLDisplayService("#leaflet-content");
-    let resultDocument = xmlService.getHTMLFromXML(result.pathBase, result.xmlContent);
+    let resultDocument = xmlService.getHTMLFromXML(result.xmlContent);
     let leafletImages = resultDocument.querySelectorAll("img");
     for (let image of leafletImages) {
       image.setAttribute("src", result.leafletImages[image.getAttribute("src")]);
@@ -128,7 +135,7 @@ function LeafletController() {
 }
 
 const leafletController = new LeafletController();
-leafletController.getLeaflet(leafletController.leafletLang);
+leafletController.getLeaflet(window.currentLanguage || "en");
 window.leafletController = leafletController;
 
 

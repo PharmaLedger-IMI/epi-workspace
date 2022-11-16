@@ -18,7 +18,7 @@ class XMLDisplayService {
     }
   }
 
-  getHTMLFromXML = function (pathBase, xmlContent) {
+  getHTMLFromXML = function (xmlContent) {
     let xsltProcessor = new XSLTProcessor();
     xsltProcessor.setParameter(null, "resources_path", "");
     let parser = new DOMParser();
