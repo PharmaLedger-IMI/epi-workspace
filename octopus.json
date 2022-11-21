@@ -32,15 +32,6 @@
         ]
       },
       {
-        "name": "build opendsu-sdk",
-        "actions": [
-          {
-            "type": "execute",
-            "cmd": "cd opendsu-sdk && npm run build"
-          }
-        ]
-      },
-      {
         "name": "leaflet-ssapp",
         "src": "https://github.com/PharmaLedger-IMI/leaflet-ssapp.git",
         "actions": [
