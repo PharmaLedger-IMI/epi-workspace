@@ -37,7 +37,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         repository: ''
-
+    - run: npm run dev-install
     - run: zip -r veracode-scan-target.zip ./
 
     # download the Veracode Static Analysis Pipeline scan jar
