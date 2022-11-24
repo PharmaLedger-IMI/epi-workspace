@@ -9,8 +9,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "a08c3614e5b7d4a453bf76d2ec480823bf084235",
-                    "tag": "v1.0.3"
+                    "commit": "8a6ccc2e49391618431ed3c432b893df28db0a97",
+                    "tag": "v1.0.5"
                 },
                 {
                     "type": "execute",
@@ -26,21 +26,12 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "684042b5f4cb29e641c35fcd7b909a5e2fc3b4aa",
-                    "tag": "v1.0.1"
+                    "commit": "685ef06fd5b44843b8e809ebc07049f1d743acf5",
+                    "tag": "v1.0.3"
                 },
                 {
                     "type": "execute",
                     "cmd": "cd opendsu-sdk && npm install"
-                }
-            ]
-        },
-        {
-            "name": "build opendsu-sdk",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd opendsu-sdk && npm run build"
                 }
             ]
         },
@@ -52,8 +43,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "c526b16d638963213f6de68b8ac083ecaef0716a",
-                    "tag": "v1.2.0"
+                    "commit": "76b8fb0de8af2fcbf8be7051580a0b1ca37b6d78",
+                    "tag": "v1.2.1"
                 },
                 {
                     "type": "execute",
@@ -69,8 +60,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "e88700f31ca29afa7beb440e86ef79a067653094",
-                    "tag": "v1.2.1"
+                    "commit": "cdd5376f6d1009ed80f17e5f7bab41828191ffe7",
+                    "tag": "v1.2.2"
                 },
                 {
                     "type": "execute",
@@ -86,8 +77,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "4e6dff921296e891684816eed5b172359515ec0b",
-                    "tag": "v0.3.0"
+                    "commit": "29d9388ba9fdc841f1b132a6c6d83a72ba586c0d",
+                    "tag": "v0.3.1"
                 },
                 {
                     "type": "execute",
@@ -111,8 +102,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "4e6dff921296e891684816eed5b172359515ec0b",
-                    "tag": "v0.3.0"
+                    "commit": "29d9388ba9fdc841f1b132a6c6d83a72ba586c0d",
+                    "tag": "v0.3.1"
                 },
                 {
                     "type": "execute",
@@ -136,8 +127,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "4e6dff921296e891684816eed5b172359515ec0b",
-                    "tag": "v0.3.0"
+                    "commit": "29d9388ba9fdc841f1b132a6c6d83a72ba586c0d",
+                    "tag": "v0.3.1"
                 },
                 {
                     "type": "execute",
@@ -204,8 +195,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "a1f06e8d8cbe9eaa98f9a8f8522d10e2b92d6f59",
-                    "tag": "v1.2.0"
+                    "commit": "5ec62fdcec098d51c2a867e028ca241385ccb792",
+                    "tag": "v1.2.2"
                 },
                 {
                     "type": "execute",
@@ -235,8 +226,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "c7252b85696675fb8c514aa45676c1f404df50cc",
-                    "tag": "v1.2.0"
+                    "commit": "47781ae43fe9fa3b5ae97f6949feb17e4dc246e0",
+                    "tag": "v1.2.1"
                 },
                 {
                     "type": "execute",
@@ -286,8 +277,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "452213e031825ae2e5d3b851941da6202df45f47",
-                    "tag": "v1.0.6"
+                    "commit": "f97b21154afdb959f8cf711fac787c983652372a",
+                    "tag": "v1.0.7"
                 },
                 {
                     "type": "execute",
@@ -311,8 +302,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "94897e4b1bc02a889a11bb9f547b26ce4480ea59",
-                    "tag": "v1.2.1"
+                    "commit": "a1fd3db2efcf229cab426e4b1a05f24a3dbe6a95",
+                    "tag": "v1.2.2"
                 },
                 {
                     "type": "execute",
@@ -660,8 +651,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "85d480960b0e00255dd6b0f702fd0dd11b9662c4",
-                    "tag": "v1.0.7"
+                    "commit": "3f329e353bcf9400d5b2caea2463a8c0901b11d4",
+                    "tag": "v1.0.8"
                 },
                 {
                     "type": "execute",
@@ -1180,6 +1171,10 @@
                 {
                     "type": "execute",
                     "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-dfm\""
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd webcardinal && npm run build"
                 },
                 {
                     "type": "execute",
