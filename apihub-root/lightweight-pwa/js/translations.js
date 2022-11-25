@@ -4,7 +4,6 @@ export const translations = {
     "welcome": "Welcome to PharmaLedger",
     "scan_explain": "Find the DataMatrix Barcode on your medicine to scan and view information",
     "scan_button": "Scan DataMatrix",
-    "app_name": "PharmaLedger",
     "cancel": "Cancel",
     "change_camera": "Change camera",
     "scan_again": "Scan Again",
@@ -15,25 +14,20 @@ export const translations = {
     "product_not_loaded": "Unfortunately, no product information has been loaded",
     "err_code": "Error code",
     "leaflet_expired_title": "Expired",
-    "leaflet_expired_subtitle": "This item is Expired",
     "leaflet_expired_message": "<p> <b> This product has been identified as expired </b>. </p> ",
     "leaflet_incorrect_date_title": "Incorrect date",
     "leaflet_incorrect_date_subtitle": "Scanned date is incorrect",
     "leaflet_incorrect_date_message": "<b> This product's date is incorrect</b>.",
     "select_lang_title": "Leaflet unavailable",
-    "select_lang_subtitle": "Language Unavailable",
     "scan_error_title": "Scan Error",
-    "scan_parse_error_message": "Error parsing GS1 non standard code:",
-    "scan_parse_error": "Failed to parse 2d matrix",
-    "camera_error_message": "Something went wrong and selected camera can not be accessed properly. Please check your device camera settings or try to change camera from the menu",
-    "leaflet_lang_select_message": "We are sorry but for your current language leaflet is unavailable. You can choose form the available language list.",
-    "no_leaflet_message": "We are sorry but there are no available leaflets at the moment. <br> For your own safety, please contact the pharmacy or doctor who issued the package of medicines.",
+    "camera_error_message": "Something went wrong and selected camera cannot be accessed properly. Please check your device camera settings or try to change camera from the menu",
+    "leaflet_lang_select_message": "The leaflet is not available in your preferred language. You can choose from the available language list",
     "lang_proceed": "Proceed",
     "go_home": "Go Back Home",
-    "onboarding_welcome": "Almost There! <br> Please read and agree to the terms and conditions <br> Button: «Agree» / «Disagree»",
+    "onboarding_welcome": "Almost There! <br> Please read and agree to the terms and conditions",
     "disagree": "Disagree",
     "agree": "Agree",
-    "disagree_extra_text": "\"PharmaLedger\" will not work until you agree to the terms and conditions. Please read the terms and conditions.",
+    "disagree_extra_text": "\"PharmaLedger\" app will not work until you agree to the terms and conditions. Please read the terms and conditions.",
     "fwd_privacy": "Privacy policy",
     "fwd_terms": "Terms and Conditions",
     "fwd_help": "Help",
@@ -42,32 +36,63 @@ export const translations = {
     "privacy_modal_subtitle": "Our Privacy and Security Principles",
     "privacy_content": "<iframe style=\"width: 100%; height: 100%; margin-bottom: 24px; border: 0\" src=\"https://app.termly.io/document/privacy-policy/40430c0a-9e30-4690-b4a7-2c2f56433919\"></iframe>",
     "terms_modal_title": "Terms and Conditions",
-    "terms_modal_subtitle": "The rules you agree to when using our services.",
+    "terms_modal_subtitle": "The terms and conditions that apply when using the PharmaLedger Application",
     "terms_content": "<iframe style=\"width: 100%; height: 100%; margin-bottom: 24px; border: 0\" src=\"https://app.termly.io/document/terms-of-use-for-website/76a94ec4-766a-4a6a-b7fe-c68834af6811\"></iframe>",
     "about_modal_subtitle": "About",
     "about_modal_title": "Pharmaledger",
     "about_content": "<iframe style=\"width: 100%; height: 100%; margin-bottom: 24px; border: 0\" src=\"https://Pharmaledger.eu\"></iframe>",
     "help_modal_title": "Help",
     "help_modal_subtitle": "FAQs",
-    "help_content": "<div><b>What is EPI?</b><br><br>" +
-      "EPI stands for electronic product information. It is an effort by participating companies in the European pharma industry to provide accurate and latest information about a product and ensure drug provenance. " +
-      "<br><br><b>What is PharmaLedger?</b><br><br>" +
-      "PharmaLedger is a 29 member blockchain consortium, including 12 global pharmaceutical companies. It aims to enable healthcare innovation for supply chain, clinical trials and health data. The goal of the PharmaLedger project is to deliver a blockchain-based platform for the healthcare sector, using the supply chain, clinicaltrials, and health data as case studies." +
-      "<br><br><b>How to use the app?</b><br><br>" +
-      "Click on 'Scan DataMatrix' and allow the application to use the camera. In a decently lit environment, align the pack physically to the camera that the DataMatrix Barcode was scanned. Once the pack is scanned successfully you can view the leaflet." +
-      "<br><br><b>Why does my 2D code not give a result?</b><br><br>" +
-      "There are multiple reasons why the code on your pack could not be resolved. One of the reasons being that the code is illegible or out of focus for the camera. Please try to scan the code in a well lit place and code clearly visible on the screen" +      "<br><br><b>What is Product Information?</b><br><br>" +
-      "The electronic version of the printed materials available in the legal pharmacologic description of a drug, subject to detailed regulatory specifications, including approved chemical and proprietary names, description and classification,  approved indications and usage, contraindications, warnings, precautions, adverse reactions, drug abuse and dependence information, overdosage discussion, dosage and administration, formulations, and appropriate references</div>"
+    "help_content": "<div><p><b>What is EPI?</b></p>" +
+      "<p>" +
+      "    <b>EPI</b> is an abbreviation for <b>electronic product information.</b> It is an electronic version of the paper" +
+      "    Product Information leaflet you typically find inside a pharmaceutical product package. In some cases, the" +
+      "    <b>EPI</b> may have replaced the paper leaflet" +
+      "</p>" +
+      "<p>" +
+      "    <b>What is PharmaLedger?</b>" +
+      "</p>" +
+      "<p>The PharmaLedger Association (PLA) is a not-for-profit association based in Switzerland with the purpose to enable" +
+      "    and foster a Digital Trust Ecosystem in healthcare through a standardized and trusted open-source platform. PLA" +
+      "    promotes collaboration and accelerates innovation and adoption to achieve mutual benefits in the healthcare and life" +
+      "    science domains for patients and other stakeholders. PLA was formed in 2022 to continue the work of the PharmaLedger" +
+      "    project, a 3-year project funded by the European Commission and the pharmaceutical industry aimed at proving the" +
+      "    value of blockchain solutions. Further information is available at https://pharmaledger.org/" +
+      "</p>" +
+      "<p><b>What is the DataMatrix?</b></p>" +
+      "<p>It's a type of barcode on your product package. It is a black and white square box barcode and will look similar to" +
+      "    this:<br>" +
+      "    <img src=\"./images/barcode_example.png\">" +
+      "" +
+      "</p>" +
+      "<p>" +
+      "    <b>How to use the App?</b>" +
+      "</p>" +
+      "<p>" +
+      "    Follow the instructions on the landing page of the <b>App...</b> it shows a picture of where to find the" +
+      "    <b>DataMatrix</b> on your" +
+      "    Product Package. Once you have found the <b>DataMatrix</b>, click the button 'Scan <b>DataMatrix</b>'. Allow the" +
+      "    application to" +
+      "    use the camera so the <b>DataMatrix</b> can be scanned. Use the camera to focus on the <b>DataMatrix</b>. Once the" +
+      "    pack is scanned" +
+      "    successfully, the <b>EPI</b> will be displayed. You can click the '+' button to get more details" +
+      "</p><p><b>Why does my DataMatrix scan not give a result?</b></p><p>" +
+      "    There are several reasons why the <b>DataMatrix</b> on your package may not give an EPI. One of the reasons could be" +
+      "    the" +
+      "    focus for the camera. Please try to scan the code in a well lit place and code clearly visible on the screen. If you" +
+      "    are struggling to keep your hand steady, you could try using a table to support your hands." +
+      "</p></div>"
   },
   "de": {
     "app_version": "App version: ",
     "welcome": "Willkommen bei PharmaLedger",
-    "scan_explain": "Suchen Sie den 2D-Code auf Ihrem Arzneimittel, um ihn zu scannen und sich Informationen anzeigen zu lassen.",
-    "scan_button": "Datamatrix scannen",
+    "scan_explain": "Suchen und scannen Sie den DataMatrix Barcode auf Ihrem Arzneimittel, um die Packungsbeilage anzuzeigen",
+    "scan_button": "DataMatrix scannen",
     "app_name": "PharmaLedger",
     "cancel": "Abbrechen",
     "change_camera": "Kamera wechseln",
     "scan_again": "Erneut scannen",
+    "product_not_found_title": "Nicht erkannt",
     "error_title": "Nicht erkannt",
     "error_subtitle": "nicht verifiziertes Arzneimittel",
     "product_not_found": "This product cannot be found",
