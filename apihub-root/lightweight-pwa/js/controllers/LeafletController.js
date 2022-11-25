@@ -117,7 +117,7 @@ function LeafletController() {
     document.querySelector(".loader").setAttribute('style', 'display:none');
     if (result.availableLanguages.length >= 1) {
       document.querySelector(".proceed-button.no-leaflet").setAttribute('style', 'display:none');
-      document.querySelector(".text-section.no-leaflet").setAttribute('style', 'display:none');
+    //  document.querySelector(".text-section.no-leaflet").setAttribute('style', 'display:none');
       let languagesContainer = document.querySelector(".languages-container");
       result.availableLanguages.forEach((lang, index) => {
         let langRadio = `<div class="flag-label-wrapper"><img src="./images/flags/${lang.value}.png" class="language-flag"/><span for="${lang.value}"> ${lang.label} - (${lang.nativeName})</span> </div><input type="radio" name="languages" ${index === 0 ? "checked" : ""} value="${lang.value}" id="${lang.value}">`;
