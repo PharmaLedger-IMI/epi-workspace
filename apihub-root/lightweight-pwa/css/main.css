@@ -123,6 +123,9 @@ b {
 .terms-content-container {
     flex-grow: 1;
     margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .extra-text {

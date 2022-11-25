@@ -20,7 +20,7 @@ export const translations = {
     "leaflet_incorrect_date_message": "<b> This product's date is incorrect</b>.",
     "select_lang_title": "Language Unavailable",
     "scan_error_title": "Scan Error",
-    "camera_error_message": "Something went wrong and selected camera cannot be accessed properly. Please check your device camera settings or try to change camera from the menu",
+    "camera_error_message": "Something went wrong and the selected camera cannot be accessed properly. Please check your device camera settings or try to change camera from the menu",
     "leaflet_lang_select_message": "The leaflet is not available in your preferred language. You can choose from the available language list",
     "lang_proceed": "Proceed",
     "go_home": "Go Back Home",
