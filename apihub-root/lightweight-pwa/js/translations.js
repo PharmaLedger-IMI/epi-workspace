@@ -88,61 +88,76 @@ export const translations = {
     "welcome": "Willkommen bei PharmaLedger",
     "scan_explain": "Suchen und scannen Sie den DataMatrix Barcode auf Ihrem Arzneimittel, um die Packungsbeilage anzuzeigen",
     "scan_button": "DataMatrix scannen",
-    "app_name": "PharmaLedger",
     "cancel": "Abbrechen",
     "change_camera": "Kamera wechseln",
     "scan_again": "Erneut scannen",
     "product_not_found_title": "Nicht erkannt",
-    "error_title": "Nicht erkannt",
-    "error_subtitle": "nicht verifiziertes Arzneimittel",
-    "product_not_found": "This product cannot be found",
-    "product_not_loaded": "Unfortunately, no product information has been loaded",
-    "err_code": "Error code", "leaflet_expired_title": "Abgelaufen",
-    "leaflet_expired_subtitle": "Das Verfalldatum dieses Artikels ist überschritten.",
-    "leaflet_expired_message": "<p> <b> Dieses Arzneimittel wurde als „abgelaufen” identifiziert </b>. </p> <p> Abgelaufene Arzneimittel können an Wirksamkeit verloren haben und aufgrund der veränderten Zusammensetzung ein Risiko für den Patienten darstellen. Sobald das Verfalldatum überschritten wurde, besteht keine Garantie mehr, dass das Arzneimittel sicher und wirksam ist. Ersetzen Sie abgelaufene Arzneimittel, um sicherzustellen, dass Sie das neueste Arzneimittel mit der neuesten Gebrauchsanweisung verwenden. </p> ",
-    "leaflet_incorrect_date_title": "Falsches Datum",
-    "leaflet_incorrect_date_subtitle": "Gescanntes Datum ist falsch",
-    "leaflet_incorrect_date_message": "<p> <b> Das Datum dieses Produkts ist falsch</b>. </p> <p> Wenden Sie sich zu Ihrer eigenen Sicherheit bitte an die Apotheke oder den Arzt, der die Arzneimittelpackung ausgestellt hat. </p> ",
-    "select_lang_title": "Packungsbeilage nicht verfügbar",
-    "select_lang_subtitle": "Sprache nicht vorhanden",
-    "scan_error_title": "Scanfehler",
-    "scan_parse_error_message": "Fehler beim Analysieren des nicht standardmäßigen GS1-Codes:",
-    "scan_parse_error": "Parsen der 2D-Matrix fehlgeschlagen",
-    "camera_error_message": "Etwas ist schief gelaufen, sodass auf die ausgewählte Kamera nicht in geeigneter Weise zugegriffen werden kann. Bitte überprüfen Sie die Kameraeinstellungen auf Ihrem Gerät oder versuchen Sie, vom Menü aus die Kamera zu wechseln.",
-    "leaflet_lang_select_message": "Es tut uns leid. Die aktuelle Packungsbeilage ist in Ihrer Sprache nicht verfügbar. Sie können eine der verfügbaren Sprachen aus der Liste auswählen.",
-    "no_leaflet_message": "Es tut uns leid, aber im Moment sind keine Packungsbeilagen verfügbar. <br> Wenden Sie sich zu Ihrer eigenen Sicherheit bitte an die Apotheke oder den Arzt, der die Arzneimittelpackung ausgestellt hat.",
+    "product_not_loaded_title": "Produktinformationen nicht gefunden",
+    "error_subtitle": "Unverified Product",
+    "product_not_found": "Dieses Produkt wurde nicht gefunden",
+    "product_not_loaded": "Es wurden leider keine Produktinformationen zu diesem Arzneimittel zur Verfügung gestellt",
+    "err_code": "Fehler",
+    "leaflet_expired_title": "Abgelaufen",
+    "leaflet_expired_message": "<p> <b> Das Verfallsdatum dieses Arzneimittels ist überschritten</b>. </p> ",
+    "leaflet_incorrect_date_title": "Incorrect date",
+    "leaflet_incorrect_date_subtitle": "Scanned date is incorrect",
+    "leaflet_incorrect_date_message": "<b> This product's date is incorrect</b>.",
+    "select_lang_title": "Language Unavailable",
+    "scan_error_title": "Scan Fehler",
+    "camera_error_message": "Auf die ausgewählte Kamera konnte nicht zugegriffen werden. Bitte überprüfen Sie die Kameraeinstellungen auf Ihrem Gerät oder versuchen Sie, die Kamera im Menü zu wechseln.",
+    "leaflet_lang_select_message": "Die aktuelle Packungsbeilage ist in Ihrer Sprache nicht verfügbar. Sie können eine der verfügbaren Sprachen aus der Liste auswählen:",
     "lang_proceed": "Fortfahren",
     "go_home": "Zurück zum Startbildschirm",
-    "onboarding_welcome": "Fast geschafft! <br> Bitte lesen und akzeptieren Sie die Nutzungsbedingungen",
-    "disagree": "stimme nicht zu",
-    "agree": "stimme zu",
+    "onboarding_welcome": "Fast geschafft! <br> Bitte lesen und akzeptieren Sie die Nutzerbedingungen",
+    "disagree": "Ablehnen",
+    "agree": "Akzeptieren",
+    "disagree_extra_text": "Die \"PharmaLedger\" App kann nur verwendet werden, wenn Sie den Geschäftsbedingungen zustimmen.",
     "fwd_privacy": "Datenschutzerklärung",
     "fwd_terms": "Allgemeine Geschäftsbedingungen",
     "fwd_help": "Hilfe",
     "fwd_about": "Über",
-    "privacy_modal_title": "Datenschutzrichtlinie",
+    "privacy_modal_title": "Datenschutzerklärung",
     "privacy_modal_subtitle": "Unsere Datenschutz- und Sicherheitsgrundsätze",
     "privacy_content": "<iframe style=\"width: 100%; height: 100%; margin-bottom: 24px; border: 0\" src=\"https://app.termly.io/document/privacy-policy/40430c0a-9e30-4690-b4a7-2c2f56433919\"></iframe>",
-    "terms_modal_title": "Allgemeine Geschäftsbedingungen",
-    "terms_modal_subtitle": "Die Regeln, denen Sie bei der Nutzung unserer Dienste zustimmen.",
+    "terms_modal_title": "Allgemeine Geschäftsbedingungen ",
+    "terms_modal_subtitle": "Allgemeine Geschäftsbedingungen für die Benutzung der “PharmaLedger” App",
     "terms_content": "<iframe style=\"width: 100%; height: 100%; margin-bottom: 24px; border: 0\" src=\"https://app.termly.io/document/terms-of-use-for-website/76a94ec4-766a-4a6a-b7fe-c68834af6811\"></iframe>",
-    "about_modal_subtitle": "Über",
+    "about_modal_subtitle": "About",
     "about_modal_title": "Pharmaledger",
     "about_content": "<iframe style=\"width: 100%; height: 100%; margin-bottom: 24px; border: 0\" src=\"https://Pharmaledger.eu\"></iframe>",
     "help_modal_title": "Hilfe",
     "help_modal_subtitle": "Häufig gestellte Fragen",
-    "help_content": "<div><b>Was ist EPI?</b><br><br>" +
-      "EPI steht für Electronic Product Information. Es ist ein Bemühen der teilnehmenden Unternehmen der europäischen Pharmaindustrie, genaue und aktuelle Informationen über ein Produkt bereitzustellen und die Arzneimittelherkunft sicherzustellen. " +
-      "<br><br><b>Was ist PharmaLedger?</b><br><br>" +
-      "PharmaLedger ist ein Blockchain-Konsortium mit 29 Mitgliedern, darunter 12 globale Pharmaunternehmen. Es zielt darauf ab, Innovationen im Gesundheitswesen für Lieferketten, klinische Studien und Gesundheitsdaten zu ermöglichen. Das Ziel des PharmaLedger-Projekts ist die Bereitstellung einer Blockchain-basierten Plattform für den Gesundheitssektor. unter Verwendung der Lieferkette, klinischer Studien und Gesundheitsdaten als Fallstudien." +
-      "<br><br><b>Wie verwende ich die App?</b><br><br>" +
-      "Klicken Sie auf „Paket scannen“ und erlauben Sie der Anwendung, die Kamera zu verwenden. Richten Sie das Paket in einer dezent beleuchteten Umgebung physisch auf den Scanbereich aus und warten Sie auf eine grüne Anzeige und einen Piepton. Sobald das Paket erfolgreich gescannt wurde, wird ein Code angezeigt. Klicken Sie auf die Schaltfläche Produktinformationen, um die Broschüre anzuzeigen." +
-      "<br><br><b>Warum liefert mein 2D-Code kein Ergebnis?</b><br><br>" +
-      "Es gibt mehrere Gründe, warum der Code auf Ihrer Packung nicht aufgelöst werden konnte. Einer der Gründe ist, dass der Code für die Kamera unleserlich oder unscharf ist. Bitte versuchen Sie, den Code an einem gut beleuchteten Ort zu scannen und den Code gut sichtbar zu machen Der andere Grund könnte sein, dass das Produkt noch nicht Teil der Produktdatenbank von PharmaLedger ist. Bitte erkundigen Sie sich beim Hersteller, ob sein Produkt noch Teil des PharmaLedger ist." +
-      "<br><br><b>Was zeigt der Produktstatus in meiner App an?</b><br><br>" +
-      "Die Produktstatusanzeige wird verwendet, um zu überprüfen, ob Ihre Verpackung vom Hersteller ausgestellt wurde. Dies bescheinigt nicht, dass die physische Verpackung authentisch ist, sondern ist eine Zusicherung, dass sie digital verifiziert wurde und in der Datenbank des Herstellers verfügbar ist." +
-      "<br><br><b>Was sind Produktinformationen?</b><br><br>" +
-      "Die elektronische Version der gedruckten Materialien, die in der legalen pharmakologischen Beschreibung eines Arzneimittels verfügbar sind, vorbehaltlich detaillierter regulatorischer Spezifikationen, einschließlich genehmigter chemischer und geschützter Namen, Beschreibung und Klassifizierung, klinischer Pharmakologie, genehmigter Indikationen und Verwendung, Kontraindikationen, Warnungen, Vorsichtsmaßnahmen, Nebenwirkungen Reaktionen, Informationen zu Drogenmissbrauch und -abhängigkeit, Diskussionen über Überdosierungen, Dosierung und Verabreichung, Formulierungen und entsprechende Referenzen; in den USA werden solche Materialien zwischen dem/den Hersteller(n) des Arzneimittels und der US-amerikanischen Food and Drug Administration ausgehandelt.</div>"
+    "help_content": "<div><p><b>Was ist EPI?\n</b></p>" +
+      "<p><b>EPI</b> steht für “Elektronische Produkt-Information”. Es ist die elektronische Version des Beipackzettels, welchen Sie in der Arzneimittelpackung vorfinden." +
+      "</p>" +
+      "<p>" +
+      "    <b>Was ist PharmaLedger?</b>" +
+      "</p>" +
+      "<p>" +
+      "Die PharmaLedger Association (PLA) ist eine gemeinnützige Vereinigung mit Sitz in der Schweiz. Ihr Ziel ist es, durch die Bereitstellung einer Open-Source-Plattform eine vertrauenswürdige digitale Umgebung im Gesundheitswesen zu schaffen." +
+      "PLA fördert die Zusammenarbeit und beschleunigt Innovation und Transformation, um im Gesundheits- und Life-Science-Bereich gemeinsame Vorteile für Patienten und andere Interessengruppen zu erzielen. PLA wurde 2022 gegründet, " +
+      "um die Arbeit des PharmaLedger-Projekts fortzusetzen, welches drei Jahre lang von der Europäischen Kommission und der pharmazeutischen Industrie finanziert wurde, um den Wert von Blockchain-Technologie zu belegen." +
+      "Weitere Informationen sind verfügbar unter: https://pharmaledger.org/ " +
+      "</p>" +
+      "<p><b>Was ist ein DataMatrix Barcode?</b></p>" +
+      "<p>Es ist ein schwarz-weisses Symbol auf Ihrer Produktverpackung, welches ungefähr so aussieht:<br>" +
+      "    <img src=\"./images/barcode_example.png\">" +
+      "</p>" +
+      "<p>" +
+      "    <b>Wie verwende ich die App?</b>" +
+      "</p>" +
+      "<p>" +
+      "Befolgen Sie die Anweisungen auf der Einstiegsseite der App… sie zeigt ein Bild von dem DataMatrix Barcode auf " +
+      "Ihrer Verpackung. Wenn Sie den DataMatrix Barcode gefunden haben, klicken Sie auf die Schaltfläche „DataMatrix scannen“. " +
+      "Erlauben Sie der App, die Kamera zu verwenden, damit der DataMatrix Barcode gescannt werden kann. Fokussieren Sie die Kamera auf den " +
+      "DataMatrix Barcode. Sobald der Barcode erfolgreich gescannt wurde, wird Ihr elektronischer Beipackzettel angezeigt. Sie können auf" +
+      " die Schaltfläche „+“ klicken, um weitere Details zu erhalten." +
+      "</p>" +
+      "<p><b>Warum kann mein DataMatrix Barcode nicht erfolgreich gescannt werden?</b></p><p>" +
+      "    Es gibt mehrere mögliche Gründe, warum nach dem Scan des DataMatrix Barcodes kein elektronischer Beipackzettel angezeigt wird." +
+      " Ein möglicher Grund ist, dass der Barcode für die Kamera unleserlich oder unscharf ist. Bitte versuchen Sie, den Barcode an einem" +
+      " gut beleuchteten Ort zu scannen. Vermeiden Sie, das Bild vom Barcode zu verwackeln, indem Sie Ihre Hand z.B. auf einem Tisch abstützen." +
+      " </p></div>"
   },
   "fr": {
     "app_version": "App version: ",
