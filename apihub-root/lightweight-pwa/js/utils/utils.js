@@ -31,7 +31,8 @@ function getExpiryTime(expiry) {
       normalizedExpiryDate = expiryForDisplay.replace(/\s/g, '')
     }
 
-    expiryTime = new Date(normalizedExpiryDate).getTime();
+    //set expiry to the end of the day
+    expiryTime = new Date(normalizedExpiryDate).setHours(23,59,59,999);
     if (expiryTime > 0) {
       return expiryTime
     }
