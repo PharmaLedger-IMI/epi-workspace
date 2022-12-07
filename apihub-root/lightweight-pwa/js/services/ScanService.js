@@ -88,19 +88,9 @@ function createOverlay([x, y, w, h], canvasDimensions) {
   return canvas;
 }
 
-function switchFacingMode(facingMode) {
-  switch (facingMode) {
-    case "environment":
-      return "user";
-    default:
-      return "environment";
-  }
-}
-
 class ScanService {
   constructor(domElement, facingMode) {
     this._status = SCANNER_STATUS.INITIALIZING;
-    this._facingMode = facingMode || null;
 
     this.scanner = new Scanner(domElement);
 
@@ -120,15 +110,35 @@ class ScanService {
     });
   }
 
-  async setup() {
+  async setup(forceNewCamera) {
     this.status = SCANNER_STATUS.SETTING;
-    this._facingMode = switchFacingMode(this._facingMode);
 
     try {
+      if(!this.detectionDone){
+        try{
+          this.detectionDone = true;
+          this.availableCameras = await this.scanner.getCameras("environment");
+        }catch(err){
+          //any error encountered here we ignore for the moment
+        }
+      }
+
+      if(this.availableCameras && Array.isArray(this.availableCameras) && this.availableCameras.length > 0){
+        if(typeof this.currentCameraIndex === "undefined"){
+          //let's get the first camera from the array as initialization
+          this.currentCameraIndex = 0;
+        }else{
+          if(forceNewCamera){
+            this.currentCameraIndex = ++this.currentCameraIndex % this.availableCameras.length;
+          }
+        }
+      }
+
       await this.scanner.setup({
-        facingMode: this._facingMode,
-        useBasicSetup: false
+        useBasicSetup: !!this.usingNativeLayer,
+        deviceId: typeof this.currentCameraIndex !== "undefined" ? this.availableCameras[this.currentCameraIndex].id : this.currentCameraIndex
       });
+
       this.status = SCANNER_STATUS.ACTIVE;
     } catch (error) {
       if (error.name === 'NotAllowedError') {
@@ -157,6 +167,5 @@ class ScanService {
 
 export default ScanService
 export {
-  SCANNER_STATUS,
-  switchFacingMode
+  SCANNER_STATUS
 }

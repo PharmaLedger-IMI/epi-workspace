@@ -1,15 +1,17 @@
 import {convertFromISOtoYYYY_HM, goToErrorPage, goToPage, validateGTIN} from "../utils/utils.js";
 import interpretGS1scan from "../utils/interpretGS1scan/interpretGS1scan.js";
-import ScanService, {switchFacingMode} from "../services/ScanService.js";
+import ScanService from "../services/ScanService.js";
 import {getTranslation} from "../translations.js";
 import constants from "../constants.js";
 
 function ScanController() {
-  this.init = async function (facingMode) {
+  this.init = async function (forceNewCamera) {
     let placeHolderElement = document.querySelector("#scanner-placeholder");
-    this.scanService = new ScanService(placeHolderElement, facingMode);
+    if(!forceNewCamera){
+      this.scanService = new ScanService(placeHolderElement);
+    }
     try {
-      await this.scanService.setup();
+      await this.scanService.setup(forceNewCamera);
     } catch (err) {
       this.redirectToError(err);
     }
@@ -114,11 +116,9 @@ function ScanController() {
   }
 
   this.switchCamera = function () {
-    let facingMode = this.scanService._facingMode;
-    this.scanService.stop();
+    //this.scanService.stop();
     clearInterval(this.scanInterval);
-    switchFacingMode(facingMode);
-    scanController.init();
+    scanController.init(true);
   }
 }
 
