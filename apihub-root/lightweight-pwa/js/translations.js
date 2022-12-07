@@ -192,7 +192,7 @@ export const translations = {
     "help_modal_subtitle": "QFP",
     "help_content": "<div><p><b>Qu’est-ce que EPI?</b></p>" +
       "<p>" +
-      "    <b>EPI</b>  est une abréviation <b>d’Information électronique sur le Produit.</b> It is an electronic version of the paper Il s'agit d'une version électronique de l’information sur le produit en papier que vous trouverez généralement à l'intérieur de l’emballage d’un produit pharmaceutique. Dans certains cas <b>l’EPI</b> peut avoir remplacé la notice papier." +
+      "    <b>EPI</b>  est une abréviation <b>d’Information électronique sur le Produit.</b> Il s'agit d'une version électronique de l’information sur le produit en papier que vous trouverez généralement à l'intérieur de l’emballage d’un produit pharmaceutique. Dans certains cas <b>l’EPI</b> peut avoir remplacé la notice papier." +
       "</p>" +
       "<p>" +
       "    <b>Qu'est-ce que PharmaLedger?</b>" +
