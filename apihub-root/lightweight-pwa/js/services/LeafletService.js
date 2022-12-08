@@ -1,7 +1,9 @@
-import RandomRoundRobinService from "./RandomRoundRobinService.js";
 import environment from "../../environment.js";
 import constants from "../constants.js"
 import CustomError from "../utils/CustomError.js";
+import RequestWizard from "./RequestWizard.js";
+import {ERROR_TYPES} from "./RequestWizard.js";
+
 import {goToErrorPage, validateGTIN} from "../utils/utils.js";
 
 class LeafletService {
@@ -50,60 +52,62 @@ class LeafletService {
     }
   }
 
+  prepareUrlsForGtinOwnerCall(arrayOfUrls, domain, gtin){
+    let newArray = [];
+    for(let i=0; i<arrayOfUrls.length; i++){
+      let newUrl =`${arrayOfUrls[i]}/gtinOwner/${domain}/${gtin}`;
+      const urlRequest = new Request(newUrl, {
+        method: "GET",
+      });
+      newArray.push(urlRequest);
+    }
+    return newArray;
+  }
+
   async detectGTINOwner(GTIN, bdnsResult, timePerCall, totalWaitTime) {
     let anchoringServices = this.getAnchoringServices(bdnsResult, this.epiDomain);
-    let roundRobinService = new RandomRoundRobinService(anchoringServices);
+    let validateResponse = function(response){
+      return new Promise((resolve)=>{
+        //TODO: check gtinOwner API implementation in case of statusCode 500
+        if(response.status === 200 || response.status === 500){
+          //we can consider a valid response both statusCodes due to how our gtin api works
+          resolve(true);
+          return;
+        }
 
-    let fetchGTO = async () => {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), timePerCall);
-      return new Promise((resolve, reject) => {
-        let nextUrl = roundRobinService.next();
-        const urlRequest = new Request(`${nextUrl.value}/gtinOwner/${this.epiDomain}/${GTIN}`, {
-          method: "GET",
-        });
-        fetch(urlRequest, {signal: controller.signal})
-          .then(response => {
-            if (response.status === 200) {
-              response.json().then(result => {
-                console.log(result);
-                clearTimeout(timeoutId);
-                resolve(result.domain);
-              })
-            }
-            if (response.status === 500) {
-              reject();
-            }
-          }).catch(e => {
-          //possible network fail so try an other endpoint
-          resolve(null);
-        })
-      })
+        resolve(false);
+      });
     }
 
     return new Promise(async (resolve, reject) => {
-      let gtinOwner = null;
-      setTimeout(() => {
-        if (!gtinOwner) {
+      let requestWizard = new RequestWizard(timePerCall, totalWaitTime);
+      try{
+        let gtinOwnerResponse = await requestWizard.fetchMeAResponse(this.prepareUrlsForGtinOwnerCall(anchoringServices, this.epiDomain, GTIN), validateResponse);
+        if(gtinOwnerResponse){
+          gtinOwnerResponse.json().then(result => {
+            let gtinOwnerDomain = result.domain;
+            resolve(gtinOwnerDomain);
+          }).catch((err)=>{
+            console.log(err);
+            reject(new CustomError(constants.errorCodes.unknown_error));
+            return;
+          });
+          return;
+        }
+        reject(new CustomError(constants.errorCodes.gtin_not_created));
+        return;
+      }catch (err){
+        if(err.code && err.code === ERROR_TYPES.TIMEOUT){
           reject(new CustomError(constants.errorCodes.gto_timeout));
           return;
         }
-      }, totalWaitTime)
-
-      do {
-        try {
-          gtinOwner = await fetchGTO();
-        } catch (e) {
-          reject(new CustomError(constants.errorCodes.gtin_not_created))
-        }
-      } while (!gtinOwner)
-      resolve(gtinOwner);
-
-    })
+        reject(err);
+      }
+    });
   }
 
   getLeafletRequest(leafletApiUrl) {
-    let fetchUrl = `${leafletApiUrl}?leaflet_type=leaflet&lang=${this.leafletLang}&gtin=${this.gtin}&expiry=${this.expiry}`;
+    let fetchUrl = `${leafletApiUrl}/leaflets/${this.epiDomain}?leaflet_type=leaflet&lang=${this.leafletLang}&gtin=${this.gtin}&expiry=${this.expiry}`;
     fetchUrl = this.batch ? `${fetchUrl}&batch=${this.batch}` : `${fetchUrl}`
     let header = new Headers();
     header.append("epiProtocolVersion", environment.epiProtocolVersion || "1");
@@ -114,29 +118,12 @@ class LeafletService {
     return leafletRequest;
   }
 
-  async fetchLeaflet(leafletApiUrl, timePerCall) {
-    return new Promise((resolve, reject) => {
-      let leafletRequest = this.getLeafletRequest(leafletApiUrl);
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), timePerCall);
-      fetch(leafletRequest, {signal: controller.signal})
-        .then(response => {
-          if (response.status === 200) {
-            response.json().then(result => {
-              resolve(result);
-            }).catch((err) => {
-              //should not happen but if happens try another endpoint from bdns list
-              resolve(null)
-            });
-          } else {
-            //try another endpoint from bdns list
-            resolve(null)
-          }
-        })
-        .catch((error) => {
-          resolve(null)
-        });
-    })
+  prepareUrlsForLeafletCall(arrayOfUrls){
+    let newArray = [];
+    for(let i=0; i<arrayOfUrls.length; i++){
+      newArray.push(this.getLeafletRequest(arrayOfUrls[i]));
+    }
+    return newArray;
   }
 
   async getLeafletResult(timePerCall = 10000, totalWaitTime = 30000, gto_TimePerCall = 2000, gto_TotalWaitTime = 10000) {
@@ -147,51 +134,55 @@ class LeafletService {
           reject({errorCode: constants.errorCodes.leaflet_timeout});
           return
         }
-      }, totalWaitTime)
+      }, totalWaitTime);
 
+      let bdns = await this.getBDNS();
+      let ownerDomain;
       try {
-        if (this.resolvedleafletApiUrl) {
-          try {
-            let result = await this.fetchLeaflet(this.resolvedleafletApiUrl, timePerCall);
-            console.log(result);
-            leafletResult = result;
-            resolve(leafletResult);
-          } catch (e) {
-            console.log("error on request leafletRequest ", e)
+        ownerDomain = await this.detectGTINOwner(this.gtin, bdns, gto_TimePerCall, gto_TotalWaitTime);
+      } catch (e) {
+        let errorCode = e.code ? e.code : constants.errorCodes.gtin_not_created;
+        reject({errorCode});
+        return;
+      }
+      if(ownerDomain){
+        let leafletSources = this.getAnchoringServices(bdns, ownerDomain);
+        debugger;
+        let targets = this.prepareUrlsForLeafletCall(leafletSources);
+
+        let validateResponse = function(response){
+          return new Promise((resolve)=>{
+            if(response.status === 200 ){
+              resolve(true);
+              return;
+            }
+            resolve(false);
+          });
+        }
+
+        let requestWizard = new RequestWizard(timePerCall, totalWaitTime);
+        try{
+          let leafletResponse = await requestWizard.fetchMeAResponse(targets, validateResponse);
+          if(leafletResponse){
+            leafletResponse.json().then(leaflet => {
+              resolve(leaflet);
+            });
+            return;
+          }
+          reject({errorCode: constants.errorCodes.unknown_error});
+          return;
+        }catch (err){
+          if(err.code && err.code === ERROR_TYPES.TIMEOUT){
             reject({errorCode: constants.errorCodes.leaflet_timeout});
             return;
           }
-        } else {
-          let bdnsResult = await this.getBDNS();
-          let ownerDomain;
-          try {
-            ownerDomain = await this.detectGTINOwner(this.gtin, bdnsResult, gto_TimePerCall, gto_TotalWaitTime);
-          } catch (e) {
-            let errCode = e.code ? e.code : constants.errorCodes.gtin_not_created;
-            reject({errorCode: e.code});
-            return;
-          }
-          let anchoringServices = this.getAnchoringServices(bdnsResult, ownerDomain);
-          let roundRobinService = new RandomRoundRobinService(anchoringServices);
-
-          do {
-            let nextUrl = roundRobinService.next();
-            let leafletApiUrl = nextUrl.value + "/leaflets/" + this.epiDomain;
-            let result = await this.fetchLeaflet(leafletApiUrl, timePerCall);
-            if (result) {
-              console.log(result);
-              leafletResult = result;
-              this.resolvedleafletApiUrl = leafletApiUrl
-            }
-
-          } while (!leafletResult)
-
-          resolve(leafletResult);
-          return;
+          reject(err);
         }
-      } catch (e) {
-        reject({errorCode: constants.errorCodes.leaflet_timeout});
+
+        return;
       }
+
+      reject({errorCode: constants.errorCodes.unknown_error});
     })
   }
 }
