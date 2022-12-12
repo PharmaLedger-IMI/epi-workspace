@@ -3,6 +3,7 @@ import constants from "../constants.js"
 import CustomError from "../utils/CustomError.js";
 import RequestWizard from "./RequestWizard.js";
 import {ERROR_TYPES} from "./RequestWizard.js";
+import LightSmartUrl from "../utils/LightSmartUrl.js";
 
 import {goToErrorPage, validateGTIN} from "../utils/utils.js";
 
@@ -55,11 +56,13 @@ class LeafletService {
   prepareUrlsForGtinOwnerCall(arrayOfUrls, domain, gtin){
     let newArray = [];
     for(let i=0; i<arrayOfUrls.length; i++){
-      let newUrl =`${arrayOfUrls[i]}/gtinOwner/${domain}/${gtin}`;
-      const urlRequest = new Request(newUrl, {
+
+      let smartUrl = new LightSmartUrl(arrayOfUrls[i]);
+      smartUrl = smartUrl.concatWith(`/gtinOwner/${domain}/${gtin}`);
+
+      newArray.push(smartUrl.getRequest({
         method: "GET",
-      });
-      newArray.push(urlRequest);
+      }));
     }
     return newArray;
   }
@@ -107,15 +110,22 @@ class LeafletService {
   }
 
   getLeafletRequest(leafletApiUrl) {
-    let fetchUrl = `${leafletApiUrl}/leaflets/${this.epiDomain}?leaflet_type=leaflet&lang=${this.leafletLang}&gtin=${this.gtin}&expiry=${this.expiry}`;
-    fetchUrl = this.batch ? `${fetchUrl}&batch=${this.batch}` : `${fetchUrl}`
+
+    let smartUrl = new LightSmartUrl(leafletApiUrl);
+    smartUrl = smartUrl.concatWith(`/leaflets/${this.epiDomain}?leaflet_type=leaflet&lang=${this.leafletLang}&gtin=${this.gtin}&expiry=${this.expiry}`);
+
+    if(this.batch){
+      smartUrl = smartUrl.concatWith(`&batch=${this.batch}`);
+    }
+
     let header = new Headers();
     header.append("epiProtocolVersion", environment.epiProtocolVersion || "1");
     header.append("getProductData", "true");
-    const leafletRequest = new Request(fetchUrl, {
+
+
+    return smartUrl.getRequest({
       method: "GET", headers: header
     });
-    return leafletRequest;
   }
 
   prepareUrlsForLeafletCall(arrayOfUrls){
