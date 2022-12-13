@@ -157,7 +157,6 @@ class LeafletService {
       }
       if(ownerDomain){
         let leafletSources = this.getAnchoringServices(bdns, ownerDomain);
-        debugger;
         let targets = this.prepareUrlsForLeafletCall(leafletSources);
 
         let validateResponse = function(response){

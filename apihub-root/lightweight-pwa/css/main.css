@@ -443,6 +443,11 @@ b {
     overflow-x: auto;
 }
 
+/* Force hidden content for images because xslt rule not working for safari < 16. */
+#leaflet-content figure *:not(img) {
+    display: none;
+}
+
 #leaflet-content img {
     width: 100%;
 }
