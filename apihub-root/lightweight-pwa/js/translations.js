@@ -63,7 +63,6 @@ export const translations = {
       "<p>It's a type of barcode on your product package. It is a black and white square box barcode and will look similar to" +
       "    this:<br>" +
       "    <img src=\"./images/barcode_example.png\">" +
-      "" +
       "</p>" +
       "<p>" +
       "    <b>How to use the App?</b>" +
@@ -183,7 +182,7 @@ export const translations = {
     "privacy_modal_subtitle": "Nos principes de confidentialité et de sécurité",
     "privacy_content": "<iframe style=\"width: 100%; height: 100%; margin-bottom: 24px; border: 0\" src=\"https://app.termly.io/document/privacy-policy/40430c0a-9e30-4690-b4a7-2c2f56433919\"></iframe>",
     "terms_modal_title": "Termes et Conditions",
-    "terms_modal_subtitle": "",
+    "terms_modal_subtitle": "The terms and conditions that apply when using the PharmaLedger Application",
     "terms_content": "<iframe style=\"width: 100%; height: 100%; margin-bottom: 24px; border: 0\" src=\"https://app.termly.io/document/terms-of-use-for-website/76a94ec4-766a-4a6a-b7fe-c68834af6811\"></iframe>",
     "about_modal_subtitle": "À propos",
     "about_modal_title": "Pharmaledger",
@@ -250,7 +249,7 @@ export const translations = {
     "privacy_modal_subtitle": "Ons Privacy- en veiligheidsbeleid",
     "privacy_content": "<iframe style=\"width: 100%; height: 100%; margin-bottom: 24px; border: 0\" src=\"https://app.termly.io/document/privacy-policy/40430c0a-9e30-4690-b4a7-2c2f56433919\"></iframe>",
     "terms_modal_title": "Algemene voorwaarden",
-    "terms_modal_subtitle": "",
+    "terms_modal_subtitle": "The terms and conditions that apply when using the PharmaLedger Application",
     "terms_content": "<iframe style=\"width: 100%; height: 100%; margin-bottom: 24px; border: 0\" src=\"https://app.termly.io/document/terms-of-use-for-website/76a94ec4-766a-4a6a-b7fe-c68834af6811\"></iframe>",
     "about_modal_subtitle": "Over",
     "about_modal_title": "Pharmaledger",
