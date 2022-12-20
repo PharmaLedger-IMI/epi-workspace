@@ -16,15 +16,16 @@ export default function(smallTimeout, totalTimeout){
         const fetchWithTimeout = async (nextRequest) => {
             const controller = new AbortController();
 
-            const cancelFetchTimeout = function(){
-                resolve();
-                controller.abort();
-            }
-
-            //if a request takes longer then smallTimeout we cancel it
-            const timeoutId = setTimeout(cancelFetchTimeout, smallTimeout);
-
             return new Promise((resolve, reject) => {
+
+                const cancelFetchTimeout = function(){
+                    resolve();
+                    controller.abort();
+                }
+
+                //if a request takes longer then smallTimeout we cancel it
+                const timeoutId = setTimeout(cancelFetchTimeout, smallTimeout);
+
                 //console.log("fetching", nextRequest);
                             fetch(nextRequest, {signal: controller.signal})
                                 .then(async response => {
