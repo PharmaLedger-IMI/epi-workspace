@@ -5,11 +5,11 @@
 
 # This workflow will initiate a Veracode Static Analysis Pipeline scan, return a results.json and convert to SARIF for upload as a code scanning alert
 
-name: Veracode Static Analysis Pipeline Scan
+name: LPWA Static Analysis Scan
 
 on:
-  push:
-    branches: [ "master" ]
+  #push:
+  #  branches: [ "master" ]
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "master" ]
@@ -38,7 +38,7 @@ jobs:
       with:
         repository: ''
     - run: npm run dev-install
-    - run: zip -r veracode-scan-target.zip ./
+    - run: cd apihub-root/lightweight-pwa && zip -r ../../veracode-scan-target.zip ./ -x "**/.git" && cd ../..
 
     # download the Veracode Static Analysis Pipeline scan jar
     - run: curl --silent --show-error --fail -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
