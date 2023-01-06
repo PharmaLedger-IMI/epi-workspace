@@ -24,3 +24,11 @@ cd $initialPWD
 cd ../dsu-fabric-ssapp
 zip -r "$targetFolder/EnterpriseWallet-$currentDate.zip" . -x ".git/*" "**/.git/**" "**/node_modules/**" "seed" "package-lock.jsonn"
 cd $initialPWD
+
+cd $targetFolder
+ls -alh
+
+echo "==================================="
+echo 'The above zip files were generated'
+echo 'Location' $targetFolder
+echo "==================================="
