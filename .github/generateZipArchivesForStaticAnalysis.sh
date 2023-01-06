@@ -6,7 +6,7 @@ targetFolder="$initialPWD/generated-$targetFolder"
 mkdir $targetFolder
 
 cd ../opendsu-sdk/modules/apihub
-zip -r "$targetFolder/Backend-$currentDate.zip" . -x ".git/*" "**/.git/**" "**/node_modules/**" "package-lock.json"
+zip -r "$targetFolder/Backend-$currentDate.zip" . -x ".git/*" "**/.git/**" "**/node_modules/**" "package-lock.json" "tests/*"
 cd $initialPWD
 
 cd ../gtin-resolver
