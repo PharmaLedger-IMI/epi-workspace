@@ -22,7 +22,7 @@ zip -r "$targetFolder/Demiurge-$currentDate.zip" . -x ".git/*" "**/.git/**" "**/
 cd $initialPWD
 
 cd ../dsu-fabric-ssapp
-zip -r "$targetFolder/EnterpriseWallet-$currentDate.zip" . -x ".git/*" "**/.git/**" "**/node_modules/**" "seed" "package-lock.jsonn"
+zip -r "$targetFolder/EnterpriseWallet-$currentDate.zip" . -x ".git/*" "**/.git/**" "**/node_modules/**" "seed" "package-lock.json"
 cd $initialPWD
 
 cd $targetFolder
