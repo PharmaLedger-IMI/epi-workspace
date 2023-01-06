@@ -69,9 +69,7 @@
   "skipOAuth": [
     "/assets",
     "/bdns",
-    "/bundles",
-    "/getAuthorization",
-    "/external-volume/config/oauthConfig.js"
+    "/bundles"
   ],
   "oauthConfig": {
     "issuer": {
