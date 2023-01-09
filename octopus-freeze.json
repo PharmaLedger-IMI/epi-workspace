@@ -9,8 +9,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "d2630d3dd52c9e5a5c922002bd9acaf25b375c65",
-                    "tag": "v1.0.6"
+                    "commit": "5ea02d89df4670983011b508e8960cc4d71f396b",
+                    "tag": "v1.0.7"
                 },
                 {
                     "type": "execute",
@@ -26,8 +26,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "b50398b3f8269b81d57b599a7aaf3cfcc8918443",
-                    "tag": "v1.0.4"
+                    "commit": "0002dd750e6603bfd361d2efb0729cd49a13c37e",
+                    "tag": "v1.0.5"
                 },
                 {
                     "type": "execute",
@@ -60,8 +60,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "8e3d310db5ed3cd52626e004f4937ff9198addaa",
-                    "tag": "v1.2.4"
+                    "commit": "9928169d6944f5903c2b1dfb3355820bb2fb9193",
+                    "tag": "v1.2.5"
                 },
                 {
                     "type": "execute",
@@ -102,7 +102,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "dd86004b9501d239b6e324f414f156ed91ec587c",
+                    "commit": "a1a0b8442dc76e6c1c748ed73d97cd355d2b7e87",
                     "tag": "v0.3.3"
                 },
                 {
@@ -127,7 +127,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "dd86004b9501d239b6e324f414f156ed91ec587c",
+                    "commit": "a1a0b8442dc76e6c1c748ed73d97cd355d2b7e87",
                     "tag": "v0.3.3"
                 },
                 {
@@ -195,8 +195,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "970e52bda8e389484c6551b3b68e5d6bd9383765",
-                    "tag": "v1.2.3"
+                    "commit": "fe3dedd2d6bdaab754928098bd195e023639f852",
+                    "tag": "v1.2.4"
                 },
                 {
                     "type": "execute",
@@ -302,8 +302,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "18eca7ed121cac3f0b38e09a1f8e228f2b8a7efa",
-                    "tag": "v1.2.3"
+                    "commit": "a52eec01bbd3e324df2c67fa85422fd4d5ab02de",
+                    "tag": "v1.2.4"
                 },
                 {
                     "type": "execute",
