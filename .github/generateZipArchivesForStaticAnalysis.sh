@@ -4,9 +4,19 @@ targetFolder=`date +'%m-%d-%Y-%H-%M'`
 targetFolder="$initialPWD/generated-$targetFolder"
 
 mkdir $targetFolder
+mkdir $targetFolder/backend
 
-cd ../gtin-resolver/lib
-zip -r "$targetFolder/Backend-$currentDate.zip" . -i "apihubMappingEngine/*" "apihubMappingEngineMessageResults/*" "gtinOwner/*" "leaflet-web-api/*"
+cp -r ../gtin-resolver/lib/apihubMappingEngine $targetFolder/backend/apihubMappingEngine
+cp -r ../gtin-resolver/lib/apihubMappingEngineMessageResults $targetFolder/backend/apihubMappingEngineMessageResults
+cp -r ../gtin-resolver/lib/gtinOwner $targetFolder/backend/gtinOwner
+cp -r ../gtin-resolver/lib/leaflet-web-api $targetFolder/backend/leaflet-web-api
+cp ../opendsu-sdk/psknode/bundles/openDSU.js $targetFolder/backend
+cp ../opendsu-sdk/psknode/bundles/pskWebServer.js $targetFolder/backend
+
+cd $targetFolder/backend
+zip -r "$targetFolder/Backend-$currentDate.zip" .
+
+cd .. && rm -rf backend
 cd $initialPWD
 
 cd ../gtin-resolver/lib
