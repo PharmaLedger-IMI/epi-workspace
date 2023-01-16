@@ -4,6 +4,15 @@ then
     exit 1
 fi
 
+if [ -z "$VERACODE_API_ID" ] || [ -z $VERACODE_API_KEY ];
+then
+    echo "VERACODE_API_ID or VERACODE_API_KEY env vars are not set."
+    echo "VERACODE_API_ID=$VERACODE_API_ID"
+    echo "VERACODE_API_KEY=$VERACODE_API_KEY"
+    echo "Both env vars are mandatory!"
+    exit 1
+fi
+
 if [ -d ~/Downloads/pipeline-scan-LATEST ];
 then
     echo "Veracode pipeline scan tool available, skipping the installation process."
