@@ -610,7 +610,7 @@
       },
       {
         "name": "mobile/scan-app/ios",
-        "src": "https://github.com/${GITHUB_ORGANIZATION}/ios-edge-agent",
+        "src": "https://github.com/Pharmaledger-IMI/ios-edge-agent",
         "actions": [
           {
             "type": "smartClone",
