@@ -33,7 +33,7 @@
       },
       {
         "name": "leaflet-ssapp",
-        "src": "https://github.com/PharmaLedger-IMI/leaflet-ssapp.git",
+        "src": "https://github.com/${GITHUB_ORGANIZATION}/leaflet-ssapp.git",
         "actions": [
           {
             "type": "smartClone",
@@ -154,7 +154,7 @@
       },
       {
         "name": "themes/epi-theme",
-        "src": "https://github.com/PharmaLedger-IMI/epi-theme.git",
+        "src": "https://github.com/${GITHUB_ORGANIZATION}/epi-theme.git",
         "actions": [
           {
             "type": "smartClone",
@@ -169,7 +169,7 @@
       },
       {
         "name": "gtin-resolver",
-        "src": "https://github.com/PharmaLedger-IMI/gtin-resolver.git",
+        "src": "https://github.com/${GITHUB_ORGANIZATION}/gtin-resolver.git",
         "actions": [
           {
             "type": "smartClone",
@@ -198,7 +198,7 @@
       },
       {
         "name": "gtin-dsu-wizard",
-        "src": "https://github.com/PharmaLedger-IMI/gtin-dsu-wizard.git",
+        "src": "https://github.com/${GITHUB_ORGANIZATION}/gtin-dsu-wizard.git",
         "actions": [
           {
             "type": "smartClone",
@@ -228,7 +228,7 @@
       },
       {
         "name": "express-demo",
-        "src": "https://github.com/PharmaLedger-IMI/express-demo",
+        "src": "https://github.com/Pharmaledger-IMI/express-demo",
         "actions": [
           {
             "type": "smartClone",
@@ -243,7 +243,7 @@
       },
       {
         "name": "ethadapter",
-        "src": "https://github.com/PharmaLedger-IMI/ethadapter",
+        "src": "https://github.com/${GITHUB_ORGANIZATION}/ethadapter",
         "actions": [
           {
             "type": "smartClone",
@@ -266,7 +266,7 @@
       },
       {
         "name": "dsu-fabric-ssapp",
-        "src": "https://github.com/PharmaLedger-IMI/dsu-fabric-ssapp.git",
+        "src": "https://github.com/${GITHUB_ORGANIZATION}/dsu-fabric-ssapp.git",
         "actions": [
           {
             "type": "smartClone",
@@ -610,7 +610,7 @@
       },
       {
         "name": "mobile/scan-app/ios",
-        "src": "https://github.com/PharmaLedger-IMI/ios-edge-agent",
+        "src": "https://github.com/${GITHUB_ORGANIZATION}/ios-edge-agent",
         "actions": [
           {
             "type": "smartClone",
@@ -993,7 +993,7 @@
       },
       {
         "name": "acdc-authentication-feature-template",
-        "src": "https://github.com/PharmaLedger-IMI/acdc-authentication-feature-template",
+        "src": "https://github.com/Pharmaledger-IMI/acdc-authentication-feature-template",
         "actions": [
           {
             "type": "smartClone",
@@ -1023,7 +1023,7 @@
       },
       {
           "name": "uniqode-auth-feat-ssapp",
-          "src": "https://github.com/PharmaLedger-IMI/pharma-incmlab.git",
+          "src": "https://github.com/Pharmaledger-IMI/pharma-incmlab.git",
           "actions": [
               {
                   "type": "smartClone",
@@ -1040,7 +1040,7 @@
     "install-dfm": [
       {
         "name": "acdc",
-        "src": "https://github.com/PharmaLedger-IMI/acdc-components.git",
+        "src": "https://github.com/Pharmaledger-IMI/acdc-components.git",
         "actions": [
           {
             "type": "smartClone",
