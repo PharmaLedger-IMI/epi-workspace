@@ -329,7 +329,7 @@ b {
     box-shadow: -1px 8px 24px rgba(0, 0, 0, 0.16);
     border-radius: 5vh;
     font-family: 'DM Sans bold';
-    font-size: 1.5vh;
+    font-size: 2vh;
     text-align: center;
     position: absolute;
     bottom: 4vh;
@@ -718,7 +718,7 @@ b {
 .modal-content .languages-container .language-item-container {
     font-family: 'DM Sans semi-bold';
     border: 0.5px solid #D0D5DD;
-    font-size: 2.5vh;
+    font-size: calc(100% + 0.3vmin);
     padding: 8px 10px 0px;
     line-height: 1;
     margin-bottom: 10px;
@@ -761,7 +761,7 @@ b {
     background: var(--olivegreen);
     border-radius: 62px;
     color: #fff;
-    font-size: 16px;
+    font-size: 2vh;
     font-family: 'DM Sans bold';
 }
 
@@ -793,11 +793,11 @@ b {
     }
 
     .welcome-container {
-        font-size: 3vh;
+        font-size: calc(100% + 5vmin);
     }
 
     .scan-button {
-        font-size: 2.5vh;
+        font-size: calc(100% + 3vmin);
         bottom: 2vh;
     }
 
@@ -821,7 +821,7 @@ b {
     }
 
     .app-menu-container {
-        font-size: 2.2vh;
+        font-size: calc(100% + 2.5vmin);
         margin-top: 30px;
     }
 
@@ -834,11 +834,11 @@ b {
     }
 
     .explain-container {
-        font-size: 2.2vh;
+        font-size: calc(100% + 2.5vmin);
     }
 
     .scan-header {
-        font-size: 2vh;
+        font-size: calc(100% + 2.2vmin);
     }
 
     .scan-page #scanner-placeholder {
@@ -875,12 +875,12 @@ b {
     .leaflet-page .product-name,
     .modal-header .modal-title,
     .error-page .header-title {
-        font-size: 4vh;
+        font-size: calc(100% + 6vmin);
         font-family: 'DM Sans bold';
     }
 
     .leaflet-page .product-description, .error-page .header-subtitle, .error-page .page-content {
-        font-size: 2vh;
+        font-size: calc(100% + 2.2vmin);
         border-radius: 0px;
     }
 
@@ -893,11 +893,12 @@ b {
         width: 100vw;
     }
 
-    /*    #leaflet-content,
-        #leaflet-content .select-lang-text,
-        #leaflet-content .languages-list {
-            font-size: calc(100% + 2.5vmin);
-        }*/
+    #leaflet-content,
+    #leaflet-content .select-lang-text,
+    #leaflet-content .languages-list {
+        font-size: calc(100% + 2.5vmin);
+    }
+
     #leaflet-content h5 {
         margin-right: 4rem;
     }
@@ -950,8 +951,7 @@ b {
 
     .modal-header .modal-subtitle {
         position: relative;
-        font-size: 2vh;
-
+        font-size: calc(100% + 2.2vmin);
     }
 
     .modal-header .close-modal {
@@ -963,9 +963,9 @@ b {
 
     .modal-content {
         padding: 7%;
-        line-height: 3vh;
+        line-height: calc(100% + 4vmin);
         min-height: 42%;
-        font-size: 3vh;
+        font-size: calc(100% + 4vmin);
         border-radius: 30px;
         top: -30px;
     }
@@ -980,10 +980,10 @@ b {
     }
 
     .modal-content .text-section {
-        font-size: 65%;
         font-family: 'DM Sans semi-bold';
         text-align: justify;
         padding-bottom: 7%;
+        font-size: 100%;
     }
 
     .modal-content .languages-container .language-item-container .language-flag {
@@ -1017,7 +1017,7 @@ b {
         background: var(--olivegreen);
         border-radius: 62px;
         color: #fff;
-        font-size: 2vh;
+        font-size: calc(100% + 1vmin);
         font-family: 'DM Sans bold';
     }
 
