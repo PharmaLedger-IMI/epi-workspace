@@ -53,9 +53,9 @@ class LeafletService {
     }
   }
 
-  prepareUrlsForGtinOwnerCall(arrayOfUrls, domain, gtin){
+  prepareUrlsForGtinOwnerCall(arrayOfUrls, domain, gtin) {
     let newArray = [];
-    for(let i=0; i<arrayOfUrls.length; i++){
+    for (let i = 0; i < arrayOfUrls.length; i++) {
 
       let smartUrl = new LightSmartUrl(arrayOfUrls[i]);
       smartUrl = smartUrl.concatWith(`/gtinOwner/${domain}/${gtin}`);
@@ -69,10 +69,10 @@ class LeafletService {
 
   async detectGTINOwner(GTIN, bdnsResult, timePerCall, totalWaitTime) {
     let anchoringServices = this.getAnchoringServices(bdnsResult, this.epiDomain);
-    let validateResponse = function(response){
-      return new Promise((resolve)=>{
+    let validateResponse = function (response) {
+      return new Promise((resolve) => {
         //TODO: check gtinOwner API implementation in case of statusCode 500
-        if(response.status === 200 || response.status === 500){
+        if (response.status === 200 || response.status === 500) {
           //we can consider a valid response both statusCodes due to how our gtin api works
           resolve(true);
           return;
@@ -84,13 +84,13 @@ class LeafletService {
 
     return new Promise(async (resolve, reject) => {
       let requestWizard = new RequestWizard(timePerCall, totalWaitTime);
-      try{
+      try {
         let gtinOwnerResponse = await requestWizard.fetchMeAResponse(this.prepareUrlsForGtinOwnerCall(anchoringServices, this.epiDomain, GTIN), validateResponse);
-        if(gtinOwnerResponse){
+        if (gtinOwnerResponse) {
           gtinOwnerResponse.json().then(result => {
             let gtinOwnerDomain = result.domain;
             resolve(gtinOwnerDomain);
-          }).catch((err)=>{
+          }).catch((err) => {
             console.log(err);
             reject(new CustomError(constants.errorCodes.unknown_error));
             return;
@@ -99,8 +99,8 @@ class LeafletService {
         }
         reject(new CustomError(constants.errorCodes.gtin_not_created));
         return;
-      }catch (err){
-        if(err.code && err.code === ERROR_TYPES.TIMEOUT){
+      } catch (err) {
+        if (err.code && err.code === ERROR_TYPES.TIMEOUT) {
           reject(new CustomError(constants.errorCodes.gto_timeout));
           return;
         }
@@ -114,7 +114,7 @@ class LeafletService {
     let smartUrl = new LightSmartUrl(leafletApiUrl);
     smartUrl = smartUrl.concatWith(`/leaflets/${this.epiDomain}?leaflet_type=leaflet&lang=${this.leafletLang}&gtin=${this.gtin}&expiry=${this.expiry}`);
 
-    if(this.batch){
+    if (this.batch) {
       smartUrl = smartUrl.concatWith(`&batch=${this.batch}`);
     }
 
@@ -126,9 +126,9 @@ class LeafletService {
     });
   }
 
-  prepareUrlsForLeafletCall(arrayOfUrls){
+  prepareUrlsForLeafletCall(arrayOfUrls) {
     let newArray = [];
-    for(let i=0; i<arrayOfUrls.length; i++){
+    for (let i = 0; i < arrayOfUrls.length; i++) {
       newArray.push(this.getLeafletRequest(arrayOfUrls[i]));
     }
     return newArray;
@@ -153,33 +153,34 @@ class LeafletService {
         reject({errorCode});
         return;
       }
-      if(ownerDomain){
+      if (ownerDomain) {
         let leafletSources = this.getAnchoringServices(bdns, ownerDomain);
         let targets = this.prepareUrlsForLeafletCall(leafletSources);
 
-        let validateResponse = function(response){
-          return new Promise((resolve)=>{
-            if(response.status === 200 ){
-              resolve(true);
-              return;
-            }
-            resolve(false);
+        let validateResponse = function (response) {
+          return new Promise((resolve) => {
+            resolve(response);
           });
         }
 
         let requestWizard = new RequestWizard(timePerCall, totalWaitTime);
-        try{
+        try {
           let leafletResponse = await requestWizard.fetchMeAResponse(targets, validateResponse);
-          if(leafletResponse){
+          if (leafletResponse && leafletResponse.status === 200) {
             leafletResponse.json().then(leaflet => {
               resolve(leaflet);
             });
             return;
           }
-          reject({errorCode: constants.errorCodes.unknown_error});
+          if (leafletResponse && leafletResponse.status === 504) {
+            reject({errorCode: constants.errorCodes.get_dsu_timeout});
+          } else {
+            reject({errorCode: constants.errorCodes.unknown_error});
+          }
+
           return;
-        }catch (err){
-          if(err.code && err.code === ERROR_TYPES.TIMEOUT){
+        } catch (err) {
+          if (err.code && err.code === ERROR_TYPES.TIMEOUT) {
             reject({errorCode: constants.errorCodes.leaflet_timeout});
             return;
           }

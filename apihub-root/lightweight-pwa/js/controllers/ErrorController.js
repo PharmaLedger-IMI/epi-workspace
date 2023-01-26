@@ -23,6 +23,10 @@ function ErrorController() {
       document.querySelector(".modal-title.header-title").innerHTML = getTranslation("product_not_loaded_title");
       document.querySelector(".page-content .error-text").innerHTML = `<p> <b>${getTranslation("product_not_loaded")} </b></p>`;
       break;
+    case "012":
+      document.querySelector(".modal-title.header-title").innerHTML = getTranslation("product_not_loaded_title");
+      document.querySelector(".page-content .error-text").innerHTML = `<p> <b>${getTranslation("system_busy")} </b></p>`;
+      break;
   }
   if (document.querySelector(".modal-title.header-title").innerText.length > 22) {
     document.querySelector(".modal-title.header-title").style.fontSize = "3vh";

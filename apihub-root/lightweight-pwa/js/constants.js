@@ -11,7 +11,8 @@ const constants = {
     "url_redirect_error": "008",
     "gtin_wrong_chars": "009",
     "unknown_error": "010",
-    "no_uploaded_epi": "011"
+    "no_uploaded_epi": "011",
+    "get_dsu_timeout": "012"
   }
 }
 export default constants;
