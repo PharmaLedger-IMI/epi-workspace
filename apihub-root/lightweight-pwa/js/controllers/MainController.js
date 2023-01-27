@@ -90,13 +90,11 @@ function MainController() {
 
 const mainController = new MainController();
 
-let storedEpiDomain = localStorage.getItem("_epiDomain_");
-if (!storedEpiDomain) {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  let epiDomain = urlParams.get("setdomain") || environment.epiDomain;
-  let lsEpiDomain = localStorage.setItem("_epiDomain_", epiDomain);
-}
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+let epiDomain = urlParams.get("setdomain") || localStorage.getItem("_epiDomain_") || environment.epiDomain;
+localStorage.setItem("_epiDomain_", epiDomain);
+
 mainController.checkOnboarding();
 
 window.mainController = mainController;
