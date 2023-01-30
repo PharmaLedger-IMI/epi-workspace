@@ -588,6 +588,9 @@ b {
 .modal-header.left-aligned-header .modal-title {
     text-align: left;
     margin-right: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #settings-modal .modal-header {
@@ -614,7 +617,8 @@ b {
     height: 94%;
     min-height: 960px;
     border-radius: 30px;
-    max-width: 420px;
+    max-width: 21.6vw;
+    min-width: 414px;
 }
 
 .modal-header .modal-icon {
