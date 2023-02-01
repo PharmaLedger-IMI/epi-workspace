@@ -118,8 +118,7 @@ class LeafletService {
       smartUrl = smartUrl.concatWith(`&batch=${this.batch}`);
     }
 
-    let header = new Headers();
-    header.append("epiProtocolVersion", environment.epiProtocolVersion || "1");
+    let header = {"epiProtocolVersion": environment.epiProtocolVersion || "1"};
 
     return smartUrl.getRequest({
       method: "GET", headers: header
