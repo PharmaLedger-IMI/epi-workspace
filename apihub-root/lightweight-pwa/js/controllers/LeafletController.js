@@ -113,9 +113,9 @@ function LeafletController() {
     // document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
     // document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];
     // let langList = `<div class="select-lang-text">${translations[window.currentLanguage]["select_lang_text"]}</div><select class="languages-list">`;
-    document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:flex !important');
     document.querySelector(".loader").setAttribute('style', 'display:none');
     if (result.availableLanguages.length >= 1) {
+      document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:flex !important');
       document.querySelector(".proceed-button.no-leaflet").setAttribute('style', 'display:none');
     //  document.querySelector(".text-section.no-leaflet").setAttribute('style', 'display:none');
       let languagesContainer = document.querySelector(".languages-container");

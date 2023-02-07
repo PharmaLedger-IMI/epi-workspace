@@ -65,6 +65,7 @@ function MainController() {
 
   this.closeModal = function () {
     document.querySelector("#settings-modal").setAttribute('style', 'display:none !important');
+    document.querySelector(".page-container").setAttribute('style', 'display:flex !important');
   }
   this.showModal = function (key) {
     this.toggleMenu();
@@ -74,7 +75,9 @@ function MainController() {
         }*/
 
     let modal = document.querySelector("#settings-modal");
+
     modal.setAttribute('style', 'display:flex !important');
+    document.querySelector(".page-container").setAttribute('style', 'display:none !important');
     let titleKey = key + "_modal_title";
     let subtitleKey = key + "_modal_subtitle";
     let contentKey = key + "_content";
