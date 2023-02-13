@@ -1,0 +1,34 @@
+#reslese v2023.0.3
+epi-workspace
+	opendsu-related:
+			EPI-210 EPI 129 - Recovery Passphrases are Encrypted on disk: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-210
+			EPI-208 Add log for EPI 127 - DSU adheres to PLA Cryptographic Standard: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-208
+			EPI-211 EPI 108 - Key Rotation - Log: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-211
+			EPI-266 - Cloud-agent cause by the instability of reading embedded files: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-266
+			EPI-191 - Max call stack size exceeded crash: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-191
+	octopus:
+			EPI-243 - Error handling in octopus/scripts/setEnv: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-243
+
+	lpwa:
+			EPI-124 - Privacy Policy & TC must be available in local languages : https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-124
+			EPI-188 - Fixing the performance issue with gtinOwner and leaflets component :https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-188
+			EPI-192 - Ensure that /leaflets api calls include the headers from bdns config: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-192
+			EPI-194 - in PWA general settings, the app version shows: 2023.0.1 instead of 2023.0.2: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-194
+			EPI-195 - Information/error message in T&C too: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-195
+			EPI-199 - Font size of the LWA and leaflet is not adjustable by the browser settings: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-199
+			EPI-202 - New message error in LPWA when the remote system is busy: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-202
+			EPI-253 - Not full error description is shown on screen in LWA: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-253
+
+gtin-resolver
+	EPI-192 - Ensure that /leaflets api calls include the headers from bdns config: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-192
+	EPI-202 - New message error in LPWA when the remote system is busy: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-202
+	EPI-213 - Errors while loading DSU after stress test (DEV Network): https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-213
+
+demiurge
+	EPI-236 Demiurge Urgent Bugs: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-236
+
+dsu-fabric
+	EPI-198 - Expiry date in format YYMM is shown in batch overview screen with DD = 00: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-198
+	EPI-200 - "Import Logs filter" removes "Message ID" and "Date" from screen: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-200
+	EPI-246 - The Error messages are not descriptive enough and don't show an error code: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-246
+	EPI-245 - New Products and batches created after the last backup was restored, cannot be created again: https://pharmaledger.atlassian.net/jira/software/c/projects/EPI/boards/2?modal=detail&selectedIssue=EPI-245
