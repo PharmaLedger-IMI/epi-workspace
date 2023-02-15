@@ -106,7 +106,6 @@ b {
     background: url(../images/app-icon.svg) no-repeat center;
     height: 13.5%;
     background-size: 25%;
-    margin: 0 35px;
 }
 
 .welcome-container {
@@ -127,6 +126,7 @@ b {
     justify-content: center;
     max-height: 70%;
     margin: 0 35px 24px;
+    font-size: calc(100% + 0.1vmin);
 }
 
 .extra-text {
@@ -170,7 +170,7 @@ b {
     position: relative;
     float: right;
     top: 40%;
-
+    right: 7%
 }
 
 .scan-button.terms-button {
@@ -231,7 +231,7 @@ b {
     flex-grow: 1;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
-    max-width: 300px;
+    max-width: 90%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -311,6 +311,7 @@ b {
     background-image: url(../images/good-icon.svg);
     background-size: contain;
     float: right;
+    background-repeat: no-repeat;
 }
 
 .explain-container {
@@ -328,7 +329,8 @@ b {
     max-width: 75%;
     align-self: center;
     position: relative;
-    align-items: stretch;
+    justify-content: end;
+    padding-bottom: 20%;
 }
 
 .scan-button {
@@ -345,15 +347,17 @@ b {
     font-size: 2vh;
     text-align: center;
     position: absolute;
-    bottom: 4vh;
     right: 4vh;
     padding: 1vh 4vh;
+}
+
+.scan-button.go-home-button {
+    bottom: 2vh;
 }
 
 .scan-button.full_width {
     position: relative;
     right: 0;
-    top: calc(100% - 12vh);
     padding: 2vh 10px;
 }
 
@@ -411,14 +415,14 @@ b {
     background: #fff;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    font-size: 2vh;
+    font-size: calc(100% + 0.3vmin);
 }
 
-#leaflet-content,
+/*#leaflet-content,
 #leaflet-content .select-lang-text,
 #leaflet-content .languages-list {
     font-size: calc(100% + 0.3vmin);
-}
+}*/
 
 #leaflet-content .select-lang-text {
     padding: 35px;
@@ -791,23 +795,34 @@ b {
         max-height: 100%;
         width: 100%;
         max-width: 100%;
-        overflow: hidden;
+        min-height: unset;
     }
 
     .icon-div {
-        top: -48px;
-        right: -48px;
-        width: 96px;
-        height: 96px;
+        top: -5%;
+        right: -14%;
+        width: 20%;
+        height: 5%;
     }
 
     .welcome-container {
         font-size: calc(100% + 5vmin);
     }
 
+    .terms-content-container {
+        font-size: calc(100% + 2vmin);
+    }
+
+    .scan-button-container {
+        padding-bottom: 5%;
+    }
+
     .scan-button {
         font-size: calc(100% + 3vmin);
-        bottom: 2vh;
+    }
+
+    .scan-button.go-home-button {
+        position: fixed;
     }
 
     .app-options-container {
@@ -839,7 +854,7 @@ b {
     }
 
     .content-container {
-        border-radius: 47px;
+        border-radius: 8%;
     }
 
     .explain-container {
@@ -880,6 +895,9 @@ b {
         margin-left: 1.5rem;
     }
 
+    .leaflet-page .page-content, .error-page .page-content {
+        font-size: calc(100% + 2vmin);
+    }
 
     .leaflet-page .product-name,
     .modal-header .modal-title,
@@ -889,7 +907,7 @@ b {
     }
 
     .leaflet-page .product-description, .error-page .header-subtitle, .error-page .page-content {
-        font-size: calc(100% + 2.2vmin);
+        font-size: calc(100% + 2.5vmin);
         border-radius: 0px;
     }
 
@@ -899,13 +917,13 @@ b {
 
 
     #leaflet-content {
-        width: 100vw;
+        width: 100%;
     }
 
     #leaflet-content,
     #leaflet-content .select-lang-text,
     #leaflet-content .languages-list {
-        font-size: calc(100% + 2.5vmin);
+        font-size: calc(100% + 1.5vmin);
     }
 
     #leaflet-content h5 {
