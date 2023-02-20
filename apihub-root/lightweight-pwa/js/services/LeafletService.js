@@ -71,9 +71,8 @@ class LeafletService {
     let anchoringServices = this.getAnchoringServices(bdnsResult, this.epiDomain);
     let validateResponse = function (response) {
       return new Promise((resolve) => {
-        //TODO: check gtinOwner API implementation in case of statusCode 500
-        if (response.status === 200 || response.status === 500) {
-          //we can consider a valid response both statusCodes due to how our gtin api works
+        if (response.status === 200) {
+          //we can consider a valid response only when 200 status code
           resolve(true);
           return;
         }
@@ -158,30 +157,53 @@ class LeafletService {
 
         let validateResponse = function (response) {
           return new Promise((resolve) => {
-            resolve(response);
+            if(response.status >= 500){
+              return resolve(false);
+            }
+            resolve(true);
           });
         }
 
         let requestWizard = new RequestWizard(timePerCall, totalWaitTime);
         try {
           let leafletResponse = await requestWizard.fetchMeAResponse(targets, validateResponse);
-          if (leafletResponse && leafletResponse.status === 200) {
-            leafletResponse.json().then(leaflet => {
-              resolve(leaflet);
-            });
-            return;
+          if(!leafletResponse){
+            return reject({errorCode: constants.errorCodes.unknown_error});
           }
-          if (leafletResponse && leafletResponse.status === 504) {
-            reject({errorCode: constants.errorCodes.get_dsu_timeout});
-          } else {
-            reject({errorCode: constants.errorCodes.unknown_error});
+          switch(leafletResponse.status){
+            case 400:
+              leafletResponse.text().then(errorJSON => {
+                try{
+                  errorJSON = JSON.parse(errorJSON);
+                }catch(err){
+                  errorJSON = {code: constants.errorCodes.unknown_error};
+                }
+                return reject({errorCode:errorJSON.code});
+              }).catch(err=>{
+                reject({errorCode: constants.errorCodes.unknown_error});
+              });
+            case 404:
+              return reject({errorCode: constants.errorCodes.no_uploaded_epi});
+            case 529:
+              return reject({errorCode: constants.errorCodes.get_dsu_timeout});
+            case 304:
+            case 200:
+              leafletResponse.json().then(leaflet => {
+                resolve(leaflet);
+              }).catch(err=>{
+                reject({errorCode: constants.errorCodes.unknown_error});
+              });
+              return;
+            default:
+              reject({errorCode: constants.errorCodes.unknown_error});
           }
-
-          return;
         } catch (err) {
           if (err.code && err.code === ERROR_TYPES.TIMEOUT) {
             reject({errorCode: constants.errorCodes.leaflet_timeout});
             return;
+          }
+          if(!err.errorCode){
+            err.errorCode = constants.errorCodes.unknown_error;
           }
           reject(err);
         }

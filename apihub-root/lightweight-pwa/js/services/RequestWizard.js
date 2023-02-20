@@ -65,13 +65,14 @@ export default function(smallTimeout, totalTimeout){
                 }
             }, totalTimeout);
 
-            for(let i=0; i<roundRobinService.count(); i++){
+           while(roundRobinService.count()){
                 answer = await fetchWithTimeout(roundRobinService.next().value);
                 //console.log("answer", answer);
                 if(answer || timeExpired){
                     break;
                 }
             }
+
             if(!timeExpired){
                 resolve(answer);
             }
