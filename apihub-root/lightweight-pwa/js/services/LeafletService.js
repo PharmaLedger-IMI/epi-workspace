@@ -111,7 +111,7 @@ class LeafletService {
   getLeafletRequest(leafletApiUrl) {
 
     let smartUrl = new LightSmartUrl(leafletApiUrl);
-    smartUrl = smartUrl.concatWith(`/leaflets/${this.epiDomain}?leaflet_type=leaflet&lang=${this.leafletLang}&gtin=${this.gtin}&expiry=${this.expiry}`);
+    smartUrl = smartUrl.concatWith(`/leaflets/${this.epiDomain}?leaflet_type=leaflet&lang=${this.leafletLang}&gtin=${this.gtin}`);
 
     if (this.batch) {
       smartUrl = smartUrl.concatWith(`&batch=${this.batch}`);
