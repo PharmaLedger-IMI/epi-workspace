@@ -198,6 +198,10 @@ class LeafletService {
               reject({errorCode: constants.errorCodes.unknown_error});
           }
         } catch (err) {
+          if (err.code && err.code === ERROR_TYPES.MISCONFIGURATION) {
+            reject({errorCode: constants.errorCodes.misconfiguration});
+            return;
+          }
           if (err.code && err.code === ERROR_TYPES.TIMEOUT) {
             reject({errorCode: constants.errorCodes.leaflet_timeout});
             return;
