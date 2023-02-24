@@ -103,6 +103,10 @@ class LeafletService {
           reject(new CustomError(constants.errorCodes.gto_timeout));
           return;
         }
+        if (err.code && err.code === ERROR_TYPES.MISCONFIGURATION) {
+          reject(new CustomError(constants.errorCodes.misconfiguration));
+          return;
+        }
         reject(err);
       }
     });
@@ -157,7 +161,7 @@ class LeafletService {
 
         let validateResponse = function (response) {
           return new Promise((resolve) => {
-            if(response.status >= 500){
+            if (response.status >= 500) {
               return resolve(false);
             }
             resolve(true);
@@ -167,19 +171,19 @@ class LeafletService {
         let requestWizard = new RequestWizard(timePerCall, totalWaitTime);
         try {
           let leafletResponse = await requestWizard.fetchMeAResponse(targets, validateResponse);
-          if(!leafletResponse){
+          if (!leafletResponse) {
             return reject({errorCode: constants.errorCodes.unknown_error});
           }
-          switch(leafletResponse.status){
+          switch (leafletResponse.status) {
             case 400:
               leafletResponse.text().then(errorJSON => {
-                try{
+                try {
                   errorJSON = JSON.parse(errorJSON);
-                }catch(err){
+                } catch (err) {
                   errorJSON = {code: constants.errorCodes.unknown_error};
                 }
-                return reject({errorCode:errorJSON.code});
-              }).catch(err=>{
+                return reject({errorCode: errorJSON.code});
+              }).catch(err => {
                 reject({errorCode: constants.errorCodes.unknown_error});
               });
             case 404:
@@ -190,7 +194,7 @@ class LeafletService {
             case 200:
               leafletResponse.json().then(leaflet => {
                 resolve(leaflet);
-              }).catch(err=>{
+              }).catch(err => {
                 reject({errorCode: constants.errorCodes.unknown_error});
               });
               return;
@@ -206,7 +210,7 @@ class LeafletService {
             reject({errorCode: constants.errorCodes.leaflet_timeout});
             return;
           }
-          if(!err.errorCode){
+          if (!err.errorCode) {
             err.errorCode = constants.errorCodes.unknown_error;
           }
           reject(err);
