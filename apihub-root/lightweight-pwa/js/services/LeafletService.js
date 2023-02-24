@@ -76,7 +76,10 @@ class LeafletService {
           resolve(true);
           return;
         }
-
+        if (response.status === 404) {
+          goToErrorPage(constants.errorCodes.gtin_not_created);
+          return;
+        }
         resolve(false);
       });
     }
@@ -163,6 +166,10 @@ class LeafletService {
           return new Promise((resolve) => {
             if (response.status >= 500) {
               return resolve(false);
+            }
+            if (response.status === 404) {
+              goToErrorPage(constants.errorCodes.no_uploaded_epi);
+              return;
             }
             resolve(true);
           });
