@@ -139,10 +139,10 @@ class LeafletService {
     return newArray;
   }
 
-  async getLeafletResult(timePerCall = 10000, totalWaitTime = 30000, gto_TimePerCall = 2000, gto_TotalWaitTime = 10000) {
+  async getLeafletResult(timePerCall = 10000, totalWaitTime = 60000, gto_TimePerCall = 2000, gto_TotalWaitTime = 10000) {
     return new Promise(async (resolve, reject) => {
       let leafletResult = null;
-      setTimeout(() => {
+      let globalTimer = setTimeout(() => {
         if (!leafletResult) {
           reject({errorCode: constants.errorCodes.leaflet_timeout});
           return
@@ -199,6 +199,9 @@ class LeafletService {
               return reject({errorCode: constants.errorCodes.get_dsu_timeout});
             case 304:
             case 200:
+              if(globalTimer){
+                clearTimeout(globalTimer);
+              }
               leafletResponse.json().then(leaflet => {
                 resolve(leaflet);
               }).catch(err => {
