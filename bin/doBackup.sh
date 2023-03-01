@@ -4,5 +4,5 @@ if [ -z $1 ] ;then
   exit 1
 fi
 
-cp -r ../apihub-root/external-volume/domains/epi/brick-storage external-volume/domains/epi/brick-storage-backup-$1
-cp -r ../apihub-root/external-volume/domains/vault external-volume/domains/vault-backup-$1
+cp -r ../apihub-root/external-volume/domains/epi/brick-storage ../apihub-root/external-volume/domains/epi/brick-storage-backup-$1
+cp -r ../apihub-root/external-volume/domains/vault ../apihub-root/external-volume/domains/vault-backup-$1
