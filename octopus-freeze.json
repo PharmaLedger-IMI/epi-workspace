@@ -26,8 +26,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "0002dd750e6603bfd361d2efb0729cd49a13c37e",
-                    "tag": "v1.0.5"
+                    "commit": "fe0c67eaf5cab8084260ce9dde1ac3cf23ed7e38",
+                    "tag": "v1.1.1"
                 },
                 {
                     "type": "execute",
@@ -60,8 +60,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "9928169d6944f5903c2b1dfb3355820bb2fb9193",
-                    "tag": "v1.2.5"
+                    "commit": "4e70ec4329b9c4f35fb1241adca5bf4e8e3d7dcd",
+                    "tag": "v1.3.1"
                 },
                 {
                     "type": "execute",
@@ -172,14 +172,12 @@
         },
         {
             "name": "themes/epi-theme",
-            "src": "https://github.com/PharmaLedger-IMI/epi-theme.git",
+            "src": "https://github.com/${GITHUB_ORGANIZATION}/epi-theme.git",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false,
-                    "commit": "ca478f5c0ae23ce070f00b1ced554ca26100a824",
-                    "tag": "v1.2.0"
+                    "collectLog": false
                 },
                 {
                     "type": "execute",
@@ -189,14 +187,12 @@
         },
         {
             "name": "gtin-resolver",
-            "src": "https://github.com/PharmaLedger-IMI/gtin-resolver.git",
+            "src": "https://github.com/${GITHUB_ORGANIZATION}/gtin-resolver.git",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false,
-                    "commit": "fe3dedd2d6bdaab754928098bd195e023639f852",
-                    "tag": "v1.2.4"
+                    "collectLog": false
                 },
                 {
                     "type": "execute",
@@ -220,14 +216,12 @@
         },
         {
             "name": "gtin-dsu-wizard",
-            "src": "https://github.com/PharmaLedger-IMI/gtin-dsu-wizard.git",
+            "src": "https://github.com/${GITHUB_ORGANIZATION}/gtin-dsu-wizard.git",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false,
-                    "commit": "47781ae43fe9fa3b5ae97f6949feb17e4dc246e0",
-                    "tag": "v1.2.1"
+                    "collectLog": false
                 },
                 {
                     "type": "execute",
@@ -253,32 +247,13 @@
             ]
         },
         {
-            "name": "express-demo",
-            "src": "https://github.com/PharmaLedger-IMI/express-demo",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "7d5f95429acd780a422054a84a75fd5c9380e735",
-                    "tag": "v1.0.0"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd express-demo && npm install"
-                }
-            ]
-        },
-        {
             "name": "ethadapter",
-            "src": "https://github.com/PharmaLedger-IMI/ethadapter",
+            "src": "https://github.com/opendsu/eth-adapter",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false,
-                    "commit": "f97b21154afdb959f8cf711fac787c983652372a",
-                    "tag": "v1.0.7"
+                    "collectLog": false
                 },
                 {
                     "type": "execute",
@@ -296,14 +271,12 @@
         },
         {
             "name": "dsu-fabric-ssapp",
-            "src": "https://github.com/PharmaLedger-IMI/dsu-fabric-ssapp.git",
+            "src": "https://github.com/${GITHUB_ORGANIZATION}/dsu-fabric-ssapp.git",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false,
-                    "commit": "a52eec01bbd3e324df2c67fa85422fd4d5ab02de",
-                    "tag": "v1.2.4"
+                    "collectLog": false
                 },
                 {
                     "type": "execute",
