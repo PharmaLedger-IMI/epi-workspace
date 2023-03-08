@@ -2,7 +2,10 @@ function SmartUrl(bdnsEntry){
     let url = typeof bdnsEntry === "string" ? bdnsEntry : bdnsEntry.url;
 
     function getOptions(options){
-        let opts = options || {headers:{}};
+        let opts = options || {};
+        if(!opts.headers){
+            opts.headers = {};
+        }
         if(url !== bdnsEntry && bdnsEntry.headers){
             Object.assign(opts.headers, bdnsEntry.headers);
         }

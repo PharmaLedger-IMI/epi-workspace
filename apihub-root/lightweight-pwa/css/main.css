@@ -44,8 +44,8 @@
 
 body {
     padding: 0;
-    width: 21.6%;
-    min-width: 414px;
+    width: 24%;
+    min-width: 435px;
     margin-right: auto;
     margin-left: auto;
     background-image: url("./../images/background.jpg");
@@ -90,7 +90,6 @@ b {
 .page-container {
     background: var(--olivegreen);
     color: #fff;
-    padding: 0px 35px;
     border-radius: 30px;
     align-self: center;
     max-height: 94%;
@@ -112,24 +111,30 @@ b {
 .welcome-container {
     align-self: center;
     font-family: 'DM Sans bold';
-    width: 100%;
     height: auto;
     text-align: center;
     line-height: 1.5em;
     font-size: calc(100% + 0.8vmin);
     padding-bottom: 14px;
+    margin: 0 35px;
 }
 
 .terms-content-container {
     flex-grow: 1;
-    margin-bottom: 24px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-height: 70%;
+    margin: 0 35px 24px;
+    font-size: calc(100% + 0.1vmin);
 }
 
 .extra-text {
     padding: 24px 24px 15px;
+}
+
+.terms-content {
+    padding: 0px 24px;
 }
 
 .terms-container {
@@ -165,12 +170,15 @@ b {
     position: relative;
     float: right;
     top: 40%;
-
+    right: 7%
 }
 
 .scan-button.terms-button {
     border: 1px solid #516266;
-    position: unset;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    padding: 1vh 2vh;
 }
 
 .terms-button.agree {
@@ -223,6 +231,10 @@ b {
     flex-grow: 1;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .forward-to-page .label:hover {
@@ -279,7 +291,7 @@ b {
     -o-animation: animatedBackground 5s linear infinite;
     animation-delay: 1s;
     animation-direction: alternate;
-    margin: 12% auto 6%;
+    margin: 12% 90px 6%;
     border-radius: 15px;
 }
 
@@ -299,12 +311,14 @@ b {
     background-image: url(../images/good-icon.svg);
     background-size: contain;
     float: right;
+    background-repeat: no-repeat;
 }
 
 .explain-container {
     align-self: center;
     text-align: center;
     font-size: calc(100% + 0.1vmin);
+    margin: 0 35px;
 }
 
 .scan-button-container {
@@ -315,7 +329,8 @@ b {
     max-width: 75%;
     align-self: center;
     position: relative;
-    align-items: stretch;
+    justify-content: end;
+    padding-bottom: 20%;
 }
 
 .scan-button {
@@ -329,18 +344,20 @@ b {
     box-shadow: -1px 8px 24px rgba(0, 0, 0, 0.16);
     border-radius: 5vh;
     font-family: 'DM Sans bold';
-    font-size: 1.5vh;
+    font-size: 2vh;
     text-align: center;
     position: absolute;
-    bottom: 4vh;
     right: 4vh;
     padding: 1vh 4vh;
+}
+
+.scan-button.go-home-button {
+    bottom: 2vh;
 }
 
 .scan-button.full_width {
     position: relative;
     right: 0;
-    top: calc(100% - 12vh);
     padding: 2vh 10px;
 }
 
@@ -398,14 +415,14 @@ b {
     background: #fff;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    font-size: 2vh;
+    font-size: calc(100% + 0.3vmin);
 }
 
-#leaflet-content,
+/*#leaflet-content,
 #leaflet-content .select-lang-text,
 #leaflet-content .languages-list {
     font-size: calc(100% + 0.3vmin);
-}
+}*/
 
 #leaflet-content .select-lang-text {
     padding: 35px;
@@ -537,8 +554,8 @@ b {
     justify-content: center;
     border-radius: 30px 30px 0px 0px;
     height: fit-content;
-    padding: 1.5vh;
-    min-height: 12%;
+    padding: 2.5rem 1.5rem;
+    min-height: 7%;
     height: fit-content;
 }
 
@@ -562,7 +579,7 @@ b {
 .leaflet-page .product-name,
 .modal-header .header-title,
 .modal-header .modal-title {
-    font-size: 3.5vh;
+    font-size: calc(100% + 1.7vh);
     font-family: 'DM Sans bold';
 }
 
@@ -584,8 +601,6 @@ b {
 #settings-modal .modal-header {
     background-color: var(--olivegreen);
     color: #fff;
-    padding: 1.5vh 1.5vh 0vh;
-    min-height: 14%;
 }
 
 #settings-modal .modal-header .close-modal {
@@ -601,11 +616,11 @@ b {
     justify-content: center;
     align-self: center;
     z-index: 100;
-    width: 21.6%;
-    min-width: 414px;
     height: 94%;
     min-height: 960px;
     border-radius: 30px;
+    width: 24%;
+    min-width: 435px;
 }
 
 .modal-header .modal-icon {
@@ -665,11 +680,9 @@ b {
 }
 
 .info-modal .modal-body .modal-content {
-    padding: 0;
-    width: 100%;
+    padding: 0 24px 74px;
     height: 100%;
     max-height: 100%;
-    overflow: hidden;
 }
 
 .info-modal .modal-content.help {
@@ -718,7 +731,7 @@ b {
 .modal-content .languages-container .language-item-container {
     font-family: 'DM Sans semi-bold';
     border: 0.5px solid #D0D5DD;
-    font-size: 2.5vh;
+    font-size: calc(100% + 0.3vmin);
     padding: 8px 10px 0px;
     line-height: 1;
     margin-bottom: 10px;
@@ -761,7 +774,7 @@ b {
     background: var(--olivegreen);
     border-radius: 62px;
     color: #fff;
-    font-size: 16px;
+    font-size: 2vh;
     font-family: 'DM Sans bold';
 }
 
@@ -782,23 +795,34 @@ b {
         max-height: 100%;
         width: 100%;
         max-width: 100%;
-        overflow: hidden;
+        min-height: unset;
     }
 
     .icon-div {
-        top: -48px;
-        right: -48px;
-        width: 96px;
-        height: 96px;
+        top: -5%;
+        right: -11%;
+        width: 6vh;
+        height: 4vh;
     }
 
     .welcome-container {
-        font-size: 3vh;
+        font-size: calc(100% + 5vmin);
+    }
+
+    .terms-content-container {
+        font-size: calc(100% + 2vmin);
+    }
+
+    .scan-button-container {
+        padding-bottom: 5%;
     }
 
     .scan-button {
-        font-size: 2.5vh;
-        bottom: 2vh;
+        font-size: calc(100% + 3vmin);
+    }
+
+    .scan-button.go-home-button {
+        position: fixed;
     }
 
     .app-options-container {
@@ -821,7 +845,7 @@ b {
     }
 
     .app-menu-container {
-        font-size: 2.2vh;
+        font-size: calc(100% + 2.5vmin);
         margin-top: 30px;
     }
 
@@ -830,15 +854,15 @@ b {
     }
 
     .content-container {
-        border-radius: 47px;
+        border-radius: 8%;
     }
 
     .explain-container {
-        font-size: 2.2vh;
+        font-size: calc(100% + 2.5vmin);
     }
 
     .scan-header {
-        font-size: 2vh;
+        font-size: calc(100% + 2.2vmin);
     }
 
     .scan-page #scanner-placeholder {
@@ -871,16 +895,19 @@ b {
         margin-left: 1.5rem;
     }
 
+    .leaflet-page .page-content, .error-page .page-content {
+        font-size: calc(100% + 2vmin);
+    }
 
     .leaflet-page .product-name,
     .modal-header .modal-title,
     .error-page .header-title {
-        font-size: 4vh;
+        font-size: calc(100% + 6vmin);
         font-family: 'DM Sans bold';
     }
 
     .leaflet-page .product-description, .error-page .header-subtitle, .error-page .page-content {
-        font-size: 2vh;
+        font-size: calc(100% + 2.5vmin);
         border-radius: 0px;
     }
 
@@ -890,14 +917,15 @@ b {
 
 
     #leaflet-content {
-        width: 100vw;
+        width: 100%;
     }
 
-    /*    #leaflet-content,
-        #leaflet-content .select-lang-text,
-        #leaflet-content .languages-list {
-            font-size: calc(100% + 2.5vmin);
-        }*/
+    #leaflet-content,
+    #leaflet-content .select-lang-text,
+    #leaflet-content .languages-list {
+        font-size: calc(100% + 1.5vmin);
+    }
+
     #leaflet-content h5 {
         margin-right: 4rem;
     }
@@ -950,8 +978,7 @@ b {
 
     .modal-header .modal-subtitle {
         position: relative;
-        font-size: 2vh;
-
+        font-size: calc(100% + 2.2vmin);
     }
 
     .modal-header .close-modal {
@@ -963,9 +990,9 @@ b {
 
     .modal-content {
         padding: 7%;
-        line-height: 3vh;
+        line-height: calc(100% + 4vmin);
         min-height: 42%;
-        font-size: 3vh;
+        font-size: calc(100% + 4vmin);
         border-radius: 30px;
         top: -30px;
     }
@@ -980,10 +1007,10 @@ b {
     }
 
     .modal-content .text-section {
-        font-size: 65%;
         font-family: 'DM Sans semi-bold';
         text-align: justify;
         padding-bottom: 7%;
+        font-size: 100%;
     }
 
     .modal-content .languages-container .language-item-container .language-flag {
@@ -1017,7 +1044,7 @@ b {
         background: var(--olivegreen);
         border-radius: 62px;
         color: #fff;
-        font-size: 2vh;
+        font-size: calc(100% + 1vmin);
         font-family: 'DM Sans bold';
     }
 
@@ -1034,8 +1061,8 @@ b {
 @media only screen and (orientation: landscape) {
     body {
         min-height: 1000px;
-        min-width: 414px;
-        width: 21.6%;
+        min-width: 435px;
+        width: 24%;
         margin: auto;
     }
 }

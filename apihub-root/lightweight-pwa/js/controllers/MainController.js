@@ -37,15 +37,6 @@ function MainController() {
     if (!usrAgreedTerms) {
       let welcomeText = getTranslation("onboarding_welcome");
       document.querySelector(".welcome-container").innerHTML = `<span>${welcomeText}</span>`;
-      document.querySelector(".terms-content-container").innerHTML = `
-      <div class="terms-container">
-        <span class="extra-text" translate="disagree_extra_text"></span>
-        <iframe style="width: 100%; height: 100%; margin-bottom: 24px; border: 0" src="https://app.termly.io/document/terms-of-use-for-website/76a94ec4-766a-4a6a-b7fe-c68834af6811"></iframe>  
-        <div class="terms-buttons-container">
-          <div class="scan-button terms-button disagree" onclick="mainController.submitTerms(false)">${getTranslation("disagree")}</div>
-          <div class="scan-button terms-button agree" onclick="mainController.submitTerms(true)">${getTranslation("agree")}</div>
-        </div>
-      </div>`;
       document.querySelector(".content-container").classList.add("hiddenElement");
       document.querySelector(".explain-container").classList.add("hiddenElement");
       document.querySelector(".scan-button-container").classList.add("hiddenElement");
@@ -74,6 +65,7 @@ function MainController() {
 
   this.closeModal = function () {
     document.querySelector("#settings-modal").setAttribute('style', 'display:none !important');
+    document.querySelector(".page-container").setAttribute('style', 'display:flex !important');
   }
   this.showModal = function (key) {
     this.toggleMenu();
@@ -83,7 +75,9 @@ function MainController() {
         }*/
 
     let modal = document.querySelector("#settings-modal");
+
     modal.setAttribute('style', 'display:flex !important');
+    document.querySelector(".page-container").setAttribute('style', 'display:none !important');
     let titleKey = key + "_modal_title";
     let subtitleKey = key + "_modal_subtitle";
     let contentKey = key + "_content";
@@ -99,13 +93,11 @@ function MainController() {
 
 const mainController = new MainController();
 
-let storedEpiDomain = localStorage.getItem("_epiDomain_");
-if (!storedEpiDomain) {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  let epiDomain = urlParams.get("setdomain") || environment.epiDomain;
-  let lsEpiDomain = localStorage.setItem("_epiDomain_", epiDomain);
-}
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+let epiDomain = urlParams.get("setdomain") || localStorage.getItem("_epiDomain_") || environment.epiDomain;
+localStorage.setItem("_epiDomain_", epiDomain);
+
 mainController.checkOnboarding();
 
 window.mainController = mainController;

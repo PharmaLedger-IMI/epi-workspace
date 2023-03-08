@@ -32,6 +32,14 @@
         <span translate="welcome"></span>
     </div>
     <div class="terms-content-container">
+        <div class="terms-container">
+            <span class="extra-text" translate="disagree_extra_text"></span>
+            <div class="terms-content" translate="terms_content"></div>
+            <div class="terms-buttons-container">
+                <div class="scan-button terms-button disagree" onclick="mainController.submitTerms(false)" translate="disagree"></div>
+                <div class="scan-button terms-button agree" onclick="mainController.submitTerms(true)" translate="agree"></div>
+            </div>
+        </div>
     </div>
     <div class="content-container">
         <div class="icon-div"></div>
@@ -60,7 +68,7 @@
             <div class="generated-content-container"></div>
         </div>
     </div>
-    <div class="scan-button" onclick="mainController.goHome()" translate="go_home"></div>
+    <div class="scan-button go-home-button" onclick="mainController.goHome()" translate="go_home"></div>
 </div>
 </body>
 <script type="module">

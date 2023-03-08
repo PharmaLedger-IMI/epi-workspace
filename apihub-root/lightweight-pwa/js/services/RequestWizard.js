@@ -1,9 +1,12 @@
 import RandomRoundRobinService from "./RandomRoundRobinService.js";
 import CustomError from "../utils/CustomError.js";
 
+const FETCH_THRESHOLD = 5;
+
 const ERROR_TYPES = {
     "NO_DATA" : "no-data",
-    "TIMEOUT" : "not-able-to-finish"
+    "TIMEOUT" : "not-able-to-finish",
+    "MISCONFIGURATION" : "misconfiguration"
 }
 
 export {
@@ -65,13 +68,19 @@ export default function(smallTimeout, totalTimeout){
                 }
             }, totalTimeout);
 
-            for(let i=0; i<roundRobinService.count(); i++){
+            let counter = 0;
+           while(roundRobinService.count()){
+               counter++;
+               if(counter > FETCH_THRESHOLD){
+                   return reject(new CustomError(ERROR_TYPES.MISCONFIGURATION));
+               }
                 answer = await fetchWithTimeout(roundRobinService.next().value);
                 //console.log("answer", answer);
                 if(answer || timeExpired){
                     break;
                 }
             }
+
             if(!timeExpired){
                 resolve(answer);
             }
