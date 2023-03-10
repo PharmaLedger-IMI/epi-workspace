@@ -197,21 +197,6 @@
         ]
       },
       {
-        "name": "gtin-dsu-wizard",
-        "src": "https://github.com/${GITHUB_ORGANIZATION}/gtin-dsu-wizard.git",
-        "actions": [
-          {
-            "type": "smartClone",
-            "target": ".",
-            "collectLog": false
-          },
-          {
-            "type": "execute",
-            "cmd": "cd gtin-dsu-wizard && npm install"
-          }
-        ]
-      },
-      {
         "name": "themes/blue-fluorite-theme",
         "src": "https://github.com/opendsu/blue-fluorite-theme.git",
         "actions": [
