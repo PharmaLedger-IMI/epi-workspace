@@ -2,11 +2,63 @@
   {
     "messageType": "CreateEnclave",
     "enclaveName": "demiurgeSharedEnclave",
-    "enclaveType": "WalletDBEnclave"
+    "enclaveType": "WalletDBEnclave",
+    "enclaveIndexesMap": {
+      "demiurge_logs_table": [
+        "__timestamp"
+      ],
+      "groups_table": [
+        "__timestamp"
+      ],
+      "user_credentials_table": [
+        "memberDID",
+        "__timestamp"
+      ],
+      "groups_credentials_table": [
+        "groupDID",
+        "__timestamp"
+      ],
+      "group_databases_table": [
+        "__timestamp"
+      ],
+      "user_databases_table": [
+        "__timestamp"
+      ],
+      "governance_credentials": [
+        "__timestamp"
+      ],
+      "governance_my_votes": [
+        "__timestamp"
+      ],
+      "governance_organizations": [
+        "__timestamp"
+      ]
+    }
   },
   {
     "messageType": "CreateEnclave",
     "enclaveName": "epiEnclave",
-    "enclaveType": "WalletDBEnclave"
+    "enclaveType": "WalletDBEnclave",
+    "enclaveIndexesMap": {
+      "products": [
+        "gtin",
+        "__timestamp"
+      ],
+      "batches": [
+        "gtin",
+        "__timestamp"
+      ],
+      "import-logs": [
+        "__timestamp",
+        "status"
+      ],
+      "logs": [
+        "auditId",
+        "__timestamp"
+      ],
+      "login_logs": [
+        "__timestamp"
+      ]
+    }
   }
 ]
