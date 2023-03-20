@@ -5,7 +5,8 @@
     "enclaveType": "WalletDBEnclave",
     "enclaveIndexesMap": {
       "demiurge_logs_table": [
-        "__timestamp"
+        "__timestamp",
+        "userDID"
       ],
       "groups_table": [
         "__timestamp"
