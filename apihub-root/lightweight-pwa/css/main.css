@@ -1050,7 +1050,7 @@ b {
 
     .go-back-button {
         font-family: 'DM Sans bold';
-        font-size: 1.5vh;
+        font-size: calc(100% + 1vmin);
         line-height: 140%;
         text-align: center;
         color: #516266;
