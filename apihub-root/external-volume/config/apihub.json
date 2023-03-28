@@ -3,24 +3,13 @@
   "port": 8080,
   "preventRateLimit": true,
   "activeComponents": [
-    "virtualMQ",
-    "messaging",
-    "notifications",
-    "filesManager",
     "bdns",
-    "bricksLedger",
-    "bricksFabric",
     "bricking",
     "anchoring",
-    "dsu-wizard",
-    "gtin-dsu-wizard",
     "epi-mapping-engine",
     "epi-mapping-engine-results",
     "get-gtin-owner",
     "leaflet-web-api",
-    "acdc-reporting",
-    "requestForwarder",
-    "debugLogger",
     "mq",
     "secrets",
     "staticServer"
@@ -41,13 +30,6 @@
     "get-gtin-owner": {
       "module": "./../../gtin-resolver",
       "function": "getGTINOwner"
-    },
-    "acdc-reporting": {
-      "module": "./../../reporting-service/middleware",
-      "function": "Init"
-    },
-    "gtin-dsu-wizard": {
-      "module": "./../../gtin-dsu-wizard"
     },
     "staticServer": {
       "excludedFiles": [

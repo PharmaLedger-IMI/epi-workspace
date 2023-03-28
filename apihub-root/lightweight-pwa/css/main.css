@@ -688,6 +688,10 @@ b {
 .info-modal .modal-content.help {
     overflow: auto;
 }
+.info-modal .modal-content.about {
+    overflow: hidden;
+    padding: 0px;
+}
 
 .info-modal .modal-content.help > div {
     padding: 24px;
@@ -1050,7 +1054,7 @@ b {
 
     .go-back-button {
         font-family: 'DM Sans bold';
-        font-size: 1.5vh;
+        font-size: calc(100% + 1vmin);
         line-height: 140%;
         text-align: center;
         color: #516266;

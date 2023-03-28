@@ -31,6 +31,8 @@ jobs:
       with:
         repository: ''
     - run: npm run dev-install
+      env:
+        GITHUB_ORGANIZATION: ${{ github.event.repository.owner.login }}
     - run: cd .github && ./generateZipArchivesForStaticAnalysis.sh skipDateIdentifier
 
     - name: Backend Scan
