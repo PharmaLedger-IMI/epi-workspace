@@ -54,10 +54,12 @@
         "status"
       ],
       "logs": [
+        "gtin",
         "auditId",
         "__timestamp"
       ],
       "login_logs": [
+        "userId",
         "__timestamp"
       ]
     }
