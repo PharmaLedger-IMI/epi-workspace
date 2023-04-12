@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PharmaLedger-IMI/gtin-resolver.git"
+    "url": "git+https://github.com/pharmaledgerassoc/gtin-resolver.git"
   },
   "author": "",
   "license": "MIT",

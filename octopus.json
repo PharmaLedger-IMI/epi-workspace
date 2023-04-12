@@ -212,21 +212,6 @@
         ]
       },
       {
-        "name": "express-demo",
-        "src": "https://github.com/Pharmaledger-IMI/express-demo",
-        "actions": [
-          {
-            "type": "smartClone",
-            "target": ".",
-            "collectLog": false
-          },
-          {
-            "type": "execute",
-            "cmd": "cd express-demo && npm install"
-          }
-        ]
-      },
-      {
         "name": "ethadapter",
         "src": "https://github.com/opendsu/eth-adapter",
         "actions": [
@@ -590,25 +575,6 @@
           {
             "type": "execute",
             "cmd": "cd mobile/scan-app/android && npm install"
-          }
-        ]
-      },
-      {
-        "name": "mobile/scan-app/ios",
-        "src": "https://github.com/Pharmaledger-IMI/ios-edge-agent",
-        "actions": [
-          {
-            "type": "smartClone",
-            "target": ".",
-            "collectLog": false
-          },
-          {
-            "type": "execute",
-            "cmd": "cd mobile/scan-app/ios/PSKNodeServer && carthage bootstrap"
-          },
-          {
-            "type": "execute",
-            "cmd": "echo \"Continue with ipa builds\""
           }
         ]
       }
@@ -977,21 +943,6 @@
         ]
       },
       {
-        "name": "acdc-authentication-feature-template",
-        "src": "https://github.com/Pharmaledger-IMI/acdc-authentication-feature-template",
-        "actions": [
-          {
-            "type": "smartClone",
-            "target": ".",
-            "collectLog": false
-          },
-          {
-            "type": "execute",
-            "cmd": "cd acdc-authentication-feature-template && npm install"
-          }
-        ]
-      },
-      {
         "name": "truemedhemo-auth-feat-ssapp",
         "src": "https://github.com/TrueMedHemmo/acdc-authentication-feature-template",
         "actions": [
@@ -1005,70 +956,9 @@
             "cmd": "cd truemedhemo-auth-feat-ssapp && npm install"
           }
         ]
-      },
-      {
-          "name": "uniqode-auth-feat-ssapp",
-          "src": "https://github.com/Pharmaledger-IMI/pharma-incmlab.git",
-          "actions": [
-              {
-                  "type": "smartClone",
-                  "target": ".",
-                  "collectLog": false
-              },
-              {
-                  "type": "execute",
-                  "cmd": "cd uniqode-auth-feat-ssapp && npm install"
-              }
-          ]
       }
     ],
-    "install-dfm": [
-      {
-        "name": "acdc",
-        "src": "https://github.com/Pharmaledger-IMI/acdc-components.git",
-        "actions": [
-          {
-            "type": "smartClone",
-            "target": ".",
-            "collectLog": false
-          },
-          {
-            "type": "execute",
-            "cmd": "cd acdc && npm install"
-          },
-          {
-            "type": "execute",
-            "cmd": "cd acdc/backoffice-backend && npm install"
-          },
-          {
-            "type": "execute",
-            "cmd": "cd acdc/backoffice-frontend && npm install"
-          },
-          {
-            "type": "execute",
-            "cmd": "cd acdc/reporting-service && npm install"
-          },
-          {
-            "type": "execute",
-            "cmd": "cd acdc/native-integration && npm install"
-          },
-          {
-            "type": "execute",
-            "cmd": "cd acdc/pdm-web-components && npm install"
-          }
-        ]
-      },
-      {
-        "name": "dfm-reporting",
-        "src": "",
-        "actions": [
-          {
-            "type": "execute",
-            "cmd": "cd reporting-service && npm run build"
-          }
-        ]
-      }
-    ],
+
     "build-dfm": [
       {
         "name": "dfm-reporting",

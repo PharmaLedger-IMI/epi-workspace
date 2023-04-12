@@ -1,5 +1,5 @@
-[![Testing workflow](https://github.com/PharmaLedger-IMI/epi-workspace/actions/workflows/tests.yml/badge.svg)](https://github.com/PharmaLedger-IMI/epi-workspace/actions/workflows/tests.yml)
-[![Testing SSApps building workflow](https://github.com/PharmaLedger-IMI/epi-workspace/actions/workflows/test-build-processes.yml/badge.svg)](https://github.com/PharmaLedger-IMI/epi-workspace/actions/workflows/test-build-processes.yml)
+[![Testing workflow](https://github.com/pharmaledgerassoc/epi-workspace/actions/workflows/tests.yml/badge.svg)](https://github.com/pharmaledgerassoc/epi-workspace/actions/workflows/tests.yml)
+[![Testing SSApps building workflow](https://github.com/pharmaledgerassoc/epi-workspace/actions/workflows/test-build-processes.yml/badge.svg)](https://github.com/pharmaledgerassoc/epi-workspace/actions/workflows/test-build-processes.yml)
 # epi-workspace
 
 *epi-workspace*  bundles all the necessary dependencies for building and running EPI SSApps in a single package.
@@ -36,7 +36,7 @@ In order to use the workspace, we need to follow a list of steps presented below
 ### Step 1: Clone the workspace
 
 ```sh
-$ git clone https://github.com/PharmaLedger-IMI/epi-workspace.git
+$ git clone https://github.com/pharmaledgerassoc/epi-workspace.git
 ```
 
 After the repository was cloned, you must install all the dependencies.
@@ -125,7 +125,7 @@ be used to scan barcodes on drug's packages.
 Steps:
 1. start from a fresh install of the workspace.
 ```
-git clone https://github.com/PharmaLedger-IMI/epi-workspace
+git clone https://github.com/pharmaledgerassoc/epi-workspace
 cd epi-workspace
 ```
 2. ensure that env variable called DEV is set to true in env.json file
@@ -330,7 +330,7 @@ npm run build-acf-ssapps
 
 #### Commands Cheatsheet for ACF SSApps installation and development
 ```sh
-git clone http://github.com/pharmaledger-imi/epi-workspace
+git clone http://github.com/pharmaledgerassoc/epi-workspace
 cd epi-workspace
 npm run dev-install
 npm run install-mobile
