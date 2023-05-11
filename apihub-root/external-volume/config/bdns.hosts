@@ -1,110 +1,14 @@
 {
-  "default": {
+  "local.epi": {
     "replicas": [],
     "brickStorages": [
-      "$ORIGIN"
+      "http://127.0.0.1:8080"
     ],
     "anchoringServices": [
-      "$ORIGIN"
+      "http://127.0.0.1:8080"
     ],
     "notifications": [
-      "$ORIGIN"
-    ]
-  },
-  "epi": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
-    ]
-  },
-  "localhost.epi": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
-    ]
-  },
-  "dev.epi.axl": {
-      "replicas": [],
-      "brickStorages": [
-        "$ORIGIN"
-      ],
-      "anchoringServices": [
-        "$ORIGIN"
-      ],
-      "notifications": [
-        "$ORIGIN"
-      ]
-  },
-  "predefined": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
-    ]
-  },
-  "epidev": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
-    ]
-  },
-  "mah1.epidev": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
-    ]
-  },
-  "mah2.epidev": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
-    ]
-  },
-  "epiqa": {
-    "replicas": [],
-    "brickStorages": [
-      "$ORIGIN"
-    ],
-    "anchoringServices": [
-      "$ORIGIN"
-    ],
-    "notifications": [
-      "$ORIGIN"
+      "http://127.0.0.1:8080"
     ]
   },
   "vault": {
@@ -118,17 +22,5 @@
     "notifications": [
       "$ORIGIN"
     ]
-  },
-    "vault.nvs": {
-      "replicas": [],
-      "brickStorages": [
-        "$ORIGIN"
-      ],
-      "anchoringServices": [
-        "$ORIGIN"
-      ],
-      "notifications": [
-        "$ORIGIN"
-      ]
-    }
+  }
 }
