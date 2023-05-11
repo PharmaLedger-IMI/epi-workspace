@@ -1,5 +1,5 @@
 import XMLDisplayService from "../services/XMLDisplayService/XMLDisplayService.js"
-import {goToErrorPage, goToPage, isExpired, getExpiryTime} from "../utils/utils.js";
+import {goToErrorPage, goToPage, isExpired, getExpiryTime, setTextDirectionForLanguage} from "../utils/utils.js";
 import constants from "../constants.js"
 import LeafletService from "../services/LeafletService.js";
 import environment from "../../environment.js";
@@ -59,6 +59,7 @@ function LeafletController() {
     let lang = document.querySelector("input[name='languages']:checked").value
     this.leafletLang = lang;
     this.getLeaflet(lang);
+    setTextDirectionForLanguage(lang);
     document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:none !important');
   }
 
@@ -117,7 +118,7 @@ function LeafletController() {
     if (result.availableLanguages.length >= 1) {
       document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:flex !important');
       document.querySelector(".proceed-button.no-leaflet").setAttribute('style', 'display:none');
-    //  document.querySelector(".text-section.no-leaflet").setAttribute('style', 'display:none');
+      //  document.querySelector(".text-section.no-leaflet").setAttribute('style', 'display:none');
       let languagesContainer = document.querySelector(".languages-container");
       result.availableLanguages.forEach((lang, index) => {
         let langRadio = `<div class="flag-label-wrapper"><img src="./images/flags/${lang.value}.png" class="language-flag"/><span for="${lang.value}"> ${lang.label} - (${lang.nativeName})</span> </div><input type="radio" name="languages" ${index === 0 ? "checked" : ""} value="${lang.value}" id="${lang.value}">`;
@@ -135,7 +136,7 @@ function LeafletController() {
 }
 
 const leafletController = new LeafletController();
-leafletController.getLeaflet(window.currentLanguage || "en");
+leafletController.getLeaflet(localStorage.getItem("_appLang_") || "en");
 window.leafletController = leafletController;
 
 

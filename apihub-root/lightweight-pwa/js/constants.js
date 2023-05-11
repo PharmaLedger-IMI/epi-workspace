@@ -14,6 +14,8 @@ const constants = {
     "no_uploaded_epi": "011",
     "get_dsu_timeout": "012",
     "misconfiguration": "099"
-  }
+  },
+  rtlLangCodes: ["ar", "he"]
+  //other rtl language codes to be used for later:  "arc", "arz", "ckb", "dv", "fa", "ha", "he", "khw", "ks", "ps", "sd", "ur", "uz_AF", "yi"
 }
 export default constants;

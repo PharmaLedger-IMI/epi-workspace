@@ -688,6 +688,7 @@ b {
 .info-modal .modal-content.help {
     overflow: auto;
 }
+
 .info-modal .modal-content.about {
     overflow: hidden;
     padding: 0px;
@@ -751,7 +752,7 @@ b {
 .modal-content .languages-container .language-item-container .language-flag {
     vertical-align: baseline;
     width: 10%;
-    top: 5px;
+    top: 7px;
     position: relative;
     margin-right: 5px;
     border-radius: 8px;
@@ -790,6 +791,74 @@ b {
     text-align: center;
     color: #516266;
     margin-top: 24px;
+}
+
+body[dir="RTL"] .menu-icon {
+    right: 87%;
+    float: unset;
+}
+
+body[dir="RTL"] .app-menu-container {
+    text-align: right;
+    border-radius: 0px 14px 14px 14px;
+    right: 0px;
+}
+
+body[dir="RTL"] .app-menu-container:before {
+    border-right: 10px solid transparent;
+    border-left: 10px solid #fff;
+    right: calc(100% - 20px);
+}
+
+body[dir="RTL"] .forward-to-page .fwd-icon,
+body[dir="RTL"] .menu-icon {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+body[dir="RTL"] .modal-header .close-modal {
+    left: 24px;
+    right: unset;
+}
+
+body[dir="RTL"] .modal-container,
+body[dir="RTL"] .leaflet-page .page-content,
+body[dir="RTL"] .error-page .page-content {
+    text-align: right;
+}
+
+body[dir="RTL"] .scan-button.go-home-button {
+    left: 4vh;
+    right: unset;
+}
+
+body[dir="RTL"] .modal-header.left-aligned-header .modal-title {
+    margin-left: 12px;
+    margin-right: unset;
+}
+
+body[dir="RTL"] .terms-container .terms-buttons-container {
+    margin-right: 25px;
+}
+
+body[dir="RTL"] .modal-content .languages-container .language-item-container input {
+    margin-right: 90%;
+    margin-left: unset;
+}
+
+body[dir="RTL"] .leaflet-accordion-item:before {
+    float: unset;
+    background-position: bottom;
+    top: 1.35em;
+    display: block;
+    right: 94%;
+
+}
+
+body[dir="RTL"] #leaflet-content h5 {
+    margin-right: unset;
+    margin-block-start: unset;
+    padding-left: 10%;
 }
 
 @media only screen and (max-device-width: 900px) {
@@ -910,7 +979,9 @@ b {
         font-family: 'DM Sans bold';
     }
 
-    .leaflet-page .product-description, .error-page .header-subtitle, .error-page .page-content {
+    .leaflet-page .product-description,
+    .error-page .header-subtitle,
+    .error-page .page-content {
         font-size: calc(100% + 2.5vmin);
         border-radius: 0px;
     }

@@ -125,6 +125,11 @@ function goToErrorPage(errorCode) {
   goToPage(`/error.html?errorCode=${errCode}`)
 }
 
+function setTextDirectionForLanguage(lang){
+  if (constants.rtlLangCodes.find((rtlLAng) => rtlLAng === lang)) {
+    document.querySelector("body").setAttribute("dir", "RTL")
+  }
+}
 export {
   convertFromISOtoYYYY_HM,
   convertToLastMonthDay,
@@ -133,5 +138,6 @@ export {
   getExpiryTime,
   goToPage,
   validateGTIN,
-  goToErrorPage
+  goToErrorPage,
+  setTextDirectionForLanguage
 }
