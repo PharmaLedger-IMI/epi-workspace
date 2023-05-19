@@ -103,9 +103,20 @@ b {
 
 
 .icon-container {
-    background: url(../images/app-icon.svg) no-repeat center;
+    /*background: url(../images/app-icon.svg) no-repeat center;*/
     height: 13.5%;
     background-size: 25%;
+}
+
+.pharmaledger-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 130px;
+}
+
+.pharmaledger-logo>img {
+    width: 25%;
 }
 
 .welcome-container {
@@ -117,6 +128,11 @@ b {
     font-size: calc(100% + 0.8vmin);
     padding-bottom: 14px;
     margin: 0 35px;
+}
+
+.welcome-container h1 {
+    font-size: inherit;
+    margin: 0;
 }
 
 .terms-content-container {
@@ -170,7 +186,8 @@ b {
     position: relative;
     float: right;
     top: 40%;
-    right: 7%
+    right: 7%;
+    border: 0;
 }
 
 .scan-button.terms-button {
@@ -343,6 +360,7 @@ b {
     background: var(--mintgreen);
     box-shadow: -1px 8px 24px rgba(0, 0, 0, 0.16);
     border-radius: 5vh;
+    border: 0;
     font-family: 'DM Sans bold';
     font-size: 2vh;
     text-align: center;
@@ -390,6 +408,11 @@ b {
     padding-bottom: 4%;
     padding-left: 6%;
     padding-right: 6%;
+    background: transparent;
+    color: white;
+    border: 0;
+    font-family: 'DM Sans semi-bold';
+    font-size: 1em;
 }
 
 .page-container.error-page {
@@ -581,6 +604,7 @@ b {
 .modal-header .modal-title {
     font-size: calc(100% + 1.7vh);
     font-family: 'DM Sans bold';
+    margin: 0;
 }
 
 .leaflet-page .product-name {
@@ -661,6 +685,7 @@ b {
     width: 20px;
     right: 24px;
     top: 21px;
+    border: 0;
 }
 
 .modal-content .text-section {
@@ -729,6 +754,10 @@ b {
     padding: 0;
 }
 
+.modal-content.terms h2 {
+    font-size: inherit;
+}
+
 .modal-content .languages-container {
     overflow: hidden;
 }
@@ -775,9 +804,11 @@ b {
     padding: 8px;
     gap: 10px;
     height: 56px;
+    width: 100%;
     margin-top: 16px;
     background: var(--olivegreen);
     border-radius: 62px;
+    border: 0;
     color: #fff;
     font-size: 2vh;
     font-family: 'DM Sans bold';
