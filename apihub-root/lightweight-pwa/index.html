@@ -6,21 +6,24 @@
 <body>
 <div class="page-container">
     <div class="icon-container">
-        <div class="menu-icon" onclick="mainController.toggleMenu()"></div>
+        <div class="pharmaledger-logo">
+            <img src="images/app-icon.svg" alt="PharmaLedger Association Logo">
+        </div>
+        <button class="menu-icon" onclick="mainController.toggleMenu()"></button>
         <div class="app-menu-container hidden">
-            <div class="forward-to-page" onclick="mainController.showModal('terms')">
+            <div class="forward-to-page" onclick="mainController.showModal('terms')" role="button">
                 <div class="label" translate="fwd_terms"></div>
                 <div class="fwd-icon"></div>
             </div>
-            <div class="forward-to-page" onclick="mainController.showModal('privacy')">
+            <div class="forward-to-page" onclick="mainController.showModal('privacy')" role="button">
                 <div class="label" translate="fwd_privacy"></div>
                 <div class="fwd-icon"></div>
             </div>
-            <div class="forward-to-page" onclick="mainController.showModal('about')">
+            <div class="forward-to-page" onclick="mainController.showModal('about')" role="button">
                 <div class="label" translate="fwd_about"></div>
                 <div class="fwd-icon"></div>
             </div>
-            <div class="forward-to-page" onclick="mainController.showModal('help')">
+            <div class="forward-to-page" onclick="mainController.showModal('help')" role="button">
                 <div class="label" translate="fwd_help"></div>
                 <div class="fwd-icon"></div>
             </div>
@@ -29,15 +32,15 @@
         </div>
     </div>
     <div class="welcome-container">
-        <span translate="welcome"></span>
+        <h1 translate="welcome"></h1>
     </div>
     <div class="terms-content-container">
         <div class="terms-container">
             <span class="extra-text" translate="disagree_extra_text"></span>
             <div class="terms-content" translate="terms_content"></div>
             <div class="terms-buttons-container">
-                <div class="scan-button terms-button disagree" onclick="mainController.submitTerms(false)" translate="disagree"></div>
-                <div class="scan-button terms-button agree" onclick="mainController.submitTerms(true)" translate="agree"></div>
+                <button class="scan-button terms-button disagree" onclick="mainController.submitTerms(false)" translate="disagree"></button>
+                <button class="scan-button terms-button agree" onclick="mainController.submitTerms(true)" translate="agree"></button>
             </div>
         </div>
     </div>
@@ -48,9 +51,9 @@
         <span translate="scan_explain"></span>
     </div>
     <div class="scan-button-container">
-        <div class="scan-button full_width" onclick="mainController.scanHandler()">
+        <button class="scan-button full_width" onclick="mainController.scanHandler()">
             <span translate="scan_button"></span>
-        </div>
+        </button>
     </div>
 
 </div>
@@ -58,17 +61,17 @@
     <div class="modal-body">
         <div class="modal-header left-aligned-header">
             <div class="icon-title-container">
-                <div class="modal-title"></div>
+                <h1 class="modal-title"></h1>
                 <!--<div class="modal-icon"></div>-->
             </div>
             <div class="modal-subtitle"></div>
-            <div class="close-modal" onclick="mainController.closeModal()"></div>
+            <button class="close-modal" onclick="mainController.closeModal()"></button>
         </div>
         <div class="modal-content">
             <div class="generated-content-container"></div>
         </div>
     </div>
-    <div class="scan-button go-home-button" onclick="mainController.goHome()" translate="go_home"></div>
+    <button class="scan-button go-home-button" onclick="mainController.goHome()" translate="go_home"></button>
 </div>
 </body>
 <script type="module">
