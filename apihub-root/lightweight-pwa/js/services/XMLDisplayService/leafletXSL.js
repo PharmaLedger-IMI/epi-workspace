@@ -82,7 +82,7 @@ const defualtXslContent = `<?xml version="1.0" encoding="UTF-8"?>
                     <xsl:attribute name="sectionCode">
                         <xsl:value-of select="xs:code/@code"/>
                     </xsl:attribute>
-                    <h5>
+                    <h2>
                         <!--<xsl:value-of select="xs:code/@displayName"/>-->
                         <xsl:variable name="partialTitle" select="substring(xs:code/@displayName,2)"/>
                         <xsl:variable name="firstLetter" select="substring(xs:code/@displayName,1,1)"/>
@@ -91,7 +91,7 @@ const defualtXslContent = `<?xml version="1.0" encoding="UTF-8"?>
                                     select="concat($firstLetter,translate($partialTitle,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'))"/>
                         </xsl:variable>
                         <xsl:value-of select="$modifiedTitle"/>
-                    </h5>
+                    </h2>
                     <div class="leaflet-accordion-item-content">
                         <xsl:apply-templates select="@*|node()"/>
                     </div>
