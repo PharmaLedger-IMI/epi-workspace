@@ -19,7 +19,7 @@
             <div class="leaflet-content-wrapper">
                 <div id="leaflet-content">
                 </div>
-                <div class="scan-button go-home-button" onclick="leafletController.scanAgainHandler()" translate="scan_again"></div>
+                <button class="scan-button go-home-button" onclick="leafletController.scanAgainHandler()" translate="scan_again"></button>
             </div>
 
         </div>
@@ -30,11 +30,11 @@
         <div class="modal-header centred-header">
             <div class="icon-title-container">
                 <div class="modal-icon"></div>
-                <div class="modal-title" id="expired-title" translate="leaflet_expired_title"></div>
+                <h1 class="modal-title" id="expired-title" translate="leaflet_expired_title" role="alert"></h1>
             </div>
             <div class="close-modal" onclick="leafletController.closeModal('expired-modal')"></div>
         </div>
-        <div class="modal-content" translate="leaflet_expired_message"></div>
+        <div class="modal-content" translate="leaflet_expired_message" role="alert"></div>
     </div>
 </div>
 <div id="incorrect-date-modal" class="modal-container popup-modal error-modal">
@@ -54,16 +54,16 @@
         <div class="modal-header centred-header">
             <div class="icon-title-container">
                 <div class="modal-icon"></div>
-                <div class="modal-title" id="lang-title" translate="select_lang_title"></div>
+                <h1 class="modal-title" id="lang-title" translate="select_lang_title" role="alert"></h1>
             </div>
             <div class="close-modal" onclick="leafletController.closeModal('leaflet-lang-select')"></div>
         </div>
-        <div class="modal-content">
+        <div class="modal-content" role="alert">
             <div class="text-section has-leaflets" translate="leaflet_lang_select_message"></div>
            <!-- <div class="text-section no-leaflet" translate="no_leaflet_message"></div>-->
             <div class="languages-container"></div>
-            <div class="proceed-button has-leaflets" onclick="leafletController.getLangLeaflet()"
-                 translate="lang_proceed"></div>
+            <button class="proceed-button has-leaflets" onclick="leafletController.getLangLeaflet()"
+                 translate="lang_proceed"></button>
             <div class="proceed-button no-leaflet" onclick="leafletController.scanAgainHandler()"
                  translate="scan_again"></div>
             <div class="go-back-button go-home-button" onclick="leafletController.goHome()" translate="go_home"></div>
