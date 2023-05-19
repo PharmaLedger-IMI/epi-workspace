@@ -219,6 +219,7 @@ b {
     top: 10%;
     font-size: 1.2rem;
     box-shadow: 0px 15px 20px rgba(28, 34, 40, 0.3);
+    list-style-type: none;
 }
 
 .app-menu-container:before {
@@ -242,6 +243,11 @@ b {
 .forward-to-page {
     display: flex;
     justify-content: space-between;
+    margin: 6%;
+}
+
+.more-options-link {
+    margin: 6%;
 }
 
 .forward-to-page .label {
