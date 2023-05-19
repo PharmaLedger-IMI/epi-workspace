@@ -6,19 +6,19 @@
 <body>
 <div class="page-container scan-page">
     <div class="scan-header">
-        <div class="scan-cancel" translate="cancel" onclick="scanController.cancelHandler()" ></div>
-        <div class="camera-switch" onclick="scanController.switchCamera()" translate="change_camera"></div>
+        <button class="scan-cancel" translate="cancel" onclick="scanController.cancelHandler()" ></button>
+        <button class="camera-switch" onclick="scanController.switchCamera()" translate="change_camera"></button>
     </div>
     <div id="scan-error" class="modal-container error-modal popup-modal">
         <div class="modal-body">
             <div class="modal-header centred-header">
                 <div class="icon-title-container">
                     <div class="modal-icon"></div>
-                    <div class="modal-title" translate="scan_error_title"></div>
+                    <h1 class="modal-title" translate="scan_error_title" role="alert"></h1>
                 </div>
-                <div class="close-modal" onclick="scanController.closeModal('scan-error')"></div>
+                <button class="close-modal" onclick="scanController.closeModal('scan-error')"></button>
             </div>
-            <div class="modal-content" translate="camera_error_message">
+            <div class="modal-content" translate="camera_error_message" role="alert">
             </div>
 
         </div>
