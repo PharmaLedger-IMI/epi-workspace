@@ -82,9 +82,11 @@ function LeafletController() {
     if (modalId === "leaflet-lang-select") {
       goToPage("/index.html");
     }
+    document.getElementById("settings-modal").style.display = "block";
   }
 
   let showExpired = function () {
+    document.getElementById("settings-modal").style.display = "none";
     document.querySelector("#expired-modal").setAttribute('style', 'display:flex !important');
   }
   let showIncorrectDate = function () {
@@ -95,6 +97,7 @@ function LeafletController() {
   let self = this;
 
   let showXML = function (result) {
+    document.getElementById("settings-modal").style.display = "block";
     document.querySelector(".product-name").innerText = result.productData.name;
     document.querySelector(".product-description").innerText = result.productData.description;
     /* document.querySelector(".leaflet-title-icon").classList.remove("hiddenElement");*/
@@ -117,6 +120,7 @@ function LeafletController() {
   }
 
   let showAvailableLanguages = function (result) {
+    document.getElementById("settings-modal").style.display = "none";
     // document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
     // document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];
     // let langList = `<div class="select-lang-text">${translations[window.currentLanguage]["select_lang_text"]}</div><select class="languages-list">`;
