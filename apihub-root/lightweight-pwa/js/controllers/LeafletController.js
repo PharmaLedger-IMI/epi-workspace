@@ -47,6 +47,12 @@ function LeafletController() {
     accordionItems.forEach((accItem, index) => {
       accItem.addEventListener("click", (evt) => {
         accItem.classList.toggle("active");
+        if (accItem.classList.contains("active")) {
+          accItem.setAttribute('aria-expanded', "true");
+        }
+        else {
+          accItem.setAttribute('aria-expanded', "false");
+        }
         accItem.querySelector(".leaflet-accordion-item-content").addEventListener("click", (event) => {
           event.stopImmediatePropagation();
           event.stopPropagation();
