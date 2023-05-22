@@ -24,6 +24,7 @@
     "bind-wallet": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/bind --type=wallet\"",
     "server": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd opendsu-sdk && npm run start\"",
     "apihub": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd opendsu-sdk && npm run start\"",
+    "remote-enclave": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd opendsu-sdk && npm run remote-enclave\"",
     "watch": "node ./bin/watcher/watcher.js",
     "tests": "npm run test",
     "test": "node ./opendsu-sdk/bin/scripts/testrunner.js --config=./test-suites.json",
