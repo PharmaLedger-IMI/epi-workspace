@@ -29,7 +29,13 @@ function MainController() {
   }
 
   this.toggleMenu = function () {
-    document.querySelector(".app-menu-container").classList.toggle("hidden")
+    let menuContainer = document.querySelector(".app-menu-container");
+    console.log("AM INTRAT IN TOGGLEMENU")
+    menuContainer.classList.toggle("hidden");
+    document.querySelector(".scan-button-container .scan-button").setAttribute("tabindex", "-1");
+    if (menuContainer.classList.contains("hidden")) {
+      document.querySelector(".scan-button-container .scan-button").setAttribute("tabindex", "2");
+    }
   }
 
   this.checkOnboarding = function () {

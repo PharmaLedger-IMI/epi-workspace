@@ -1204,3 +1204,7 @@ body[dir="RTL"] #leaflet-content h5 {
         height: 14%;
     }
 }
+
+.ignore-tab {
+    tab-index: -1;
+}
