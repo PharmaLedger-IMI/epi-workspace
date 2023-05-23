@@ -1211,3 +1211,9 @@ body[dir="RTL"] #leaflet-content h5 {
 .ignore-tab {
     tab-index: -1;
 }
+
+@media only screen and (max-width: 435px) {
+    body {
+        min-width: 300px;
+    }
+}
