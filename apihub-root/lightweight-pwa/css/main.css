@@ -828,6 +828,9 @@ b {
     text-align: center;
     color: #516266;
     margin-top: 24px;
+    width: 100%;
+    border: 0;
+    background: none;
 }
 
 body[dir="RTL"] .menu-icon {
