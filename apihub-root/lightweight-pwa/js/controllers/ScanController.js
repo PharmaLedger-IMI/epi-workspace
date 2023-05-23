@@ -20,11 +20,17 @@ function ScanController() {
 
   this.closeModal = function (modalId) {
     document.querySelector("#" + modalId).setAttribute('style', 'display:none !important');
+    if (document.querySelector("#scan-error").style.display === 'none') {
+      document.querySelector(".scan-cancel").setAttribute("tabindex", "1");
+      document.querySelector(".camera-switch").setAttribute("tabindex", "2");
+    }
   }
 
   this.redirectToError = function (err) {
     console.log("Error on scanService ", err);
     let modal = document.querySelector("#scan-error")
+    document.querySelector(".scan-cancel").setAttribute("tabindex", "-1");
+    document.querySelector(".camera-switch").setAttribute("tabindex", "-1");
     if (err.scanResult) {
       modal.querySelector(".modal-title").innerHTML = getTranslation("scan_parse_error");
       modal.querySelector(".modal-content").innerHTML = `<div>${getTranslation("scan_parse_error_message")}  ${err.scanResult}</div>`;
