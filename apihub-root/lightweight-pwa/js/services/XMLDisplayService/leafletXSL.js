@@ -78,7 +78,7 @@ const defualtXslContent = `<?xml version="1.0" encoding="UTF-8"?>
     <xsl:template match="xs:section">
         <xsl:choose>
             <xsl:when test="xs:code/@displayName != 'SPL LISTING DATA ELEMENTS SECTION'">
-                <div class="leaflet-accordion-item" role="button" aria-expanded="false">
+                <div class="leaflet-accordion-item" role="button" tabindex="1" aria-expanded="false">
                     <xsl:attribute name="sectionCode">
                         <xsl:value-of select="xs:code/@code"/>
                     </xsl:attribute>
