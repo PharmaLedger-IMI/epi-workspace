@@ -115,7 +115,7 @@ b {
     min-height: 130px;
 }
 
-.pharmaledger-logo>img {
+.pharmaledger-logo > img {
     width: 25%;
 }
 
@@ -1184,25 +1184,32 @@ body[dir="RTL"] #leaflet-content h5 {
         background-position: center center;
         background-size: cover;
     }
+
     .modal-header.centered-header {
         height: 48vh;
         border-top-left-radius: inherit;
         border-top-right-radius: inherit;
     }
+
     .modal-container {
         position: relative;
+        max-height: 94%;
     }
+
     .popup-modal .modal-content {
         border-radius: inherit;
         top: -22px;
     }
+
     .modal-header .close-modal {
         height: 3vw;
         width: 3vw;
     }
+
     .scan-button.go-home-button {
         position: absolute;
     }
+
     .proceed-button {
         height: 14%;
     }
