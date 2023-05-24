@@ -78,7 +78,7 @@ const defualtXslContent = `<?xml version="1.0" encoding="UTF-8"?>
     <xsl:template match="xs:section">
         <xsl:choose>
             <xsl:when test="xs:code/@displayName != 'SPL LISTING DATA ELEMENTS SECTION'">
-                <div class="leaflet-accordion-item" role="button" aria-expanded="false">
+                <div class="leaflet-accordion-item" role="button" tabindex="0" aria-expanded="false">
                     <xsl:attribute name="sectionCode">
                         <xsl:value-of select="xs:code/@code"/>
                     </xsl:attribute>
@@ -271,7 +271,7 @@ const acordisXslContent =  `<?xml version="1.0" encoding="UTF-8"?>
         <div style="display:none;" class="leaflet_hidden_section ignore_from_ui"><xsl:apply-templates select="@class|node()"/></div>
     </xsl:template>
     <xsl:template match="document/section">
-        <div class="section leaflet-accordion-item">
+        <div class="section leaflet-accordion-item" role="button" tabindex="0" aria-expanded="false">
             <xsl:apply-templates select="header"/>
                 <div class="leaflet-accordion-item-content">
                      <xsl:apply-templates select="*[not(self::header)]"/>

@@ -32,6 +32,14 @@ function MainController() {
     let menuContainer = document.querySelector(".app-menu-container");
     menuContainer.classList.toggle("hidden");
     document.querySelector(".scan-button-container .scan-button").setAttribute("tabindex", "-1");
+    let liElements = menuContainer.querySelectorAll('li');
+    liElements.forEach(function(li) {
+      li.addEventListener("keydown", function(event) {
+        if (event.key === "Enter" || event.key === " ") {
+          li.click();
+        }
+      });
+    });
     if (menuContainer.classList.contains("hidden")) {
       document.querySelector(".scan-button-container .scan-button").setAttribute("tabindex", "2");
     }

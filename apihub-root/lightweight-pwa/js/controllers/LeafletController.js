@@ -58,6 +58,21 @@ function LeafletController() {
           event.stopPropagation();
         })
       })
+      accItem.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          accItem.classList.toggle("active");
+          if (accItem.classList.contains("active")) {
+            accItem.setAttribute('aria-expanded', "true");
+          }
+          else {
+            accItem.setAttribute('aria-expanded', "false");
+          }
+        }
+        accItem.querySelector(".leaflet-accordion-item-content").addEventListener("keydown", (event) => {
+          event.stopImmediatePropagation();
+          event.stopPropagation();
+        })
+      })
     })
   }
 
