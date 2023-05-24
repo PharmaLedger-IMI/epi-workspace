@@ -271,7 +271,7 @@ const acordisXslContent =  `<?xml version="1.0" encoding="UTF-8"?>
         <div style="display:none;" class="leaflet_hidden_section ignore_from_ui"><xsl:apply-templates select="@class|node()"/></div>
     </xsl:template>
     <xsl:template match="document/section">
-        <div class="section leaflet-accordion-item">
+        <div class="section leaflet-accordion-item" role="button" tabindex="0" aria-expanded="false">
             <xsl:apply-templates select="header"/>
                 <div class="leaflet-accordion-item-content">
                      <xsl:apply-templates select="*[not(self::header)]"/>
