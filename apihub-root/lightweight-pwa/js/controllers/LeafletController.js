@@ -59,7 +59,7 @@ function LeafletController() {
         })
       })
       accItem.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
+        if (event.key === "Enter" || event.key === " ") {
           accItem.classList.toggle("active");
           if (accItem.classList.contains("active")) {
             accItem.setAttribute('aria-expanded', "true");
