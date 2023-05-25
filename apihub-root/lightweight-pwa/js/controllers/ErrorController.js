@@ -37,6 +37,13 @@ function ErrorController() {
   this.scanAgainHandler = function () {
     goToPage("/scan.html")
   }
+
+  let scanAgainButton = document.querySelector('[onclick="errorController.scanAgainHandler()"]');
+  scanAgainButton.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      scanAgainButton.click();
+    }
+  });
 }
 
 

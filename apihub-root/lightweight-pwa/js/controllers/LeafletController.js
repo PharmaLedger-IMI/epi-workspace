@@ -16,7 +16,7 @@ function LeafletController() {
     lsEpiDomain = lsEpiDomain || environment.epiDomain;
     let leafletService = new LeafletService(gtin, batch, expiry, lang, lsEpiDomain);
 
-    document.querySelector(".loader").setAttribute('style', 'display:block');
+    document.querySelector(".loader-container").setAttribute('style', 'display:block');
 
     leafletService.getLeafletResult().then((result) => {
       if (result.resultStatus === "xml_found") {
@@ -47,7 +47,28 @@ function LeafletController() {
     accordionItems.forEach((accItem, index) => {
       accItem.addEventListener("click", (evt) => {
         accItem.classList.toggle("active");
+        if (accItem.classList.contains("active")) {
+          accItem.setAttribute('aria-expanded', "true");
+        }
+        else {
+          accItem.setAttribute('aria-expanded', "false");
+        }
         accItem.querySelector(".leaflet-accordion-item-content").addEventListener("click", (event) => {
+          event.stopImmediatePropagation();
+          event.stopPropagation();
+        })
+      })
+      accItem.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          accItem.classList.toggle("active");
+          if (accItem.classList.contains("active")) {
+            accItem.setAttribute('aria-expanded', "true");
+          }
+          else {
+            accItem.setAttribute('aria-expanded', "false");
+          }
+        }
+        accItem.querySelector(".leaflet-accordion-item-content").addEventListener("keydown", (event) => {
           event.stopImmediatePropagation();
           event.stopPropagation();
         })
@@ -56,6 +77,7 @@ function LeafletController() {
   }
 
   this.getLangLeaflet = function () {
+    document.querySelector(".loader-container").setAttribute('style', 'display:block');
     let lang = document.querySelector("input[name='languages']:checked").value
     this.leafletLang = lang;
     this.getLeaflet(lang);
@@ -76,9 +98,12 @@ function LeafletController() {
     if (modalId === "leaflet-lang-select") {
       goToPage("/index.html");
     }
+    document.getElementById("settings-modal").style.display = "block";
   }
 
   let showExpired = function () {
+    document.getElementById("settings-modal").style.display = "none";
+    document.querySelector(".loader-container").setAttribute('style', 'display:none');
     document.querySelector("#expired-modal").setAttribute('style', 'display:flex !important');
   }
   let showIncorrectDate = function () {
@@ -89,6 +114,7 @@ function LeafletController() {
   let self = this;
 
   let showXML = function (result) {
+    document.getElementById("settings-modal").style.display = "block";
     document.querySelector(".product-name").innerText = result.productData.name;
     document.querySelector(".product-description").innerText = result.productData.description;
     /* document.querySelector(".leaflet-title-icon").classList.remove("hiddenElement");*/
@@ -107,14 +133,15 @@ function LeafletController() {
     let leafletLinks = document.querySelectorAll(".leaflet-link");
     xmlService.activateLeafletInnerLinks(leafletLinks);
     self.handleLeafletAccordion();
-    document.querySelector(".loader").setAttribute('style', 'display:none');
+    document.querySelector(".loader-container").setAttribute('style', 'display:none');
   }
 
   let showAvailableLanguages = function (result) {
+    document.getElementById("settings-modal").style.display = "none";
     // document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
     // document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];
     // let langList = `<div class="select-lang-text">${translations[window.currentLanguage]["select_lang_text"]}</div><select class="languages-list">`;
-    document.querySelector(".loader").setAttribute('style', 'display:none');
+    document.querySelector(".loader-container").setAttribute('style', 'display:none');
     if (result.availableLanguages.length >= 1) {
       document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:flex !important');
       document.querySelector(".proceed-button.no-leaflet").setAttribute('style', 'display:none');
@@ -135,6 +162,7 @@ function LeafletController() {
   }
 }
 
+document.querySelector(".loader-container").setAttribute('style', 'display:block');
 const leafletController = new LeafletController();
 leafletController.getLeaflet(localStorage.getItem("_appLang_") || "en");
 window.leafletController = leafletController;

@@ -5,6 +5,11 @@
 </head>
 
 <body>
+
+<div class="loader-container">
+    <div class="loader"></div>
+</div>
+
 <div id="settings-modal" class="page-container leaflet-page info-modal">
     <div class="modal-body">
         <div class="page-header modal-header left-aligned-header">
@@ -15,7 +20,6 @@
             <div class="product-description"></div>
         </div>
         <div class="page-content">
-            <div class="loader"></div>
             <div class="leaflet-content-wrapper">
                 <div id="leaflet-content">
                 </div>
@@ -27,19 +31,19 @@
 </div>
 <div id="expired-modal" class="modal-container popup-modal error-modal">
     <div class="modal-body">
-        <div class="modal-header centred-header">
+        <div class="modal-header centered-header">
             <div class="icon-title-container">
                 <div class="modal-icon"></div>
                 <h1 class="modal-title" id="expired-title" translate="leaflet_expired_title" role="alert"></h1>
             </div>
-            <div class="close-modal" onclick="leafletController.closeModal('expired-modal')"></div>
+            <button class="close-modal" onclick="leafletController.closeModal('expired-modal')" tabindex="0"></button>
         </div>
         <div class="modal-content" translate="leaflet_expired_message" role="alert"></div>
     </div>
 </div>
 <div id="incorrect-date-modal" class="modal-container popup-modal error-modal">
     <div class="modal-body">
-        <div class="modal-header centred-header">
+        <div class="modal-header centered-header">
             <div class="icon-title-container">
                 <div class="modal-icon"></div>
                 <div class="modal-title" id="incorrect-date-title" translate="leaflet_incorrect_date_title"></div>
@@ -51,12 +55,12 @@
 </div>
 <div id="leaflet-lang-select" class="modal-container popup-modal warning-modal">
     <div class="modal-body">
-        <div class="modal-header centred-header">
+        <div class="modal-header centered-header">
             <div class="icon-title-container">
                 <div class="modal-icon"></div>
                 <h1 class="modal-title" id="lang-title" translate="select_lang_title" role="alert"></h1>
             </div>
-            <div class="close-modal" onclick="leafletController.closeModal('leaflet-lang-select')"></div>
+            <button class="close-modal" onclick="leafletController.closeModal('leaflet-lang-select')"></button>
         </div>
         <div class="modal-content" role="alert">
             <div class="text-section has-leaflets" translate="leaflet_lang_select_message"></div>
@@ -66,7 +70,7 @@
                  translate="lang_proceed"></button>
             <div class="proceed-button no-leaflet" onclick="leafletController.scanAgainHandler()"
                  translate="scan_again"></div>
-            <div class="go-back-button go-home-button" onclick="leafletController.goHome()" translate="go_home"></div>
+            <button class="go-back-button go-home-button" onclick="leafletController.goHome()" translate="go_home"></button>
         </div>
 
     </div>
