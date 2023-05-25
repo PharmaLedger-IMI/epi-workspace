@@ -16,7 +16,7 @@ function LeafletController() {
     lsEpiDomain = lsEpiDomain || environment.epiDomain;
     let leafletService = new LeafletService(gtin, batch, expiry, lang, lsEpiDomain);
 
-    document.querySelector(".loader").setAttribute('style', 'display:block');
+    document.querySelector(".loader-container").setAttribute('style', 'display:block');
 
     leafletService.getLeafletResult().then((result) => {
       if (result.resultStatus === "xml_found") {
@@ -77,6 +77,7 @@ function LeafletController() {
   }
 
   this.getLangLeaflet = function () {
+    document.querySelector(".loader-container").setAttribute('style', 'display:block');
     let lang = document.querySelector("input[name='languages']:checked").value
     this.leafletLang = lang;
     this.getLeaflet(lang);
@@ -102,6 +103,7 @@ function LeafletController() {
 
   let showExpired = function () {
     document.getElementById("settings-modal").style.display = "none";
+    document.querySelector(".loader-container").setAttribute('style', 'display:none');
     document.querySelector("#expired-modal").setAttribute('style', 'display:flex !important');
   }
   let showIncorrectDate = function () {
@@ -131,7 +133,7 @@ function LeafletController() {
     let leafletLinks = document.querySelectorAll(".leaflet-link");
     xmlService.activateLeafletInnerLinks(leafletLinks);
     self.handleLeafletAccordion();
-    document.querySelector(".loader").setAttribute('style', 'display:none');
+    document.querySelector(".loader-container").setAttribute('style', 'display:none');
   }
 
   let showAvailableLanguages = function (result) {
@@ -139,7 +141,7 @@ function LeafletController() {
     // document.querySelector(".product-name").innerText = translations[window.currentLanguage]["select_lang_title"];
     // document.querySelector(".product-description").innerText = translations[window.currentLanguage]["select_lang_subtitle"];
     // let langList = `<div class="select-lang-text">${translations[window.currentLanguage]["select_lang_text"]}</div><select class="languages-list">`;
-    document.querySelector(".loader").setAttribute('style', 'display:none');
+    document.querySelector(".loader-container").setAttribute('style', 'display:none');
     if (result.availableLanguages.length >= 1) {
       document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:flex !important');
       document.querySelector(".proceed-button.no-leaflet").setAttribute('style', 'display:none');
@@ -160,6 +162,7 @@ function LeafletController() {
   }
 }
 
+document.querySelector(".loader-container").setAttribute('style', 'display:block');
 const leafletController = new LeafletController();
 leafletController.getLeaflet(localStorage.getItem("_appLang_") || "en");
 window.leafletController = leafletController;

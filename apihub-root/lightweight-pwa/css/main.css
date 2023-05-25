@@ -628,6 +628,10 @@ b {
     margin-right: 12px;
 }
 
+#settings-modal {
+    display: none;
+}
+
 #settings-modal .modal-header {
     background-color: var(--olivegreen);
     color: #fff;
@@ -901,14 +905,44 @@ body[dir="RTL"] #leaflet-content h5 {
     padding-left: 10%;
 }
 
+.loader-container {
+    position: absolute;
+    display: none;
+    background: white;
+    height: 90%;
+    min-height: 960px;
+    border-radius: 30px;
+    width: 24%;
+    min-width: 435px;
+    align-self: center;
+    z-index: 100;
+}
+
 @media only screen and (max-device-width: 768px) {
     body, .page-container {
-        background: var(--olivegreen);
+        background: white;
         height: 100%;
         max-height: 100%;
         width: 100%;
         max-width: 100%;
         min-height: unset;
+        margin: 0;
+    }
+
+    .page-container {
+        background: var(--olivegreen);
+    }
+
+    .leaflet-page .page-content, .error-page .page-content {
+        height: 93%;
+    }
+
+    .loader-container {
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
     }
 
     .icon-div {
