@@ -918,6 +918,10 @@ body[dir="RTL"] #leaflet-content h5 {
     z-index: 100;
 }
 
+.loader-container.scan-page-loader {
+    background: transparent;
+}
+
 @media only screen and (max-device-width: 768px) {
     body, .page-container {
         background: white;

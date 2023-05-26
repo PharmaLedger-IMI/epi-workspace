@@ -4,6 +4,11 @@
     <title>PharmaLedger</title>
 </head>
 <body>
+
+<div class="loader-container scan-page-loader">
+    <div class="loader"></div>
+</div>
+
 <div class="page-container scan-page">
     <div class="scan-header">
         <button class="scan-cancel" translate="cancel" onclick="scanController.cancelHandler()" ></button>
@@ -32,5 +37,5 @@
 </body>
 <script type="module">
   import {translate} from "./js/translations.js";
-  document.getElementsByTagName("body").onload = translate()
+  document.getElementsByTagName("body").onload = translate();
 </script>

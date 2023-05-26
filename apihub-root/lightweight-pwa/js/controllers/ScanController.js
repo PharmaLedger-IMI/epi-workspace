@@ -6,8 +6,9 @@ import constants from "../constants.js";
 
 function ScanController() {
   this.init = async function (forceNewCamera) {
+    document.querySelector(".loader-container").setAttribute('style', 'display:block');
     let placeHolderElement = document.querySelector("#scanner-placeholder");
-    if(!forceNewCamera){
+    if (!forceNewCamera) {
       this.scanService = new ScanService(placeHolderElement);
     }
     try {
@@ -16,6 +17,7 @@ function ScanController() {
       this.redirectToError(err);
     }
     await this.startScanning();
+    document.querySelector(".loader-container").setAttribute('style', 'display:none');
   }
 
   this.closeModal = function (modalId) {
