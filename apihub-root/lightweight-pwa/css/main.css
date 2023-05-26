@@ -939,6 +939,7 @@ body[dir="RTL"] #leaflet-content h5 {
 
     .page-container {
         background: var(--olivegreen);
+        border-radius: 0;
     }
 
     .leaflet-page .page-content, .error-page .page-content {
