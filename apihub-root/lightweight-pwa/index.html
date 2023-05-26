@@ -9,7 +9,7 @@
         <div class="pharmaledger-logo">
             <img src="images/app-icon.svg" alt="PharmaLedger Association Logo">
         </div>
-        <button class="menu-icon" onclick="mainController.toggleMenu()" tabindex="1"></button>
+        <button class="menu-icon" onclick="mainController.toggleMenu()" tabindex="1" aria-label="menu"></button>
         <ul class="app-menu-container hidden">
             <li class="forward-to-page" onclick="mainController.showModal('terms')" role="button" tabindex="2">
                 <div class="label" translate="fwd_terms"></div>
@@ -65,7 +65,7 @@
                 <!--<div class="modal-icon"></div>-->
             </div>
             <div class="modal-subtitle"></div>
-            <button class="close-modal" onclick="mainController.closeModal()"></button>
+            <button class="close-modal" onclick="mainController.closeModal()" aria-label="close"></button>
         </div>
         <div class="modal-content">
             <div class="generated-content-container"></div>

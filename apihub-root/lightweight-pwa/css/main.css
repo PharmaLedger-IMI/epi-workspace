@@ -1218,7 +1218,7 @@ body[dir="RTL"] #leaflet-content h5 {
 
 @media only screen and (orientation: landscape) {
     .modal-container {
-        position: relative;
+        position: absolute;
         min-height: unset;
     }
 

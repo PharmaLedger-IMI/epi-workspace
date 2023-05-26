@@ -36,7 +36,7 @@
                 <div class="modal-icon"></div>
                 <h1 class="modal-title" id="expired-title" translate="leaflet_expired_title" role="alert"></h1>
             </div>
-            <button class="close-modal" onclick="leafletController.closeModal('expired-modal')" tabindex="0"></button>
+            <button class="close-modal" onclick="leafletController.closeModal('expired-modal')" tabindex="0" aria-label="close error message"></button>
         </div>
         <div class="modal-content" translate="leaflet_expired_message" role="alert"></div>
     </div>
@@ -48,7 +48,7 @@
                 <div class="modal-icon"></div>
                 <div class="modal-title" id="incorrect-date-title" translate="leaflet_incorrect_date_title"></div>
             </div>
-            <div class="close-modal" onclick="leafletController.closeModal('incorrect-date-modal')"></div>
+            <div class="close-modal" onclick="leafletController.closeModal('incorrect-date-modal')" aria-label="close error modal"></div>
         </div>
         <div class="modal-content" translate="leaflet_incorrect_date_message"></div>
     </div>
@@ -60,7 +60,7 @@
                 <div class="modal-icon"></div>
                 <h1 class="modal-title" id="lang-title" translate="select_lang_title" role="alert"></h1>
             </div>
-            <button class="close-modal" onclick="leafletController.closeModal('leaflet-lang-select')"></button>
+            <button class="close-modal" onclick="leafletController.closeModal('leaflet-lang-select')" aria-label="close"></button>
         </div>
         <div class="modal-content" role="alert">
             <div class="text-section has-leaflets" translate="leaflet_lang_select_message"></div>
