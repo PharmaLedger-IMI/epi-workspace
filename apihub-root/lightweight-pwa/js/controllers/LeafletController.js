@@ -14,11 +14,15 @@ function LeafletController() {
     let expiry = urlParams.get("expiry");
     let lsEpiDomain = localStorage.getItem("_epiDomain_");
     lsEpiDomain = lsEpiDomain || environment.epiDomain;
+    let timePerCall = environment.timePerCall || 10000;
+    let totalWaitTime = environment.totalWaitTime || 60000;
+    let gto_TimePerCall = environment.gto_TimePerCall || 3000;
+    let gto_TotalWaitTime = environment.gto_TotalWaitTime || 15000;
     let leafletService = new LeafletService(gtin, batch, expiry, lang, lsEpiDomain);
 
     document.querySelector(".loader-container").setAttribute('style', 'display:block');
 
-    leafletService.getLeafletResult().then((result) => {
+    leafletService.getLeafletResult(timePerCall, totalWaitTime, gto_TimePerCall, gto_TotalWaitTime).then((result) => {
       if (result.resultStatus === "xml_found") {
         try {
           showXML(result);
@@ -49,8 +53,7 @@ function LeafletController() {
         accItem.classList.toggle("active");
         if (accItem.classList.contains("active")) {
           accItem.setAttribute('aria-expanded', "true");
-        }
-        else {
+        } else {
           accItem.setAttribute('aria-expanded', "false");
         }
         accItem.querySelector(".leaflet-accordion-item-content").addEventListener("click", (event) => {
@@ -63,8 +66,7 @@ function LeafletController() {
           accItem.classList.toggle("active");
           if (accItem.classList.contains("active")) {
             accItem.setAttribute('aria-expanded', "true");
-          }
-          else {
+          } else {
             accItem.setAttribute('aria-expanded', "false");
           }
         }

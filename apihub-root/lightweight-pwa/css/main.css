@@ -496,8 +496,8 @@ b {
 
 #leaflet-content img {
     width: 100%;
-    width: -moz-available;          /* WebKit-based browsers will ignore this. */
-    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: -moz-available; /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
     width: fill-available;
 }
 
@@ -937,6 +937,11 @@ body[dir="RTL"] #leaflet-content h5 {
         margin: 0;
     }
 
+    .pharmaledger-logo {
+        top: 25%;
+        position: relative;
+    }
+
     .page-container {
         background: var(--olivegreen);
         border-radius: 0;
@@ -1217,10 +1222,6 @@ body[dir="RTL"] #leaflet-content h5 {
 }
 
 @media only screen and (orientation: landscape) {
-    .modal-container {
-        position: absolute;
-        min-height: unset;
-    }
 
     body {
         min-height: 1000px;
@@ -1234,6 +1235,13 @@ body[dir="RTL"] #leaflet-content h5 {
         background-size: cover;
     }
 
+    .pharmaledger-logo {
+        top: 0;
+    }
+
+    .modal-container {
+        position: absolute;
+    }
 }
 
 @media only screen and (orientation: landscape) and (max-device-width: 768px) {

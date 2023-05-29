@@ -21,9 +21,11 @@ class LeafletService {
       goToErrorPage(gtinValidationResult.errorCode);
     }
   }
+
   setLeafletLanguage(lang) {
     this.leafletLang = lang;
   }
+
   async getBDNS() {
     return await new Promise((resolve, reject) => {
       fetch(environment.bdnsUrl)
@@ -39,6 +41,7 @@ class LeafletService {
       })
     })
   }
+
   getAnchoringServices(bdnsResult, domain) {
     try {
       if (!bdnsResult[domain] || !bdnsResult[domain]["anchoringServices"] || !Array.isArray(bdnsResult[domain]["anchoringServices"])) {
@@ -136,7 +139,7 @@ class LeafletService {
     return newArray;
   }
 
-  async getLeafletResult(timePerCall = 10000, totalWaitTime = 60000, gto_TimePerCall = 3000, gto_TotalWaitTime = 15000) {
+  async getLeafletResult(timePerCall, totalWaitTime, gto_TimePerCall, gto_TotalWaitTime) {
     return new Promise(async (resolve, reject) => {
       let leafletResult = null;
       let globalTimer = setTimeout(() => {
@@ -196,7 +199,7 @@ class LeafletService {
               return reject({errorCode: constants.errorCodes.get_dsu_timeout});
             case 304:
             case 200:
-              if(globalTimer){
+              if (globalTimer) {
                 clearTimeout(globalTimer);
               }
               leafletResponse.json().then(leaflet => {
