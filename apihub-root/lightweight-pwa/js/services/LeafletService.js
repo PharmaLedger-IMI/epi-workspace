@@ -18,7 +18,7 @@ class LeafletService {
 
     let gtinValidationResult = validateGTIN(this.gtin);
     if (!gtinValidationResult.isValid) {
-      goToErrorPage(gtinValidationResult.errorCode);
+      goToErrorPage(gtinValidationResult.errorCode, new Error(gtinValidationResult.message));
     }
   }
 
@@ -77,7 +77,7 @@ class LeafletService {
           return;
         }
         if (response.status === 404) {
-          goToErrorPage(constants.errorCodes.gtin_not_created);
+          goToErrorPage(constants.errorCodes.gtin_not_created, new Error(`Could not detect the owner of GTIN: ${GTIN}`));
           return;
         }
         resolve(false);
@@ -168,7 +168,7 @@ class LeafletService {
               return resolve(false);
             }
             if (response.status === 404) {
-              goToErrorPage(constants.errorCodes.no_uploaded_epi);
+              goToErrorPage(constants.errorCodes.no_uploaded_epi , new Error(`Product found but no associated leaflet for GTIN : ${this.gtin}`));
               return;
             }
             resolve(true);

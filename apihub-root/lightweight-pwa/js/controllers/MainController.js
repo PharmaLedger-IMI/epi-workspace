@@ -1,6 +1,7 @@
 import {goToPage} from "../utils/utils.js"
 import {getTranslation} from "../translations.js";
 import environment from "../../environment.js";
+import constants from "../constants.js";
 
 function MainController() {
 
@@ -108,8 +109,8 @@ const mainController = new MainController();
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-let epiDomain = urlParams.get("setdomain") || localStorage.getItem("_epiDomain_") || environment.epiDomain;
-localStorage.setItem("_epiDomain_", epiDomain);
+let epiDomain = urlParams.get("setdomain") || localStorage.getItem(constants.EPI_DOMAIN) || environment.epiDomain;
+localStorage.setItem(constants.EPI_DOMAIN, epiDomain);
 
 mainController.checkOnboarding();
 

@@ -1,8 +1,5 @@
 import constants from "../constants.js"
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
 
 function convertToLastMonthDay(date) {
   let expireDateConverted = date.replace("00", "01");
@@ -32,7 +29,7 @@ function getExpiryTime(expiry) {
     }
 
     //set expiry to the end of the day
-    expiryTime = new Date(normalizedExpiryDate).setHours(23,59,59,999);
+    expiryTime = new Date(normalizedExpiryDate).setHours(23, 59, 59, 999);
     if (expiryTime > 0) {
       return expiryTime
     }
@@ -62,19 +59,17 @@ function convertFromISOtoYYYY_HM(dateString, useFullMonthName, separator) {
     separatorString = separator;
   }
   if (useFullMonthName) {
-    return `${splitDate[2]} ${separatorString} ${monthNames[month - 1]} ${separatorString} ${splitDate[0]}`;
+    return `${splitDate[2]} ${separatorString} ${constants.monthNames[month - 1]} ${separatorString} ${splitDate[0]}`;
   }
-  return `${splitDate[2]} ${separatorString} ${monthNames[month - 1].slice(0, 3)} ${separatorString} ${splitDate[0]}`;
+  return `${splitDate[2]} ${separatorString} ${constants.monthNames[month - 1].slice(0, 3)} ${separatorString} ${splitDate[0]}`;
 }
 
 function validateGTIN(gtinValue) {
   const gtinMultiplicationArray = [3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3];
 
-  if (isNaN(gtinValue)) {
+  if (!gtinValue || isNaN(gtinValue)) {
     return {
-      isValid: false,
-      message: "GTIN should be a numeric value",
-      errorCode: constants.errorCodes.gtin_wrong_chars
+      isValid: false, message: "GTIN should be a numeric value", errorCode: constants.errorCodes.gtin_wrong_chars
     };
   }
   let gtinDigits = gtinValue.split("");
@@ -120,16 +115,82 @@ function goToPage(pageName) {
   window.location.href = (window.location.origin + pagePath);
 }
 
-function goToErrorPage(errorCode) {
+function goToErrorPage(errorCode, error) {
   let errCode = errorCode || "010";
+  if (!error) {
+    error = new Error("goToErrorPage called with partial args!")
+  }
+  console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+
   goToPage(`/error.html?errorCode=${errCode}`)
 }
 
-function setTextDirectionForLanguage(lang){
+function setTextDirectionForLanguage(lang) {
   if (constants.rtlLangCodes.find((rtlLAng) => rtlLAng === lang)) {
     document.querySelector("body").setAttribute("dir", "RTL")
   }
 }
+
+function isQuotaExceededError(err) {
+  return (err instanceof DOMException && (err.name === "QuotaExceededError" || // Firefox
+    err.name === "NS_ERROR_DOM_QUOTA_REACHED"));
+}
+
+function updateLocalStorage(obj, nrToKeep = 20) {
+  try {
+    localStorage.setItem(constants.DEV_DEBUG, JSON.stringify(obj))
+  } catch (e) {
+    if (isQuotaExceededError(e) && nrToKeep > 1) {
+      let devConsoleDebug = JSON.parse(localStorage.getItem(constants.DEV_DEBUG));
+      devConsoleDebug.tabs[sessionStorage.tabID] = devConsoleDebug.tabs[sessionStorage.tabID].slice(-1 * nrToKeep);
+      localStorage.setItem(constants.DEV_DEBUG, JSON.stringify(devConsoleDebug));
+      updateLocalStorage(obj, nrToKeep - 1);
+    } else {
+      console.log("Couldn't update localStorage", JSON.stringify(e, Object.getOwnPropertyNames(e)));
+    }
+  }
+}
+
+function monitorConsole() {
+  console.defaultLog = console.log;
+  console.defaultError = console.error;
+  console.defaultWarn = console.warn;
+
+  sessionStorage.tabID ? sessionStorage.tabID : sessionStorage.tabID = Math.random();
+
+  let devConsoleDebug = JSON.parse(localStorage.getItem(constants.DEV_DEBUG)) || {
+    tabs: {}
+  };
+
+  if (!devConsoleDebug.tabs[sessionStorage.tabID]) {
+    devConsoleDebug.tabs[sessionStorage.tabID] = [];
+  }
+
+  console.log = function () {
+    // default &  console.log()
+    console.defaultLog.apply(console, arguments);
+    // new & array data
+    devConsoleDebug.tabs[sessionStorage.tabID].push(arguments);
+    updateLocalStorage(devConsoleDebug);
+  }
+  console.error = function () {
+    // default &  console.error()
+    console.defaultError.apply(console, arguments);
+    // new & array data
+    devConsoleDebug.tabs[sessionStorage.tabID].push(arguments);
+    updateLocalStorage(devConsoleDebug);
+
+  }
+  console.warn = function () {
+    // default &  console.warn()
+    console.defaultWarn.apply(console, arguments);
+    // new & array data
+    devConsoleDebug.tabs[sessionStorage.tabID].push(arguments);
+    updateLocalStorage(devConsoleDebug);
+  }
+
+}
+
 export {
   convertFromISOtoYYYY_HM,
   convertToLastMonthDay,
@@ -139,5 +200,6 @@ export {
   goToPage,
   validateGTIN,
   goToErrorPage,
-  setTextDirectionForLanguage
+  setTextDirectionForLanguage,
+  monitorConsole
 }

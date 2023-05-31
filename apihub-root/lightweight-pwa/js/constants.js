@@ -1,4 +1,11 @@
 const constants = {
+  DEV_DEBUG: "_epiLog_",
+  EPI_DOMAIN: "_epiDomain_",
+  APP_LANG: "_appLang_",
+  monthNames: ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ],
+
   /*error code value matches with a key in translations. Adding a new code should sync with translations*/
   errorCodes: {
     "gtin_not_created": "001",

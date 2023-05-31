@@ -1,4 +1,6 @@
-import {convertFromISOtoYYYY_HM, goToErrorPage, goToPage, validateGTIN} from "../utils/utils.js";
+import {convertFromISOtoYYYY_HM, goToErrorPage, goToPage, validateGTIN, monitorConsole} from "../utils/utils.js";
+
+monitorConsole();
 import interpretGS1scan from "../utils/interpretGS1scan/interpretGS1scan.js";
 import ScanService from "../services/ScanService.js";
 import {getTranslation} from "../translations.js";
@@ -111,15 +113,15 @@ function ScanController() {
     } catch (err) {
       if (err.message) {
         if (err.message.includes("INVALID CHECK DIGIT:")) {
-          goToErrorPage(constants.errorCodes.gtin_wrong_digit);
+          goToErrorPage(constants.errorCodes.gtin_wrong_digit, err);
           return;
         }
         if (err.message.includes("SYNTAX ERROR:")) {
-          goToErrorPage(constants.errorCodes.gtin_wrong_chars);
+          goToErrorPage(constants.errorCodes.gtin_wrong_chars, err);
           return;
         }
       }
-      goToErrorPage(constants.errorCodes.unknown_error);
+      goToErrorPage(constants.errorCodes.unknown_error, err);
     }
   }
 
@@ -131,6 +133,7 @@ function ScanController() {
 }
 
 const scanController = new ScanController();
+
 scanController.init();
 
 window.scanController = scanController;

@@ -1,4 +1,5 @@
 import {setTextDirectionForLanguage} from "./utils/utils.js";
+import constants from "./constants.js";
 
 export const translations = {
   "en": {
@@ -524,7 +525,7 @@ export const translations = {
 export function changeLanguage(newLang) {
   let languages = Object.keys(translations);
   if (languages.find(lang => lang === newLang)) {
-    localStorage.setItem("_appLang_", newLang)
+    localStorage.setItem(constants.APP_LANG, newLang)
     translate();
   }
 }
@@ -532,9 +533,9 @@ export function changeLanguage(newLang) {
 function setDefaultLanguage() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  let appLang = urlParams.get("lang") || localStorage.getItem("_appLang_") || window.navigator.language.slice(0, 2);
+  let appLang = urlParams.get("lang") || localStorage.getItem(constants.APP_LANG) || window.navigator.language.slice(0, 2);
   appLang = translations[appLang] ? appLang : "en"
-  localStorage.setItem("_appLang_", appLang);
+  localStorage.setItem(constants.APP_LANG, appLang);
   setTextDirectionForLanguage(appLang);
 }
 
@@ -542,12 +543,12 @@ export function translate() {
   setDefaultLanguage();
   let matches = document.querySelectorAll("[translate]");
   matches.forEach((item) => {
-    item.innerHTML = translations[localStorage.getItem("_appLang_")][item.getAttribute('translate')];
+    item.innerHTML = translations[localStorage.getItem(constants.APP_LANG)][item.getAttribute('translate')];
   });
 }
 
 export function getTranslation(key) {
   setDefaultLanguage();
-  return translations[localStorage.getItem("_appLang_")][key];
+  return translations[localStorage.getItem(constants.APP_LANG)][key];
 }
 

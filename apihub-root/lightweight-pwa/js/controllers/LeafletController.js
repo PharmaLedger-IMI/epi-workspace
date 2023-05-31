@@ -1,5 +1,13 @@
 import XMLDisplayService from "../services/XMLDisplayService/XMLDisplayService.js"
-import {goToErrorPage, goToPage, isExpired, getExpiryTime, setTextDirectionForLanguage} from "../utils/utils.js";
+import {
+  goToErrorPage,
+  goToPage,
+  isExpired,
+  getExpiryTime,
+  setTextDirectionForLanguage,
+  monitorConsole
+} from "../utils/utils.js";
+monitorConsole();
 import constants from "../constants.js"
 import LeafletService from "../services/LeafletService.js";
 import environment from "../../environment.js";
@@ -12,7 +20,7 @@ function LeafletController() {
     let gtin = urlParams.get("gtin");
     let batch = urlParams.get("batch");
     let expiry = urlParams.get("expiry");
-    let lsEpiDomain = localStorage.getItem("_epiDomain_");
+    let lsEpiDomain = localStorage.getItem(constants.EPI_DOMAIN);
     lsEpiDomain = lsEpiDomain || environment.epiDomain;
     let timePerCall = environment.timePerCall || 10000;
     let totalWaitTime = environment.totalWaitTime || 60000;
@@ -35,14 +43,14 @@ function LeafletController() {
             showIncorrectDate();
           }*/
         } catch (e) {
-          goToErrorPage(e.errorCode)
+          goToErrorPage(e.errorCode, e)
         }
       }
       if (result.resultStatus === "no_xml_for_lang") {
         showAvailableLanguages(result)
       }
     }).catch(err => {
-      goToErrorPage(err.errorCode)
+      goToErrorPage(err.errorCode, err)
     })
   };
 
@@ -155,9 +163,9 @@ function LeafletController() {
         radioFragment.classList.add("language-item-container");
         radioFragment.innerHTML = langRadio;
         languagesContainer.appendChild(radioFragment);
-      })
+      });
     } else {
-      goToErrorPage(constants.errorCodes.no_uploaded_epi);
+      goToErrorPage(constants.errorCodes.no_uploaded_epi, new Error(`Product found but no associated leaflet`));
       /*      document.querySelector(".proceed-button.has-leaflets").setAttribute('style', 'display:none');
             document.querySelector(".text-section.has-leaflets").setAttribute('style', 'display:none');*/
     }
@@ -166,7 +174,8 @@ function LeafletController() {
 
 document.querySelector(".loader-container").setAttribute('style', 'display:block');
 const leafletController = new LeafletController();
-leafletController.getLeaflet(localStorage.getItem("_appLang_") || "en");
+
+leafletController.getLeaflet(localStorage.getItem(constants.APP_LANG) || "en");
 window.leafletController = leafletController;
 
 
