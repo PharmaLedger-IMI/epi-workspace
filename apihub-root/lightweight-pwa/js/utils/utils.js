@@ -136,57 +136,53 @@ function isQuotaExceededError(err) {
     err.name === "NS_ERROR_DOM_QUOTA_REACHED"));
 }
 
-function updateLocalStorage(obj, nrToKeep = 20) {
+function updateLocalStorage(consoleArgs, nrToKeep = 20) {
   try {
-    localStorage.setItem(constants.DEV_DEBUG, JSON.stringify(obj))
+    let devConsoleDebug = JSON.parse(localStorage.getItem(constants.DEV_DEBUG));
+    devConsoleDebug.push({tabId: sessionStorage.tabID, ...consoleArgs});
+    localStorage.setItem(constants.DEV_DEBUG, JSON.stringify(devConsoleDebug));
+
   } catch (e) {
     if (isQuotaExceededError(e) && nrToKeep > 1) {
       let devConsoleDebug = JSON.parse(localStorage.getItem(constants.DEV_DEBUG));
-      devConsoleDebug.tabs[sessionStorage.tabID] = devConsoleDebug.tabs[sessionStorage.tabID].slice(-1 * nrToKeep);
+      devConsoleDebug = devConsoleDebug.slice(-1 * nrToKeep);
       localStorage.setItem(constants.DEV_DEBUG, JSON.stringify(devConsoleDebug));
-      updateLocalStorage(obj, nrToKeep - 1);
+      updateLocalStorage(consoleArgs, nrToKeep - 1);
     } else {
       console.log("Couldn't update localStorage", JSON.stringify(e, Object.getOwnPropertyNames(e)));
     }
   }
 }
 
-function monitorConsole() {
-  console.defaultLog = console.log;
-  console.defaultError = console.error;
-  console.defaultWarn = console.warn;
+function enableConsolePersistence() {
+  console.originalLogFnc = console.log;
+  console.originalErrorFnc = console.error;
+  console.originalWarnFnc = console.warn;
 
   sessionStorage.tabID ? sessionStorage.tabID : sessionStorage.tabID = Math.random();
 
-  let devConsoleDebug = JSON.parse(localStorage.getItem(constants.DEV_DEBUG)) || {
-    tabs: {}
-  };
-
-  if (!devConsoleDebug.tabs[sessionStorage.tabID]) {
-    devConsoleDebug.tabs[sessionStorage.tabID] = [];
+  if (!JSON.parse(localStorage.getItem(constants.DEV_DEBUG))) {
+    localStorage.setItem(constants.DEV_DEBUG, JSON.stringify([]))
   }
 
   console.log = function () {
     // default &  console.log()
-    console.defaultLog.apply(console, arguments);
+    console.originalLogFnc.apply(console, arguments);
     // new & array data
-    devConsoleDebug.tabs[sessionStorage.tabID].push(arguments);
-    updateLocalStorage(devConsoleDebug);
+    updateLocalStorage(arguments);
   }
   console.error = function () {
     // default &  console.error()
-    console.defaultError.apply(console, arguments);
+    console.originalErrorFnc.apply(console, arguments);
     // new & array data
-    devConsoleDebug.tabs[sessionStorage.tabID].push(arguments);
-    updateLocalStorage(devConsoleDebug);
+    updateLocalStorage(arguments);
 
   }
   console.warn = function () {
     // default &  console.warn()
-    console.defaultWarn.apply(console, arguments);
+    console.originalWarnFnc.apply(console, arguments);
     // new & array data
-    devConsoleDebug.tabs[sessionStorage.tabID].push(arguments);
-    updateLocalStorage(devConsoleDebug);
+    updateLocalStorage(arguments);
   }
 
 }
@@ -201,5 +197,5 @@ export {
   validateGTIN,
   goToErrorPage,
   setTextDirectionForLanguage,
-  monitorConsole
+  enableConsolePersistence
 }

@@ -5,9 +5,9 @@ import {
   isExpired,
   getExpiryTime,
   setTextDirectionForLanguage,
-  monitorConsole
+  enableConsolePersistence
 } from "../utils/utils.js";
-monitorConsole();
+enableConsolePersistence();
 import constants from "../constants.js"
 import LeafletService from "../services/LeafletService.js";
 import environment from "../../environment.js";

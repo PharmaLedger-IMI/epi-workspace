@@ -1,6 +1,6 @@
-import {convertFromISOtoYYYY_HM, goToErrorPage, goToPage, validateGTIN, monitorConsole} from "../utils/utils.js";
+import {convertFromISOtoYYYY_HM, goToErrorPage, goToPage, validateGTIN, enableConsolePersistence} from "../utils/utils.js";
 
-monitorConsole();
+enableConsolePersistence();
 import interpretGS1scan from "../utils/interpretGS1scan/interpretGS1scan.js";
 import ScanService from "../services/ScanService.js";
 import {getTranslation} from "../translations.js";
