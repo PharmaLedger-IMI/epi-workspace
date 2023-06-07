@@ -633,6 +633,7 @@ b {
 
 #settings-modal {
     display: none;
+    position: relative;
 }
 
 #settings-modal .modal-header {
@@ -646,7 +647,7 @@ b {
 }
 
 .modal-container {
-    position: absolute;
+    position: relative;
     display: none !important;
     background: rgba(0, 0, 0, 0.7);
     flex-direction: column;
@@ -657,6 +658,11 @@ b {
     min-height: 960px;
     border-radius: 30px;
     min-width: 435px;
+    width: 24%;
+}
+
+#scan-error {
+    position: absolute;
 }
 
 .modal-header .modal-icon {
@@ -1242,6 +1248,10 @@ body[dir="RTL"] #leaflet-content h5 {
 
     .modal-container {
         position: relative;
+    }
+
+    #scan-error {
+        position: absolute;
     }
 }
 

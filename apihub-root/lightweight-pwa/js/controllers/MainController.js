@@ -1,7 +1,10 @@
 import {goToPage} from "../utils/utils.js"
-import {getTranslation} from "../translations.js";
+import {getTranslation, translate} from "../translations.js";
 import environment from "../../environment.js";
 import constants from "../constants.js";
+
+
+document.getElementsByTagName("body").onload = translate();
 
 function MainController() {
 
@@ -34,8 +37,8 @@ function MainController() {
     menuContainer.classList.toggle("hidden");
     document.querySelector(".scan-button-container .scan-button").setAttribute("tabindex", "-1");
     let liElements = menuContainer.querySelectorAll('li');
-    liElements.forEach(function(li) {
-      li.addEventListener("keydown", function(event) {
+    liElements.forEach(function (li) {
+      li.addEventListener("keydown", function (event) {
         if (event.key === "Enter" || event.key === " ") {
           li.click();
         }
@@ -81,6 +84,7 @@ function MainController() {
     document.querySelector("#settings-modal").setAttribute('style', 'display:none !important');
     document.querySelector(".page-container").setAttribute('style', 'display:flex !important');
   }
+
   this.showModal = function (key) {
     this.toggleMenu();
     /*    if (key === "about") {
@@ -103,7 +107,28 @@ function MainController() {
     contentElement.innerHTML = getTranslation(contentKey);
   }
 
+  let addEventListeners = () => {
+    document.getElementById("hamburger-menu-button").addEventListener("click", this.toggleMenu)
+    document.querySelectorAll(".app-menu-container li.forward-to-page").forEach(item => {
+      item.addEventListener("click", (event) => {
+        this.showModal(event.currentTarget.getAttribute("modal-name"))
+      })
+    })
+    document.getElementById("disagree-button").addEventListener("click", () => {
+      this.submitTerms(false)
+    })
+    document.getElementById("agree-button").addEventListener("click", () => {
+      this.submitTerms(true)
+    })
+    document.getElementById("scan-button").addEventListener("click", this.scanHandler)
+    document.getElementById("close-modal-button").addEventListener("click", this.closeModal)
+    document.getElementById("go-home-button").addEventListener("click", this.goHome)
+
+
+  }
+  addEventListeners();
 }
+
 
 const mainController = new MainController();
 
@@ -115,3 +140,4 @@ localStorage.setItem(constants.EPI_DOMAIN, epiDomain);
 mainController.checkOnboarding();
 
 window.mainController = mainController;
+

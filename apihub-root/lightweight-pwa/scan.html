@@ -11,8 +11,8 @@
 
 <div class="page-container scan-page">
     <div class="scan-header">
-        <button class="scan-cancel" translate="cancel" onclick="scanController.cancelHandler()" ></button>
-        <button class="camera-switch" onclick="scanController.switchCamera()" translate="change_camera"></button>
+        <button id="cancel-scan-button" class="scan-cancel" translate="cancel"></button>
+        <button id="change-camera-button" class="camera-switch" translate="change_camera"></button>
     </div>
     <div id="scan-error" class="modal-container error-modal popup-modal">
         <div class="modal-body">
@@ -21,7 +21,8 @@
                     <div class="modal-icon"></div>
                     <h1 class="modal-title" translate="scan_error_title" role="alert"></h1>
                 </div>
-                <button class="close-modal" onclick="scanController.closeModal('scan-error')" aria-label="close error message"></button>
+                <button id="close-modal-button" class="close-modal" modal-id="scan-error"
+                        aria-label="close error message"></button>
             </div>
             <div class="modal-content" translate="camera_error_message" role="alert">
             </div>
@@ -35,7 +36,3 @@
 
 </div>
 </body>
-<script type="module">
-  import {translate} from "./js/translations.js";
-  document.getElementsByTagName("body").onload = translate();
-</script>

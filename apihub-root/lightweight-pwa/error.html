@@ -17,13 +17,9 @@
 
     <div class="page-content">
         <div class="error-text"></div>
-        <div class="scan-button go-home-button" onclick="errorController.scanAgainHandler()" translate="scan_again" tabindex="0"></div>
+        <div id="scan-again-button" class="scan-button go-home-button" translate="scan_again"
+             tabindex="0"></div>
     </div>
 </div>
 
 </body>
-<script type="module">
-  import {translate} from "./js/translations.js";
-
-  document.getElementsByTagName("body").onload = translate()
-</script>

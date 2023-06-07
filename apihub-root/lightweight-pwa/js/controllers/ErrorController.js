@@ -1,5 +1,7 @@
 import {goToPage} from "../utils/utils.js"
-import {getTranslation} from "../translations.js";
+import {getTranslation, translate} from "../translations.js";
+
+document.getElementsByTagName("body").onload = translate();
 
 function ErrorController() {
   const queryString = window.location.search;
@@ -38,15 +40,14 @@ function ErrorController() {
     goToPage("/scan.html")
   }
 
-  let scanAgainButton = document.querySelector('[onclick="errorController.scanAgainHandler()"]');
+  let scanAgainButton = document.getElementById("scan-again-button");
+  scanAgainButton.addEventListener("click", this.scanAgainHandler);
   scanAgainButton.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
-      scanAgainButton.click();
+      this.scanAgainHandler();
     }
   });
 }
 
-
 const errorController = new ErrorController();
-
 window.errorController = errorController;

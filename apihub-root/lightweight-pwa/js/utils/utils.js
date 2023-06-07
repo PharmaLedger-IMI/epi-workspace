@@ -197,5 +197,5 @@ export {
   validateGTIN,
   goToErrorPage,
   setTextDirectionForLanguage,
-  enableConsolePersistence
+  enableConsolePersistence,
 }

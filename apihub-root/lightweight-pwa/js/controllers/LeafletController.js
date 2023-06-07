@@ -1,20 +1,22 @@
-import XMLDisplayService from "../services/XMLDisplayService/XMLDisplayService.js"
 import {
-  goToErrorPage,
-  goToPage,
-  isExpired,
-  getExpiryTime,
-  setTextDirectionForLanguage,
-  enableConsolePersistence
+  goToErrorPage, goToPage, isExpired, setTextDirectionForLanguage, enableConsolePersistence
 } from "../utils/utils.js";
+
 enableConsolePersistence();
-import constants from "../constants.js"
+
+import {translate} from "../translations.js";
+
+document.getElementsByTagName("body").onload = translate();
+
+import XMLDisplayService from "../services/XMLDisplayService/XMLDisplayService.js";
+import constants from "../constants.js";
 import LeafletService from "../services/LeafletService.js";
 import environment from "../../environment.js";
 
+
 function LeafletController() {
 
-  this.getLeaflet = function (lang) {
+  let getLeaflet = function (lang) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let gtin = urlParams.get("gtin");
@@ -90,7 +92,7 @@ function LeafletController() {
     document.querySelector(".loader-container").setAttribute('style', 'display:block');
     let lang = document.querySelector("input[name='languages']:checked").value
     this.leafletLang = lang;
-    this.getLeaflet(lang);
+    getLeaflet(lang);
     setTextDirectionForLanguage(lang);
     document.querySelector("#leaflet-lang-select").setAttribute('style', 'display:none !important');
   }
@@ -170,12 +172,26 @@ function LeafletController() {
             document.querySelector(".text-section.has-leaflets").setAttribute('style', 'display:none');*/
     }
   }
+
+  let addEventListeners = () => {
+    document.getElementById("scan-again-button").addEventListener("click", this.scanAgainHandler);
+    document.getElementById("modal-scan-again-button").addEventListener("click", this.scanAgainHandler);
+    document.getElementById("go-back-button").addEventListener("click", this.goHome);
+    document.querySelectorAll(".modal-container.popup-modal .close-modal").forEach(item => {
+      item.addEventListener("click", (event) => {
+        this.closeModal(event.currentTarget.getAttribute("modal-id"))
+      })
+    })
+    document.getElementById("proceed-button").addEventListener("click", this.getLangLeaflet)
+
+  }
+  addEventListeners();
+  getLeaflet(localStorage.getItem(constants.APP_LANG) || "en");
+
 }
 
 document.querySelector(".loader-container").setAttribute('style', 'display:block');
 const leafletController = new LeafletController();
-
-leafletController.getLeaflet(localStorage.getItem(constants.APP_LANG) || "en");
 window.leafletController = leafletController;
 
 
