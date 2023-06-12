@@ -40,6 +40,10 @@ function ErrorController() {
     goToPage("/scan.html")
   }
 
+  this.goHomeHandler = function () {
+    goToPage("/index.html")
+  }
+
   let scanAgainButton = document.getElementById("scan-again-button");
   scanAgainButton.addEventListener("click", this.scanAgainHandler);
   scanAgainButton.addEventListener("keydown", (event) => {
