@@ -51,7 +51,7 @@ export const translations = {
       "<p>" +
       "    <b>EPI</b> is an abbreviation for <b>electronic product information.</b> It is an electronic version of the paper" +
       "    Product Information leaflet you typically find inside a pharmaceutical product package. In some cases, the" +
-      "    <b>EPI</b> may have replaced the paper leaflet" +
+      "    <b>EPI</b> may have replaced the paper leaflet." +
       "</p>" +
       "<p>" +
       "    <b>What is PharmaLedger?</b>" +
