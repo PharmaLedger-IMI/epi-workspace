@@ -32,21 +32,6 @@
         ]
       },
       {
-        "name": "leaflet-ssapp",
-        "src": "https://github.com/${GITHUB_ORGANIZATION}/leaflet-ssapp.git",
-        "actions": [
-          {
-            "type": "smartClone",
-            "target": ".",
-            "collectLog": false
-          },
-          {
-            "type": "execute",
-            "cmd": "cd leaflet-ssapp && npm install"
-          }
-        ]
-      },
-      {
         "name": "demiurge",
         "src": "https://github.com/OpenDSU/demiurge.git",
         "actions": [
@@ -78,29 +63,6 @@
             "type": "copy",
             "src": "apihub-root/demiurge-wallet/loader/loader-config.local.json-template",
             "target": "apihub-root/demiurge-wallet/loader/loader-config.local.json",
-            "options": {
-              "overwrite": true
-            }
-          }
-        ]
-      },
-      {
-        "name": "apihub-root/leaflet-wallet/loader",
-        "src": "http://github.com/opendsu/trust-loader.git",
-        "actions": [
-          {
-            "type": "smartClone",
-            "target": ".",
-            "collectLog": false
-          },
-          {
-            "type": "execute",
-            "cmd": "cd apihub-root/leaflet-wallet/loader && npm install"
-          },
-          {
-            "type": "copy",
-            "src": "apihub-root/leaflet-wallet/loader/loader-config.local.json-template",
-            "target": "apihub-root/leaflet-wallet/loader/loader-config.local.json",
             "options": {
               "overwrite": true
             }
@@ -309,10 +271,6 @@
         "actions": [
           {
             "type": "execute",
-            "cmd": "cd apihub-root/leaflet-wallet/loader && npm install"
-          },
-          {
-            "type": "execute",
             "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm install"
           },
           {
@@ -395,36 +353,6 @@
           {
             "type": "execute",
             "cmd": "cd themes/epi-theme && npm run build-dossier"
-          }
-        ]
-      },
-      {
-        "name": "leaflet-wallet_bind_to_leaflet-ssapp",
-        "src": "",
-        "actions": [
-          {
-            "type": "execute",
-            "cmd": "cd leaflet-ssapp && npm run build"
-          },
-          {
-            "type": "copySeed",
-            "src": "./leaflet-ssapp/seed",
-            "target": "./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
-            "options": {
-              "overwrite": true
-            }
-          },
-          {
-            "type": "copySeed",
-            "src": "./leaflet-ssapp/seed",
-            "target": "./apihub-root/external-volume/wallets/leaflet-wallet/wallet-patch/seed",
-            "options": {
-              "overwrite": true
-            }
-          },
-          {
-            "type": "execute",
-            "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/readme"
           }
         ]
       },
@@ -520,15 +448,6 @@
             "options": {
               "ignoreErrors": true
             }
-          },
-          {
-            "type": "copy",
-            "src": "./acdc/native-integration/build/bundles/default/camera.js",
-            "target": "./apihub-root/leaflet-wallet/loader/camera.js",
-            "options": {
-              "overwrite": true,
-              "ignoreErrors": true
-            }
           }
         ]
       },
@@ -564,15 +483,6 @@
           {
             "type": "execute",
             "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js postinstall\""
-          }
-        ]
-      },
-      {
-        "name": "leaflet-wallet-loader-build",
-        "actions": [
-          {
-            "type": "execute",
-            "cmd": "cd apihub-root/leaflet-wallet/loader && npm run build"
           }
         ]
       }
@@ -694,14 +604,6 @@
             "cmd": "cd reporting-service && npm run build"
           },
           {
-            "type": "copy",
-            "src": "./reporting-service/build/bundles/acdc.js",
-            "target": "./leaflet-ssapp/code/scripts/bundles/acdc.js",
-            "options": {
-              "overwrite": true
-            }
-          },
-          {
             "type": "execute",
             "cmd": "cd acdc/native-integration && npm run build",
             "options": {
@@ -715,26 +617,6 @@
       {
         "name": "prebuild",
         "actions": [
-          {
-            "type": "execute",
-            "cmd": "npm run build leaflet-ssapp"
-          },
-          {
-            "type": "copySeed",
-            "src": "./leaflet-ssapp/seed",
-            "target": "./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
-            "options": {
-              "overwrite": true
-            }
-          },
-          {
-            "type": "copySeed",
-            "src": "./leaflet-ssapp/seed",
-            "target": "./apihub-root/external-volume/wallets/leaflet-wallet/wallet-patch/seed",
-            "options": {
-              "overwrite": true
-            }
-          },
           {
             "type": "copy",
             "src": "./trust-loader-config",
@@ -807,11 +689,6 @@
               "overwrite": true,
               "ignoreErrors": true
             }
-          },
-          {
-              "type": "copy",
-              "src": "./leaflet-ssapp/code",
-              "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app"
           },
           {
             "type": "copy",
@@ -899,11 +776,6 @@
               "overwrite": true,
               "ignoreErrors": true
             }
-          },
-          {
-            "type": "copy",
-            "src": "./leaflet-ssapp/code",
-            "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app"
           },
           {
             "type": "copy",
@@ -1088,15 +960,6 @@
             "type": "execute",
             "cmd": "cd acdc/native-integration && npm run build",
             "options": {
-              "ignoreErrors": true
-            }
-          },
-          {
-            "type": "copy",
-            "src": "./acdc/native-integration/build/bundles/default/camera.js",
-            "target": "./apihub-root/leaflet-wallet/loader/camera.js",
-            "options": {
-              "overwrite": true,
               "ignoreErrors": true
             }
           }
