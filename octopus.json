@@ -254,14 +254,6 @@
           },
           {
             "type": "copy",
-            "src": "./opendsu-sdk/psknode/bundles/webshims.js",
-            "target": "./apihub-root/bundles/webshims.js",
-            "options": {
-              "overwrite": true
-            }
-          },
-          {
-            "type": "copy",
             "src": "./opendsu-sdk/psknode/bundles/loaderBoot.js",
             "target": "./apihub-root/bundles/loaderBoot.js",
             "options": {
