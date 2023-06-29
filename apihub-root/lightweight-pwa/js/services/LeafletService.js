@@ -162,7 +162,7 @@ class LeafletService {
         let leafletSources = this.getAnchoringServices(bdns, ownerDomain);
         let targets = this.prepareUrlsForLeafletCall(leafletSources);
 
-        let validateResponse = function (response) {
+        let validateResponse =  (response)=> {
           return new Promise((resolve) => {
             if (response.status >= 500) {
               return resolve(false);
