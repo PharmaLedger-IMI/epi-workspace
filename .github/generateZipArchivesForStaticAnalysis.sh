@@ -33,7 +33,6 @@ cd $initialPWD
 
 mkdir $targetFolder/common-browser-libs
 cp ../opendsu-sdk/psknode/bundles/iframeBoot.js $targetFolder/common-browser-libs
-cp ../opendsu-sdk/psknode/bundles/webshims.js $targetFolder/common-browser-libs
 
 cd $targetFolder/common-browser-libs
 zip -r "$targetFolder/CommonBrowserLibs$currentDate.zip" .
