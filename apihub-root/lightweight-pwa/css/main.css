@@ -785,19 +785,26 @@ b {
 }
 
 .flag-label-wrapper {
+    width: 85%;
+    position: relative;
+    margin-top: 10px;
+}
+.flag-label-wrapper label{
+    top: -3px;
+    position: relative;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 85%;
+    display: block;
 }
 
 .modal-content .languages-container .language-item-container .language-flag {
     vertical-align: baseline;
-    width: 10%;
-    top: 7px;
+    width: 29px;
+    top: 3px;
     position: relative;
     margin-right: 5px;
-    border-radius: 8px;
+    border-radius: 3px;
 }
 
 .modal-content .languages-container .language-item-container input {
@@ -1184,8 +1191,8 @@ body[dir="RTL"] #leaflet-content h5 {
     }
 
     .modal-content .languages-container .language-item-container .language-flag {
-        top: 16px;
         margin-left: 10px;
+        width: 10%;
     }
 
     .modal-content .languages-container .language-item-container {

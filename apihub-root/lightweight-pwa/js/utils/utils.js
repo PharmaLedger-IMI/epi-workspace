@@ -121,6 +121,7 @@ function goToErrorPage(errorCode, error) {
     error = new Error("goToErrorPage called with partial args!")
   }
   console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+  window.history.pushState({}, "", "index.html");
 
   goToPage(`/error.html?errorCode=${errCode}`)
 }
