@@ -32,7 +32,7 @@ cd .. && rm -rf octopus
 cd $initialPWD
 
 mkdir $targetFolder/common-browser-libs
-cp ../opendsu-sdk/psknode/bundles/iframeBoot.js $targetFolder/common-browser-libs
+cp ../opendsu-sdk/builds/output/iframeBoot.js $targetFolder/common-browser-libs
 
 cd $targetFolder/common-browser-libs
 zip -r "$targetFolder/CommonBrowserLibs$currentDate.zip" .
@@ -45,8 +45,8 @@ cp -r ../gtin-resolver/lib/apihubMappingEngine $targetFolder/backend/apihubMappi
 cp -r ../gtin-resolver/lib/apihubMappingEngineMessageResults $targetFolder/backend/apihubMappingEngineMessageResults
 cp -r ../gtin-resolver/lib/gtinOwner $targetFolder/backend/gtinOwner
 cp -r ../gtin-resolver/lib/leaflet-web-api $targetFolder/backend/leaflet-web-api
-cp ../opendsu-sdk/psknode/bundles/openDSU.js $targetFolder/backend
-cp ../opendsu-sdk/psknode/bundles/pskWebServer.js $targetFolder/backend
+cp ../opendsu-sdk/builds/output/openDSU.js $targetFolder/backend
+cp ../opendsu-sdk/builds/output/pskWebServer.js $targetFolder/backend
 
 cd $targetFolder/backend
 zip -r "$targetFolder/Backend$currentDate.zip" .

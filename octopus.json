@@ -254,7 +254,7 @@
           },
           {
             "type": "copy",
-            "src": "./opendsu-sdk/psknode/bundles/loaderBoot.js",
+            "src": "./opendsu-sdk/builds/output/loaderBoot.js",
             "target": "./apihub-root/bundles/loaderBoot.js",
             "options": {
               "overwrite": true
