@@ -513,6 +513,7 @@ b {
 .leaflet-accordion-item {
     padding: 0px 1vh;
     border-bottom: 1px solid #E5EAEB;
+    line-height: 3vh;
 }
 
 .leaflet-accordion-item h5 {
@@ -540,12 +541,11 @@ b {
     position: relative;
     float: right;
     width: 7%;
-    height: 5%;
+    height: 3vh;
     background-image: url(../images/accordion-open.svg);
-    background-position: top;
+    background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    top: 2px;
 }
 
 .leaflet-accordion-item.active:before {

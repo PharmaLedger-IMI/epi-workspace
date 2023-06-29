@@ -22,7 +22,7 @@ function LeafletController() {
     let gtin = urlParams.get("gtin");
     let batch = urlParams.get("batch");
     let expiry = urlParams.get("expiry");
-    let lsEpiDomain = localStorage.getItem(constants.EPI_DOMAIN);
+    let lsEpiDomain = environment.enableEpiDomain ? localStorage.getItem(constants.EPI_DOMAIN) : environment.epiDomain;
     lsEpiDomain = lsEpiDomain || environment.epiDomain;
     let timePerCall = environment.timePerCall || 10000;
     let totalWaitTime = environment.totalWaitTime || 60000;
@@ -159,12 +159,15 @@ function LeafletController() {
       document.querySelector(".proceed-button.no-leaflet").setAttribute('style', 'display:none');
       //  document.querySelector(".text-section.no-leaflet").setAttribute('style', 'display:none');
       let languagesContainer = document.querySelector(".languages-container");
+      /*
+        site for flags https://flagpedia.net/download
+      */
       result.availableLanguages.forEach((lang, index) => {
         let langRadio = `<div class="flag-label-wrapper">
-        /*
-        site for flags https://flagpedia.net/download
-        */
-        <label for="${lang.value}"> <img src="./images/flags/${lang.value}.svg" class="language-flag"/> ${lang.label} - (${lang.nativeName})</label> </div><input type="radio" name="languages" ${index === 0 ? "checked" : ""} value="${lang.value}" id="${lang.value}">`;
+        <label for="${lang.value}"> 
+          <img src="./images/flags/${lang.value}.svg" class="language-flag"/> ${lang.label} - (${lang.nativeName})
+        </label> 
+        </div><input type="radio" name="languages" ${index === 0 ? "checked" : ""} value="${lang.value}" id="${lang.value}">`;
         let radioFragment = document.createElement('div');
         radioFragment.classList.add("language-item-container");
         radioFragment.innerHTML = langRadio;
