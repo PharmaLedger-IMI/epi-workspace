@@ -83,6 +83,15 @@ b {
     }
 }
 
+#logs-container {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    background: white;
+    height: 100%;
+    padding: 20PX;
+}
+
 .page-header {
     padding: 0px 35px;
 }
@@ -368,7 +377,7 @@ b {
     border-radius: 5vh;
     border: 0;
     font-family: 'DM Sans bold';
-    font-size: 2vh;
+    font-size: calc(100% + 1vmin);
     text-align: center;
     position: absolute;
     right: 4vh;
@@ -512,13 +521,13 @@ b {
 
 .leaflet-accordion-item {
     padding: 0px 1vh;
-    border-bottom: 1px solid #E5EAEB;
+    border-bottom: 0.5px solid #E5EAEB;
     line-height: 3vh;
 }
 
 .leaflet-accordion-item h5 {
-    margin-block-end: 1em;
-    margin-block-start: 1em;
+    margin-block-end: 0.7em;
+    margin-block-start: 0.9em;
 }
 
 .leaflet-accordion-item-content {
@@ -702,7 +711,7 @@ b {
     height: 20px;
     width: 20px;
     right: 24px;
-    top: 21px;
+    top: 15px;
     border: 0;
 }
 
@@ -752,7 +761,6 @@ b {
     color: #04313B;
     min-height: 354px;
     padding: 24px;
-    line-height: 1.5rem;
     max-height: 60vh;
     border-radius: 0px 0px 30px 30px;
 }
@@ -760,6 +768,7 @@ b {
 .popup-modal .modal-content {
     top: -15px;
     border-radius: 15px 15px 30px 30px;
+    font-size: 2vh;
 }
 
 .modal-content.terms,
@@ -778,42 +787,42 @@ b {
 .modal-content .languages-container .language-item-container {
     font-family: 'DM Sans semi-bold';
     border: 0.5px solid #D0D5DD;
-    font-size: calc(100% + 0.3vmin);
-    padding: 8px 10px 0px;
-    line-height: 1;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px 0px;
 }
 
 .flag-label-wrapper {
     width: 85%;
     position: relative;
-    margin-top: 10px;
+    padding: 0px 5px;
+    display: flex;
 }
-.flag-label-wrapper label{
-    top: -3px;
+
+.flag-label-wrapper label {
     position: relative;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: block;
+    align-self: center;
 }
 
 .modal-content .languages-container .language-item-container .language-flag {
     vertical-align: baseline;
-    width: 29px;
-    top: 3px;
+    width: 10%;
     position: relative;
-    margin-right: 5px;
     border-radius: 3px;
+    height: 100%;
+    top: 3px;
+    padding-right: 5px;
 }
 
 .modal-content .languages-container .language-item-container input {
-    left: 0px;
     width: 10%;
     position: relative;
-    height: 16px;
-    margin-left: 90%;
-    top: -23px;
+    height: fit-content;
+    min-height: 15px;
 }
 
 .proceed-button {
@@ -823,7 +832,6 @@ b {
     align-items: center;
     padding: 8px;
     gap: 10px;
-    height: 56px;
     width: 100%;
     margin-top: 16px;
     background: var(--olivegreen);
@@ -832,6 +840,7 @@ b {
     color: #fff;
     font-size: 2vh;
     font-family: 'DM Sans bold';
+    height: 56px;
 }
 
 
@@ -915,6 +924,7 @@ body[dir="RTL"] #leaflet-content h5 {
     padding-left: 10%;
 }
 
+
 .loader-container {
     position: absolute;
     display: none;
@@ -922,7 +932,7 @@ body[dir="RTL"] #leaflet-content h5 {
     height: 90%;
     min-height: 960px;
     border-radius: 30px;
-    width: 24%;
+    width: max(24%, 460px);
     min-width: 435px;
     align-self: center;
     z-index: 100;
@@ -934,6 +944,145 @@ body[dir="RTL"] #leaflet-content h5 {
 }
 
 @media only screen and (max-device-width: 768px) {
+    body, .page-container {
+        background: white;
+        height: 100%;
+        max-height: 100%;
+        width: 100%;
+        max-width: 100%;
+        min-height: unset;
+        margin: 0;
+        overflow: auto;
+    }
+
+    .page-container {
+        background: var(--olivegreen);
+        border-radius: 0;
+    }
+
+    .modal-container {
+        position: relative;
+        display: none !important;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 100;
+        height: 100%;
+        min-height: unset;
+        border-radius: 0px;
+        min-width: 100%;
+    }
+
+    .modal-header.left-aligned-header,
+    .modal-content {
+        border-radius: 0px;
+    }
+
+    .modal-header .close-modal {
+        width: 3vh;
+        height: 3vh;
+    }
+
+    .scan-page #scanner-placeholder {
+        height: 100%;
+        max-width: 100%;
+    }
+
+    .loader-container {
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    #scan-error {
+        top: 0px;
+    }
+
+    #scanner-placeholder canvas#scene {
+        width: 200%;
+        height: 200%;
+    }
+
+    #scanner-placeholder canvas#overlay {
+        width: 200%;
+        height: 200%;
+        top: -10%;
+        left: 0%;
+        transform: translate(-30%, 10%);
+    }
+
+    .leaflet-page .product-name,
+    .modal-header .modal-title,
+    .error-page .header-title {
+        font-size: calc(100% + 3.5vmin);
+        font-family: 'DM Sans bold';
+    }
+
+    .leaflet-page .page-content, .error-page .page-content {
+        border-radius: 0px;
+        height: 100%;
+    }
+
+    .error-page .page-content {
+        font-size: calc(100% + 2.5vmin);
+    }
+
+    .product-description {
+        font-size: calc(100% + 0.1vmin);
+    }
+
+    .flag-label-wrapper {
+        padding: 0px 10px;
+    }
+
+    .modal-content .languages-container .language-item-container {
+        margin-bottom: 20px;
+    }
+
+    /*    .modal-content .languages-container .language-item-container .language-flag {
+            top: 6px;
+        }*/
+    .modal-content .languages-container .language-item-container input {
+        min-height: 18px;
+    }
+
+    .flag-label-wrapper label {
+        font-size: 2vh;
+    }
+
+    .go-back-button,
+    .proceed-button {
+        font-size: 2.5vh;
+        padding: 16px;
+    }
+
+    #leaflet-content {
+        width: 100%;
+    }
+
+    #leaflet-content,
+    #leaflet-content .select-lang-text,
+    #leaflet-content .languages-list {
+        font-size: calc(100% - 0.5vmin);
+        line-height: 3vh;
+    }
+
+    #leaflet-content h5 {
+        margin-right: 4rem;
+    }
+
+    #leaflet-content h5,
+    .leaflet-accordion-item-content {
+        font-size: calc(100% + 2.1vmin);
+    }
+
+    .modal-header.left-aligned-header {
+        padding: 1rem 1vh;
+        min-height: 7%;
+    }
+}
+
+/*@media only screen and (max-device-width: 768px) {
     body, .page-container {
         background: white;
         height: 100%;
@@ -1233,8 +1382,7 @@ body[dir="RTL"] #leaflet-content h5 {
         color: #516266;
         margin-top: 8%;
     }
-}
-
+}*/
 @media only screen and (orientation: landscape) {
 
     body {
@@ -1296,6 +1444,7 @@ body[dir="RTL"] #leaflet-content h5 {
 .ignore-tab {
     tab-index: -1;
 }
+
 
 @media only screen and (max-width: 435px) {
     body {
