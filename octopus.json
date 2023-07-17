@@ -3,7 +3,7 @@
     "dependencies": [
       {
         "name": "webcardinal/bundle",
-        "src": "https://github.com/webcardinal/webcardinal-all-release",
+        "src": "https://github.com/webcardinal/webcardinal-minimal-release",
         "actions": [
           {
             "type": "smartClone",
