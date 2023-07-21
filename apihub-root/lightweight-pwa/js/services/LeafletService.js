@@ -7,6 +7,51 @@ import LightSmartUrl from "../utils/LightSmartUrl.js";
 
 import {goToErrorPage, validateGTIN} from "../utils/utils.js";
 
+const validateGtinOwnerResponse = function (response) {
+  return new Promise((resolve) => {
+    if (response.status === 200) {
+      //we got info in Cache
+      resolve(true);
+      return;
+    }
+    if (response.status === 404) {
+      goToErrorPage(constants.errorCodes.gtin_not_created, new Error(`Could not detect the owner of GTIN`));
+      return;
+    }
+    resolve(false);
+  });
+}
+
+const validateMtimeResponse = function(response){
+  return new Promise((resolve) => {
+    resolve(true);
+  });
+}
+
+const validateLeafletResponse =  (response)=> {
+  return new Promise((resolve) => {
+    if (response.status >= 500) {
+      return resolve(false);
+    }
+    if (response.status === 404) {
+      goToErrorPage(constants.errorCodes.no_uploaded_epi, new Error(`Product found but no associated leaflet`));
+      return;
+    }
+    resolve(true);
+  });
+}
+
+const prepareUrlsForMtimeCall = function (arrayOfUrls) {
+  let newArray = [];
+  for (let i = 0; i < arrayOfUrls.length; i++) {
+    let smartUrl = new LightSmartUrl(arrayOfUrls[i]);
+    smartUrl.concatWith("/mtime");
+    newArray.push(this.getLeafletRequest(smartUrl));
+  }
+  return newArray;
+}
+
+
 class LeafletService {
   constructor(gtin, batch, expiry, leafletLang, epiDomain) {
 
@@ -61,7 +106,7 @@ class LeafletService {
       smartUrl = smartUrl.concatWith(`/gtinOwner/${domain}/${gtin}`);
 
       newArray.push(smartUrl.getRequest({
-        method: "GET",
+        method: "GET"
       }));
     }
     return newArray;
@@ -116,7 +161,6 @@ class LeafletService {
   }
 
   getLeafletRequest(leafletApiUrl) {
-
     let smartUrl = new LightSmartUrl(leafletApiUrl);
     smartUrl = smartUrl.concatWith(`/leaflets/${this.epiDomain}?leaflet_type=leaflet&lang=${this.leafletLang}&gtin=${this.gtin}`);
 
@@ -231,6 +275,153 @@ class LeafletService {
 
       reject({errorCode: constants.errorCodes.unknown_error});
     })
+  }
+
+  async getDomainInfo(domain){
+    let bdns = await this.getBDNS();
+    return bdns[domain];
+  }
+
+  async getLeafletUsingCache(timePerCall, totalWaitTime, gto_TimePerCall, gto_TotalWaitTime){
+    if(!environment.cacheURL){
+      console.log("No Cache Url available in environment. Fallback to default impl.");
+      return this.getLeafletResult(timePerCall, totalWaitTime, gto_TimePerCall, gto_TotalWaitTime);
+    }
+
+    let targetEndpoints = [environment.cacheURL];
+    const TAG_IDENTIFIER = "tag=KKKK";
+    let identifyGtinOwner =  (epiDomain, gtin)=>{
+      return new Promise(async (resolve, reject) => {
+        let targetSubDomains = [];
+        try{
+          const bdns = await this.getBDNS();
+          for(let domain of Object.keys(bdns)){
+            if(domain.startsWith(epiDomain)){
+              targetSubDomains.push(domain);
+            }
+          }
+        }catch(err){
+          console.log("Caught error during bdns reading");
+          goToErrorPage(constants.errorCodes.unknown_error, new Error(`Could not read BDNS information.`));
+          return;
+        }
+
+        const gtinOwnerCache =  this.prepareUrlsForGtinOwnerCall(targetEndpoints, epiDomain, gtin);
+        const cacheTargetBase = gtinOwnerCache.pop();
+        for(let targetSubDomain of targetSubDomains){
+          gtinOwnerCache.push(cacheTargetBase.concatWith(`?${TAG_IDENTIFIER}${domain}`));
+        }
+        let requestWizard = new RequestWizard(gto_TimePerCall, gto_TotalWaitTime);
+        let error;
+        try {
+          let cachedGtinOwnerResponse = await requestWizard.fetchMeAResponse(gtinOwnerCache, validateGtinOwnerResponse);
+          if (cachedGtinOwnerResponse) {
+              let result = await cachedGtinOwnerResponse.json();
+              return resolve(result.domain);
+          }
+        }catch(err){
+          console.log("Caught error during gtinOwner request", err);
+          error = err;
+        }
+
+        return reject(new CustomError(constants.errorCodes.unknown_error, undefined, error));
+      });
+    }
+
+    let getMtimeForLeaflet = (domain) => {
+      return new Promise(async (resolve, reject) => {
+        try{
+          let bdns = await this.getBDNS();
+          let requestWizard = new RequestWizard(gto_TimePerCall, gto_TotalWaitTime);
+          let mtimeResponse = await requestWizard.fetchMeAResponse(prepareUrlsForMtimeCall(this.getAnchoringServices(bdns, domain)), validateMtimeResponse);
+          if(mtimeResponse.status === 200){
+            let mtime = await mtimeResponse.text();
+            resolve(mtime);
+          }
+        }catch(err){
+          console.log("Caught an error during mtime request", err);
+        }
+        console.log("Not able to determine mtime. Setting mtime to date.now()");
+        resolve(Date.now().toString());
+      });
+    }
+
+    let retrieveLeaflet = (domain, mtime) => {
+      return new Promise(async (resolve, reject)=>{
+        let leafletCache = this.prepareUrlsForLeafletCall(targetEndpoints);
+        //we ensure to add the specific cache tag identifier
+        //based on this tag the cache will know which apihub to target for the specific request
+        for(let target of leafletCache){
+          target.concatWith(`&${TAG_IDENTIFIER}${domain}`);
+          if(mtime){
+            target.concatWith(`&mtime=${mtime}`);
+          }
+        }
+        let requestWizard = new RequestWizard(timePerCall, totalWaitTime);
+        let error;
+        try {
+          let cachedLeaflet = await requestWizard.fetchMeAResponse(leafletCache, validateLeafletResponse);
+          if (cachedLeaflet) {
+            let result = await cachedLeaflet.json();
+            return resolve(result.domain);
+          }
+        }catch(err){
+          console.log("Caught error during leaflet request", err);
+          error = err;
+        }
+
+        return reject(new CustomError(constants.errorCodes.unknown_error, undefined, error));
+      });
+    }
+
+    return new Promise(async (resolve, reject)=>{
+      let globalTimer = setTimeout(() => {
+          return reject({errorCode: constants.errorCodes.leaflet_timeout});
+      }, totalWaitTime);
+
+      try{
+        let gtinOwnerDomain = await identifyGtinOwner(this.epiDomain, this.gtin);
+        let mtime = await getMtimeForLeaflet(gtinOwnerDomain);
+        let leafletResponse = await retrieveLeaflet(gtinOwnerDomain, mtime);
+
+        if (!leafletResponse) {
+          return reject({errorCode: constants.errorCodes.unknown_error});
+        }
+        switch (leafletResponse.status) {
+          case 400:
+            leafletResponse.text().then(errorJSON => {
+              try {
+                errorJSON = JSON.parse(errorJSON);
+              } catch (err) {
+                errorJSON = {code: constants.errorCodes.unknown_error};
+              }
+              return reject({errorCode: errorJSON.code});
+            }).catch(err => {
+              reject({errorCode: constants.errorCodes.unknown_error});
+            });
+          case 404:
+            return reject({errorCode: constants.errorCodes.no_uploaded_epi});
+          case 529:
+            return reject({errorCode: constants.errorCodes.get_dsu_timeout});
+          case 304:
+          case 200:
+            if (globalTimer) {
+              clearTimeout(globalTimer);
+            }
+            leafletResponse.json().then(leaflet => {
+              resolve(leaflet);
+            }).catch(err => {
+              reject({errorCode: constants.errorCodes.unknown_error});
+            });
+            return;
+          default:
+            reject({errorCode: constants.errorCodes.unknown_error});
+        }
+      }catch(err){
+        console.log("Unable to properly retrieve leaflet due to error", err);
+        reject({errorCode: constants.errorCodes.unknown_error});
+      }
+    });
   }
 }
 

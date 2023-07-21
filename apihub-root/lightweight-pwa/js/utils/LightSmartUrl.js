@@ -1,4 +1,9 @@
 function SmartUrl(bdnsEntry){
+    if(bdnsEntry.concatWith){
+        //bdnsEntry is already a SmartUrl instance
+        return bdnsEntry;
+    }
+
     let url = typeof bdnsEntry === "string" ? bdnsEntry : bdnsEntry.url;
 
     function getOptions(options){
