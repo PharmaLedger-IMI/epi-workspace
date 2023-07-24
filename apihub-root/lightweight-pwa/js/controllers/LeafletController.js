@@ -32,7 +32,7 @@ function LeafletController() {
 
     document.querySelector(".loader-container").setAttribute('style', 'display:block');
 
-    leafletService.getLeafletResult(timePerCall, totalWaitTime, gto_TimePerCall, gto_TotalWaitTime).then((result) => {
+    leafletService.getLeafletUsingCache(timePerCall, totalWaitTime, gto_TimePerCall, gto_TotalWaitTime).then((result) => {
       if (result.resultStatus === "xml_found") {
         try {
           showXML(result);
