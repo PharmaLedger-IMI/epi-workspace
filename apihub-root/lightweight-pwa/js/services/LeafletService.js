@@ -48,7 +48,6 @@ const prepareUrlsForMtimeCall = function (arrayOfUrls) {
     smartUrl = smartUrl.concatWith("/mtime");
     newArray.push(this.getLeafletRequest(smartUrl));
   }
-  debugger;
   return newArray;
 }
 
@@ -315,7 +314,6 @@ class LeafletService {
 
         const gtinOwnerCache = this.prepareUrlsForGtinOwnerCall(targetEndpoints, epiDomain, gtin, false);
         const cacheTargetBase = gtinOwnerCache.pop();
-        debugger;
         for (let targetSubDomain of targetSubDomains) {
           gtinOwnerCache.push(cacheTargetBase.concatWith(`/${targetSubDomain}`).getRequest({
               method: "GET"
