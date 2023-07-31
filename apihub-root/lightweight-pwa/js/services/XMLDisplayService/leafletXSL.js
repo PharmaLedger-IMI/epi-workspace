@@ -280,9 +280,9 @@ const acordisXslContent =  `<?xml version="1.0" encoding="UTF-8"?>
     </xsl:template>
     
     <xsl:template match="document/section/header">
-        <h5>
+        <h2>
             <xsl:apply-templates select="node()" />
-        </h5>
+        </h2>
     </xsl:template>
 </xsl:stylesheet>`;
 
