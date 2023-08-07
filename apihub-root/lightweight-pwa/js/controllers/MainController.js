@@ -4,8 +4,6 @@ import environment from "../../environment.js";
 import constants from "../constants.js";
 
 
-document.getElementsByTagName("body").onload = translate();
-
 function MainController() {
 
   let getCookie = function (cname) {
@@ -132,12 +130,18 @@ function MainController() {
 
 const mainController = new MainController();
 
+window.onload = (event) => {
+  translate();
+  mainController.checkOnboarding();
+  document.querySelector(".page-container").classList.remove("hiddenElement");
+  document.querySelector(".loader-container").setAttribute('style', 'display:none');
+}
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 let epiDomain = urlParams.get("setdomain") || localStorage.getItem(constants.EPI_DOMAIN) || environment.epiDomain;
 localStorage.setItem(constants.EPI_DOMAIN, epiDomain);
 
-mainController.checkOnboarding();
 
 window.mainController = mainController;
 
