@@ -33,7 +33,7 @@
       },
       {
         "name": "demiurge",
-        "src": "https://github.com/OpenDSU/demiurge.git",
+        "src": "https://github.com/${GITHUB_ORGANIZATION}/demiurge.git",
         "actions": [
           {
             "type": "smartClone",
