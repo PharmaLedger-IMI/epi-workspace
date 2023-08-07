@@ -932,7 +932,7 @@ body[dir="RTL"] #leaflet-content h2 {
     position: absolute;
     display: none;
     background: white;
-    height: 90%;
+    height: min(100vh, 1000px);
     min-height: 960px;
     border-radius: 30px;
     width: max(24%, 460px);
@@ -941,9 +941,14 @@ body[dir="RTL"] #leaflet-content h2 {
     z-index: 100;
 }
 
-.loader-container.scan-page-loader {
+.loader-container.scan-page-loader,
+.loader-container.main-page-loader {
     background: black;
     opacity: 0.7;
+}
+
+.loader-container.main-page-loader {
+    display: block;;
 }
 
 @media only screen and (max-device-width: 768px) {
