@@ -141,6 +141,11 @@ function LeafletController() {
     sectionsElements.forEach(section => {
       htmlContent = htmlContent + section.outerHTML;
     })
+
+    if (!htmlContent) {
+      goToErrorPage(constants.errorCodes.xml_parse_error, new Error("Unsupported format for XML file."))
+    }
+
     document.querySelector("#leaflet-content").innerHTML = htmlContent;
     let leafletLinks = document.querySelectorAll(".leaflet-link");
     xmlService.activateLeafletInnerLinks(leafletLinks);
