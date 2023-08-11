@@ -50,7 +50,8 @@
       ],
       "import-logs": [
         "__timestamp",
-        "status"
+        "status",
+        "itemCode"
       ],
       "logs": [
         "gtin",
