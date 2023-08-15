@@ -95,55 +95,6 @@
             ]
         },
         {
-            "name": "themes/citrus-theme",
-            "src": "http://github.com/opendsu/citrus-theme.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "8cfd75200ee63de21de4f1b3552b5e3580b4595a",
-                    "tag": "v1.0.2"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/citrus-theme && npm install"
-                }
-            ]
-        },
-        {
-            "name": "themes/clear-sky-theme",
-            "src": "http://github.com/opendsu/clear-sky-theme.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "3e170b3cec4d6340f1689332e94de285292de2a5",
-                    "tag": "v1.0.2"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/clear-sky-theme && npm install"
-                }
-            ]
-        },
-        {
-            "name": "themes/epi-theme",
-            "src": "https://github.com/${GITHUB_ORGANIZATION}/epi-theme.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/epi-theme && npm install"
-                }
-            ]
-        },
-        {
             "name": "gtin-resolver",
             "src": "https://github.com/${GITHUB_ORGANIZATION}/gtin-resolver.git",
             "actions": [
@@ -174,23 +125,6 @@
                 {
                     "type": "execute",
                     "cmd": "cd gtin-dsu-wizard && npm install"
-                }
-            ]
-        },
-        {
-            "name": "themes/blue-fluorite-theme",
-            "src": "https://github.com/opendsu/blue-fluorite-theme.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "bd830104fa3aafb54b948b7c2a19f6f303e08a1c",
-                    "tag": "v1.0.1"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/blue-fluorite-theme && npm install"
                 }
             ]
         },
@@ -325,36 +259,6 @@
                 {
                     "type": "execute",
                     "cmd": "cd webcardinal && npm run build"
-                }
-            ]
-        },
-        {
-            "name": "citrus-theme-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/citrus-theme && npm run build-dossier"
-                }
-            ]
-        },
-        {
-            "name": "clear-sky-theme-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/clear-sky-theme && npm run build-dossier"
-                }
-            ]
-        },
-        {
-            "name": "epi-theme-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/epi-theme && npm run build-dossier"
                 }
             ]
         },
