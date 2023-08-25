@@ -39,7 +39,8 @@ function ScanController() {
 
   this.redirectToError = function (err) {
     console.log("Error on scanService ", err);
-    let modal = document.querySelector("#scan-error")
+    let modal = document.querySelector("#scan-error");
+    modal.setAttribute("tabindex", "0");
     document.querySelector(".scan-cancel").setAttribute("tabindex", "-1");
     document.querySelector(".camera-switch").setAttribute("tabindex", "-1");
     if (err.scanResult) {
