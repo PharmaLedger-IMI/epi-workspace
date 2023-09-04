@@ -93,3 +93,9 @@ walk(myPath, filterFiles, filterFolders, function (err, result) {
 
 });
 
+//we need to clean also any lightdbs
+fs.rm("./apihub-root/external-volume/lightDB", { recursive: true, force: true }, (err)=>{
+    if(err){
+        console.error(err);
+    }
+});
