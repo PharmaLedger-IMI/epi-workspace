@@ -99,3 +99,10 @@ fs.rm("./apihub-root/external-volume/lightDB", { recursive: true, force: true },
         console.error(err);
     }
 });
+
+//we need to clean also any secrets
+fs.rm("./apihub-root/external-volume/secrets", { recursive: true, force: true }, (err)=>{
+    if(err){
+        console.error(err);
+    }
+});
