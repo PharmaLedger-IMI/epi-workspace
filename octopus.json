@@ -85,6 +85,17 @@
         ]
       },
       {
+        "name": "apihub-root/lwa",
+        "src": "https://github.com/axiologic-pla/lightweightPWA.git",
+        "actions": [
+          {
+            "type": "smartClone",
+            "target": ".",
+            "collectLog": false
+          }
+        ]
+      },
+      {
         "name": "gtin-resolver",
         "src": "https://github.com/${GITHUB_ORGANIZATION}/gtin-resolver.git",
         "actions": [
