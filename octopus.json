@@ -86,7 +86,7 @@
       },
       {
         "name": "apihub-root/lwa",
-        "src": "https://github.com/axiologic-pla/lightweightPWA.git",
+        "src": "https://github.com/axiologic-pla/LWA.git",
         "actions": [
           {
             "type": "smartClone",
