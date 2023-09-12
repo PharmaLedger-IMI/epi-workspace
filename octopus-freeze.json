@@ -129,7 +129,9 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "16f2f707b7aa9918f856553962a1a8eae5a0e0cb",
+                    "tag": "v1.1.1"
                 },
                 {
                     "type": "execute",
