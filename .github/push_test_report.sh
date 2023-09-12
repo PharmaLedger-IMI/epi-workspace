@@ -2,7 +2,7 @@
 
 setup_git() {
   echo ${GIT_TOKEN}
-  git clone https://${GIT_TOKEN}@github.com/PharmaLedger-IMI/epi-workspace.git ../results > /dev/null 2>&1
+  git clone https://${GIT_TOKEN}@github.com/pharmaledgerassoc/epi-workspace.git ../results > /dev/null 2>&1
   ls -al
   cd ../results
   ls -al

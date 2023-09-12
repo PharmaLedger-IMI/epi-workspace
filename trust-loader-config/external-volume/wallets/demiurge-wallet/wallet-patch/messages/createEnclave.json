@@ -8,7 +8,8 @@
         "__timestamp"
       ],
       "groups_table": [
-        "__timestamp"
+        "__timestamp",
+        "enclaveName"
       ],
       "user_credentials_table": [
         "memberDID",
@@ -50,7 +51,8 @@
       ],
       "import-logs": [
         "__timestamp",
-        "status"
+        "status",
+        "itemCode"
       ],
       "logs": [
         "gtin",

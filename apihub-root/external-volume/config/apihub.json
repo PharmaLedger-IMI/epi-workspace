@@ -12,6 +12,7 @@
     "leaflet-web-api",
     "mq",
     "secrets",
+    "lightDBEnclave",
     "staticServer"
   ],
   "componentsConfig": {

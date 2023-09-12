@@ -1,4 +1,4 @@
-require("../opendsu-sdk/psknode/bundles/openDSU");
+require("../opendsu-sdk/builds/output/openDSU");
 const openDSU = require("opendsu");
 const scAPI = openDSU.loadAPI("sc");
 const enclaveAPI = openDSU.loadAPI("enclave");

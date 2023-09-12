@@ -24,6 +24,8 @@
     "bind-wallet": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/bind --type=wallet\"",
     "server": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd opendsu-sdk && npm run start\"",
     "apihub": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd opendsu-sdk && npm run start\"",
+    "cloud-enclave": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd opendsu-sdk && npm run cloud-enclave\"",
+    "remote-enclave": "npm run cloud-enclave",
     "watch": "node ./bin/watcher/watcher.js",
     "tests": "npm run test",
     "test": "node ./opendsu-sdk/bin/scripts/testrunner.js --config=./test-suites.json",
@@ -38,14 +40,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PharmaLedger-IMI/epi-workspace.git"
+    "url": "git+https://github.com/pharmaledgerassoc/epi-workspace.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PharmaLedger-IMI/epi-workspace/issues"
+    "url": "https://github.com/pharmaledgerassoc/epi-workspace/issues"
   },
-  "homepage": "https://github.com/PharmaLedger-IMI/epi-workspace#readme",
+  "homepage": "https://github.com/pharmaledgerassoc/epi-workspace#readme",
   "dependencies": {
     "octopus": "git+http://github.com/opendsu/octopus.git"
   }
