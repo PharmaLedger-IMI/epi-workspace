@@ -26,8 +26,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7ce04c78a6a26f3de1e4cc54cfb9473a360e8276",
-                    "tag": "v1.1.3"
+                    "commit": "3770b975b0406cd27bb1b869cfb1c6ba1d79b840",
+                    "tag": "v2.0.0"
                 },
                 {
                     "type": "execute",
@@ -37,13 +37,12 @@
         },
         {
             "name": "demiurge",
-            "src": "https://github.com/OpenDSU/demiurge.git",
+            "src": "https://github.com/${GITHUB_ORGANIZATION}/demiurge.git",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "1de7240e0490597387bd7de38241c7ccc9c7b00d",
                     "tag": "v1.3.2"
                 },
                 {
@@ -60,8 +59,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "523dd4f0eba2de5e8b78072481034910b25bce38",
-                    "tag": "v1.1.1"
+                    "commit": "b2fef617075f3f519c4a3f9b857893e8bb0ad88f",
+                    "tag": "v1.2.0"
                 },
                 {
                     "type": "execute",
@@ -85,8 +84,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "523dd4f0eba2de5e8b78072481034910b25bce38",
-                    "tag": "v1.1.1"
+                    "commit": "b2fef617075f3f519c4a3f9b857893e8bb0ad88f",
+                    "tag": "v1.2.0"
                 },
                 {
                     "type": "execute",
@@ -135,8 +134,8 @@
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "commit": "a36774c624dbe360f4d2bc8e5ca653db4ecd21a9",
-                    "tag": "v1.1.0",
+                    "commit": "c1c6b0ad4bf4d5c7fc548f59b187c19ea3e1ba1e",
+                    "tag": "v1.2.0",
                     "collectLog": false
                 },
                 {
