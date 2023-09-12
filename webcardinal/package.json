@@ -1,11 +1,5 @@
 {
-  "name": "webcardinal",
-  "license": "MIT",
-  "version": "1.0.0",
   "scripts": {
-    "build": "node ./node_modules/octopus/scripts/buildDSU.js --bundles=./../opendsu-sdk/builds/output"
-  },
-  "dependencies": {
-    "octopus": "git+https://github.com/PrivateSky/octopus.git"
+    "build": "node ./../node_modules/octopus/scripts/buildDSU.js --bundles=./../opendsu-sdk/builds/output"
   }
 }
