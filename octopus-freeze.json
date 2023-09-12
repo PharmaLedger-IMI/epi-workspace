@@ -100,6 +100,10 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd apihub-root/lwa && npm install"
                 }
             ]
         },
@@ -159,19 +163,6 @@
                 {
                     "type": "execute",
                     "cmd": "cd dsu-fabric-ssapp && npm install"
-                }
-            ]
-        },
-        {
-            "name": "zxing-wrapper",
-            "src": "http://github.com/webcardinal/zxing-wrapper.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": "./apihub-root/lightweight-pwa/lib",
-                    "collectLog": false,
-                    "commit": "0f5190869e0a6f7ec534384de4e2cb487b42d62e",
-                    "tag": "v1.1.0"
                 }
             ]
         }
