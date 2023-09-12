@@ -3,13 +3,13 @@
     "dependencies": [
         {
             "name": "webcardinal/bundle",
-            "src": "https://github.com/webcardinal/webcardinal-all-release",
+            "src": "https://github.com/webcardinal/webcardinal-minimal-release",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "5ea02d89df4670983011b508e8960cc4d71f396b",
+                    "commit": "8a7093f5c1c4621248d192a8d586c4bcc4fa413d",
                     "tag": "v1.0.7"
                 },
                 {
@@ -94,6 +94,17 @@
             ]
         },
         {
+            "name": "apihub-root/lwa",
+            "src": "https://github.com/axiologic-pla/LWA.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                }
+            ]
+        },
+        {
             "name": "gtin-resolver",
             "src": "https://github.com/${GITHUB_ORGANIZATION}/gtin-resolver.git",
             "actions": [
@@ -113,29 +124,12 @@
             ]
         },
         {
-            "name": "gtin-dsu-wizard",
-            "src": "https://github.com/${GITHUB_ORGANIZATION}/gtin-dsu-wizard.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd gtin-dsu-wizard && npm install"
-                }
-            ]
-        },
-        {
             "name": "ethadapter",
             "src": "https://github.com/opendsu/eth-adapter",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "commit": "c1c6b0ad4bf4d5c7fc548f59b187c19ea3e1ba1e",
-                    "tag": "v1.2.0",
                     "collectLog": false
                 },
                 {
@@ -212,10 +206,6 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd apihub-root/leaflet-wallet/loader && npm install"
-                },
-                {
-                    "type": "execute",
                     "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm install"
                 },
                 {
@@ -224,15 +214,7 @@
                 },
                 {
                     "type": "copy",
-                    "src": "./opendsu-sdk/psknode/bundles/webshims.js",
-                    "target": "./apihub-root/bundles/webshims.js",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "./opendsu-sdk/psknode/bundles/loaderBoot.js",
+                    "src": "./opendsu-sdk/builds/output/loaderBoot.js",
                     "target": "./apihub-root/bundles/loaderBoot.js",
                     "options": {
                         "overwrite": true
