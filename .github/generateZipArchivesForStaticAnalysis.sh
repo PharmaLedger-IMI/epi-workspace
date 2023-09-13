@@ -58,7 +58,7 @@ cd ../gtin-resolver/lib
 zip -r "$targetFolder/GtinResolver$currentDate.zip" . -x "apihubMappingEngine/*" "apihubMappingEngineMessageResults/*" "gtinOwner/*" "leaflet-web-api/*" "utils/flags/*"
 cd $initialPWD
 
-cd ../apihub-root/lightweight-pwa
+cd ../apihub-root/lwa
 zip -r "$targetFolder/LPWA$currentDate.zip" . -x ".git/*" "**/.git/**" "**/node_modules/**" "package-lock.json"
 cd $initialPWD
 
