@@ -1,9 +1,9 @@
 {
   "name": "ePI-workspace",
-  "version": "2023.1.0",
+  "version": "v2023.2.0",
   "description": "",
   "scripts": {
-    "dev-install": "node ./bin/mkDevEnv.js && npm install",
+    "dev-install": "node ./bin/mkDevEnv.js",
     "postinstall": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"npm run do-install\"",
     "do-install": "node ./node_modules/octopus/scripts/ensureFreezeState.js && node ./node_modules/octopus/scripts/run",
     "install-mobile": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run install-mobile\"",
@@ -24,6 +24,8 @@
     "bind-wallet": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/bind --type=wallet\"",
     "server": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd opendsu-sdk && npm run start\"",
     "apihub": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd opendsu-sdk && npm run start\"",
+    "cloud-enclave": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd opendsu-sdk && npm run cloud-enclave\"",
+    "remote-enclave": "npm run cloud-enclave",
     "watch": "node ./bin/watcher/watcher.js",
     "tests": "npm run test",
     "test": "node ./opendsu-sdk/bin/scripts/testrunner.js --config=./test-suites.json",
@@ -38,14 +40,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PharmaLedger-IMI/epi-workspace.git"
+    "url": "git+https://github.com/pharmaledgerassoc/epi-workspace.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PharmaLedger-IMI/epi-workspace/issues"
+    "url": "https://github.com/pharmaledgerassoc/epi-workspace/issues"
   },
-  "homepage": "https://github.com/PharmaLedger-IMI/epi-workspace#readme",
+  "homepage": "https://github.com/pharmaledgerassoc/epi-workspace#readme",
   "dependencies": {
     "octopus": "git+http://github.com/opendsu/octopus.git"
   }

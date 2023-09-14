@@ -2,7 +2,7 @@ const octopus = require("octopus/scripts");
 const octopusActionsRegistry = require('octopus/ActionsRegistry');
 const defaultActionsRegistry = octopusActionsRegistry.getRegistry();
 
-const DEFAULT_PSK_BUNDLES_PATH = "./opendsu-sdk/psknode/bundles";
+const DEFAULT_PSK_BUNDLES_PATH = "./opendsu-sdk/builds/output";
 const path = require("path");
 const fs = require("fs");
 

@@ -3,13 +3,13 @@
     "dependencies": [
         {
             "name": "webcardinal/bundle",
-            "src": "https://github.com/webcardinal/webcardinal-all-release",
+            "src": "https://github.com/webcardinal/webcardinal-minimal-release",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "5ea02d89df4670983011b508e8960cc4d71f396b",
+                    "commit": "8a7093f5c1c4621248d192a8d586c4bcc4fa413d",
                     "tag": "v1.0.7"
                 },
                 {
@@ -26,8 +26,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "7ce04c78a6a26f3de1e4cc54cfb9473a360e8276",
-                    "tag": "v1.1.3"
+                    "commit": "68606dbcb9ab80e5805a67ee5a3a6c38c2bb21f5",
+                    "tag": "v2.0.1"
                 },
                 {
                     "type": "execute",
@@ -36,32 +36,13 @@
             ]
         },
         {
-            "name": "leaflet-ssapp",
-            "src": "https://github.com/PharmaLedger-IMI/leaflet-ssapp.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "76b8fb0de8af2fcbf8be7051580a0b1ca37b6d78",
-                    "tag": "v1.2.1"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd leaflet-ssapp && npm install"
-                }
-            ]
-        },
-        {
             "name": "demiurge",
-            "src": "https://github.com/OpenDSU/demiurge.git",
+            "src": "https://github.com/${GITHUB_ORGANIZATION}/demiurge.git",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false,
-                    "commit": "1de7240e0490597387bd7de38241c7ccc9c7b00d",
-                    "tag": "v1.3.2"
+                    "collectLog": false
                 },
                 {
                     "type": "execute",
@@ -77,8 +58,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "523dd4f0eba2de5e8b78072481034910b25bce38",
-                    "tag": "v1.1.1"
+                    "commit": "da6594f3bd5ab0990be2370e6ce4a45325362745",
+                    "tag": "v1.2.1"
                 },
                 {
                     "type": "execute",
@@ -95,31 +76,6 @@
             ]
         },
         {
-            "name": "apihub-root/leaflet-wallet/loader",
-            "src": "http://github.com/opendsu/trust-loader.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "523dd4f0eba2de5e8b78072481034910b25bce38",
-                    "tag": "v1.1.1"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd apihub-root/leaflet-wallet/loader && npm install"
-                },
-                {
-                    "type": "copy",
-                    "src": "apihub-root/leaflet-wallet/loader/loader-config.local.json-template",
-                    "target": "apihub-root/leaflet-wallet/loader/loader-config.local.json",
-                    "options": {
-                        "overwrite": true
-                    }
-                }
-            ]
-        },
-        {
             "name": "apihub-root/dsu-fabric-wallet/loader",
             "src": "http://github.com/opendsu/trust-loader.git",
             "actions": [
@@ -127,8 +83,8 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "523dd4f0eba2de5e8b78072481034910b25bce38",
-                    "tag": "v1.1.1"
+                    "commit": "da6594f3bd5ab0990be2370e6ce4a45325362745",
+                    "tag": "v1.2.1"
                 },
                 {
                     "type": "execute",
@@ -137,42 +93,8 @@
             ]
         },
         {
-            "name": "themes/citrus-theme",
-            "src": "http://github.com/opendsu/citrus-theme.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "8cfd75200ee63de21de4f1b3552b5e3580b4595a",
-                    "tag": "v1.0.2"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/citrus-theme && npm install"
-                }
-            ]
-        },
-        {
-            "name": "themes/clear-sky-theme",
-            "src": "http://github.com/opendsu/clear-sky-theme.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "3e170b3cec4d6340f1689332e94de285292de2a5",
-                    "tag": "v1.0.2"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/clear-sky-theme && npm install"
-                }
-            ]
-        },
-        {
-            "name": "themes/epi-theme",
-            "src": "https://github.com/${GITHUB_ORGANIZATION}/epi-theme.git",
+            "name": "apihub-root/lwa",
+            "src": "https://github.com/${GITHUB_ORGANIZATION}/LWA.git",
             "actions": [
                 {
                     "type": "smartClone",
@@ -181,7 +103,7 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd themes/epi-theme && npm install"
+                    "cmd": "cd apihub-root/lwa && npm install"
                 }
             ]
         },
@@ -205,57 +127,15 @@
             ]
         },
         {
-            "name": "dfm-reporting",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd reporting-service && npm install"
-                }
-            ]
-        },
-        {
-            "name": "gtin-dsu-wizard",
-            "src": "https://github.com/${GITHUB_ORGANIZATION}/gtin-dsu-wizard.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd gtin-dsu-wizard && npm install"
-                }
-            ]
-        },
-        {
-            "name": "themes/blue-fluorite-theme",
-            "src": "https://github.com/opendsu/blue-fluorite-theme.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "bd830104fa3aafb54b948b7c2a19f6f303e08a1c",
-                    "tag": "v1.0.1"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/blue-fluorite-theme && npm install"
-                }
-            ]
-        },
-        {
             "name": "ethadapter",
             "src": "https://github.com/opendsu/eth-adapter",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "commit": "a36774c624dbe360f4d2bc8e5ca653db4ecd21a9",
-                    "tag": "v1.1.0",
-                    "collectLog": false
+                    "collectLog": false,
+                    "commit": "16f2f707b7aa9918f856553962a1a8eae5a0e0cb",
+                    "tag": "v1.1.1"
                 },
                 {
                     "type": "execute",
@@ -283,19 +163,6 @@
                 {
                     "type": "execute",
                     "cmd": "cd dsu-fabric-ssapp && npm install"
-                }
-            ]
-        },
-        {
-            "name": "zxing-wrapper",
-            "src": "http://github.com/webcardinal/zxing-wrapper.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": "./apihub-root/lightweight-pwa/lib",
-                    "collectLog": false,
-                    "commit": "0f5190869e0a6f7ec534384de4e2cb487b42d62e",
-                    "tag": "v1.1.0"
                 }
             ]
         }
@@ -331,10 +198,6 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd apihub-root/leaflet-wallet/loader && npm install"
-                },
-                {
-                    "type": "execute",
                     "cmd": "cd apihub-root/dsu-fabric-wallet/loader && npm install"
                 },
                 {
@@ -343,15 +206,7 @@
                 },
                 {
                     "type": "copy",
-                    "src": "./opendsu-sdk/psknode/bundles/webshims.js",
-                    "target": "./apihub-root/bundles/webshims.js",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "./opendsu-sdk/psknode/bundles/loaderBoot.js",
+                    "src": "./opendsu-sdk/builds/output/loaderBoot.js",
                     "target": "./apihub-root/bundles/loaderBoot.js",
                     "options": {
                         "overwrite": true
@@ -368,16 +223,6 @@
                     "cmd": "cd gtin-resolver && npm run build"
                 }
             ]
-        },
-        {
-            "name": "dfm-reporting",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd reporting-service && npm run build"
-                }
-            ]
         }
     ],
     "epi-ssapps-and-wallets-build": [
@@ -387,66 +232,6 @@
                 {
                     "type": "execute",
                     "cmd": "cd webcardinal && npm run build"
-                }
-            ]
-        },
-        {
-            "name": "citrus-theme-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/citrus-theme && npm run build-dossier"
-                }
-            ]
-        },
-        {
-            "name": "clear-sky-theme-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/clear-sky-theme && npm run build-dossier"
-                }
-            ]
-        },
-        {
-            "name": "epi-theme-wallet-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd themes/epi-theme && npm run build-dossier"
-                }
-            ]
-        },
-        {
-            "name": "leaflet-wallet_bind_to_leaflet-ssapp",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd leaflet-ssapp && npm run build"
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./leaflet-ssapp/seed",
-                    "target": "./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./leaflet-ssapp/seed",
-                    "target": "./apihub-root/external-volume/wallets/leaflet-wallet/wallet-patch/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/readme"
                 }
             ]
         },
@@ -523,38 +308,6 @@
             ]
         },
         {
-            "name": "dfm-reporting",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd reporting-service && npm run build"
-                }
-            ]
-        },
-        {
-            "name": "dfm-native-integration-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/native-integration && npm run build",
-                    "options": {
-                        "ignoreErrors": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "./acdc/native-integration/build/bundles/default/camera.js",
-                    "target": "./apihub-root/leaflet-wallet/loader/camera.js",
-                    "options": {
-                        "overwrite": true,
-                        "ignoreErrors": true
-                    }
-                }
-            ]
-        },
-        {
             "name": "epi-ssapps-and-wallets-build",
             "actions": [
                 {
@@ -586,593 +339,6 @@
                 {
                     "type": "execute",
                     "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js postinstall\""
-                }
-            ]
-        },
-        {
-            "name": "leaflet-wallet-loader-build",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd apihub-root/leaflet-wallet/loader && npm run build"
-                }
-            ]
-        }
-    ],
-    "install-mobile": [
-        {
-            "name": "mobile/scan-app/android",
-            "src": "https://github.com/opendsu/android-edge-agent",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "ed39157ab5f1e1bd4f86240b1d7be4e90927ae06",
-                    "tag": "v1.0.4"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd mobile/scan-app/android && npm install"
-                }
-            ]
-        },
-        {
-            "name": "mobile/scan-app/ios",
-            "src": "https://github.com/PharmaLedger-IMI/ios-edge-agent",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "3f329e353bcf9400d5b2caea2463a8c0901b11d4",
-                    "tag": "v1.0.8"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd mobile/scan-app/ios/PSKNodeServer && carthage bootstrap"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo \"Continue with ipa builds\""
-                }
-            ]
-        }
-    ],
-    "build-android-apk": [
-        {
-            "name": "install NDK",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd mobile/scan-app/android && gradlew.bat -b ndk.gradle installNDK",
-                    "os": "win32",
-                    "options": {
-                        "ignoreErrors": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
-                    "os": "linux",
-                    "options": {
-                        "ignoreErrors": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd mobile/scan-app/android && ./gradlew -b ndk.gradle installNDK",
-                    "os": "darwin",
-                    "options": {
-                        "ignoreErrors": true
-                    }
-                }
-            ]
-        },
-        {
-            "name": "build APK",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd mobile/scan-app/android && gradlew.bat assembleRelease",
-                    "os": "win32",
-                    "options": {
-                        "ignoreErrors": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
-                    "os": "linux",
-                    "options": {
-                        "ignoreErrors": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd mobile/scan-app/android && ./gradlew assembleRelease",
-                    "os": "darwin",
-                    "options": {
-                        "ignoreErrors": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo \"APK should be in mobile/scan-app/android/app/build/outputs/apk/release\" "
-                }
-            ]
-        }
-    ],
-    "prepare-build-mobile": [
-        {
-            "name": "prebuild",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "npm run clean"
-                },
-                {
-                    "type": "remove",
-                    "target": "apihub-root/external-volume/cache"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd reporting-service && npm run build"
-                },
-                {
-                    "type": "copy",
-                    "src": "./reporting-service/build/bundles/acdc.js",
-                    "target": "./leaflet-ssapp/code/scripts/bundles/acdc.js",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/native-integration && npm run build",
-                    "options": {
-                        "ignoreErrors": true
-                    }
-                }
-            ]
-        }
-    ],
-    "build-ssapps-and-configure-apihub-mobile": [
-        {
-            "name": "prebuild",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "npm run build leaflet-ssapp"
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./leaflet-ssapp/seed",
-                    "target": "./apihub-root/external-volume/wallets/leaflet-wallet/apps-patch/leaflet-ssapp/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copySeed",
-                    "src": "./leaflet-ssapp/seed",
-                    "target": "./apihub-root/external-volume/wallets/leaflet-wallet/wallet-patch/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "./trust-loader-config",
-                    "target": "./apihub-root",
-                    "options": {
-                        "overwrite": true
-                    }
-                }
-            ]
-        }
-    ],
-    "build-mobile": [
-        {
-            "name": "prepare-phase",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js prepare-build-mobile\""
-                }
-            ]
-        },
-        {
-            "name": "prepare-phase",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js patching-mobile\""
-                }
-            ]
-        }
-    ],
-    "patching-mobile": [
-        {
-            "name": "build-android-app",
-            "actions": [
-                {
-                    "type": "remove",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project"
-                },
-                {
-                    "type": "copy",
-                    "src": "bin/MobileServerLauncher.js",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/MobileServerLauncher.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "opendsu-sdk/psknode/bundles/pskWebServer.js",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/pskWebServer.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "opendsu-sdk/psknode/bundles/nodeBoot.js",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/nodeBoot.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "apihub-root/internal-volume",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/internal-volume"
-                },
-                {
-                    "type": "copy",
-                    "src": "apihub-root/external-volume",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/external-volume"
-                },
-                {
-                    "type": "copy",
-                    "src": "./acdc/native-integration/build/bundles/default/camera.js",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/camera.js",
-                    "options": {
-                        "overwrite": true,
-                        "ignoreErrors": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "./leaflet-ssapp/code",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app"
-                },
-                {
-                    "type": "copy",
-                    "src": "./preloader/index.html",
-                    "target": "mobile/scan-app/android/app/src/main/assets/preloader.html"
-                },
-                {
-                    "type": "replaceString",
-                    "src": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/index.html",
-                    "oldValue": "PLACEHOLDER_THAT_WILL_BE_REPLACED_BY_SW_OR_SERVER_WITH_BASE_TAG",
-                    "newValue": "<base href=\"/\">"
-                },
-                {
-                    "type": "copy",
-                    "src": "./webcardinal/bundle/dist",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/webcardinal"
-                },
-                {
-                    "type": "copy",
-                    "src": "./opendsu-sdk/psknode/bundles/pskruntime.js",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/scripts/bundles/pskruntime.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "./opendsu-sdk/psknode/bundles/webshims.js",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/scripts/bundles/webshims.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "./opendsu-sdk/psknode/bundles/iframeBoot.js",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/scripts/bundles/iframeBoot.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "./gtin-resolver/build/bundles/gtinResolver.js",
-                    "target": "mobile/scan-app/android/app/src/main/assets/nodejs-project/apihub-root/app/scripts/bundles/gtinResolver.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "mobile/config/scan-app/android",
-                    "target": "mobile/scan-app/android",
-                    "options": {
-                        "overwrite": true
-                    }
-                }
-            ]
-        },
-        {
-            "name": "build-ios-app",
-            "actions": [
-                {
-                    "type": "remove",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject"
-                },
-                {
-                    "type": "copy",
-                    "src": "bin/MobileServerLauncher.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/MobileServerLauncher.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "opendsu-sdk/psknode/bundles/pskWebServer.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/pskWebServer.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "opendsu-sdk/psknode/bundles/nodeBoot.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/nodeBoot.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "apihub-root/internal-volume",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/apihub-root/internal-volume"
-                },
-                {
-                    "type": "copy",
-                    "src": "apihub-root/external-volume",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/serverFiles/apihub-root/external-volume"
-                },
-                {
-                    "type": "copy",
-                    "src": "./acdc/native-integration/build/bundles/ios/camera.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/camera.js",
-                    "options": {
-                        "overwrite": true,
-                        "ignoreErrors": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "./leaflet-ssapp/code",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app"
-                },
-                {
-                    "type": "copy",
-                    "src": "./preloader/index.html",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/preloader.html"
-                },
-                {
-                    "type": "replaceString",
-                    "src": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/index.html",
-                    "oldValue": "PLACEHOLDER_THAT_WILL_BE_REPLACED_BY_SW_OR_SERVER_WITH_BASE_TAG",
-                    "newValue": "<base href=\"/\">"
-                },
-                {
-                    "type": "copy",
-                    "src": "./webcardinal/bundle/dist",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/webcardinal"
-                },
-                {
-                    "type": "copy",
-                    "src": "./opendsu-sdk/psknode/bundles/pskruntime.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/pskruntime.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "./opendsu-sdk/psknode/bundles/webshims.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/webshims.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "./opendsu-sdk/psknode/bundles/iframeBoot.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/iframeBoot.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "./gtin-resolver/build/bundles/gtinResolver.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/scripts/bundles/gtinResolver.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "mobile/config/scan-app/ios",
-                    "target": "mobile/scan-app/ios",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "mobile/scan-app/ios/nativeBridge.js",
-                    "target": "mobile/scan-app/ios/PSKNodeServer/PSKNodeServer/nodejsProject/app/nativeBridge.js",
-                    "options": {
-                        "overwrite": true
-                    }
-                }
-            ]
-        }
-    ],
-    "install-acf-ssapps": [
-        {
-            "name": "delayv-auth-feat-ssapp",
-            "src": "https://github.com/delayv/acdc-authentication-feature-59k3.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd delayv-auth-feat-ssapp && npm install"
-                }
-            ]
-        },
-        {
-            "name": "acdc-authentication-feature-template",
-            "src": "https://github.com/PharmaLedger-IMI/acdc-authentication-feature-template",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc-authentication-feature-template && npm install"
-                }
-            ]
-        },
-        {
-            "name": "truemedhemo-auth-feat-ssapp",
-            "src": "https://github.com/TrueMedHemmo/acdc-authentication-feature-template",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd truemedhemo-auth-feat-ssapp && npm install"
-                }
-            ]
-        },
-        {
-            "name": "uniqode-auth-feat-ssapp",
-            "src": "https://github.com/PharmaLedger-IMI/pharma-incmlab.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd uniqode-auth-feat-ssapp && npm install"
-                }
-            ]
-        }
-    ],
-    "install-dfm": [
-        {
-            "name": "acdc",
-            "src": "https://github.com/PharmaLedger-IMI/acdc-components.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/backoffice-backend && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/backoffice-frontend && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/reporting-service && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/native-integration && npm install"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/pdm-web-components && npm install"
-                }
-            ]
-        },
-        {
-            "name": "dfm-reporting",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd reporting-service && npm run build"
-                }
-            ]
-        }
-    ],
-    "build-dfm": [
-        {
-            "name": "dfm-reporting",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd reporting-service && npm run build"
-                }
-            ]
-        },
-        {
-            "name": "dfm-native-integration-build",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/native-integration && npm run build",
-                    "options": {
-                        "ignoreErrors": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "./acdc/native-integration/build/bundles/default/camera.js",
-                    "target": "./apihub-root/leaflet-wallet/loader/camera.js",
-                    "options": {
-                        "overwrite": true,
-                        "ignoreErrors": true
-                    }
-                }
-            ]
-        },
-        {
-            "name": "build-pdm-web-components",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
-                }
-            ]
-        }
-    ],
-    "build-acf-ssapps": [
-        {
-            "name": "build-dfm",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js build-dfm\""
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd webcardinal && npm run build"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd delayv-auth-feat-ssapp && npm run build"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd uniqode-auth-feat-ssapp && npm run build"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc/pdm-web-components && npm run ionic:build"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd acdc-authentication-feature-template && npm run build"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./bin/octopusRun.js patching-mobile\""
                 }
             ]
         }
