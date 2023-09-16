@@ -46,7 +46,7 @@
   },
   "enableRequestLogger": true,
   "enableJWTAuthorisation": false,
-  "enableOAuth": false,
+  "enableOAuth": ${enable_oauth},
   "oauthJWKSEndpoint": "${oauth_jwks_endpoint}",
   "enableLocalhostAuthorization": false,
   "skipOAuth": [
