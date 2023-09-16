@@ -60,7 +60,7 @@
   ],
   "oauthConfig": {
     "issuer": {
-      "issuer": "${var.issuer}",
+      "issuer": "${issuer}",
       "authorizationEndpoint": "${authorization_endpoint}",
       "tokenEndpoint": "${token_endpoint}",
       "userInfoEndpoint": "https://graph.microsoft.com/oidc/userinfo"
