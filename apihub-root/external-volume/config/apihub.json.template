@@ -68,10 +68,10 @@
     "client": {
       "clientId": "${client_id}",
       "scope": "email user.read offline_access openid api://${client_id}/access_as_user",
-      "redirectPath": "http://${dns_name}/?root=true",
+      "redirectPath": "https://${dns_name}/?root=true",
       "clientSecret": "${client_secret}",
       "logoutUrl": "${logout_url}",
-      "postLogoutRedirectUrl": "http://${dns_name}/?logout=true"
+      "postLogoutRedirectUrl": "https://${dns_name}/?logout=true"
     },
     "sessionTimeout": 60000,
     "keyTTL": 120000,
