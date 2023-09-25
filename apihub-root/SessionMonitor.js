@@ -19,7 +19,11 @@ function parseCookies(cookies) {
 }
 
 const handler = setInterval(() => {
-    const {sessionExpiryTime} = parseCookies(document.cookie);
+    const {sessionExpiryTime, logout} = parseCookies(document.cookie);
+    if(logout === "true"){
+        alert("A Single Sign-On (SSO) login process is detected to be in progress across multiple browser instances. If this assessment is incorrect, kindly terminate all browser instances and recommence the login procedure.");
+        return;
+    }
     if (sessionExpiryTime && parseInt(sessionExpiryTime) < Date.now()) {
         clearInterval(handler);
         window.disableRefreshSafetyAlert = true;
