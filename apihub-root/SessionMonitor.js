@@ -22,12 +22,12 @@ const handler = setInterval(() => {
     let {sessionExpiryTime, logout} = parseCookies(document.cookie);
 
     if(logout === "true"){
-        document.body.setAttribute("style", "visibility:hidden");
+        document.body.style.setProperty("visibility","hidden");
         alert("A Single Sign-On (SSO) login process is detected to be in progress across multiple browser instances. If this assessment is incorrect, kindly terminate all browser instances and recommence the login procedure.");
         logout = parseCookies(document.cookie).logout;
         return;
     }
-    document.body.setAttribute("style", "visibility:visible");
+    document.body.style.setProperty("visibility","visible");
     if (sessionExpiryTime && parseInt(sessionExpiryTime) < Date.now()) {
         clearInterval(handler);
         window.disableRefreshSafetyAlert = true;
