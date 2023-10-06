@@ -73,8 +73,8 @@
       "logoutUrl": "${logout_url}",
       "postLogoutRedirectUrl": "https://${dns_name}/?logout=true"
     },
-    "sessionTimeout": 60000,
-    "keyTTL": 120000,
+    "sessionTimeout": 1800000,
+    "keyTTL": 3600000,
     "debugLogEnabled": false
   },
   "serverAuthentication": ${server_authentication}
