@@ -1,0 +1,81 @@
+{
+  "storage": "../apihub-root",
+  "port": 8080,
+  "preventRateLimit": true,
+  "activeComponents": [
+    "bdns",
+    "bricking",
+    "anchoring",
+    "epi-mapping-engine",
+    "epi-mapping-engine-results",
+    "get-gtin-owner",
+    "leaflet-web-api",
+    "mq",
+    "secrets",
+    "lightDBEnclave",
+    "staticServer"
+  ],
+  "componentsConfig": {
+    "epi-mapping-engine": {
+      "module": "./../../gtin-resolver",
+      "function": "getEPIMappingEngineForAPIHUB"
+    },
+    "epi-mapping-engine-results": {
+      "module": "./../../gtin-resolver",
+      "function": "getEPIMappingEngineMessageResults"
+    },
+    "leaflet-web-api": {
+      "module": "./../../gtin-resolver",
+      "function": "getWebLeaflet"
+    },
+    "get-gtin-owner": {
+      "module": "./../../gtin-resolver",
+      "function": "getGTINOwner"
+    },
+    "staticServer": {
+      "excludedFiles": [
+        ".*.secret"
+      ]
+    },
+    "bricking": {},
+    "anchoring": {}
+  },
+  "responseHeaders": {
+    "X-Frame-Options": "SAMEORIGIN",
+    "X-XSS-Protection": "1; mode=block"
+  },
+  "enableRequestLogger": true,
+  "enableJWTAuthorisation": false,
+  "enableOAuth": ${enable_oauth},
+  "oauthJWKSEndpoint": "${oauth_jwks_endpoint}",
+  "enableLocalhostAuthorization": false,
+  "skipOAuth": [
+    "/assets",
+    "/bdns",
+    "/bundles",
+    "/getAuthorization",
+    "/external-volume/config/oauthConfig.js",
+    "/gtinOwner/",
+    "/leaflets/"
+  ],
+  "oauthConfig": {
+    "issuer": {
+      "issuer": "${issuer}",
+      "authorizationEndpoint": "${authorization_endpoint}",
+      "tokenEndpoint": "${token_endpoint}",
+      "userInfoEndpoint": "https://graph.microsoft.com/oidc/userinfo"
+    },
+    "client": {
+      "clientId": "${client_id}",
+      "scope": "email user.read offline_access openid api://${client_id}/access_as_user",
+      "redirectPath": "https://${dns_name}/?root=true",
+      "clientSecret": "${client_secret}",
+      "logoutUrl": "${logout_url}",
+      "postLogoutRedirectUrl": "https://${dns_name}/?logout=true"
+    },
+    "sessionTimeout": 60000,
+    "keyTTL": 120000,
+    "debugLogEnabled": false
+  },
+  "serverAuthentication": ${server_authentication}
+}
